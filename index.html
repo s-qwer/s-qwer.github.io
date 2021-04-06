@@ -77,9 +77,384 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-网页相关" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-前端概述" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/04/03/%E7%BD%91%E9%A1%B5%E7%9B%B8%E5%85%B3/" class="article-date">
+    <a href="/2021/04/05/%E5%89%8D%E7%AB%AF%E6%A6%82%E8%BF%B0/" class="article-date">
+  <time class="dt-published" datetime="2021-04-05T07:42:57.000Z" itemprop="datePublished">2021-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/05/%E5%89%8D%E7%AB%AF%E6%A6%82%E8%BF%B0/">前端概述</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>网页主要是做前端样式，而现在的前端的框架越来越多：bootstrap，layui，基于Vue的elementui、iview。以前开发网页需要写html代码，css样式和js方法。现在用了框架之后，我们只需要将其中的示例改为自己的信息，将相应的css和js放在对应的路径下即可。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/05/%E5%89%8D%E7%AB%AF%E6%A6%82%E8%BF%B0/" data-id="ckn5ydxh5000bs0wd3bkohkcj" data-title="前端概述" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-网页前端之CSS" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/05/%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BCSS/" class="article-date">
+  <time class="dt-published" datetime="2021-04-05T05:37:52.000Z" itemprop="datePublished">2021-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/05/%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BCSS/">网页前端之CSS</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>HTML是页面的结构，CSS是美化页面</p>
+<p>CSS（Cascading Style Sheets）：层叠样式表  </p>
+<p>样式表：存储样式的地方，多个样式</p>
+<p>CSS通常称为CSS样式或层叠样式表，主要用于设置HTML页面中的文本内容（字体、大小、对齐方式等），图片的外形（高宽、边框样式、边距等）以及版面的布局等外观显示样式。</p>
+<p>作用：修饰HTML页面，更丰富多彩的展示超文本信息</p>
+<p>因为HTML在单独使用设置属性会有一定的局限性，所以用CSS样式。</p>
+<h1 id="样式类型"><a href="#样式类型" class="headerlink" title="样式类型"></a>样式类型</h1><p>1.行内样式表（内联样式）:<code>&lt;div style=&quot;width:400px;height:200px;background-color:#FFF&quot;&gt;&lt;/div&gt;</code></p>
+<p>一般写在标签头部</p>
+<p>放置规范：在<code>&lt;style&gt;</code>标签内容体中书写css样式代码<code>&lt;/style&gt;</code>      <code>&lt;style&gt;</code>标签放置在<code>&lt;head&gt;</code>标签之中</p>
+<p>格式规范：选择器名称｛属性名1：属性值1； 属性名2：属性值2；……｝</p>
+<p>代码规范：属性名和属性值之间是键值对关系    <code>：</code>连接   <code>；</code>结尾  </p>
+<p>如果一个属性名有多个值，多个值之间用空格隔开：border:1px solid red;</p>
+<p>CSS注释：<code>/*注释内容*/ </code> 等同于java的多行注释</p>
+<p>缺点:样式只能操作某一个标签 优点:十分灵活，可以进行细节的调节,更加针对性修改某个标签的样式</p>
+<p>2.嵌入式样式表（嵌入样式）:<code>&lt;style type=&quot;text/css&quot;&gt;&lt;/style&gt;</code></p>
+<p>一般写在<code>&lt;head&gt;&lt;/head&gt;</code>标签内。可以通过一条语句操作多个标签或类，但是仅限本页面内</p>
+<p>3.引用式样式表（外联样式）:<code>&lt;link href=&quot;css文件路径&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</code></p>
+<p>​    rel=”stylesheet” 固定值，表示样式表</p>
+<p>​    type=”text/css” 固定值，表示css类型</p>
+<p>​    href表示css文件位置</p>
+<p>(能用引用式样式表的地方就尽量用引用式)<br>一般写在<code>&lt;head&gt;&lt;/head&gt;</code>标签内。(多个HTML文件可以引用一个CSS样式表文件) </p>
+<p>优点:占用空间资源少，修改方便，只要修改CSS文件就可以修改多个HTML页面的属性，适合不同页面进行样式复用</p>
+<p>CSS注释写法:<code>/* */</code>   HTML注释写法:<code>&lt;!--  --&gt;</code></p>
+<p>当三种样式表操作同一元素时，优先级依次为:行内样式表，嵌入式样式表，引用式样式表。 即后出现的先应用。引用式样式表一般放在嵌入式样式表的前面</p>
+<h1 id="书写规则"><a href="#书写规则" class="headerlink" title="书写规则"></a>书写规则</h1><p>不要忘记每条属性的“;”结尾<br>如果缺少符号或者书写错误则样式表失效<br>需要单位的值要加上单位，例如:px(像素单位)</p>
+<h1 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h1><p>选择器：指定CSS样式作用在哪些HTML标签上</p>
+<p>基本选择器：</p>
+<p>1.元素选择器：HTML标签又名html元素，就是以HTML标签名作为选择器名称。</p>
+<p>作用：选择CSS样式代码，对应标签名的标签上。</p>
+<p>格式：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">标签名｛</span><br><span class="line"></span><br><span class="line"><span class="comment">/*CSS样式代码*/</span></span><br><span class="line"></span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+
+<p>适用范围：适用于将相同样式，作用在多个同名标签上</p>
+<p>2.类选择器：以HTML的类名（class属性值）作为选择器名称</p>
+<p>每个HTML标签都有一个class属性，class属性即为类名。</p>
+<p>作用：选择CSS样式代码作用于对应类名的HTML标签上。</p>
+<p>格式：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> .类名｛</span><br><span class="line"></span><br><span class="line"><span class="comment">/*CSS样式代码*/</span></span><br><span class="line"></span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+
+<p>使用范围：适用于将样式一次作用在相同类名的标签上（即使标签名不同）。</p>
+<p>3.id选择器：以HTML的id（id属性值）作为选择器名称</p>
+<p>每个HTML标签都有一个id属性，这个id属性值必须在本页面是唯一的</p>
+<p>作用：选择CSS样式代码作用于某个规定id值的html标签上</p>
+<p>格式：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="selector-id">#id</span>值｛</span><br><span class="line"></span><br><span class="line"><span class="comment">/*CSS样式代码*/</span></span><br><span class="line"></span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+
+<p>适用范围：适用于将样式作用某个标签上（更有针对性）</p>
+<p>基本选择器的组合方式:</p>
+<p>层级关系：标签和标签之间有层级关系</p>
+<p>我们可以对基本选择器进行组合，表现出层级关系，从而更针对性地把样式作用于某些标签上（相当于是有相同的标签，更针对性的指定是哪个）</p>
+<p>格式：  </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">选择器<span class="number">1</span> 选择器<span class="number">2</span> ...｛</span><br><span class="line"></span><br><span class="line"><span class="comment">/*CSS样式代码*/</span></span><br><span class="line"></span><br><span class="line">｝</span><br><span class="line"></span><br><span class="line">选择器<span class="number">1</span>下的选择器<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="CSS样式"><a href="#CSS样式" class="headerlink" title="CSS样式"></a>CSS样式</h1><h2 id="字体属性：-font"><a href="#字体属性：-font" class="headerlink" title="字体属性：(font)"></a>字体属性：(font)</h2><p>样式：</p>
+<p>​    color : #999999;   文字颜色</p>
+<p>​    font-family : sans-serif;   字体类型  “Courier New”, Courier, monospace, “Times New Roman”, Times, serif, Arial, Helvetica, sans-serif, Verdana</p>
+<p>​    font-size:  字体大小 inherit| medium| large| larger| x-large| xx-large| small| smaller| x-small| xx-small |数值  单位：pt，px</p>
+<p>​    font-weight:  字体粗细 bold,bolder; (文字粗体）   lighter;(细体) normal;(正常)  100-900</p>
+<p>​    font-style:  字体风格  itelic; (文字斜体）  normal;(正常) oblique;(偏斜体)   inherit(继承)</p>
+<p>​    letter-spacing :  字间距离  数值|inherit|normal</p>
+<p>​    word-spacing: 单词间距  数值|inherit|normal</p>
+<p>​    line-height :  设置行高   normal;(正常)   inherit(继承)  数值 单位：PX、PD、EM  </p>
+<p>​    text-shadow: 阴影颜色 {16位色值}</p>
+<p>​    font-variant: 字体变形  {inherit|normal|small-cps（小字体，小型大写字母） }</p>
+<p>​    font-size-adjust:字体变形 {inherit|none}</p>
+<p>​    font-stretch:字体 {condensed|expanded|extra-condensed|extra-expanded|inherit|narrower|normal| semi-condensed|semi-expanded|ultra-condensed|ultra-expanded|wider}</p>
+<p>修饰：inherit|none|underline|overline|line-through|blink</p>
+<p>​    text-decoration:line-through; 加删除线</p>
+<p>​    text-decoration: overline; 加顶线（上划线）</p>
+<p>​    text-decoration:underline; 加下划线</p>
+<p>​    text-decoration:none; 删除链接下划线</p>
+<p>​    text-decoration:blink; 闪烁</p>
+<p>大小写：</p>
+<p>text-transform:inherit|none|capitalize|uppercase|lowercase</p>
+<p>​    text-transform : capitalize; 首字大写</p>
+<p>​    text-transform : uppercase; 英文大写</p>
+<p>​    text-transform : lowercase; 英文小写</p>
+<h2 id="背景属性：-background"><a href="#背景属性：-background" class="headerlink" title="背景属性： (background)"></a>背景属性： (background)</h2><p>色彩：</p>
+<p>​    background-color:#F5E2EC; 背景颜色  </p>
+<p>两种方式：</p>
+<p>​    ①英文单词</p>
+<p>​    ②颜色代码  格式：#红绿蓝，每一个颜色用两个16进制位数表示  例如：#ff1100 红色ff 绿色11 蓝色00 红色颜色最重，绿色其次，没有蓝色  （数值代表每个颜色的色重）</p>
+<p>​    background:transparent; 透视背景</p>
+<p>图片：</p>
+<p>​    background-image : url(/image/bg.gif); 背景图片  url(URL)|none</p>
+<p>重复： inherit|no-repeat|repeat|repeat-x|repeat-y</p>
+<p>​    background-repeat : repeat; 重复排列-网页默认</p>
+<p>​    background-repeat : no-repeat; 不重复排列</p>
+<p>​    background-repeat : repeat-x; 在x轴重复排列</p>
+<p>​    background-repeat : repeat-y; 在y轴重复排列</p>
+<p>滚动：</p>
+<p>​    background-attachment : fixed; 浮水印固定背景   scroll;(滚动)</p>
+<p>位置：</p>
+<p>​    background-position : 90% 90%; 背景图片x与y轴的位置</p>
+<p>​    background-position : top; 向上对齐</p>
+<p>​    background-position : buttom; 向下对齐</p>
+<p>​    background-position : left; 向左对齐</p>
+<p>​    background-position : right; 向右对齐</p>
+<p>​    background-position : center; 居中对齐</p>
+<p>简写：  背影样式 {background:背景颜色|背景图象|背景重复|背景附件|背景位置}</p>
+<p>例： {background:#000 url(..) repeat fixed left top;}</p>
+<h2 id="区块属性：-Block"><a href="#区块属性：-Block" class="headerlink" title="区块属性： (Block)"></a>区块属性： (Block)</h2><p>排列方式：</p>
+<p>​    text-align:right; 文字右对齐</p>
+<p>​    text-align:left; 文字左对齐</p>
+<p>​    text-align:center; 文字居中对齐</p>
+<p>​    text-align:justify; 文字分散对齐（两端对齐）</p>
+<p>​    vertical-align:baseline; 基线</p>
+<p>​    vertical-align:top; 垂直向上对齐</p>
+<p>​    vertical-align:bottom; 垂直向下对齐</p>
+<p>​    vertical-align:middle; 垂直居中对齐</p>
+<p>​    vertical-align:text-top; 文字垂直向上对齐</p>
+<p>​    vertical-align:text-bottom; 文字垂直向下对齐</p>
+<p>​    vertical-align:sub; 下标字</p>
+<p>​    vertical-align:super; 上标字</p>
+<h2 id="显示属性：（display）"><a href="#显示属性：（display）" class="headerlink" title="显示属性：（display）"></a>显示属性：（display）</h2><p>display属性可以使得元素在行内元素和块元素之间相互转换</p>
+<p>格式：  选择器{display:属性值 }</p>
+<p>属性值：block：此元素显示为块元素（块元素默认的display属性值）</p>
+<p>​    inline：此元素显示为行内元素（行内元素默认的display属性值）</p>
+<p>​    none：此元素将被隐藏，不显示，也不占用页面空间</p>
+<p>display: 显示  {block;}(块) inline;(内嵌) list-item;(列表项) run-in;(追加部分) compact;(紧凑) marker;(标记) table; inline-table; table-raw-group; table-header-group; table-footer-group; table-raw; table-column-group; table-column; table-cell; table-caption;(表格标题)</p>
+<p>​    text-indent: 缩进，段首空格 { 数值px; inherit}</p>
+<p>​    white-space: 空格；控制空白  pre;(保留) nowrap;(不换行) normal</p>
+<p>​    writing-mode: 书写方式 {lr-tb（从左到右，从上到下）|tb-rl（从上到下，从右到左）}</p>
+<p>​    visibility: 是否可见 inherit; visible; hidden;collapse</p>
+<p>即使不可见的元素也会占据页面上的空间。使用 “display” 属性来创建不占据页面空间的不可见元素</p>
+<p>​    overflow:  当内容溢出元素框时发生的事情</p>
+<pre><code>     visible:默认值。内容不会被修剪，会呈现在元素框之外。
+</code></pre>
+<p>​         hidden:内容会被修剪，并且其余内容是不可见的。</p>
+<p>​         scroll:内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。</p>
+<p>​        auto:如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容</p>
+<p>​    clip:  (裁切)剪裁绝对定位元素:这个属性用于定义一个剪裁矩形。对于一个绝对定义元素，在这个矩形内的内容才可见。出了这个剪裁区域的内容会根据 overflow 的值来处理。剪裁区域可能比元素的内容区大，也可能比内容区小</p>
+<p>​        rect (<em>top</em>, <em>right</em>, <em>bottom</em>, <em>left</em>)</p>
+<p>​        auto:默认值。不应用任何剪裁</p>
+<h2 id="方框属性：-Box"><a href="#方框属性：-Box" class="headerlink" title="方框属性： (Box)"></a>方框属性： (Box)</h2><p>CSS盒子模型：所有的HTML元素，都可以看作一个四边形，即一个盒子。</p>
+<p>用CSS来设置元素盒子的内边距（padding）、边框(border)和外边距(margin)的样式的方式相当于设置盒子的样式，我们称之为盒子模型。</p>
+<p>边框：（HTML元素盒子的框体）简写：<code>border:1px solid red;</code></p>
+<p>宽度：宽度值： thin|medium|thick|数值  </p>
+<p>​    width:长度|百分比| auto</p>
+<p>​    border-top-width </p>
+<p>​    border-right-width </p>
+<p>​    border-bottom-width </p>
+<p>​    border-left-width</p>
+<p>高度：</p>
+<p>​    height:数值|auto</p>
+<p>颜色：</p>
+<p>​    border-color:数值 数值 数值 数值；　数值：分别代表top、right、bottom、left颜色值</p>
+<p>风格： </p>
+<p>​    border-style:none|hidden|inherit|dashed|solid|double|inset|outset|ridge|groove</p>
+<p>漂浮：</p>
+<p>​    float:left|right|none</p>
+<p>​    通常默认的排版方式，将页面的元素从上到下一一罗列，而实际开发中，需要左右方式进行排版，所以需要使用到浮动属性：float</p>
+<p>格式： 选择器{float：属性值；}</p>
+<p>常用属性值：none：元素不浮动（默认值）</p>
+<p>​    left：元素向左浮动</p>
+<p>​    right：元素向右浮动</p>
+<p>因为元素设置浮动属性后，会脱离原有文档流（会脱离原有的板式），从而会影响其他元素的样式，所以设置浮动以后，页面样式需要重新调整。</p>
+<p>清除：规定元素的哪一侧不允许其他浮动元素</p>
+<p>​    clear:none|left|right|both</p>
+<p>注：这个规则只能影响使用清除的元素本身，不能影响其他元素。这个元素与float对应</p>
+<p>外边距，边界留白：HTML元素边框到其他元素边框的距离</p>
+<p>​    margin-top:10px; 上边界</p>
+<p>​    margin-right:10px; 右边界值</p>
+<p>​    margin-bottom:10px; 下边界值</p>
+<p>​    margin-left:10px; 左边界值</p>
+<p>通用性设置：margin: 10px;</p>
+<p>内边距，补白：HTML元素里的内容体到HTML元素边框的距离</p>
+<p>​    padding-top:10px; 上边框留空白</p>
+<p>​    padding-right:10px; 右边框留空白</p>
+<p>​    padding-bottom:10px; 下边框留空白</p>
+<p>​    padding-left:10px; 左边框留空白</p>
+<p>通用性设置：padding: 10px;</p>
+<h2 id="边框属性：-Border"><a href="#边框属性：-Border" class="headerlink" title="边框属性： (Border)"></a>边框属性： (Border)</h2><p>所有的HTML标签都有边框，默认边框不可见</p>
+<p>简写：    格式：宽度 样式 颜色</p>
+<p>​    border：width style color; </p>
+<p>​    border-top : 1px solid #6699cc; 上框线</p>
+<p>​    border-bottom : 1px solid #6699cc; 下框线</p>
+<p>​    border-left : 1px solid #6699cc; 左框线</p>
+<p>​    border-right : 1px solid #6699cc; 右框线</p>
+<p>也可以使用常规的方式 如下:</p>
+<p>​    border-top-color : #369 设置上框线top颜色</p>
+<p>​    border-top-width :1px设置上框线top宽度</p>
+<p>​    border-top-style : solid设置上框线top样式</p>
+<p>其他框线样式：</p>
+<p>​    solid 实线框</p>
+<p>​    dotted 虚线框（点线）</p>
+<p>​    double 双线框</p>
+<p>​    groove 立体内凸框 (槽线)</p>
+<p>​    ridge 立体浮雕框 (脊状)</p>
+<p>​    inset 凹框</p>
+<p>​    outset 凸框</p>
+<p>width：边框的宽度</p>
+<p>height：边框的高度（只是边框，不是字体）</p>
+<h2 id="列表属性：-List-style"><a href="#列表属性：-List-style" class="headerlink" title="列表属性： (List-style)"></a>列表属性： (List-style)</h2><p>符号列表： disc|circle|square|decimal|lower-roman|upper-roman|lower-alpha|upper-alpha|none</p>
+<p>​    list-style-type:none; 不编号</p>
+<p>​    list-style-type:decimal; 阿拉伯数字</p>
+<p>​    list-style-type:lower-roman; 小写罗马数字</p>
+<p>​    list-style-type:upper-roman; 大写罗马数字</p>
+<p>​    list-style-type:lower-alpha; 小写英文字母</p>
+<p>​    list-style-type:upper-alpha; 大写英文字母</p>
+<p>​    list-style-type:disc; 实心圆形符号</p>
+<p>​    list-style-type:circle; 空心圆形符号</p>
+<p>​    list-style-type:square; 实心方形符</p>
+<p>图像：</p>
+<p>​    list-style-image:url(/dot.gif); 图片式符号</p>
+<p>位置：</p>
+<p>​    list-style-position: outside; 凸排</p>
+<p>​    list-style-position:inside; 缩进</p>
+<h2 id="定位属性：-Position"><a href="#定位属性：-Position" class="headerlink" title="定位属性： (Position)"></a>定位属性： (Position)</h2><p>这个属性定义建立元素布局所用的定位机制。任何元素都可以定位，不过绝对或固定元素会生成一个块级框，而不论该元素本身是什么类型。相对定位元素会相对于它在正常流中的默认位置偏移。</p>
+<p>​    position: absolute;   生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。</p>
+<p>​    position: fixed;  生成绝对定位的元素，相对于浏览器窗口进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定</p>
+<p>​    position:relative; 生成相对定位的元素，相对于其正常位置进行定位。因此，”left:20” 会向元素的 LEFT 位置添加 20 像素</p>
+<p>​    position:static; 默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）</p>
+<p>​    position:inherit;规定应该从父元素继承 position 属性的值</p>
+<p>​        Z-index仅能在定位元素上奏效，可被用于将在一个元素放置于另一元素之后,拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。</p>
+<h2 id="连接属性：（a）"><a href="#连接属性：（a）" class="headerlink" title="连接属性：（a）"></a>连接属性：（a）</h2><p>a /<em>所有超链接</em>/</p>
+<p>​    a:link 超链接文字格式</p>
+<p>​    a:visited 浏览过的链接文字格式</p>
+<p>​    a:active 按下链接的格式</p>
+<p>​    a:hover 鼠标转到链接</p>
+<p>鼠标光标样式： hand|crosshair|text|wait|move|help|e-resize|nw-resize|w-resize|s-resize|se-resize|sw-resize</p>
+<p>​    链接手指 cursor: hand</p>
+<p>​    十字体 cursor:crosshair</p>
+<p>​    箭头朝下 cursor:s-resize</p>
+<p>​    十字箭头 cursor:move</p>
+<p>​    箭头朝右 cursor:move</p>
+<p>​    加一问号 cursor:help</p>
+<p>​    箭头朝左 cursor:w-resize</p>
+<p>​    箭头朝上 cursor:n-resize</p>
+<p>​    箭头朝右上 cursor:ne-resize</p>
+<p>​    箭头朝左上 cursor:nw-resize</p>
+<p>​    文字I型 cursor:text</p>
+<p>​    箭头斜右下 cursor:se-resize</p>
+<p>​    箭头斜左下 cursor:sw-resize</p>
+<p>​    漏斗 cursor:wait</p>
+<p>​    光标图案(IE6) p {cursor:url(“光标文件名.cur”),text;}</p>
+<h2 id="表单属性"><a href="#表单属性" class="headerlink" title="表单属性"></a>表单属性</h2><p>文字方块</p>
+<p>按钮</p>
+<p>复选框</p>
+<p>选择钮</p>
+<p>多行文字方块</p>
+<p>下拉式菜单 选项1选项2</p>
+<h2 id="伪元素-after和-before"><a href="#伪元素-after和-before" class="headerlink" title="伪元素::after和::before"></a>伪元素::after和::before</h2><p>::before和::after匹配一个虚拟元素，主要被用于为当前元素增加装饰性内容的。它显示的内容是其自身的“<code>content</code>”属性，默认是内联元素。</p>
+<h2 id="兼容问题"><a href="#兼容问题" class="headerlink" title="兼容问题"></a>兼容问题</h2><p>!important：</p>
+<p>​    CSS中的!important一般都是用于对低版本的除了iE 6 ，用来做hack的，后面缀上了!important的css语句，让浏览器首选执行这个语句，因为css有继承的样式，加上!importanrt可以覆盖父级的样式。 IE6不认识它的，IE7和别的浏览器中可以用，用来处理浏览器的兼容性。</p>
+<p>一、IE边框若显若无，须注意，定是高度设置已忘记；<br>二、浮动产生有缘故，若要父层包含住，紧跟浮动要清除，容器自然显其中；<br>三、三像素文本慢移不必慌，高度设置帮你忙；<br>四、兼容各个浏览须注意，默认设置行高可能是隐患；<br>五、独立清除浮动须铭记，行高设无，高设零，设计效果兼浏览；<br>六、学布局须思路，路随布局原理自然直，轻松驾驭html，流水布局少hack，代码清爽，兼容好，友好引擎喜欢迎。<br>七、所有标签皆有源，只是默认各不同，span是无极，无极生两仪—内联和块级，img较特殊，但也遵法理，其他只是改造各不同，一个*号全归原，层叠样式理须多练习，万物皆规律。<br>八、图片链接排版须小心，图片链接文字链接若对齐，padding和vertical-align:middle要设定，虽差微细倒无妨。<br>九、IE浮动双边距，请用display：inline拘。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/05/%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BCSS/" data-id="ckn5ydxhe000us0wd6dyp4gf7" data-title="网页前端之CSS" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-小知识" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/03/%E5%B0%8F%E7%9F%A5%E8%AF%86/" class="article-date">
+  <time class="dt-published" datetime="2021-04-03T02:09:41.000Z" itemprop="datePublished">2021-04-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/03/%E5%B0%8F%E7%9F%A5%E8%AF%86/">小知识</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>1.微信发送安卓相关的安装包会自动屏蔽。</p>
+<p>2.usb2.0和usb3.0：</p>
+<p>颜色：USB2.0接口处为黑色或白色，USB3.0接口处为蓝色</p>
+<p>标志符号：USB3.0接口比2.0多了个ss</p>
+<p>兼容性：USB2.0：可以兼容USB1.0、USB2.0。</p>
+<p>​                USB3.0：可以兼容USB1.0、USB2.0、USB3.0</p>
+<p>传输速率：USB2.0的理论传输速率：480Mbps (60MB/s)</p>
+<p>​                    USB3.0的理论传输速率：5Gbps (500MB/s)</p>
+<p>硬件结构：USB2.0：采用了半双工二线制总线，只能提供单向数据流传输；</p>
+<p>​                    USB3.0：采用了对偶单纯形四线制差分信号线，可以双向并发数据传输</p>
+<p>3.浏览器主要是看内核来分辨显示。有的浏览器会自动过滤掉一些资源（比如一个名为guanggao的图片）</p>
+<p>4.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/03/%E5%B0%8F%E7%9F%A5%E8%AF%86/" data-id="ckn5ydxh5000cs0wda6vv8vus" data-title="小知识" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-网页前端之HTML" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/03/%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BHTML/" class="article-date">
   <time class="dt-published" datetime="2021-04-03T01:43:19.000Z" itemprop="datePublished">2021-04-03</time>
 </a>
     
@@ -91,7 +466,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/03/%E7%BD%91%E9%A1%B5%E7%9B%B8%E5%85%B3/">网页相关</a>
+      <a class="p-name article-title" href="/2021/04/03/%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BHTML/">网页前端之HTML</a>
     </h1>
   
 
@@ -99,14 +474,261 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <h1 id="lt-HTML-gt"><a href="#lt-HTML-gt" class="headerlink" title="&lt;HTML&gt;"></a><code>&lt;HTML&gt;</code></h1><p><code>&lt;html&gt;</code>标签相当于java类的大括号</p>
+<p>HTML：(Hyper Text Markup Language)超文本标记语言,是用来写网页的，是设计页面的基础。</p>
+<p>HTML是由标签所组成的语言，能展示超文本效果,由头和体组成：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span>    </span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>标题<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">&quot;red&quot;</span>&gt;</span>需要展示给用户看的信息内容<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>HTML文件的扩展名为html或者htm:htm是老的命名规范，html是新的</p>
+<p>HTML文件由浏览器直接解析运行，无需编译，直接由上到下依次解析执行</p>
+<p>HTML标签通常由开始标签和结束标签组成，开始标签和结束标签之间的内容叫做内容体。</p>
+<p>没有内容体的标签叫做空标签。仅由一个标签组成，例如：<code>&lt;br/&gt;</code> 自关闭</p>
+<p>HTML标签不区分大小写，为了方便阅读，建议小写</p>
+<p>HTML标签是有属性的，格式为属性名=“属性值”，属性值用引号引起来(单引号双引号都可以，建议双引号)</p>
+<p>HTML标签建议包裹嵌套，不建议交叉嵌套</p>
+<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><p><code>&lt;!--HTML注释内容--&gt;</code>用于注释HTML源码，不在HTML效果中展示</p>
+<h1 id="lt-head-gt"><a href="#lt-head-gt" class="headerlink" title="&lt;head&gt;"></a><code>&lt;head&gt;</code></h1><p><code>&lt;head&gt;</code>中存放的是网页的说明性内容</p>
+<h2 id="lt-meta-gt"><a href="#lt-meta-gt" class="headerlink" title="&lt;meta&gt;"></a><code>&lt;meta&gt;</code></h2><p>是 HTML 语言头部的一个辅助性标签，我们可以定义页面编码语言、搜索引擎优化、自动刷新并指向新的页面、控制页面缓冲、响应式视窗等。·</p>
+<p><code>&lt;meta&gt;</code> 元素可提供有关页面的元信息（meta-information,元数据总是以名称/值的形式被成对传递的），比如针对搜索引擎和更新频度的描述和关键词。</p>
+<p><code>&lt;meta&gt;</code> 标签位于文档的头部，不包含任何内容。</p>
+<p><code>&lt;meta&gt;</code> 标签的属性定义了与文档相关联的名称/值对。</p>
+<p>整体来看，HTML5之前，meta标签只有两个主要属性，分别是 name 属性和 http-equiv 属性。 HTML5新添加”charset”</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;参数&quot;</span> <span class="attr">content</span>=<span class="string">&quot;参数值&quot;</span> /&gt;</span>  </span><br><span class="line">//name属性主要用于描述网页，对应属性是 content ，以便于搜索引擎机器人查找、分类（目前几乎所有的搜索引擎都使用网上机器人自动查找meta值来给网页分类）</span><br><span class="line">这里的name参数可以是多种值，对应不同效果：</span><br><span class="line">Keywords（关键字）</span><br><span class="line">Description（简介）</span><br><span class="line">robots（机器人向导）   用来告诉搜索机器人哪些页面需要索引，哪些页面不需要索引</span><br><span class="line">参数为 all ：默认值，文件将被检索，且页面上的链接可以被查询； 参数为 none ：文件将不被检索，且页面上的链接不可以被查询； 参数为 index ：文件将被检索； 参数为 follow ：页面上的链接可以被查询； 参数为 noindex ：文件将不被检索，但页面上的链接可以被查询； 参数为 nofollow ：文件将被检索，但页面上的链接不可以被查询；</span><br><span class="line">author（作者）</span><br><span class="line">copyright（版权）</span><br><span class="line">generator（编辑器）</span><br><span class="line">revisit-after（网站重访）</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">property</span>=<span class="string">&quot;参数&quot;</span>  <span class="attr">content</span>=<span class="string">&quot;参数值&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;参数&quot;</span>  <span class="attr">content</span>=<span class="string">&quot;参数值&quot;</span>/&gt;</span></span><br><span class="line">//http-equiv类似于HTTP的头部协议，它回应给浏览器一些有用的信息，以帮助正确和精确地显示网页内容。与之对应的属性值为content，content中的内容其实就是各个参数的变量值</span><br><span class="line">Expires（期限）  指定网页在缓存中的过期时间，一旦网页过期，必须到服务器上重新传输  必须使用GMT的时间格式，或者直接设为0（数字表示多久后过期）</span><br><span class="line">Pragma（cache模式） 禁止浏览器从本地计算机的缓存中访问页面内容   网页不保存在缓存中，每次访问都刷新页面。这样设定，访问者将无法脱机浏览</span><br><span class="line">Refresh（刷新）自动刷新并指向新页面 `<span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;refresh&quot;</span><span class="attr">content</span>=<span class="string">&quot;5; url=http://www.baidu.com/&quot;</span>/&gt;</span>`</span><br><span class="line">Set-Cookie（cookie设定）</span><br><span class="line">Window-target（显示窗口的设定） 强制页面在当前窗口以独立页面显示,可以用来防止别人在框架里调用你的页面</span><br><span class="line">content-Type（显示字符集的设定）设定页面使用的字符集，一般不用</span><br><span class="line">content-Language（显示语言的设定）</span><br><span class="line">http-equiv=&quot;imagetoolbar&quot; 指定是否显示图片工具栏，当为false代表不显示，当为true代表显示</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="lt-link-gt"><a href="#lt-link-gt" class="headerlink" title="&lt;link&gt;"></a><code>&lt;link&gt;</code></h2><p><code>&lt;link&gt;</code> 标签定义该文档与外部资源的关系。最常见的用途是链接样式表，也可以被用来创建站点图标(比如PC端的“favicon”图标和移动设备上用以显示在主屏幕的图标)</p>
+<p>网站站点的小图标：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;icon&quot;</span> <span class="attr">href</span>=<span class="string">&quot;images/logo.png&quot;</span> <span class="attr">type</span>=<span class="string">&quot;image/png&quot;</span> <span class="attr">sizes</span>=<span class="string">&quot;1651*1024&quot;</span>/&gt;</span>  指定格式为icon，然后类型指定图片，href放资源位置，可以设置大小</span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;shortcut icon&quot;</span> <span class="attr">href</span>=<span class="string">&quot;favicon.ico&quot;</span> <span class="attr">type</span>=<span class="string">&quot;image/x-icon&quot;</span> /&gt;</span>  指定格式为icon，类型指定为ico，href放资源位置</span><br></pre></td></tr></table></figure>
+
+<h2 id="lt-script-gt"><a href="#lt-script-gt" class="headerlink" title="&lt;script&gt;"></a><code>&lt;script&gt;</code></h2><p>1、async  表示立即下载该脚本，但不妨碍页面中的其他操作(比如：下载其他资源或等待加载其他脚本)，只对外部文件有效。<br>2、charset 属性与 src 属性一起使用，告诉浏览器用来编码这个 javascript 程序的字符集。它的值是任何一个 ISO 标准字符集编码的名称。由于大多数浏览器会忽略它的值，因此这个属性很少有人用。</p>
+<p>3、defer 表示脚本可以延迟到文档完全被解析和显示后再执行。只对外部文件有效。<br>4、language 已废弃。 原来用于表示编写代码用的脚本语言，因大多数浏览器都会忽略这个属性，因此也没必要再用了。<br>5、src 表示包含要执行代码的外部文件。</p>
+<p>6、type 可以看成language的替代属性；表示编写代码使用的脚本语言的内容类型。默认值为text/javascript</p>
+<p>注意：<br>1、传统做法是将所有的<code>&lt;script&gt;</code>元素都放在页面的<code>&lt;head&gt;</code>元素中，但是这样页面响应就会比较慢（必须等到全部的Javascript代码都被下载、解析和执行完后，才能呈现页面内容）。现在的做法一般都是将Javascript引用放在<code>&lt;body&gt;</code>元素中页面内容的后面。</p>
+<p>2、defer和asyncd的作用基本相似。定义defer=“defer”的脚本将延迟到浏览器遇到<code>&lt;/html&gt;</code>标签后再执行，原则上是延迟脚本还是按照原来的顺序执行，但是实际上执行的顺序不一定按照指定顺序执行。但是HTML5（以后称为H5）中已经明确规定,defer属性只使用于外部脚本文件，因此支持H5的实现会忽略给嵌入脚本设置的defer属性。async也只适用于外部脚本文件，并告诉浏览器立即下载脚本文件。但与defer不同的是，它并不保证按照指定顺序执行，又称为异步脚本标签（各脚本文件相互独立，互不依赖）</p>
+<h1 id="lt-body-gt"><a href="#lt-body-gt" class="headerlink" title="&lt;body&gt;"></a><code>&lt;body&gt;</code></h1><p>分类：</p>
+<p>1.单标签：在⾃身标签标识结束，主要应⽤场景为<strong>功能性</strong>标签</p>
+<p>双标签：有成对的结束标识，主要应⽤场景为<strong>内容性</strong>标签</p>
+<p>2.行标签：⼜名<strong>内联标签</strong>，内联标签⾃身不具备宽⾼，可以和其他元素保持在同一行。根据内容多少来占用行内空间，不会自动换行。例：<code>&lt;br&gt;, &lt;td&gt;, &lt;a&gt;, &lt;img&gt;，&lt;span&gt;</code>strong，u（下划线），em(强调)，i(斜体)，sub(下标),sup(上标)</p>
+<p>块标签：又名<strong>块级标签</strong>，块标签可以设置宽⾼，不可以和其他元素保持在同一行，通常独⾃占据⼀⾏。以区域块方式出现，每个块标签独自占据一整行或多整行，块结束会自动换行。例：<code>&lt;h1&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;table&gt;，&lt;div&gt;</code>li，dl，dt，dd,form,hr,pre</p>
+<p>行内块级标签：可以和其他元素保持在在一行，还能能设置宽高。例：textarea，input，img，button</p>
+<p>所谓的行级标签，块级标签，其实可以根据需要，在开发中通过css样式互相转换。即通过设置display属性，它的属性值中，inline（元素以行内标签进行展示），block（元素以块级标签进行展示），inline-block（元素以行内块级标签进行展示）</p>
+<p>3.单一标签：单独出现，表示具体的功能或展示具体的内容</p>
+<p>组合标签：配合使⽤，才能产⽣相应的内容与效果</p>
+<h2 id="lt-h-gt-标题"><a href="#lt-h-gt-标题" class="headerlink" title="&lt;h&gt;标题"></a><code>&lt;h&gt;</code>标题</h2><p>标题（Heading）是通过 <code>&lt;h1&gt; - &lt;h6&gt;</code> 等标签进行定义的。</p>
+<p><code>&lt;h1&gt;</code> 定义最大的标题    <code>&lt;h6&gt;</code> 定义最小的标题</p>
+<p>注意：</p>
+<ol>
+<li>浏览器会自动地在标题的前后添加空行。</li>
+<li>默认情况下，HTML 会自动地在块级元素前后添加一个额外的空行，比如段落、标题元素前后</li>
+</ol>
+<h2 id="lt-p-gt-段落"><a href="#lt-p-gt-段落" class="headerlink" title="&lt;p&gt;段落"></a><code>&lt;p&gt;</code>段落</h2><p>用于展示效果中划分段落，并且自动在段前和段后自动加空行</p>
+<p>align：段落内容的对齐方式，默认是left，内容居左；right，右；center，居中。</p>
+<p>（这个将要分段的内容放在<code>&lt;p&gt;&lt;/p&gt;</code>中即可）</p>
+<p>注意：</p>
+<ol>
+<li><p>浏览器会自动地在段落的前后添加空行。（<code>&lt;p&gt;</code> 是块级元素）</p>
+</li>
+<li><p>使用空的段落标记 <code>&lt;p&gt;&lt;/p&gt; </code>去插入一个空行是个坏习惯。用 <code>&lt;br /&gt;</code> 标签代替它！（但是不要用 <code>&lt;br /&gt;</code> 标签去创建列表。）</p>
+</li>
+</ol>
+<h2 id="lt-br-gt-换行"><a href="#lt-br-gt-换行" class="headerlink" title="&lt;br /&gt;换行"></a><code>&lt;br /&gt;</code>换行</h2><p>用于展示效果中换行 </p>
+<p>HTML源码中换行，浏览器解析时会自动忽略</p>
+<p>（这个放在要换行的地方就行）</p>
+<h2 id="lt-font-gt-字体"><a href="#lt-font-gt-字体" class="headerlink" title="&lt;font&gt;字体"></a><code>&lt;font&gt;</code>字体</h2><p>用于展示效果中修饰文字样式</p>
+<p><code>&lt;font 属性名=”属性值”&gt; 文字&lt;/font&gt;</code></p>
+<p>size:控制字体大小。最小1~最大7</p>
+<p>color:控制字体颜色.使用英文设置</p>
+<p>face:控制字体类型。只能设置系统字库中存在的字体类型<br>这个font可以加载在文字中间，不一定非要在开始，从哪开始的字就是从哪变化）</p>
+<h2 id="lt-hr-gt-分割线"><a href="#lt-hr-gt-分割线" class="headerlink" title="&lt;hr /&gt;分割线"></a><code>&lt;hr /&gt;</code>分割线</h2><p>水平线，多用于段落之间的分割</p>
+<h2 id="lt-pre-gt-原样标签"><a href="#lt-pre-gt-原样标签" class="headerlink" title="&lt;pre&gt;原样标签"></a><code>&lt;pre&gt;</code>原样标签</h2><p>原样标签会保留空格和换行符，显示原文本文字。格式化文本。预定义格式文本。</p>
+<p>在该元素中的文本通常按照原文件中的编排，以等宽字体的形式展现出来，文本中的空白符（比如空格和换行符）都会显示出来。(紧跟在 <code>&lt;pre&gt; </code>开始标签后的换行符也会被省略)</p>
+<h2 id="lt-section-gt-段落标签"><a href="#lt-section-gt-段落标签" class="headerlink" title="&lt;section&gt;段落标签"></a><code>&lt;section&gt;</code>段落标签</h2><p>和p同为块标签，自动换行显示每一段，但是section不存在行距，p自带行距</p>
+<p>注：section和P放在一起，p优先，使用行距</p>
+<h2 id="lt-div-gt-块级的块标签"><a href="#lt-div-gt-块级的块标签" class="headerlink" title="&lt;div&gt;块级的块标签"></a><code>&lt;div&gt;</code>块级的块标签</h2><p>用于在效果中 定义一块，默认占满一行，进行内容的显示  （会自动换行，默认占满一行 适用于大量信息展示）</p>
+<p>是块级元素，内容会独立占一行。它是可用于组合其他 HTML 元素的容器。<code>&lt;div&gt;</code> 元素没有特定的含义。除此之外，由于它属于块级元素，浏览器会在其前后显示折行。</p>
+<p>如果与 CSS 一同使用，<code>&lt;div&gt; </code>元素可用于对大的内容块设置样式属性。</p>
+<p><code>&lt;div&gt; </code>元素的另一个常见的用途是文档布局。它取代了使用表格定义布局的老式方法。使用 <code>&lt;table&gt;</code> 元素进行文档布局不是表格的正确用法。<code>&lt;table&gt;</code> 元素的作用是显示表格化的数据</p>
+<h2 id="lt-span-gt-行级的块标签"><a href="#lt-span-gt-行级的块标签" class="headerlink" title="&lt;span&gt;行级的块标签"></a><code>&lt;span&gt;</code>行级的块标签</h2><p>用于在效果中 一行上定义一个块，进行内容显示  （有多少内容就会占用多大空间 span不会自动换行 适用于少量信息展示，比如提示密码错误）</p>
+<p>HTML <code>&lt;span&gt; </code>元素是内联元素，行内标签，可用作文本的容器。</p>
+<p><code>&lt;span&gt; </code>元素也没有特定的含义。</p>
+<p>当与 CSS 一同使用时，<code>&lt;span&gt; </code>元素可用于为部分文本设置样式属性</p>
+<h2 id="lt-ol-gt-lt-li-gt-有序的列表标签"><a href="#lt-ol-gt-lt-li-gt-有序的列表标签" class="headerlink" title="&lt;ol&gt; &lt;li&gt; 有序的列表标签"></a><code>&lt;ol&gt; &lt;li&gt;</code> 有序的列表标签</h2><p><code>&lt;ol&gt;&lt;/ol&gt;</code> 用于在效果中定义一个有序列表  （会表明每个条目的顺序）</p>
+<p>列表条项目标签：<code>&lt;li&gt;&lt;/li&gt; </code>用于在效果中定义一个列表的项目</p>
+<h2 id="lt-ul-gt-lt-li-gt-无序的列表标签"><a href="#lt-ul-gt-lt-li-gt-无序的列表标签" class="headerlink" title="&lt;ul&gt; &lt;li&gt; 无序的列表标签"></a><code>&lt;ul&gt; &lt;li&gt; </code>无序的列表标签</h2><p><code>&lt;ul&gt;&lt;/ul&gt; </code>用于在效果中定义一个无序列表  （使用最多）</p>
+<h2 id="lt-dl-gt-lt-dt-gt-lt-dd-gt-项目列表标签"><a href="#lt-dl-gt-lt-dt-gt-lt-dd-gt-项目列表标签" class="headerlink" title="&lt;dl&gt;&lt;dt&gt;&lt;dd&gt;项目列表标签"></a><code>&lt;dl&gt;&lt;dt&gt;&lt;dd&gt;</code>项目列表标签</h2><p>dl（定义列表，跟ul…li类似），dt（定义了定义列表中的项目），dd（定义描述项目的内容，跟dt一起搭配）</p>
+<h2 id="lt-sub-gt-下标"><a href="#lt-sub-gt-下标" class="headerlink" title="&lt;sub&gt; 下标"></a><code>&lt;sub&gt; </code>下标</h2><h2 id="lt-sup-gt-上标"><a href="#lt-sup-gt-上标" class="headerlink" title="&lt;sup&gt; 上标"></a><code>&lt;sup&gt;</code> 上标</h2><h2 id="实体标签-转义字符"><a href="#实体标签-转义字符" class="headerlink" title="实体标签(转义字符)"></a>实体标签(转义字符)</h2><p>空格 <code>&amp;nbsp;</code>   HTML源码中的多个空格，效果中最终会合并成一个</p>
+<p>小于号 <code>&amp;lt;</code></p>
+<p>大于号 <code>&amp;gt;</code></p>
+<p>人民币<code> &amp;yen;</code>&yen;</p>
+<p>版权 <code>&amp;copy;</code>&copy;</p>
+<p>商标<code> &amp;reg;</code>&reg;</p>
+<h2 id="lt-embed-gt-lt-embed-gt-媒体标签"><a href="#lt-embed-gt-lt-embed-gt-媒体标签" class="headerlink" title="&lt;embed&gt;&lt;/embed&gt;媒体标签"></a><code>&lt;embed&gt;&lt;/embed&gt;</code>媒体标签</h2><p>hidden ： 设置隐藏插件是否隐藏</p>
+<p>src ：用于指定音乐的路径    例：<code>&lt;embed src=&quot;1.mp3&quot; &gt;&lt;/embed&gt;</code></p>
+<h2 id="lt-marquee-gt-滚动标签-（已废弃）"><a href="#lt-marquee-gt-滚动标签-（已废弃）" class="headerlink" title="&lt;marquee&gt; 滚动标签  （已废弃）"></a><code>&lt;marquee&gt;</code> 滚动标签  （已废弃）</h2><p>用来插入一段滚动的文字。可以使用它的属性控制当文本到达容器边缘发生的事情</p>
+<p>direction : 指定滚动的方向</p>
+<p>scrollamount : 指定滚动的速度。</p>
+<p>loop :指定滚动的次数</p>
+<h2 id="lt-a-gt-超链接标签"><a href="#lt-a-gt-超链接标签" class="headerlink" title="&lt;a&gt; 超链接标签"></a><code>&lt;a&gt;</code> 超链接标签</h2><p><code>&lt;a&gt;&lt;/a&gt;</code>用于在效果中定义一个可以点击跳转的链接<br>href：超链接跳转的路径</p>
+<p>​    内网本机路径：相对路径和绝对路径</p>
+<p>​    互联网路径：http://地址</p>
+<p>​    本页：默认跳转到本页</p>
+<p>href : 用于指定链接的资源</p>
+<p>target: 设置打开新资源的目标</p>
+<p>_Blank 在独立的窗口上打开新资源</p>
+<p>_self 在当前窗口打开新资源</p>
+<p>file: file协议（文件协议）这种协议主要是用于搜索本地机器的资源文件的。      格式：file:///f:/图片/1.jpg</p>
+<p>邮件 的协议： mailTo</p>
+<p>迅雷的协议： thunder</p>
+<p>超链接标签的作用：</p>
+<ol>
+<li><p>可以用于链接资源。</p>
+</li>
+<li><p>锚点点位:首先编写一个锚点 ,锚点的格式：<code> &lt;a name=&quot;锚点名字&quot;&gt; 数据&lt;/a&gt;</code> ,再使用a标签 的herf属性连接到锚点出。 href=”#锚点的名字“</p>
+</li>
+</ol>
+<p>超链接正常工作：1. a标签中必须有内容     2.a标签必须有href属性</p>
+<p>注意：a标签内容体，不仅仅是文字，也可以是其他内容，例如图片</p>
+<p>a标签的href属性，不仅仅可以链接到html上，也可以链接到其他文件上。例如图片</p>
+<h2 id="lt-img-gt-图片标签"><a href="#lt-img-gt-图片标签" class="headerlink" title="&lt;img&gt; 图片标签"></a><code>&lt;img&gt;</code> 图片标签</h2><p><code>&lt;img /&gt; </code>用于在页面效果中展示一张图片<br>    src：图片的路径。（必有属性）</p>
+<p>路径的写法：内网路径：绝对路径：C:\javaweb001_html\img\c_1.jpg文件在硬盘上的具体位置  （不建议使用）</p>
+<p>相对路径：../img/c_1.jpg  从引入者所在目录出发 ../表示上一层目录 ./表示当前目录  （建议使用）</p>
+<p>互联网路径：<code>http://www.baidu.com/xxx.jpg </code>必须在前面加上http://</p>
+<p>​    width： 设置图片宽度</p>
+<p>​    height： 设置图片高度</p>
+<p>​    宽度和高度的设置：</p>
+<p>​        默认单位是px，像素  “400” 固定的</p>
+<p>​        百分比设置：是父标签的百分比  “50%” 动态改变的</p>
+<p>​    alt: 如果图片资源无法找到，那么就显示对应的文字对图片进行说明。</p>
+<p>​        （这些属性放在img和/之间）</p>
+<h2 id="lt-table-gt-表格标签"><a href="#lt-table-gt-表格标签" class="headerlink" title="&lt;table&gt;表格标签"></a><code>&lt;table&gt;</code>表格标签</h2><p>表格使用到的标签：</p>
+<p><code>&lt;table&gt;</code> 表格</p>
+<p><code>&lt;tr&gt;</code> 定义表格中的一行</p>
+<p><code>&lt;td&gt; </code>在表格一行中定义单元格</p>
+<p><code>&lt;th&gt;</code> 表头 。默认的样式是居中，加粗。区别于普通单元格标签，里面的内容居中加粗了</p>
+<p><code>&lt;caption&gt; </code>表格的标题</p>
+<p>表格常用的属性：</p>
+<p>​    border ：设置表格的边框</p>
+<p>​    width : 设置表格的宽度</p>
+<p>​    height: 设置表格的高度</p>
+<p>单元格合并：<code>&lt;td&gt;</code> <code>&lt;th&gt;</code>都有这个合并属性<br>colspan：    设置单元格占据指定的列数;跨列合并单元格  colspan=”n”</p>
+<p>rowspan： 设置单元格占据指定的行数; 跨行合并单元格  rowspan=”n”</p>
+<p>合并步骤：A：确定合并哪几个单元格，确定是跨行合并还是跨列合并</p>
+<p>B：在第一个出现的单元格上书写合并单元格属性</p>
+<p>C：合并几个单元格，属性值就写几</p>
+<p>D：被合并的单元格必须删掉</p>
+<p><code>&lt;thead&gt; </code>标签用于组合 HTML 表格的表头内容。</p>
+<p><code>&lt;thead&gt;</code> 元素应该与<code>&lt;tbody&gt;</code>和<code>&lt;tfoot&gt;</code>元素结合起来使用，用来规定表格的各个部分（表头、主体、页脚）。</p>
+<p>通过使用这些元素，使浏览器有能力支持独立于表格表头和表格页脚的表格主体滚动。当包含多个页面的长的表格被打印时，表格的表头和页脚可被打印在包含表格数据的每张页面上。</p>
+<p><code>&lt;thead&gt; </code>标签必须被用在以下情境中：作为 <code>&lt;table&gt; </code>元素的子元素，出现在 <code>&lt;caption&gt;、&lt;colgroup&gt; </code>元素之后，<code>&lt;tbody&gt;、 &lt;tfoot&gt; 和 &lt;tr&gt; </code>元素之前。</p>
+<h2 id="lt-form-gt-表单标签"><a href="#lt-form-gt-表单标签" class="headerlink" title="&lt;form&gt;表单标签"></a><code>&lt;form&gt;</code>表单标签</h2><p>表单标签的根标签是<code>&lt;form&gt;</code>标签</p>
+<p>用来将用户输入的数据提交给服务器的程序  相当于一个WEB程序的入口</p>
+<p>1.定义一个表单 <code>&lt;form&gt;</code>表单内容<code>&lt;/form&gt;</code></p>
+<p>2.在表单中定义对应的表单输入项<br>    <code>&lt;input /&gt; </code>是一种自关闭的标签，用户可以在该标签上通过填写和选择进行数据的输入</p>
+<p>​    type：设置该标签的种类</p>
+<p>​    text：文本框  默认  不一定需要指定value值</p>
+<p>​    password：密码框  内容为非明文</p>
+<p>​    radio：单选框  在同一组内才具有单选效果（分组需要用到name属性，将name设置成相同的就变为一组）（单选框只能选择，不能输入 需要指定value属性，否则提交的都是on）（可以checked设置默认选中）</p>
+<p>​    checkbox：复选框  在同一组内才具有复选效果</p>
+<p>​    submit：提交按钮  用于控制表单提交数据（当表单提交后，会出现  ？参数列表  参数列表格式：参数1=参数值1&amp;参数2=参数值2&amp;参数3=参数值3 这些参数都是之前设置的name，参数值是value）</p>
+<p>​    rest：重置按钮  用于将表单输入项恢复到默认状态</p>
+<p>​    file：附件框  用于文件上传</p>
+<p>​    hidden：隐藏域 一般用于提交时，服务器需要拿到，但是用户不需要看到的数据</p>
+<p>​    button：普通按钮  需要和js的事件一起使用</p>
+<p>​    name：单选框、复选框进行数据的分组；设置该标签对应的参数名</p>
+<p>​    value：设置该标签对应的参数值；作为按钮的名字</p>
+<p>​    checked：设置单选框/复选框的默认选中状态  值就是”cheked”</p>
+<p>​    readonly：设置该标签的参数值只读，用户无法手动更改，但是数据可以正常提交 readonly=“readonly”</p>
+<p>​    disabled：设置该标签不可用，参数值无法更改且参数值也无法提交</p>
+<p>​    <code>&lt;select&gt;&lt;/select&gt;</code>选择框标签  定义一个选择框</p>
+<p>​    name：设置该标签对应的参数名</p>
+<p>​    multiple：设置该标签选项全部显示，并且可以进行多选提交，默认为单选</p>
+<p>​    <code>&lt;option&gt;&lt;/option&gt;</code>选项标签  用于为一个选择添加一个选项</p>
+<p>​    value：设置需要提交的参数值（一般选择的东西都需要指定的返回值value）</p>
+<p>​    selected：设置选项的默认选中状态</p>
+<p>注意事项：option的内容体一般是用来展示的  参数值应该是option的value属性值</p>
+<p>​    <code>&lt;textarea&gt;&lt;/textarea&gt;</code>文本域标签</p>
+<p>表单输入项标签之一，用户可以在该标签上通过输入进行数据的输入</p>
+<p>name：设置该标签对应的参数名</p>
+<p>文本域和文本框的区别：文本框不能换行，文本域可以</p>
+<p>文本框参数值是value属性，文本域参数值是标签的内容体</p>
+<p>提交表单</p>
+<p>action：指定提交数据的地址.将数据提交到何处（提交的地方其实是？前面的地址）  默认提交到本页</p>
+<p>​    本机内网路径：相对路径:      绝对路径：</p>
+<p>​    互联网路径：http：//</p>
+<p>method：指定表单的提交方式.将数据以何种方式提交  默认为get  提交方式可定义为get或者post</p>
+<p>get提交方式的特点：把数据拼接到地址栏上</p>
+<p>post提交方式的特点：没有把数据拼接到地址栏上。请求体</p>
+<p>get和post的区别：</p>
+<p>​    get会把提交的参数列表拼接到了地址栏后面，post不会</p>
+<p>​    get方式提交的数据敏感信息不安全，post提交的数据相对安全</p>
+<p>​    get方式提交的数据量是有限的，post方式从理论上提交的数据量是无限大的。所以尽量使用post方式提交表单</p>
+<p>提交表单的注意事项：</p>
+<p>提交中文问题：为什么要用URL编码：（因为你可能提交的数据中包含&amp;符号，后台无法正确切割）</p>
+<p>URL编码解决方式：对特殊符号，中文进行编码，为了保证表单数据传递时能更好区分出name和value，保证数据传递的完整性</p>
+<p>例子：中文的你好进行URL编码：</p>
+<p>（1）你好，进行普通的编码，编码成字节数组（使用的是页面规定的字符集，例如utf-8）</p>
+<p>（2）字节数组中的每一个元素都会从10进制转为16进制</p>
+<p>（3）把已经转为16进制的字节数组，以%进行拼接，拼接出的字符串，就是URL编码后的结果</p>
+<p>注意： 表单项的数据如果需要提交到服务器上面，那么表单项必须要有name的属性值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;form action&#x3D;&quot;http:&#x2F;&#x2F;www.baidu.com&quot; method&#x3D;&quot;post&quot;&gt; &lt;!-- 文本输入框 单 行- -&gt; 用户名：&lt;input name&#x3D;&quot;userName&quot; type&#x3D;&quot;text&quot;&#x2F;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">&lt;!-- 密码框 --&gt;</span><br><span class="line">密码：&lt;input name&#x3D;&quot;password&quot; type&#x3D;&quot;password&quot;&#x2F;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">&lt;!-- 单选框 --&gt;</span><br><span class="line">性别： 男&lt;input checked&#x3D;&quot;true&quot; value&#x3D;&quot;man&quot; name&#x3D;&quot;sex&quot; type&#x3D;&quot;radio&quot;&#x2F;&gt;</span><br><span class="line">女&lt;input name&#x3D;&quot;sex&quot; value&#x3D;&quot;woman&quot; type&#x3D;&quot;radio&quot;&#x2F;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">&lt; !-- 下拉框 --&gt;</span><br><span class="line">来自的城市：&lt;select name&#x3D;&quot;city&quot;&gt;</span><br><span class="line">&lt;option value&#x3D;&quot;BJ&quot;&gt;北京&lt;&#x2F;option&gt;</span><br><span class="line">&lt;option value&#x3D;&quot;SH&quot;&gt;上海&lt;&#x2F;option&gt;</span><br><span class="line">&lt;option value&#x3D;&quot;GZ&quot;&gt;广州&lt;&#x2F;option&gt;</span><br><span class="line">&lt;option value&#x3D;&quot;SZ&quot;&gt;深圳&lt;&#x2F;option&gt;</span><br><span class="line">&lt;&#x2F;select&gt;&lt;br&#x2F;&gt;</span><br><span class="line">&lt;!-- 复选框 同一组的复选框name的属性值要一致 --&gt;</span><br><span class="line">兴趣爱好：java &lt;input value&#x3D;&quot;java&quot; name&#x3D;&quot;hobit&quot; checked&#x3D;&quot;checked&quot; type &#x3D;&quot;checkbox&quot; &#x2F;&gt;</span><br><span class="line">javascript &lt;input type&#x3D;&quot;checkbox&quot; value&#x3D;&quot;javascript&quot; name&#x3D;&quot;hobit&quot; &#x2F;&gt;</span><br><span class="line">android &lt;input value&#x3D;&quot;android&quot; name&#x3D;&quot;hobit&quot; type&#x3D;&quot;checkbox&quot; &#x2F;&gt;&lt;br&#x2F;&gt; &lt;!-- 文件上传框--&gt;</span><br><span class="line">大头照：&lt;input name&#x3D;&quot;image&quot; type&#x3D;&quot;file&quot; &#x2F;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">个人简介:</span><br><span class="line">&lt;!-- 文本域 --&gt;</span><br><span class="line">&lt;textarea name&#x3D;&quot;intro&quot; rows&#x3D;&quot;10&quot; cols&#x3D;&quot;30&quot;&gt;&lt;&#x2F;textarea&gt;&lt;br&#x2F;&gt;</span><br><span class="line">&lt;!-- 提交按钮 --&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;注册&quot;&#x2F;&gt;</span><br><span class="line">&lt;!-- 重置按钮 --&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;reset&quot; value&#x3D;&quot;重置&quot;&#x2F;&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="lt-figure-gt-标签"><a href="#lt-figure-gt-标签" class="headerlink" title="&lt;figure&gt; 标签"></a><code>&lt;figure&gt; </code>标签</h2><p>代表一段独立的内容, 经常与说明（caption）<code> &lt;figcaption&gt;</code> 配合使用, 并且作为一个独立的引用单元。当它属于主内容流（main flow）时，它的位置独立于主体。这个标签经常是在主文中引用的图片，插图，表格，代码段等等，当这部分转移到附录中或者其他页面时不会影响到主体</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">#fh5co-menu &#123;</span><br><span class="line">  background: ;</span><br><span class="line">  position: absolute;   绝对的</span><br><span class="line">  top: 0;</span><br><span class="line">  z-index: 999;</span><br><span class="line">  width: 100%;</span><br><span class="line">  padding-bottom: 20px;</span><br><span class="line">  -webkit-transition: 0.5s;</span><br><span class="line">  -o-transition: 0.5s;</span><br><span class="line">  transition: 0.5s;</span><br><span class="line">  -webkit-border-radius: 0px;</span><br><span class="line">  -moz-border-radius: 0px;</span><br><span class="line">  -ms-border-radius: 0px;</span><br><span class="line">  border-radius: 0px;</span><br><span class="line">  margin-top: 20px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//控制背景随动</span><br><span class="line">#fh5co-clients &#123;</span><br><span class="line">  padding: 2em 0;</span><br><span class="line">  background: #4fd2c2;</span><br><span class="line">  position: relative;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#fh5co-clients1 &#123;</span><br><span class="line">  padding: 2em 0;</span><br><span class="line">  background: #4fd2c2;</span><br><span class="line">  position: relative;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">@media screen and (max-width: 992px) &#123;</span><br><span class="line">  #fh5co-clients1 .fh5co-client &#123;</span><br><span class="line">    margin-bottom: 30px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@media screen and (max-width: 768px) &#123;</span><br><span class="line">  #fh5co-clients1 .fh5co-client &#123;</span><br><span class="line">    margin-bottom: 30px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@media screen and (max-width: 480px) &#123;</span><br><span class="line">  #fh5co-clients1 .fh5co-client img &#123;</span><br><span class="line">    max-width: 100%;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h2><p>长度单位</p>
+<p>px 像素（Pixel），相对长度单位。像素px是相对于显示器屏幕分辨率而言的。<br>em 是相对长度单位，相对于当前对象内文本的字体尺寸。如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸。</p>
+<p>ex 相对长度单位。相对于字符“x”的高度。此高度通常为字体尺寸的一半。如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸。<br>% 相对长度单位。相对于浏览器窗口的大小</p>
+<p>CSS绝对长度单位 说明<br>in 英寸Inches (1 英寸 = 2.54 厘米)<br>cm 厘米Centimeters<br>mm 毫米Millimeters<br>pt 点Points (1点 = 1/72英寸)<br>pc 皮卡Picas (1 皮卡 = 12 点)</p>
+<p><strong>PX和PT转换的公式： pt=px乘以3/4。</strong>比如12px×3/4=9pt大小。<br><strong>PX和em转换的公式： em=16乘以px</strong>，也就是说1.5em=1.5×16=24px</p>
+<p>用px来定义字体，就无法用浏览器字体放大的功能。</p>
+<p>任意浏览器的默认字体高都是16px。所有未经调整的浏览器都符合:1em=16px。那么12px=0.75em,10px=0.625em。为了简化font-size的换算，需要在css中的body选择器中声明Font-size=62.5%，这就使em值变为16px*62.5%=10px,这样12px=1.2em,10px=1em,也就是说只需要将你的原来的px数值除以10，然后换上em作为单位就行了。<br>◆CSS中em属性有如下特点</p>
+<p>1.em的值并不是固定的；</p>
+<p>2.em会继承父级元素的字体大小。</p>
+<p>◆所以我们在写CSS的时候，需要注意</p>
+<p>1.body选择器中声明Font-size=62.5%；</p>
+<p>2.将你的原来的px数值除以10，然后换上em作为单位；</p>
+<p>3.重新计算那些被放大的字体的em数值。避免字体大小的重复声明。</p>
+<p>也就是避免1.2*1.2=1.44的现象。比如说你在#content中声明了字体大小为1.2em，那么在声明p的字体大小时就只能是1em，而不是1.2em,因为此em非彼em，它因继承#content的字体高而变为了1em=12px。</p>
+<p>但是12px汉字例外，就是由以上方法得到的12px(1.2em)大小的汉字在IE中并不等于直接用12px定义的字体大小，而是稍大一点。这个问题Jorux已经解决，只需在body选择器中把62.5%换成63%就能正常显示了。原因可能是IE处理汉字时，对于浮点的取值精确度有限。不知道有没有其他的解释</p>
+<p>position: absolute;的元素会相对于第一个设置了position: relative;的祖先元素进行定位，将assistor设置为position: reletive;，滚动条是在parent中的，position: fixed;和parent内的内容滚动就都实现了。</p>
+<p>z-index 属性来控制这些框的堆放次序</p>
+<h2 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h2><p>只开发一个网页，通过检测视口分辨率，针对不同客户端在客户端做代码处理，来展现不同的布局和内容。可以适配任何设备，兼容多个终端。</p>
+<p>响应式开发的原理是使用CSS3中的Media Query（媒体查询）针对不同宽度的设备设置不同的布局和样式，从而适配不同的设备</p>
+<p>使用 @media 查询，你可以针对不同的媒体类型定义不同的样式。@media 可以针对不同的屏幕尺寸设置不同的样式，特别是如果你需要设置设计响应式的页面，@media 是非常有用的。当你重置浏览器大小的过程中，页面也会根据浏览器的宽度和高度重新渲染页面</p>
+<p>设备的划分情况为：</p>
+<ul>
+<li>小于768的为超小屏幕（手机）</li>
+<li>768~992之间的为小屏设备（平板）</li>
+<li>992~1200的中等屏幕（桌面显示器）</li>
+<li>大于1200的宽屏设备（大桌面显示器）</li>
+</ul>
+<h1 id="轮播图"><a href="#轮播图" class="headerlink" title="轮播图"></a>轮播图</h1><p>轮播图的样式有很多,可以选择一个框架，然后将代码复制下来，将用到的样式放到自己的文件夹里，这样就可以做成一个轮播图。</p>
+<p>在layui中，如果想让轮播图完成在放大缩小的过程中保证图片随动，目前解除了两种方法：</p>
+<p>1.写一个响应式布局的css样式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#fh5co-clients &#123;</span><br><span class="line">  padding: 2em 0;</span><br><span class="line">  background: #4fd2c2;</span><br><span class="line">  position: relative;</span><br><span class="line">&#125;</span><br><span class="line">#fh5co-clients &#123;</span><br><span class="line">  margin-bottom: 0px;</span><br><span class="line">&#125;</span><br><span class="line">@media screen and (max-width: 992px) &#123;</span><br><span class="line">  #fh5co-clients &#123;</span><br><span class="line">    margin-bottom: 30px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@media screen and (max-width: 768px) &#123;</span><br><span class="line">  #fh5co-clients&#123;</span><br><span class="line">    margin-bottom: 30px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@media screen and (max-width: 480px) &#123;</span><br><span class="line">  #fh5co-clients img &#123;</span><br><span class="line">    max-width: 100%;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.写一个js方法，会不断刷新，影响体验</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> b = <span class="number">1768</span>/<span class="number">881</span>;<span class="comment">//这里的图片数值是根据自己的图片指定</span></span><br><span class="line">    <span class="comment">//获取浏览器宽度</span></span><br><span class="line">    <span class="keyword">var</span> W = $(<span class="built_in">window</span>).width();</span><br><span class="line">    <span class="keyword">var</span> H = $(<span class="built_in">window</span>).height();</span><br><span class="line">    layui.use(<span class="string">&#x27;carousel&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> carousel = layui.carousel;</span><br><span class="line">        <span class="comment">//建造实例</span></span><br><span class="line">        carousel.render(&#123;</span><br><span class="line">            elem: <span class="string">&#x27;#test1&#x27;</span></span><br><span class="line">            ,<span class="attr">width</span>: <span class="string">&#x27;100%&#x27;</span> <span class="comment">//设置容器宽度</span></span><br><span class="line">            ,<span class="attr">height</span>: (W/b).toString()+<span class="string">&quot;px&quot;</span>  <span class="comment">//按比例和浏览器可视页面宽度来获取高度</span></span><br><span class="line">            <span class="comment">// ,arrow: &#x27;always&#x27; //始终显示箭头</span></span><br><span class="line">            <span class="comment">//,anim: &#x27;updown&#x27; //切换动画方式</span></span><br><span class="line">            ,<span class="attr">indicator</span>: <span class="string">&#x27;none&#x27;</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    $(<span class="built_in">window</span>).resize(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="comment">// setBanner();</span></span><br><span class="line">        <span class="built_in">window</span>.location.reload()  <span class="comment">//每当设置后，进行刷新</span></span><br><span class="line"></span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="网页调试技巧"><a href="#网页调试技巧" class="headerlink" title="网页调试技巧"></a>网页调试技巧</h1><p>1.F12开发模式，左上角图标有两个：箭头图标可以选择元素，就会指示当前指向的元素，可以注意数值多大，方便知道这个标签管辖的范围。手机图标，点击之后可以模拟手机端查看网页，也可以通过拖动浏览器大小模拟查看。</p>
+<p>2.开发者模式下，elements中选择了某一行后，可以在style中查看生效的样式，不生效的样式被划掉了，没有写过的样式不会显示。可以在样式中手动编辑数值模拟调试（比改一处看一处方便一点）</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/03/%E7%BD%91%E9%A1%B5%E7%9B%B8%E5%85%B3/" data-id="ckn12ntbr0000cgwddvcfdynj" data-title="网页相关" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/03/%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BHTML/" data-id="ckn5ydxhe000vs0wd8c2417xs" data-title="网页前端之HTML" class="article-share-link">分享</a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li></ul>
+
     </footer>
   </div>
   
@@ -213,7 +835,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/30/ngnix%E9%85%8D%E7%BD%AE/" data-id="ckmy6pymc000vcowd81x79k5w" data-title="ngnix配置" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/03/30/ngnix%E9%85%8D%E7%BD%AE/" data-id="ckn5ydxhk0013s0wd5e88a21o" data-title="ngnix配置" class="article-share-link">分享</a>
       
       
       
@@ -287,7 +909,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/26/7.java%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%B1%BB/" data-id="ckmy6pylz0009cowdatzo1te8" data-title="java中常用类" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/03/26/7.java%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%B1%BB/" data-id="ckn5ydxh30008s0wd9brb9hwq" data-title="java中常用类" class="article-share-link">分享</a>
       
       
       
@@ -328,7 +950,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/26/%E9%A1%B9%E7%9B%AE%E8%B8%A9%E5%9D%91/" data-id="ckmy6pym1000ccowd6sgb6ncq" data-title="项目踩坑" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/03/26/%E9%A1%B9%E7%9B%AE%E8%B8%A9%E5%9D%91/" data-id="ckn5ydxh8000fs0wd67ro37g6" data-title="项目踩坑" class="article-share-link">分享</a>
       
       
       
@@ -501,7 +1123,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/23/6.2.java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E9%99%84%E5%BD%95/" data-id="ckmy6pyly0008cowd7z383kok" data-title="java基础知识附录" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/03/23/6.2.java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E9%99%84%E5%BD%95/" data-id="ckn5ydxh20005s0wdfllkasxi" data-title="java基础知识附录" class="article-share-link">分享</a>
       
       
       
@@ -898,7 +1520,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/23/6.1.java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" data-id="ckmy6pym8000scowd3dxb2fjv" data-title="java基础知识" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/03/23/6.1.java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" data-id="ckn5ydxhd000ss0wdclo15eix" data-title="java基础知识" class="article-share-link">分享</a>
       
       
       
@@ -978,1076 +1600,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/23/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" data-id="ckmy6pym0000bcowd4av8h5me" data-title="PO,BO,VO，DTO,DAO与POJO" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/03/23/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" data-id="ckn5ydxh40009s0wd6q8ebomq" data-title="PO,BO,VO，DTO,DAO与POJO" class="article-share-link">分享</a>
       
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-项目初建" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/23/%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%BB%BA/" class="article-date">
-  <time class="dt-published" datetime="2021-03-23T03:09:18.000Z" itemprop="datePublished">2021-03-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/23/%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%BB%BA/">项目初建</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h1><p>​    程序员与代码密不可分，而代码又是为了项目服务的，项目又可以集合成一个产品，而产品最终是要为我们服务的。为什么会有计算机的存在，是因为人类想要一种机器帮助我们简化计算，为什么会有代码的存在，是因为人类想要计算机更易懂我们的想法，为什么会有项目的存在，是因为我们需要计算机可以将我们的想法完整表达出来，为什么会有产品存在，说到底，是人类的进化使我们想要更高效的生活。所以说，如何做一个产品？产品是我们最终想要的结果，项目明确了我们的需求，代码只是底层实现，计算机，执行者罢了。所以这篇文章，写一写怎样开始着手于写一个项目。</p>
-<h2 id="项目前的准备"><a href="#项目前的准备" class="headerlink" title="项目前的准备"></a>项目前的准备</h2><p>​    写项目之前，首先要明确，你的需求是什么，你想要一个什么样的产品。明确需求很重要，否则你写出来的东西很有可能不是你或者别人想要的东西。<code>一千个哈姆雷特</code>，每个人都有自己的想法，而完成一个别人的项目，需要完成的，就是实现别人的想法。所以大方向很重要。</p>
-<p>​    明确真实需求后，怎么样实现需求呢？要做到心中有数，需要我们在自己心中建立起一个框架。要明确分为几个模块，每个模块会用到什么东西,具体的流程是什么样的，做到心中有数，自可万法归一，行云流水。</p>
-<p>​    <code>工欲善其事必先利其器</code>，为了更高效简洁的开发，我们需要准备好我们的工具。首先就是自己常用且顺手的各种工具，然后是可能已有的框架，一个逻辑的既定代码，造轮子固然可以提高自己的技术，但是重复造轮子就属实没有必要了。</p>
-<h2 id="项目构思框架"><a href="#项目构思框架" class="headerlink" title="项目构思框架"></a>项目构思框架</h2><p>​    一个完整的项目，必定会有前后端。前端负责展示效果，后端负责处理逻辑。</p>
-<h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><p>1.router.js</p>
-<p>路由页面。负责网页地址的跳转</p>
-<p>2.main.js</p>
-<p>导入资源页面。负责导入用到的相关框架或者包。</p>
-<p>3.view</p>
-<p>vue的前端显示的页面。</p>
-<p>包括三部分：</p>
-<pre><code>- html元素
-- js代码
-- css样式
-</code></pre>
-<p>components：部件。可以在这里设定上端、下端的固定样式，可以用到每个页面。</p>
-<p>4.utils</p>
-<p>工具类。</p>
-<p>5.assets/static/public</p>
-<p>存放静态资源。</p>
-<p>6.request</p>
-<p>跨域请求</p>
-<h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h3><p>1.pom.xml</p>
-<p>maven的配置文件。</p>
-<p>2.controller层</p>
-<p>控制层，一般在src下的java下。</p>
-<p>3.service层</p>
-<p>逻辑层，一般在src下的java下。</p>
-<p>4.Mapper层</p>
-<p>数据库层，src下的resources下的是数据库表字段的配置文件，src下的java下的是sql语句。</p>
-<p>5.entity，pojo</p>
-<p>实体类，一般在src下的java下。</p>
-<p>6.exception</p>
-<p>异常</p>
-<p>7.utils</p>
-<p>工具</p>
-<p>8.filter</p>
-<p>过滤，拦截器</p>
-<p>9.config</p>
-<p>配置</p>
-<p>10.dto</p>
-<p>自定义数据结构</p>
-<h2 id="用到的相关依赖"><a href="#用到的相关依赖" class="headerlink" title="用到的相关依赖"></a>用到的相关依赖</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span> <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.8.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> <span class="comment">&lt;!-- lookup parent from repository --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mybatis-plus-boot-starter.version</span>&gt;</span>3.4.0<span class="tag">&lt;/<span class="name">mybatis-plus-boot-starter.version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mysql.version</span>&gt;</span>5.1.40<span class="tag">&lt;/<span class="name">mysql.version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">commons-lang3.version</span>&gt;</span>3.6<span class="tag">&lt;/<span class="name">commons-lang3.version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">hutool-all.version</span>&gt;</span>4.6.2<span class="tag">&lt;/<span class="name">hutool-all.version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">springfox.version</span>&gt;</span>2.9.1<span class="tag">&lt;/<span class="name">springfox.version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">fastjson.version</span>&gt;</span>1.2.13<span class="tag">&lt;/<span class="name">fastjson.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">distributionManagement</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">snapshotRepository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>sonatype-nexus-snapshots<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://oss.sonatype.org/content/repositories/snapshots<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">snapshotRepository</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>sonatype-nexus-staging<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://oss.sonatype.org/service/local/staging/deploy/maven2/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">distributionManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scm</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">connection</span>&gt;</span><span class="tag">&lt;/<span class="name">connection</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">developerConnection</span>&gt;</span><span class="tag">&lt;/<span class="name">developerConnection</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url</span>&gt;</span><span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">scm</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.aliyun<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aliyun-java-sdk-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.0.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span> <span class="comment">&lt;!-- 注：如提示报错，先升级基础包版，无法解决可联系技术支持 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.aliyun<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aliyun-java-sdk-dysmsapi<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.data<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- mybatis-plus begin =================================== --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;mybatis-plus-boot-starter.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- mybatis-plus end --&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- ========================= 数据库相关 ========================== --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.0.18<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.22<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>redis.clients<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jedis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.data<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- ========================= 常用库依赖 ========================== --&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- lombok插件 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- Hutool工具类 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.hutool<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hutool-all<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;hutool-all.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- StringUtils工具类 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.commons<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-lang3<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;commons-lang3.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- 阿里FastJson转换工具依赖 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;fastjson.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- AOP依赖 【注：系统日记需要此依赖】 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-aop<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!--httpclient--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.httpcomponents<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>httpclient<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.5.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons-logging<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-logging<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.httpcomponents<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>httpmime<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.5.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- swagger--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;springfox.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mapstruct<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mapstruct<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;springfox.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-bean-validators<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;springfox.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--poi相关--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>poi<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.9<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>poi-ooxml<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.9<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- 注：maven默认是不编译，因此加上如下resources才会生产对应的xml文件 目的：解决mybatis映射关系不对应问题  start =============== --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/java<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.xml<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>false<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/resources<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.*<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--是否替换资源中的属性--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>false<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">testResources</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">testResource</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/java<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.xml<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>false<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">testResource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">testResources</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 注：maven默认是不编译，因此加上如下resources才会生产对应的xml文件 目的：解决mybatis映射关系不对应问题  end =============== --&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.sonatype.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>nexus-staging-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.6.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">extensions</span>&gt;</span>true<span class="tag">&lt;/<span class="name">extensions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">serverId</span>&gt;</span>sonatype-nexus-staging<span class="tag">&lt;/<span class="name">serverId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">nexusUrl</span>&gt;</span>https://oss.sonatype.org/<span class="tag">&lt;/<span class="name">nexusUrl</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">autoReleaseAfterClose</span>&gt;</span>true<span class="tag">&lt;/<span class="name">autoReleaseAfterClose</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-surefire-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">skip</span>&gt;</span>true<span class="tag">&lt;/<span class="name">skip</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/23/%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%BB%BA/" data-id="ckmy6pym2000ecowd134sb6d1" data-title="项目初建" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-5.初识java" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/21/5.%E5%88%9D%E8%AF%86java/" class="article-date">
-  <time class="dt-published" datetime="2021-03-21T03:42:16.000Z" itemprop="datePublished">2021-03-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/21/5.%E5%88%9D%E8%AF%86java/">初识java</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="java概述"><a href="#java概述" class="headerlink" title="java概述"></a>java概述</h1><h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><h3 id="1-简单"><a href="#1-简单" class="headerlink" title="1.简单"></a>1.简单</h3><p>语法规则和c++类似，是对C++的简化和提高，使用接口取代了多重继承，并取消了指针，java还有垃圾自动收集。</p>
-<p>提供了丰富的类库，API文档和第三方开发包，还有大量基于java 的开源项目。</p>
-<h3 id="2-面向对象（Object-Oriented）"><a href="#2-面向对象（Object-Oriented）" class="headerlink" title="2.面向对象（Object Oriented）"></a>2.面向对象（Object Oriented）</h3><p>是对现实世界的一种抽象，面向对象会把相关的数据和方法组织为一个整体来看待。所有的元素都要通过类和对象来访问。</p>
-<h3 id="3-分布性"><a href="#3-分布性" class="headerlink" title="3.分布性"></a>3.分布性</h3><p>Java语言支持Internet应用的开发，java中有net.api，他提供了用于网络应用编程的类库，包括URL、URLConnection、Socket、ServerSocket等。Java的RMI（远程方法激活）机制也是开发分布式应用的重要手段。</p>
-<p>包括操作分布和数据分布。操作分布是指在多个不同的主机上布置相关操作，而数据分布是将数据分别存放在多个不同的主机上。</p>
-<h3 id="4-平台独立性和可移植性（write-once-run-anywhere）"><a href="#4-平台独立性和可移植性（write-once-run-anywhere）" class="headerlink" title="4.平台独立性和可移植性（write once ,run anywhere）"></a>4.平台独立性和<em><strong>可移植性</strong></em>（write once ,run anywhere）</h3><p>核心是jvm。</p>
-<p>在应用中编写java代码，用Eclipse或javac把java代码编译为.class文件，然后把.class文件打成.jar文件，.jar文件可以在windows、MacOS、Linux系统下运行。</p>
-<h3 id="5-解释性"><a href="#5-解释性" class="headerlink" title="5.解释性"></a>5.解释性</h3><p>运行java程序需要解释器，任何移植了java解释器的计算机或其他设备都可以用java字节码进行解释运行。</p>
-<h3 id="6-安全性"><a href="#6-安全性" class="headerlink" title="6. 安全性"></a>6. 安全性</h3><p>删除了类C语言中的指针和内存释放等语法，有效避免了用户对内存的非法操作。Java程序代码要经过代码校验，指针校验等很多测试步骤才能运行。</p>
-<h3 id="7-健壮性"><a href="#7-健壮性" class="headerlink" title="7. 健壮性"></a>7. 健壮性</h3><p>Java的强类型机制，异常处理，垃圾的自动收集等。开发工具如：Eclipse、NetBeans。</p>
-<h3 id="8-多线程"><a href="#8-多线程" class="headerlink" title="8.多线程"></a>8.多线程</h3><p>Java在用户空间实现的多线程（实现多线程的方式有：在用户空间、在内核空间、在用户和内核空间中混合实现）应用程序在同一时间并行执行多项任务，而且相应的同步机制可以保证不同的线程可以正确的共享数据。</p>
-<h3 id="9-高性能"><a href="#9-高性能" class="headerlink" title="9.高性能"></a>9.高性能</h3><p>Hotspot JVM提供了JIT（just in time）编译器即动态编译器，能够在运行时将代码编译为机器码，运行效率比较高。</p>
-<h3 id="10-动态"><a href="#10-动态" class="headerlink" title="10.动态"></a>10.动态</h3><p>可以动态调整库内方法和增加变量，而客户端不需要作任何更改。</p>
-<h3 id="11-开源"><a href="#11-开源" class="headerlink" title="11.开源"></a>11.<em>开源</em></h3><p> java的这个特性决定了它的广泛应用。</p>
-<h2 id="运行和工作原理"><a href="#运行和工作原理" class="headerlink" title="运行和工作原理"></a>运行和工作原理</h2><p>Java源代码（HelloWorld.java）  <a href="%E7%BB%8Fjavac%E7%BC%96%E8%AF%91">–&gt;</a>   java字节码文件（HelloWorld.class）<a href="%E7%BB%8Fjava%E6%89%A7%E8%A1%8C">–&gt;</a>  机器码  –&gt;  运行结果</p>
-<p>1.首先编写java源代码程序，扩展名为.java</p>
-<p>2.在命令行模式中，输入javac命令:<code>javac 源文件名.java</code>对源代码进行编译，生成字节码文件,扩展名为.class</p>
-<p>3.编译完成后，如果没有报错信息，输入java命令:<code>java 类名</code>对class字节码文件进行解释运行，执行时不需要添加.class扩展名</p>
-<p>这里是我最早接触java时，还没有用到开发工具，在cmd命令行进行的HelloWorld输出。当时踩得坑如下：</p>
-<ul>
-<li><p>文件隐藏了扩展名</p>
-</li>
-<li><p>javac+文件名，java+类名 （所以当时需要文件名和类名一致）</p>
-</li>
-<li><p>严格区分大小写</p>
-</li>
-<li><p>非法字符：/65307确是中文问题，要保证全部英文状态</p>
-</li>
-<li><p>括号成对</p>
-</li>
-<li><p>最后贴一个梦开始的main方法：</p>
-<p>public static void main(String[] args){</p>
-<p>​    System.out.println(“HelloWorld”);</p>
-<p>}</p>
-</li>
-</ul>
-<h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><table><thead><tr><th>版本</th><th>名称</th><th>发行日期</th></tr></thead><tbody><tr><td>JDK 1.0</td><td>Oak(橡树)</td><td>1996-01-23</td></tr><tr><td>JDK 1.1</td><td>none（无）</td><td>1997-02-19</td></tr><tr><td>JDK 1.1.4</td><td>Sparkler（宝石）</td><td>1997-09-12</td></tr><tr><td>JDK 1.1.5</td><td>Pumpkin（南瓜）</td><td>1997-12-13</td></tr><tr><td>JDK 1.1.6</td><td>Abigail（阿比盖尔–女子名）</td><td>1998-04-24</td></tr><tr><td>JDK 1.1.7</td><td>Brutus（布鲁图–古罗马政治家和将军）</td><td>1998-09-28</td></tr><tr><td>JDK 1.1.8</td><td>Chelsea（切尔西–城市名）</td><td>1999-04-08</td></tr><tr><td>J2SE 1.2</td><td>Playground（运动场）</td><td>1998-12-04</td></tr><tr><td>J2SE 1.2.1</td><td>none（无）</td><td>1999-03-30</td></tr><tr><td>J2SE 1.2.2</td><td>Cricket（蟋蟀）</td><td>1999-07-08</td></tr><tr><td>J2SE 1.3</td><td>Kestrel（美洲红隼）</td><td>2000-05-08</td></tr><tr><td>J2SE 1.3.1</td><td>Ladybird（瓢虫）</td><td>2001-05-17</td></tr><tr><td>J2SE 1.4.0</td><td>Merlin（灰背隼）</td><td>2002-02-13</td></tr><tr><td>J2SE 1.4.1</td><td>grasshopper（蚱蜢）</td><td>2002-09-16</td></tr><tr><td>J2SE 1.4.2</td><td>Mantis（螳螂）</td><td>2003-06-26</td></tr><tr><td>Java SE 5.0 (1.5.0)</td><td>Tiger（老虎）</td><td>2004-09-30</td></tr><tr><td>Java SE 6.0 (1.6.0)</td><td>Mustang（野马）</td><td>2006-04</td></tr><tr><td>Java SE 7.0 (1.7.0)</td><td>Dolphin（海豚）</td><td>2011-07-28</td></tr><tr><td>Java SE 8.0 (1.8.0)</td><td>Spider（蜘蛛）</td><td>2014-03-18</td></tr><tr><td>Java SE 9.0</td><td>none（无）</td><td>2017-09-21</td></tr><tr><td>Java SE 10.0</td><td>none（无）</td><td>2018-03-21</td></tr><tr><td>Java SE 11.0</td><td>none（无）</td><td>2018-09-25</td></tr></tbody></table>
-
-<p>这里的JAVA就是指JDK开发工具</p>
-<h3 id="Java2"><a href="#Java2" class="headerlink" title="Java2"></a>Java2</h3><p>1998年12月8日，Sun公司发布了第二代Java平台（简称为Java2）的3个版本</p>
-<p>J2ME（Java2 Micro Edition，Java2平台的微型版）：主要用于嵌入式系统的开发，应用于移动、无线及有限资源的环境</p>
-<p>J2SE（Java 2 Standard Edition，Java 2平台的标准版）：应用于桌面应用软件的编程</p>
-<p>J2EE（Java 2 Enterprise Edition，Java 2平台的企业版）：应用于基于Java的应用服务器</p>
-<h3 id="Java5"><a href="#Java5" class="headerlink" title="Java5"></a>Java5</h3><p>2004年9月30日</p>
-<h4 id="1-自动拆装箱"><a href="#1-自动拆装箱" class="headerlink" title="1.自动拆装箱"></a>1.自动拆装箱</h4><h4 id="2-泛型"><a href="#2-泛型" class="headerlink" title="2.泛型"></a>2.泛型</h4><h4 id="3-增强for"><a href="#3-增强for" class="headerlink" title="3.增强for"></a>3.增强for</h4><p>说明：是for循环的一种，简化数组和Collection集合的遍历（增强for就是来替代迭代器的）</p>
-<p>格式：</p>
-<p>for(元素数据类型 变量 : 数组或者Collection集合) {</p>
-<p>​        使用变量即可，该变量就是元素</p>
-<p>​    }</p>
-<p>注意事项：增强for的目标要先进行不为null的判断，然后再使用</p>
-<h4 id="4-静态导入"><a href="#4-静态导入" class="headerlink" title="4.静态导入"></a>4.静态导入</h4><p>说明：可以直接导入到方法级别</p>
-<p>格式：import static 包名….类名.方法名;</p>
-<p>注意事项：</p>
-<p>​    方法必须是静态的</p>
-<p>​    如果有多个同名的静态方法，容易不知道使用谁?这个时候要使用的话，就必须在调用前面加静态的包，类名前缀。由此可见，意义不大，所以一般不用。</p>
-<h4 id="5-可变参数"><a href="#5-可变参数" class="headerlink" title="5.可变参数"></a>5.可变参数</h4><p>说明：定义方法的时候不知道该定义多少个参数，当调用的时候才知道需要几个参数。</p>
-<p>格式：</p>
-<p>public static int sunm(int… a){}</p>
-<p>​    修饰符 返回值类型 方法名(数据类型…  变量名){</p>
-<p>}</p>
-<p>注意事项：</p>
-<p>​    这里的变量(a)其实是一个数组</p>
-<p>​    如果一个方法有可变参数，并且有多个参数，那么，可变参数肯定是最后一个（如果不是最后一个，相当于前面的都包含了，最后单独的多出来了，所以就会报错。只有当可变参数是最后一个才是正常的）</p>
-<p>Arrays工具类中的一个方法：把数组转成集合</p>
-<p>​    public  static  <T>  List<T>  asList(T… a)</p>
-<p>注意事项：集合的长度不能改变，因为其本质还是一个数组。（所以对集合进行操作时，只要改变了其长度就会报错）</p>
-<h4 id="6-枚举"><a href="#6-枚举" class="headerlink" title="6.枚举"></a>6.枚举</h4><h3 id="Java7"><a href="#Java7" class="headerlink" title="Java7"></a>Java7</h3><h4 id="1-二进制字面量"><a href="#1-二进制字面量" class="headerlink" title="1.二进制字面量"></a>1.二进制字面量</h4><p>JDK7开始，可以用二进制来表示整数（byte,short,int和long）。</p>
-<p>好处：可以使代码更容易被理解。语法非常简单，只要在二进制数值前面加 0b或者0B</p>
-<h4 id="2-数字字面量可以出现下划线"><a href="#2-数字字面量可以出现下划线" class="headerlink" title="2.数字字面量可以出现下划线"></a>2.数字字面量可以出现下划线</h4><p>为了增强对数值的阅读性，如我们经常把数据用逗号分隔一样。JDK7提供了_对数据进行分隔。</p>
-<p>注意事项：</p>
-<p>​    不能出现在进制标识和数值之间</p>
-<p>​    不能出现在数值开头和结尾</p>
-<p>​    不能出现在小数点旁边</p>
-<h4 id="3-switch-语句可以用字符串"><a href="#3-switch-语句可以用字符串" class="headerlink" title="3.switch 语句可以用字符串"></a>3.switch 语句可以用字符串</h4><h4 id="4-泛型简化（泛型推断）"><a href="#4-泛型简化（泛型推断）" class="headerlink" title="4.泛型简化（泛型推断）"></a>4.泛型简化（泛型推断）</h4><h4 id="5-异常的多个catch合并"><a href="#5-异常的多个catch合并" class="headerlink" title="5.异常的多个catch合并"></a>5.异常的多个catch合并</h4><p>出现了一个新的异常处理方案：</p>
-<p>try {</p>
-<p>} catch (异常名1  |  异常名2  |  异常名3   …   变量 ) {</p>
-<p>​    }</p>
-<p>这个方式虽然简洁，但是也不够好：</p>
-<p>A：处理方式是一致的。（实际开发中，好多时候可能就是针对同类型的问题，给出同一个处理）</p>
-<p>B：多个异常间必须是平级关系</p>
-<h4 id="6-try-with-resources-语句"><a href="#6-try-with-resources-语句" class="headerlink" title="6.try-with-resources 语句"></a>6.try-with-resources 语句</h4><p>try ( 必须是java.lang.AutoCloseable的子类对象 ) { … }</p>
-<p>好处：</p>
-<p>​    资源自动释放，不需要close()了</p>
-<p>​    把需要关闭资源的部分都定义在（）中就ok了</p>
-<p>这个接口的子类主要是流体系的对象(JDK7的API中AutoCloseable的子类)</p>
-<h3 id="Java8"><a href="#Java8" class="headerlink" title="Java8"></a>Java8</h3><p>2014年3月18日，普遍使用的版本，是java5以来最具革命性的版本。支持32位</p>
-<h4 id="1-允许接口中有默认方法，静态方法实现"><a href="#1-允许接口中有默认方法，静态方法实现" class="headerlink" title="1.允许接口中有默认方法，静态方法实现"></a>1.允许接口中有默认方法，静态方法实现</h4><h4 id="2-Lambda表达式"><a href="#2-Lambda表达式" class="headerlink" title="2.Lambda表达式"></a>2.Lambda表达式</h4><h4 id="3-函数式接口"><a href="#3-函数式接口" class="headerlink" title="3.函数式接口"></a>3.函数式接口</h4><h4 id="4-内置函数式接口"><a href="#4-内置函数式接口" class="headerlink" title="4.内置函数式接口"></a>4.内置函数式接口</h4><h4 id="5-Streams"><a href="#5-Streams" class="headerlink" title="5.Streams"></a>5.Streams</h4><h4 id="6-Map"><a href="#6-Map" class="headerlink" title="6.Map"></a>6.Map</h4><h4 id="7-时间日期API"><a href="#7-时间日期API" class="headerlink" title="7. 时间日期API"></a>7. 时间日期API</h4><h4 id="8-Annotations"><a href="#8-Annotations" class="headerlink" title="8.Annotations"></a>8.Annotations</h4><h3 id="Java11"><a href="#Java11" class="headerlink" title="Java11"></a>Java11</h3><p>2018年9月26日</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="明确概念"><a href="#明确概念" class="headerlink" title="明确概念"></a>明确概念</h3><p>1.JDK（java development kit）：java开发工具包JRE+tools</p>
-<p>​    是提供给java开发人员使用的，其中包含了java的开发工具，也包括了JRE</p>
-<p>​    Java的开发工具：编译工具（javac.exe）和打包工具（jar.exe）</p>
-<p>2.JRE（java runtime environment）：java运行环境 JVM+class library</p>
-<p>​    包括java虚拟机和java程序所需的核心类库等</p>
-<p>3.JVM（java virture machine）：java虚拟机</p>
-<p>可以去网上查找jdk并下载安装，这里推荐使用JDK1.8</p>
-<h3 id="配置JDK环境变量"><a href="#配置JDK环境变量" class="headerlink" title="配置JDK环境变量"></a>配置JDK环境变量</h3><p>要使java文件写在其他文件下面，仍可以运行，就需要配置环境变量。</p>
-<p>我的电脑→属性→高级系统设置→环境变量→系统变量：以下三个环境变量 已存在则点击“编辑”，不存在则点击“新建”</p>
-<p>1.新建JAVA_HOME（变量名）指向的是JDK的安装路径（变量值），在此路径下能找到bin、lib等目录。</p>
-<p>2.编辑PATH环境变量,目的是为了指向JDK的bin目录，这里面放的是各种编译执行命令。目的是<strong>使javac指令可以在任意目录下运行</strong>。</p>
-<p>配置方法一：</p>
-<p>​    将javac指令所在目录也就是JDK安装目录下的bin目录配置到path变量下，即可使javac指令在任意目录下运行。系统中本来有path环境变量，直接放后面就行，中间用分号间隔。path环境变量具有先后顺序</p>
-<p>具体方法：</p>
-<p>​    将JDK安装目录下的bin目录添加到最左边并添加分号</p>
-<p>配置方法二（因为jdk可能有多个）：</p>
-<p>​    新建变量名为：JAVA_HOME            变量值为：JDK安装目录            将path环境变量中的JDK目录修改为：%JAVA_HOME%\bin；（%%相当于引用）</p>
-<p>​    切换JDK时只需修改变量值</p>
-<p>Tips：操作系统因不明原因导致%JAVA_HOME%环境变量失效，即使正确配置“Path”中的内容，也无法验证通过。此时可以采用“弃用JAVA_HOME”的办法，在“Path”环境变量中，直接添加JDK下bin文件夹的完整地址（即配置方法一）。</p>
-<p>如果“弃用JAVA_HOME”之后依然无法通过验证，则要打开JDK的bin文件夹，检查此文件夹下是否有“java.exe”和“javac.exe”这两个文件，这两个可执行文件实际上就是java命令和javac命令的“本体”，如果缺失了这两个文件，JDK就无法正常使用，环境也就永远无法验证通过。</p>
-<p>3.CLASSPATH（class文件的环境变量）一般<strong>不用配置</strong>，仅了解，不推荐配置在系统的环境变量中</p>
-<p>​    创建新的变量名称：classpath          变量值设定为指定的含有class文件的目录，多个目录之间使用分号（；）分割。</p>
-<p>​    作用：使classpath目录中的.class文件可以在任意目录运行</p>
-<p>classpath目录中的配置存在先后顺序，先在第一个目录下查找，没有的话；.再继续查找第二个，依次类推</p>
-<p>​    区别：path环境变量里面记录的是可执行性文件，如：.exe文件。</p>
-<p>​    classpath环境变量里面记录的是java类的运行文件所在的目录如：.class文件</p>
-<h3 id="验证结果"><a href="#验证结果" class="headerlink" title="验证结果"></a>验证结果</h3><p>cmd中输入<code>java -version</code> 或者输入<code>javac</code></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>​    这里的下载安装很简单，最主要的是JDK的环境变量配置。原理就是在path的环境变量中加入java的bin文件夹（这个bin文件夹 中会有javac.exe和java.exe），这样在运行java时，就会找到javac命令和java命令并运行。设置JAVA_HOME的目的是为了防止有多个java时，在切换版本时需要不断更改操作path，为了方便操作，当path中运行到%JAVA_HOME%.bin时，会去再访问JAVA_HOME这个变量下的java文件夹，最终目的是一样的。classpath就是一组目录的集合，它设置了一个搜索路径，当运行某个类时，会依次查找这个目录下的这个类，找到了就会运行，如果找不到就会报错。所以一般情况下，不用配置classpath，用默认的配置在当前文件下查找这个类即可。</p>
-<p>​    这里的配置环境变量是接触的第一个环境变量。环境变量这个东西一通百通，以后的环境变量配置也可以参照这个原理，其根本目的都是要使系统的path路径中可以找到你的软件的bin目录。教程只是一方面，背后的原理才是以后会独立配置的关键。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/21/5.%E5%88%9D%E8%AF%86java/" data-id="ckmy6pylx0005cowd9zd50dm0" data-title="初识java" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-4.java开发工具之IDEA" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/20/4.java%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E4%B9%8BIDEA/" class="article-date">
-  <time class="dt-published" datetime="2021-03-20T03:46:22.000Z" itemprop="datePublished">2021-03-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/20/4.java%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E4%B9%8BIDEA/">java开发工具之IDEA</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="IDEA介绍"><a href="#IDEA介绍" class="headerlink" title="IDEA介绍"></a>IDEA介绍</h1><p>IDEA 全称 IntelliJ IDEA，是java编程语言开发的集成环境（集成开发环境IDE（Integrated Development Environment）:把开发，运行，编译集成在一起）。IntelliJ在业界被公认为最好的java开发工具，尤其在智能代码助手、代码自动提示、重构、JavaEE支持、各类版本工具(git、svn等)、JUnit、CVS整合、代码分析、 创新的GUI设计等方面的功能可以说是超常的。IDEA属于JetBrains这个公司，旗下的知名软件还有：PyCharm-智能 Python 集成开发工具，WebStorm - 最智能的 JavaScript IDE。</p>
-<p>​    在刚接触java的时候，跟着视频下载了eclipse，白色的界面，很有教科书的感觉。当时看到一些博主，微信公众号的编写代码的工具都是黑色的，感觉跟我自己用的不一样，就很羡慕（其实只是界面皮肤的问题）。后来才接触到了idea，默认的一种黑色的界面给了我逼格很高的感觉，想着终于拥有了大佬一样的开发工具，我也算是大佬了，hhhh。就像是长江后浪推前浪，有的人认为eclipse也是在不断完善，认为新兴的idea始终无法替代eclipse；也有的人自从接触了idea就爱不释手，毫不犹豫的抛弃了eclipse。说到底这也只是个工具而已，能够帮助我们更高效、简洁、方便的开发代码，达到我们的目的，使用什么工具又有什么所谓呢。</p>
-<h1 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h1><p><a target="_blank" rel="noopener" href="https://github.com/guobinhit/intellij-idea-tutorial/blob/master/articles/practical-skills/keymap-windows.md">这里</a>参考</p>
-<h2 id="ctrl"><a href="#ctrl" class="headerlink" title="ctrl"></a>ctrl</h2><table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>介绍</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Ctrl + Z</td>
-<td>撤销 （必备）</td>
-</tr>
-<tr>
-<td>Ctrl + X</td>
-<td>剪切光标所在行 或 剪切选择内容</td>
-</tr>
-<tr>
-<td>Ctrl + C</td>
-<td>复制光标所在行 或 复制选择内容</td>
-</tr>
-<tr>
-<td>Ctrl + D</td>
-<td>复制光标所在行 或 复制选择内容，并把复制内容插入光标位置下面 （必备）</td>
-</tr>
-<tr>
-<td>Ctrl + F</td>
-<td>在当前文件进行文本查找 （必备）</td>
-</tr>
-<tr>
-<td>Ctrl + N</td>
-<td>根据输入的 类名 查找类文件</td>
-</tr>
-<tr>
-<td>Ctrl + R</td>
-<td>在当前文件进行文本替换 （必备）</td>
-</tr>
-<tr>
-<td>Ctrl + Y</td>
-<td>删除光标所在行 或 删除选中的行 （必备）</td>
-</tr>
-<tr>
-<td>Ctrl + W</td>
-<td>递进式选择代码块。可选中光标所在的单词或段落，连续按会在原有选中的基础上再扩展选中范围 （必备）</td>
-</tr>
-<tr>
-<td>Ctrl + E</td>
-<td>显示最近打开的文件记录列表</td>
-</tr>
-<tr>
-<td>Ctrl + G</td>
-<td>在当前文件跳转到指定行处</td>
-</tr>
-<tr>
-<td>Ctrl + J</td>
-<td>插入自定义动态代码模板</td>
-</tr>
-<tr>
-<td>Ctrl + P</td>
-<td>方法参数提示显示</td>
-</tr>
-<tr>
-<td>Ctrl + Q</td>
-<td>光标所在的变量 / 类名 / 方法名等上面（也可以在提示补充的时候按），显示文档内容</td>
-</tr>
-<tr>
-<td>Ctrl + U</td>
-<td>前往当前光标所在的方法的父类的方法 / 接口定义</td>
-</tr>
-<tr>
-<td>Ctrl + B</td>
-<td>进入光标所在的方法/变量的接口或是定义出，等效于 Ctrl + 左键单击</td>
-</tr>
-<tr>
-<td>Ctrl + K</td>
-<td>版本控制提交项目，需要此项目有加入到版本控制才可用</td>
-</tr>
-<tr>
-<td>Ctrl + T</td>
-<td>版本控制更新项目，需要此项目有加入到版本控制才可用</td>
-</tr>
-<tr>
-<td>Ctrl + H</td>
-<td>显示当前类的层次结构</td>
-</tr>
-<tr>
-<td>Ctrl + O</td>
-<td>选择可重写的方法</td>
-</tr>
-<tr>
-<td>Ctrl + I</td>
-<td>选择可继承的方法</td>
-</tr>
-<tr>
-<td>Ctrl + +</td>
-<td>展开代码</td>
-</tr>
-<tr>
-<td>Ctrl + -</td>
-<td>折叠代码</td>
-</tr>
-<tr>
-<td>Ctrl + /</td>
-<td>注释光标所在行代码，会根据当前不同文件类型使用不同的注释符号 （必备）</td>
-</tr>
-<tr>
-<td>Ctrl + [</td>
-<td>移动光标到当前所在代码的花括号开始位置</td>
-</tr>
-<tr>
-<td>Ctrl + ]</td>
-<td>移动光标到当前所在代码的花括号结束位置</td>
-</tr>
-<tr>
-<td>Ctrl + F1</td>
-<td>在光标所在的错误代码出显示错误信息</td>
-</tr>
-<tr>
-<td>Ctrl + F3</td>
-<td>调转到所选中的词的下一个引用位置</td>
-</tr>
-<tr>
-<td>Ctrl + F4</td>
-<td>关闭当前编辑文件</td>
-</tr>
-<tr>
-<td>Ctrl + F8</td>
-<td>在 Debug 模式下，设置光标当前行为断点，如果当前已经是断点则去掉断点</td>
-</tr>
-<tr>
-<td>Ctrl + F9</td>
-<td>执行 Make Project 操作</td>
-</tr>
-<tr>
-<td>Ctrl + F11</td>
-<td>选中文件 / 文件夹，使用助记符设定 / 取消书签</td>
-</tr>
-<tr>
-<td>Ctrl + F12</td>
-<td>弹出当前文件结构层，可以在弹出的层上直接输入，进行筛选</td>
-</tr>
-<tr>
-<td>Ctrl + Tab</td>
-<td>编辑窗口切换，如果在切换的过程又加按上delete，则是关闭对应选中的窗口</td>
-</tr>
-<tr>
-<td>Ctrl + Enter</td>
-<td>智能分隔行</td>
-</tr>
-<tr>
-<td>Ctrl + End</td>
-<td>跳到文件尾</td>
-</tr>
-<tr>
-<td>Ctrl + Home</td>
-<td>跳到文件头</td>
-</tr>
-<tr>
-<td>Ctrl + Space</td>
-<td>基础代码补全，默认在 Windows 系统上被输入法占用，需要进行修改，建议修改为 Ctrl + 逗号 （必备）</td>
-</tr>
-<tr>
-<td>Ctrl + Delete</td>
-<td>删除光标后面的单词或是中文句</td>
-</tr>
-<tr>
-<td>Ctrl + BackSpace</td>
-<td>删除光标前面的单词或是中文句</td>
-</tr>
-<tr>
-<td>Ctrl + 1,2,3…9</td>
-<td>定位到对应数值的书签位置</td>
-</tr>
-<tr>
-<td>Ctrl + 左键单击</td>
-<td>在打开的文件标题上，弹出该文件路径</td>
-</tr>
-<tr>
-<td>Ctrl + 光标定位</td>
-<td>按 Ctrl 不要松开，会显示光标所在的类信息摘要</td>
-</tr>
-<tr>
-<td>Ctrl + 左方向键</td>
-<td>光标跳转到当前单词 / 中文句的左侧开头位置</td>
-</tr>
-<tr>
-<td>Ctrl + 右方向键</td>
-<td>光标跳转到当前单词 / 中文句的右侧开头位置</td>
-</tr>
-<tr>
-<td>Ctrl + 前方向键</td>
-<td>等效于鼠标滚轮向前效果</td>
-</tr>
-<tr>
-<td>Ctrl + 后方向键</td>
-<td>等效于鼠标滚轮向后效果</td>
-</tr>
-</tbody></table>
-<h2 id="alt"><a href="#alt" class="headerlink" title="alt"></a>alt</h2><table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>介绍</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Alt + `</td>
-<td>显示版本控制常用操作菜单弹出层</td>
-</tr>
-<tr>
-<td>Alt + Q</td>
-<td>弹出一个提示，显示当前类的声明 / 上下文信息</td>
-</tr>
-<tr>
-<td>Alt + F1</td>
-<td>显示当前文件选择目标弹出层，弹出层中有很多目标可以进行选择</td>
-</tr>
-<tr>
-<td>Alt + F2</td>
-<td>对于前面页面，显示各类浏览器打开目标选择弹出层</td>
-</tr>
-<tr>
-<td>Alt + F3</td>
-<td>选中文本，逐个往下查找相同文本，并高亮显示</td>
-</tr>
-<tr>
-<td>Alt + F7</td>
-<td>查找光标所在的方法 / 变量 / 类被调用的地方</td>
-</tr>
-<tr>
-<td>Alt + F8</td>
-<td>在 Debug 的状态下，选中对象，弹出可输入计算表达式调试框，查看该输入内容的调试结果</td>
-</tr>
-<tr>
-<td>Alt + Home</td>
-<td>定位 / 显示到当前文件的 Navigation Bar</td>
-</tr>
-<tr>
-<td>Alt + Enter</td>
-<td>IntelliJ IDEA 根据光标所在问题，提供快速修复选择，光标放在的位置不同提示的结果也不同 （必备）</td>
-</tr>
-<tr>
-<td>Alt + Insert</td>
-<td>代码自动生成，如生成对象的 set / get 方法，构造函数，toString() 等</td>
-</tr>
-<tr>
-<td>Alt + 左方向键</td>
-<td>按左方向切换当前已打开的文件视图</td>
-</tr>
-<tr>
-<td>Alt + 右方向键</td>
-<td>按右方向切换当前已打开的文件视图</td>
-</tr>
-<tr>
-<td>Alt + 前方向键</td>
-<td>当前光标跳转到当前文件的前一个方法名位置</td>
-</tr>
-<tr>
-<td>Alt + 后方向键</td>
-<td>当前光标跳转到当前文件的后一个方法名位置</td>
-</tr>
-<tr>
-<td>Alt + 1,2,3…9</td>
-<td>显示对应数值的选项卡，其中 1 是 Project 用得最多</td>
-</tr>
-</tbody></table>
-<h2 id="shift"><a href="#shift" class="headerlink" title="shift"></a>shift</h2><table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>介绍</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Shift + F1</td>
-<td>如果有外部文档可以连接外部文档</td>
-</tr>
-<tr>
-<td>Shift + F2</td>
-<td>跳转到上一个高亮错误 或 警告位置</td>
-</tr>
-<tr>
-<td>Shift + F3</td>
-<td>在查找模式下，查找匹配上一个</td>
-</tr>
-<tr>
-<td>Shift + F4</td>
-<td>对当前打开的文件，使用新Windows窗口打开，旧窗口保留</td>
-</tr>
-<tr>
-<td>Shift + F6</td>
-<td>对文件 / 文件夹 重命名</td>
-</tr>
-<tr>
-<td>Shift + F7</td>
-<td>在 Debug 模式下，智能步入。断点所在行上有多个方法调用，会弹出进入哪个方法</td>
-</tr>
-<tr>
-<td>Shift + F8</td>
-<td>在 Debug 模式下，跳出，表现出来的效果跟 F9 一样</td>
-</tr>
-<tr>
-<td>Shift + F9</td>
-<td>等效于点击工具栏的 Debug 按钮</td>
-</tr>
-<tr>
-<td>Shift + F10</td>
-<td>等效于点击工具栏的 Run 按钮</td>
-</tr>
-<tr>
-<td>Shift + F11</td>
-<td>弹出书签显示层</td>
-</tr>
-<tr>
-<td>Shift + Tab</td>
-<td>取消缩进</td>
-</tr>
-<tr>
-<td>Shift + ESC</td>
-<td>隐藏当前 或 最后一个激活的工具窗口</td>
-</tr>
-<tr>
-<td>Shift + End</td>
-<td>选中光标到当前行尾位置</td>
-</tr>
-<tr>
-<td>Shift + Home</td>
-<td>选中光标到当前行头位置</td>
-</tr>
-<tr>
-<td>Shift + Enter</td>
-<td>开始新一行。光标所在行下空出一行，光标定位到新行位置</td>
-</tr>
-<tr>
-<td>Shift + 左键单击</td>
-<td>在打开的文件名上按此快捷键，可以关闭当前打开文件</td>
-</tr>
-<tr>
-<td>Shift + 滚轮前后滚动</td>
-<td>当前文件的横向滚动轴滚动</td>
-</tr>
-</tbody></table>
-<h2 id="ctrl-alt"><a href="#ctrl-alt" class="headerlink" title="ctrl+alt"></a>ctrl+alt</h2><table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>介绍</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Ctrl + Alt + L</td>
-<td>格式化代码，可以对当前文件和整个包目录使用 （必备）</td>
-</tr>
-<tr>
-<td>Ctrl + Alt + O</td>
-<td>优化导入的类，可以对当前文件和整个包目录使用 （必备）</td>
-</tr>
-<tr>
-<td>Ctrl + Alt + I</td>
-<td>光标所在行 或 选中部分进行自动代码缩进，有点类似格式化</td>
-</tr>
-<tr>
-<td>Ctrl + Alt + T</td>
-<td>对选中的代码弹出环绕选项弹出层</td>
-</tr>
-<tr>
-<td>Ctrl + Alt + J</td>
-<td>弹出模板选择窗口，讲选定的代码加入动态模板中</td>
-</tr>
-<tr>
-<td>Ctrl + Alt + H</td>
-<td>调用层次</td>
-</tr>
-<tr>
-<td>Ctrl + Alt + B</td>
-<td>在某个调用的方法名上使用会跳到具体的实现处，可以跳过接口</td>
-</tr>
-<tr>
-<td>Ctrl + Alt + V</td>
-<td>快速引进变量</td>
-</tr>
-<tr>
-<td>Ctrl + Alt + Y</td>
-<td>同步、刷新</td>
-</tr>
-<tr>
-<td>Ctrl + Alt + S</td>
-<td>打开 IntelliJ IDEA 系统设置</td>
-</tr>
-<tr>
-<td>Ctrl + Alt + F7</td>
-<td>显示使用的地方。寻找被该类或是变量被调用的地方，用弹出框的方式找出来</td>
-</tr>
-<tr>
-<td>Ctrl + Alt + F11</td>
-<td>切换全屏模式</td>
-</tr>
-<tr>
-<td>Ctrl + Alt + Enter</td>
-<td>光标所在行上空出一行，光标定位到新行</td>
-</tr>
-<tr>
-<td>Ctrl + Alt + Home</td>
-<td>弹出跟当前文件有关联的文件弹出层</td>
-</tr>
-<tr>
-<td>Ctrl + Alt + Space</td>
-<td>类名自动完成</td>
-</tr>
-<tr>
-<td>Ctrl + Alt + 左方向键</td>
-<td>退回到上一个操作的地方 （必备）（注意与其他软件快捷键冲突）</td>
-</tr>
-<tr>
-<td>Ctrl + Alt + 右方向键</td>
-<td>前进到上一个操作的地方 （必备）（注意与其他软件快捷键冲突）</td>
-</tr>
-<tr>
-<td>Ctrl + Alt + 前方向键</td>
-<td>在查找模式下，跳到上个查找的文件</td>
-</tr>
-<tr>
-<td>Ctrl + Alt + 后方向键</td>
-<td>在查找模式下，跳到下个查找的文件</td>
-</tr>
-</tbody></table>
-<h2 id="Ctrl-Shift"><a href="#Ctrl-Shift" class="headerlink" title="Ctrl + Shift"></a>Ctrl + Shift</h2><table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>介绍</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Ctrl + Shift + F</td>
-<td>根据输入内容查找整个项目 或 指定目录内文件 （必备）</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + R</td>
-<td>根据输入内容替换对应内容，范围为整个项目 或 指定目录内文件 （必备）</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + J</td>
-<td>自动将下一行合并到当前行末尾 （必备）</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + Z</td>
-<td>取消撤销 （必备）</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + W</td>
-<td>递进式取消选择代码块。可选中光标所在的单词或段落，连续按会在原有选中的基础上再扩展取消选中范围 （必备）</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + N</td>
-<td>通过文件名定位 / 打开文件 / 目录，打开目录需要在输入的内容后面多加一个正斜杠 （必备）</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + U</td>
-<td>对选中的代码进行大 / 小写轮流转换 （必备）</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + T</td>
-<td>对当前类生成单元测试类，如果已经存在的单元测试类则可以进行选择</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + C</td>
-<td>复制当前文件磁盘路径到剪贴板</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + V</td>
-<td>弹出缓存的最近拷贝的内容管理器弹出层</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + E</td>
-<td>显示最近修改的文件列表的弹出层</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + H</td>
-<td>显示方法层次结构</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + B</td>
-<td>跳转到类型声明处</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + I</td>
-<td>快速查看光标所在的方法 或 类的定义</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + A</td>
-<td>查找动作 / 设置</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + /</td>
-<td>代码块注释 （必备）</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + [</td>
-<td>选中从光标所在位置到它的顶部中括号位置</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + ]</td>
-<td>选中从光标所在位置到它的底部中括号位置</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + +</td>
-<td>展开所有代码</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + -</td>
-<td>折叠所有代码</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + F7</td>
-<td>高亮显示所有该选中文本，按Esc高亮消失</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + F8</td>
-<td>在 Debug 模式下，指定断点进入条件</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + F9</td>
-<td>编译选中的文件 / 包 / Module</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + F12</td>
-<td>编辑器最大化</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + Space</td>
-<td>智能代码提示</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + Enter</td>
-<td>自动结束代码，行末自动添加分号 （必备）</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + Backspace</td>
-<td>退回到上次修改的地方</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + 1,2,3…9</td>
-<td>快速添加指定数值的书签</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + 左方向键</td>
-<td>在代码文件上，光标跳转到当前单词 / 中文句的左侧开头位置，同时选中该单词 / 中文句</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + 右方向键</td>
-<td>在代码文件上，光标跳转到当前单词 / 中文句的右侧开头位置，同时选中该单词 / 中文句</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + 左方向键</td>
-<td>在光标焦点是在工具选项卡上，缩小选项卡区域</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + 右方向键</td>
-<td>在光标焦点是在工具选项卡上，扩大选项卡区域</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + 前方向键</td>
-<td>光标放在方法名上，将方法移动到上一个方法前面，调整方法排序</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + 后方向键</td>
-<td>光标放在方法名上，将方法移动到下一个方法前面，调整方法排序</td>
-</tr>
-</tbody></table>
-<h2 id="Alt-Shift"><a href="#Alt-Shift" class="headerlink" title="Alt + Shift"></a>Alt + Shift</h2><table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>介绍</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Alt + Shift + N</td>
-<td>选择 / 添加 task</td>
-</tr>
-<tr>
-<td>Alt + Shift + F</td>
-<td>显示添加到收藏夹弹出层</td>
-</tr>
-<tr>
-<td>Alt + Shift + C</td>
-<td>查看最近操作项目的变化情况列表</td>
-</tr>
-<tr>
-<td>Alt + Shift + F</td>
-<td>添加到收藏夹</td>
-</tr>
-<tr>
-<td>Alt + Shift + I</td>
-<td>查看项目当前文件</td>
-</tr>
-<tr>
-<td>Alt + Shift + F7</td>
-<td>在 Debug 模式下，下一步，进入当前方法体内，如果方法体还有方法，则会进入该内嵌的方法中，依此循环进入</td>
-</tr>
-<tr>
-<td>Alt + Shift + F9</td>
-<td>弹出 Debug 的可选择菜单</td>
-</tr>
-<tr>
-<td>Alt + Shift + F10</td>
-<td>弹出 Run 的可选择菜单</td>
-</tr>
-<tr>
-<td>Alt + Shift + 左键双击</td>
-<td>选择被双击的单词 / 中文句，按住不放，可以同时选择其他单词 / 中文句</td>
-</tr>
-<tr>
-<td>Alt + Shift + 前方向键</td>
-<td>移动光标所在行向上移动</td>
-</tr>
-<tr>
-<td>Alt + Shift + 后方向键</td>
-<td>移动光标所在行向下移动</td>
-</tr>
-</tbody></table>
-<h2 id="Ctrl-Shift-Alt"><a href="#Ctrl-Shift-Alt" class="headerlink" title="Ctrl + Shift + Alt"></a>Ctrl + Shift + Alt</h2><table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>介绍</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Ctrl + Shift + Alt + V</td>
-<td>无格式黏贴</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + Alt + N</td>
-<td>前往指定的变量 / 方法</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + Alt + S</td>
-<td>打开当前项目设置</td>
-</tr>
-<tr>
-<td>Ctrl + Shift + Alt + C</td>
-<td>复制参考信息</td>
-</tr>
-</tbody></table>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>介绍</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>F2</td>
-<td>跳转到下一个高亮错误 或 警告位置 （必备）</td>
-</tr>
-<tr>
-<td>F3</td>
-<td>在查找模式下，定位到下一个匹配处</td>
-</tr>
-<tr>
-<td>F4</td>
-<td>编辑源</td>
-</tr>
-<tr>
-<td>F7</td>
-<td>在 Debug 模式下，进入下一步，如果当前行断点是一个方法，则进入当前方法体内，如果该方法体还有方法，则不会进入该内嵌的方法中</td>
-</tr>
-<tr>
-<td>F8</td>
-<td>在 Debug 模式下，进入下一步，如果当前行断点是一个方法，则不进入当前方法体内</td>
-</tr>
-<tr>
-<td>F9</td>
-<td>在 Debug 模式下，恢复程序运行，但是如果该断点下面代码还有断点则停在下一个断点上</td>
-</tr>
-<tr>
-<td>F11</td>
-<td>添加书签</td>
-</tr>
-<tr>
-<td>F12</td>
-<td>回到前一个工具窗口</td>
-</tr>
-<tr>
-<td>Tab</td>
-<td>缩进</td>
-</tr>
-<tr>
-<td>ESC</td>
-<td>从工具窗口进入代码文件窗口</td>
-</tr>
-<tr>
-<td>连按两次Shift</td>
-<td>弹出 Search Everywhere 弹出层</td>
-</tr>
-</tbody></table>
-<table>
-<thead>
-<tr>
-<th>快捷键</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>Alt+回车</code></td>
-<td>导入包,自动修正</td>
-</tr>
-<tr>
-<td><code>Ctrl+Alt+L</code></td>
-<td>格式化代码</td>
-</tr>
-<tr>
-<td><code>Alt+Insert</code></td>
-<td>生成代码(如get,set方法,构造函数等)</td>
-</tr>
-<tr>
-<td><code>Ctrl+F</code></td>
-<td>查找文本</td>
-</tr>
-<tr>
-<td><code>Ctrl+N</code></td>
-<td>查找类</td>
-</tr>
-<tr>
-<td><code>Ctrl+Shift+N</code></td>
-<td>查找文件</td>
-</tr>
-<tr>
-<td><code>Ctrl+Shift+Alt+N</code></td>
-<td>查找类中的方法或变量</td>
-</tr>
-<tr>
-<td><code>Ctrl+R</code></td>
-<td>在当前文件进行文本替换</td>
-</tr>
-<tr>
-<td><code>Ctrl+Y</code></td>
-<td>删除光标所在行 或 删除选中的行</td>
-</tr>
-<tr>
-<td><code>Ctrl+Space</code></td>
-<td>代码提示</td>
-</tr>
-<tr>
-<td><code>Ctrl+Shift+Space</code></td>
-<td>自动补全代码(常用)</td>
-</tr>
-<tr>
-<td><code>Ctrl+P</code></td>
-<td>方法参数提示</td>
-</tr>
-<tr>
-<td><code>Ctrl+/</code>或<code>Ctrl+Shift+/</code></td>
-<td>注释（//或者/…./）</td>
-</tr>
-<tr>
-<td><code>Ctrl+D</code></td>
-<td>复制光标所在行 或 复制选择内容，并把复制内容插入光标位置下面</td>
-</tr>
-<tr>
-<td><code>Ctrl+Shift+Up/Down</code></td>
-<td>代码向上/下移动</td>
-</tr>
-<tr>
-<td><code>Alt+ Up/Down</code></td>
-<td>在方法间快速移动定位</td>
-</tr>
-<tr>
-<td><code>Ctrl + U</code></td>
-<td>前往当前光标所在的方法的父类的方法 / 接口定义</td>
-</tr>
-<tr>
-<td><code>Ctrl+Alt+left/right </code></td>
-<td>返回至上次浏览的位置</td>
-</tr>
-<tr>
-<td><code>F2 或Shift+F2 </code></td>
-<td>高亮错误或警告快速定位</td>
-</tr>
-<tr>
-<td><code>选中文本，按Alt+F3</code></td>
-<td>逐个往下查找相同文本，并高亮显示</td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/20/4.java%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E4%B9%8BIDEA/" data-id="ckmy6pylw0004cowd5kxz9xq8" data-title="java开发工具之IDEA" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li></ul>
-
     </footer>
   </div>
   
@@ -2074,7 +1630,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li></ul>
     </div>
   </div>
 
@@ -2084,7 +1640,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a>
     </div>
   </div>
 
@@ -2106,23 +1662,23 @@
       <ul>
         
           <li>
-            <a href="/2021/04/03/%E7%BD%91%E9%A1%B5%E7%9B%B8%E5%85%B3/">网页相关</a>
+            <a href="/2021/04/05/%E5%89%8D%E7%AB%AF%E6%A6%82%E8%BF%B0/">前端概述</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/05/%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BCSS/">网页前端之CSS</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/03/%E5%B0%8F%E7%9F%A5%E8%AF%86/">小知识</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/03/%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BHTML/">网页前端之HTML</a>
           </li>
         
           <li>
             <a href="/2021/03/30/ngnix%E9%85%8D%E7%BD%AE/">ngnix配置</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/26/7.java%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%B1%BB/">java中常用类</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/26/%E9%A1%B9%E7%9B%AE%E8%B8%A9%E5%9D%91/">项目踩坑</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/23/6.2.java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E9%99%84%E5%BD%95/">java基础知识附录</a>
           </li>
         
       </ul>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>网页前端之CSS | swx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="HTML是页面的结构，CSS是美化页面 CSS（Cascading Style Sheets）：层叠样式表   样式表：存储样式的地方，多个样式 CSS通常称为CSS样式或层叠样式表，主要用于设置HTML页面中的文本内容（字体、大小、对齐方式等），图片的外形（高宽、边框样式、边距等）以及版面的布局等外观显示样式。 作用：修饰HTML页面，更丰富多彩的展示超文本信息 因为HTML在单独使用设置属性会">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网页前端之CSS">
+<meta property="og:url" content="https://s-qwer.github.io/2021/04/05/%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BCSS/index.html">
+<meta property="og:site_name" content="swx">
+<meta property="og:description" content="HTML是页面的结构，CSS是美化页面 CSS（Cascading Style Sheets）：层叠样式表   样式表：存储样式的地方，多个样式 CSS通常称为CSS样式或层叠样式表，主要用于设置HTML页面中的文本内容（字体、大小、对齐方式等），图片的外形（高宽、边框样式、边距等）以及版面的布局等外观显示样式。 作用：修饰HTML页面，更丰富多彩的展示超文本信息 因为HTML在单独使用设置属性会">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-05T05:37:52.000Z">
+<meta property="article:modified_time" content="2021-04-06T07:44:17.510Z">
+<meta property="article:author" content="swx">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="swx" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swx</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://s-qwer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-网页前端之CSS" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/05/%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BCSS/" class="article-date">
+  <time class="dt-published" datetime="2021-04-05T05:37:52.000Z" itemprop="datePublished">2021-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      网页前端之CSS
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>HTML是页面的结构，CSS是美化页面</p>
+<p>CSS（Cascading Style Sheets）：层叠样式表  </p>
+<p>样式表：存储样式的地方，多个样式</p>
+<p>CSS通常称为CSS样式或层叠样式表，主要用于设置HTML页面中的文本内容（字体、大小、对齐方式等），图片的外形（高宽、边框样式、边距等）以及版面的布局等外观显示样式。</p>
+<p>作用：修饰HTML页面，更丰富多彩的展示超文本信息</p>
+<p>因为HTML在单独使用设置属性会有一定的局限性，所以用CSS样式。</p>
+<h1 id="样式类型"><a href="#样式类型" class="headerlink" title="样式类型"></a>样式类型</h1><p>1.行内样式表（内联样式）:<code>&lt;div style=&quot;width:400px;height:200px;background-color:#FFF&quot;&gt;&lt;/div&gt;</code></p>
+<p>一般写在标签头部</p>
+<p>放置规范：在<code>&lt;style&gt;</code>标签内容体中书写css样式代码<code>&lt;/style&gt;</code>      <code>&lt;style&gt;</code>标签放置在<code>&lt;head&gt;</code>标签之中</p>
+<p>格式规范：选择器名称｛属性名1：属性值1； 属性名2：属性值2；……｝</p>
+<p>代码规范：属性名和属性值之间是键值对关系    <code>：</code>连接   <code>；</code>结尾  </p>
+<p>如果一个属性名有多个值，多个值之间用空格隔开：border:1px solid red;</p>
+<p>CSS注释：<code>/*注释内容*/ </code> 等同于java的多行注释</p>
+<p>缺点:样式只能操作某一个标签 优点:十分灵活，可以进行细节的调节,更加针对性修改某个标签的样式</p>
+<p>2.嵌入式样式表（嵌入样式）:<code>&lt;style type=&quot;text/css&quot;&gt;&lt;/style&gt;</code></p>
+<p>一般写在<code>&lt;head&gt;&lt;/head&gt;</code>标签内。可以通过一条语句操作多个标签或类，但是仅限本页面内</p>
+<p>3.引用式样式表（外联样式）:<code>&lt;link href=&quot;css文件路径&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</code></p>
+<p>​    rel=”stylesheet” 固定值，表示样式表</p>
+<p>​    type=”text/css” 固定值，表示css类型</p>
+<p>​    href表示css文件位置</p>
+<p>(能用引用式样式表的地方就尽量用引用式)<br>一般写在<code>&lt;head&gt;&lt;/head&gt;</code>标签内。(多个HTML文件可以引用一个CSS样式表文件) </p>
+<p>优点:占用空间资源少，修改方便，只要修改CSS文件就可以修改多个HTML页面的属性，适合不同页面进行样式复用</p>
+<p>CSS注释写法:<code>/* */</code>   HTML注释写法:<code>&lt;!--  --&gt;</code></p>
+<p>当三种样式表操作同一元素时，优先级依次为:行内样式表，嵌入式样式表，引用式样式表。 即后出现的先应用。引用式样式表一般放在嵌入式样式表的前面</p>
+<h1 id="书写规则"><a href="#书写规则" class="headerlink" title="书写规则"></a>书写规则</h1><p>不要忘记每条属性的“;”结尾<br>如果缺少符号或者书写错误则样式表失效<br>需要单位的值要加上单位，例如:px(像素单位)</p>
+<h1 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h1><p>选择器：指定CSS样式作用在哪些HTML标签上</p>
+<p>基本选择器：</p>
+<p>1.元素选择器：HTML标签又名html元素，就是以HTML标签名作为选择器名称。</p>
+<p>作用：选择CSS样式代码，对应标签名的标签上。</p>
+<p>格式：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">标签名｛</span><br><span class="line"></span><br><span class="line"><span class="comment">/*CSS样式代码*/</span></span><br><span class="line"></span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+
+<p>适用范围：适用于将相同样式，作用在多个同名标签上</p>
+<p>2.类选择器：以HTML的类名（class属性值）作为选择器名称</p>
+<p>每个HTML标签都有一个class属性，class属性即为类名。</p>
+<p>作用：选择CSS样式代码作用于对应类名的HTML标签上。</p>
+<p>格式：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> .类名｛</span><br><span class="line"></span><br><span class="line"><span class="comment">/*CSS样式代码*/</span></span><br><span class="line"></span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+
+<p>使用范围：适用于将样式一次作用在相同类名的标签上（即使标签名不同）。</p>
+<p>3.id选择器：以HTML的id（id属性值）作为选择器名称</p>
+<p>每个HTML标签都有一个id属性，这个id属性值必须在本页面是唯一的</p>
+<p>作用：选择CSS样式代码作用于某个规定id值的html标签上</p>
+<p>格式：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="selector-id">#id</span>值｛</span><br><span class="line"></span><br><span class="line"><span class="comment">/*CSS样式代码*/</span></span><br><span class="line"></span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+
+<p>适用范围：适用于将样式作用某个标签上（更有针对性）</p>
+<p>基本选择器的组合方式:</p>
+<p>层级关系：标签和标签之间有层级关系</p>
+<p>我们可以对基本选择器进行组合，表现出层级关系，从而更针对性地把样式作用于某些标签上（相当于是有相同的标签，更针对性的指定是哪个）</p>
+<p>格式：  </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">选择器<span class="number">1</span> 选择器<span class="number">2</span> ...｛</span><br><span class="line"></span><br><span class="line"><span class="comment">/*CSS样式代码*/</span></span><br><span class="line"></span><br><span class="line">｝</span><br><span class="line"></span><br><span class="line">选择器<span class="number">1</span>下的选择器<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="CSS样式"><a href="#CSS样式" class="headerlink" title="CSS样式"></a>CSS样式</h1><h2 id="字体属性：-font"><a href="#字体属性：-font" class="headerlink" title="字体属性：(font)"></a>字体属性：(font)</h2><p>样式：</p>
+<p>​    color : #999999;   文字颜色</p>
+<p>​    font-family : sans-serif;   字体类型  “Courier New”, Courier, monospace, “Times New Roman”, Times, serif, Arial, Helvetica, sans-serif, Verdana</p>
+<p>​    font-size:  字体大小 inherit| medium| large| larger| x-large| xx-large| small| smaller| x-small| xx-small |数值  单位：pt，px</p>
+<p>​    font-weight:  字体粗细 bold,bolder; (文字粗体）   lighter;(细体) normal;(正常)  100-900</p>
+<p>​    font-style:  字体风格  itelic; (文字斜体）  normal;(正常) oblique;(偏斜体)   inherit(继承)</p>
+<p>​    letter-spacing :  字间距离  数值|inherit|normal</p>
+<p>​    word-spacing: 单词间距  数值|inherit|normal</p>
+<p>​    line-height :  设置行高   normal;(正常)   inherit(继承)  数值 单位：PX、PD、EM  </p>
+<p>​    text-shadow: 阴影颜色 {16位色值}</p>
+<p>​    font-variant: 字体变形  {inherit|normal|small-cps（小字体，小型大写字母） }</p>
+<p>​    font-size-adjust:字体变形 {inherit|none}</p>
+<p>​    font-stretch:字体 {condensed|expanded|extra-condensed|extra-expanded|inherit|narrower|normal| semi-condensed|semi-expanded|ultra-condensed|ultra-expanded|wider}</p>
+<p>修饰：inherit|none|underline|overline|line-through|blink</p>
+<p>​    text-decoration:line-through; 加删除线</p>
+<p>​    text-decoration: overline; 加顶线（上划线）</p>
+<p>​    text-decoration:underline; 加下划线</p>
+<p>​    text-decoration:none; 删除链接下划线</p>
+<p>​    text-decoration:blink; 闪烁</p>
+<p>大小写：</p>
+<p>text-transform:inherit|none|capitalize|uppercase|lowercase</p>
+<p>​    text-transform : capitalize; 首字大写</p>
+<p>​    text-transform : uppercase; 英文大写</p>
+<p>​    text-transform : lowercase; 英文小写</p>
+<h2 id="背景属性：-background"><a href="#背景属性：-background" class="headerlink" title="背景属性： (background)"></a>背景属性： (background)</h2><p>色彩：</p>
+<p>​    background-color:#F5E2EC; 背景颜色  </p>
+<p>两种方式：</p>
+<p>​    ①英文单词</p>
+<p>​    ②颜色代码  格式：#红绿蓝，每一个颜色用两个16进制位数表示  例如：#ff1100 红色ff 绿色11 蓝色00 红色颜色最重，绿色其次，没有蓝色  （数值代表每个颜色的色重）</p>
+<p>​    background:transparent; 透视背景</p>
+<p>图片：</p>
+<p>​    background-image : url(/image/bg.gif); 背景图片  url(URL)|none</p>
+<p>重复： inherit|no-repeat|repeat|repeat-x|repeat-y</p>
+<p>​    background-repeat : repeat; 重复排列-网页默认</p>
+<p>​    background-repeat : no-repeat; 不重复排列</p>
+<p>​    background-repeat : repeat-x; 在x轴重复排列</p>
+<p>​    background-repeat : repeat-y; 在y轴重复排列</p>
+<p>滚动：</p>
+<p>​    background-attachment : fixed; 浮水印固定背景   scroll;(滚动)</p>
+<p>位置：</p>
+<p>​    background-position : 90% 90%; 背景图片x与y轴的位置</p>
+<p>​    background-position : top; 向上对齐</p>
+<p>​    background-position : buttom; 向下对齐</p>
+<p>​    background-position : left; 向左对齐</p>
+<p>​    background-position : right; 向右对齐</p>
+<p>​    background-position : center; 居中对齐</p>
+<p>简写：  背影样式 {background:背景颜色|背景图象|背景重复|背景附件|背景位置}</p>
+<p>例： {background:#000 url(..) repeat fixed left top;}</p>
+<h2 id="区块属性：-Block"><a href="#区块属性：-Block" class="headerlink" title="区块属性： (Block)"></a>区块属性： (Block)</h2><p>排列方式：</p>
+<p>​    text-align:right; 文字右对齐</p>
+<p>​    text-align:left; 文字左对齐</p>
+<p>​    text-align:center; 文字居中对齐</p>
+<p>​    text-align:justify; 文字分散对齐（两端对齐）</p>
+<p>​    vertical-align:baseline; 基线</p>
+<p>​    vertical-align:top; 垂直向上对齐</p>
+<p>​    vertical-align:bottom; 垂直向下对齐</p>
+<p>​    vertical-align:middle; 垂直居中对齐</p>
+<p>​    vertical-align:text-top; 文字垂直向上对齐</p>
+<p>​    vertical-align:text-bottom; 文字垂直向下对齐</p>
+<p>​    vertical-align:sub; 下标字</p>
+<p>​    vertical-align:super; 上标字</p>
+<h2 id="显示属性：（display）"><a href="#显示属性：（display）" class="headerlink" title="显示属性：（display）"></a>显示属性：（display）</h2><p>display属性可以使得元素在行内元素和块元素之间相互转换</p>
+<p>格式：  选择器{display:属性值 }</p>
+<p>属性值：block：此元素显示为块元素（块元素默认的display属性值）</p>
+<p>​    inline：此元素显示为行内元素（行内元素默认的display属性值）</p>
+<p>​    none：此元素将被隐藏，不显示，也不占用页面空间</p>
+<p>display: 显示  {block;}(块) inline;(内嵌) list-item;(列表项) run-in;(追加部分) compact;(紧凑) marker;(标记) table; inline-table; table-raw-group; table-header-group; table-footer-group; table-raw; table-column-group; table-column; table-cell; table-caption;(表格标题)</p>
+<p>​    text-indent: 缩进，段首空格 { 数值px; inherit}</p>
+<p>​    white-space: 空格；控制空白  pre;(保留) nowrap;(不换行) normal</p>
+<p>​    writing-mode: 书写方式 {lr-tb（从左到右，从上到下）|tb-rl（从上到下，从右到左）}</p>
+<p>​    visibility: 是否可见 inherit; visible; hidden;collapse</p>
+<p>即使不可见的元素也会占据页面上的空间。使用 “display” 属性来创建不占据页面空间的不可见元素</p>
+<p>​    overflow:  当内容溢出元素框时发生的事情</p>
+<pre><code>     visible:默认值。内容不会被修剪，会呈现在元素框之外。
+</code></pre>
+<p>​         hidden:内容会被修剪，并且其余内容是不可见的。</p>
+<p>​         scroll:内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。</p>
+<p>​        auto:如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容</p>
+<p>​    clip:  (裁切)剪裁绝对定位元素:这个属性用于定义一个剪裁矩形。对于一个绝对定义元素，在这个矩形内的内容才可见。出了这个剪裁区域的内容会根据 overflow 的值来处理。剪裁区域可能比元素的内容区大，也可能比内容区小</p>
+<p>​        rect (<em>top</em>, <em>right</em>, <em>bottom</em>, <em>left</em>)</p>
+<p>​        auto:默认值。不应用任何剪裁</p>
+<h2 id="方框属性：-Box"><a href="#方框属性：-Box" class="headerlink" title="方框属性： (Box)"></a>方框属性： (Box)</h2><p>CSS盒子模型：所有的HTML元素，都可以看作一个四边形，即一个盒子。</p>
+<p>用CSS来设置元素盒子的内边距（padding）、边框(border)和外边距(margin)的样式的方式相当于设置盒子的样式，我们称之为盒子模型。</p>
+<p>边框：（HTML元素盒子的框体）简写：<code>border:1px solid red;</code></p>
+<p>宽度：宽度值： thin|medium|thick|数值  </p>
+<p>​    width:长度|百分比| auto</p>
+<p>​    border-top-width </p>
+<p>​    border-right-width </p>
+<p>​    border-bottom-width </p>
+<p>​    border-left-width</p>
+<p>高度：</p>
+<p>​    height:数值|auto</p>
+<p>颜色：</p>
+<p>​    border-color:数值 数值 数值 数值；　数值：分别代表top、right、bottom、left颜色值</p>
+<p>风格： </p>
+<p>​    border-style:none|hidden|inherit|dashed|solid|double|inset|outset|ridge|groove</p>
+<p>漂浮：</p>
+<p>​    float:left|right|none</p>
+<p>​    通常默认的排版方式，将页面的元素从上到下一一罗列，而实际开发中，需要左右方式进行排版，所以需要使用到浮动属性：float</p>
+<p>格式： 选择器{float：属性值；}</p>
+<p>常用属性值：none：元素不浮动（默认值）</p>
+<p>​    left：元素向左浮动</p>
+<p>​    right：元素向右浮动</p>
+<p>因为元素设置浮动属性后，会脱离原有文档流（会脱离原有的板式），从而会影响其他元素的样式，所以设置浮动以后，页面样式需要重新调整。</p>
+<p>清除：规定元素的哪一侧不允许其他浮动元素</p>
+<p>​    clear:none|left|right|both</p>
+<p>注：这个规则只能影响使用清除的元素本身，不能影响其他元素。这个元素与float对应</p>
+<p>外边距，边界留白：HTML元素边框到其他元素边框的距离</p>
+<p>​    margin-top:10px; 上边界</p>
+<p>​    margin-right:10px; 右边界值</p>
+<p>​    margin-bottom:10px; 下边界值</p>
+<p>​    margin-left:10px; 左边界值</p>
+<p>通用性设置：margin: 10px;</p>
+<p>内边距，补白：HTML元素里的内容体到HTML元素边框的距离</p>
+<p>​    padding-top:10px; 上边框留空白</p>
+<p>​    padding-right:10px; 右边框留空白</p>
+<p>​    padding-bottom:10px; 下边框留空白</p>
+<p>​    padding-left:10px; 左边框留空白</p>
+<p>通用性设置：padding: 10px;</p>
+<h2 id="边框属性：-Border"><a href="#边框属性：-Border" class="headerlink" title="边框属性： (Border)"></a>边框属性： (Border)</h2><p>所有的HTML标签都有边框，默认边框不可见</p>
+<p>简写：    格式：宽度 样式 颜色</p>
+<p>​    border：width style color; </p>
+<p>​    border-top : 1px solid #6699cc; 上框线</p>
+<p>​    border-bottom : 1px solid #6699cc; 下框线</p>
+<p>​    border-left : 1px solid #6699cc; 左框线</p>
+<p>​    border-right : 1px solid #6699cc; 右框线</p>
+<p>也可以使用常规的方式 如下:</p>
+<p>​    border-top-color : #369 设置上框线top颜色</p>
+<p>​    border-top-width :1px设置上框线top宽度</p>
+<p>​    border-top-style : solid设置上框线top样式</p>
+<p>其他框线样式：</p>
+<p>​    solid 实线框</p>
+<p>​    dotted 虚线框（点线）</p>
+<p>​    double 双线框</p>
+<p>​    groove 立体内凸框 (槽线)</p>
+<p>​    ridge 立体浮雕框 (脊状)</p>
+<p>​    inset 凹框</p>
+<p>​    outset 凸框</p>
+<p>width：边框的宽度</p>
+<p>height：边框的高度（只是边框，不是字体）</p>
+<h2 id="列表属性：-List-style"><a href="#列表属性：-List-style" class="headerlink" title="列表属性： (List-style)"></a>列表属性： (List-style)</h2><p>符号列表： disc|circle|square|decimal|lower-roman|upper-roman|lower-alpha|upper-alpha|none</p>
+<p>​    list-style-type:none; 不编号</p>
+<p>​    list-style-type:decimal; 阿拉伯数字</p>
+<p>​    list-style-type:lower-roman; 小写罗马数字</p>
+<p>​    list-style-type:upper-roman; 大写罗马数字</p>
+<p>​    list-style-type:lower-alpha; 小写英文字母</p>
+<p>​    list-style-type:upper-alpha; 大写英文字母</p>
+<p>​    list-style-type:disc; 实心圆形符号</p>
+<p>​    list-style-type:circle; 空心圆形符号</p>
+<p>​    list-style-type:square; 实心方形符</p>
+<p>图像：</p>
+<p>​    list-style-image:url(/dot.gif); 图片式符号</p>
+<p>位置：</p>
+<p>​    list-style-position: outside; 凸排</p>
+<p>​    list-style-position:inside; 缩进</p>
+<h2 id="定位属性：-Position"><a href="#定位属性：-Position" class="headerlink" title="定位属性： (Position)"></a>定位属性： (Position)</h2><p>这个属性定义建立元素布局所用的定位机制。任何元素都可以定位，不过绝对或固定元素会生成一个块级框，而不论该元素本身是什么类型。相对定位元素会相对于它在正常流中的默认位置偏移。</p>
+<p>​    position: absolute;   生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。</p>
+<p>​    position: fixed;  生成绝对定位的元素，相对于浏览器窗口进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定</p>
+<p>​    position:relative; 生成相对定位的元素，相对于其正常位置进行定位。因此，”left:20” 会向元素的 LEFT 位置添加 20 像素</p>
+<p>​    position:static; 默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）</p>
+<p>​    position:inherit;规定应该从父元素继承 position 属性的值</p>
+<p>​        Z-index仅能在定位元素上奏效，可被用于将在一个元素放置于另一元素之后,拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。</p>
+<h2 id="连接属性：（a）"><a href="#连接属性：（a）" class="headerlink" title="连接属性：（a）"></a>连接属性：（a）</h2><p>a /<em>所有超链接</em>/</p>
+<p>​    a:link 超链接文字格式</p>
+<p>​    a:visited 浏览过的链接文字格式</p>
+<p>​    a:active 按下链接的格式</p>
+<p>​    a:hover 鼠标转到链接</p>
+<p>鼠标光标样式： hand|crosshair|text|wait|move|help|e-resize|nw-resize|w-resize|s-resize|se-resize|sw-resize</p>
+<p>​    链接手指 cursor: hand</p>
+<p>​    十字体 cursor:crosshair</p>
+<p>​    箭头朝下 cursor:s-resize</p>
+<p>​    十字箭头 cursor:move</p>
+<p>​    箭头朝右 cursor:move</p>
+<p>​    加一问号 cursor:help</p>
+<p>​    箭头朝左 cursor:w-resize</p>
+<p>​    箭头朝上 cursor:n-resize</p>
+<p>​    箭头朝右上 cursor:ne-resize</p>
+<p>​    箭头朝左上 cursor:nw-resize</p>
+<p>​    文字I型 cursor:text</p>
+<p>​    箭头斜右下 cursor:se-resize</p>
+<p>​    箭头斜左下 cursor:sw-resize</p>
+<p>​    漏斗 cursor:wait</p>
+<p>​    光标图案(IE6) p {cursor:url(“光标文件名.cur”),text;}</p>
+<h2 id="表单属性"><a href="#表单属性" class="headerlink" title="表单属性"></a>表单属性</h2><p>文字方块</p>
+<p>按钮</p>
+<p>复选框</p>
+<p>选择钮</p>
+<p>多行文字方块</p>
+<p>下拉式菜单 选项1选项2</p>
+<h2 id="伪元素-after和-before"><a href="#伪元素-after和-before" class="headerlink" title="伪元素::after和::before"></a>伪元素::after和::before</h2><p>::before和::after匹配一个虚拟元素，主要被用于为当前元素增加装饰性内容的。它显示的内容是其自身的“<code>content</code>”属性，默认是内联元素。</p>
+<h2 id="兼容问题"><a href="#兼容问题" class="headerlink" title="兼容问题"></a>兼容问题</h2><p>!important：</p>
+<p>​    CSS中的!important一般都是用于对低版本的除了iE 6 ，用来做hack的，后面缀上了!important的css语句，让浏览器首选执行这个语句，因为css有继承的样式，加上!importanrt可以覆盖父级的样式。 IE6不认识它的，IE7和别的浏览器中可以用，用来处理浏览器的兼容性。</p>
+<p>一、IE边框若显若无，须注意，定是高度设置已忘记；<br>二、浮动产生有缘故，若要父层包含住，紧跟浮动要清除，容器自然显其中；<br>三、三像素文本慢移不必慌，高度设置帮你忙；<br>四、兼容各个浏览须注意，默认设置行高可能是隐患；<br>五、独立清除浮动须铭记，行高设无，高设零，设计效果兼浏览；<br>六、学布局须思路，路随布局原理自然直，轻松驾驭html，流水布局少hack，代码清爽，兼容好，友好引擎喜欢迎。<br>七、所有标签皆有源，只是默认各不同，span是无极，无极生两仪—内联和块级，img较特殊，但也遵法理，其他只是改造各不同，一个*号全归原，层叠样式理须多练习，万物皆规律。<br>八、图片链接排版须小心，图片链接文字链接若对齐，padding和vertical-align:middle要设定，虽差微细倒无妨。<br>九、IE浮动双边距，请用display：inline拘。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/05/%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BCSS/" data-id="ckn5ydxhe000us0wd6dyp4gf7" data-title="网页前端之CSS" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/04/05/%E5%89%8D%E7%AB%AF%E6%A6%82%E8%BF%B0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          前端概述
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/04/03/%E5%B0%8F%E7%9F%A5%E8%AF%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">小知识</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/05/%E5%89%8D%E7%AB%AF%E6%A6%82%E8%BF%B0/">前端概述</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/05/%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BCSS/">网页前端之CSS</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/03/%E5%B0%8F%E7%9F%A5%E8%AF%86/">小知识</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/03/%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BHTML/">网页前端之HTML</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/30/ngnix%E9%85%8D%E7%BD%AE/">ngnix配置</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 swx<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
