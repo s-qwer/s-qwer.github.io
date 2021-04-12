@@ -17,7 +17,7 @@
 <meta property="og:image" content="c:/Users/swx/AppData/Roaming/Typora/typora-user-images/image-20210319152742280.png">
 <meta property="og:image" content="c:/Users/swx/AppData/Roaming/Typora/typora-user-images/image-20210319153759391.png">
 <meta property="article:published_time" content="2021-03-18T06:44:44.000Z">
-<meta property="article:modified_time" content="2021-04-01T01:41:45.515Z">
+<meta property="article:modified_time" content="2021-04-12T16:02:42.323Z">
 <meta property="article:author" content="swx">
 <meta property="article:tag" content="hexo">
 <meta property="article:tag" content="git">
@@ -172,7 +172,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br><span class="line"></span><br><span class="line">hexo clean      #清除了之前生成的东西，也可以不加,相当于把public这个文件夹删除了</span><br><span class="line">hexo generate   #生成静态文章，可以用 hexo g缩写</span><br><span class="line">hexo deploy     #部署文章，可以用hexo d缩写 </span><br><span class="line"><span class="meta">#</span><span class="bash">注意deploy时可能要你输入username和password，这是一个很痛苦的过程，每次都需要输入用户名/密码，可以在网上找解决方式。最后我找了一种用git而不是https的方式。repo：git@github.com:s-qwer/s-qwer.github.io.git</span></span><br></pre></td></tr></table></figure>
 
 <p>现在就可以在<code>http://yourname.github.io</code> 这个网站看到自己的博客</p>
-<h3 id="7-设置个人域名"><a href="#7-设置个人域名" class="headerlink" title="7.设置个人域名"></a>7.设置个人域名</h3><p>​    域名这个东西相当于是一个网址的后缀名。你可以在网址名里天花乱坠，但最后都是需要一个域名的，常见的有.com,.cn,.org你可以在域名查询系统里查询这个域名是否可用，像一些比较火的域名，可能被人先注册的，你如果需要使用也是需要花钱的。也可以在网上找一些免费的域名。这个东西也只是作为一个标识，本质上还是指向了你的GitHub的仓库里的那个项目的文件。</p>
+<h3 id="7-设置个人域名"><a href="#7-设置个人域名" class="headerlink" title="7.设置个人域名"></a>7.设置个人域名</h3><p>​    域名这个东西相当于是一个网址的后缀名。域名是从后往前算的，依次是一级二级。。。常见的一级域名有.com,.cn,.org你可以在域名查询系统里查询这个域名是否可用，像一些比较火的域名，可能被人先注册的，你如果需要使用就需要花钱。也可以在网上找一些免费的域名。这个东西也只是作为一个标识，本质上还是指向了你的GitHub的仓库里的那个项目的文件。</p>
 <p>现在你的个人网站的地址是 yourname.github.io，如果觉得这个网址不太彳亍，就需要你设置个人域名了。</p>
 <p>在你的域名控制台中点解析，添加解析。192.30.252.153 和 192.30.252.154 是GitHub的服务器地址。注意，解析线路选择默认。</p>
 <p>登录GitHub，进入之前创建的仓库，点击settings，设置Custom domain，输入你的域名</p>
@@ -181,7 +181,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d    #后两个命令也可以合并为 hexo d -g    hexo g -d  效果是一样的</span><br></pre></td></tr></table></figure>
 
 <h3 id="8-发布文章"><a href="#8-发布文章" class="headerlink" title="8.发布文章"></a>8.发布文章</h3><p>接下来就可以正式开始写文章并发布。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hexo new newpapername      #这里的newpapername就是你要写的文章的标题名</span><br><span class="line"><span class="meta">#</span><span class="bash">然后在<span class="built_in">source</span>/_post中就会生成一个md文件 打开这个markdown文件，就可以开始编辑写自己的文章了。当你写完的时候，再</span></span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line"><span class="meta">#</span><span class="bash">接下来就可以在你设置好的域名访问到你的博客了</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hexo new newpapername      #这里的newpapername就是你要写的文章的标题名，可以是中文，英文</span><br><span class="line"><span class="meta">#</span><span class="bash">然后在<span class="built_in">source</span>/_post中就会生成一个md文件 打开这个markdown文件，就可以开始编辑写自己的文章了。当你写完的时候，再</span></span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line"><span class="meta">#</span><span class="bash">接下来就可以在你设置好的域名访问到你的博客了</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="9-Front-matter"><a href="#9-Front-matter" class="headerlink" title="9.Front-matter"></a>9.Front-matter</h3><p>Front-matter 是文件最上方以 <code>---</code> 分隔的区域，用于指定个别文件的变量：</p>
 <table>
@@ -256,12 +256,13 @@
 <p>draft<br>draft是草稿的意思，也就是你如果想写文章，又不希望被看到，那么可以<code>hexo new draft newpage</code>  这样会在source/_draft中新建一个newpage.md文件，如果你的草稿文件写的过程中，想要预览一下，那么可以使用<code>hexo server --draft</code>  在本地端口中开启服务预览。</p>
 <p>如果你的草稿文件写完了，想要发表到post中，<code>hexo publish draft newpage</code>  就会自动把newpage.md发送到post中。</p>
 <h3 id="10-更换主题"><a href="#10-更换主题" class="headerlink" title="10.更换主题"></a>10.更换主题</h3><p>可以在<a target="_blank" rel="noopener" href="https://hexo.io/themes/">主题网站</a>上探索你喜欢的主题，然后点击主题的名字，会直接跳转到GitHub上，直接下载下来，然后放到theme文件夹下就行了，（也可以使用git bash命令： <code>git clone 跳转的网址地址</code>，这样会在theme文件夹下自动生成相应的文件夹）然后再在刚才说的配置文件中把theme换成那个主题文件夹的名字，它就会自动在theme文件夹中搜索你配置的主题。</p>
-<p>而后进入你下载好的主题文件夹，可以看到里面也有一个配置文件_config.xml，貌似它默认是_config.xml.example，把它复制一份，重命名为_config.xml就可以了。这个配置文件是修改你整个主题的配置文件。</p>
+<p>而后进入你下载好的主题文件夹，可以看到里面也有一个配置文件config.xml，貌似它默认是config.xml.example，把它复制一份，重命名为_config.xml就可以了。这个配置文件是修改你整个主题的配置文件。</p>
 <h3 id="11-遇到的坑"><a href="#11-遇到的坑" class="headerlink" title="11.遇到的坑"></a>11.遇到的坑</h3><p>​    严格按照步骤进行的操作，可以直接访问到了自己的博客网址。记录下自己遇到的坑：</p>
 <p>​    1.因为没有按照说明输入自己的用户名作为博客的网址，从而一直报错，所以按照教程步骤一步一步来复现还是很有必要的。    </p>
 <p>​    2.上传的第一篇文章的标题格式没有搞对，于是删除了本地的文件，重新加了title：+文章名字 之后上传就开始一直报错，这期间我不断进行：hexo clean 、hexo d -g的循环操作，而且需要一直输入用户名密码，被折磨了很多次之后，查了相关教程，发现hexo s可以本地预生成，访问localhost：4000可以访问，然后继续进行clean和g -d的循环操作，还是一直出错。最后看了一篇关于简化不用输入那么多次密码的方法教学，把rep里的https改为了git@之后，提交，部署一气呵成。nice！所以有的教程里面推荐rep写https也有的是直接写git格式，原理都是一样的，用的协议不一样，个人感觉git格式更方便一些，同样也是可以连接到仓库的地址。</p>
 <p>​    3.因为修改时，有些配置没有起作用，这里还有个坑，就是相关的配置<code>：</code>后面必须有一个空格！</p>
 <p>​    4.<code>数据类型[][]  数组名=new  数据类型[][]&#123;&#123; 元素1，元素2，.... &#125;, &#123; 元素1，元素2，.... &#125;, &#123; 元素1，元素2，.... &#125;&#125;;</code> 这个字段hexo d -g 的时候一直报错：expected name as lookup value, got .   改为：<code>数据类型[][]  数组名=new  数据类型[][]&#123;&#123; 元素1,元素2... &#125;, &#123; 元素1,元素2... &#125;, &#123; 元素1,元素2... &#125;&#125;;</code> 仍然报错： expected variable end  （应为变量结尾）改为：<code>数据类型[] []  数组名=new  数据类型[] []&#123;&#123; 元素1,元素2...元素n &#125;, &#123; 元素1,元素2... 元素n&#125;, &#123; 元素1,元素2...元素n &#125; &#125; ;</code>放弃了，加了个引用就不报错了。</p>
+<p>​    5.卸载了node，重新安装npm之后，hexo命令找不到。重新安装了一下hexo，可以正常提交了。</p>
 <h2 id="hexo的完善"><a href="#hexo的完善" class="headerlink" title="hexo的完善"></a>hexo的完善</h2><h3 id="图片显示问题"><a href="#图片显示问题" class="headerlink" title="图片显示问题"></a>图片显示问题</h3><p>​    将文章<code>hexo d -g</code>之后去网站上查看，发现图片都无法显示。</p>
 <h3 id="换电脑-重装系统"><a href="#换电脑-重装系统" class="headerlink" title="换电脑/重装系统"></a>换电脑/重装系统</h3><p>​    如果准备换电脑或者重装系统，那么我们的md文件和相关配置怎么保存或者重新设置呢。</p>
 <p>​    以上，就是搭建的全过程了，借鉴了很多文章，很多内容都是复制粘贴下来的，为了给自己以后再次搭建时一个步骤说明。这些只是一些基础的功能，保证了自己写的文章可以被保存在服务器上。hexo还有很多功能我目前没有用到，包括一些互动功能，git分支，国内外分流，SEO等。以后用到了再去查查相关资料完善吧。</p>
@@ -269,7 +270,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/18/2.hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" data-id="ckn5ydxgy0001s0wd7ztvb73j" data-title="搭建hexo用来写博客" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/03/18/2.hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" data-id="cknesbv88000pggwd3beu69yn" data-title="搭建hexo用来写博客" class="article-share-link">分享</a>
       
       
       
@@ -281,7 +282,7 @@
     
 <nav id="article-nav">
   
-    <a href="/2021/03/19/3.%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/03/19/3.%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E6%B1%87%E6%80%BB/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前一篇</strong>
       <div class="article-nav-title">
         
@@ -291,7 +292,7 @@
     </a>
   
   
-    <a href="/2021/03/17/1.%E8%B5%B7%E7%82%B9/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/03/17/1.1.%E8%B5%B7%E7%82%B9/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">后一篇</strong>
       <div class="article-nav-title">起点</div>
     </a>
@@ -313,7 +314,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li></ul>
     </div>
   </div>
 
@@ -323,7 +324,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 10px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a>
     </div>
   </div>
 
@@ -345,23 +346,23 @@
       <ul>
         
           <li>
-            <a href="/2021/04/05/%E5%89%8D%E7%AB%AF%E6%A6%82%E8%BF%B0/">前端概述</a>
+            <a href="/2021/04/12/19.1.Gitee/">Gitee</a>
           </li>
         
           <li>
-            <a href="/2021/04/05/%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BCSS/">网页前端之CSS</a>
+            <a href="/2021/04/11/10.5.%E9%A1%B9%E7%9B%AE%E6%8F%90%E4%BA%A4/">项目提交</a>
           </li>
         
           <li>
-            <a href="/2021/04/03/%E5%B0%8F%E7%9F%A5%E8%AF%86/">小知识</a>
+            <a href="/2021/04/10/1.4.%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8%E6%90%9C%E7%B4%A2/">正确使用搜索</a>
           </li>
         
           <li>
-            <a href="/2021/04/03/%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BHTML/">网页前端之HTML</a>
+            <a href="/2021/04/07/%E9%A1%B9%E7%9B%AE%E5%A4%96%E5%8C%85/">项目外包</a>
           </li>
         
           <li>
-            <a href="/2021/03/30/ngnix%E9%85%8D%E7%BD%AE/">ngnix配置</a>
+            <a href="/2021/04/07/7.Tomcat/">Tomcat</a>
           </li>
         
       </ul>

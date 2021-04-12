@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>mybatis | swx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="框架一般都是有配置文件的，看官网文档最好。 Mybatis的学习：https:&#x2F;&#x2F;mybatis.org&#x2F;mybatis-3&#x2F;zh&#x2F;getting-started.html 一、简介 \1. 基础：JDBC&#x2F;Mysql&#x2F;java基础&#x2F;Maven&#x2F;Junit \2. 本来是aoache的一个开源项目ibatis，现在存于github MyBatis 是一款优秀的*持久层框架* 它支持自定义 SQL、">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mybatis">
+<meta property="og:url" content="https://s-qwer.github.io/2021/04/07/13.1.mybatis/index.html">
+<meta property="og:site_name" content="swx">
+<meta property="og:description" content="框架一般都是有配置文件的，看官网文档最好。 Mybatis的学习：https:&#x2F;&#x2F;mybatis.org&#x2F;mybatis-3&#x2F;zh&#x2F;getting-started.html 一、简介 \1. 基础：JDBC&#x2F;Mysql&#x2F;java基础&#x2F;Maven&#x2F;Junit \2. 本来是aoache的一个开源项目ibatis，现在存于github MyBatis 是一款优秀的*持久层框架* 它支持自定义 SQL、">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-07T11:42:08.000Z">
+<meta property="article:modified_time" content="2021-04-07T12:02:36.412Z">
+<meta property="article:author" content="swx">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="swx" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swx</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://s-qwer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-13.1.mybatis" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/07/13.1.mybatis/" class="article-date">
+  <time class="dt-published" datetime="2021-04-07T11:42:08.000Z" itemprop="datePublished">2021-04-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      mybatis
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>框架一般都是有配置文件的，看官网文档最好。</p>
+<p>Mybatis的学习：<a target="_blank" rel="noopener" href="https://mybatis.org/mybatis-3/zh/getting-started.html">https://mybatis.org/mybatis-3/zh/getting-started.html</a></p>
+<p>一、简介</p>
+<p>\1. 基础：JDBC/Mysql/java基础/Maven/Junit</p>
+<p>\2. 本来是aoache的一个开源项目ibatis，现在存于github</p>
+<p>MyBatis 是一款优秀的<em><strong>*持久层框架*</strong></em></p>
+<p>它支持自定义 SQL、存储过程以及高级映射</p>
+<p>MyBatis 免除了几乎所有的 JDBC 代码以及设置参数和获取结果集的工作</p>
+<p>MyBatis 可以通过简单的 XML 或注解来配置和映射原始类型、接口和 Java POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。</p>
+<p>\3. maven仓库下载/github下载</p>
+<p>\4. 持久化</p>
+<p>数据持久化：持久化就是将程序的数据在持久状态和瞬时状态转化的过程</p>
+<p>内存：断电即失、价格昂贵，因为有一些对象不能丢掉，所以需要持久化。</p>
+<p>持久化：数据库（JDBC）、io文件持久化</p>
+<p>\5. 持久层</p>
+<p>Dao层/Service层/Controller层</p>
+<p>完成持久化工作的代码，层界限十分明显。</p>
+<p>\6. MyBatis的存在意义：</p>
+<p>方便，更容易上手，灵活</p>
+<p>传统的JDBC代码太复杂，需要简化。Mybatis是一个框架，可以自动化生成</p>
+<p>将数据存入到数据库中，sql和代码分离，提高了可维护性；提供映射标签，支持对象和数据库的orm字段关系对应；提供对象关系映射标签，支持对象关系组件维护；提供xml标签，支持编写sql。</p>
+<p>二、写一个程序</p>
+<p>思路：搭建环境–导入mybatis–编写代码–测试</p>
+<p>1.mysql中创建数据库资源</p>
+<p>2.idea中新建一个普通的maven项目</p>
+<p>3.删除src目录（以后只需要在父工程下创建module就会继承父工程的所有maven依赖）</p>
+<p>4.导入maven依赖：mysql/mybatis/junit</p>
+<p>5.创建一个新的module。</p>
+<p>（每个基于 MyBatis 的应用都是以一个 SqlSessionFactory 的实例为核心的。SqlSessionFactory 的实例可以通过 SqlSessionFactoryBuilder 获得。而 SqlSessionFactoryBuilder 则可以从 XML 配置文件或一个预先配置的 Configuration 实例来构建出 SqlSessionFactory 实例。有了 SqlSessionFactory，我们可以从中获得 SqlSession 的实例。SqlSession 提供了在数据库执行 SQL 命令所需的所有方法。可以通过 SqlSession 实例来直接执行已映射的 SQL 语句。）</p>
+<p>在新module下的resource下新建一个xml配置文件，在官网上找到相关的配置复制进去，environments中可以配置多个环境。配置的url可以连接到数据库中查找，？后可以添加相关的配置，&amp;需要用&amp;；转义。（中间不要加中文注释）    </p>
+<p>也可以不使用 XML 构建 SqlSessionFactory</p>
+<p>6.创建一个utils工具类（查看官方文档有具体方法）</p>
+<p>静态初始化模块sqlSessionFactory，静态方法得到SqlSession</p>
+<p>\7. 编写代码：</p>
+<p>以前：实体类pojo/Dao接口/接口实现类</p>
+<p>现在：接口实现类由原来的UserDaoImpl转变为一个Mapper配置文件</p>
+<p>\8. 测试：</p>
+<p>可能存在的错误：</p>
+<p>在MapperRegistry中，类型接口是未知的（每一个Mapper.xml都需要在Mybatis核心配置文件中注册，这里的路径是/  不能是.）</p>
+<p>在maven的pom.xml中Build中配置resources，防止我们的资源导出失败的问题</p>
+<p>绑定的接口错误：namespace中的包名要和Dao/Mapper接口中的名字一致（必须要用.  不能用/）</p>
+<p>方法名不对：id就是对应namespace中的方法名</p>
+<p>返回类型不对：resultType是sql语句执行的返回值</p>
+<p>参数类型：parameterType</p>
+<p>标签不要匹配错误</p>
+<p>NullPointerException空指针异常是因为sqlSessionFactory搞了两个</p>
+<p>输出的xml文件中存在乱码问题：设置为UTF-8</p>
+<p>最后用junit测试</p>
+<p>三、CRUD</p>
+<p>#{} 相当于是占位符   全限定名 别名</p>
+<p>增删改需要提交事务：sqlSession.commit();</p>
+<p>参数为int可以不用写</p>
+<p>当报错的时候，读错要从后往前读</p>
+<p>万能的Map：如果实体类中的属性有很多个，或者数据库的表/字段/参数过多时，可能直接传对象的属性不现实。所以可以使用map随意制造参数，通过键值对来传递（相当于是再new一个map，然后put参数，参数值，调用时候直接传map。会自动获取map参数对应的而参数值）。</p>
+<p>Map传递参数，直接再sql中取出key即可。parameterType=“map”</p>
+<p>对象传递参数，直接再sql中取对象的属性即可。parameterType=“object”</p>
+<p>只有一个基本类型参数的情况下，可以直接再sql中取到。</p>
+<p>多个参数可以用map，也可以用注解。</p>
+<p>模糊查询：拼接参数的时候，防止sql注入的问题</p>
+<p>1.java代码执行的时候，#{value} 参数中传递通配符 %*%</p>
+<p>2.在sql拼接中使用通配符“%”+#{value}+“%”</p>
+<p>四、配置解析</p>
+<p>1.核心配置文件</p>
+<p>Mybatis-config.xml（官方建议取这个名字）</p>
+<p>configuration（配置）</p>
+<p><a href="#properties">properties（属性）</a></p>
+<p><a href="#settings">settings（设置）</a></p>
+<p><a href="#typeAliases">typeAliases（类型别名）</a></p>
+<p><a href="#typeHandlers">typeHandlers（类型处理器）</a></p>
+<p><a href="#objectFactory">objectFactory（对象工厂）</a></p>
+<p><a href="#plugins">plugins（插件）</a></p>
+<p><a href="#environments">environments（环境配置）</a></p>
+<p>environment（环境变量）</p>
+<p>T    ransactionManager（事务管理器）</p>
+<p>dataSource（数据源）</p>
+<p><a href="#databaseIdProvider">databaseIdProvider（数据库厂商标识）</a></p>
+<p><a href="#mappers">mappers（映射器）</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/07/13.1.mybatis/" data-id="cknesbv86000jggwd64o3dwpy" data-title="mybatis" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/04/07/20.%E6%B5%8B%E8%AF%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          测试
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/04/07/12.1.spring/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">spring</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 10px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/12/19.1.Gitee/">Gitee</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/11/10.5.%E9%A1%B9%E7%9B%AE%E6%8F%90%E4%BA%A4/">项目提交</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/10/1.4.%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8%E6%90%9C%E7%B4%A2/">正确使用搜索</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/07/%E9%A1%B9%E7%9B%AE%E5%A4%96%E5%8C%85/">项目外包</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/07/7.Tomcat/">Tomcat</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 swx<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

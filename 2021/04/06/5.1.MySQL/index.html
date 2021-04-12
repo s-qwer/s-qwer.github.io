@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>MySQL | swx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="索引索引，类似书籍的目录，可以根据目录的某个页码立即找到对应的内容。 索引的优点：1. 天生排序。2. 快速查找。索引的缺点：1. 占用空间。2. 降低更新表的速度。 注意点：小表使用全表扫描更快，中大表才使用索引。超级大表索引基本无效。 索引从实现上说，分成 2 种：聚集索引和辅助索引（也叫二级索引或者非聚集索引） 从功能上说，分为 6 种：普通索引，唯一索引，主键索引，复合索引，外键索引，全文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL">
+<meta property="og:url" content="https://s-qwer.github.io/2021/04/06/5.1.MySQL/index.html">
+<meta property="og:site_name" content="swx">
+<meta property="og:description" content="索引索引，类似书籍的目录，可以根据目录的某个页码立即找到对应的内容。 索引的优点：1. 天生排序。2. 快速查找。索引的缺点：1. 占用空间。2. 降低更新表的速度。 注意点：小表使用全表扫描更快，中大表才使用索引。超级大表索引基本无效。 索引从实现上说，分成 2 种：聚集索引和辅助索引（也叫二级索引或者非聚集索引） 从功能上说，分为 6 种：普通索引，唯一索引，主键索引，复合索引，外键索引，全文">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-05f597852f53aef1e74cc2f5b5ba4d10_720w.png">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-b5a1c7f34e65044a08cdb213f55295fd_720w.png">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-38209d49a486354414b2358f2e88558a_720w.png">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-1917d61efc5d3ab35029004d3eae7dc8_720w.png">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-e4a89f7012dd6511edd7d970ffd0f659_720w.png">
+<meta property="article:published_time" content="2021-04-06T11:43:51.000Z">
+<meta property="article:modified_time" content="2021-04-07T08:46:49.075Z">
+<meta property="article:author" content="swx">
+<meta property="article:tag" content="mysql">
+<meta property="article:tag" content="索引">
+<meta property="article:tag" content="锁">
+<meta property="article:tag" content="事务">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic1.zhimg.com/80/v2-05f597852f53aef1e74cc2f5b5ba4d10_720w.png">
+  
+    <link rel="alternate" href="/atom.xml" title="swx" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swx</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://s-qwer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-5.1.MySQL" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/06/5.1.MySQL/" class="article-date">
+  <time class="dt-published" datetime="2021-04-06T11:43:51.000Z" itemprop="datePublished">2021-04-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      MySQL
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><p>索引，类似书籍的目录，可以根据目录的某个页码立即找到对应的内容。</p>
+<p>索引的优点：1. 天生排序。2. 快速查找。<br>索引的缺点：1. 占用空间。2. 降低更新表的速度。</p>
+<p>注意点：小表使用全表扫描更快，中大表才使用索引。超级大表索引基本无效。</p>
+<p>索引从实现上说，分成 2 种：聚集索引和辅助索引（也叫二级索引或者非聚集索引）</p>
+<p>从功能上说，分为 6 种：普通索引，唯一索引，主键索引，复合索引，外键索引，全文索引。</p>
+<p>详细说说 6 种索引：</p>
+<p>1、普通索引：最基本的索引，没有任何约束。<br>2、唯一索引：与普通索引类似，但具有唯一性约束。<br>3、主键索引：<strong>特殊的唯一索引，不允许有空值</strong>。<br>4、复合索引：将多个列组合在一起创建索引，可以覆盖多个列。<br>5、外键索引：只有InnoDB类型的表才可以使用外键索引，保证数据的一致性、完整性和实现级联操作。<br>6、全文索引：MySQL 自带的全文索引只能用于 InnoDB、MyISAM ，并且只能对英文进行全文检索，一般使用全文索引引擎（ES，Solr）。</p>
+<ul>
+<li><code>注意：主键就是唯一索引，但是唯一索引不一定是主键，唯一索引可以为空，但是空值只能有一个，主键不能为空。</code></li>
+</ul>
+<p>另外，InnoDB 通过主键聚簇数据，如果没有定义主键且没有定义聚集索引， MySql 会选择一个唯一的非空索引代替，如果没有这样的索引，会隐式定义个 6 字节的主键作为聚簇索引，用户不能查看或访问。</p>
+<p>简单点说：</p>
+<ol>
+<li>设置主键时，会自动生成一个唯一索引，如果<strong>之前</strong>没有聚集索引，那么主键就是聚集索引。</li>
+<li>没有设置主键时，会选择一个不为空的唯一索引作为聚集索引，如果还没有，那就生成一个隐式的 6 字节的索引。</li>
+</ol>
+<p>MySql 将数据按照页来存储，默认一页为 16kb，当你在查询时，不会只加载某一条数据，而是将这个数据所在的页都加载到 pageCache 中，这个其实和 OS 的就近访问原理类似。</p>
+<p>MySql 的索引使用 B+ 树结构。在说 B+ 树之前，先说说 B 树，B 树是一个多路平衡查找树，相较于普通的二叉树，不会发生极度不平衡的状况，同时也是多路的。</p>
+<p>B 树的特点是：他会将数据也保存在非页子节点。</p>
+<p>看图可知：</p>
+<p><img src="https://pic1.zhimg.com/80/v2-05f597852f53aef1e74cc2f5b5ba4d10_720w.png" alt="img"></p>
+<p>而这个特点会导致非页子节点不能存储大量的索引。</p>
+<p>而 B+ Tree 就是针对这个对 B tree 做了优化。如下图所示：</p>
+<p><img src="https://pic2.zhimg.com/80/v2-b5a1c7f34e65044a08cdb213f55295fd_720w.png" alt="img"></p>
+<p>我们看到，B+ Tree 将所有的 data 数据都保存到了叶子节点中，非也子节点只保存索引和指针。</p>
+<p>我们假设一个非页子节点是 16kb，每个索引，即主键是 bigint，即 8b，指针为 8b。那么每页能存储大约 1000 个索引（16kb/ 8b + 8b）.</p>
+<p>而一颗 3 层的 B+树能够存储多少索引呢？如下图：</p>
+<p><img src="https://pic3.zhimg.com/80/v2-38209d49a486354414b2358f2e88558a_720w.png" alt="img"></p>
+<p>大约能够存储 10 亿个索引。通常 B+ 树的高度在 2-4 层，由于 MySql 在运行时，根节点是常驻内存的，因此每次查找只需要大约 2 -3 次 IO。可以说，B+ 树的设计，就是根据机械磁盘的特性来进行设计的。</p>
+<p>知道了索引的设计，我们能够知道另外一些信息：</p>
+<ol>
+<li>MySql 的主键不能太大，如果使用 UUID 这种，将会浪费 B+ 树的非叶子节点。</li>
+<li>MySql 的主键最好是自增的，如果使用 UUID 这种，每次插入都会调整 B+树，从而导致页分裂，严重影响性能。</li>
+</ol>
+<p>那么，如果项目中使用了分库分表，我们通常都会需要一个主键进行 sharding，那怎么办呢？在实现上，我们可以保留自增主键，而逻辑主键用来作为唯一索引即可。</p>
+<h1 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h1><h3 id="2-锁机制"><a href="#2-锁机制" class="headerlink" title="2. 锁机制"></a>2. 锁机制</h3><p>关于 Mysql 的锁，各种概念就会喷涌而出，事实上，锁有好几种维度，我们来解释一下。</p>
+<h3 id="1-类型维度"><a href="#1-类型维度" class="headerlink" title="1. 类型维度"></a>1. 类型维度</h3><ul>
+<li><p>共享锁（读锁 / S 锁）</p>
+</li>
+<li><p>排它锁（写锁 / X 锁）<br>类型细分：</p>
+</li>
+<li><ul>
+<li>意向共享锁</li>
+<li>意向排他（互斥）锁</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>悲观锁（使用锁，即 for update）</li>
+<li>乐观锁（使用版本号字段，类似 CAS 机制，即用户自己控制。缺点：并发很高的时候，多了很多无用的重试）</li>
+</ul>
+<h3 id="2-锁的粒度（粒度维度）"><a href="#2-锁的粒度（粒度维度）" class="headerlink" title="2. 锁的粒度（粒度维度）"></a>2. 锁的粒度（粒度维度）</h3><ul>
+<li>表锁</li>
+<li>页锁（Mysql BerkeleyDB 引擎）</li>
+<li>行锁（InnoDB）</li>
+</ul>
+<h3 id="3-锁的算法（算法维度）"><a href="#3-锁的算法（算法维度）" class="headerlink" title="3. 锁的算法（算法维度）"></a>3. 锁的算法（算法维度）</h3><ul>
+<li>Record Lock（单行记录）</li>
+<li>Gap Lock（间隙锁，锁定一个范围，但不包含锁定记录）</li>
+<li>Next-Key Lock（Record Lock + Gap Lock，锁定一个范围，并且锁定记录本身， MySql 防止幻读，就是使用此锁实现）</li>
+</ul>
+<h3 id="4-默认的读操作，上锁吗？"><a href="#4-默认的读操作，上锁吗？" class="headerlink" title="4. 默认的读操作，上锁吗？"></a>4. 默认的读操作，上锁吗？</h3><ul>
+<li>默认是 MVCC 机制（“一致性非锁定读”）保证 RR 级别的隔离正确性，是不上锁的。</li>
+</ul>
+<p>可以选择手动上锁：select xxxx for update (排他锁); select xxxx lock in share mode(共享锁)，称之为“一致性锁定读”。</p>
+<p>使用锁之后，就能在 RR 级别下，避免幻读。当然，默认的 MVCC 读，也能避免幻读。</p>
+<p>既然 RR 能够防止幻读，那么，SERIALIZABLE 有啥用呢？</p>
+<p>防止丢失更新。例如下图：</p>
+<p><img src="https://pic1.zhimg.com/80/v2-1917d61efc5d3ab35029004d3eae7dc8_720w.png" alt="img"></p>
+<p>这个时候，我们必须使用 SERIALIZABLE 级别进行串行读取。</p>
+<p>最后，行锁的实现原理就是锁住聚集索引，如果你查询的时候，没有正确地击中索引，MySql 优化器将会抛弃行锁，使用表锁。</p>
+<h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><p>事务是数据库永恒不变的话题， ACID：原子性，一致性，隔离性，持久性。</p>
+<p>四个特性，最重要的就是一致性。而<strong>一致性</strong>由原子性，隔离性，持久性来保证。</p>
+<ul>
+<li>原子性由 Undo log 保证。Undo Log 会保存每次变更之前的记录，从而在发生错误时进行回滚。</li>
+<li>隔离性由 MVCC 和 Lock 保证。这个后面说。</li>
+<li>持久性由 Redo Log 保证。每次真正修改数据之前，都会将记录写到 Redo Log 中，只有 Redo Log 写入成功，才会真正的写入到 B+ 树中，如果提交之前断电，就可以通过 Redo Log 恢复记录。</li>
+</ul>
+<p>然后再说隔离性。</p>
+<p>隔离级别：</p>
+<ol>
+<li>未提交读（RU）</li>
+<li>已提交读（RC）</li>
+<li>可重复读（RR）</li>
+<li>串行化（serializable）</li>
+</ol>
+<p>每个级别都会解决不同的问题，通常是3 个问题：脏读，不可重复读，幻读。一张经典的图：</p>
+<p><img src="https://pic2.zhimg.com/80/v2-e4a89f7012dd6511edd7d970ffd0f659_720w.png" alt="img"></p>
+<p>这里有个注意点，关于幻读，在数据库规范里，RR 级别会导致幻读，但是，由于 Mysql 的优化，MySql 的 RR 级别不会导致幻读：在使用默认的 select 时，MySql 使用 MVCC 机制保证不会幻读；你也可以使用锁，在使用锁时，例如 for update（X 锁），lock in share mode（S 锁），MySql 会使用 Next-Key Lock 来保证不会发生幻读。前者称为快照读，后者称为当前读。</p>
+<p>原理剖析：</p>
+<ul>
+<li>RU 发生脏读的原因：RU 原理是对每个更新语句的行记录进行加锁，而不是对整个事务进行加锁，所以会发生脏读。而 RC 和 RR 会对整个事务加锁。</li>
+<li>RC 不能重复读的原因：RC 每次执行 SQL 语句都会生成一个新的 Read View，每次读到的都是不同的。而 RR 的事务从始至终都是使用同一个 Read View。</li>
+<li>RR 不会发生幻读的原因： 上面说过了。</li>
+</ul>
+<p>那 RR 和 Serializble 有什么区别呢？答：丢失更新。本文关于锁的部分已经提到。</p>
+<p>MVCC 介绍：全称多版本并发控制。</p>
+<p>innoDB 每个聚集索引都有 4 个隐藏字段，分别是主键（RowID），最近更改的事务 ID（MVCC 核心），Undo Log 的指针（隔离核心），索引删除标记（当删除时，不会立即删除，而是打标记，然后异步删除）；</p>
+<p>本质上，MVCC 就是用 Undo Log 链表实现。</p>
+<p>MVCC 的实现方式：事务以排它锁的方式修改原始数据，把修改前的数据存放于 Undo Log，通过回滚指针与数据关联，如果修改成功，什么都不做，如果修改失败，则恢复 Undo Log 中的数据。</p>
+<p>多说一句，通常我们认为 MVCC 是类似乐观锁的方式，即使用版本号，而实际上，innoDB 不是这么实现的。当然，这不影响我们使用 MySql。</p>
+<p>关于数据库时区说明</p>
+<p>2016-12-07T03:13:25.808Z:T是代表后面跟着“时间”。Z代表0时区，<br>这是UTC统一时间</p>
+<p>时间的描述：</p>
+<p>mysql数据库拥有时区设置，默认使用系统时区</p>
+<p>可通过如下语句查询当前时区</p>
+<p><code>show variables like &#39;%time_zone%&#39;;</code></p>
+<p>数据库使用系统时间CST——China Standard Time UTC+8:00 中国沿海时间(北京时间)</p>
+<p>​     UTC:国际时间</p>
+<p>​    UTC-8:伦敦时间</p>
+<p>​    UTC+8就是国际时加八小时,是东八区时间,也就是北京时间</p>
+<p>GMT，即格林尼治标准时间，也就是世界时。GMT的正午是指当太阳横穿格林尼治子午线（本初子午线）时的时间。但由于地球自转不均匀不规则，导致GMT不精确，现在已经不再作为世界标准时间使用。</p>
+<p>UTC，即协调世界时。UTC是以原子时秒长为基础，在时刻上尽量接近于GMT的一种时间计量系统。为确保UTC与GMT相差不会超过0.9秒，在有需要的情况下会在UTC内加上正或负闰秒。UTC现在作为世界标准时间使用。</p>
+<p>所以，UTC与GMT基本上等同，误差不超过0.9秒</p>
+<p>RTC，硬件时间，主板上面bios的时间</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">String dateTime = <span class="string">&quot;2019-06-27T16:00:00.000Z&quot;</span>;</span><br><span class="line"></span><br><span class="line">dateTime = dateTime .replace(<span class="string">&quot;Z&quot;</span>, <span class="string">&quot; UTC&quot;</span>); <span class="comment">//2019-06-27T16:00:00.000 UTC</span></span><br><span class="line"></span><br><span class="line">SimpleDateFormat format1 = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSS Z&quot;</span>);<span class="comment">//转换时区格式</span></span><br><span class="line">SimpleDateFormat format2 = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd&quot;</span>);</span><br><span class="line"></span><br><span class="line">Date date = format1.parse(dateTime ) || <span class="keyword">long</span> ldate = format1.parse(dateTime ).getTime();<span class="comment">//将Z时间格式转换成Date类型格式或换成毫秒</span></span><br><span class="line">String time= format2.format(date);<span class="comment">//2019-06-28</span></span><br><span class="line"></span><br><span class="line">System.out.println(time);</span><br><span class="line"></span><br><span class="line">输出：<span class="number">2019</span>-<span class="number">06</span>-<span class="number">28</span></span><br></pre></td></tr></table></figure>
+
+<p>时间类型说明</p>
+<p>datetime</p>
+<p>实际格式储存（Just stores what you have stored and retrieves the same thing which you have stored.）</p>
+<p>与时区无关（It has nothing to deal with the TIMEZONE and Conversion.）</p>
+<p>timestamp</p>
+<p>值以UTC毫秒数保存（ it stores the number of milliseconds）</p>
+<p>存储及检索时根据当前时区设置，对时间数值做转换</p>
+<p>由于timestamp与时区相关，且线上数据库时区设置为北京时间（即UTC+8:00）。因此，当数据库中使用了timestamp列，若使用不当，统一UTC格式时间改造将很可能会引入错误！</p>
+<p>关于时间查询的sql语句</p>
+<p>在项目开发过程中，自己需要查询出一定时间段内的交易。故需要在sql查询语句中加入日期时间要素，sql语句如何实现?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM lmapp.lm_bill where tx_time Between &#39;2015-12-20&#39; And &#39;2015-12-31&#39;;</span><br></pre></td></tr></table></figure>
+
+<p>查询每一天某个时间段的所有记录(例:9:00:00到21:00:00)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM 表名 </span><br><span class="line">WHERE DATE_FORMAT(create_time,&#39;%H:%i:%S&#39;)&gt;&#x3D;&#39;09:00:00&#39;</span><br><span class="line">and DATE_FORMAT(create_time,&#39;%H:%i:%S&#39;)&lt;&#x3D;&#39;21:00:00&#39; </span><br><span class="line">ORDER BY 排序字段 ASC;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>mysql 查询当天、最近一天、最近一周，本月，上一个月的数据</p>
+<p>今天<br><code>select * from 表名 where to_days(时间字段名) = to_days(now());</code></p>
+<p>昨天</p>
+<p><code>SELECT * FROM 表名 WHERE TO_DAYS( NOW( ) ) - TO_DAYS( 时间字段名) &lt;= 1</code><br>7天</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM 表名 where DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;&#x3D; date(时间字段名)</span><br></pre></td></tr></table></figure>
+
+<p>近30天</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM 表名 where DATE_SUB(CURDATE(), INTERVAL 30 DAY) &lt;&#x3D; date(时间字段名)</span><br></pre></td></tr></table></figure>
+
+<p>本月</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM 表名 WHERE DATE_FORMAT( 时间字段名, &#39;%Y%m&#39; ) &#x3D; DATE_FORMAT( CURDATE( ) , &#39;%Y%m&#39; )</span><br></pre></td></tr></table></figure>
+
+<p>上一月</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM 表名 WHERE PERIOD_DIFF( date_format( now( ) , &#39;%Y%m&#39; ) , date_format( 时间字段名, &#39;%Y%m&#39; ) ) &#x3D;1</span><br></pre></td></tr></table></figure>
+
+
+
+<p>SELECT id FROM m_question WHERE cratedate BETWEEN<br>‘2018-05-31 12:00:00’ and ‘2018-06-26 14:59:59’ ORDER BY id DESC<br>或者<br>SELECT id FROM m_question WHERE cratedate &gt;<br>‘2018-05-31 12:00:00’ and cratedate &lt; ‘2018-06-26 14:59:59’ ORDER BY id DESC<br>但是between and 包含时间界限，也相当于&gt;= &lt;=，而&gt; &lt;不包含</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Select  *  from mytable where  DateField1&lt;&#x3D;&#39;2010-1-31&#39;</span><br><span class="line"></span><br><span class="line">Select  *  from mytable where  DateField1&lt;&#x3D;&#39;2010-1-31 0:0:0&#39;</span><br><span class="line"></span><br><span class="line">Select  *  from mytable where  DateField1&lt; &#39;2010-2-1&#39;</span><br><span class="line"></span><br><span class="line">Select  *  from mytable where  DateField1&lt;&#39;2010-2-1 0:0:0&#39;</span><br></pre></td></tr></table></figure>
+
+<p>如果DateField1 里面有 值为 2010-1-31 ，我们不建议用 语句1 或者 语句 2，因为由于数据库的数据精度和编程语言的数据精度不一致，</p>
+<p>使用&lt;= 会导致无法取得 2010-1-31 的数据</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/06/5.1.MySQL/" data-id="cknesbv8e0010ggwdeims6vqq" data-title="MySQL" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/04/07/10.3.%E9%A1%B9%E7%9B%AE%E7%BC%96%E5%86%99%E6%96%87%E6%A1%A3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          编写文档
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/04/05/8.1.%E5%89%8D%E7%AB%AF%E6%A6%82%E8%BF%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">前端概述</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 10px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/12/19.1.Gitee/">Gitee</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/11/10.5.%E9%A1%B9%E7%9B%AE%E6%8F%90%E4%BA%A4/">项目提交</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/10/1.4.%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8%E6%90%9C%E7%B4%A2/">正确使用搜索</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/07/%E9%A1%B9%E7%9B%AE%E5%A4%96%E5%8C%85/">项目外包</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/07/7.Tomcat/">Tomcat</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 swx<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
