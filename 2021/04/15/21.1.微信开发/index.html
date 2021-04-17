@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>微信开发 | swx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="微信公众平台开发订阅号和服务号和企业号订阅号每天一条，收拢至订阅号文件夹，不强制推送；服务号每月一条，消息仍展示在聊天列表，但下发消息将即时提醒用户。 1、订阅号：主要偏于为用户传达资讯（类似报纸杂志），认证前后都是每天只可以群发一条消息。 2、服务号：主要偏于服务交互（类似银行，114，提供服务查询），认证前后都是每个月可群发4条消息； 3、企业号：主要用于公司内部通讯使用，需要先验证身份才可以">
+<meta property="og:type" content="article">
+<meta property="og:title" content="微信开发">
+<meta property="og:url" content="https://s-qwer.github.io/2021/04/15/21.1.%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:site_name" content="swx">
+<meta property="og:description" content="微信公众平台开发订阅号和服务号和企业号订阅号每天一条，收拢至订阅号文件夹，不强制推送；服务号每月一条，消息仍展示在聊天列表，但下发消息将即时提醒用户。 1、订阅号：主要偏于为用户传达资讯（类似报纸杂志），认证前后都是每天只可以群发一条消息。 2、服务号：主要偏于服务交互（类似银行，114，提供服务查询），认证前后都是每个月可群发4条消息； 3、企业号：主要用于公司内部通讯使用，需要先验证身份才可以">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/PiajxSqBRaEIQxibpLbyuSK9XkjDgZoL0xnC7SUbrIRwI8NhEGFeax6HoPcTMDqKGYxaSoNqBwocrj70Pt1EcKnQ/0?wx_fmt=png">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/PiajxSqBRaEIQxibpLbyuSK9XkjDgZoL0xauONdVFJvic1Wfzxa0HnSEZ5libLcYibWWkb7gNDjt56DFs8kiaY3OtFtw/0?wx_fmt=png">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/PiajxSqBRaEIQxibpLbyuSK9XkjDgZoL0xBp7Iiam8ydK0W4MOZa9bfHKgTesMkj3HXOnsYxttsodweib7mH9y5eQg/0?wx_fmt=png">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/PiajxSqBRaEIQxibpLbyuSK9XkjDgZoL0xEVXiblIZm80UCBlia6vYiaXD7Od9Ev3nujHoNkNCubr9WPo8L7opJGhIA/0?wx_fmt=png">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/PiajxSqBRaEIQxibpLbyuSK9XkjDgZoL0x6zWAJ79NkGrlg34cGBjvqxtSxSVw5gPMsmlygTyhdDblrsNiaCX8GhQ/0?wx_fmt=png">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/PiajxSqBRaEIQxibpLbyuSK9XkjDgZoL0xDdfzVUuLvr3iaR3BvJnkkL9kATK0TgmFXsF2tPHTlpulfJ6eU930a1Q/0?wx_fmt=png">
+<meta property="article:published_time" content="2021-04-15T05:36:09.000Z">
+<meta property="article:modified_time" content="2021-04-16T06:28:18.246Z">
+<meta property="article:author" content="swx">
+<meta property="article:tag" content="微信">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_png/PiajxSqBRaEIQxibpLbyuSK9XkjDgZoL0xnC7SUbrIRwI8NhEGFeax6HoPcTMDqKGYxaSoNqBwocrj70Pt1EcKnQ/0?wx_fmt=png">
+  
+    <link rel="alternate" href="/atom.xml" title="swx" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swx</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://s-qwer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-21.1.微信开发" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/15/21.1.%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91/" class="article-date">
+  <time class="dt-published" datetime="2021-04-15T05:36:09.000Z" itemprop="datePublished">2021-04-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      微信开发
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="微信公众平台开发"><a href="#微信公众平台开发" class="headerlink" title="微信公众平台开发"></a>微信公众平台开发</h1><h2 id="订阅号和服务号和企业号"><a href="#订阅号和服务号和企业号" class="headerlink" title="订阅号和服务号和企业号"></a>订阅号和服务号和企业号</h2><p>订阅号每天一条，收拢至订阅号文件夹，不强制推送；服务号每月一条，消息仍展示在聊天列表，但下发消息将即时提醒用户。</p>
+<p>1、订阅号：主要偏于为用户传达资讯（类似报纸杂志），认证前后都是每天只可以群发一条消息。</p>
+<p>2、服务号：主要偏于服务交互（类似银行，114，提供服务查询），认证前后都是每个月可群发4条消息；</p>
+<p>3、企业号：主要用于公司内部通讯使用，需要先验证身份才可以关注成功企业号。</p>
+<h2 id="验证登录和授权：AccessToken"><a href="#验证登录和授权：AccessToken" class="headerlink" title="验证登录和授权：AccessToken"></a>验证登录和授权：AccessToken</h2><h3 id="1-查看appid及appsecret"><a href="#1-查看appid及appsecret" class="headerlink" title="1.查看appid及appsecret"></a>1.查看appid及appsecret</h3><p>公众号后台界面查看</p>
+<h3 id="2-获取accessToken"><a href="#2-获取accessToken" class="headerlink" title="2.获取accessToken"></a>2.获取accessToken</h3><p>1.临时方法获取</p>
+<p>临时通过<a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/debug/">在线测试</a> 或者 浏览器/postman等方式发送get请求获取返回结果里的accessToken</p>
+<p>2.接口获取</p>
+<p>第三方需要一个access_token获取和刷新的中控服务器（这个服务器会提前进行刷新，确保无缝连接）。</p>
+<p>并发获取access_token会导致AccessToken互相覆盖，影响具体的业务功能，所以需要加并发锁</p>
+<h2 id="用户标识：openid和UnionID"><a href="#用户标识：openid和UnionID" class="headerlink" title="用户标识：openid和UnionID"></a>用户标识：openid和UnionID</h2><p>为了识别用户，每个用户针对每个公众号会产生一个安全的OpenID。如果需要在多公众号、移动应用之间做用户共通，则需前往微信开放平台，将这些公众号和应用绑定到一个开放平台账号下。绑定后，一个用户虽然对多个公众号和应用有多个不同的OpenID，但他对所有这些同一开放平台账号下的公众号和应用，只有一个UnionID，可以在用户管理-获取用户基本信息（UnionID机制）文档了解详情。</p>
+<p>​    <strong>一个用户对于一个公众号只会存在一个openid，即使取消关注了再关注，openid也不会改变。如果一个大公司下有多个公众号，会产生不同的openid，为了实现该公司下公众号间的数据互通，会有一个唯一的UnionID作为用户的唯一标识</strong></p>
+<h2 id="提供服务"><a href="#提供服务" class="headerlink" title="提供服务"></a>提供服务</h2><p>公众号主要通过公众号消息会话和公众号内网页来为用户提供服务的：</p>
+<h3 id="1、公众号消息会话"><a href="#1、公众号消息会话" class="headerlink" title="1、公众号消息会话"></a><strong>1、公众号消息会话</strong></h3><p>公众号是以微信用户的一个联系人形式存在的，消息会话是公众号与用户交互的基础。</p>
+<p>目前公众号内主要有这样几类消息服务的类型，分别用于不同的场景。</p>
+<p>1）群发消息：公众号可以以一定频次（订阅号为每天1次，服务号为每月4次），向用户群发消息，包括文字消息、图文消息、图片、视频、语音等。</p>
+<p><strong>在公众号后台管理界面的创作管理可以编辑后选择群发</strong></p>
+<p>2）被动回复消息：在用户给公众号发消息后，微信服务器会将消息发到开发者预先在开发者中心设置的服务器地址（开发者需要进行消息真实性验证），公众号可以在5秒内做出回复，可以回复一个消息，也可以回复命令告诉微信服务器这条消息暂不回复。被动回复消息可以设置加密（在公众平台官网的开发者中心处设置，设置后，按照消息加解密文档来进行处理。其他3种消息的调用因为是API调用而不是对请求的返回，所以不需要加解密）。</p>
+<p>3）客服消息：在用户给公众号发消息后的48小时内，公众号可以给用户发送不限数量的消息，主要用于客服场景。用户的行为会触发事件推送，某些事件推送是支持公众号据此发送客服消息的，详见微信推送消息与事件说明文档。</p>
+<p>4）模板消息：在需要对用户发送服务通知（如刷卡提醒、服务预约成功通知等）时，公众号可以用特定内容模板，主动向用户发送消息。</p>
+<h3 id="2、公众号内网页"><a href="#2、公众号内网页" class="headerlink" title="2、公众号内网页"></a><strong>2、公众号内网页</strong></h3><p>许多复杂的业务场景，需要通过网页形式来提供服务，这时需要用到：</p>
+<p>1）网页授权获取用户基本信息：通过该接口，可以获取用户的基本信息（获取用户的OpenID是无需用户同意的，获取用户的基本信息则需用户同意）</p>
+<p>2）微信JS-SDK：是开发者在网页上通过JavaScript代码使用微信原生功能的工具包，开发者可以使用它在网页上录制和播放微信语音、监听微信分享、上传手机本地图片、拍照等许多能力。</p>
+<h2 id="全局返回码"><a href="#全局返回码" class="headerlink" title="全局返回码"></a>全局返回码</h2><p>公众号每次调用接口时，可能获得正确或错误的返回码，开发者可以根据返回码信息调试接口，排查错误</p>
+<p>-1：系统繁忙，此时请开发者稍候再试</p>
+<p>0：请求成功</p>
+<p>4xxxx，6xxxx，9xxxx：各种问题的返回码</p>
+<h2 id="开始开发"><a href="#开始开发" class="headerlink" title="开始开发"></a>开始开发</h2><h3 id="1-申请服务器"><a href="#1-申请服务器" class="headerlink" title="1.申请服务器"></a>1.申请服务器</h3><h3 id="2-搭建服务"><a href="#2-搭建服务" class="headerlink" title="2.搭建服务"></a>2.搭建服务</h3><p>后端程序配置微信的设置</p>
+<h3 id="3-申请公众号"><a href="#3-申请公众号" class="headerlink" title="3.申请公众号"></a>3.申请公众号</h3><h3 id="4-开发者基本配置"><a href="#4-开发者基本配置" class="headerlink" title="4.开发者基本配置"></a>4.开发者基本配置</h3><h4 id="1-填写服务器配置"><a href="#1-填写服务器配置" class="headerlink" title="1.填写服务器配置"></a>1.填写服务器配置</h4><p>服务器地址（URL）、Token和EncodingAESKey</p>
+<p>URL是开发者用来接收微信消息和事件的接口URL。</p>
+<p>Token可由开发者可以任意填写，用作生成签名（该Token会和接口URL中包含的Token进行比对，从而验证安全性）。</p>
+<p>EncodingAESKey由开发者手动填写或随机生成，将用作消息体加解密密钥</p>
+<p>填写并提交信息后，微信服务器将发送GET请求到填写的服务器地址URL上，GET请求：signature（微信加密签名，signature结合了开发者填写的token参数和请求中的timestamp参数、nonce参数），timestamp（时间戳），nonce（随机数），echostr（随机字符串）</p>
+<p>通过检验signature对请求进行校验：</p>
+<p>1）将token、timestamp、nonce三个参数进行字典序排序 </p>
+<p>2）将三个参数字符串拼接成一个字符串进行sha1加密</p>
+<p> 3）将加密后的字符串与signature对比，true表示是微信发来的，false表示不是微信。</p>
+<p>若确认此次GET请求来自微信服务器，原样返回echostr参数内容，则接入生效，成为开发者成功，否则接入失败</p>
+<h4 id="2-后续可以在公众号后台的开发-基本配置里修改配置："><a href="#2-后续可以在公众号后台的开发-基本配置里修改配置：" class="headerlink" title="2.后续可以在公众号后台的开发/基本配置里修改配置："></a>2.后续可以在公众号后台的开发/基本配置里修改配置：</h4><p>开发者ID（AppID）：自动生成</p>
+<p>开发者密码(AppSecret)：可以重置自动生成复制</p>
+<p>IP白名单：配置自己的白名单以便调用测试接口获得access_token</p>
+<p>服务器地址(URL)：http://外网IP/wx ，端口固定为80（http://外网IP/wx）</p>
+<p>令牌(Token)：自主设置，这个token与前面的access_token不是一回事。这个token只用于验证开发者服务器</p>
+<p>消息加解密密钥(EncodingAESKey)</p>
+<h3 id="5-后端进行框架构思"><a href="#5-后端进行框架构思" class="headerlink" title="5.后端进行框架构思"></a>5.后端进行框架构思</h3><p>主要有三个部分：负责业务逻辑部分的服务器，负责对接微信API的API-Proxy服务器，以及唯一的AccessToken中控服务器</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/PiajxSqBRaEIQxibpLbyuSK9XkjDgZoL0xnC7SUbrIRwI8NhEGFeax6HoPcTMDqKGYxaSoNqBwocrj70Pt1EcKnQ/0?wx_fmt=png" alt="img"></p>
+<p>1）AccessToken中控服务器：</p>
+<p>负责： 提供主动刷新和被动刷新机制来刷新accessToken并存储（为了防止并发刷新，注意加并发锁），提供给业务逻辑有效的accessToken。</p>
+<p>优点： 避免业务逻辑方并发获取access_token，避免AccessToken互相覆盖，提高业务功能的稳定性。</p>
+<p>2）API-Proxy服务器：</p>
+<p>负责：专一与微信API对接，不同的服务器可以负责对接不同的业务逻辑，更可进行调用频率、权限限制。</p>
+<p>优点：某台API-proxy异常，还有其余服务器支持继续提供服务，提高稳定性，避免直接暴漏内部接口，有效防止恶意攻击，提高安全性</p>
+<p>3）后端服务的服务器</p>
+<h3 id="6-码代码"><a href="#6-码代码" class="headerlink" title="6.码代码"></a>6.码代码</h3><h3 id="7-在线测试"><a href="#7-在线测试" class="headerlink" title="7.在线测试"></a>7.在线测试</h3><p>在线测试接口可以输入access_token，进行接口测试，返回”请求失败”，说明代码有问题，检查代码逻辑。</p>
+<p>“请求成功”，然后根据返回结果查看是否符合预期</p>
+<h3 id="8-真实体验"><a href="#8-真实体验" class="headerlink" title="8.真实体验"></a>8.真实体验</h3><p>手机端微信关注测试</p>
+<h2 id="自定义菜单"><a href="#自定义菜单" class="headerlink" title="自定义菜单"></a>自定义菜单</h2><ol>
+<li>自定义菜单最多包括3个一级菜单，每个一级菜单最多包含5个二级菜单。</li>
+<li>一级菜单最多4个汉字，二级菜单最多7个汉字，多出来的部分将会以“…”代替。</li>
+<li>创建自定义菜单后，菜单的刷新策略是，在用户进入公众号会话页或公众号profile（简介）页时，如果发现上一次拉取菜单的请求在5分钟以前，就会拉取一下菜单，如果菜单有更新，就会刷新客户端的菜单。测试时可以尝试取消关注公众账号后再次关注，则可以看到创建后的效果</li>
+</ol>
+<h3 id="设置类型："><a href="#设置类型：" class="headerlink" title="设置类型："></a>设置类型：</h3><ol>
+<li><p>click：点击推事件。用户点击click类型按钮后，微信服务器会通过消息接口推送消息类型为event的结构给开发者（参考消息接口指南），并且带上按钮中开发者填写的key值，开发者可以通过自定义的key值与用户进行交互；</p>
+</li>
+<li><p>view：跳转URL。用户点击view类型按钮后，微信客户端将会打开开发者在按钮中填写的网页URL，可与网页授权获取用户基本信息接口结合，获得用户基本信息。</p>
+</li>
+<li><p>scancode_push：扫码推事件用户点击按钮后，微信客户端将调起扫一扫工具，完成扫码操作后显示扫描结果（如果是URL，将进入URL），且会将扫码的结果传给开发者，开发者可以下发消息。</p>
+</li>
+<li><p>scancode_waitmsg：扫码推事件且弹出“消息接收中”提示框用户点击按钮后，微信客户端将调起扫一扫工具，完成扫码操作后，将扫码的结果传给开发者，同时收起扫一扫工具，然后弹出“消息接收中”提示框，随后可能会收到开发者下发的消息。</p>
+</li>
+<li><p>pic_sysphoto：弹出系统拍照发图用户点击按钮后，微信客户端将调起系统相机，完成拍照操作后，会将拍摄的相片发送给开发者，并推送事件给开发者，同时收起系统相机，随后可能会收到开发者下发的消息。</p>
+</li>
+<li><p>pic_photo_or_album：弹出拍照或者相册发图用户点击按钮后，微信客户端将弹出选择器供用户选择“拍照”或者“从手机相册选择”。用户选择后即走其他两种流程。</p>
+</li>
+<li><p>pic_weixin：弹出微信相册发图器用户点击按钮后，微信客户端将调起微信相册，完成选择操作后，将选择的相片发送给开发者的服务器，并推送事件给开发者，同时收起相册，随后可能会收到开发者下发的消息。</p>
+</li>
+<li><p>location_select：弹出地理位置选择器用户点击按钮后，微信客户端将调起地理位置选择工具，完成选择操作后，将选择的地理位置发送给开发者的服务器，同时收起位置选择工具，随后可能会收到开发者下发的消息。</p>
+</li>
+<li><p>media_id：下发消息（除文本消息）用户点击media_id类型按钮后，微信服务器会将开发者填写的永久素材id对应的素材下发给用户，永久素材类型可以是图片、音频、视频、图文消息。请注意：永久素材id必须是在“素材管理/新增永久素材”接口上传后获得的合法id。</p>
+</li>
+<li><p>view_limited：跳转图文消息URL用户点击view_limited类型按钮后，微信客户端将打开开发者在按钮中填写的永久素材id对应的图文消息URL，永久素材类型只支持图文消息。请注意：永久素材id必须是在“素材管理/新增永久素材”接口上传后获得的合法id。</p>
+</li>
+</ol>
+<p>view类型：弹出网页（pc版本）</p>
+<p>media_id类型：显示图文消息</p>
+<p>click类型：发现公众号系统提示：“该公众号暂时无法提供服务“</p>
+<p>点击click类型button，微信后台会推送一个event类型的xml 给开发者，需要开发者进一步完善后台代码逻辑，增加对自定义菜单事件推送的响应，必须设置key值</p>
+<h3 id="创建-修改接口："><a href="#创建-修改接口：" class="headerlink" title="创建/修改接口："></a>创建/修改接口：</h3><p>这里的url应该是直接的url，不包含二级菜单</p>
+<p>POST（使用https协议） <a target="_blank" rel="noopener" href="https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN%EF%BC%8C%E8%AF%B7%E6%B1%82%E4%BD%93%E4%B8%BA%EF%BC%9A">https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN，请求体为：</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">        &quot;button&quot;: [</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;type&quot;: &quot;view&quot;, </span><br><span class="line">                &quot;name&quot;: &quot;绑定安全帽&quot;, </span><br><span class="line">                &quot;url&quot;: &quot;https:&#x2F;&#x2F;open.weixin.qq.com&#x2F;connect&#x2F;oauth2&#x2F;authorize?appid&#x3D;wxcc4bc1fc3f1774c4redirect_uri&#x3D;http%3A%2F%2felinktech.cn%2Fabout.htmlresponse_type&#x3D;codescope&#x3D;snsapi_basestate&#x3D;123#wechat_redirect&quot;, </span><br><span class="line">                &quot;sub_button&quot;: [ ]</span><br><span class="line">            &#125;, </span><br><span class="line">            &#123;</span><br><span class="line">                &quot;type&quot;: &quot;view&quot;, </span><br><span class="line">                &quot;name&quot;: &quot;运营服务&quot;, </span><br><span class="line">                &quot;url&quot;: &quot;https:&#x2F;&#x2F;open.weixin.qq.com&#x2F;connect&#x2F;oauth2&#x2F;authorize?appid&#x3D;wxcc4bc1fc3f1774c4redirect_uri&#x3D;http%3A%2F%2felinktech.cn%2Fdaohang.htmlresponse_type&#x3D;codescope&#x3D;snsapi_basestate&#x3D;123#wechat_redirect&quot;, </span><br><span class="line">                &quot;sub_button&quot;: [ ]</span><br><span class="line">            &#125;, </span><br><span class="line">            &#123;</span><br><span class="line">                &quot;type&quot;: &quot;view&quot;, </span><br><span class="line">                &quot;name&quot;: &quot;E联商城&quot;, </span><br><span class="line">                &quot;url&quot;: &quot;https:&#x2F;&#x2F;open.weixin.qq.com&#x2F;connect&#x2F;oauth2&#x2F;authorize?appid&#x3D;wxcc4bc1fc3f1774c4redirect_uri&#x3D;http%3a%2f%2felinktech.cn%2fshop.htmlresponse_type&#x3D;codescope&#x3D;snsapi_basestate&#x3D;123#wechat_redirect&quot;, </span><br><span class="line">                &quot;sub_button&quot;: [ ]</span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>返回0成功。</p>
+<h3 id="查询接口："><a href="#查询接口：" class="headerlink" title="查询接口："></a>查询接口：</h3><p>GET <a target="_blank" rel="noopener" href="https://api.weixin.qq.com/cgi-bin/get_current_selfmenu_info?access_token=ACCESS_TOKEN%EF%BC%8C%E8%BF%94%E5%9B%9E%E7%BB%93%E6%9E%9C%E7%9A%84json%E5%8D%B3%E4%B8%BA%E6%8E%A5%E5%8F%A3">https://api.weixin.qq.com/cgi-bin/get_current_selfmenu_info?access_token=ACCESS_TOKEN，返回结果的json即为接口</a></p>
+<h3 id="删除接口："><a href="#删除接口：" class="headerlink" title="删除接口："></a>删除接口：</h3><p>GET <a target="_blank" rel="noopener" href="https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=ACCESS_TOKEN%EF%BC%8C%E8%BF%94%E5%9B%9E0%E5%8D%B3%E4%B8%BA%E5%88%A0%E9%99%A4%E6%88%90%E5%8A%9F">https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=ACCESS_TOKEN，返回0即为删除成功</a></p>
+<h3 id="事件推送："><a href="#事件推送：" class="headerlink" title="事件推送："></a>事件推送：</h3><p>用户点击自定义菜单后，微信会把点击事件推送给开发者，请注意，点击菜单弹出子菜单，不会产生上报</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">xml</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ToUserName</span>&gt;</span>&lt;![CDATA[toUser]]&gt;<span class="tag">&lt;/<span class="name">ToUserName</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">FromUserName</span>&gt;</span>&lt;![CDATA[FromUser]]&gt;<span class="tag">&lt;/<span class="name">FromUserName</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">CreateTime</span>&gt;</span>123456789<span class="tag">&lt;/<span class="name">CreateTime</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">MsgType</span>&gt;</span>&lt;![CDATA[event]]&gt;<span class="tag">&lt;/<span class="name">MsgType</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Event</span>&gt;</span>&lt;![CDATA[CLICK]]&gt;<span class="tag">&lt;/<span class="name">Event</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">EventKey</span>&gt;</span>&lt;![CDATA[EVENTKEY]]&gt;<span class="tag">&lt;/<span class="name">EventKey</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">xml</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="个性化菜单接口"><a href="#个性化菜单接口" class="headerlink" title="个性化菜单接口"></a>个性化菜单接口</h3><p>可以通过该接口，让公众号的不同用户群体看到不一样的自定义菜单</p>
+<h2 id="接收消息"><a href="#接收消息" class="headerlink" title="接收消息"></a>接收消息</h2><p>当普通微信用户向公众账号发消息时，微信服务器将POST消息的XML数据包发到开发者填写的URL上。</p>
+<h3 id="1-接收文本消息"><a href="#1-接收文本消息" class="headerlink" title="1.接收文本消息"></a>1.接收文本消息</h3><p> 1.粉丝给公众号发送的文本消息</p>
+<p>粉丝给公众号发送文本消息：“欢迎开启公众号开发者模式”，在开发者后台，收到公众平台发送的xml 如下：（下文均隐藏了ToUserName 及 FromUserName 信息）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">xml</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">ToUserName</span>&gt;</span>&lt;![CDATA[公众号]]&gt;<span class="tag">&lt;/<span class="name">ToUserName</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">FromUserName</span>&gt;</span>&lt;![CDATA[粉丝号]]&gt;<span class="tag">&lt;/<span class="name">FromUserName</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">CreateTime</span>&gt;</span>1460537339<span class="tag">&lt;/<span class="name">CreateTime</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">MsgType</span>&gt;</span>&lt;![CDATA[text]]&gt;<span class="tag">&lt;/<span class="name">MsgType</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">Content</span>&gt;</span>&lt;![CDATA[欢迎开启公众号开发者模式]]&gt;<span class="tag">&lt;/<span class="name">Content</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">MsgId</span>&gt;</span>6272960105994287618<span class="tag">&lt;/<span class="name">MsgId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">xml</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>解释：</p>
+<p>createTime 是微信公众平台记录粉丝发送该消息的具体时间</p>
+<p>text: 用于标记该xml 是文本消息，一般用于区别判断</p>
+<p>欢迎开启公众号开发者模式: 说明该粉丝发给公众号的具体内容是欢迎开启公众号开发者模式</p>
+<p>MsgId: 是公众平台为记录识别该消息的一个标记数值, 微信后台系统自动产生</p>
+<ol start="2">
+<li>被动回复文本消息</li>
+</ol>
+<p>即公众号给粉丝发送的文本消息，官方wiki链接: <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/Message_Management/Passive_user_reply_message">被动回复用户消息</a></p>
+<p>特别强调：</p>
+<p>1） 被动回复消息，即发送被动响应消息，不同于客服消息接口</p>
+<p>2） 它其实并不是一种接口，而是对微信服务器发过来消息的一次回复</p>
+<p>3） 收到粉丝消息后不想或者不能5秒内回复时，需回复“success”字符串</p>
+<p>4） 客服接口在满足一定条件下随时调用</p>
+<p>公众号想回复给粉丝一条文本消息，内容为“test”, 那么开发者发送给公众平台后台的xml 内容如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">xml</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">ToUserName</span>&gt;</span>&lt;![CDATA[粉丝号]]&gt;<span class="tag">&lt;/<span class="name">ToUserName</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">FromUserName</span>&gt;</span>&lt;![CDATA[公众号]]&gt;<span class="tag">&lt;/<span class="name">FromUserName</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">CreateTime</span>&gt;</span>1460541339<span class="tag">&lt;/<span class="name">CreateTime</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">MsgType</span>&gt;</span>&lt;![CDATA[text]]&gt;<span class="tag">&lt;/<span class="name">MsgType</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">Content</span>&gt;</span>&lt;![CDATA[test]]&gt;<span class="tag">&lt;/<span class="name">Content</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">xml</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>特别备注：</p>
+<p>1）ToUserName（接受者）、FromUserName(发送者) 字段请实际填写。</p>
+<p>2）createtime 只用于标记开发者回复消息的时间，微信后台发送此消息都是不受这个字段约束。</p>
+<p>3）text : 用于标记 此次行为是发送文本消息 （当然可以是image/voice等类型）。</p>
+<p>4）文本换行 ‘\n’。</p>
+<p> 3.回复success问题</p>
+<p>查询官方wiki 开头强调： 假如服务器无法保证在五秒内处理回复，则必须回复“success”或者“”（空串），否则微信后台会发起三次重试。</p>
+<p>解释一下为何有这么奇怪的规定。发起重试是微信后台为了尽可以保证粉丝发送的内容开发者均可以收到。如果开发者不进行回复，微信后台没办法确认开发者已收到消息，只好重试。</p>
+<p>真的是这样子吗？尝试一下收到消息后，不做任何回复。在日志中查看到微信后台发起了三次重试操作，日志截图如下：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/PiajxSqBRaEIQxibpLbyuSK9XkjDgZoL0xauONdVFJvic1Wfzxa0HnSEZ5libLcYibWWkb7gNDjt56DFs8kiaY3OtFtw/0?wx_fmt=png" alt="img"></p>
+<p>三次重试后，依旧没有及时回复任何内容，系统自动在粉丝会话界面出现错误提示“该公众号暂时无法提供服务，请稍后再试”。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/PiajxSqBRaEIQxibpLbyuSK9XkjDgZoL0xBp7Iiam8ydK0W4MOZa9bfHKgTesMkj3HXOnsYxttsodweib7mH9y5eQg/0?wx_fmt=png" alt="img"></p>
+<p>如果回复success，微信后台可以确定开发者收到了粉丝消息，没有任何异常提示。因此请大家注意回复success的问题。</p>
+<ol start="4">
+<li>流程图</li>
+</ol>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/PiajxSqBRaEIQxibpLbyuSK9XkjDgZoL0xEVXiblIZm80UCBlia6vYiaXD7Od9Ev3nujHoNkNCubr9WPo8L7opJGhIA/0?wx_fmt=png" alt="img"></p>
+<h3 id="2-接收图片消息"><a href="#2-接收图片消息" class="headerlink" title="2.接收图片消息"></a>2.接收图片消息</h3><p>MediaID</p>
+<p>目的：</p>
+<p>1）引入素材管理</p>
+<p>2）以文本消息，图片消息为基础，可自行理解剩余的语音消息、视频消息、地理消息等</p>
+<p>预实现功能：</p>
+<p>接受粉丝发送的图片消息，并立马回复相同的图片给粉丝。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/PiajxSqBRaEIQxibpLbyuSK9XkjDgZoL0x6zWAJ79NkGrlg34cGBjvqxtSxSVw5gPMsmlygTyhdDblrsNiaCX8GhQ/0?wx_fmt=png" alt="img"></p>
+<p> 1.接收图片消息</p>
+<p>即粉丝给公众号发送的图片消息。官方wiki链接：<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/Message_Management/Receiving_standard_messages.html">消息管理/接收消息-接受普通消息/ 图片消息</a>从实例讲解，粉丝给公众号发送一张图片消息，在公众号开发者后台接收到的xml如下:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;xml&gt;</span><br><span class="line"> &lt;ToUserName&gt;&lt;![CDATA[公众号]]&gt;&lt;/ToUserName&gt;</span><br><span class="line"> &lt;FromUserName&gt;&lt;![CDATA[粉丝号]]&gt;&lt;/FromUserName&gt;</span><br><span class="line"> &lt;CreateTime&gt;1460536575&lt;/CreateTime&gt;</span><br><span class="line"> &lt;MsgType&gt;&lt;![CDATA[image]]&gt;&lt;/MsgType&gt;</span><br><span class="line"> &lt;PicUrl&gt;&lt;![CDATA[http://mmbiz.qpic.cn/xxxxxx /0]]&gt;&lt;/PicUrl&gt;</span><br><span class="line"> &lt;MsgId&gt;6272956824639273066&lt;/MsgId&gt;</span><br><span class="line"> &lt;MediaId&gt;&lt;![CDATA[gyci5a-xxxxx-OL]]&gt;&lt;/MediaId&gt;</span><br><span class="line">&lt;/xml&gt;</span><br></pre></td></tr></table></figure>
+
+<p>特别说明：</p>
+<p>PicUrl: 这个参数是微信系统把“粉丝“发送的图片消息自动转化成url。 这个url可用浏览器打开查看到图片。</p>
+<p>MediaId: 是微信系统产生的id 用于标记该图片，详情可参考wiki<a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1444738727&token=&lang=zh_CN">素材管理/获取临时素材</a>，</p>
+<p> 2.被动回复图片消息</p>
+<p>即公众号给粉丝发送的图片消息。官方wiki链接：<a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140543&token=&lang=zh_CN">消息管理/发送消息-被动回复用户消息/ 图片消息</a>)</p>
+<p>特别说明：</p>
+<p>1） 被动回复消息，即发送被动响应消息，不同于客服消息接口</p>
+<p>2） 它其实并不是一种接口，而是对微信服务器发过来消息的一次回复</p>
+<p>3） 收到粉丝消息后不想或者不能5秒内回复时，需回复“success”字符串</p>
+<p>4） 客服接口在满足一定条件下随时调用</p>
+<p>开发者发送给微信后台的xml 如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;xml&gt;</span><br><span class="line"> &lt;ToUserName&gt;&lt;![CDATA[粉丝号]]&gt;&lt;/ToUserName&gt;</span><br><span class="line"> &lt;FromUserName&gt;&lt;![CDATA[公众号]]&gt;&lt;/FromUserName&gt;</span><br><span class="line"> &lt;CreateTime&gt;1460536576&lt;/CreateTime&gt;</span><br><span class="line"> &lt;MsgType&gt;&lt;![CDATA[image]]&gt;&lt;/MsgType&gt;</span><br><span class="line"> &lt;Image&gt;</span><br><span class="line"> &lt;MediaId&gt;&lt;![CDATA[gyci5oxxxxxxv3cOL]]&gt;&lt;/MediaId&gt;</span><br><span class="line"> &lt;/Image&gt;</span><br><span class="line">&lt;/xml&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这里填写的MediaId的内容，其实就是粉丝的发送图片的原MediaId，所以粉丝收到了一张一模一样的原图。 如果想回复粉丝其它图片怎么呢？</p>
+<p>1） 新增素材，请参考 新增临时素材 或者 新增永久素材</p>
+<p>2） 获取其MediaId，请参考 获取临时素材MediaID 或者 获取永久素材MediaID</p>
+<p>3.3 流程图</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/PiajxSqBRaEIQxibpLbyuSK9XkjDgZoL0xDdfzVUuLvr3iaR3BvJnkkL9kATK0TgmFXsF2tPHTlpulfJ6eU930a1Q/0?wx_fmt=png" alt="img"></p>
+<h3 id="3-语音消息"><a href="#3-语音消息" class="headerlink" title="3.语音消息"></a>3.语音消息</h3><h3 id="4-视频消息"><a href="#4-视频消息" class="headerlink" title="4.视频消息"></a>4.视频消息</h3><h3 id="5-小视频消息"><a href="#5-小视频消息" class="headerlink" title="5.小视频消息"></a>5.小视频消息</h3><h3 id="6-地理位置信息"><a href="#6-地理位置信息" class="headerlink" title="6.地理位置信息"></a>6.地理位置信息</h3><h3 id="7-链接消息"><a href="#7-链接消息" class="headerlink" title="7.链接消息"></a>7.链接消息</h3><h2 id="接收事件推送"><a href="#接收事件推送" class="headerlink" title="接收事件推送"></a>接收事件推送</h2><h3 id="1-关注-取消关注事件"><a href="#1-关注-取消关注事件" class="headerlink" title="1 关注/取消关注事件"></a>1 关注/取消关注事件</h3><p>用户在关注与取消关注公众号时，微信会把这个事件推送到开发者填写的URL。方便开发者给用户下发欢迎消息或者做帐号的解绑。为保护用户数据隐私，开发者收到用户取消关注事件时需要删除该用户的所有信息</p>
+<h3 id="2-扫描带参数二维码事件"><a href="#2-扫描带参数二维码事件" class="headerlink" title="2 扫描带参数二维码事件"></a>2 扫描带参数二维码事件</h3><p>用户扫描带场景值二维码时，可能推送以下两种事件：</p>
+<ol>
+<li>如果用户还未关注公众号，则用户可以关注公众号，关注后微信会将带场景值关注事件推送给开发者。</li>
+<li>如果用户已经关注公众号，则微信会将带场景值扫描事件推送给开发者</li>
+</ol>
+<h3 id="3-上报地理位置事件"><a href="#3-上报地理位置事件" class="headerlink" title="3 上报地理位置事件"></a>3 上报地理位置事件</h3><p>用户同意上报地理位置后，每次进入公众号会话时，都会在进入时上报地理位置，或在进入会话后每5秒上报一次地理位置，公众号可以在公众平台网站中修改以上设置。上报地理位置时，微信会将上报地理位置事件推送到开发者填写的URL。</p>
+<h3 id="4-自定义菜单事件"><a href="#4-自定义菜单事件" class="headerlink" title="4 自定义菜单事件"></a>4 自定义菜单事件</h3><p>用户点击自定义菜单后，微信会把点击事件推送给开发者，请注意，点击菜单弹出子菜单，不会产生上报</p>
+<h3 id="5-点击菜单拉取消息时的事件推送"><a href="#5-点击菜单拉取消息时的事件推送" class="headerlink" title="5 点击菜单拉取消息时的事件推送"></a>5 点击菜单拉取消息时的事件推送</h3><h3 id="6-点击菜单跳转链接时的事件推送"><a href="#6-点击菜单跳转链接时的事件推送" class="headerlink" title="6 点击菜单跳转链接时的事件推送"></a>6 点击菜单跳转链接时的事件推送</h3><h2 id="被动回复用户消息"><a href="#被动回复用户消息" class="headerlink" title="被动回复用户消息"></a>被动回复用户消息</h2><p>当用户发送消息给公众号时（或某些特定的用户操作引发的事件推送时），会产生一个POST请求，开发者可以在响应包（Get）中返回特定XML结构，来对该消息进行响应（现支持回复文本、图片、图文、语音、视频、音乐）。</p>
+<p>严格来说，发送被动响应消息其实并不是一种接口，而是对微信服务器发过来消息的一次回复。</p>
+<p>1、直接回复success（推荐方式） 2、直接回复空串（指字节长度为0的空字符串，而不是XML结构体中content字段的内容为空）</p>
+<p>1、开发者在5秒内未回复任何内容 2、开发者回复了异常数据，比如JSON数据等</p>
+<p>就会出现<strong>“该公众号暂时无法提供服务，请稍后再试”</strong></p>
+<h2 id="自动回复规则"><a href="#自动回复规则" class="headerlink" title="自动回复规则"></a>自动回复规则</h2><p>开发者可以通过该接口，获取公众号当前使用的自动回复规则，包括关注后自动回复、消息自动回复（60分钟内触发一次）、关键词自动回复</p>
+<h2 id="模板消息"><a href="#模板消息" class="headerlink" title="模板消息"></a>模板消息</h2><ol>
+<li>模板消息调用时主要需要模板ID和模板中各参数的赋值内容</li>
+<li>模板中参数内容必须以”.DATA”结尾，否则视为保留字</li>
+<li>模板保留符号””</li>
+</ol>
+<p>在模版消息发送任务完成后，微信服务器会将是否送达成功作为通知，发送到开发者中心中填写的服务器配置地址中</p>
+<h2 id="微信网页开发"><a href="#微信网页开发" class="headerlink" title="微信网页开发"></a>微信网页开发</h2><h3 id="适配问题"><a href="#适配问题" class="headerlink" title="适配问题"></a>适配问题</h3><p>安卓版微信直接调用系统浏览器内核，它是用chrome改造做的一套WKwebView,概念上类似是一套组建, iOS则是调用safari，但</p>
+<p>微信<strong>iOS客户端</strong>于2017年3月1日前逐步升级为WKWebview内核。ios也可以自己切换为UIWebview。微信内任意入口进入任意网页，在网页加载成功后向下拉动页面（或点击网页右上角菜单按钮），使之显示出地址栏，当地址栏以 “此网页由” 开头即为当前使用WKWebview，若以“网页由”则是使用的UIWebview</p>
+<h3 id="网页授权"><a href="#网页授权" class="headerlink" title="网页授权"></a>网页授权</h3><p>如果用户在微信客户端中访问第三方网页，公众号可以通过微信网页授权机制，来获取用户基本信息，进而实现业务逻辑。</p>
+<p>OAuth2.0鉴权</p>
+<h4 id="1、引导用户进入授权页面同意授权，获取code"><a href="#1、引导用户进入授权页面同意授权，获取code" class="headerlink" title="1、引导用户进入授权页面同意授权，获取code"></a>1、引导用户进入授权页面同意授权，获取code</h4><p>在确保微信公众账号拥有授权作用域（scope参数）的权限的前提下（服务号获得高级接口后，默认拥有scope参数中的snsapi_base和snsapi_userinfo），引导关注者打开如下页面：<a target="_blank" rel="noopener" href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&amp;redirect_uri=REDIRECT_URI&amp;response_type=code&amp;scope=SCOPE&amp;state=STATE#wechat_redirect">https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&amp;redirect_uri=REDIRECT_URI&amp;response_type=code&amp;scope=SCOPE&amp;state=STATE#wechat_redirect</a> 若提示“该链接无法访问”，请检查参数是否填写错误，是否拥有scope参数对应的授权作用域权限。</p>
+<p>尤其注意：由于授权操作安全等级较高，所以在发起授权请求时，微信会对授权链接做正则强匹配校验，如果链接的参数顺序不对，授权页面将无法正常访问。</p>
+<p>如果用户同意授权，页面将跳转至 redirect_uri/?code=CODE&amp;state=STATE</p>
+<p>跳转回调redirect_uri，应当使用https链接来确保授权code的安全性。</p>
+<p>code说明 ： code作为换取access_token的票据，每次用户授权带上的code将不一样，code只能使用一次，5分钟未被使用自动过期</p>
+<p><strong>关于网页授权回调域名的说明</strong></p>
+<p>1、在微信公众号请求用户网页授权之前，开发者需要先到公众平台官网中的“开发 - 接口权限 - 网页服务 - 网页帐号 - 网页授权获取用户基本信息”的配置选项中，修改授权回调域名。请注意，这里填写的是域名（是一个字符串），而不是URL，因此请勿加 http:// 等协议头；</p>
+<p>2、授权回调域名配置规范为全域名，比如需要网页授权的域名为：<a target="_blank" rel="noopener" href="http://www.qq.com,配置以后此域名下面的页面http//www.qq.com/music.html">www.qq.com，配置以后此域名下面的页面http://www.qq.com/music.html</a> 、 <a target="_blank" rel="noopener" href="http://www.qq.com/login.html">http://www.qq.com/login.html</a> 都可以进行OAuth2.0鉴权。但<a target="_blank" rel="noopener" href="http://pay.qq.com/">http://pay.qq.com</a> 、 <a target="_blank" rel="noopener" href="http://music.qq.com/">http://music.qq.com</a> 、 <a target="_blank" rel="noopener" href="http://qq.com/">http://qq.com</a> 无法进行OAuth2.0鉴权</p>
+<p>3、如果公众号登录授权给了第三方开发者来进行管理，则不必做任何设置，由第三方代替公众号实现网页授权即可</p>
+<p><strong>关于网页授权的两种scope的区别说明</strong></p>
+<p>1、以snsapi_base为scope发起的网页授权，是用来获取进入页面的用户的openid的，并且是静默授权并自动跳转到回调页的。用户感知的就是直接进入了回调页（往往是业务页面）</p>
+<p>2、以snsapi_userinfo为scope发起的网页授权，是用来获取用户的基本信息的。但这种授权需要用户手动同意，并且由于用户同意过，所以无须关注，就可在授权后获取该用户的基本信息。</p>
+<p>3、用户管理类接口中的“获取用户基本信息接口”，是在用户和公众号产生消息交互或关注后事件推送后，才能根据用户OpenID来获取用户基本信息。这个接口，包括其他微信接口，都是需要该用户（即openid）关注了公众号后，才能调用成功的。</p>
+<h4 id="2、通过code换取网页授权access-token（与基础支持中的access-token不同）"><a href="#2、通过code换取网页授权access-token（与基础支持中的access-token不同）" class="headerlink" title="2、通过code换取网页授权access_token（与基础支持中的access_token不同）"></a>2、通过code换取网页授权access_token（与基础支持中的access_token不同）</h4><p>这里通过code换取的是一个特殊的网页授权access_token,与基础支持中的access_token（该access_token用于调用其他接口）不同。公众号可通过下述接口来获取网页授权access_token。如果网页授权的作用域为snsapi_base，则本步骤中获取到网页授权access_token的同时，也获取到了openid，snsapi_base式的网页授权流程即到此为止。</p>
+<p>尤其注意：由于公众号的secret和获取到的access_token安全级别都非常高，必须只保存在服务器，不允许传给客户端。后续刷新access_token、通过access_token获取用户信息等步骤，也必须从服务器发起</p>
+<p>获取code后，请求以下链接获取access_token： <a target="_blank" rel="noopener" href="https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&amp;secret=SECRET&amp;code=CODE&amp;grant_type=authorization_code">https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&amp;secret=SECRET&amp;code=CODE&amp;grant_type=authorization_code</a></p>
+<p><strong>关于网页授权access_token和普通access_token的区别</strong></p>
+<p>1、微信网页授权是通过OAuth2.0机制实现的，在用户授权给公众号后，公众号可以获取到一个网页授权特有的接口调用凭证（网页授权access_token），通过网页授权access_token可以进行授权后接口调用，如获取用户基本信息；</p>
+<p>2、其他微信接口，需要通过基础支持中的“获取access_token”接口来获取到的普通access_token调用。</p>
+<h4 id="3、如果需要，开发者可以刷新网页授权access-token，避免过期"><a href="#3、如果需要，开发者可以刷新网页授权access-token，避免过期" class="headerlink" title="3、如果需要，开发者可以刷新网页授权access_token，避免过期"></a>3、如果需要，开发者可以刷新网页授权access_token，避免过期</h4><p>由于access_token拥有较短的有效期，当access_token超时后，可以使用refresh_token进行刷新，refresh_token有效期为30天，当refresh_token失效之后，需要用户重新授权</p>
+<p>获取第二步的access_token后，请求以下链接获取refresh_token： <a target="_blank" rel="noopener" href="https://api.weixin.qq.com/sns/oauth2/refresh_token?appid=APPID&amp;grant_type=refresh_token&amp;refresh_token=REFRESH_TOKEN">https://api.weixin.qq.com/sns/oauth2/refresh_token?appid=APPID&amp;grant_type=refresh_token&amp;refresh_token=REFRESH_TOKEN</a></p>
+<h4 id="4、通过网页授权access-token和openid获取用户基本信息（支持UnionID机制）"><a href="#4、通过网页授权access-token和openid获取用户基本信息（支持UnionID机制）" class="headerlink" title="4、通过网页授权access_token和openid获取用户基本信息（支持UnionID机制）"></a>4、通过网页授权access_token和openid获取用户基本信息（支持UnionID机制）</h4><p>如果网页授权作用域为snsapi_userinfo，则此时开发者可以通过access_token和openid拉取用户信息了</p>
+<p>http：GET（请使用https协议） <a target="_blank" rel="noopener" href="https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&amp;openid=OPENID&amp;lang=zh_CN">https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&amp;openid=OPENID&amp;lang=zh_CN</a></p>
+<p><strong>关于UnionID机制</strong></p>
+<p>1、请注意，网页授权获取用户基本信息也遵循UnionID机制。即如果开发者有在多个公众号，或在公众号、移动应用之间统一用户帐号的需求，需要前往微信开放平台（open.weixin.qq.com）绑定公众号后，才可利用UnionID机制来满足上述需求。</p>
+<p>2、UnionID机制的作用说明：如果开发者拥有多个移动应用、网站应用和公众帐号，可通过获取用户基本信息中的unionid来区分用户的唯一性，因为同一用户，对同一个微信开放平台下的不同应用（移动应用、网站应用和公众帐号），unionid是相同的。</p>
+<p><strong>关于特殊场景下的静默授权</strong></p>
+<p>1、上面已经提到，对于以snsapi_base为scope的网页授权，就静默授权的，用户无感知；</p>
+<p>2、对于已关注公众号的用户，如果用户从公众号的会话或者自定义菜单进入本公众号的网页授权页，即使是scope为snsapi_userinfo，也是静默授权，用户无感知。</p>
+<p><strong>检验授权凭证（access_token）是否有效</strong></p>
+<p>http：GET（请使用https协议） <a target="_blank" rel="noopener" href="https://api.weixin.qq.com/sns/auth?access_token=ACCESS_TOKEN&amp;openid=OPENID">https://api.weixin.qq.com/sns/auth?access_token=ACCESS_TOKEN&amp;openid=OPENID</a></p>
+<p>返回0代表有效</p>
+<h3 id="网页开发样式库：WEBUI"><a href="#网页开发样式库：WEBUI" class="headerlink" title="网页开发样式库：WEBUI"></a>网页开发样式库：WEBUI</h3><h3 id="微信JS-SDK"><a href="#微信JS-SDK" class="headerlink" title="微信JS-SDK"></a>微信JS-SDK</h3><p>是<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/cgi-bin/loginpage?t=wxm2-login&lang=zh_CN">微信公众平台</a> 面向网页开发者提供的基于微信内的网页开发工具包</p>
+<h3 id="WEB开发者工具"><a href="#WEB开发者工具" class="headerlink" title="WEB开发者工具"></a>WEB开发者工具</h3><p>调试工具</p>
+<h3 id="云开发"><a href="#云开发" class="headerlink" title="云开发"></a>云开发</h3><p>开发者可以使用云开发开发微信小程序、小游戏、公众号，无需搭建服务器，即可使用云端能力。</p>
+<p>云开发为开发者提供完整的原生云端支持和微信服务支持，弱化后端和运维概念，无需搭建服务器，使用平台提供的 API 进行核心业务开发，即可实现快速上线和迭代，同时这一能力，同开发者已经使用的云服务相互兼容，并不互斥。</p>
+<h2 id="Cookie和LocalStorage设置相关"><a href="#Cookie和LocalStorage设置相关" class="headerlink" title="Cookie和LocalStorage设置相关"></a>Cookie和LocalStorage设置相关</h2><p>一：退出微信账号后，将会清空所有Cookie和LocalStorage。</p>
+<p>二：页面功能依赖Cookie，或有涉及到Cookie的相关逻辑 WKWebview内部实现变更，会影响目前页面Cookie相关的逻辑。</p>
+<p>变化1：跨域存取Cookie 问题说明：在访问一个页面A时，如果页面A引用了另一个页面B的资源（页面A和B为不同的域名），这时页面B就被认为是第三方页面。若在页面B中设置Cookie，就会命中WKWebview下阻止第三方跨域设置Cookie的安全策略，导致问题出现。 适配建议： 在WKWebview中是默认阻止跨域的第三方设置Cookie。所有通过Cookie传递的信息，可通过业务后台存储需要传递的信息，然后给页面一个存储信息相对应的access_token加密码，再通过Url中加入自己业务的access_token进行页面间的信息传递。</p>
+<p>变化2：微信原生层面的网络请求读取不到WKWebview中设置的cookie，即使域名是相同的。 问题说明：如果页面的资源或图片存储的服务器依赖校验Cookie来返回数据的情况，在切换到WKWebview后，在微信内长按保存，或者点击预览大图时，原生层面发起的网络请求将不会完整地带上所设置的Cookie，会导致图片保存失败或预览失败。 适配建议： 建议静态资源cookie free。如果确实有信息需要传递，可通过业务后台存储需要传递的信息，然后给页面一个存储信息相对应的access_token加密码，再通过Url中加入自己业务的access_token进行页面间信息传递。</p>
+<p>除上述两种情况，开发者不用担心其他情况下Cookie丢失的问题，所有请求都会带上完整的Cookie</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>1.每个接口都有每日接口<strong>调用频次</strong>限制，可以在公众平台官网-开发者中心处查看具体频次。</p>
+<p>2.公众平台以<strong>access_token</strong>为接口调用凭据，来调用接口，所有接口的调用需要先获取access_token，access_token在2小时内有效，过期需要重新获取，但1天内获取次数有限，开发者需自行存储，详见获取接口调用凭据（access_token）文档</p>
+<p>3.公众平台接口调用仅支持<strong>80端口</strong></p>
+<p>微信公众号接口必须以http://或https://开头，分别支持80端口和443端口</p>
+<p>4.涉及<strong>用户数据</strong>：</p>
+<ul>
+<li>您的服务需要收集用户任何数据的，必须事先获得用户的明确同意，且仅应当收集为运营及功能实现目的而必要的用户数据， 同时应当告知用户相关数据收集的目的、范围及使用方式等，保障用户知情权。</li>
+<li>您收集用户的数据后，必须采取必要的保护措施，防止用户数据被盗、泄漏等。</li>
+<li>您在特定微信公众号中收集的用户数据仅可以在该特定微信公众号中使用，不得将其使用在该特定微信公众号之外或为其他任何目的进行使用，也不得以任何方式将其提供给他人。</li>
+<li>如果腾讯认为您收集、使用用户数据的方式，可能损害用户体验，腾讯有权要求您删除相关数据并不得再以该方式收集、使用用户数据。</li>
+<li>一旦您停止使用本服务，或腾讯基于任何原因终止您使用本服务，您必须立即删除全部因使用本服务而获得的数据（包括各种备份）， 且不得再以任何方式进行使用。</li>
+</ul>
+<p>其他规范：</p>
+<ul>
+<li>请勿为任何用户自动登录到微信公众平台提供代理身份验证凭据。</li>
+<li>请勿提供跟踪功能，包括但不限于识别其他用户在个人主页上查看、点击等操作行为。</li>
+<li>请勿自动将浏览器窗口定向到其他网页。</li>
+<li>请勿设置或发布任何违反相关法规、公序良俗、社会公德等的玩法、内容等。</li>
+<li>请勿公开表达或暗示，您与腾讯之间存在合作关系，包括但不限于相互持股、商业往来或合作关系等，或声称腾讯对您的认可。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/15/21.1.%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91/" data-id="cknllgmcg0045sgwd9aobf3kj" data-title="微信开发" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/04/15/5.4.MySQL%E5%B7%A5%E5%85%B7%E4%B9%8BNavicat/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          MySQL工具之Navicat
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/04/15/22.1.%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">计算机基础知识</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/17/19.3.github/">github</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">代理和反向代理</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/24.%E7%AE%97%E6%B3%95/">算法</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/23.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/22.3.%E5%B8%B8%E8%A7%81cmd%E5%91%BD%E4%BB%A4/">常见cmd命令</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 swx<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

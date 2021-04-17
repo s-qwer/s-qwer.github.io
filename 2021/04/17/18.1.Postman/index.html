@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Postman | swx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="postman是一款支持http协议的接口调试与测试工具，其主要特点就是功能强大，使用简单且易用性好 。 无论是开发人员进行接口调试，还是测试人员做接口测试，postman都是我们的首选工具之一 。 那么接下来就介绍下postman到底有哪些功能，它们分别都能干些什么 。下面先通过一张图来直观的来看下postman中所包含的功能 。  当然，以上功能也只是展示了postman的一部分功能，为了能更">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Postman">
+<meta property="og:url" content="https://s-qwer.github.io/2021/04/17/18.1.Postman/index.html">
+<meta property="og:site_name" content="swx">
+<meta property="og:description" content="postman是一款支持http协议的接口调试与测试工具，其主要特点就是功能强大，使用简单且易用性好 。 无论是开发人员进行接口调试，还是测试人员做接口测试，postman都是我们的首选工具之一 。 那么接下来就介绍下postman到底有哪些功能，它们分别都能干些什么 。下面先通过一张图来直观的来看下postman中所包含的功能 。  当然，以上功能也只是展示了postman的一部分功能，为了能更">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FljLG8vcmXEoBc5Zy02HzOk50Vz3YsGq2cCLuBhKhPwfWsWaicjL2oSbQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Flo5FzPWSpwW8L1UozoTf4MJtPadpMEQtSiaqLECarT9ZeUBIGhFJiceBA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Fl3qRTwy57vlII9FEOiaUjBWXCn2iaSwIn5Os3iapje8TmItZCQ5sAoFxibg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Flu2buNNHaeoxxruibkucBWxjVPx22P2nUHHaW5vxRCSmuWj0nd4bHMzw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Fl5icYWjQgcB1EOsu1Jmt3gicYPTXPxia5tibDvhxDCODFW3UbMZic1up1VGw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlibV1Mf2OLgxcuwUTHdrISFm1cjYqyITROnbniafQUveJEqwmAiaBmV1ag/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlVPe9tFf87Udh16SQn2IAl13VWTueDkV2VLpSzjtSsre74BtBG1St2A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Fl4KnApVbx69fbFOyN4cicNt3DlnR4P6E2KQdAwm3H8A4nL4jMMJ5OrwA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlmbvvEP8osueINea3jABEAYrVes8AU13fj0h5MnP3SRlQhqxdia7785w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlKEyT3hrRLxClerL9ribBQfSeFrcV4bu8rp9dEv5tAmQ7xmu4GiaxL5Ng/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlfT37Gy9Qsfc62iaicTtTx7SFbM8tDK4rcvjKhkJL2asf5SCf9xm3rPhA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Fldya46bWMCiaZEocvuLUKS4kpZ4bJia8AYe4OiaaDWgoGbxoCbbibDkVyUw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Fl6BGgoTRORufMic6V8c2YEm5mzDauicgTdr3megI5lNc6zO7JYpqaUzBw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlF4W4b5gHTEp9ibQFxHzvaBnhEOeWwm9szUn7fdkNJKgrF8srXFAvPjA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FljpiaOpL0k0UXiaLj4NChLgkrw0KGYAyK1EhfCgFT4uF2VzkqZ7RiaIS6g/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Flh7DP0X6alp6uhCzMmzaRxLgh4aBDfooGlGzQ8t7nWYTiaPrzCf8SZBQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlMKJf6o0cNlH8BiccQK7Xdn6E1UaQR6Rym6lZkfY022hrduEdTk1cggQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Flzec1dGXM233VrM4W3dDu0vic8ib2MjdbOzN8o8Wk8BU07VDqtOVHLKfg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlUVXVIrJF4HXOibun27kmsUSYS5PrNqqjLOQZpbwdFDv32o33Rjcibc2w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Fl6b4kwTE3lypBbt8AZOzHicYWnkWjbeK2tdDGAgvUo68Zwr3NzfGjCrg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlPJiauFRraOVSibfXSBicganibSkHeicJQzyE3n4R1Yicr4Ovu3GVM4galic1Q/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlsNmeiaCqkGIwLX2JRUgSaOTxyoMOrIEEd6H7uLC0QmCSrqjY4qL78Hg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Fl1ClyeJtoia7OxjLqMYTMvyoia3xicAXgJTXd8Phgx7Bo1qT8mrC7nkXRA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlGf6DyNBU8C9eyBXT3Whk0TgmG58Nibp9SEMVPrnqgfUYBwLM3X7293g/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlLFewBCYqrlHW20UmKudtFx9g8aOKia7ibEypul6AFseCFeicIics9Mak9g/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Flx1HD6IJ11YoKCQav7eHoAic0qf8hbI1dbMB1nCxWSRmuP3deruv1how/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlTnuA0aOnQzo0wHQb0iaXEHfpQkod92E9zMOfVw0MZUNtibH8KZZqWJsA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Flwfwfc4K53NlbDpwhicnM1vwhGqrxCicHDMyqSoHuibDJ9rXKqPYmfxricw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlYNjEy0GI4H1UNMMqdsydqb0OfIFqqFGDE85TxVrIQxuxOYD9ic2INIw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Fl0YA8QPHDpsdWAMfkWAxticSOeiax1HP8Sqnb4qu6nibiapXKTtyUeYnRqw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Fl90JA0Trd0rMBeq5HJcrlZBC4WfoqRIBqic1Gsib5GJLc32DUvTBTUg3Q/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FliaWAtcJKFaOia5VfHSPk7ZBNhVDq1IQ7GGoR7DR43D4v77hdLlTxibp6g/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlehOIJJubLWOiczR2Zzib3y1iac2I1R3fxmGPU8O6orVSbjj0gdSPD1p2Q/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="article:published_time" content="2021-04-17T05:02:01.000Z">
+<meta property="article:modified_time" content="2021-04-17T05:13:12.107Z">
+<meta property="article:author" content="swx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FljLG8vcmXEoBc5Zy02HzOk50Vz3YsGq2cCLuBhKhPwfWsWaicjL2oSbQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+  
+    <link rel="alternate" href="/atom.xml" title="swx" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swx</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://s-qwer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-18.1.Postman" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/17/18.1.Postman/" class="article-date">
+  <time class="dt-published" datetime="2021-04-17T05:02:01.000Z" itemprop="datePublished">2021-04-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Postman
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>postman是一款支持http协议的接口调试与测试工具，其主要特点就是功能强大，使用简单且易用性好 。</p>
+<p>无论是开发人员进行接口调试，还是测试人员做接口测试，postman都是我们的首选工具之一 。</p>
+<p>那么接下来就介绍下postman到底有哪些功能，它们分别都能干些什么 。下面先通过一张图来直观的来看下postman中所包含的功能 。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FljLG8vcmXEoBc5Zy02HzOk50Vz3YsGq2cCLuBhKhPwfWsWaicjL2oSbQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>当然，以上功能也只是展示了postman的一部分功能，为了能更加全面的体现这款工具的特点，我将从以下三个维度来加以说明。它们分别是：</p>
+<ul>
+<li><p>基础功能</p>
+</li>
+<li><ul>
+<li>常见类型的接口请求</li>
+<li>接口响应数据的解析</li>
+<li>接口管理(Collection)</li>
+<li>批量执行接口请求</li>
+<li>日志调试</li>
+<li>断言</li>
+<li>变量</li>
+<li>请求前置脚本</li>
+<li>接口关联</li>
+<li>常见的返回值获取</li>
+</ul>
+</li>
+<li><p>便捷功能快</p>
+</li>
+<li><ul>
+<li>速填写查询参数</li>
+<li>快速填写请求头信息</li>
+<li>快速实现添加一个请求</li>
+<li>如何继承集合认证</li>
+<li>批量断言</li>
+<li>快速查询和替换</li>
+</ul>
+</li>
+<li><p>高级功能</p>
+</li>
+<li><ul>
+<li>读取文件进行参数化</li>
+<li>生成测试报告</li>
+<li>代码中发送请求</li>
+<li>编写接口文档</li>
+<li>mock服务</li>
+<li>监控</li>
+<li>使用工作空间</li>
+<li>代码同步与分支管理</li>
+<li>连接数据库</li>
+<li>apis</li>
+</ul>
+</li>
+</ul>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="一-postman安装说明"><a href="#一-postman安装说明" class="headerlink" title="一. postman安装说明"></a><strong>一. postman安装说明</strong></h1><p>postman 在 2018 年之后就不再支持浏览器版本，所以，想要使用它就必须先下载客户端再安装使用，下面就以 Windows 系统为例进行安装 。</p>
+<p><strong>1. 下载与安装</strong></p>
+<p>postman安装步骤：</p>
+<p>\1. 访问postman官方网站，下载最新版本</p>
+<p>访问地址：<a target="_blank" rel="noopener" href="https://www.getpostman.com/">https://www.getpostman.com/</a></p>
+<p>\2. 进入到下载页面，根据自己电脑下载对应的版本</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Flo5FzPWSpwW8L1UozoTf4MJtPadpMEQtSiaqLECarT9ZeUBIGhFJiceBA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>\3. 双击下载的安装包，进入到安装界面，直到用户登录和注册界面。</p>
+<p>若个人使用，选择跳过即可，这时会进入到postman主界面，至此postman安装成功(下图)。</p>
+<p>若团队使用，可以进行注册，注册后使用账号可以加入团队工作区</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Fl3qRTwy57vlII9FEOiaUjBWXCn2iaSwIn5Os3iapje8TmItZCQ5sAoFxibg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>2.界面导航说明</strong></p>
+<p>初次使用postman的朋友可能对界面上的一些元素不太熟悉，下面就通过一张图来说明这些元素的含义 。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Flu2buNNHaeoxxruibkucBWxjVPx22P2nUHHaW5vxRCSmuWj0nd4bHMzw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>3.发送第一个请求</strong></p>
+<p>如果你是第一次使用postman发送请求，下面这个例子可以作为一个最基本的入门，可以帮我们建立一个初始印象 。</p>
+<p>\1. 打开postman，点击+加号打开一个新的请求页。</p>
+<p>\2. 在请求的URL中输入请求地址：</p>
+<p><a target="_blank" rel="noopener" href="http://www.weather.com.cn/data/sk/101010100.html">http://www.weather.com.cn/data/sk/101010100.html</a></p>
+<p>\3. 点击Send按钮，这时就可以在下部的窗格中看到来自服务器的json响应数据。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Fl5icYWjQgcB1EOsu1Jmt3gicYPTXPxia5tibDvhxDCODFW3UbMZic1up1VGw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h1 id="二-postman基础功能"><a href="#二-postman基础功能" class="headerlink" title="二.postman基础功能"></a><strong>二.postman基础功能</strong></h1><p><strong>1.常见类型的接口请求</strong></p>
+<p>常见的接口有如下四种类型，分别是含有查询参数的接口，表单类型的接口，json类型的接口以及含有上传文件的接口，以下就对这四种类型接口及如何在postman中请求进行说明 。</p>
+<p><strong>1.1 .查询参数的接口请求</strong></p>
+<p><strong>什么是查询参数?</strong></p>
+<p>所谓的查询参数，其实就是URL地址中问号（?）后面的部分就叫查询参数，比如：<a target="_blank" rel="noopener" href="http://cx.shouji.360.cn/phonearea.php?number=13012345678">http://cx.shouji.360.cn/phonearea.php?number=13012345678</a> 。在这个接口中，查询参数就是:<strong>number=13012345678</strong> 。</p>
+<p>而这一部分是由有键值对组成，格式为：key1=value1&amp;key2=value2, 如果有多组键值对，要用&amp;隔开 。</p>
+<p><strong>postman如何请求</strong></p>
+<p>在postman中实现对这类接口请求非常简单，一般就需要明确俩个参数即可，一个是请求方法，一个请求地址。</p>
+<p>针对上面的那个接口，地址已经给出 ，而它的请求方法是get 。那么在postman中只需要把这俩个参数填写上即可请求 。</p>
+<p>具体实现步骤：</p>
+<p>\1. 打开postman，新建一个请求。</p>
+<p>\2. 在请求方法中选择请求方法：GET,因为在postman中默认的请求方法就是GET,所以这一步可以忽略</p>
+<p>\3. 接口URL中输入地址，点击Send按钮就可以发送请求了 。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlibV1Mf2OLgxcuwUTHdrISFm1cjYqyITROnbniafQUveJEqwmAiaBmV1ag/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>说明：查询参数的URL一般直接拷贝到输入的URL地址栏中就可以了，当然也可以把查询参数在Params中输入，俩者的效果是一样的 。</p>
+<p><strong>1.2 表单类型的接口请求</strong></p>
+<p><strong>什么是表单 ？</strong></p>
+<p>我们都知道，在发送HTTP请求的时候，一个请求中一般包含三个部分，分别是请求行，请求头，请求体 。</p>
+<p>不同的接口，请求体的数据类型是不一样的，比较常见的一种就是表单类型，那么什么是表单类型呢 ？简单理解就是在请求头中查看<strong>Content-Type，它的值如果是:application/x-www-form-urlencoded</strong> .那么就说明客户端提交的数据是以表单形式提交的 。见下图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlVPe9tFf87Udh16SQn2IAl13VWTueDkV2VLpSzjtSsre74BtBG1St2A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>postman中如何请求？</strong></p>
+<p>如果在postman请求上图的接口，我们只需要填写四个参数，分别是(可以参考上图)：</p>
+<ul>
+<li><p>请求方法：POST</p>
+</li>
+<li><p>请求URL：</p>
+<p><a target="_blank" rel="noopener" href="http://localhost/index.php?m=Home&amp;c=User&amp;a=do_login&amp;t=0.21942974229794432">http://localhost/index.php?m=Home&amp;c=User&amp;a=do_login&amp;t=0.21942974229794432</a></p>
+</li>
+<li><p>请求头：Content-Type：application/x-www-form-urlencode</p>
+</li>
+<li><p>请求体：username=13088888888&amp;password=123456&amp;verify_code=8888</p>
+</li>
+</ul>
+<p>实现步骤：</p>
+<ol>
+<li>打开postman，新建一个请求 。</li>
+<li>在请求中设置以上四个参数，点击Send按钮。在postman中设置请求体类型为，需要<strong>选择body-&gt; x-www-form-urlencoded</strong></li>
+<li>查看响应数据。</li>
+</ol>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Fl4KnApVbx69fbFOyN4cicNt3DlnR4P6E2KQdAwm3H8A4nL4jMMJ5OrwA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>1.3 上传文件的表单请求</strong></p>
+<p>在做接口测试时，我们经常会遇到需要上传文件的接口，比如微信的更新头像。这就需要用到：multipart/form-data。它也属于一种表单，但它既支持表单请求，也支持文件上传。它的请求报文中数据往往是下面这样的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">POST http:&#x2F;&#x2F;localhost&#x2F;index.php&#x2F;home&#x2F;Uploadify&#x2F;imageUp&#x2F;savepath&#x2F;head_pic&#x2F;pictitle&#x2F;banner&#x2F;dir&#x2F;images.html HTTP&#x2F;1.1</span><br><span class="line">Content-Type: multipart&#x2F;form-data</span><br><span class="line"></span><br><span class="line">file&#x3D;a1.jpg</span><br></pre></td></tr></table></figure>
+
+<p>这种类型的接口，在postman中该如何请求呢 ？我们先分析需要填写的参数 。</p>
+<ul>
+<li><p>请求方法：POST</p>
+</li>
+<li><p>请求URL：</p>
+<p><a target="_blank" rel="noopener" href="http://localhost/index.php/home/Uploadify/imageUp/savepath/head_pic/pictitle/banner/dir/images.html">http://localhost/index.php/home/Uploadify/imageUp/savepath/head_pic/pictitle/banner/dir/images.html</a></p>
+</li>
+<li><p>请求类型：multipart/form-data</p>
+</li>
+<li><p>请求体：file=a1.jpg</p>
+</li>
+</ul>
+<p>实现步骤：</p>
+<ol>
+<li>打开postman，新建一个请求 。</li>
+<li>在请求中设置以上四个参数，点击Send按钮。注意：在postman中设置请求体类型，需要<strong>选择body-&gt; form-data</strong> 。file中要选择File类型，然后上传本地的文件 。</li>
+<li>查看响应数据。</li>
+</ol>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlmbvvEP8osueINea3jABEAYrVes8AU13fj0h5MnP3SRlQhqxdia7785w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>1.4 json类型的接口请求</strong></p>
+<p>这应该是接口测试中最常见的一种情况了 ， 也就是请求体类型为json,我们来看下这个请求报文 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">POST http:&#x2F;&#x2F;xxx&#x2F;api&#x2F;sys&#x2F;login HTTP&#x2F;1.1</span><br><span class="line">Content-Type: application&#x2F;json;charset&#x3D;UTF-8</span><br><span class="line"></span><br><span class="line">&#123;&quot;account&quot;:&quot;root&quot;,&quot;password&quot;:&quot;123456&quot;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>根据以上报文，我们可以分析出，我们在postman只需要填写四个参数即可，具体如下：</p>
+<ul>
+<li>请求方法：POST</li>
+<li>请求地址：<a target="_blank" rel="noopener" href="http://xxx/api/sys/login">http://xxx/api/sys/login</a></li>
+<li>请求体类型：json</li>
+<li>请求体数据：{“account”:”root”,”password”:”123456”}</li>
+</ul>
+<p>实现步骤：</p>
+<ol>
+<li>打开postman，新建一个请求 。</li>
+<li>在请求中设置以上四个参数，点击Send按钮。注意：在postman中设置请求体类型，需要<strong>选择body-&gt; raw -JSON</strong></li>
+<li>查看响应数据。</li>
+</ol>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlKEyT3hrRLxClerL9ribBQfSeFrcV4bu8rp9dEv5tAmQ7xmu4GiaxL5Ng/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>2.接口响应数据解析</strong></p>
+<p>响应数据是发送请求后经过服务器处理后返回的结果，响应由三部分组成，分别是状态行、响应头、响应体。我们来看下postman的响应数据展示。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlfT37Gy9Qsfc62iaicTtTx7SFbM8tDK4rcvjKhkJL2asf5SCf9xm3rPhA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>在postman中的响应数据展示：</p>
+<ul>
+<li>状态行：Status：200 OK</li>
+<li>响应头：Headers + Cookies，需要注意的是Cookies是包含在响应头中的，但是为了明显，工具会分开显示</li>
+<li>响应体：Body</li>
+</ul>
+<p>那么这些数据对我们做接口测试有什么作用呢 ？</p>
+<ul>
+<li>Body和Status是我们做接口测试的重点，一般来说我们都会验证响应体中的数据和响应状态码</li>
+<li>Test Results 是我们编写断言后，可以查看断言的执行结果 ，所以这个对我们也很有用 。</li>
+<li>Time 和Size 是我们做性能测试时，可以根据这两个参数来对所测接口的性能做一个简单的判断。</li>
+</ul>
+<p>接下来我们再来关注下Body中的几个显示主题，分别是：Pretty，Raw，Preview .</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Fldya46bWMCiaZEocvuLUKS4kpZ4bJia8AYe4OiaaDWgoGbxoCbbibDkVyUw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>Pretty:翻译成中文就是漂亮 ， 也就是说返回的Body数据在这个标签中查看 ，都是经过格式化的，格式化后的数据看起来更加直观，所以postman默认展示的也是这个选项。比如返回html页面，它会经过格式化成HTML格式后展示，比如返回json，那么也会格式化成json格式展示 。</p>
+<p>Raw：翻译成中文未经过加工的，也就是原始数据 ，原始数据一般都是本文格式的，未经过格式化处理的，一般在抓包工具中都有这个选项 。</p>
+<p>Preview：翻译成中文就是预览，这个选项一般对返回HTML的页面效果特别明显，如请求百度后返回结果，点击这个选项后就直接能查看到的页面 ，如下图 。同时这个选项和浏览器抓包中的Preview也是一样的 。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Fl6BGgoTRORufMic6V8c2YEm5mzDauicgTdr3megI5lNc6zO7JYpqaUzBw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>3. 接口管理（Collection）</strong></p>
+<p>当我们对一个或多个系统中的很多用例进行维护时，首先想到的就是对用例进行分类管理，同时还希望对这批用例做回归测试 。在postman也提供了这样一个功能，就是Collection 。通过这个Collection就可以满足我们的上面说的需求。</p>
+<p>先对Collection功能的使用场景做个简单总结 。</p>
+<ul>
+<li>用例分类管理，方便后期维护</li>
+<li>可以进行批量用例回归测试 。</li>
+</ul>
+<p>那么Collection是如何去管理用例的呢 ？先想象我们要测试一个系统，系统下有多个模块，每个模块下有很多的被测接口用例 。那么基于这个场景，我们来通过Collection来进行实现：</p>
+<p>\1. 点击Collection，点击+New Collection，在弹出的输入框中输入Collection名称（这个就可以理解为所测试的系统）</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlF4W4b5gHTEp9ibQFxHzvaBnhEOeWwm9szUn7fdkNJKgrF8srXFAvPjA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>\2. 选中新建的Collection右键，点击Add Folder ，在弹出对话框中输入文件夹名称（这个就可以理解为系统中的模块）</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FljpiaOpL0k0UXiaLj4NChLgkrw0KGYAyK1EhfCgFT4uF2VzkqZ7RiaIS6g/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>\3. 选中新建的Folder，点击Add Request ，在弹出的对话框中输入请求名称，这个就是我们所测试的接口，也可以理解为测试用例 。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Flh7DP0X6alp6uhCzMmzaRxLgh4aBDfooGlGzQ8t7nWYTiaPrzCf8SZBQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>那么通过以上三个步骤，达到的效果就是如图所示：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlMKJf6o0cNlH8BiccQK7Xdn6E1UaQR6Rym6lZkfY022hrduEdTk1cggQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>总结，通过上面的操作，我们实现了一个最简单的demo模型。但实际上，有了这个功能才是postman学习的开始，因为很多功能都是基础这个功能的基础上进行的，比如用例的批量执行，Mock ，接口文档等功能 。</p>
+<p><strong>4. 批量执行接口请求</strong></p>
+<p>当我们在一个Collection中编写了很多的接口测试用例，想一起执行这批用例，在postman中是如何操作呢 ？</p>
+<p>实现步骤：</p>
+<p>\1. 选中一个Collection，点击右三角，在弹出的界面点击RUN</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Flzec1dGXM233VrM4W3dDu0vic8ib2MjdbOzN8o8Wk8BU07VDqtOVHLKfg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>\2. 这是会弹出一个叫Collection Runner的界面，默认会把Collection中的所有用例选中 。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlUVXVIrJF4HXOibun27kmsUSYS5PrNqqjLOQZpbwdFDv32o33Rjcibc2w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>\3. 点击界面下方的RUN Collection，就会对Collection中选中的所有测试用例运行 。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Fl6b4kwTE3lypBbt8AZOzHicYWnkWjbeK2tdDGAgvUo68Zwr3NzfGjCrg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>对上面的几个红框内的功能进行简单说明：</p>
+<ul>
+<li><strong>断言统计</strong>：左上角的两个0是统计当前Collection中断言成功的执行数和失败的执行数，如果没有编写断言默认都为0 。</li>
+<li>Run Summary: 运行结果总览，点击它可以看到每个请求中具体的测试断言详细信息 。Export Result：导出运行结果，默认导出的结果json文件 。</li>
+<li>Retry: 重新运行，点击它会把该Collection重新运行一遍</li>
+<li>New：返回到Runner，可以重新选择用例的组合 。</li>
+</ul>
+<p>总体来说，这个功能主要是用于对一个Collection中的所有用例或部分用例进行批量运行，已达到手工回归测试的目的。</p>
+<p><strong>5.日志调试</strong></p>
+<p>在做接口测试时，经常会因为代码写的有问题导致报错，这时通过查看日志就显得非常重要了，postman也提供了这样的功能，它允许我们在脚本中编写打印语句，查看打印的结果 ; 同时也可以查看每个请求的日志信息 。</p>
+<p>在postman中编写日志打印语句使用的是JavaScript，编写的位置可以是Pre-request Script 或Tests标签中。编写打印语句如：console.log(“我是一条日志”)</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlPJiauFRraOVSibfXSBicganibSkHeicJQzyE3n4R1Yicr4Ovu3GVM4galic1Q/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>那么打印的日如何看呢 ？在postman中有俩个入口，第一个入口就是：view-show postman console 。</p>
+<p>第二个入口就是左下角第三个图标 。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlsNmeiaCqkGIwLX2JRUgSaOTxyoMOrIEEd6H7uLC0QmCSrqjY4qL78Hg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>打开的日志界面：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Fl1ClyeJtoia7OxjLqMYTMvyoia3xicAXgJTXd8Phgx7Bo1qT8mrC7nkXRA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>这里面有几个比较实用的功能：</p>
+<ul>
+<li>搜索日志：输入URL或者打印的日志就能直接搜索出我们想要的请求和日志，这对我们在众多日志中查找某一条日志是非常方便的 。</li>
+<li>按级别搜索：可以查询log,info,warning,error级别的日志 ，有助于我们更快定位到错误 。</li>
+<li>查看原始报文(Show raw log)：如果习惯看原始请求报文的话，这个功能可能更方便些 。</li>
+<li>隐藏请求(Hide network)：把请求都隐藏掉，只查看输出日志 。</li>
+</ul>
+<p>总之，通过这个功能，我们在请求接口报错时，通过打印响应的日志，就能很轻松的找到问题原因了 。</p>
+<p><strong>6.断言</strong></p>
+<p>如果没有断言，我们只能做接口的功能测试，但有了断言后，就为我们做自动化提供了条件，并且在postman中的断言是非常方便和强大的 。</p>
+<p>我们先来了解下postman断言的一些特点 ，具体如下</p>
+<ul>
+<li>断言编写位置：Tests标签</li>
+<li>断言所用语言：JavaScript</li>
+<li>断言执行顺序：在响应体数据返回后执行 。</li>
+<li>断言执行结果查看：Test Results</li>
+</ul>
+<p>在上面我们介绍到，编写的断言代码是JavaScript，那如果不会写怎么办 ？不用担心，因为postman已经给我们内置了一些常用的断言 。用的时候，只需从右侧点击其中一个断言，就会在文本框中自动生成对应断言代码块 。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlGf6DyNBU8C9eyBXT3Whk0TgmG58Nibp9SEMVPrnqgfUYBwLM3X7293g/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>接下来就让我们了解一些常用断言，还是按响应的组成来划分，分别是状态行，响应头，响应体。</p>
+<p>状态行中又包括状态码，状态消息 。在postman也可以对这两个进行断言</p>
+<p><strong>状态行中的断言</strong>：</p>
+<ul>
+<li>断言状态码：<strong>Status code: code is 200</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pm.test(&quot;Status code is 200&quot;, function () &#123;</span><br><span class="line">    pm.response.to.have.status(200); &#x2F;&#x2F;这里填写的200是预期结果，实际结果是请求返回结果</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>断言状态消息：<strong>Status code：code name has string</strong></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pm.test(&quot;Status code name has string&quot;, function () &#123;</span><br><span class="line">    pm.response.to.have.status(&quot;OK&quot;); &#x2F;&#x2F;断言响应状态消息包含OK</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>响应头中的断言</strong></p>
+<ul>
+<li>断言响应头中包含：Response headers:Content-Type header check</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pm.test(&quot;Content-Type is present&quot;, function () &#123;</span><br><span class="line">    pm.response.to.have.header(&quot;Content-Type&quot;); &#x2F;&#x2F;断言响应头存在&quot;Content-Type&quot;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>断言响应体(重点)</strong></p>
+<ul>
+<li>断言响应体中包含XXX字符串：Response body:Contains string</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pm.test(&quot;Body matches string&quot;, function () &#123;</span><br><span class="line">    pm.expect(pm.response.text()).to.include(&quot;string_you_want_to_search&quot;);</span><br><span class="line">&#125;); </span><br><span class="line">&#x2F;&#x2F;注解</span><br><span class="line">pm.expect(pm.response.text()).to.include(&quot;string&quot;) 获取响应文本中包含string</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>断言响应体等于XXX字符串：Response body : is equal to a string</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pm.test(&quot;Body is correct&quot;, function () &#123;</span><br><span class="line">    pm.response.to.have.body(&quot;response_body_string&quot;);</span><br><span class="line">&#125;);</span><br><span class="line">&#x2F;&#x2F;注解</span><br><span class="line">pm.response.to.have.body(&quot;response_body_string&quot;); 获取响应体等于response_body_string</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>断言响应体(json)中某个键名对应的值：Response body : JSON value check</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pm.test(&quot;Your test name&quot;, function () &#123;</span><br><span class="line">    var jsonData &#x3D; pm.response.json();</span><br><span class="line">    pm.expect(jsonData.value).to.eql(100);</span><br><span class="line">&#125;);</span><br><span class="line">&#x2F;&#x2F;注解</span><br><span class="line">var jsonData &#x3D; pm.response.json() 获取响应体，以json显示，赋值给jsonData .注意：该响应体必须返会是的json，否则会报错</span><br><span class="line">pm.expect(jsonData.value).to.eql(100) 获取jsonData中键名为value的值，然后和100进行比较</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>响应时间(一般用于性能测试)</strong></p>
+<ul>
+<li>断言响应时间：Response time is less than 200ms</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pm.test(&quot;Response time is less than 200ms&quot;, function () &#123;</span><br><span class="line">    pm.expect(pm.response.responseTime).to.be.below(200); &#x2F;&#x2F;断言响应时间&lt;200ms</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>案例说明</strong>：</p>
+<p>针对以下接口返回的数据进行断言：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;cityid&quot;: &quot;101120101&quot;,</span><br><span class="line">    &quot;city&quot;: &quot;济南&quot;,</span><br><span class="line">    &quot;update_time&quot;: &quot;2020-04-17 10:50&quot;,</span><br><span class="line">    &quot;wea&quot;: &quot;晴&quot;,</span><br><span class="line">    &quot;wea_img&quot;: &quot;qing&quot;,</span><br><span class="line">    &quot;tem&quot;: &quot;16&quot;,</span><br><span class="line">    &quot;tem_day&quot;: &quot;20&quot;,</span><br><span class="line">    &quot;tem_night&quot;: &quot;9&quot;,</span><br><span class="line">    &quot;win&quot;: &quot;东北风&quot;,</span><br><span class="line">    &quot;win_speed&quot;: &quot;3级&quot;,</span><br><span class="line">    &quot;win_meter&quot;: &quot;小于12km&#x2F;h&quot;,</span><br><span class="line">    &quot;air&quot;: &quot;113&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>断言响应状态码为200</li>
+<li>断言city等于济南</li>
+<li>断言update_time包含2020-04-17</li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlLFewBCYqrlHW20UmKudtFx9g8aOKia7ibEypul6AFseCFeicIics9Mak9g/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>总结，整体来说，如果用postman做接口测试，这个断言功能必不可少，其中我们常断言的响应体包含和JSON这俩个断言又是重重之重。</p>
+<p><strong>7. 变量（全局/集合/环境）</strong></p>
+<p>变量可以使我们在请求或脚本中存储和重复使用其值，通过将值保存在变量中，可以在集合，环境或请求中引用。</p>
+<p>对我们做接口测试来说，又是一个非常重要的功能 。</p>
+<p>在postman常用的三种变量分别是全局变量，环境变量，集合变量 。</p>
+<ul>
+<li><strong>全局变量</strong>：一旦申明了全局变量，全局有效，也就是说postman中的任何集合，任何请求中都可以使用这个变量。它的作用域是最大的 。</li>
+<li><strong>环境变量</strong>：要申明环境变量，首先的创建环境，然后在环境中才能创建变量 。如果要想使用环境变量，必须先选择(导入)这个环境，这样就可以使用这个环境下的变量了 。需要说明的是环境也可以创建多个 。每个环境下又可以有多个变量 。</li>
+<li><strong>集合变量</strong>：集合变量是针对集合的，也就是说申明的变量必须基于某个集合，它的使用范围也只是针对这个集合有效 。</li>
+</ul>
+<p>其中，他们的作用域范围依次从大到小：全局变量&gt;集合变量&gt;环境变量 。当在几个不同的范围内都申明了相同的变量时，则会优先使用范围最小的变量使。</p>
+<p>想要使用变量中的值只需俩个步骤，分别是定义变量和获取变量 。</p>
+<ol>
+<li>定义变量（设置变量）</li>
+<li>获取变量（访问变量）</li>
+</ol>
+<p><strong>定义变量</strong></p>
+<p>定义全局变量和环境变量，点击右上角的小齿轮，弹出如下界面，就可以根据需求定义全局变量或者环境变量了。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Flx1HD6IJ11YoKCQav7eHoAic0qf8hbI1dbMB1nCxWSRmuP3deruv1how/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>已经定义的全局变量和环境变量，可以进行快速查看：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlTnuA0aOnQzo0wHQb0iaXEHfpQkod92E9zMOfVw0MZUNtibH8KZZqWJsA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>定义集合变量</strong></p>
+<p>选择一个集合，打开查看更多动作(<strong>…</strong>)菜单，然后点击编辑 。选择“变量”选项卡以编辑或添加到集合变量。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Flwfwfc4K53NlbDpwhicnM1vwhGqrxCicHDMyqSoHuibDJ9rXKqPYmfxricw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>定义变量除了以上方式，还有另外一种方式 。但是这种方式在不同的位置定义，编写不一样。</p>
+<p>在URL，Params , Authorization , Headers , Body中定义：</p>
+<p>\1. 手工方式创建一个空的变量名</p>
+<p>\2. 在以上的位置把想要的值选中右击，选中Set：环境|全局 ，选中一个变量名，点击后就会保存到这个变量中</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlYNjEy0GI4H1UNMMqdsydqb0OfIFqqFGDE85TxVrIQxuxOYD9ic2INIw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>在Tests，Pre-requests Script：</p>
+<ul>
+<li>定义全局变量：pm.collectionVariables.set(“变量名”,变量值)</li>
+<li>定义环境变量：pm.environment.set(“变量名”，变量值)</li>
+<li>定义集合变量：pm.variables.set(“变量名”,变量值)</li>
+</ul>
+<p><strong>获取变量</strong></p>
+<p>定义好变量，接下来就可以使用变量了 。需要注意的是，在不同的位置获取变量，编写的规则也是不一样的 。</p>
+<p>如果在<strong>请求参数中</strong>获取变量，无论是获取全局变量，还是环境变量，还是集合变量，获取的方式都是一样的编写规则： 。</p>
+<ul>
+<li>请求参数指的是：URL，Params , Authorization , Headers , Body</li>
+</ul>
+<p>如果是在编写代码的位置(Tests,Pre-requests Script)获取变量，获取不同类型的变量，编写的代码都不相同，具体如下：</p>
+<ul>
+<li>获取环境变量：pm.environment.get(‘变量名’)</li>
+<li>获取全局变量：pm.globals.get(‘变量名’)</li>
+<li>获取集合变量：pm.pm.collectionVariables.get.get(‘变量名’)</li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Fl0YA8QPHDpsdWAMfkWAxticSOeiax1HP8Sqnb4qu6nibiapXKTtyUeYnRqw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>变量的使用场景非常广泛，比如我们后面要提到的接口关联，请求前置脚本都会使用到变量 。</p>
+<p><strong>8. 请求前置脚本</strong></p>
+<p>前置脚本其实就是在Pre-requests Script中编写的JavaScript脚本，想要了解这个功能，需要先了解它的执行顺序。那么下面就来看下它的执行顺序 。</p>
+<p>可以看出，一个请求在发送之前，会先去执行Pre Request Script（前置脚本）中的代码 。那么这个功能在实际工作中有什么作用呢 ？</p>
+<p>主要场景：一般情况下，在发送请求前需要对接口的数据做进一步处理，就都可以使用这个功能，比如说，登录接口的密码，在发送前需要做加密处理，那么就可以在前置脚本中做加密处理，再比如说，有的接口的输入参数有一些随机数，每请求一次接口参数值都会发送变化，就可以在前置脚本中编写生成随机数的代码 。</p>
+<p>总体来说，就是在请求接口之前对我们的请求数据进行进一步加工处理的都可以使用前置脚本这个功能。</p>
+<p>接下来通过一个案例来看下该功能是如何使用 ？</p>
+<p>案例：</p>
+<ul>
+<li><p>请求的登录接口URL，参数t的值要求的规则是每次请求都必须是一个随机数。</p>
+</li>
+<li><p>接口地址：</p>
+<p><a target="_blank" rel="noopener" href="http://localhost/index.php%EF%BC%9Fm=Home&amp;c=User&amp;a=do_login&amp;t=0.7102045930338428">http://localhost/index.php？m=Home&amp;c=User&amp;a=do_login&amp;t=0.7102045930338428</a></p>
+</li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8Fl90JA0Trd0rMBeq5HJcrlZBC4WfoqRIBqic1Gsib5GJLc32DUvTBTUg3Q/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>实现步骤：</p>
+<ol>
+<li>在前置脚本中编写生成随机数</li>
+<li>将这个值保存成环境变量</li>
+<li>将参数t的值替换成环境变量的值 。</li>
+</ol>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FliaWAtcJKFaOia5VfHSPk7ZBNhVDq1IQ7GGoR7DR43D4v77hdLlTxibp6g/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>总之，这个前置脚本对我们做接口测试也非常有用，对一些复杂的场景，都可以使用前置脚本进行处理后再请求接口 。</p>
+<p><strong>9. 接口关联</strong></p>
+<p>在我们测试的接口中，经常出现这种情况 。上一个接口的返回数据是下一个接口的输入参数 ，那么这俩个接口就产生了关联。这种关联在做接口测试时非常常见，那么在postman中，如何实现这种关联关系呢 ？</p>
+<p>实现思路：</p>
+<ol>
+<li>提取上一个接口的返回数据值，</li>
+<li>将这个数据值保存到环境变量或全局变量中</li>
+<li>在下一个接口获取环境变量或全局变量</li>
+</ol>
+<p>案例：</p>
+<ul>
+<li>用户上传头像功能，需要用户先上传一张图片，然后会自动预览 。那么在这个过程中，会调用到俩个接口 ，第一个上传头像接口，第二个预览图像接口 。</li>
+<li>其中调用上传头像接口成功后会返回如下信息：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;url&quot;: &quot;&#x2F;public&#x2F;upload&#x2F;user&#x2F;&#x2F;head_pic&#x2F;&#x2F;ba51d1c2f7f7b98dfb5cad90846e2d79.jpg&quot;,</span><br><span class="line">    &quot;title&quot;: &quot;banner&quot;,</span><br><span class="line">    &quot;original&quot;: &quot;&quot;,</span><br><span class="line">    &quot;state&quot;: &quot;SUCCESS&quot;,</span><br><span class="line">    &quot;path&quot;: &quot;images&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>而图像预览接口URL为：</p>
+<p><a target="_blank" rel="noopener" href="http://localhost/public/upload/user//head_pic//ba51d1c2f7f7b98dfb5cad90846e2d79.jpg">http://localhost/public/upload/user//head_pic//ba51d1c2f7f7b98dfb5cad90846e2d79.jpg</a> 。可以看出这个接口的URL后半部分其实是上一个接口返回的url的值 。那么这俩个接口就产生了关联。那么在postman 可以通过以下三步完成这俩个接口的关联实现 。</p>
+<p>实现步骤：</p>
+<ol>
+<li>获取上传头像接口返回url的值</li>
+<li>将这个值保存成全局变量(环境变量也可以)</li>
+<li>在图像预览中使用全局变量</li>
+</ol>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/RQueXibgo0KO86E3YaibgVlWrpeia0uc8FlehOIJJubLWOiczR2Zzib3y1iac2I1R3fxmGPU8O6orVSbjj0gdSPD1p2Q/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>可以看出，接口的关联的解决方案都是用的是变量中的知识，也就是说只要你明确了要提取的值，后面就是保存该值，然后在其他接口使用该值就可以了。</p>
+<p><strong>10.常见返回值获取</strong></p>
+<p>在做接口测试时，请求接口返回的数据都是很复杂的json数据，有着多层嵌套，这样的数据层级在postman怎么获取呢 ？</p>
+<p>案例1：多层json嵌套, 获取user_id的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;code&quot;: 0,</span><br><span class="line">    &quot;message&quot;: &quot;请求成功！&quot;,</span><br><span class="line">    &quot;data&quot;: &#123;</span><br><span class="line">        &quot;user_id&quot;: &quot;1252163151781167104&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;获取json体数据</span><br><span class="line">var jsonData &#x3D; pm.response.json()</span><br><span class="line">&#x2F;&#x2F; 获取user_id的值,通过.获取</span><br><span class="line">var user_id &#x3D; jsonData.data.user_id</span><br></pre></td></tr></table></figure>
+
+
+
+<p>案例2：json中存在列表，获取points中的第二个元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;code&quot;: 0,</span><br><span class="line">    &quot;message&quot;: &quot;请求成功！&quot;,</span><br><span class="line">    &quot;data&quot;: &#123;</span><br><span class="line">        &quot;roles&quot;: &#123;</span><br><span class="line">            &quot;api&quot;: [</span><br><span class="line">                &quot;API-USER-DELETE&quot;</span><br><span class="line">            ],</span><br><span class="line">            &quot;points&quot;: [</span><br><span class="line">                &quot;point-user-delete&quot;,</span><br><span class="line">                &quot;POINT-USER-UPDATE&quot;,</span><br><span class="line">                &quot;POINT-USER-ADD&quot;</span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;authCache&quot;: null</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;获取json体数据</span><br><span class="line">var jsonData &#x3D; pm.response.json()</span><br><span class="line">&#x2F;&#x2F; 获取user_id的值,通过下标获取列表中某个元素</span><br><span class="line">var user_id &#x3D; jsonData.data.roles.points[1]</span><br></pre></td></tr></table></figure>
+
+
+
+<p>案例3：列表中取最后一个元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;code&quot;: 0,</span><br><span class="line">    &quot;message&quot;: &quot;请求成功！&quot;,</span><br><span class="line">    &quot;data&quot;: &#123;</span><br><span class="line">        &quot;total&quot;: 24,</span><br><span class="line">        &quot;rows&quot;: [</span><br><span class="line">           </span><br><span class="line">            &#123;</span><br><span class="line">                &quot;id&quot;: &quot;1066370498633486336&quot;,</span><br><span class="line">                &quot;mobile&quot;: &quot;15812340003&quot;,</span><br><span class="line">                &quot;username&quot;: &quot;zbz&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;id&quot;: &quot;1071632760222810112&quot;,</span><br><span class="line">                &quot;mobile&quot;: &quot;16612094236&quot;,</span><br><span class="line">                &quot;username&quot;: &quot;llx&quot;</span><br><span class="line">            &#125;,</span><br><span class="line">            ...</span><br><span class="line">            &#123;</span><br><span class="line">                &quot;id&quot;: &quot;1075383133106425856&quot;,</span><br><span class="line">                &quot;mobile&quot;: &quot;13523679872&quot;,</span><br><span class="line">                &quot;username&quot;: &quot;test001&quot;,</span><br><span class="line">       </span><br><span class="line">            &#125;,</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;获取json体数据</span><br><span class="line">var jsonData &#x3D; pm.response.json()</span><br><span class="line">&#x2F;&#x2F; 获取id的值,通过slice(-1)获取列表中最后一个元素。</span><br><span class="line">var id &#x3D; jsonData.data.rows.slice(-1)[0]</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/17/18.1.Postman/" data-id="cknllgmc2003fsgwdfpda3anv" data-title="Postman" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/04/17/12.4.SpringCloud/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          SpringCloud
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/04/17/17.1.Maven/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Maven</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/17/19.3.github/">github</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">代理和反向代理</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/24.%E7%AE%97%E6%B3%95/">算法</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/23.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/22.3.%E5%B8%B8%E8%A7%81cmd%E5%91%BD%E4%BB%A4/">常见cmd命令</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 swx<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

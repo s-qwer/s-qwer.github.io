@@ -77,10 +77,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-1.1.起点" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-5.3.MySQL踩坑" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/03/17/1.1.%E8%B5%B7%E7%82%B9/" class="article-date">
-  <time class="dt-published" datetime="2021-03-17T10:08:54.000Z" itemprop="datePublished">2021-03-17</time>
+    <a href="/2021/04/13/5.3.MySQL%E8%B8%A9%E5%9D%91/" class="article-date">
+  <time class="dt-published" datetime="2021-04-12T16:40:08.000Z" itemprop="datePublished">2021-04-13</time>
 </a>
     
   </div>
@@ -91,7 +91,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/17/1.1.%E8%B5%B7%E7%82%B9/">起点</a>
+      <a class="p-name article-title" href="/2021/04/13/5.3.MySQL%E8%B8%A9%E5%9D%91/">MySQL踩坑</a>
     </h1>
   
 
@@ -99,24 +99,1361 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="起点"><a href="#起点" class="headerlink" title="起点"></a>起点</h1><p>​    <code>好记性始终不如烂笔头</code>，一个人的记忆力是有限的，而写出来以后再看的时候就会很快想起来。所以从今天开始在hexo上写点东西来记录自己的转行学习java的经历。</p>
-<p>​    曾经我认为世界上最神奇的两件事：基因和计算机。基因这种东西，每个人都不同，像世界上没有两片相同的叶子，只是因为基因不同，就能决定一个人的性格，长相，体质等因素，像一个人怎么吃都不会长胖，像一个人天生就很善于交际，像一个人从小就天赋异禀……生命本身就是神奇的东西，大学有幸学到一点相关知识，却也没有深究，最后不了了之，也许到以后也没有机会去了解了，也会是一个遗憾吧。说回计算机，在刚接触的时候还是被震惊了，就像只需要动动鼠标和键盘，就会点击互动产生一些神奇的效果，在当时对于我还是很神奇的，以致于有了以后的沉迷网络游戏，却还是自以为自己很擅长，甚至妄图平衡游戏和学习，最后还是后悔莫及，但也奠定了自己的兴趣方向，为自己的爱好而努力应该也是一件幸事吧。正如我无法逃离网络游戏的诱惑，也是因为个人不自制且莫名自信，自学起来断断续续，没有目标，三天打鱼两天晒网，也相当于是什么也没有。</p>
-<p>​    最早接触计算机还不知道里面的门路有这么多，甚至不知道都有些什么语言，底层原理，甚至高级算法。回顾我的历程，还要从大二自学C语言开始。当初有个贴吧的帖子是教C语言的，还画了很多漫画，当时作为一个外行人看感觉还是很神奇的，从网上找了一个比自己还小的高中生的一个教C语言的视频看起来，在笔记本上做了很多基础知识的记录，也从未下载过相关软件，甚至一行代码都没有亲手敲过，后来荒废了。大学毕业后，受到java语言的铺天广告，于是正式决定投入java的行业。</p>
-<p>​    再决定学习java后，从网上找了相关视频，当时没有想到B站甚至可以用来学习，所以去百度云存了一个很老的视频：尚学堂的300集java基础视频。当时也是跟着敲了很多demo，只记得当时的老师一直用马士兵、高琪举例（现在朋友圈的公众号一直被马士兵刷屏，这也是个大佬吧），以至于为什么这样敲，对一些底层的语法都没有细思，学的云里雾里。</p>
-<p>​    再然后看完视频又荒废了一段日子，买了本《java从入门到精通》（现在经常有人调侃，从入门到放弃，哈哈哈），看着是清华大学出版社，然后就开始eng看，一天看几页，最后看完也不知道讲了啥，也有很多忘了，就相当于没看。</p>
-<p>​    时间就这样荒废了一天又一天。中间穿插着各种微信公众号的小文章推送，知乎的相关经历介绍，被各种难懂烦躁，洗脑劝退。后来又看了黑马程序员的java教学，因为视频源比较老，当时还没有java8，边做笔记边敲代码，慢慢懂了点基础原理。后来也慢慢了解到java的体系结构。但是学习的路还是很长。</p>
-<p>​    现在入职了一家公司，与一个软件专业的同学交流后，发现自己差的还很多。了解到一些博客，想写点自己的东西，一来是记录自己的学习过程，二也是为了以后自己找轮子更方便一些。</p>
-<p>​    just for it！只要开始了，什么时候都不算晚。</p>
+        <p>关于数据库时区说明</p>
+<p>2016-12-07T03:13:25.808Z:T是代表后面跟着“时间”。Z代表0时区，<br>这是UTC统一时间</p>
+<p>时间的描述：</p>
+<p>mysql数据库拥有时区设置，默认使用系统时区</p>
+<p>可通过如下语句查询当前时区</p>
+<p><code>show variables like &#39;%time_zone%&#39;;</code></p>
+<p>数据库使用系统时间CST——China Standard Time UTC+8:00 中国沿海时间(北京时间)</p>
+<p>​     UTC:国际时间</p>
+<p>​    UTC-8:伦敦时间</p>
+<p>​    UTC+8就是国际时加八小时,是东八区时间,也就是北京时间</p>
+<p>GMT，即格林尼治标准时间，也就是世界时。GMT的正午是指当太阳横穿格林尼治子午线（本初子午线）时的时间。但由于地球自转不均匀不规则，导致GMT不精确，现在已经不再作为世界标准时间使用。</p>
+<p>UTC，即协调世界时。UTC是以原子时秒长为基础，在时刻上尽量接近于GMT的一种时间计量系统。为确保UTC与GMT相差不会超过0.9秒，在有需要的情况下会在UTC内加上正或负闰秒。UTC现在作为世界标准时间使用。</p>
+<p>所以，UTC与GMT基本上等同，误差不超过0.9秒</p>
+<p>RTC，硬件时间，主板上面bios的时间</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">String dateTime = <span class="string">&quot;2019-06-27T16:00:00.000Z&quot;</span>;</span><br><span class="line"></span><br><span class="line">dateTime = dateTime .replace(<span class="string">&quot;Z&quot;</span>, <span class="string">&quot; UTC&quot;</span>); <span class="comment">//2019-06-27T16:00:00.000 UTC</span></span><br><span class="line"></span><br><span class="line">SimpleDateFormat format1 = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSS Z&quot;</span>);<span class="comment">//转换时区格式</span></span><br><span class="line">SimpleDateFormat format2 = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd&quot;</span>);</span><br><span class="line"></span><br><span class="line">Date date = format1.parse(dateTime ) || <span class="keyword">long</span> ldate = format1.parse(dateTime ).getTime();<span class="comment">//将Z时间格式转换成Date类型格式或换成毫秒</span></span><br><span class="line">String time= format2.format(date);<span class="comment">//2019-06-28</span></span><br><span class="line"></span><br><span class="line">System.out.println(time);</span><br><span class="line"></span><br><span class="line">输出：<span class="number">2019</span>-<span class="number">06</span>-<span class="number">28</span></span><br></pre></td></tr></table></figure>
+
+<p>时间类型说明</p>
+<p>datetime</p>
+<p>实际格式储存（Just stores what you have stored and retrieves the same thing which you have stored.）</p>
+<p>与时区无关（It has nothing to deal with the TIMEZONE and Conversion.）</p>
+<p>timestamp</p>
+<p>值以UTC毫秒数保存（ it stores the number of milliseconds）</p>
+<p>存储及检索时根据当前时区设置，对时间数值做转换</p>
+<p>由于timestamp与时区相关，且线上数据库时区设置为北京时间（即UTC+8:00）。因此，当数据库中使用了timestamp列，若使用不当，统一UTC格式时间改造将很可能会引入错误！</p>
+<p>关于时间查询的sql语句</p>
+<p>在项目开发过程中，自己需要查询出一定时间段内的交易。故需要在sql查询语句中加入日期时间要素，sql语句如何实现?</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM lmapp.lm_bill where tx_time Between &#39;2015-12-20&#39; And &#39;2015-12-31&#39;;</span><br></pre></td></tr></table></figure>
+
+<p>查询每一天某个时间段的所有记录(例:9:00:00到21:00:00)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM 表名 </span><br><span class="line">WHERE DATE_FORMAT(create_time,&#39;%H:%i:%S&#39;)&gt;&#x3D;&#39;09:00:00&#39;</span><br><span class="line">and DATE_FORMAT(create_time,&#39;%H:%i:%S&#39;)&lt;&#x3D;&#39;21:00:00&#39; </span><br><span class="line">ORDER BY 排序字段 ASC;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>mysql 查询当天、最近一天、最近一周，本月，上一个月的数据</p>
+<p>今天<br><code>select * from 表名 where to_days(时间字段名) = to_days(now());</code></p>
+<p>昨天</p>
+<p><code>SELECT * FROM 表名 WHERE TO_DAYS( NOW( ) ) - TO_DAYS( 时间字段名) &lt;= 1</code><br>7天</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM 表名 where DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;&#x3D; date(时间字段名)</span><br></pre></td></tr></table></figure>
+
+<p>近30天</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM 表名 where DATE_SUB(CURDATE(), INTERVAL 30 DAY) &lt;&#x3D; date(时间字段名)</span><br></pre></td></tr></table></figure>
+
+<p>本月</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM 表名 WHERE DATE_FORMAT( 时间字段名, &#39;%Y%m&#39; ) &#x3D; DATE_FORMAT( CURDATE( ) , &#39;%Y%m&#39; )</span><br></pre></td></tr></table></figure>
+
+<p>上一月</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM 表名 WHERE PERIOD_DIFF( date_format( now( ) , &#39;%Y%m&#39; ) , date_format( 时间字段名, &#39;%Y%m&#39; ) ) &#x3D;1</span><br></pre></td></tr></table></figure>
+
+
+
+<p>SELECT id FROM m_question WHERE cratedate BETWEEN<br>‘2018-05-31 12:00:00’ and ‘2018-06-26 14:59:59’ ORDER BY id DESC<br>或者<br>SELECT id FROM m_question WHERE cratedate &gt;<br>‘2018-05-31 12:00:00’ and cratedate &lt; ‘2018-06-26 14:59:59’ ORDER BY id DESC<br>但是between and 包含时间界限，也相当于&gt;= &lt;=，而&gt; &lt;不包含</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Select  *  from mytable where  DateField1&lt;&#x3D;&#39;2010-1-31&#39;</span><br><span class="line"></span><br><span class="line">Select  *  from mytable where  DateField1&lt;&#x3D;&#39;2010-1-31 0:0:0&#39;</span><br><span class="line"></span><br><span class="line">Select  *  from mytable where  DateField1&lt; &#39;2010-2-1&#39;</span><br><span class="line"></span><br><span class="line">Select  *  from mytable where  DateField1&lt;&#39;2010-2-1 0:0:0&#39;</span><br></pre></td></tr></table></figure>
+
+<p>如果DateField1 里面有 值为 2010-1-31 ，我们不建议用 语句1 或者 语句 2，因为由于数据库的数据精度和编程语言的数据精度不一致，</p>
+<p>使用&lt;= 会导致无法取得 2010-1-31 的数据</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/17/1.1.%E8%B5%B7%E7%82%B9/" data-id="ckneu28s000000kwd1i1u4plo" data-title="起点" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/13/5.3.MySQL%E8%B8%A9%E5%9D%91/" data-id="cknllgmbi001usgwdd80h6eg4" data-title="MySQL踩坑" class="article-share-link">分享</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li></ul>
+    </footer>
+  </div>
+  
+</article>
 
+
+
+  
+    <article id="post-5.1.MySQL初级" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/13/5.1.MySQL%E5%88%9D%E7%BA%A7/" class="article-date">
+  <time class="dt-published" datetime="2021-04-12T16:39:03.000Z" itemprop="datePublished">2021-04-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/13/5.1.MySQL%E5%88%9D%E7%BA%A7/">MySQL初级</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>关系型数据库</p>
+<p>服务器：硬件：指的就是一台计算机</p>
+<p>软件：指的是需要在这台电脑上安装数据库服务器</p>
+<p>一台电脑如果安装了MySQL，这台电脑称为是MySQL数据库服务器</p>
+<p>MySQL数据库服务器存储的方式：</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml5948\wps1.jpg" alt="img"> </p>
+<p>一台数据库服务器中会创建很多数据库（一个项目，会创建一个数据库）。在数据库中会创建很多张表（一个实体会创建一个表）。在表中会有很多记录（一个对象的实例会添加一条新的记录）。</p>
+<p>SQL：结构化查询语言(Structured Query Language)简称SQL，是一种特殊目的的编程语言，是一种<a target="_blank" rel="noopener" href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=51720422&ss_c=ssc.citiao.link">数据库查询和程序设计语言</a>，用于存取数据以及查询、更新和管理关系数据库系统；同时也是<a target="_blank" rel="noopener" href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=71639443&ss_c=ssc.citiao.link">数据库脚本文件</a>的<a target="_blank" rel="noopener" href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=190718&ss_c=ssc.citiao.link">扩展名</a>。</p>
+<p>分类：</p>
+<p>DDL：数据定义语言：create，drop，alter..</p>
+<p>DCL：数据控制语言：grant，if…</p>
+<p>DML：数据操纵语言：insert，update，delete…</p>
+<p>DQL：数据查询语言：select   （不区分大小写）</p>
+<h1 id="对数据库进行CRUD的操作"><a href="#对数据库进行CRUD的操作" class="headerlink" title="对数据库进行CRUD的操作"></a>对数据库进行CRUD的操作</h1><p>创建数据库：</p>
+<p>语法：create database 数据库名称 [character set 字符集 collate 字符集校对规则];   utf-8的字符集写的时候是utf8</p>
+<p>字符集校对规则可以在查询手册中查到，用来数据库排序展示</p>
+<p>查看数据库：</p>
+<p>语法：查看数据库服务器中所有的数据库：show databases;</p>
+<p>查看某个数据库的定义信息： show create database 数据库名称;</p>
+<p>修改数据库：</p>
+<p>语法：alter database 数据库名称 character set 字符集 collate 校对规则;</p>
+<p>删除数据库：</p>
+<p>语法:drop database 数据库名称;</p>
+<p>其他数据库操作：</p>
+<p>切换数据库：use 数据库名称;</p>
+<p>查看当前正在使用的数据库：select database();</p>
+<h1 id="对数据库表进行操作"><a href="#对数据库表进行操作" class="headerlink" title="对数据库表进行操作"></a>对数据库表进行操作</h1><p>创建表：</p>
+<p>语法：create table 表名称(字段名称 字段类型(长度) 约束,字段名称 字段类型(长度) 约束…);</p>
+<p>字段类型：一个实体对应一个表，一个实体属性对应表的一个字段。</p>
+<p>Java中的类型                        MySQL中的类型</p>
+<p>byte/short/int/long                     tinyint/smallint/int/bigint</p>
+<p>float                                float</p>
+<p>double                                double</p>
+<p>boolean                                bit</p>
+<p>char/String                            char和varchar类型</p>
+<p>Date                                date/time/datetime/timestamp</p>
+<p>File                                    BLOB/TEXT</p>
+<p>char和varchar的区别：</p>
+<p>char代表是固定长度的字符或字符串。定义类型char(8),向这个字段存入字符串hello，那么数据库使用三个空格将其补全。</p>
+<p>varchar代表的是可变长度的字符串。定义类型varchar(8), 向这个字段存入字符串hello,那么存入到数据库的就是hello。</p>
+<p>datetime和timestamp区别：</p>
+<p>datetime就是既有日期又有时间的日期类型，如果没有向这个字段中存值，数据库使用null存入到数据库中。</p>
+<p>timestamp也是既有日期又有时间的日期类型，如果没有向这个字段中存值，数据库使用当前的系统时间存入到数据库中。</p>
+<p>BLOB是二进制的文件，TEXT是文本类型的文件（都很少使用）</p>
+<p>约束：</p>
+<p>约束作用：保证数据的完整性</p>
+<p>单表约束分类：</p>
+<p>主键约束：primary key 主键约束默认就是唯一 非空的</p>
+<p>唯一约束：unique</p>
+<p>非空约束：not null</p>
+<p>例如：</p>
+<p>建表语句：</p>
+<p>create database web_test1;</p>
+<p>use web_test1;</p>
+<p>create table user(</p>
+<p>​    id int primary key auto_increment,</p>
+<p>​    username varchar(20) unique,</p>
+<p>​    password varchar(20) not null,</p>
+<p>​    age int,</p>
+<p>​    birthday date</p>
+<p>);</p>
+<p>查看表：</p>
+<p>查看某个数据库下的所有的表： （必须先切换到这个数据库）</p>
+<p>语法：show tables;</p>
+<p>查看某个表的结构信息：</p>
+<p>语法：desc 表名; （只是结构信息）</p>
+<p>删除表：</p>
+<p>语法：drop table 表名;</p>
+<p>修改表：</p>
+<p>添加列：alter table 表名 add 列名 类型(长度) 约束;</p>
+<p>修改列类型，长度和约束：alter table 表名 modify 列名 类型(长度) 约束;</p>
+<p>删除列：alter table 表名 drop 列名;</p>
+<p>修改列名称：alter table 表名 change 旧列名 新列名 类型(长度) 约束;</p>
+<p>修改表名：rename table 表名 to 新的表名;</p>
+<p>修改表的字符集：alter table 表名 character set 字符集;</p>
+<h1 id="对数据库表的记录进行操作"><a href="#对数据库表的记录进行操作" class="headerlink" title="对数据库表的记录进行操作"></a>对数据库表的记录进行操作</h1><p>添加表的记录：</p>
+<p>语法：向表中插入某些列：insert into 表名 (列名1,列名2,列名3…) values (值1,值2,值3…)</p>
+<p>向表中插入所有列：insert into 表名 values (值1,值2,值3…);</p>
+<p>//id一般是自动增长的，所以可以把值写为null</p>
+<p>注意事项</p>
+<p>1.值的类型与数据库中表列的类型一致。</p>
+<p>2.值的顺序与数据库中表列的顺序一致。</p>
+<p>3.值的最大长度不能超过列设置最大长度。</p>
+<p>4.值的类型是字符串或者是日期类型，使用单引号引起来。</p>
+<p>直接向数据库中插入中文记录会出现错误！ </p>
+<p>解决方法：</p>
+<p>​    show variables like ‘%character%’;  –查看数据库中与字符集相关参数（数据库中都是utf8，而命令行中的是gbk）所以需要将MySQL数据库服务器中的客户端部分的字符集改为gbk。MySQL数据库服务器中的服务端还是utf8，但是MySQL数据库服务器已经可以识别了。</p>
+<p>​    找到MySQL的安装路径：my.ini文件，修改文件中[client]下的字符集，重新启动MySQL数据库服务器（在搜索程序和文件中输入 services.msc 打开服务 界面，找到MySQL停止，再启动），再show variables like ‘%character%’;  就可以看到改成功了。</p>
+<p>修改表的记录：</p>
+<p>语法:update 表名 set 列名=值,列名=值 [where 条件];</p>
+<p>注意事项</p>
+<p>1.值的类型与列的类型一致。</p>
+<p>2.值的最大长度不能超过列设置的最大长度。</p>
+<p>3.字符串类型和日期类型添加单引号。</p>
+<p>删除表的记录：</p>
+<p>语法：delete from 表名 [where 条件];</p>
+<p>注意事项</p>
+<p>1.删除表的记录，指的是删除表中的一行记录。</p>
+<p>2.删除如果没有条件，默认是删除表中的所有记录。</p>
+<p>删除表中的记录有两种做法:</p>
+<p>delete from user;</p>
+<p>删除所有记录，属于DML语句，一条记录一条记录删除。事务可以作用在DML语句上的（可以回滚）</p>
+<p>truncate table user;</p>
+<p>删除所有记录，属于DDL语句，将表删除，然后重新创建一个结构一样的表。事务不能控制DDL的（真的删除掉了）</p>
+<p>查看表的记录：</p>
+<p>基本查询：</p>
+<p>语法:select  [distinct]  *|列名 from 表 [条件];</p>
+<p>[]代表可选，就是可加可不加。distinct表示不重复的</p>
+<p>*|列名 中的列名可以进行运算的。select name,english+chinese+math from exam;</p>
+<p>也可以取个别名进行查询：</p>
+<p>select name,english+chinese+math as sum from exam; （as有没有都可以）</p>
+<p>条件查询：使用where子句：</p>
+<p>&gt; , &lt; , &gt;= , &lt;= , &lt;&gt;（不等于） ,=</p>
+<p>like:模糊查询（like可以进行模糊查询,在like子句中可以使用_或者%作为占位符。_只能代表一个字符，而%可以代表任意个字符。）</p>
+<p>in:范围查询  （in后面跟的是范围）</p>
+<p>条件关联:and , or ,not  （多个条件时可以使用）</p>
+<p>排序查询：</p>
+<p>使用order by 字段名称 asc/desc;</p>
+<p>asc 升序   desc  降序  （不写的话，默认是asc升序）</p>
+<p>查询学生信息，先按照语文成绩进行倒序排序，如果成绩相同再按照英语成绩升序排序：select * from exam order by chinese desc,english asc;</p>
+<p>分组统计查询：</p>
+<p>聚合函数使用：（）括号中加对象</p>
+<p>sum();</p>
+<p>select sum(english)+sum(chinese)+sum(math) from exam;和select sum(english+chinese+math) from exam;的区别：第一个语句是按照列的方式统计，英语成绩总和+语文成绩总和+数学成绩总和。第二个语句先计算英语+数学+语文然后再求和。</p>
+<p>//如果其中有一个值为null时，select sum(english+chinese+math) from exam;语句不会把那一行数据加上（null加上任意数还是null），select sum(english)+sum(chinese)+sum(math) from exam;语句就会正确相加。如果某一列有null值，可以使用ifnull的函数：select sum(ifnull(english,0)+chinese+math) from exam;</p>
+<p>count();  统计个数 select count(*) from exam where name like ‘李%’;</p>
+<p>max();</p>
+<p>min();</p>
+<p>avg();</p>
+<p>分组查询：</p>
+<p>语法：使用group by 字段名称;</p>
+<p>where的子句后面不能跟着聚合函数。如果现在使用带有聚合函数的条件过滤（分组后条件过滤）需要使用一个关键字having</p>
+<p>select product,sum(price) from orderitem  group by product having sum(price) &gt; 5000;</p>
+<p>总结</p>
+<p>S(select)… F(from)…W(where)…G(group by)…H(having)…O(order by);</p>
+<p>顺序不能颠倒，可以省略</p>
+<h1 id="MySQL的密码重置-不成功"><a href="#MySQL的密码重置-不成功" class="headerlink" title="*MySQL的密码重置(不成功)*"></a><em><strong>*MySQL的密码重置(不成功)*</strong></em></h1><p>\1. 停止MySQL的服务：在搜索程序和文件中输入 services.msc 打开服务 界面，找到MySQL停止</p>
+<p>\2. 在cmd下启动服务：mysqld –skip-grant-tables</p>
+<p>\3. 重新开启cmd的命令行（前面那个不要关掉）：mysql -u root -p 直接登入，不需要密码</p>
+<p>\4. 修改root密码：use mysql；  update user set password = password (‘xinmima’) where user =’root’;update user set password =password(‘sunweixuan’) where user =’root’;</p>
+<p>\5. 结束mysqld的进程:在任务管理器中的进程结束mysqld.exe</p>
+<p>\6. 重新启动mysql的服务：在搜索程序和文件中输入 services.msc 打开服务 界面，找到MySQL启动</p>
+<h1 id="数据库的备份和还原"><a href="#数据库的备份和还原" class="headerlink" title="*数据库的备份和还原*"></a><em><strong>*数据库的备份和还原*</strong></em></h1><p>数据库的备份：1.打开cmd的命令行窗口（以管理员身份运行）</p>
+<p>2.输入mysqldump -u root -p web_test1 &gt;C:/web_test1.sql （这样c盘中就有了web_test1.sql ）  （&gt;和&lt;是数据流向）</p>
+<p>数据库的还原：</p>
+<p>第一种：1.在数据库服务器内部创建数据库：creat</p>
+<p>2.在命令行窗口输入：mysql -u root -p web_test1 &lt; C:/web_test1.sql</p>
+<p>第二种：1.在数据库服务器内部创建数据库：creat</p>
+<p>2.切换到该数据库：use</p>
+<p>3.使用source命令还原：source C:/web_test1.sql</p>
+<h1 id="可视化工具-SQLyog"><a href="#可视化工具-SQLyog" class="headerlink" title="*可视化工具*****SQLyog****"></a><em><strong>*可视化工具*</strong>***</em>*SQLyog****</h1><p>MySQL的可视化工具有很多，基本上功能和内容都一样。</p>
+<p>可以增删查改，可以执行SQL语句。</p>
+<h1 id="多表设计"><a href="#多表设计" class="headerlink" title="*多表设计*"></a><em><strong>*多表设计*</strong></em></h1><p>外键约束</p>
+<p>约束是用来保证数据的完整性。单表：主键约束、非空约束、唯一约束。</p>
+<p>多表：外键约束：用来保证数据完整性（多表之间）</p>
+<p>让两个表之间产生联系：</p>
+<p>在员工表上添加外键：alter table employee add foreign key (dno) references dept(did);  （添加外键dno指向dept表中的did列）</p>
+<p>对外键进行操作类似于对表进行修改：设置外键为非空：alter table employee modify dno int not null;</p>
+<p>表与表之间的关系：</p>
+<p>\1. 一对多的关系（员工和部门）：</p>
+<p>建表原则：在多的一方创建外键指向一的一方的主键</p>
+<p>\2. 多对多的关系（学生和课程）：</p>
+<p>建表原则：需要创建中间表，中间表中至少两个字段，分别作为外键指向多对多双方的主键</p>
+<p>\3. 一对一的关系（公司和注册地址）：（很少见）</p>
+<p>两种方式：</p>
+<p>（1）唯一外键对应：假设是一对多，在多的一方创建外键指向一的一方的主键，将外键设置为unique。</p>
+<p>（2）主键对应：将两个表的主键建立对应关系即可。</p>
+<p>多表设计：</p>
+<p>\1. 多表分析： 分析每个类之间的关系</p>
+<p>\2. 多表创建：创建各个表，添加外键使其建立关系，对于多对多的关系，需要再建立中间表。</p>
+<p>\3. 多表查询：2类</p>
+<p>（1）连接查询</p>
+<p>l 交叉连接（了解）：查询到的是两个表的笛卡尔积（表1*表2=总记录条数）</p>
+<p>语法：select * from 表1 <em><strong>*cross join*</strong></em> 表2;</p>
+<p>select * from 表1,表2;</p>
+<p>l 内连接：inner join （inner可以省略）</p>
+<p>显示内连接：<em><strong>*在SQL中显示的调用inner join关键字*</strong></em></p>
+<p>语法：select * from 表1 inner join 表2 on 关联条件;</p>
+<p>（select * from classes c inner join student s on c.cid = s.cno;）</p>
+<p>隐式内连接：<em><strong>*在SQL中没有调用inner join关键字*</strong></em></p>
+<p>语法：select * from 表1,表2 where 关联条件;</p>
+<p>（SELECT * FROM classes c,student s WHERE c.cid = s.cno;）</p>
+<p>l 外连接：outer join  （outer可以省略）</p>
+<p>左外连接：语法：select * from 表1 left outer join 表2 on 关联条件; </p>
+<p>左边表的全部和左右边共有的部分（左边表为基准）</p>
+<p>右外连接：语法：select * from 表1 right outer join 表2 on 关联条件;</p>
+<p>左边表的全部和左右边共有的部分（右边表为基准）</p>
+<p>（2）子查询：一个查询语句条件需要依赖另一个查询语句的结果。（查询可以嵌套）</p>
+<p>带in的子查询：select * from classes where cid in (SELECT cno FROM student WHERE birthday &gt; ‘1991-01-01’); （先查询出后面的范围，再在后面的范围中查找前面的信息并输出）</p>
+<p>带exists的子查询：select * from classes where exists (SELECT cno FROM student WHERE birthday &gt; ‘1991-01-01’); （先查询后面的范围，如果存在，就对前面的语句进行查询；如果不存在，不执行前面的查询语句）</p>
+<p>带any的子查询：SELECT * FROM classes WHERE cid &gt; ANY (SELECT cno FROM student )； （大于后面中最小值的）</p>
+<p>带all的子查询：SELECT * FROM classes WHERE cid &gt; ALL (SELECT cno FROM student)； （大于后面中最大值的）</p>
+<p>内连接与外连接的区别：左外连接和右外连接的交集就是内连接。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/13/5.1.MySQL%E5%88%9D%E7%BA%A7/" data-id="cknllgmbh001qsgwd9uweguur" data-title="MySQL初级" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-19.2.Gitee" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/12/19.2.Gitee/" class="article-date">
+  <time class="dt-published" datetime="2021-04-12T02:59:11.000Z" itemprop="datePublished">2021-04-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/12/19.2.Gitee/">Gitee</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>一、fork源项目<br>首先码云是基于gitlab，操作方式与github类似。码云的协作是基于fork源项目的基础上，才能进行pull request。</p>
+<p>对要进行协作开发或者学习的项目，fork一份到自己的远程仓库。</p>
+<p>这样我们自己的远程仓库就会有一份源工程的副本。熟悉git版本工具开发的朋友，可以把一份fork下来的副本当成一个开发分支。</p>
+<p>只有fork下来的副本你才拥有修改的权限，等同于一个拥有开发权限的分支。在这个开发分支中，你可以进行代码学习或者开发，提交修改到远程仓库的副本工程。</p>
+<p>二、协同修改操作pull request</p>
+<p>这样可以将自己仓库的修改过的分支，提交合并请求到源项目，完成远程协作。</p>
+<p>三、拉取源项目最新内容<br>点击项目标题下源项目旁边的 刷新按钮，便可以拉取最新的源项目数据。</p>
+<p>便于及时获取原作者最新的项目更新。</p>
+<p>也可以通过给fork下来的副本添加上游仓库地址<br>使用git 命令更新</p>
+<p>git remote add upstream <a target="_blank" rel="noopener" href="https://gitee.com/xxxxxxxx.git">https://gitee.com/xxxxxxxx.git</a><br>git pull upstream develop</p>
+<p>注意： 更新上游仓库 会覆盖本地修改，所以请pr 接受之后 在更新</p>
+<p>gitee是开源中国（<a target="_blank" rel="noopener" href="https://www.oschina.net/%EF%BC%89%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%80%E6%AC%BE%E5%9F%BA%E4%BA%8Egit%E7%9A%84%E4%BB%A3%E7%A0%81%E6%89%98%E7%AE%A1%E5%B9%B3%E5%8F%B0%EF%BC%8C%E8%83%BD%E5%A4%9F%E7%94%A8%E7%A0%81%E4%BA%91%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81%E6%89%98%E7%AE%A1%E3%80%81%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E3%80%81%E5%8D%8F%E4%BD%9C%E5%BC%80%E5%8F%91%EF%BC%8C%E7%9B%AE%E5%89%8D%E6%98%AF%E5%9B%BD%E5%86%85%E6%9C%80%E5%A4%A7%E7%9A%84%E4%BB%A3%E7%A0%81%E7%B3%BB%E7%BB%9F%EF%BC%8Cgitee%E5%92%8Cgithub%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E6%80%A7%E8%B4%A8%E6%98%AF%E7%B1%BB%E4%BC%BC%E7%9A%84%EF%BC%8C%E4%BD%86%E6%98%AF%E7%9B%B8%E6%AF%94%E4%BA%8Egithub%E8%80%8C%E8%A8%80%EF%BC%8Cgitee%E6%9C%89%E4%B8%A4%E4%B8%AA%E6%98%BE%E8%91%97%E7%9A%84%E4%BC%98%E5%8A%BF%EF%BC%9A%E4%B8%80%E6%98%AF%E9%80%9F%E5%BA%A6%E5%BF%AB%EF%BC%8C%E4%BA%8C%E6%98%AF%E6%94%AF%E6%8C%81%E5%85%8D%E8%B4%B9%E7%9A%84%E7%A7%81%E5%AF%86%E9%A1%B9%E7%9B%AE">https://www.oschina.net/）开发的一款基于git的代码托管平台，能够用码云实现代码托管、项目管理、协作开发，目前是国内最大的代码系统，gitee和github的作用和性质是类似的，但是相比于github而言，gitee有两个显著的优势：一是速度快，二是支持免费的私密项目</a><br>下载git</p>
+<ol>
+<li>分支（git branch命令）</li>
+</ol>
+<p>git默认分支一般是master，当然，这是可以修改的，我们在master完成一次开发，生成了一个稳定版本，那么当需要添加新功能或者做修改时，只需要新建一个分支，然后在该分支上开发，完成后合并到主分支即可，分支功能解决了正在开发的版本与上线版本稳定性冲突的问题。</p>
+<ol start="2">
+<li>提交（git commit命令）</li>
+</ol>
+<p>git对于版本的管理其实是对提交的管理，git使用40个字节长度的16进制字符串来标识每一个提交，每一个提交具有唯一的标识，根据这个标识可以任意回退。</p>
+<ol start="3">
+<li>拉取（git pull命令）</li>
+</ol>
+<p>用于取回远程仓库某个分支的更新，再与本地仓库合并。</p>
+<ol start="4">
+<li>推送（git push命令）</li>
+</ol>
+<p>用于把本地的代码更新到远程仓库。</p>
+<p>创建本地代码仓库</p>
+<ol>
+<li><p>在本地一个盘下新建一个文件夹，当作本地代码仓库，也就是说希望之后这个文件夹里的文件的改动都能被git进行管理。<br>例如我在F盘内新建一个名为testGit的文件夹</p>
+</li>
+<li><p>在该文件内按住Shift键并点击鼠标右键，选择”在此处打开Powershell窗口“，bash，进入Linux环境（刚安装了Ubuntu，因为打算学点Linux命令，嘿嘿，如果没有安装Ubuntu，就不需要bash，直接执行git命令就行）执行代码：</p>
+</li>
+</ol>
+<p>git init</p>
+<p>这句话的意思是初始一个本地仓库，之后可以看到在该文件夹下多了一个.git文件夹，用于记录所有与管理本仓库相关的文件，<br>所以请小心改动。</p>
+<p>三、进行代码托管<br>本地代码仓库和远程代码仓库都创建好之后，需要把它们进行同步才能在gitee上进行代码托管。</p>
+<p>1.本地代码仓库与远程代码仓库进行同步，执行代码：</p>
+<p>git remote add origin <a target="_blank" rel="noopener" href="https://gitee.com/gxx_gitee/testGit.git">https://gitee.com/gxx_gitee/testGit.git</a><br>1<br>其中远程库的名字就是origin，这是git默认的叫法，也可以改成别的，但是origin这个名字一看就知道是远程库。</p>
+<p>我试验过origin可以改为项目名，或者和项目名不同也都是可以的，因为重要的是后面的url，每个远程代码库都有一个自己的url，<br>所以本地仓库本质上是和这个url所指代的远程仓库进行关联的。</p>
+<p>2.拉取远程代码库<br>由于在创建远程仓库时会初始化一个README.md文件，而本地仓库里没有，所以需要先执行pull操作将远程仓库拉取合并到本地仓库，否则会出错。执行代码：</p>
+<p>git pull origin master<br>1</p>
+<p>【注1：由于在本地创建了代码仓库，git默认关联的库在本地，所以直接执行git pull命令是无效的，需要执行git pull origin master命令才行，这句话的意思是推送到远程库master分支，此外，也可以根据提示执行一下git branch –set-upstream origin master命令，以后就可以直接使用git pull了】</p>
+<p>此时可以看到在本地代码仓库中多了一个README.md文件。</p>
+<p>【注2：如果遇到错误提示“fatal: refusing to merge unrelated histories”，出现这种错误是因为git会以为这两个仓库不同所以进行无法合并，在执行pull操作时添加–allow-unrelated-histories，即执行git pull origin master –allow-unrelated-histories就可以了】</p>
+<p>3.向远程代码仓库推送文件（例如在本地代码仓库中新建了test1.txt和test2.txt文件，现把它们同步到远程代码仓库），执行代码：</p>
+<p>git add .<br>git commit -m “对该操作的相关描述”<br>1<br>2</p>
+<p>可以看到，git追踪到了仓库中文件的变化，所以说git起到了作用。现在执行push操作将它推送到远程代码库：</p>
+<p>git push<br>git push –set-upstream origin master<br>1<br>2</p>
+<p>【注3：这里使用git push命令会和上面使用git pull时出现同样的问题，根据提示git push –set-upstream origin master，以后就可以直接使用git push命令了】<br>刷新远程代码仓库，可以看到文件被成功的同步到了远程仓库：</p>
+<p>当然，同步一个文件夹到远程仓库与同步单个文件相同，只不过无法同步空文件夹到远程仓库，因为git会认为没有改动</p>
+<p>一、创建远程代码仓库<br>同上。例如我在gitee上创建了项目testGit1，每个远程代码库都有一个自己的url：</p>
+<p>二、克隆项目到本地<br>在本地一个盘下按住Shift键并点击鼠标右键，选择”在此处打开Powershell窗口“，bash，进入Linux环境（如果没有安装Ubuntu，就不需要bash，直接执行git命令就行）执行代码：</p>
+<p>git clone 项目的url<br>1</p>
+<p>然后就会发现在该盘下面就有了一个同名文件夹，并且.git目录和README.md文件都有，这两个代码仓库都已经同步好了：</p>
+<p>三、进行代码托管<br>向远程代码仓库同步文件（例如在本地代码仓库中新建了test1.txt和test2.txt文件，现把它们同步到远程代码仓库），进入到该文件下，执行代码：</p>
+<p>git add .<br>git commit -m “对该操作的相关描述”<br>1<br>2</p>
+<p>可以看到，git追踪到了仓库中文件的变化，所以说git起到了作用。现在执行push操作将它推送到远程代码库：</p>
+<p>git push<br>1</p>
+<p>【注4：这里可以直接使用git push命令，因为远程创建了代码仓库，git默认关联的库在远程，git push是默认推送到远程库master分支】</p>
+<p>一、删除文件、文件夹</p>
+<p>1.删除文件，执行命令：</p>
+<p>git rm 想要删除的文件的名字及其后缀<br>1</p>
+<p>可以看到在本地代码仓库testGit1中有三个文件，README.md、test1.txt和test2.txt，删除文件test1.txt，<br>但是如果不加文件后缀的话，会发现提示匹配不到文件，所以必须给全名。<br>之后可以发现本地仓库已经没有这个文件了，但是刷新远程仓库会发现，这个文件依然存在，<br>这是因为在本地仓库改动过后，没有将现在的状态同步到远程仓库，所以需要执行一下commit和push命令：</p>
+<p>git commit -m “对本次提交的描述信息”<br>git push<br>1<br>2<br>现在刷新远程代码仓库，可以看到文件test1.txt被成功的删除了。</p>
+<p>2.删除文件夹，执行命令：</p>
+<p>git rm 想要删除的文件夹的名字 -r<br>1</p>
+<p>可以看到在本地代码仓库testGit1中有一个名为test的文件夹，直接使用删除文件的命令无法删除文件夹，<br>会提示错误“not removing ‘test’ recursively without -r”，可以先执行一下git rm -help命令查看rm命令的使用详情，<br>其中添加-r表示允许迭代移除，所以git rm test -r可以删除test文件夹，之后执行commit和push操作即可，同上。</p>
+<p>二、找回误删文件、文件夹</p>
+<p>git对于版本的管理本质是对提交的管理，所以在每个操作后最好提交一下，便于之后需要回退，例如要找回上面操作中误删的文件test1.txt。</p>
+<p>1.如果你现在正在进行某些更改，需要先推送远程仓库，否则回退之后，最新状态的内容就没有了。</p>
+<p>2.执行命令：</p>
+<p>git log<br>1<br>这个命令会显示出提交日志，可以看到有一个增加了2个文件（test1.txt和test2.txt）的提交和删除test1.txt的提交：</p>
+<p>每个提交都有自己的唯一标识，所以想要找回文件test1.txt，需要回退到提交删除操作的前一个状态，所以这里是回退到添加文件状态，执行命令：</p>
+<p>git reset –hard 需要回退到的状态的commit标识号<br>1</p>
+<p>该命令的原理：git有个指向当前版本的HEAD指针，执行回退操作本质上是git把HEAD指针从当前状态指向想要回退到的状态，<br>所以回退的速度很快，需要回退到哪里，就让HEAD指向哪里就行，<br>可以看到提示说HEAD已经处于添加文件的状态了，此时查看文件也可以看到test1.txt文件。</p>
+<p>3.如果在这个状态和最新状态之间又提交过很多文件，需要手动把这个找回的test1.txt文件拷贝出去一份，<br>再执行reset命令回到最新的状态：</p>
+<p>git reset –hard 最新状态的commit标识号<br>1<br>4.最新状态是没有刚刚找回的这个文件的，把test1.txt文件拷贝进本地仓库中，然后推送到远程仓库即可，执行命令：</p>
+<p>git add .<br>git commit -m “对本次提交的描述”<br>git push<br>1<br>2<br>3<br>这样就可以既找回了之前误删的文件，又没有丢掉中间状态的很多文件。<br>找回误删的文件夹和找回误删的文件操作完全相同，因为git不会识别你找回的是什么，只是回退到相应的状态而已。</p>
+<p>过程示意图：</p>
+<p>commit:1——&gt;commit:2——&gt;commit:3——&gt;commit:4——&gt;commit：5<br>                           误删                    最新状态<br>1<br>2<br>当你想要找回删除的文件的时候，先保存现在的状态即最新状态commit：5，然后回退到误删的前一个状态也就是commit：2，<br>这时候可以获取到已经删除的文件，把它拷贝出去保存一份，然后回到最新状态commit：5，<br>该状态下是没有已经删除的文件的，但是刚刚我们找到了它并拷贝了一份，现在把这个文件再拷贝进来到本地仓库中，<br>然后执行提交推送操作，会产生一个新的commit状态，这个就是在commit：5的基础上找回已删除文件后产生的最最新的状态。</p>
+<p>1、安装gitee插件<br>IDEA 码云插件已由 gitosc 更名为 gitee。<br>1<br>在码云平台帮助文档<a target="_blank" rel="noopener" href="http://git.mydoc.io/?t=153739%E4%B8%8A%E4%BB%8B%E7%BB%8D%E7%9A%84%E5%BE%88%E6%B8%85%E6%A5%9A%EF%BC%8C%E6%8E%A8%E8%8D%90%E5%89%8D%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95%EF%BC%8C">http://git.mydoc.io/?t=153739上介绍的很清楚，推荐前两种方法，</a><br>搜索码云插件的时候记得名字是gitee，gitosc已经搜不到了。</p>
+<p>2、使用码云托管项目<br>如果之前没有使用过代码托管平台，现在突然想用码云托管代码，操作如下：</p>
+<p>打开IDEA和这个项目，点击VCS（版本控制系统 Version Control System）：</p>
+<p>然后填写信息，可以设置为私密项目也可以不设置：</p>
+<p>点击Share，然后：</p>
+<p>所有的Commit Message必填，不然会出错的，点击OK，之后可以看到IDEA有如下提示：</p>
+<p>代码托管成功~~刷新远程代码仓库，也可以看到该项目：</p>
+<p>以后对项目有改动，就可以使用下面的推送方法进行同步了。</p>
+<p>3、拉取项目<br>在码云平台帮助文档<a target="_blank" rel="noopener" href="http://git.mydoc.io/?t=153739%E4%B8%8A%E4%B9%9F%E4%BB%8B%E7%BB%8D%E7%9A%84%E5%BE%88%E6%B8%85%E6%A5%9A%EF%BC%8C%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95%E9%83%BD%E5%8F%AF%EF%BC%8C%E8%BF%99%E9%87%8C%E6%88%91%E8%87%AA%E5%B7%B1%E6%BC%94%E7%BB%83%E4%B8%80%E9%81%8D%EF%BC%8C%E5%98%BF%E5%98%BF%E3%80%82">http://git.mydoc.io/?t=153739上也介绍的很清楚，两种方法都可，这里我自己演练一遍，嘿嘿。</a></p>
+<p>方法1：</p>
+<p>在IDEA主界面：</p>
+<p>点击Login之后，Token会自动填入。<br>然后可以测试一下连接状态，如果连接成功，可以选择需要克隆的代码仓库，然后克隆到本地盘中：</p>
+<p>之后根据提示创建相应的IDEA项目：</p>
+<p>嘿嘿，拉取成功~</p>
+<p>方法2：</p>
+<p>打开IDEA，选择File——&gt;Settings：</p>
+<p>然后：</p>
+<p>如果能够成功连接到远程仓库，点击VCS：</p>
+<p>之后的操作和出现的界面就和方法1完全一样，选择相应的项目进行克隆即可。</p>
+<p>4、推送项目<br>【注1：对于第一次从远程仓库拉取过来并在IDEA中创建的项目，最好还是先不要做任何修改，先推送一遍，因为IDEA会为项目创建配置文件.idea和项目名.iml。】<br>【注2：对于文件的修改，建议定期commit，就像定期保存一下一样，因为如果需要回退，可以很方便的根据commit的标识号进行回退】</p>
+<p>方法1：</p>
+<p>右键点击文件或文件夹，执行下面步骤即可：</p>
+<p>然后该填的都填上，对本地提交的描述必填，不然会报错，git命令里也是如此。<br>选择Commit and Push（或只是Commit也行，可以好几次Commit之后一下子Push）：</p>
+<p>然后：</p>
+<p>点击Push之后，刷新远程代码仓库，可以看到内容有更新。</p>
+<p>方法2：</p>
+<p>点击VCS，可以看到有相应的按钮可以执行commit、push操作，之后的界面与方法1相同。</p>
+<p>可以好几次Commit之后，点击执行Push，将其一起推送到远程代码仓库。</p>
+<p>目前用：</p>
+<p>通过git命令将代码推送到gitee的分支：<br>gitee是国内的代码托管平台，相比较于github他拉取仓库和推送的速度更快，在这里我主要讲述一下通过git bash将代码推送到gitee的某个branch的流程。</p>
+<p>推送流程简述：<br>推送的流程其实归纳起来可以总结出四步：</p>
+<ol>
+<li>将Gitee的仓库/某个具体的分支拉取到本地</li>
+<li>将自己写好的代码放到本地仓库中</li>
+<li>将代码提交到本地仓库</li>
+<li>将代码推送到Gitee远端仓库</li>
+</ol>
+<p>具体过程详解：<br>首先是将Gitee的仓库/分支拉取到本地：<br>在这里我们可以看一下我们的仓库目录，这里有一个master分支和六个子分支，这里我将展示从17301100这个分支拉取仓库。</p>
+<p>首先进入任意文件夹，选择git bash（在这里运行的前提是本地已经安装并配置好git，安装配置的过程在这里不多赘述），然后输入命令git clone -b【分支名】SSH（这里的ssh是码云仓库的SSH）</p>
+<p>这里我要强调一下，如果是要拉取master分支就可以直接使用git clone，如果要拉取子分支需要加 -b 【分支名】，否则默认拉取的是master分支！！！！！！！</p>
+<p>拉取成功之后会看到本地多了一个文件夹，我这里的文件夹叫做summer2020，这就是我们远端拉取到的git仓库啦</p>
+<p>将代码提交到本地git仓库<br>在成功拉取之后我们进入到拉取来的文件夹，可以看到里面的结构与我们码云上的结构是完全相同的</p>
+<p>然后直接从本地将我们的代码拷贝到该文件夹中，打开git bash，执行git add 【文件】的操作（！！这里要重点强调，一定要在远端仓库中打开git bash，会在路径中看到有我们的分支名称：我的分支是17301100）</p>
+<p>当 git add完成之后我们需要执行git commit 操作，来表明我们对这个事务进行提交（可以类比数据库的事务）<br>在这里我们使用了 -m 他的目的是对提交的项目进行描述（message）</p>
+<p>当commit成功后我们就成功将我们的项目添加到了本地的git仓库中</p>
+<p>把本地git仓库的代码推送到码云远端仓库中<br>到了这一步就非常简单了，直接推送就可以了<br>使用git push origin 【分支名】就可以成功推送了！！！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/12/19.2.Gitee/" data-id="cknllgmb6000wsgwdd7yoa35v" data-title="Gitee" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-10.5.项目提交" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/11/10.5.%E9%A1%B9%E7%9B%AE%E6%8F%90%E4%BA%A4/" class="article-date">
+  <time class="dt-published" datetime="2021-04-11T06:03:11.000Z" itemprop="datePublished">2021-04-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/11/10.5.%E9%A1%B9%E7%9B%AE%E6%8F%90%E4%BA%A4/">项目提交</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>后端项目打包：</p>
+<p>maven的lifecycle提供了一个package，点击后打的jar包会出现在target文件下。</p>
+<p>或者控制台输入命令：</p>
+<p><code>mvn clean package -Dmaven.test.skip=true</code></p>
+<p>前端项目打包：</p>
+<p>1.先运行依赖包：<code>npm install</code></p>
+<p>2.控制台输入打包命令：</p>
+<p><code>cnpm run build</code>   </p>
+<p>3.将生成的dist文件，直接放到服务器上</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/11/10.5.%E9%A1%B9%E7%9B%AE%E6%8F%90%E4%BA%A4/" data-id="cknllgmav000fsgwd657u1472" data-title="项目提交" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-10.6.项目外包" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/07/10.6.%E9%A1%B9%E7%9B%AE%E5%A4%96%E5%8C%85/" class="article-date">
+  <time class="dt-published" datetime="2021-04-07T12:03:47.000Z" itemprop="datePublished">2021-04-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/07/10.6.%E9%A1%B9%E7%9B%AE%E5%A4%96%E5%8C%85/">项目外包</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>项目外包一般包括：项目文档、项目外包合同</p>
+<p><em><strong>*分为*</strong>***</em>*项目立项*<em><strong>、</strong></em>*项目规划*<em><strong>、</strong></em>*需求分析*<em><strong>、</strong></em>*项目验收****<em><strong>*阶段*</strong></em></p>
+<p><em><strong>*1.明确项目干系人*</strong>***</em>*<br>****    在项目规划阶段明确干系人的人员组成、优先级、期望点，是保障项目定位、需求来源的准确性的必要途径，是进入项目需求阶段的基础</p>
+<p><em><strong>*2.合理的项目团队组织*</strong></em></p>
+<p>包括人员安排、任务划分、沟通协作项目确认</p>
+<p>· 安排专业人员作为项目对接人</p>
+<p>· 建立项目进度跟踪机制</p>
+<p>3.不可忽视项目的非功能需求：包括性能需求、安全需求、集成需求、可靠性需求、兼容性需求、易用性需求等</p>
+<p><strong>l</strong> <em><strong>*性能需求*</strong></em></p>
+<p>对于前台的系统而言，通常以“响应时间”上进行定义，并具体到的某个业务场景。需求描述举例如下：</p>
+<p>定位系统从点击到第一个界面显示出来所需要的时间不得超过300毫秒。</p>
+<p>在非高峰时间根据编号和名称特定条件进行搜索，可以在3秒内得到搜索结果。</p>
+<p>对于后台的业务管理系统来说，通常以“整体能力上来定义”，并具体到某个业务场景。常见的业务指标包括“并发量、资源使用率、业务量、系统容量”等等。需求描述举例如下：</p>
+<p>系统可以同时满足10,000个用户请求，并为25,000个并发用户提供浏览功能。</p>
+<p>CPU占用率&lt;=50%，内存占用率&lt;=50%。</p>
+<p>数据库表行数不超过100万行，数据库最大容量不超过1000GB，磁盘空间至少需要40G以上。</p>
+<p><strong>l</strong> <em><strong>*可扩展需求*</strong></em></p>
+<p>系统可扩展可以从系统性能、系统功能两个方面进行考虑，其基本要求是功能扩展时不需要对系统的基础架构进行改动，性能扩展不通过任何代码的更改。在描述系统性能的可扩展需求时应结合性能需求，举例如下：</p>
+<p>系统可以在未来需要的情况下，不通过任何代码的更改，对系统性能进行提升，使之中心系统每秒钟能记录25个以上的考勤记录。</p>
+<p>从业务设计的角度来说，模块化、可复用、较少依赖或耦合是可扩展的原则。</p>
+<p>l 集成需求</p>
+<p>集成需求主要包括数据对接（系统之间的数据交换和信息传递）、单点登录（多个独立系统统一账号和登录认证）、系统融合（ 将多个系统融合在一个系统中，统一账号、权限、应用的管理，最终以一个独立的软件系统存在）。需求描述举例如下：</p>
+<p>某某图书管理系统采集##库存管理系统的数据包括库存数据、订单数据。</p>
+<p>某某课程管理系统通过与EHR系统实施集成，实现相关基础数据（组织机构、用户数据等）的共享，实施统一身份认证和统一登录界面。</p>
+<p>内训管理后台融合到社区管理后台中，统一账号、权限、功能的管理。</p>
+<p>l 兼容性需求<br>一般对于前台系统而言，都需要考虑其兼容性。目前最为广泛的前台系统是手机客户端、web端，在考虑系统的兼容性时主要前台的适用平台有哪些，需求描述举例如下。</p>
+<p>· 系统仅支持chrome浏览器，不考虑移动端适配。</p>
+<p>· 移动端需要兼容的操作系统IOS6以上、Andriod6.0以上</p>
+<p>l 易用性需求</p>
+<p>易用性和产品的用户体验相关，是一组规定或者潜在的用户为使用其软件所需做的努力和对这样的使用所作的评价有关的一组属性。衡量易用性的标准是用户对于系统功能是否容易理解、是否容易学习、是否容易操作，需求描述举例如下：</p>
+<p>80%的用户经过培训后，可在5分钟内完成课程创建。</p>
+<p>90％的用户完成建课后，需要在5s内知道下一步需要进行什么操作，如课程上线、编辑、查看详情等。</p>
+<p>接口测试也是属于****功能测试*<em><strong>，所以跟我们以往的功能测试流程并没有太大区别，测试流程依旧是：1.测试接口文档（需求文档） 2.根据接口文档编写</strong></em>*测试用例****（用例编写完全可以按照以往规则来编写，例如等价类划分，边界值等设计方法） 3. 执行测试，查看不同的参数请求，接口的返回的数据是否达到预期</p>
+<p>HTTP抓包工具：Fiddler、Charles、Firebug、开发者工具等等</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/07/10.6.%E9%A1%B9%E7%9B%AE%E5%A4%96%E5%8C%85/" data-id="cknllgmb0000gsgwdhxlo1cxh" data-title="项目外包" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-7.Tomcat" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/07/7.Tomcat/" class="article-date">
+  <time class="dt-published" datetime="2021-04-07T11:47:13.000Z" itemprop="datePublished">2021-04-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/07/7.Tomcat/">Tomcat</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Tomcat是Apache 软件基金会（Apache Software Foundation）的Jakarta 项目中的一个核心项目，由<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Apache/6265">Apache</a>、Sun 和其他一些公司及个人共同开发而成。由于有了Sun 的参与和支持，最新的Servlet 和JSP 规范总是能在Tomcat 中得到体现，Tomcat 5支持最新的Servlet 2.4 和JSP 2.0 规范。因为Tomcat 技术先进、性能稳定，而且免费，因而深受Java 爱好者的喜爱并得到了部分软件开发商的认可，成为目前比较流行的Web 应用服务器。</p>
+<p>Tomcat 服务器是一个免费的开放源代码的Web 应用服务器，属于轻量级应用<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9C%8D%E5%8A%A1%E5%99%A8">服务器</a>，在中小型系统和并发访问用户不是很多的场合下被普遍使用，是开发和调试JSP 程序的首选。对于一个初学者来说，可以这样认为，当在一台机器上配置好Apache 服务器，可利用它响应<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/HTML">HTML</a>（<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%A0%87%E5%87%86%E9%80%9A%E7%94%A8%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/6805073">标准通用标记语言</a>下的一个应用）页面的访问请求。实际上Tomcat是Apache 服务器的扩展，但运行时它是独立运行的，所以当你运行tomcat 时，它实际上作为一个与Apache 独立的进程单独运行的。</p>
+<p>诀窍是，当配置正确时，Apache 为HTML页面服务，而Tomcat 实际上运行JSP 页面和Servlet。另外，Tomcat和<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/IIS">IIS</a>等Web服务器一样，具有处理HTML页面的功能，另外它还是一个Servlet和JSP容器，独立的Servlet容器是Tomcat的默认模式。不过，Tomcat处理静态<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/HTML">HTML</a>的能力不如Apache服务器。</p>
+<p>Tomcat就是一个web的服务器，用来发布web项目。</p>
+<p>下载：<a target="_blank" rel="noopener" href="http://tomcat.apache.org/download-70.cgi">http://tomcat.apache.org/download-70.cgi</a></p>
+<p>解压文件之后，bin目录下的startup.bat，会出现一个dos命令界面，不要关闭的情况下，在浏览器中输入localhost:8080/会跳转到一个页面,这样就表示安装成功了。</p>
+<p>安装注意事项：</p>
+<p>Tomcat运行需要依赖Java环境，也就是说需要在电脑上安装了JDK之后才可以安装和启动Tomcat。因为Tomcat启动的时候需要使用JRE的环境。必须要配置JAVA_HOME环境变量（这个必须要在系统变量中才行），如果没有配置JAVA_HOME环境变量，那么服务器在启动的时候就会一闪然后关闭。（可以将startup.bat用记事本打开，在最后的end后面的最后一行写上pause，令它停止一下，再打开就会显示错误信息）</p>
+<p>如果电脑上安装了一个应用之后，有可能会占用Tomcat的端口，如果将Tomcat端口占用了，同样这个Tomcat启动不了的。Tomcat默认的端口号是8080（很少会有程序占用，除非你启动了两个Tomcat，但是一般80端口容易被其他程序所占用）。因为80端口是HTTP协议的默认端口（一般在http协议下的输入网址字母后面都可以跟：80，无影响，所以可以省略）。</p>
+<p>解决端口号冲突导致Tomcat的startup.bat打开不了的方法：</p>
+<p>1.将占用端口的程序结束掉。</p>
+<p>在cmd命令符中输入命令查看端口号：netstat -ano</p>
+<p>假如出现了这个：</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml4240\wps1.jpg" alt="img"> </p>
+<p>8080的端口是PID为9428的占用了，可以在任务管理器中结束这个9428的进程</p>
+<p>\2. 改变自身程序的端口。</p>
+<p>修改Tomcat的端口号：进入tomcat/conf/server.xml</p>
+<p>将配置文件中的</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml4240\wps2.jpg" alt="img"> </p>
+<p>改为其他的即可。</p>
+<p>查看日志：</p>
+<p>C:\Users\vcc\Desktop\apache-tomcat-9.0.41-windows-x64\apache-tomcat-9.0.41\logs</p>
+<p>Tomcat的目录结构：</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml4240\wps3.jpg" alt="img"> </p>
+<p>bin        :二进制文件（命令文件：开启和关闭）</p>
+<p>conf    :配置文件</p>
+<p>lib        :tomcat所需要的jar包</p>
+<p>logs        :tomcat服务器日志文件</p>
+<p>temp    :tomcat运行产生临时文件</p>
+<p>webapps    :需要发布的项目需要放在webapps下，这样就相当于发布出去了（ROOT中的index.jsp就是发布项目的首页）</p>
+<p>work    :JSP翻译（编译）成Servlet产生的代码</p>
+<p>发布一个Tomcat项目：</p>
+<p>可以发布静态，动态项目</p>
+<p>如果是静态的项目，只需要有静态页面就够了</p>
+<p>动态WEB资源目录结构：</p>
+<p>website</p>
+<p>​    |——静态页面（HTML、CSS、JS、图片）</p>
+<p>​    |——JSP页面</p>
+<p>​    |——<em><strong>*WEB-INF*</strong></em></p>
+<p>​            |—–<em><strong>*web.xml*</strong></em>    （必须的，有配置、servlet）</p>
+<p>​            |—–classes    （可选的，java类，servlet被编译）</p>
+<p>​            |—–lib        （可选的，第三方的jar包）</p>
+<p>项目的发布方式：</p>
+<p>\1. 直接将项目复制到tomcat/webapps下</p>
+<p>将项目复制到tomcat/webapps中，启动服务器：bin/startup.bat</p>
+<p>访问项目（本机访问）：<a target="_blank" rel="noopener" href="http://localhost:8080/aaa/index.html%EF%BC%88index.html%E6%98%AF%E4%B8%BB%E9%A1%B5%EF%BC%8C%E4%B9%9F%E5%8F%AF%E4%BB%A5%E4%B8%8D%E5%86%99%EF%BC%89%EF%BC%88%E4%B9%9F%E5%8F%AF%E4%BB%A5%E5%B0%86localhost%E6%94%B9%E4%B8%BAip%E5%9C%B0%E5%9D%80%EF%BC%8C%E4%BE%9B%E5%85%B6%E4%BB%96%E7%94%B5%E8%84%91%E8%AE%BF%E9%97%AE%EF%BC%89">http://localhost:8080/aaa/index.html（index.html是主页，也可以不写）（也可以将localhost改为ip地址，供其他电脑访问）</a></p>
+<p>\2. 在tomcat/conf/server.xml配置tomcat的虚拟路径</p>
+<p>虚拟路径：配置一个名称与一个真实的路径进行绑定，然后访问这个名称从而找到真实路径。</p>
+<p>在tomcat/conf/server.xml中进行配置（配置的相关变量属性可以在tomcat的文档中找到，tomcat的文档可以在localhost:8080/下找到）。</p>
+<p>要添加<Context></Context>表示配置虚拟路径</p>
+<p>docBase：项目路径（文档的根路径）</p>
+<p>path：虚拟路径</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml4240\wps4.jpg" alt="img"> </p>
+<p>启动服务器访问：<a target="_blank" rel="noopener" href="http://localhost:8080/itheima/index.html">http://localhost:8080/虚拟路径/index.html</a></p>
+<p>3.在tomcat/conf/Catalina/localhost/下配置tomcat的虚拟路径</p>
+<p>第三种方式也需要配置虚拟路径，第二种需要修改server.xml。server.xml是tomcat的核心配置文件，一旦修改错了，那么tomcat服务器就会出现问题。推荐使用第三种配置方式。</p>
+<p>在tomcat/conf/Catalina/localhost下创建一个xml文件：</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml4240\wps5.jpg" alt="img"> </p>
+<p>文件的名称就是虚拟路径，只需要访问虚拟路径就可以访问C:\ccc这个路径</p>
+<p>启动服务器访问：<a target="_blank" rel="noopener" href="http://localhost:8080/itheima/index.html">http://localhost:8080/虚拟路径/index.html</a></p>
+<p>在Eclipse中集成Tomcat</p>
+<p>1.选择Eclipse的服务的配置：</p>
+<p>打开Eclipse–选择window下的preferences–选择Server下的runtimeenvironment–add添加服务选择ApacheTomcat你的版本，选择安装路径，finish</p>
+<p>2.配置服务</p>
+<p>切换到javaee视图–在控制台位置找到servers，点击下面的添加–选择ApacheTomcat你的版本，finish–添加好的服务右击open，修改其中的两步</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml4240\wps6.jpg" alt="img"> </p>
+<p>\3. 在eclipse中发布项目</p>
+<p>空白处new一个DynamicWebProject，设置项目名称名字，设置模块版本为2.5，finish</p>
+<p>（java的代码写到JavaResources的src下，静态页面、jsp写到WebContent下）</p>
+<p>创建一个html页面（在WebContent下new），写完之后在下面的Servers右击AddAndRemove，将项目add到右边，finish</p>
+<p>在Servers右击start表示开启服务器（现在可以在Tomcat的WebApps下看到项目已经配置了）</p>
+<p>\4. 访问项目</p>
+<p>浏览器输入<a target="_blank" rel="noopener" href="http://localhost:8080/web_test/">http://localhost:8080/项目名字/</a>就可以访问了。</p>
+<p>网站访问的过程：BS模式下</p>
+<p><a target="_blank" rel="noopener" href="http://www.baidu.com/">http://www.baidu.com</a></p>
+<p>http是协议</p>
+<p>www是万维网的主机名</p>
+<p>baidu.com是域名</p>
+<p>访问域名的时候，会先去本地的host文件中查找这个域名是否有匹配的ip地址，如果有，会直接返回，如果没有就会去网络上的DNS服务器查找域名所匹配的ip地址，如果找到了就会直接返回这个ip地址，然后根据80端口去访问相应的ip服务器，如果没有就会出错（404）</p>
+<p>DNS服务器：DNS（Domain Name Server，域名服务器）是进行域名(domain name)和与之相对应的IP地址 (IP address)转换的服务器。DNS中保存了一张域名(domain name)和与之相对应的IP地址 (IP address)的表，以解析消息的域名。 域名是Internet上某一台计算机或计算机组的名称，用于在数据传输时标识计算机的电子方位（有时也指地理位置）。域名是由一串用点分隔的名字组成的，通常包含组织名，而且始终包括两到三个字母的后缀，以指明组织的类型或该域所在的国家或地区。</p>
+<p>Tomcat虚拟主机的配置：</p>
+<p>虚拟主机：在电脑上设置一个目录，使用一个名称与该目录进行绑定。这个路径称为是虚拟主机。主机是可以发布web项目的。</p>
+<p>1.抓取一个页面（以百度为例）</p>
+<p>2.创建一个路径（虚拟主机的目录）：</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml4240\wps7.jpg" alt="img"> </p>
+<p>baidu是虚拟主机的目录，website是项目名称，将抓取的页面放入到项目中</p>
+<p>3.配置tomcat的虚拟主机：conf下的server.xml配置。appBase是虚拟主机的目录，name是虚拟主机的名称</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml4240\wps8.jpg" alt="img"> </p>
+<p>4.修改本地的hosts文件：找到C:\Windows\System32\drivers\etc\hosts，修改hosts文件</p>
+<p>首先需要知道本机的ip地址：cmd中输入ipconfig /all 找到ip地址</p>
+<p>在最下面添加：<img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml4240\wps9.jpg" alt="img"></p>
+<p>5.启动服务器访问项目：在bin下启动服务器：startup.bat</p>
+<p>在浏览器输入：<a target="_blank" rel="noopener" href="http://www.baidu.com:8080/website/baidu.htm">http://www.baidu.com:8080/website/baidu.htm</a></p>
+<p>但是一般输入的时候不用输入这么多，所以需要修改一些配置，在conf下的server.xml配置</p>
+<p>修改端口号：8080改为80</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml4240\wps10.jpg" alt="img"> </p>
+<p>将路径中的website去掉：在自己的虚拟主机中再配置一个虚拟路径</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml4240\wps11.jpg" alt="img"> </p>
+<p>（只要输入一个/就会去website下查找）上述因为添加了注释的汉字，所以格式需要另存一下，改为utf-8（不然会报错）</p>
+<p>配置默认的首页（将baidu.htm去掉）：在conf/web.xml下添加baidu.htm为默认页面</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml4240\wps12.jpg" alt="img"> </p>
+<p>注意：修改conf的配置文件后，需要重启服务器</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/07/7.Tomcat/" data-id="cknllgmbj001vsgwdhwvv4eev" data-title="Tomcat" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-14.1.linux" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/07/14.1.linux/" class="article-date">
+  <time class="dt-published" datetime="2021-04-07T11:42:46.000Z" itemprop="datePublished">2021-04-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/07/14.1.linux/">linux</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>学习Linux目标:掌握linux常用命令，会安装开发中使用软件，例如mysql,jdk…</p>
+<p>开发人员掌握就好，更多的是运维人员需要掌握</p>
+<h1 id="Linux介绍"><a href="#Linux介绍" class="headerlink" title="*Linux介绍*"></a><em><strong>*Linux介绍*</strong></em></h1><p>Linux是基于Unix开发的，Linux是一种自由和开放源码的操作系统，存在着许多不同的Linux版本，但它们都使用了Linux内核</p>
+<p>Unix是一个强大的多用户、多任务操作系统。    于1969年在AT&amp;T的贝尔实验室开发。    UNIX的商标权由国际开放标准组织（The Open Group）所拥有。    UNIX操作系统是商业版，需要收费，价格比Microsoft Windows正版要贵一些</p>
+<p>Linux可安装在各种计算机硬件设备中，比如手机、平板电脑、路由器、台式计算机</p>
+<p>Linux系统的应用</p>
+<p>服务器系统Web应用服务器、数据库服务器、接口服务器、DNS、FTP等等； </p>
+<p>嵌入式系统路由器、防火墙、手机、PDA、IP 分享器、交换器、家电用品的微电脑控制器等等，</p>
+<p>高性能运算、计算密集型应用Linux有强大的运算能力。</p>
+<p>桌面应用系统 ubuntu</p>
+<p>移动手持系统</p>
+<p>Linux版本：<em><strong>*内核版本和发行版本*</strong></em></p>
+<p>内核版本是指在Linus领导下的内核小组开发维护的系统内核的版本号，非常小，只有几M</p>
+<p>​    常用的ubuntu  centos  fedora  redhat</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps1.jpg" alt="img"> </p>
+<h1 id="Linux-安装"><a href="#Linux-安装" class="headerlink" title="*Linux*****安装****"></a><em><strong>*Linux*</strong>***</em>*安装****</h1><p>我们在虚拟机上来安装Linux</p>
+<p>虚拟机：一台虚拟的电脑</p>
+<p>虚拟机软件：</p>
+<p>VMWare它是一个收费虚拟软件，密钥</p>
+<p>VirtualBox    :免费的</p>
+<p>怎样安装linux系统(centos6.5)：</p>
+<p>参考《虚拟软件vmware安装.doc》，安装VmWare</p>
+<p>参考《CentOS6详细安装文档.doc》，安装CentOS</p>
+<p>前提需要一个.iso的镜像文件</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps2.jpg" alt="img"> </p>
+<p>典型安装就可以</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps3.jpg" alt="img"><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps4.jpg" alt="img"><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps5.jpg" alt="img"><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps6.jpg" alt="img"> </p>
+<p>需要指定iso文件的位置</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps7.jpg" alt="img"> </p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps8.jpg" alt="img"> </p>
+<p>进入安装，选择skip（ctrl+alt可以将鼠标的光标跳出虚拟机）</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps9.jpg" alt="img"> </p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps10.jpg" alt="img"> </p>
+<p>时区，亚洲上海</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps11.jpg" alt="img"> </p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps12.jpg" alt="img"> </p>
+<p>选择basic server是安装为服务，只有dos命令，便于远程连接访问。如果是desktop桌面版的话不灵活且安装的内容会很多</p>
+<p>慢慢等待安装完成，重新引导（重启）</p>
+<p>登录时，使用的用户是root,录入密码时不会显示（其实已经输入了），显示第三行的内容为登录成功</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps13.jpg" alt="img"> </p>
+<p>很少会直接登录，一般都是远程访问</p>
+<h1 id="Linux远程访问"><a href="#Linux远程访问" class="headerlink" title="*Linux远程访问*"></a><em><strong>*Linux远程访问*</strong></em></h1><p>使用CRT软件打开</p>
+<p>新建一个连接，快速连接</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps14.jpg" alt="img"> </p>
+<p>需要录入linux的ip地址及用户名密码，连接成功后可以在选项中设置窗口颜色方案，变为黑白的这种经典窗口</p>
+<p>在虚拟机中查看ip地址 ，输入命令 ifconfig</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps15.jpg" alt="img"> </p>
+<p>注意事项:</p>
+<p>1.关于linux安装时失败问题，有可能是硬件虚拟化没有打开，需要在bios中开启虚拟化。通过 <img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps16.jpg" alt="img">可以查看</p>
+<p>2.关于CRT安装与破解(参考图片)</p>
+<h1 id="Linux目录结构"><a href="#Linux目录结构" class="headerlink" title="*Linux目录结构*"></a><em><strong>*Linux目录结构*</strong></em></h1><p>Linux系统它是文件系统</p>
+<p>它的根目录 是”/”,是以树型结构来管理</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps17.jpg" alt="img"> </p>
+<p>Root用户登录后，显示时有一个~,它其实代表的就是root目录</p>
+<p>通过命令cd..  就会放回上层的根目录 /]#</p>
+<p>通过命令ls  可以查看所有的文件名 </p>
+<p>bin  boot  cgroup  dev  etc  home  lib  lost  found  media  misc  mnt  net  opt  proc  root  sbin  selinux  srv  sys  tmp  usr  var</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps18.jpg" alt="img"> </p>
+<p>root管理员的home目录root</p>
+<p>其他用户的home目录home目录中</p>
+<p>我们可以将我们自己的文件安装在任意位置</p>
+<h1 id="Linux常用命令-重点"><a href="#Linux常用命令-重点" class="headerlink" title="*Linux常用命令(重点)*"></a><em><strong>*Linux常用命令(重点)*</strong></em></h1><p>1.切换目录命令 <em><strong>*cd*</strong></em> （这个命令非常重要）</p>
+<p>cd app    切换到app目录    cd ..      切换到上一层目录    cd /        切换到系统根目录    cd ~        切换到用户主目录 root    cd -        切换到上一次执行时所在的目录</p>
+<p>2.列出文件列表 <em><strong>*ls ll*</strong></em> （这个命令非常重要）</p>
+<p>ls(list)是一个非常有用的命令，用来显示当前目录下的内容。配合参数的使用，能以不同的方式显示目录内容。</p>
+<p>dir命令很少用</p>
+<p> 格式：ls [参数]  [路径或文件名]        ls –help 可以帮助我们查看帮助信息，都有哪些命令可以执行</p>
+<p>可能会出现中文乱码的问题，可以在选项中选择编码为UTF-8</p>
+<p>ls -a  显示所有文件或目录（包含隐藏的文件）</p>
+<p>ls -l  使用较长格式列出信息（详细信息），缩写成ll</p>
+<p>TIPS:在linux中以 . 开头的文件都是隐藏的文件</p>
+<p>3.创建与删除目录（注意权限）</p>
+<p>可以mkdir –help查看可用命令</p>
+<p>mkdir(make directory)命令可用来创建子目录：mkdir app  è  在当前目录下创建app目录mkdir –p app2/test  è 级联创建aap2以及test目录</p>
+<p>rmdir(remove directory)命令可用来删除“空”的子目录：    rmdir app  è  删除app目录</p>
+<p>当用rmdir 删除非空目录时会显示失败</p>
+<p>4.浏览文件</p>
+<p>cat操作：cat用于显示文件的内容。</p>
+<p>格式：cat [参数] &lt;文件名&gt;</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps19.jpg" alt="img"> </p>
+<p>more操作：more一般用于要显示的内容会超过一个画面长度的情况。</p>
+<p>按空格键显示下一个画面，按回车键显示下一行内容，按 q 键退出查看</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps20.jpg" alt="img"> </p>
+<p>less操作：用法和more类似，不同的是less可以通过PgUp、PgDn键来控制</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps21.jpg" alt="img"> </p>
+<p>tail操作：tail命令是在实际使用过程中使用非常多的一个命令，它的功能是：用于显示文件后几行的内容</p>
+<p>用法:</p>
+<p>tail -10 /etc/passwd  è 查看后10行数据</p>
+<p>tail -f catalina.log  è <em><strong>*动态查看日志*</strong></em>(非常重要)</p>
+<p>ctrl+c 结束查看</p>
+<p>5.文件操作</p>
+<p>cp操作：是copy操作</p>
+<p>cp(copy)命令可以将文件从一处复制到另一处。一般在使用cp命令时将一个文件复制成另一个文件或复制到某目录时，需要指定源文件名与目标文件名或目录。</p>
+<p>cp a.txt b.txt  è 将a.txt复制为b.txt文件</p>
+<p>cp  a.txt  ../  è 将a.txt文件复制到上一层目录中</p>
+<p>cp  a.txt  /a/b.txt  将a.txt文件复制到a目录下的b.txt文件中（如果没有这个文件会创建）</p>
+<p>mv操作：是move相当于剪切</p>
+<p>mv 移动或者重命名</p>
+<p>mv a.txt ../  è 将a.txt文件移动到上一层目录中</p>
+<p>mv a.txt b.txt  è 将a.txt文件重命名为b.txt</p>
+<p>rm操作：它可以帮助我们删除文件与目录</p>
+<p>rm  删除文件</p>
+<p>用法：rm  [选项]  文件</p>
+<p>rm a.txt  è 删除a.txt文件 （删除需要用户确认，y/n）</p>
+<p>rm 删除不需要询问</p>
+<p>rm -f a.txt  è 不询问，直接删除</p>
+<p>rm 删除目录</p>
+<p>rm -r a  è 递归删除 （删除需要用户递归确认，y/n）</p>
+<p>不询问递归删除（慎用）</p>
+<p>rm -rf  a  è 不询问递归删除</p>
+<p>rm -rf *  è  删除所有文件</p>
+<p>rm -rf /*  è  自杀</p>
+<p>****tar操作****：打包压缩与解压（打包或解压操作时常用）</p>
+<p>ls或者ll命令下查看：d开头的一般是一个目录，r开头的是一个文件</p>
+<p>tar命令位于/bin目录下，它能够将用户所指定的文件或目录打包成一个文件，但不做压缩。一般Linux上常用的压缩方式是选用tar将许多文件打包成一个文件，再以gzip压缩命令压缩成xxx.tar.gz(或称为xxx.tgz)的文件（所以一般.gz或者.tgz文件就是linux系统的文件，.zip就是windows系统的文件）</p>
+<p>常用参数：</p>
+<p>-c：创建一个新tar文件</p>
+<p>-v：显示运行过程的信息</p>
+<p>-f：指定文件名</p>
+<p>-z：调用gzip压缩命令进行压缩</p>
+<p>-t：查看压缩文件的内容</p>
+<p>-x：解开tar文件</p>
+<p>打包：</p>
+<p>tar –cvf xxx.tar ./*  将./*（./*可以是多个文件）的文件打包成xxx.tar文件</p>
+<p>打包并且压缩：</p>
+<p>tar –zcvf xxx.tar.gz ./* </p>
+<p>解压 </p>
+<p> tar –xvf xxx.tar   就会解压到当前路径</p>
+<p>tar -xvf xxx.tar.gz -C /usr/aaa 注意：C要大写，必须在xxx.tar.gz的目录下执行这个命令</p>
+<p>find操作：文件查找，用于查找符合条件的文件</p>
+<p>示例：</p>
+<p>find / -name “ins*” 查找文件名称是以ins开头的文件</p>
+<p>find / -name “ins*” –ls  查找文件名称是以ins开头的文件并列出来详细信息</p>
+<p>find / –user itcast –ls 查找用户itcast的文件并列出详细信息（user是权限符）</p>
+<p>find / –user itcast –type d –ls 查找用户itcast的目录</p>
+<p>find /-perm -777 –type d-ls 查找权限是777的文件</p>
+<p>grep操作：字符串查找，用于查找文件中符合条件的字符串</p>
+<p>用法: grep  [选项]   PATTERN [FILE]</p>
+<p>示例：</p>
+<p>grep lang anaconda-ks.cfg  在文件中查找lang</p>
+<p>grep lang anaconda-ks.cfg –color 高亮显示</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps22.jpg" alt="img"> </p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps23.jpg" alt="img"> </p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps24.jpg" alt="img"> </p>
+<p>A是after，B是before的意思，A5 B5就是前五行和后五行</p>
+<p>6.其它常用命令</p>
+<p>clear：清屏命令</p>
+<p>pwd：显示当前所在目录</p>
+<p>touch：创建一个空文件  touch a.txt</p>
+<p>ll -h：友好显示文件大小，k表示</p>
+<p>wget：下载资料   wget <a target="_blank" rel="noopener" href="http://nginx.org/download/nginx-1.9.12.tar.gz">http://nginx.org/download/nginx-1.9.12.tar.gz</a></p>
+<h1 id="VI与VIM编辑器"><a href="#VI与VIM编辑器" class="headerlink" title="*VI与VIM编辑器*"></a><em><strong>*VI与VIM编辑器*</strong></em></h1><p>vim是vi的升级。</p>
+<p>在Linux下一般使用vi编辑器来编辑文件。vi既可以查看文件也可以编辑文件。有三种模式： 命令行、 插入  、底行 模式</p>
+<p>通过vi（vim）文件名，就可以对文件进行操作。 </p>
+<p>当操作时，开始是命令行模式，按i o  a 切换到插入模式</p>
+<p>i 在当前位置前插入</p>
+<p>  I 在当前行首插入</p>
+<p>  a 在当前位置后插入</p>
+<p>  A 在当前行尾插入</p>
+<p>  o 在当前行之后插入一行</p>
+<p>  O 在当前行之前插入一行</p>
+<p>再按esc 可以重新切换到命令行模式 </p>
+<p>在命令行模式下按 “:” 就可以切换到底行模式，更多详细用法，可以查询文档《Vim命令合集.docx》和《vi使用方法详细介绍.docx》</p>
+<p>在命令行模式下可以使用一些快捷键：</p>
+<p>打开文件：vim file</p>
+<p>退出：esc à :q （切换到底行模式，再按q就是退出）</p>
+<p>修改文件：输入i进入插入模式</p>
+<p>保存并退出：escà:wq</p>
+<p>不保存退出：escà:q!</p>
+<p>三种进入插入模式：</p>
+<p>i:在当前的光标所在处插入</p>
+<p>o:在当前光标所在的行的下一行插入</p>
+<p>a:在光标所在的下一个字符插入</p>
+<p>快捷键：</p>
+<p>dd – 快速删除一行</p>
+<p>yy - 复制当前行</p>
+<p>nyy - 从当前行向后复制几行</p>
+<p>p - 粘贴</p>
+<p>R – 替换</p>
+<p>重定向</p>
+<p>echo  “sdahufha”  命令就是直接打印出“”内容</p>
+<p>&gt;  重定向输出，覆盖原有内容；    &gt;&gt; 重定向输出，换行+追加功能；    示例：</p>
+<p>cat /etc/passwd &gt; a.txt  将输出定向到a.txt中</p>
+<p>cat /etc/passwd &gt;&gt; a.txt  输出并且追加</p>
+<p>ifconfig &gt; ifconfig.txt</p>
+<p>管道</p>
+<p>管道是Linux命令中重要的一个概念，其作用是将一个命令的输出用作另一个命令的输入。示例</p>
+<p>ls –help | more  分页查询帮助信息</p>
+<p>ps –ef | grep java  查询名称中包含java的进程 （ps -ef 查看当前的进程）</p>
+<p>ifconfig | more</p>
+<p>cat index.html | more</p>
+<p>ps –ef | grep aio</p>
+<p>&amp;&amp;命令执行控制</p>
+<p>命令之间使用 &amp;&amp; 连接，实现逻辑与的功能。  </p>
+<p>只有在 &amp;&amp; 左边的命令返回真（命令返回值 $? == 0），&amp;&amp; 右边的命令才会被执行。 </p>
+<p>只要有一个命令返回假（命令返回值 $? == 1），后面的命令就不会被执行。</p>
+<p>mkdir test &amp;&amp; cd test</p>
+<p>系统管理常用命令</p>
+<p>date 可以显示或设置系统时间</p>
+<p>date  显示当前系统时间</p>
+<p>date -s “2014-01-01 10:10:10“  设置系统时间df 显示磁盘信息</p>
+<p>df –h  友好显示大小free 显示内存状态</p>
+<p>free –m 以mb单位显示内存组昂头top 显示，管理执行中的程序</p>
+<p>clear 清屏幕 </p>
+<p>ps 正在运行的某个进程的状态</p>
+<p>ps –ef  查看所有进程</p>
+<p>ps –ef | grep ssh 查找某一进程kill 杀掉某一进程kill + pid</p>
+<p>kill 2868  杀掉2868编号的进程</p>
+<p>kill -9 2868  强制杀死进程</p>
+<p>du 显示目录或文件的大小。</p>
+<p>du –h 显示当前目录的大小</p>
+<p> who 显示目前登入系统的用户信息。 </p>
+<p>uname 显示系统信息。</p>
+<p>uname -a 显示本机详细信息。依次为：内核名称(类别)，主机名，内核版本号，内核版本，内核编译日期，硬件名，处理器类型，硬件平台类型，操作系统名称</p>
+<h1 id="Linux下用户与组管理"><a href="#Linux下用户与组管理" class="headerlink" title="*Linux下用户与组管理*"></a><em><strong>*Linux下用户与组管理*</strong></em></h1><p>用户管理</p>
+<p>useradd 添加一个用户</p>
+<p>useradd test 添加test用户 （会出现在home目录下）</p>
+<p>useradd test -d /home/t1  指定用户home目录 </p>
+<p>passwd  设置、修改密码</p>
+<p>passwd test  为test用户设置密码</p>
+<p>切换登录：</p>
+<p>ssh -l test -p 22 192.168.19.128  （ssh协议默认22端口）</p>
+<p>su – 用户名 切换到这个用户</p>
+<p> userdel 删除一个用户</p>
+<p>userdel test 删除test用户(不会删除home目录)</p>
+<p>userdel –r test  删除用户以及home目录</p>
+<p>组管理</p>
+<p>当在创建一个新用户user时，若没有指定他所属于的组，就建立一个和该用户同名的私有组 </p>
+<p>创建用户时也可以指定所在组 </p>
+<p>groupadd  创建组</p>
+<p>groupadd public  创建一个名为public的组</p>
+<p>useradd u1 –g public  创建用户指定组groupdel 删除组，如果该组有用户成员，必须先删除用户才能删除组。</p>
+<p>groupdel public</p>
+<p>id命令：查看一个用户的UID和GID用法：id  [选项] [用户名]</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps25.jpg" alt="img"> </p>
+<p>直接使用id，直接使用id 用户名</p>
+<p>su命令：切换用户。用法：su   [选项]  [-] [用户   [参数]  ]示例：</p>
+<p>su u1  切换到u1用户</p>
+<p>su - u1 切换到u1用户，并且将环境也切换到u1用户的环境（推荐使用）</p>
+<p>账户文件</p>
+<p>/etc/passwd  用户文件    /etc/shadow  密码文件    /etc/group  组信息文件</p>
+<p>【用户文件】</p>
+<p>root:x:0:0:root:/root:/bin/bash账号名称：        在系统中是唯一的用户密码：        此字段存放加密口令用户标识码(User ID)：  系统内部用它来标示用户组标识码(Group ID)：  系统内部用它来标识用户属性用户相关信息：        例如用户全名等用户目录：        用户登录系统后所进入的目录用户环境:        用户工作的环境</p>
+<p>【密码文件】</p>
+<p>shadow文件中每条记录用冒号间隔的9个字段组成.用户名：用户登录到系统时使用的名字，而且是惟一的口令：  存放加密的口令最后一次修改时间:  标识从某一时刻起到用户最后一次修改时间最大时间间隔:  口令保持有效的最大天数，即多少天后必须修改口令最小时间间隔：    再次修改口令之间的最小天数警告时间：从系统开始警告到口令正式失效的天数不活动时间：    口令过期少天后，该账号被禁用失效时间：指示口令失效的绝对天数(从1970年1月1日开始计算)标志：未使用 </p>
+<p>【组文件】</p>
+<p>root:x:0:组名：用户所属组组口令：一般不用GID：组ID用户列表：属于该组的所有用户</p>
+<h1 id="文件权限管理"><a href="#文件权限管理" class="headerlink" title="*文件权限管理*"></a><em><strong>*文件权限管理*</strong></em></h1><p>文件权限</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps26.jpg" alt="img"> </p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps27.jpg" alt="img"> </p>
+<p>r:对文件是指可读取内容 对目录是可以ls</p>
+<p>w:对文件是指可修改文件内容，对目录 是指可以在其中创建或删除子节点(目录或文件)</p>
+<p>x:对文件是指是否可以运行这个文件，对目录是指是否可以cd进入这个目录</p>
+<p>Linux三种文件类型：</p>
+<p>普通文件： 包括文本文件、数据文件、可执行的二进制程序文件等。 </p>
+<p> 目录文件： Linux系统把目录看成是一种特殊的文件，利用它构成文件系统的树型结构。  </p>
+<p>设备文件： Linux系统把每一个设备都看成是一个文件</p>
+<p>文件类型标识：</p>
+<p>普通文件（-）目录（d）符号链接（l） 进入etc可以查看，相当于快捷方式字符设备文件（c）块设备文件（s）套接字（s）命名管道（p）</p>
+<p>文件权限管理：</p>
+<p>chmod 变更文件或目录的权限。</p>
+<p>chmod 755 a.txt </p>
+<p>chmod u=rwx,g=rx,o=rx a.txt</p>
+<p>chmod 000 a.txt  / chmod 777 a.txt</p>
+<p>chmod u-r a.txt  /  chmod g+x a.txtchown 变更文件或目录改文件所属用户和组</p>
+<p>chown u1:public a.txt：变更当前的目录或文件的所属用户和组(用户为u1，组为public)</p>
+<p>chown -R u1:public dir：变更目录中的所有的子目录及子文件的所属用户和组</p>
+<h1 id="常用网络操作"><a href="#常用网络操作" class="headerlink" title="*常用网络操作*"></a><em><strong>*常用网络操作*</strong></em></h1><p>主机名配置</p>
+<p>hostname 查看主机名</p>
+<p>hostname xxx 修改主机名，临时性修改 重启后无效</p>
+<p>如果想要永久生效，可以修改/etc/sysconfig/network文件（vi 进入文件后编辑）</p>
+<p>IP地址配置</p>
+<p>Setup设置ip地址</p>
+<p>ifconfig 查看(修改)ip地址(重启后无效)</p>
+<p>ifconfig eth0 192.168.12.22 修改ip地址</p>
+<p>如果想要永久生效</p>
+<p>修改 /etc/sysconfig/network-scripts/ifcfg-eth0文件</p>
+<p>可以直接输入setup进入网络配置设置（DHCP是自动分配，自己设置的话就是静态ip，空格，tab键）</p>
+<p>域名映射</p>
+<p>在windows中，System下的drivers下的etc下的hosts文件是域名映射文件</p>
+<p>/etc/hosts文件用于在通过主机名进行访问时做ip地址解析之用</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps28.jpg" alt="img"> </p>
+<p>网络服务管理</p>
+<p>service network status 查看指定服务的状态</p>
+<p>service network stop 停止指定服务</p>
+<p>service network start 启动指定服务</p>
+<p>service network restart 重启指定服务</p>
+<p>service —status–all 查看系统中所有后台服务</p>
+<p>netstat –nltp 查看系统中网络进程的端口监听情况</p>
+<p>防火墙设置</p>
+<p>防火墙根据配置文件/etc/sysconfig/iptables来控制本机的”出”、”入”网络访问行为。</p>
+<p>service iptables status 查看防火墙状态</p>
+<p><em><strong>*service iptables stop 关闭防火墙*</strong></em> （需要关闭以访问一些服务和下载）</p>
+<p>service iptables start 启动防火墙</p>
+<p>chkconfig  iptables off 禁止防火墙自启</p>
+<h1 id="Linux上软件安装介绍"><a href="#Linux上软件安装介绍" class="headerlink" title="*Linux上软件安装介绍*"></a><em><strong>*Linux上软件安装介绍*</strong></em></h1><p>Linux上的软件安装有以下几种常见方式介绍</p>
+<p>1.二进制发布包</p>
+<p>软件已经针对具体平台编译打包发布，只要解压，修改配置即可（可能对linux的某个版本可以，其他版本不可用）</p>
+<p>2.RPM包</p>
+<p>软件已经按照redhat的包管理工具规范RPM进行打包发布，需要获取到相应的软件RPM发布包，然后用RPM命令进行安装（可能依赖其他包，需要下载其他包，但是可能没有打包依赖包）</p>
+<p>3.Yum在线安装</p>
+<p>软件已经以RPM规范打包，但发布在了网络上的一些服务器上，可用yum在线安装服务器上的rpm软件，并且会自动解决软件安装过程中的库依赖问题</p>
+<p>4.源码编译安装</p>
+<p>软件以源码工程的形式发布，需要获取到源码工程后用相应开发工具进行编译打包部署。</p>
+<p>上传与下载工具介绍：就是windows和linux的文件交互</p>
+<p>1.FileZilla：在windows上下载好</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps29.jpg" alt="img"> </p>
+<p>解压后，运行exe文件：</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps30.jpg" alt="img"> </p>
+<p>左边是windows的文件，右边是linux的文件，可以直接把左边的安装包拖拽到右边进行上传</p>
+<p>2.lrzsz</p>
+<p>我们可以在linux上使用yum安装方式安装 yum install lrzsz</p>
+<p>注意：必须有网络</p>
+<p>直接输入命令：yum install lrzsz 就会提示下载成功</p>
+<p>可以在crt中设置上传与下载目录：在crt上面有个选项，会话选择</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps31.jpg" alt="img"> </p>
+<p>上传：</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps32.jpg" alt="img"> </p>
+<p>下载：</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps33.jpg" alt="img"> </p>
+<p>在Linux上安装JDK:</p>
+<p>1.上传JDK到Linux的服务器</p>
+<p>通过rz命令上传JDK，然后java –version发现可以查到版本号，所以卸载自带的open-JDK</p>
+<p>rpm -qa | grep java 查找自带的java版本。然后复制，再通过rpm -e –nodeps 复制的内容卸载</p>
+<p>rpm -e –nodeps java-1.6.0-openjdk-1.6.0.35-1.13.7.1.el6_6.i686</p>
+<p>rpm -e –nodeps java-1.7.0-openjdk-1.7.0.79-2.5.5.4.el6.i686</p>
+<p>2.在Linux服务器上安装JDK</p>
+<p>通常将软件安装到/usr/local</p>
+<p>直接解压就可以： tar –xvf  jdk.tar.gz  -C 目标路径  </p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps34.jpg" alt="img">./就是当前</p>
+<p>3.配置JDK的环境变量</p>
+<p>ll查看jdk下的文件获得版本号</p>
+<p>配置环境变量：</p>
+<p>① vi /etc/profile</p>
+<p>② 在末尾行添加</p>
+<p>​    #set java environment</p>
+<p>​    JAVA_HOME=/usr/local/jdk/jdk1.7.0_71</p>
+<p>​    CLASSPATH=.:$JAVA_HOME/lib.tools.jar</p>
+<p>​    PATH=$JAVA_HOME/bin:$PATH</p>
+<p>​    export JAVA_HOME CLASSPATH PATH</p>
+<p>保存退出 ：wq</p>
+<p>③source /etc/profile  使更改的配置立即生效</p>
+<p>在Linux上安装Mysql:</p>
+<p>1.将mysql的安装文件上传到Linux的服务器.（也可以通过wget 网址下载Mysql的安装包）</p>
+<p>rz上传</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps35.jpg" alt="img"> </p>
+<p>将mysql的tar解压：创建一个新的mysql目录</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps36.jpg" alt="img"> </p>
+<p>将系统自带的mysql卸载</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps37.jpg" alt="img"> </p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps38.jpg" alt="img"> </p>
+<p>–nodeps是忽略相关依赖包</p>
+<p>2.安装MYSQL服务端</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps39.jpg" alt="img"> </p>
+<p>如果安装显示出错，需要导入相关的依赖包</p>
+<p>下面的提示是告诉我们root用户的密码第一次是随机生成的，它保存在/root/.mysql_secret中，第一次登录需要修改root密码</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps40.jpg" alt="img"> </p>
+<p>3.安装MYSQL客户端</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps41.jpg" alt="img"> </p>
+<p>查看生成的root密码</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps42.jpg" alt="img"> </p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps43.jpg" alt="img"> </p>
+<p>报错:原因是没有启动mysql服务</p>
+<p>需要开启mysql服务</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps44.jpg" alt="img"> </p>
+<p>可以通过netstat -nltp 查看现在的服务，找到3306的端口证明启动了mysql</p>
+<p>然后进行登录，操作mysql时会报错，原因是第一次操作mysql必须修改root用户的密码</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps45.jpg" alt="img"> </p>
+<p>设置root用户的密码为root</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps46.jpg" alt="img"> </p>
+<p><em><strong>*M*</strong>***</em>*ysql服务加入到系统服务并自动启动操作********：****chkconfig –add mysql</p>
+<p>自动启动：chkconfig mysql on</p>
+<p>查询列表：chkconfig</p>
+<p>关于mysql远程访问设置：</p>
+<p>先登录到mysql，然后输入下面命令进行设置</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps47.jpg" alt="img"> </p>
+<p>在linux中很多软件的端口都被”防火墙”限止，我们需要将防火墙关闭，也可以将防火墙打开3306端口</p>
+<p>/sbin/iptables -I INPUT -p tcp –dport 3306 -j ACCEPT</p>
+<p>/etc/rc.d/init.d/iptables save</p>
+<p>/etc/init.d/iptables status</p>
+<p>学习阶段我们也可以直接将防火墙关闭（不推荐，因为服务器需要防火墙）：service iptables stop</p>
+<p>在Linux上安装tomcat:</p>
+<p>1.Tomcat上传到linux上：rz，上传文件。ll查看是否上传成功</p>
+<p>2.将上传的tomcat解压：建目录mkdir tomcat7  ，然后tar -xvf 安装包名字 -C ./tomacat7</p>
+<p>3.在tomcat/bin目录下执行 startup.sh（注意防火墙需要关闭）： ./startup.sh </p>
+<p>4.查看日志 tomcat/logs/catalina.out：cat ./catalina.out</p>
+<p>也可以查看cat ./catalina.日期.log</p>
+<p>以后的文件工程可以放到webapp下进行发布</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/07/14.1.linux/" data-id="cknllgmc1003dsgwd32wbftbt" data-title="linux" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-20.测试" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/07/20.%E6%B5%8B%E8%AF%95/" class="article-date">
+  <time class="dt-published" datetime="2021-04-07T11:42:18.000Z" itemprop="datePublished">2021-04-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/07/20.%E6%B5%8B%E8%AF%95/">测试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>测试</p>
+<p>首先会根据需求文档编写测试用例，用于指导如何测试，以及那些输入条件预期得到什么结果（需求文档，测试用例文档）</p>
+<p>\1. UI测试：这是最基础的测试步骤，主要是按照需求文档，点击页面，看各个页面是否正确打开，是否与需求一致</p>
+<p>\2. 白盒测试：此项主要是开发人员的自测，因为此项需要知道代码内部的逻辑，对照需求文档测试各个条件分支是否如预期的执行</p>
+<p>\3. 黑盒测试：主要是测试人员完成的，此项不需要知道程序代码的内部逻辑，只需要关注输入条件，得到的输出结果是否与需求文档和测试用例相符合</p>
+<p>\4. 边界条件测试：主要是测试各种边界值的情况，比如，只能输入正数的场景，如果输入0、或者负数是否会有相关提示</p>
+<p>\5. 兼容性测试：按照需求文档的要求，需要兼容的操作系统平台或者浏览器种类和版本，都需要测试</p>
+<p>\6. 性能测试：此项主要是通过测试工具，编写测试脚本，录制测试步骤，让测试工具模拟大数据量，多用户并发的操作，看看系统是否能够应付得了</p>
+<p>\7. 用户交付测试：这是最后一个测试步骤了，主要是用户按照业务场景来模拟测试了，测试通过之后，就可以交互试用了</p>
+<p>灰度测试，就是在某项产品或应用正式发布前，选择特定人群试用，逐步扩大其试用者数量，以便及时发现和纠正其中的问题，由“灰”到“黑”</p>
+<p>基本测试的时候注意：</p>
+<p>\1. 正确数据</p>
+<p>\2. 错误数据</p>
+<p>\3. 边界数据</p>
+<p>//写测试类的时候，注意测试类中只调用，不创建方法。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/07/20.%E6%B5%8B%E8%AF%95/" data-id="cknllgmba0011sgwd11mbgogj" data-title="测试" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-13.1.mybatis" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/07/13.1.mybatis/" class="article-date">
+  <time class="dt-published" datetime="2021-04-07T11:42:08.000Z" itemprop="datePublished">2021-04-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/07/13.1.mybatis/">mybatis</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>框架一般都是有配置文件的，看官网文档最好。</p>
+<p>Mybatis的学习：<a target="_blank" rel="noopener" href="https://mybatis.org/mybatis-3/zh/getting-started.html">https://mybatis.org/mybatis-3/zh/getting-started.html</a></p>
+<p>一、简介</p>
+<p>\1. 基础：JDBC/Mysql/java基础/Maven/Junit</p>
+<p>\2. 本来是aoache的一个开源项目ibatis，现在存于github</p>
+<p>MyBatis 是一款优秀的<em><strong>*持久层框架*</strong></em></p>
+<p>它支持自定义 SQL、存储过程以及高级映射</p>
+<p>MyBatis 免除了几乎所有的 JDBC 代码以及设置参数和获取结果集的工作</p>
+<p>MyBatis 可以通过简单的 XML 或注解来配置和映射原始类型、接口和 Java POJO（Plain Old Java Objects，普通老式 Java 对象）为数据库中的记录。</p>
+<p>\3. maven仓库下载/github下载</p>
+<p>\4. 持久化</p>
+<p>数据持久化：持久化就是将程序的数据在持久状态和瞬时状态转化的过程</p>
+<p>内存：断电即失、价格昂贵，因为有一些对象不能丢掉，所以需要持久化。</p>
+<p>持久化：数据库（JDBC）、io文件持久化</p>
+<p>\5. 持久层</p>
+<p>Dao层/Service层/Controller层</p>
+<p>完成持久化工作的代码，层界限十分明显。</p>
+<p>\6. MyBatis的存在意义：</p>
+<p>方便，更容易上手，灵活</p>
+<p>传统的JDBC代码太复杂，需要简化。Mybatis是一个框架，可以自动化生成</p>
+<p>将数据存入到数据库中，sql和代码分离，提高了可维护性；提供映射标签，支持对象和数据库的orm字段关系对应；提供对象关系映射标签，支持对象关系组件维护；提供xml标签，支持编写sql。</p>
+<p>二、写一个程序</p>
+<p>思路：搭建环境–导入mybatis–编写代码–测试</p>
+<p>1.mysql中创建数据库资源</p>
+<p>2.idea中新建一个普通的maven项目</p>
+<p>3.删除src目录（以后只需要在父工程下创建module就会继承父工程的所有maven依赖）</p>
+<p>4.导入maven依赖：mysql/mybatis/junit</p>
+<p>5.创建一个新的module。</p>
+<p>（每个基于 MyBatis 的应用都是以一个 SqlSessionFactory 的实例为核心的。SqlSessionFactory 的实例可以通过 SqlSessionFactoryBuilder 获得。而 SqlSessionFactoryBuilder 则可以从 XML 配置文件或一个预先配置的 Configuration 实例来构建出 SqlSessionFactory 实例。有了 SqlSessionFactory，我们可以从中获得 SqlSession 的实例。SqlSession 提供了在数据库执行 SQL 命令所需的所有方法。可以通过 SqlSession 实例来直接执行已映射的 SQL 语句。）</p>
+<p>在新module下的resource下新建一个xml配置文件，在官网上找到相关的配置复制进去，environments中可以配置多个环境。配置的url可以连接到数据库中查找，？后可以添加相关的配置，&amp;需要用&amp;；转义。（中间不要加中文注释）    </p>
+<p>也可以不使用 XML 构建 SqlSessionFactory</p>
+<p>6.创建一个utils工具类（查看官方文档有具体方法）</p>
+<p>静态初始化模块sqlSessionFactory，静态方法得到SqlSession</p>
+<p>\7. 编写代码：</p>
+<p>以前：实体类pojo/Dao接口/接口实现类</p>
+<p>现在：接口实现类由原来的UserDaoImpl转变为一个Mapper配置文件</p>
+<p>\8. 测试：</p>
+<p>可能存在的错误：</p>
+<p>在MapperRegistry中，类型接口是未知的（每一个Mapper.xml都需要在Mybatis核心配置文件中注册，这里的路径是/  不能是.）</p>
+<p>在maven的pom.xml中Build中配置resources，防止我们的资源导出失败的问题</p>
+<p>绑定的接口错误：namespace中的包名要和Dao/Mapper接口中的名字一致（必须要用.  不能用/）</p>
+<p>方法名不对：id就是对应namespace中的方法名</p>
+<p>返回类型不对：resultType是sql语句执行的返回值</p>
+<p>参数类型：parameterType</p>
+<p>标签不要匹配错误</p>
+<p>NullPointerException空指针异常是因为sqlSessionFactory搞了两个</p>
+<p>输出的xml文件中存在乱码问题：设置为UTF-8</p>
+<p>最后用junit测试</p>
+<p>三、CRUD</p>
+<p>#{} 相当于是占位符   全限定名 别名</p>
+<p>增删改需要提交事务：sqlSession.commit();</p>
+<p>参数为int可以不用写</p>
+<p>当报错的时候，读错要从后往前读</p>
+<p>万能的Map：如果实体类中的属性有很多个，或者数据库的表/字段/参数过多时，可能直接传对象的属性不现实。所以可以使用map随意制造参数，通过键值对来传递（相当于是再new一个map，然后put参数，参数值，调用时候直接传map。会自动获取map参数对应的而参数值）。</p>
+<p>Map传递参数，直接再sql中取出key即可。parameterType=“map”</p>
+<p>对象传递参数，直接再sql中取对象的属性即可。parameterType=“object”</p>
+<p>只有一个基本类型参数的情况下，可以直接再sql中取到。</p>
+<p>多个参数可以用map，也可以用注解。</p>
+<p>模糊查询：拼接参数的时候，防止sql注入的问题</p>
+<p>1.java代码执行的时候，#{value} 参数中传递通配符 %*%</p>
+<p>2.在sql拼接中使用通配符“%”+#{value}+“%”</p>
+<p>四、配置解析</p>
+<p>1.核心配置文件</p>
+<p>Mybatis-config.xml（官方建议取这个名字）</p>
+<p>configuration（配置）</p>
+<p><a href="#properties">properties（属性）</a></p>
+<p><a href="#settings">settings（设置）</a></p>
+<p><a href="#typeAliases">typeAliases（类型别名）</a></p>
+<p><a href="#typeHandlers">typeHandlers（类型处理器）</a></p>
+<p><a href="#objectFactory">objectFactory（对象工厂）</a></p>
+<p><a href="#plugins">plugins（插件）</a></p>
+<p><a href="#environments">environments（环境配置）</a></p>
+<p>environment（环境变量）</p>
+<p>T    ransactionManager（事务管理器）</p>
+<p>dataSource（数据源）</p>
+<p><a href="#databaseIdProvider">databaseIdProvider（数据库厂商标识）</a></p>
+<p><a href="#mappers">mappers（映射器）</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/07/13.1.mybatis/" data-id="cknllgmb4000rsgwdavoxec1d" data-title="mybatis" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-12.1.spring" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/07/12.1.spring/" class="article-date">
+  <time class="dt-published" datetime="2021-04-07T11:42:00.000Z" itemprop="datePublished">2021-04-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/07/12.1.spring/">spring</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/07/12.1.spring/" data-id="cknllgmb2000msgwdg1rs2so2" data-title="spring" class="article-share-link">分享</a>
+      
+      
+      
     </footer>
   </div>
   
@@ -129,7 +1466,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/3/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">下一页 &raquo;</a>
   </nav>
 
 </section>
@@ -143,7 +1480,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
     </div>
   </div>
 
@@ -153,7 +1490,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
     </div>
   </div>
 
@@ -175,23 +1512,23 @@
       <ul>
         
           <li>
-            <a href="/2021/04/13/5.3.MySQL%E8%B8%A9%E5%9D%91/">MySQL踩坑</a>
+            <a href="/2021/04/17/19.3.github/">github</a>
           </li>
         
           <li>
-            <a href="/2021/04/13/5.1.MySQL%E5%88%9D%E7%BA%A7/">MySQL初级</a>
+            <a href="/2021/04/17/%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">代理和反向代理</a>
           </li>
         
           <li>
-            <a href="/2021/04/12/19.1.Gitee/">Gitee</a>
+            <a href="/2021/04/17/24.%E7%AE%97%E6%B3%95/">算法</a>
           </li>
         
           <li>
-            <a href="/2021/04/11/10.5.%E9%A1%B9%E7%9B%AE%E6%8F%90%E4%BA%A4/">项目提交</a>
+            <a href="/2021/04/17/23.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
           </li>
         
           <li>
-            <a href="/2021/04/07/10.6.%E9%A1%B9%E7%9B%AE%E5%A4%96%E5%8C%85/">项目外包</a>
+            <a href="/2021/04/17/22.3.%E5%B8%B8%E8%A7%81cmd%E5%91%BD%E4%BB%A4/">常见cmd命令</a>
           </li>
         
       </ul>

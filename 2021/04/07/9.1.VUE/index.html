@@ -6,16 +6,16 @@
   
   <title>VUE | swx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="node版本 npm版本 vue版本 前端版本会有不兼容问题 VUE项目的运行： 1.先加载依赖包：可以进去右下角会出现一个 npm install，直接点击 也可以再控制台直接输入 npm install 2.右上角选“+”，找到npm，在npm的界面输入命令：run serve，（记得选当前文件的package.json）出现localhost：8080一般就成功了。">
+  <meta name="description" content="VUE简介node版本 npm版本 vue版本 前端版本会有不兼容问题 VUE的使用VUE的配置VUE的路由：Vue Router一、验证用户身份 大部分项目，除了登录页、重置密码页、用户协议页以外，页面都需要验证用户身份进行访问。使用 Vue Router 可以配合后端进行双重验证 给需要验证的路由对象添加 meta 字段，里面自定义一个代表验证的字段 （登录）验证身份方法： 1、给需要验证的路">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VUE">
 <meta property="og:url" content="https://s-qwer.github.io/2021/04/07/9.1.VUE/index.html">
 <meta property="og:site_name" content="swx">
-<meta property="og:description" content="node版本 npm版本 vue版本 前端版本会有不兼容问题 VUE项目的运行： 1.先加载依赖包：可以进去右下角会出现一个 npm install，直接点击 也可以再控制台直接输入 npm install 2.右上角选“+”，找到npm，在npm的界面输入命令：run serve，（记得选当前文件的package.json）出现localhost：8080一般就成功了。">
+<meta property="og:description" content="VUE简介node版本 npm版本 vue版本 前端版本会有不兼容问题 VUE的使用VUE的配置VUE的路由：Vue Router一、验证用户身份 大部分项目，除了登录页、重置密码页、用户协议页以外，页面都需要验证用户身份进行访问。使用 Vue Router 可以配合后端进行双重验证 给需要验证的路由对象添加 meta 字段，里面自定义一个代表验证的字段 （登录）验证身份方法： 1、给需要验证的路">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="c:/Users/swx/AppData/Roaming/Typora/typora-user-images/image-20210412195648588.png">
 <meta property="article:published_time" content="2021-04-07T11:41:51.000Z">
-<meta property="article:modified_time" content="2021-04-12T11:57:37.871Z">
+<meta property="article:modified_time" content="2021-04-15T02:46:54.263Z">
 <meta property="article:author" content="swx">
 <meta property="article:tag" content="node.js">
 <meta property="article:tag" content="npm">
@@ -104,20 +104,116 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>node版本</p>
+        <h1 id="VUE简介"><a href="#VUE简介" class="headerlink" title="VUE简介"></a>VUE简介</h1><p>node版本</p>
 <p>npm版本</p>
 <p>vue版本</p>
 <p>前端版本会有不兼容问题</p>
-<p>VUE项目的运行：</p>
-<p>1.先加载依赖包：可以进去右下角会出现一个<code> npm install</code>，直接点击</p>
-<p>也可以再控制台直接输入<code> npm install</code></p>
-<p>2.右上角选“+”，找到npm，在npm的界面输入命令：<code>run serve</code>，（记得选当前文件的package.json）出现localhost：8080一般就成功了。</p>
+<h1 id="VUE的使用"><a href="#VUE的使用" class="headerlink" title="VUE的使用"></a>VUE的使用</h1><h2 id="VUE的配置"><a href="#VUE的配置" class="headerlink" title="VUE的配置"></a>VUE的配置</h2><h2 id="VUE的路由：Vue-Router"><a href="#VUE的路由：Vue-Router" class="headerlink" title="VUE的路由：Vue Router"></a>VUE的路由：Vue Router</h2><p>一、验证用户身份</p>
+<p>大部分项目，除了登录页、重置密码页、用户协议页以外，页面都需要验证用户身份进行访问。使用 Vue Router 可以配合后端进行双重验证</p>
+<p>给需要验证的路由对象添加 meta 字段，里面自定义一个代表验证的字段</p>
+<p>（登录）验证身份方法：</p>
+<p>1、给需要验证的路由对象添加 meta 字段，里面自定义一个代表验证的字段：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">const router &#x3D; new VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: &#39;&#x2F;foo&#39;,</span><br><span class="line">	  name:&#39;foo&#39;,</span><br><span class="line">      component: Foo,</span><br><span class="line">      children: [</span><br><span class="line">        &#123;</span><br><span class="line">          path: &#39;bar&#39;,</span><br><span class="line">          component: Bar,</span><br><span class="line">          meta: &#123; </span><br><span class="line">              requiresAuth: true &#x2F;&#x2F; 添加该字段，表示进入这个路由是需要登录的</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>2、在全局导航钩子里验证 requiresAuth 字段：</p>
+<p>注意事项：</p>
+<ul>
+<li>使用 beforeEach 在路由变化前验证。验证原理是在跳转前，访问目标路由对象的 requiresAuth 字段判断是否需要验证用户身份，如为是，检测是否有保存用户信息（即用户登录成功后前端保存的信息，例如 token）</li>
+<li>每个路由都有一个 $route.matched 数组，包含当前路由的父级路由对象和当前路由对象，在组件中可以通过 this.$route.matched 访问</li>
+<li>beforeEach 的 to 参数即目标路由对象 $route，to.matched 即是它的路由数组</li>
+<li>因此，使用 some 方法，只要路由数组里的任意路由对象需要验证身份，即进行验证</li>
+<li>验证成功跳转正确页面；失败则跳到登录页，将目标地址附在 url 的 query 里，登录成功就跳转到目标地址</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">router.beforeEach((to, from, next) &#x3D;&gt; &#123;</span><br><span class="line">  if (to.matched.some(record &#x3D;&gt; record.meta.requiresAuth)) &#123;</span><br><span class="line">    if (!auth.loggedIn()) &#123;  &#x2F;&#x2F; 没登录</span><br><span class="line">      next(&#123;</span><br><span class="line">        path: &#39;&#x2F;login&#39;,</span><br><span class="line">        query: &#123; redirect: to.fullPath &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      next()  &#x2F;&#x2F; 确保一定要调用 next()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    next() &#x2F;&#x2F; 确保一定要调用 next()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>3、拦截 http 请求，验证用户身份</p>
+<p>为了防止本地保存的 token 过期，需要拦截 http 请求，为每次请求头加上 token ，然后拦截 http 响应，根据响应内容判断是否需要跳回登录页面重新登录。使用 axios 的方法如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; http request 拦截器</span><br><span class="line">axios.interceptors.request.use(</span><br><span class="line">    config &#x3D;&gt; &#123;</span><br><span class="line">        if (auth.loggedIn()) &#123; &#x2F;&#x2F; 判断是否存在token，如果存在的话，则每个http header都加上token</span><br><span class="line">            config.headers.Authorization &#x3D; &#96;token $&#123;auth.loggedIn()&#125;&#96;;</span><br><span class="line">        &#125;</span><br><span class="line">        return config;</span><br><span class="line">    &#125;,</span><br><span class="line">    err &#x3D;&gt; &#123;</span><br><span class="line">        return Promise.reject(err);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; http response 拦截器</span><br><span class="line"></span><br><span class="line">axios.interceptors.response.use(</span><br><span class="line">    response &#x3D;&gt; &#123;</span><br><span class="line">        return response;</span><br><span class="line">    &#125;,</span><br><span class="line">    error &#x3D;&gt; &#123;</span><br><span class="line">        if (error.response) &#123;</span><br><span class="line">            switch (error.response.status) &#123;</span><br><span class="line">                case 401:</span><br><span class="line">                    &#x2F;&#x2F; Unauthorized</span><br><span class="line">                    &#x2F;&#x2F; 返回 401 清除token信息并跳转到登录页面</span><br><span class="line">                    auth.clear();</span><br><span class="line">                    router.replace(&#123;</span><br><span class="line">                        path: &#39;login&#39;,</span><br><span class="line">                        query: &#123;</span><br><span class="line">                            redirect: router.currentRoute.fullPath</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return Promise.reject(error.response.data) &#x2F;&#x2F; 返回接口返回的错误信息</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>二、定义用户权限能访问的页面</p>
+<p>前端查看权限，也是配合后端进行某些页面的隐藏显示功能。一般应用于综合的办公系统，由 IT 部分配账号，不同部门的人只能看到自己负责的内容，例如行政部不会看到财务数据页面。</p>
+<p>实现方法：</p>
+<ol>
+<li>与后端商定每个用户角色对应的 level 级别，以数值表示</li>
+<li>前端路由每个页面的 meta 对象添加 level 字段，值为数组，里面是有权限访问页面的 level 数值</li>
+<li>登录成功，后台返回用户 token 的同时，返回其所属的 level 字段</li>
+<li>组件代码比较目标页面的 level 与用户 level，只显示包含在目标 level 数组里的页面</li>
+<li>全局导航钩子 beforeEach 里比较目标页面的 level 与用户 level，包含在目标 level 数组里则正确跳转，反之取消跳转并提示权限不足</li>
+</ol>
+<blockquote>
+<p>上面第5步是为了防止用户直接在浏览器输入目标地址</p>
+</blockquote>
+<p>三、其他内容控制</p>
+<p>可以控制显示路由固定的搭配，例如某个路由地址的 title 是固定的字符串、固定的欢迎语、固定的 favicon 等。在组件里通过 this.$route.meta.xxx 访问。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">const router &#x3D; new VueRouter(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: &#39;&#x2F;foo&#39;,</span><br><span class="line">      component: Foo,</span><br><span class="line">      children: [</span><br><span class="line">        &#123;</span><br><span class="line">          path: &#39;bar&#39;,</span><br><span class="line">          component: Bar,</span><br><span class="line">          meta: &#123; </span><br><span class="line">              title: &#39;标题&#39;,</span><br><span class="line">              message: &#39;欢迎您&#39;,</span><br><span class="line">              requiresAuth: true &#x2F;&#x2F; 添加该字段，表示进入这个路由是需要登录的</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      ]</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>动态路由匹配是用于把某种模式匹配到的所有路由，全都映射到同个组件。通过给路由路径一个变量，即变成动态路由，把变化的内容赋值给变量即可。</p>
+<p>例如文章详情页是一个组件，只有一个路由，从文章列表页点进来，变化的只是文章 id 而已。将其赋予给设定的变量，然后通过在组件里 watch $route 或者使用 beforeRouteUpdate 导航守卫监测路由变化，传递新的文章 id 获取文章详情即可。在组件里，可以通过<code>this.$route.params.xx</code>获取当前文章 id。</p>
+<p>一个路由地址可以设置多个变量，适合有分叉情况的内容。例如 path: ‘/params/:foo/:bar’</p>
+<blockquote>
+<p>从文章列表页点进来即传递路由变量，有三种方法：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">（1）&lt;router-link to&#x3D;&quot;&#x2F;params&#x2F;list&#x2F;1&quot;&gt;跳转到 &#x2F;params&#x2F;list&#x2F;1&lt;&#x2F;router-link&gt;&#96;</span><br><span class="line">（2）this.$router.push(&#123; name: &#39;articles&#39;, params: &#123; foo: &#39;list&#39;, bar: 1 &#125; &#125;)&#96;</span><br><span class="line">（3）this.$router.push(&#123; path: &#39;&#x2F;params&#x2F;list&#x2F;1&#39; &#125;) &#x2F;&#x2F; path 不能与 params 同时使用</span><br></pre></td></tr></table></figure>
+
+
+
+<p>高级匹配模式</p>
+<p>这里主要研究的是动态路由匹配的高级匹配模式，以达到合并差异不大的路由、减少路由数量的目的。</p>
+<p>高级匹配即结合简单的正则匹配方法，给予路由更多的限制和操作空间。</p>
+<p>1、可选路由参数</p>
+<p>路由参数可选，添加与否都对应同一个组件。可以在组件里使用 v-if / v-show 结合 $route.params.xx 展现不同的内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; a param can be made optional by adding &quot;?&quot;</span><br><span class="line">&#123; path: &#39;&#x2F;optional-params&#x2F;:foo?&#39; &#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 这两个链接都对应同个组件</span><br><span class="line">&lt;li&gt;&lt;router-link to&#x3D;&quot;&#x2F;optional-params&quot;&gt;&#x2F;optional-params&lt;&#x2F;router-link&gt;&lt;&#x2F;li&gt;</span><br><span class="line">&lt;li&gt;&lt;router-link to&#x3D;&quot;&#x2F;optional-params&#x2F;foo&quot;&gt;&#x2F;optional-params&#x2F;foo&lt;&#x2F;router-link&gt;&lt;&#x2F;li&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2、精确匹配参数</p>
+<p>只有参数通过正则匹配，完全符合格式，才能会跳转。例如只有参数是数字/手机号才允许跳转。适用于对第三方不规范格式的数据进行筛选。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; a param can be followed by a regex pattern in parens</span><br><span class="line">&#x2F;&#x2F; this route will only be matched if :id is all numbers</span><br><span class="line">&#123; path: &#39;&#x2F;params-with-regex&#x2F;:id(\\d+)&#39; &#125;</span><br><span class="line">&#x2F;&#x2F; 只匹配数字</span><br><span class="line">&lt;li&gt;&lt;router-link to&#x3D;&quot;&#x2F;params-with-regex&#x2F;123&quot;&gt;&#x2F;params-with-regex&#x2F;123&lt;&#x2F;router-link&gt;&lt;&#x2F;li&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 只匹配手机号</span><br><span class="line">&#123; path: &#39;&#x2F;params-with-regex&#x2F;:id(^(0|86|17951)?(13[0-9]|15[012356789]|166|17[3678]|18[0-9]|14[57])[0-9]&#123;8&#125;$)&#39; &#125;</span><br><span class="line">&lt;li&gt;&lt;router-link to&#x3D;&quot;&#x2F;params-with-regex&#x2F;13800138000&quot;&gt;&#x2F;params-with-regex&#x2F;13800138000&lt;&#x2F;router-link&gt;&lt;&#x2F;li&gt;</span><br></pre></td></tr></table></figure>
+
+<p>3、匹配任意参数</p>
+<p>不对参数格式、数量进行限制，任意参数都可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; asterisk can match anything</span><br><span class="line">&#123; path: &#39;&#x2F;asterisk&#x2F;*&#39; &#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 这两个都是同一组件</span><br><span class="line">&lt;li&gt;&lt;router-link to&#x3D;&quot;&#x2F;asterisk&#x2F;foo&quot;&gt;&#x2F;asterisk&#x2F;foo&lt;&#x2F;router-link&gt;&lt;&#x2F;li&gt;</span><br><span class="line">&lt;li&gt;&lt;router-link to&#x3D;&quot;&#x2F;asterisk&#x2F;foo&#x2F;bar&quot;&gt;&#x2F;asterisk&#x2F;foo&#x2F;bar&lt;&#x2F;router-link&gt;&lt;&#x2F;li&gt;</span><br></pre></td></tr></table></figure>
+
+<p>4、部分可选参数</p>
+<p>结合可选路由参数与多路由参数，其中一部分参数可选。适用于分叉情况下不确定参数数量的情况。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; make part of the path optional by wrapping with parens and add &quot;?&quot;</span><br><span class="line">&#123; path: &#39;&#x2F;optional-group&#x2F;(foo&#x2F;)?bar&#39; &#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 这两个都是同一组件</span><br><span class="line">&lt;li&gt;&lt;router-link to&#x3D;&quot;&#x2F;optional-group&#x2F;bar&quot;&gt;&#x2F;optional-group&#x2F;bar&lt;&#x2F;router-link&gt;&lt;&#x2F;li&gt;</span><br><span class="line">&lt;li&gt;&lt;router-link to&#x3D;&quot;&#x2F;optional-group&#x2F;foo&#x2F;bar&quot;&gt;&#x2F;optional-group&#x2F;foo&#x2F;bar&lt;&#x2F;router-link&gt;&lt;&#x2F;li&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="VUE的关键字"><a href="#VUE的关键字" class="headerlink" title="VUE的关键字"></a>VUE的关键字</h2><h3 id="fullPath和path"><a href="#fullPath和path" class="headerlink" title="fullPath和path"></a>fullPath和path</h3><ul>
+<li><p>$route.fullPath</p>
+<ul>
+<li>type: <code>string</code><br>The full resolved URL including query and hash.</li>
+</ul>
+</li>
+<li><p>$route.path</p>
+<ul>
+<li>type: <code>string</code><br>A string that equals the path of the current route, always resolved as an absolute path. e.g. “/foo/bar”.</li>
+</ul>
+</li>
+</ul>
+<p>fullPath能缓存路由跳转后面携带的参数，刷新后依旧存在， 在PC端能起作用</p>
+<p>而 path则不能缓存路由跳转后面携带的参数，所以path  能在<code>只有两层数据结构的</code>移动端起作用<br>   原因：</p>
+<p>一般，移动端App 只能往里面走，表面和切换的页面是第一层， 点击功能按钮进去的是第二层。<br>这种层级的关系其实 是具有跳转作用，所以在第一层获取的数据，与第二层来回切换没问题。但是你第二层到第三层一来回切换，路由跳转携带的参数就丢失了。</p>
+<p>fullPath匹配路由，path匹配路径。</p>
+<p>例如：</p>
+<p>路由是：<code>/path/one</code><br>真正路径是：<code>/path/true</code></p>
+<p>那么此时path为<code>/path/true</code>，而fullPath为<code>/path/one</code></p>
+<h2 id="VUE项目的运行"><a href="#VUE项目的运行" class="headerlink" title="VUE项目的运行"></a>VUE项目的运行</h2><p>1.先加载依赖包：控制台直接输入<code> npm install</code></p>
+<p>也可以webstorm软件进去右下角会出现一个<code> npm install</code>，直接点击</p>
+<p>install的意思是安装前端用到的依赖包，运行之后，会生成一个node_modules文件。</p>
+<p>2.本地运行项目可以控制台执行命令: <code>npm run serve</code>代表执行本地运行项目，此时运行的端口号默认为8080，后端的接口配置为.env.development（测试环境）文件下的端口号。</p>
+<p>也可以使用webstorm自带的工具：右上角选“+”，找到npm，在npm的edit界面：Command设置为<code>run</code>，Scripts为 <code> serve</code>，（记得选当前文件的package.json）默认端口号为8080，也可以在Environment里自己写，port=XXXX（端口号自己随便设置）</p>
 <p><img src="C:\Users\swx\AppData\Roaming\Typora\typora-user-images\image-20210412195648588.png" alt="image-20210412195648588"></p>
+<p>运行后出现localhost：8080一般就成功了。</p>
+<p>3.打包时控制台输入命令：<code>npm run build</code>，代表打包，完成后会生成一个dist文件夹，就是打包后的项目，部署到服务器即发布成功。build会执行.env.production（生产环境）下的配置</p>
+<p>dist文件夹：</p>
+<p>css文件夹下的.css文件是项目要用到的css文件,当你做webpack打包的时候，会把所有的css样式打包到这里<br>css文件夹下的.css.map文件是一个Source map文件，Source map就是一个信息文件，里面储存着位置信息。也就是说，转换后的代码的每一个位置，所对应的转换前的位置。目的是帮助我们调试被压缩过的css代码，只是方便我们开发的时候做调试使用。<br>js文件夹下的.js.map依然是Source map文件，方便我们开发时调试js代码使用。<br>app.js文件里放的是项目中各个页面的逻辑代码<br>manifest.js文件可以理解为webpack打包生成的一个配置文件，我们一般不需要关心它<br>vendor.js放的是各个页面各个组件公用的一些代码<br>index.html使我们前端代码入口的一个html文件</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/07/9.1.VUE/" data-id="ckneu28sq00190kwddfepeha4" data-title="VUE" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/07/9.1.VUE/" data-id="cknllgmbk001zsgwdhgksfoop" data-title="VUE" class="article-share-link">分享</a>
       
       
       
@@ -161,7 +257,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
     </div>
   </div>
 
@@ -171,7 +267,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
     </div>
   </div>
 
@@ -193,23 +289,23 @@
       <ul>
         
           <li>
-            <a href="/2021/04/13/5.3.MySQL%E8%B8%A9%E5%9D%91/">MySQL踩坑</a>
+            <a href="/2021/04/17/19.3.github/">github</a>
           </li>
         
           <li>
-            <a href="/2021/04/13/5.1.MySQL%E5%88%9D%E7%BA%A7/">MySQL初级</a>
+            <a href="/2021/04/17/%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">代理和反向代理</a>
           </li>
         
           <li>
-            <a href="/2021/04/12/19.1.Gitee/">Gitee</a>
+            <a href="/2021/04/17/24.%E7%AE%97%E6%B3%95/">算法</a>
           </li>
         
           <li>
-            <a href="/2021/04/11/10.5.%E9%A1%B9%E7%9B%AE%E6%8F%90%E4%BA%A4/">项目提交</a>
+            <a href="/2021/04/17/23.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
           </li>
         
           <li>
-            <a href="/2021/04/07/10.6.%E9%A1%B9%E7%9B%AE%E5%A4%96%E5%8C%85/">项目外包</a>
+            <a href="/2021/04/17/22.3.%E5%B8%B8%E8%A7%81cmd%E5%91%BD%E4%BB%A4/">常见cmd命令</a>
           </li>
         
       </ul>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>git | swx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="简介git是目前世界上最先进的分布式版本控制系统。Linus在1991年创建了开源的Linux,从此，Linux系统不断发展，已经成为最大的服务器系统软件了。Linus虽然创建了Linux,但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？事实是，在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git">
+<meta property="og:url" content="https://s-qwer.github.io/2021/04/16/19.1.git/index.html">
+<meta property="og:site_name" content="swx">
+<meta property="og:description" content="简介git是目前世界上最先进的分布式版本控制系统。Linus在1991年创建了开源的Linux,从此，Linux系统不断发展，已经成为最大的服务器系统软件了。Linus虽然创建了Linux,但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？事实是，在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus,">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-16T04:46:21.000Z">
+<meta property="article:modified_time" content="2021-04-16T09:32:56.796Z">
+<meta property="article:author" content="swx">
+<meta property="article:tag" content="git">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="swx" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swx</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://s-qwer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-19.1.git" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/16/19.1.git/" class="article-date">
+  <time class="dt-published" datetime="2021-04-16T04:46:21.000Z" itemprop="datePublished">2021-04-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      git
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>git是目前世界上最先进的分布式版本控制系统。<br>Linus在1991年创建了开源的Linux,从此，Linux系统不断发展，已经成为最大的服务器系统软件了。Linus虽然创建了Linux,但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？事实是，<strong>在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus,然后由Linus本人通过手工方式合并代码！你也许会想，为什么Linus不把Linux代码放到版本控制系统里呢？不是有CVS、SVN这些免费的版本控制系统吗？因为Linus坚定地反对CVS和SVN,这些集中式的版本控制系统不但速度慢，而且必须联网才能使用。有一些商用的版本控制系统，虽然比CVS、SVN好用，但那是付费的，和Linux的开源精神不符。不过，到了2002年，Linux系统已经发展了十年了，代码库之大让Linus很难继续通过手工方式管理了，社区的弟兄们也对这种方式表达了强烈不满，于是Linus选择了一个商业的版本控制系统BitKeeper,BitKeeper的东家BitMover公司出于人道主义精神，授权Linux社区免费使用这个版本控制系统。</strong>安定团结的大好局面在2005年就被打破了，原因是Linux社区牛人聚集，不免沾染了一些梁山好汉的江湖习气。开发Samba的Andrew试图破解BitKeeper的协议（这么干的其实也不只他一个）,被BitMover公司发现了（监控工作做得不错！),于是BitMover公司怒了，要收回Linux社区的免费使用权。Linus可以向BitMover公司道个歉，保证以后会严格管教弟兄们，嗯，这是不可能的。实际情况是这样的：<br>Linus花了两周时间自己用C写了一个分布式版本控制系统，这就是Git!一个月之内，Linux系统的源码已经由Git管理了！牛是怎么定义的呢？大家可以体会一下。Git迅速成为最流行的分布式版本控制系统，尤其是2008年，GitHub网站上线了，它为开源项目免费提供Git存储，无数开源项目开始迁移至GitHub,包括jQuery,PHP,Ruby等等。历史就是这么偶然，如果不是当年BitMover公司威胁Linux社区，可能现在我们就没有免费而超级好用的Git了</p>
+<h1 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h1><p>版本控制：可以解决多人同时开发的代码问题，也可以解决找回历史代码的问题。</p>
+<p>分布式：Git是分布式版本控制系统，同一个Git仓库，可以分布到不同的机器上。首先找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器“仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交。可以自已搭建这台服务器，也可以使用GitHub网站。</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>傻瓜式安装</p>
+<h1 id="git命令"><a href="#git命令" class="headerlink" title="git命令"></a>git命令</h1><h2 id="在Windows的cmd-中使用linux的命令"><a href="#在Windows的cmd-中使用linux的命令" class="headerlink" title="在Windows的cmd 中使用linux的命令"></a>在Windows的cmd 中使用linux的命令</h2><p>cmd的命令功能肯定没有linux的命令功能好用，这点毋庸置疑。现在装好了Git，就可以在Windows的cmd中使用linux命令了。<br>关键词：环境变量 Git命令<br>怎么玩？如下2步操作：<br>假如你按照上述步骤将Git装在C盘，那么做如下操作：<br>操作1：找Git命令的【.exe文件】。</p>
+<p>操作2：添加到环境变量，就可以在cmd里使用linux命令了。</p>
+<p>最终效果：</p>
+<p>PyCharm也可以使用linux命令。【环境变量–全局—使用】</p>
+<p>备注：你可能需要关闭之前打开的cmd窗口/PyCharm窗口，重新打开新的cmd窗口//PyCharm窗口，使用命令才可能生效。<br>【效率会提高一点点】</p>
+<h2 id="创建一个版本库"><a href="#创建一个版本库" class="headerlink" title="创建一个版本库"></a>创建一个版本库</h2><p>(1)新建一个目录git_test,在git_test目录下创建一个版本库，命令如下：</p>
+<p>接着初始化仓库</p>
+<p>说明：可以看到在git_test目录下创建了一个.git隐藏目录，这就是版本库目录。</p>
+<p>4.版本的创建与回退<br>4.1 使用<br>(1)在git_test目录下创建一个文件code.txt,编辑内容如下：</p>
+<p>(2)使用如下两条命令可以创建一个版本：<br>git add code.txt<br>git commit -m “版本1”</p>
+<p>(3)使用如下命令可以查看版本记录：<br>git log</p>
+<p>(4)继续编辑code.txt,在里面增加一行。</p>
+<p>(5)使用如下命令再创建一个版本并查看版本记录：</p>
+<p>(6)现在若想回到某一个版本，可以使用如下命令：</p>
+<p>其中HEAD表示当前最新版本【请记死】，HEAD^表示当前版本的前一个版本，HEAD^^表示当前版本的前前个版本，也可以使用HEAD<del>1表示当前版本的前一个版本，HEAD</del>100表示当前版本的前100版本。</p>
+<p>因为版本1的内容是1行：<br>this is the first line</p>
+<p>因为版本2的内容是2行：<br>this is the first line<br>this is the second line</p>
+<p>因为<br>$ git reset –hard HEAD^ HEAD is now at 51d36c7 版本1<br>使指针HEAD指向（倒退）到版本1，<br>因此打印的内容就是版本1的内容，即this is the first line</p>
+<p>(7)假如我们现在又想回到版本2,这个时候怎么办？可以使用如下命令：<br>git reset –hard 版本号</p>
+<p>（8）在终端执行如下命令：</p>
+<p>版本2又回来了，内容也是原来的内容。</p>
+<p>接着玩</p>
+<p>退出终端，再重进：</p>
+<p>这个重进终端的操作让我们看不到版本2的版本号，要回到版本2怎么办？<br>命令：git reflog来查看操作记录。</p>
+<p>错误示例：<br>原因是按照当前版本1倒退的话，怎么也不会前进到版本2吧？逻辑错误。</p>
+<p>正确实例：<br>要用到版本号。</p>
+<p>查看版本2的内容：</p>
+<p>不理解版本1，版本2有啥区别？<br>这个东西像游戏更新一样，版本2是在版本1的基础上添加新功能的，版本1内容不发生改变。例如王者荣耀版本更新，界面总会变化，但是英雄的属性（技能，名字）一般不会改变。</p>
+<p>4.2 工作区和缓存区<br>4.2.1 工作区（WorkingDirectory)<br>工作区（WorkingDirectory) 电脑中的目录，比如我们的git_test,就是一个工作区。</p>
+<p>4.2.2 版本库（Repository)<br>工作区有一个隐藏目录.git,这个不是工作区，而是git的版本库。git的版本库里存了很多东西，其中最重要的就是称为stage(或者叫index)的<br>暂存区，<br>还有git为我们自动创建的第一个分支master,以及指向master的一个指针叫HEAD。</p>
+<p>因为我们创建git版本库时，git自动为我们创建了唯一一个master分 支，所以，现在，git commit就是往master分支上提交更改。<br>你可以简单理解为，需要提交的文件修改通通放到暂存区【计算机的缓存区】，然后，一次性提交暂存区的所有修改。</p>
+<p>前面讲了我们把文件往版本库里添加的时候，是分两步执行的：<br>第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区<br>第二步是用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支。</p>
+<p>(1)下面在git test目录下再创建一个文件code2.txt,然后编辑内容如下：</p>
+<p>(2)然后编辑code.txt,操作如下：</p>
+<p>注意的是创建文件和编辑文件都是在工作区里完成。<br>（3）使用如下命令查看当前工作树的状态：<br>git status</p>
+<p>翻译一下：</p>
+<p>上面提示我们code.txt被修改，而code2.txt没有被跟踪。</p>
+<p>(4)我们使用如下命令把code.txt和code2.txt加入到暂存区，然后再执行git status命令，结果如下：</p>
+<p>注意：所有的 git add 命令是把所有提交的修改存放到暂存区。</p>
+<p>(5)然后，执行git commit就可以一次性把暂存区的所有修改提交到分支并创建一个版本。</p>
+<p>注意：指针HEAD永远指向当前版本。此时当前版本是版本3。</p>
+<p>(6)一旦提交后，如果你又没有对工作区做任何修改，那么工作区就是“干净”的。执行如下命令可以发现：</p>
+<p>现在我们的版本库变成了酱紫：</p>
+<p>4.3 管理修改<br>git管理的文件的修改，它只会提交暂存区的修改来创建版本。<br>(1)编辑code.txt,并使用git add命令将其添加到暂存区中。</p>
+<p>(2)继续编辑code.txt,并在其中添加一行。</p>
+<p>(3)git commit创建一个版本，并使用git status查看，发现第二次修改code.txt内容之后，并没有将其添加的工作区，所以创建版本的时候并没有被提交。</p>
+<p>注意：对于code.txt里的四行内容，每一个版本对应一行，例如版本1对应first line，以此类推。</p>
+<p>4.4 撤销修改<br>(1)继续上面的操作，提示我们可使用git checkout – &lt;文件&gt;来丢弃工作区的改动。执行如下命令，发现工作区干净了，第二次的改动内容也没了。</p>
+<p>(2)我们继续编辑code.txt,并在其中添加如下内容，并将其添加的暂存区。</p>
+<p>(3)git同样告诉我们，用命令git reset HEAD file可以把暂存区的修改撤销掉，重新放回工作区。</p>
+<p>(4)现在若想丢弃code.txt的修改，执行如下命令即可。</p>
+<p>现在，如果你不但改错了东西，还从暂存区提交到了版本库，则需要进行版本回退。</p>
+<p>小结：<br>场景1:当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用 命令git checkout – file<br>场景2:当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步：<br>第一步用命令git reset HEAD – file,就回到了场景1,<br>第二步按场景1操作。<br>场景3:已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节。</p>
+<p>4.5 对比文件的不同<br>对比工作区和某个版本中文件的不同：</p>
+<p>(1)继续编辑文件code.txt,在其中添加一行内容。</p>
+<p>(2)现在要对比工作区中code.txt和HEAD版本中code.txt的不同。使用如下命令：</p>
+<p>(3)使用如下命令丢弃工作区的改动。</p>
+<p>对比两个版本间文件的不同：<br>(1)现在要对比HEAD和HEAD ^版本中code.txt的不同，使用如下命令：</p>
+<p>反过来</p>
+<p>4.6 删除文件<br>(1)我们把目录中的code2.txt删除。</p>
+<p>这个时候，git知道删除了文件，因此，工作区和版本库就不一致了，git status命令会立刻提示哪些文件被删除了。</p>
+<p>(2)现在你有两个选择，一种情况是确实要从版本库中删除该文件，那就用命令 gitrm删掉【永久删除，无法撤消】，并且 git commit:</p>
+<p>另一种情况是删错了，可以直接使用git checkout – code2.txt,这样文件code2.txt又回来了。<br>注意：两种情况有区别：<br>当执行第一种情况时【永久删除，无法撤消】，再执行第二种情况，会报错：</p>
+<p>加长版：</p>
+<p>简短版：</p>
+<p>小结：<br>命令rm 删除是永久删除，要恢复数据的话可以恢复/扫描硬盘；<br>命令git rm用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容。</p>
+<ol start="5">
+<li>分支管理</li>
+<li>1概念<br>分支就是科幻电影里面的平行宇宙，当你正在电脑前努力学习Git的时候，另一个你正在另一个平行宇宙里努力学习SVN。<br>如果两个平行宇宙互不干扰，那对现在的你也没啥影响。不过，在某个时间点，两个平行宇宙合并了，结果，你既学会了git又学会了SVN!</li>
+</ol>
+<p>分支在实际中有什么用呢？<br>假设你准备开发一个新功能，但是需要两周才能完成，第一周你写了50%的代码，如果立刻提交，由于代码还没写完，不完整的代码库会导致别人不能干活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。</p>
+<p>现在有了分支，就不用怕了。你创建了一个属于你自己的分支，别人看不到，还继续在原来的分支上正常工作，而你在自己的分支上干活，想提交就提交，直到开发完毕后，再一次性合并到原来的分支上，这样，既安全，又不影响别人工作。</p>
+<p>5.2 创建与合并分支<br>git把我们之前每次提交的版本串成一条时间线，这条时间线就是一个分支。截止到目前只有一条时间线，在git里，这个分支叫主分支，即master分支。HEAD严格来说不是指向提交，而是指向master,master才是指向提交的，所以，HEAD指向的就是当前分支。</p>
+<p>(1)一开始的时候，master分支是一条线，git用master指向最新的提交，再用HEAD指向master,就能确定当前分支，以及当前分支的提交点：</p>
+<p>每次提交，master分支都会向前移动一步，这样，随着你不断提交，master分支的线也越来越长。<br>(2)当我们创建新的分支，例如dev时，git新建了一个指针叫dev,指向master相同的提交，再把HEAD指向dev,就表示当前分支在dev上：</p>
+<p>git创建一个分支很快，因为除了增加一个dev指针，改变HEAD的指向，工作区的文件都没有任何变化。</p>
+<p>(3)不过，从现在开始，对工作区的修改和提交就是针对dev分支了，比如新提交一次后，dev指针往前移动一步，而master指针不变：</p>
+<p>(4)假如我们在dev上的工作完成了，就可以把dev合并到master上。git怎么合并呢？最简单的方法，就是直接把master指向dev的当前提交，就完成了合并：</p>
+<p>git合并分支也很快，就改改指针，工作区内容也不变。<br>（5）合并完分支后，甚至可以删除dev分支。删除dev分支就是把dev指针给删掉，删掉后，我们就剩下了一条master分支：</p>
+<p>(1)执行如下命令可以查看当前有几个分支并且看到在哪个分支下工作。</p>
+<p>(2)下面创建一个分支dev并切换到其上进行工作。</p>
+<p>(3)下面我们修改code.txt内容，在里面添加一行，并进行提交。</p>
+<p>(4)dev分支的工作完成，我们就可以切换回master分支：</p>
+<p>查看code.txt,发现添加的内容没有了。因为那个提交是在dev分支上，而master分支此刻的提交点并没有变。【这里需要细细品味一下】</p>
+<p>(5)现在，我们把dev分支的工作成果合并到master分支上：<br>git merge命令用于合并指定分支到当前分支。合并后，再查看code.txt的内容，就可以看到，和dev分支的最新提交是完全一样的。</p>
+<p>注意到上面的rast-forward信息，Git告诉我们，这次合并是“快进模式“，也就是直接把master指向dev的当前提交，所以合并速度非常快。</p>
+<p>(6)合并完成后，就可以放心地删除dev分支了，删除后，查看branch,就只剩下master分支了。</p>
+<p>小结：<br>查看分支：git branch<br>创建分支：git branch <name><br>切换分支：git checkout <name><br>创建+切换分支：git checkout -b <name><br>合并某分支到当前分支：git merge <name><br>删除分支：git branch -d <name></p>
+<p>5.3 解决冲突<br>合并分支往往也不是一帆风顺的。<br>(1)再创建一个新分支dev。</p>
+<p>(2)修改code.txt内容，并进行提交。</p>
+<p>(3)切换回master分支。</p>
+<p>(4)在master的code.txt添加一行内容并进行提交。</p>
+<p>这种情况下，git无法执行”快速合并”，只能试图把各自的修改合并起来，但这种合并就可能会有冲突。</p>
+<p>(5)执行如下命令尝试将dev分支合并到master分支上来。</p>
+<p>冲突原因：<br>现在，master分支和dev分支各自都分别有新的提交，并且编辑了同一个文件，变成了这样：</p>
+<p>git告诉我们，code.txt文件存在冲突，必须手动解决冲突后再提交。</p>
+<p>最重要的一步：</p>
+<p>(6)git status也可以告诉我们冲突的文件：</p>
+<p>(7)查看code.txt的内容。</p>
+<p>(8)git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;,========,&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记不同分支的内容，我们修改如下后保存：</p>
+<p>(9)再提交。</p>
+<p>(10)现在，master分支和dev分支变成了下图所示：</p>
+<p>(11)用带参数的git log也可以看到分支的合并情况：</p>
+<p>(12)最后工作完成，可以删除dev分支：</p>
+<p>5.4 分支管理策略<br>通常，合并分支时，如果可能，git会用fast forward模式，但是有些快速合并不能成功而且合并时没有冲突，这个时候git会帮我们在合并之后做一次新的提交，但这种模式下，删除分支后，会丢掉分支信息。【弹窗说明信息】</p>
+<p>(1)创建切换到dev分支下。</p>
+<p>(2)新建一个文件code3.txt,编辑内容如下，并提交一个commit。</p>
+<p>(3)切换回master分支，编辑code.txt并进行一个提交。</p>
+<p>(4)合并dev分支的内容到master分支。</p>
+<p>(5)出现如下提示时，这是因为这次不能进行快速合并，所以git提示输入合并说明信息，输入之后合并内容之后git会自动创建一次新的提交。</p>
+<p>按 :x保存并退出。</p>
+<p>(6)使用分支命令查看分支信息。</p>
+<p>(7)删除dev分支。</p>
+<p>如果要强制禁用fast forward模式，git就会在merge时生成一个新的commit,这样，从分支历史上就可以看出分支信息。<br>(1)创建并切换到dev分支。</p>
+<p>(2)修改code.txt内容，并提交一个commit。</p>
+<p>(3)切换回master分支。</p>
+<p>（4）准备合并dev分支，请注意–no-ff参数，表示禁用Fast forward:</p>
+<p>因为本次合并要创建一个新的commit,所以加上-m参数，把commit描述写进去。</p>
+<p>5.5 Bug分支<br>软件开发中，bug就像家常便饭一样，有了bug就需要修复，在git中，由于分支是如此的强大，所以，<br>每个bug都可以通过一个新的临时分支来修复，修复后，合并分支，然后将临时分支删除。</p>
+<p>(1)当你接到一个修复一个代号001的bug的任务时，很自然地，你想创建一个分支bug-001来修复它，但是，等等，当前正在dev上进行的工作还没有提交：<br>建议先敲clear清屏。</p>
+<p>并不是你不想提交，而是工作只进行到一半，还没法提交，预计完成还需1天时间。但是，必须在两个小时内修复该bug,怎么办？</p>
+<p>(2)git还提供了一个stash功能，可以把当前工作现场“储藏“起来，等以后恢复现场后继续工作：【工作中可能会用到，在git pull之前先用这条命令。放入缓存是git stash，相对应的git stash pop从缓存中释放出来】</p>
+<p>更多请参考：传送门<br>(3)首先确定要在哪个分支上修复bug,假定需要在master分支上修复，就从master创建临时分支：</p>
+<p>(4)现在修复bug,这里假设把code.txt里的第9行删掉，然后提交。</p>
+<p>(5)修复完成后，切换到master分支，并完成合并，最后删除bug-001分支。</p>
+<p>(6)现在bug-001修复完成，是时候接着回到dev分支干活了！</p>
+<p>(7)工作区是干净的，刚才的工作现场存到哪去了？用git stash list命令看看：【帮助我们列出保存的工作现场】</p>
+<p>工作现场还在，git把stash内容存在某个地方了，需要恢复一下：</p>
+<p>小结：<br>修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；<br>当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug,修复后，再git stash pop,恢复工作现场。</p>
+<p>6.使用github<br>6.1 创建仓库<br>(1)注册github账户</p>
+<p>登录后，点击”New respository”</p>
+<p>(2)在新页面中，输入项目的名称【如2020】，勾选’readme.md’,点击’Create repository’</p>
+<p>这里完成。</p>
+<p>6.2 添加ssh账户<br>(1)点击账户头像后的下拉三角，选择’settings’如果某台机器需要与github上的仓库交互，那么就要把这台机器的ssh公钥添加到这个github账户上。</p>
+<p>(2)在git的命令行中，回到用户的主目录下，编辑文件.gitconfig,修改某台机器的git配置。<br>修改为注册github时的邮箱，填写用户名。</p>
+<p>完美：</p>
+<p>6.3 克隆项目</p>
+<p>接着：</p>
+<p>6.4 上传分支/推送代码<br>(1)项目克隆到本地之后，执行如下命令创建分支：</p>
+<p>(2)创建一个views.py并提交一个版本：</p>
+<p>(3)推送前github上文件列表如下图:</p>
+<p>(4)推送前github上分支列表如下图:</p>
+<p>(5)推送分支，就是把该分支上的所有本地提交推送到远程库，推送时要指定本地分支，这样，git就会把该分支推送到远程库对应的远程分支上：<br>git push origin 分支名称<br>例：<br>git push origin smart</p>
+<p>（6）再次查看github分支：<br>接下来操作重新加载页面：</p>
+<p>点击smart,再点击views.py,如图所示：</p>
+<p>6.5 将本地分支跟踪服务器分支<br> git branch –set-upstream-to=origin/远程分支名称 本地分支名称<br>1<br>例：</p>
+<p>  git branch –set-upstream-to=origin/smart smart<br>1</p>
+<p>我的社交网址：<a target="_blank" rel="noopener" href="https://github.com/Keegan-y">https://github.com/Keegan-y</a></p>
+<p>6.6 从远程分支上拉取代码<br>git pull orgin 分支名称<br>例：<br>git pull orgin smart<br>使用上述命令会把远程分支smart上的代码下载并合并到本地所在分支。</p>
+<p>7.工作使用git<br>不墨迹直接上代码：<br>loading…<br>项目经理：<br>(1)项目经理搭建项目的框架。<br>(2)搭建完项目框架之后，项目经理把项目框架代码放到服务器。</p>
+<p>普通员工：<br>(1)在自己的电脑上，生成ssh公钥，然后把公钥给项目经理，项目经理把它添加的服务器上面。<br>(2)项目经理会给每个组员的项目代码的地址，组员把代码下载到自己的电脑上。<br>(3)创建本地的分支dev,在dev分支中进行每天的开发。<br>(4)每一个员工开发完自己的代码之后，都需要将代码发布远程的dev分支上。</p>
+<p>项目里一般会有两个分支，如：<br>Master:用于保存发布的项目代码。<br>Dev:用于保存开发过程中的代码。所有的组员开发完自己的代码提交到该分支上。<br>补充小技巧：<br>首先，整体认知一下工作中git常用的就这么几个命令：<br>步骤1.创建项目目录，如git_test【强烈建议返回到2.安装配置一节，学一学在windows中用mkdir git_test。工作中点来点去，文件夹一多就不爽了，学会在windows上用linux命令，工作效率谁用谁知道<del>】<br>步骤2.git init【如果你考皮github上别人的代码，必须将别人的.git文件删掉。步骤：进入项目目录，如git_test，cd git_test，ls -al，rm -rf .git】【工作中linux必会的，赶快回到2.安装配置一节，学一学在windows使用linux命令，这样就不用装linux环境了，简单胜于复杂</del>】<br>步骤3.git add .<br>步骤4.git commit -m “整体提交”<br>步骤5.git remote add origin 【你的github/gitlab仓库地址】<br>步骤6.git checkout -b dev<br>步骤7.git push origin dev<br>当然不止于这7步，这些步骤会在你的实践中不断升华，壮大<del>。<br>先把git玩起来再说，否则很容易从入门到放弃。先玩起来</del><br>步骤操作如图所示：</p>
+<p>可以看到，代码推到仓库了。<br>掌握了上面基本命令，记住使用步骤，强烈建议建议建议你在PyCharm/Goland上操作git，能可视化+带提示帮你提交代码，解决冲突【你在git bash里搞不定冲突，在PyCharm/Goland上操作一看就知道怎么做了，人家可视化+提示，你只需要手指点一点即可，很简单，节约你的时间】，工具是个好东西，前面的步骤都是为了这样一句话铺垫：【PyCharm/Goland上玩git】<br>【不会的可以在评论区留言，我看到后会继续在后文补充。既然是git使用教程，那就是成体系的，知识技能是结构化安放的，方便查，方便增，是不？】</p>
+<p>到此，git使用教程就写完了，既是自己的实践记录【记不住哈哈】，也能帮助更多的道友管理控制代码，如果内容对读者有用，请关注我，为思考点赞！</p>
+<p>最后奉上导图笔记：</p>
+<p>8.思维导图笔记</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/16/19.1.git/" data-id="cknllgmc1003esgwdhketbu2z" data-title="git" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/04/16/4.10.java%E6%89%A9%E5%B1%95%E7%B1%BB/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          java扩展类
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/04/15/5.4.MySQL%E5%B7%A5%E5%85%B7%E4%B9%8BNavicat/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">MySQL工具之Navicat</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/17/19.3.github/">github</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">代理和反向代理</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/24.%E7%AE%97%E6%B3%95/">算法</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/23.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/22.3.%E5%B8%B8%E8%A7%81cmd%E5%91%BD%E4%BB%A4/">常见cmd命令</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 swx<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Redis | swx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的APIRedis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API 从2010年3月15日起，Redis的开发工作由VMware主持。从2013年5月开始，Redis的开发由Pivotal赞助">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis">
+<meta property="og:url" content="https://s-qwer.github.io/2021/04/15/15.1.Redis/index.html">
+<meta property="og:site_name" content="swx">
+<meta property="og:description" content="Redis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的APIRedis是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API 从2010年3月15日起，Redis的开发工作由VMware主持。从2013年5月开始，Redis的开发由Pivotal赞助">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml1960/wps1.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml1960/wps2.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml1960/wps3.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml1960/wps4.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml1960/wps5.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml1960/wps6.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml1960/wps7.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml1960/wps8.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml1960/wps9.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml1960/wps10.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml1960/wps11.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml1960/wps12.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml1960/wps13.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml1960/wps14.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml1960/wps15.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml1960/wps16.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml1960/wps17.jpg">
+<meta property="article:published_time" content="2021-04-15T05:28:54.000Z">
+<meta property="article:modified_time" content="2021-04-15T05:31:33.797Z">
+<meta property="article:author" content="swx">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml1960/wps1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="swx" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swx</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://s-qwer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-15.1.Redis" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/15/15.1.Redis/" class="article-date">
+  <time class="dt-published" datetime="2021-04-15T05:28:54.000Z" itemprop="datePublished">2021-04-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Redis
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Redis是一个开源的使用ANSI <a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1219.htm">C语言</a>编写、支持网络、可基于内存亦可持久化的日志型、Key-Value<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1088.htm">数据库</a>，并提供多种语言的APIRedis是一个开源的使用ANSI <a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1219.htm">C语言</a>编写、支持网络、可基于内存亦可持久化的日志型、Key-Value<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1088.htm">数据库</a>，并提供多种语言的API</p>
+<p>从2010年3月15日起，Redis的开发工作由VMware主持。从2013年5月开始，Redis的开发由Pivotal赞助</p>
+<p>Redis是 NoSQL（not only SQL）技术阵营中的一员，它通过多种键值数据类型来适应不同场景下的存储需求，借助一些高层级的接口使用其可以胜任，如缓存、队列系统的不同角色</p>
+<p>Redis可以保存在内存中（性能非常好），也可以持久化在文件中</p>
+<p>Redis的官网: <a target="_blank" rel="noopener" href="https://redis.io/">https://redis.io/</a></p>
+<p>经常用的数据成缓存，所以用redis</p>
+<p>特性：</p>
+<p>1.Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用</p>
+<p>2.Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储</p>
+<p>3.Redis支持数据的备份，即master-slave模式的数据备份</p>
+<p>优势：</p>
+<p>1.性能极高 – Redis能读的速度是110000次/s,写的速度是81000次/s</p>
+<p>2.丰富的数据类型 – Redis支持二进制案例的 Strings, Lists, Hashes, Sets 及 Ordered Sets 数据类型操作</p>
+<p>3.原子 – Redis的所有操作都是原子性的，同时Redis还支持对几个操作全并后的原子性执行</p>
+<p>4.丰富的特性 – Redis还支持 publish/subscribe, 通知, key 过期等等特性</p>
+<h1 id="Redis-下载及安装"><a href="#Redis-下载及安装" class="headerlink" title="*Redis*****下载及安装****"></a><em><strong>*Redis*</strong>***</em>*下载及安装****</h1><p>Redis版本说明</p>
+<p>Redis原生只支持linux系统。Redis官方是不支持windows平台，windows版本是微软自己建立的分支，基于官方的redis源码上进行编译、发布、维护的，所以window平台上的redis版本都略低于官方版本</p>
+<p>当前redis最新版本是6.0</p>
+<p>可以直接在windows上下载，通过上传工具上传到linux系统，也可以在linux下直接复制最新稳定版本下载链接的网址，然后wget+网址（这种方式必须要求可以上网）</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml1960\wps1.jpg" alt="img"> </p>
+<p>Redis安装：</p>
+<p>1.将redis.tar.gz解压：tar -zxvf redis-3.2.8.tar.gz</p>
+<p>mkdir redis  建一个目录</p>
+<p>2.进入redis-3.2.8目录：cd redis-3.2.8</p>
+<p>3.对redis进行编译:make  </p>
+<p>4.安装到指定的目录：make PREFIX=/usr/local/redis install</p>
+<p>如果安装redis是报下面的错误，是因为系统没有安装gcc环境，缺少依赖</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml1960\wps2.jpg" alt="img"> </p>
+<p>解决方案：</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml1960\wps3.jpg" alt="img"> </p>
+<p>安装完成后，对redis进行重新编译安装</p>
+<p>redis安装完成后，我们进入目录bin中查看</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml1960\wps4.jpg" alt="img"> </p>
+<p>redis-server          redis服务器</p>
+<p>redis-cli           redis命令行客户端</p>
+<p>redis-benchmark          redis性能测试工具</p>
+<p>redis-check-aof         AOF文件修复工具</p>
+<p>redis-check-rdb          RDB文件检索工具</p>
+<p>redis客户端测试：</p>
+<p>1.启动redis服务</p>
+<p>./redis-server是可以启动的，但是有风险，只在测试环境下可以。正常启动需要加载配置文件</p>
+<p>注意：我们需要将redis编译后的目录中的redis.conf文件copy到我们自己的redis目录中。 cp redis.conf /usr/local/redis </p>
+<p>这个redis.conf文件是redis的配置文件</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml1960\wps5.jpg" alt="img"> </p>
+<p>在输入</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml1960\wps6.jpg" alt="img">就可以启动</p>
+<p>注意:前面是redis-server服务，后面redis.conf配置文件</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml1960\wps7.jpg" alt="img"> </p>
+<p>Redis占用的端口是6379</p>
+<p>可以通过redis-cli命令行客户端来测试redis是否启动成功</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml1960\wps8.jpg" alt="img"> </p>
+<p>其他ip地址不能连接是因为配置文件中只允许回环地址127.0.0.1连接</p>
+<h1 id="Redis-数据类型与常见操作"><a href="#Redis-数据类型与常见操作" class="headerlink" title="*Redis*****数据类型与常见操作****"></a><em><strong>*Redis*</strong>***</em>*数据类型与常见操作****</h1><p>redis是一个key-value<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/51839.htm">存储系统</a>。和Memcached类似，它支持存储的value类型相对更多，包括string(字符串)、list(<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/549479.htm">链表</a>)、set(集合)、zset(sorted set –有序集合)和hash（哈希类型）</p>
+<p>1.string类型常见操作</p>
+<p>字符串类型是Redis中最为基础的数据存储类型，它在Redis中是二进制安全的，这便意味着该类型可以接受任何格式的数据，如JPEG图像数据或Json对象描述信息等。在Redis中字符串类型的Value最多可以容纳的数据长度是512M</p>
+<p>常见操作（小写也可）</p>
+<p>l SET key value      </p>
+<p>设定该Key持有指定的字符串Value，如果该Key已经存在，则覆盖其原有值。返回值：总是返回”OK”</p>
+<p>l GET key      </p>
+<p>获取指定Key的Value。如果与该Key关联的Value不是string类型，Redis将返回错误信息，因为GET命令只能用于获取string Value。</p>
+<p>返回值：与该Key相关的Value，如果该Key不存在，则返回nil。</p>
+<p>l MSET key value [key value …]      </p>
+<p>该命令原子性的完成参数中所有key/value的设置操作，其具体行为可以看成是多次迭代执行SET命令。 </p>
+<p>返回值：该命令不会失败，始终返回OK。 </p>
+<p>l MGET key [key …]  </p>
+<p>返回所有指定Keys的Values，如果其中某个Key不存在，或者其值不为string类型，该Key的Value将返回nil。    </p>
+<p>返回值：返回一组指定Keys的Values的列表。</p>
+<p>l SETNX key value  </p>
+<p>如果指定的Key不存在，则设定该Key持有指定字符串Value，此时其效果等价于SET命令。相反，如果该Key已经存在，该命令将不做任何操作并返回。</p>
+<p>返回值：1表示设置成功，否则0。（not exists）</p>
+<p>l MSETNX key value [key value …]      </p>
+<p>该命令原子性的完成参数中所有key/value的设置操作，其具体行为可以看成是多次迭代执行SETNX命令。然而这里需要明确说明的是，如果在这一批Keys中有任意一个Key已经存在了，那么该操作将全部回滚，即所有的修改都不会生效。</p>
+<p>返回值：1表示所有Keys都设置成功，0则表示没有任何Key被修改。</p>
+<p>ü APPEND key value  </p>
+<p>如果该Key已经存在，APPEND命令将参数Value的数据追加到已存在Value的末尾。如果该Key不存在，APPEND命令将会创建一个新的Key/Value。</p>
+<p>返回值：追加后Value的长度。</p>
+<p>ü DECR key     </p>
+<p>将指定Key的Value原子性的递减1。如果该Key不存在，其初始值为0，在decr之后其值为-1。如果Value的值不能转换为整型值，如Hello，该操作将执行失败并返回相应的错误信息。（error）</p>
+<p>返回值：递减后的Value值。</p>
+<p>l INCR key     </p>
+<p>将指定Key的Value原子性的递增1。如果该Key不存在，其初始值为0，在incr之后其值为1。如果Value的值不能转换为整型值，如Hello，该操作将执行失败并返回相应的错误信息。</p>
+<p>返回值：递增后的Value值。 </p>
+<p>l DECRBY key decrement  </p>
+<p>将指定Key的Value原子性的减少decrement。如果该Key不存在，其初始值为0，在decrby之后其值为-decrement。如果Value的值不能转换为整型值，如Hello，该操作将执行失败并返回相应的错误信息。注意：该操作的取值范围是64位有符号整型。</p>
+<p>返回值：减少后的Value值。</p>
+<p>l INCRBY key increment   </p>
+<p>将指定Key的Value原子性的增加increment。如果该Key不存在，其初始值为0，在incrby之后其值为increment。如果Value的值不能转换为整型值，如Hello，该操作将执行失败并返回相应的错误信息。注意：该操作的取值范围是64位有符号整型。</p>
+<p>返回值：增加后的Value值。</p>
+<p>l GETSET key value     </p>
+<p>原子性的设置该Key为指定的Value，同时返回该Key的原有值。和GET命令一样，该命令也只能处理string Value，否则Redis将给出相关的错误信息。</p>
+<p>返回值：返回该Key的原有值，如果该Key之前并不存在，则返回nil。</p>
+<p>l STRLEN key     </p>
+<p>返回指定Key的字符值长度，如果Value不是string类型，Redis将执行失败并给出相关的错误信息。</p>
+<p>返回值：指定Key的Value字符长度，如果该Key不存在，返回0。</p>
+<p>l SETEX key seconds value     </p>
+<p>原子性完成两个操作，一是设置该Key的值为指定字符串，同时设置该Key在Redis服务器中的存活时间(秒数)。该命令主要应用于Redis被当做Cache服务器使用时。     （expire，到期）</p>
+<p>l SETRANGE key offset value  </p>
+<p>替换指定Key的部分字符串值。从offset开始，替换的长度为该命令第三个参数value的字符串长度，其中如果offset的值大于该Key的原有值Value的字符串长度，Redis将会在Value的后面补齐(offset - strlen(value))数量的0x00，之后再追加新值。如果该键不存在，该命令会将其原值的长度假设为0，并在其后添补offset个0x00后再追加新值。鉴于字符串Value的最大长度为512M，因此offset的最大值为536870911。最后需要注意的是，如果该命令在执行时致使指定Key的原有值长度增加，这将会导致Redis重新分配足够的内存以容纳替换后的全部字符串，因此就会带来一定的性能折损。</p>
+<p>返回值：修改后的字符串Value长度。</p>
+<p>l GETRANGE key start end     </p>
+<p>截取字符串。该命令在截取子字符串时，将以闭区间的方式同时包含start(0表示第一个字符)和end所在的字符，如果end值超过Value的字符长度，该命令将只是截取从start开始之后所有的字符数据。当end为-1时表示是最后一位，-4 -1表示从后数4位</p>
+<p>返回值：子字符串；</p>
+<p>l SETBIT key offset value      </p>
+<p>设置在指定Offset上BIT的值，该值只能为1或0，在设定后该命令返回该Offset上原有的BIT值。如果指定Key不存在，该命令将创建一个新值，并在指定的Offset上设定参数中的BIT值。如果Offset大于Value的字符长度，Redis将拉长Value值并在指定Offset上设置参数中的BIT值，中间添加的BIT值为0。最后需要说明的是Offset值必须大于0。</p>
+<p>返回值：在指定Offset上的BIT原有值。</p>
+<p>l GETBIT key offset      </p>
+<p>返回在指定Offset上BIT的值，0或1。如果Offset超过string value的长度，该命令将返回0，所以对于空字符串始终返回0。</p>
+<p>返回值：在指定Offset上的BIT值。 </p>
+<p>(布隆过滤器)</p>
+<p>a  97  0110 0001    </p>
+<p>A  65  0100 0001  其实只用 setbit key 2 0  就将a改为了A（从0开始计数）</p>
+<p>2.list类型常见操作</p>
+<p>在Redis中，List类型是按照插入顺序排序的字符串链表。和数据结构中的****普通链表****一样，我们可以在其头部(left)和尾部(right)添加新的元素。在插入时，如果该键并不存在，Redis将为该键创建一个新的链表。与此相反，如果链表中所有的元素均被移除，那么该键也将会被从数据库中删除。List中可以包含的最大元素数量是4294967295。</p>
+<p>从元素插入和删除的效率视角来看，如果我们是在链表的两头插入或删除元素，这将会是非常高效的操作，即使链表中已经存储了百万条记录，该操作也可以在常量时间内完成。然而需要说明的是，如果元素插入或删除操作是作用于链表中间，那将会是非常低效的。</p>
+<p>常见操作</p>
+<p>l LPUSH key value [value …]      </p>
+<p>在指定Key所关联的List Value的头部插入参数中给出的所有Values。如果该Key不存在，该命令将在插入之前创建一个与该Key关联的空链表，之后再将数据从链表的头部插入。如果该键的Value不是链表类型，该命令将返回相关的错误信息。</p>
+<p>返回值：插入后链表中元素的数量。</p>
+<p>l LPUSHX key value       （x相当于判断）</p>
+<p>仅有当参数中指定的Key存在时，该命令才会在其所关联的List Value的头部插入参数中给出的Value，否则将不会有任何操作发生。    </p>
+<p>返回值：插入后链表中元素的数量。 </p>
+<p>l LRANGE key start stop      </p>
+<p>该命令的参数start和end都是0-based。即0表示链表头部(leftmost)的第一个元素。其中start的值也可以为负值，-1将表示链表中的最后一个元素，即尾部元素，-2表示倒数第二个并以此类推。该命令在获取元素时，start和end位置上的元素也会被取出。如果start的值大于链表中元素的数量，空链表将会被返回。如果end的值大于元素的数量，该命令则获取从start(包括start)开始，链表中剩余的所有元素。</p>
+<p>返回值：返回指定范围内元素的列表。</p>
+<p>这里的链表插入的头部插入相当于是栈：插入12345，输出时就会是54321</p>
+<p>lrange key 0 -1 表示返回这个链表的所有元素</p>
+<p>l LPOP key      （相当于把头部的那个元素移除）</p>
+<p>返回并弹出指定Key关联的链表中的第一个元素，即头部元素。如果该Key不存，返回nil。</p>
+<p>返回值：链表头部的元素。</p>
+<p>l LLEN key     </p>
+<p>返回指定Key关联的链表中元素的数量，如果该Key不存在，则返回0。如果与该Key关联的Value的类型不是链表，则返回相关的错误信息。</p>
+<p>返回值：链表中元素的数量。</p>
+<p>l LREM key count value  </p>
+<p>在指定Key关联的链表中，删除前count个值等于value的元素。如果count大于0，从头向尾遍历并删除，如果count小于0，则从尾向头遍历并删除。</p>
+<p>如果count等于0，则删除链表中所有等于value的元素。如果指定的Key不存在，则直接返回0。    </p>
+<p>返回值：返回被删除的元素数量。</p>
+<p>l LSET key index value </p>
+<p>设定链表中指定位置的值为新值，其中0表示第一个元素，即头部元素，-1表示尾部元素。如果索引值Index超出了链表中元素的数量范围，该命令将返回相关的错误信息。     </p>
+<p>(对指定脚标的值进行设置)</p>
+<p>返回值：OK</p>
+<p>l LINDEX key index      </p>
+<p>该命令将返回链表中指定位置(index)的元素，index是0-based，表示头部元素，如果index为-1，表示尾部元素。如果与该Key关联的不是链表，该命令将返回相关的错误信息。    </p>
+<p>返回值：返回请求的元素，如果index超出范围，则返回nil。</p>
+<p>(读出指定脚标的值)</p>
+<p>l LTRIM key start stop      </p>
+<p>该命令将仅保留指定范围内的元素，从而保证链接中的元素数量相对恒定。start和stop参数都是0-based，0表示头部元素。和其他命令一样，start和stop也可以为负值，-1表示尾部元素。如果start大于链表的尾部，或start大于stop，该命令不会报错，而是返回一个空的链表，与此同时该Key也将被删除。如果stop大于元素的数量，则保留从start开始剩余的所有元素。     </p>
+<p>l LINSERT key BEFORE|AFTER pivot value  </p>
+<p>该命令的功能是在pivot元素的前面或后面插入参数中的元素value。如果Key不存在，该命令将不执行任何操作。如果与Key关联的Value类型不是链表，相关的错误信息将被返回。    </p>
+<p>返回值：成功插入后链表中元素的数量，如果没有找到pivot，返回-1，如果key不存在，返回0。</p>
+<p>(在指定的某个value前或后插入一个新的value)</p>
+<p>l RPUSH key value [value …]      </p>
+<p>在指定Key所关联的List Value的尾部插入参数中给出的所有Values。如果该Key不存在，该命令将在插入之前创建一个与该Key关联的空链表，之后再将数据从链表的尾部插入。如果该键的Value不是链表类型，该命令将返回相关的错误信息。 </p>
+<p>返回值：插入后链表中元素的数量。 </p>
+<p>l RPUSHX key value </p>
+<p>仅有当参数中指定的Key存在时，该命令才会在其所关联的List Value的尾部插入参数中给出的Value，否则将不会有任何操作发生。</p>
+<p>返回值：插入后链表中元素的数量。 </p>
+<p>l RPOP key      </p>
+<p>返回并弹出指定Key关联的链表中的最后一个元素，即尾部元素，。如果该Key不存，返回nil。 </p>
+<p>返回值：链表尾部的元素。 </p>
+<p>l RPOPLPUSH source destination      </p>
+<p>原子性的从与source键关联的链表尾部弹出一个元素，同时再将弹出的元素插入到与destination键关联的链表的头部。如果source键不存在，该命令将返回nil，同时不再做任何其它的操作了。如果source和destination是同一个键，则相当于原子性的将其关联链表中的尾部元素移到该链表的头部。    </p>
+<p>返回值：返回弹出和插入的元素</p>
+<p>3.hash类型常见操作</p>
+<p>Redis中的Hashes类型可以看成具有String Key和String Value的map容器。所以该类型非常适合于存储值对象的信息。如用户信息：Username、Password和Age等。每一个Hash可以存储4294967295个键值对。</p>
+<p>常见操作</p>
+<p>l HSET key field value     </p>
+<p>为指定的Key设定Field/Value对，如果Key不存在，该命令将创建新Key以参数中的Field/Value对，如果参数中的Field在该Key中已经存在，则用新值覆盖其原有值。</p>
+<p>返回值：1表示新的Field被设置了新值，0表示Field已经存在，用新值覆盖原有值。 </p>
+<p>l HGET key field      </p>
+<p>返回指定Key中指定Field的关联值。    </p>
+<p>返回值：返回参数中Field的关联值，如果参数中的Key或Field不存，返回nil。</p>
+<p>l HSETNX key field value     </p>
+<p>只有当参数中的Key或Field不存在的情况下，为指定的Key设定Field/Value对，否则该命令不会进行任何操作。 </p>
+<p>返回值：1表示新的Field被设置了新值，0表示Key或Field已经存在，该命令没有进行任何操作。</p>
+<p>l HEXISTS key field      </p>
+<p>判断指定Key中的指定Field是否存在。    </p>
+<p>返回值：1表示存在，0表示参数中的Field或Key不存在。</p>
+<p>l HLEN key      </p>
+<p>获取该Key所包含的Field的数量。    返回Key包含的Field数量，如果Key不存在，返回0。</p>
+<p>l HDEL key field [field …]      </p>
+<p>从指定Key的Hashes Value中删除参数中指定的多个字段，如果不存在的字段将被忽略。</p>
+<p>返回值：如果Key不存在，则将其视为空Hashes，并返回0，否则返回实际删除的Field数量。</p>
+<p>l HINCRBY key field increment      </p>
+<p>增加指定Key中指定Field关联的Value的值。如果Key或Field不存在，该命令将会创建一个新Key或新Field，并将其关联的Value初始化为0，之后再指定数字增加的操作。该命令支持的数字是64位有符号整型，即increment可以负数。返回值：运算后的值。</p>
+<p>l HGETALL key     </p>
+<p>获取该键包含的所有Field/Value。其返回格式为一个Field、一个Value，并以此类推。    </p>
+<p>返回值：Field/Value的列表。</p>
+<p>l HKEYS key      </p>
+<p>返回指定Key的所有Fields名。    </p>
+<p>返回值：Field的列表。</p>
+<p>l HVALS key      </p>
+<p>返回指定Key的所有Values名。 </p>
+<p>返回值：Value的列表。 </p>
+<p>l HMGET key field [field …]      </p>
+<p>获取和参数中指定Fields关联的一组Values。如果请求的Field不存在，其值返回nil。如果Key不存在，该命令将其视为空Hash，因此返回一组nil。    </p>
+<p>返回值：返回和请求Fields关联的一组Values，其返回顺序等同于Fields的请求顺序。</p>
+<p>l HMSET key field value [field value …]     </p>
+<p>逐对依次设置参数中给出的Field/Value对。如果其中某个Field已经存在，则用新值覆盖原有值。如果Key不存在，则创建新Key，同时设定参数中的Field/Value</p>
+<p>4.set类型常见操作（不重复，可以完成交并差操作）</p>
+<p>在Redis中，我们可以将Set类型看作为没有排序的字符串集合。Set可包含的最大元素数量是4294967295。</p>
+<p>Set类型在功能上还存在着一个非常重要的特性，即在服务器端完成多个Sets之间的聚合计算操作，如unions、intersections和differences。由于这些操作均在服务端完成，因此效率极高，而且也节省了大量的网络IO开销。</p>
+<p>常见操作</p>
+<p>l SADD key member [member …]     </p>
+<p>如果在插入的过程用，参数中有的成员在Set中已经存在，该成员将被忽略，而其它成员仍将会被正常插入。如果执行该命令之前，该Key并不存在，该命令将会创建一个新的Set，此后再将参数中的成员陆续插入。</p>
+<p>返回值：本次操作实际插入的成员数量。</p>
+<p>l SCARD key     </p>
+<p>获取Set中成员的数量。    </p>
+<p>返回值：返回Set中成员的数量，如果该Key并不存在，返回0。</p>
+<p>l SISMEMBER key member     </p>
+<p>判断参数中指定成员是否已经存在于与Key相关联的Set集合中。    </p>
+<p>返回值：1表示已经存在，0表示不存在，或该Key本身并不存在。</p>
+<p>l SMEMBERS key     </p>
+<p>获取与该Key关联的Set中所有的成员。</p>
+<p>返回值：返回Set中所有的成员。</p>
+<p>l SPOP  key      </p>
+<p>随机的移除并返回Set中的某一成员。 由于Set中元素的布局不受外部控制，因此无法像List那样确定哪个元素位于Set的头部或者尾部。    </p>
+<p>返回值：返回移除的成员，如果该Key并不存在，则返回nil。</p>
+<p>l SRANDMEMBER key      </p>
+<p>和SPOP一样，随机的返回Set中的一个成员，不同的是该命令并不会删除返回的成员。    </p>
+<p>返回值：返回随机位置的成员，如果Key不存在则返回nil。</p>
+<p>l SREM key member [member …]     </p>
+<p>从与Key关联的Set中删除参数中指定的成员，不存在的参数成员将被忽略，如果该Key并不存在，将视为空Set处理。    </p>
+<p>返回值：从Set中实际移除的成员数量，如果没有则返回0。</p>
+<p>l SMOVE source destination member     </p>
+<p>原子性的将参数中的成员从source键移入到destination键所关联的Set中。如果该成员在source中并不存在，该命令将不会再执行任何操作并返回0，否则，该成员将从source移入到destination。如果此时该成员已经在destination中存在，那么该命令仅是将该成员从source中移出。</p>
+<p>返回值：1表示正常移动，0表示source中并不包含参数成员。</p>
+<p>l SDIFF key [key …]     </p>
+<p>返回参数中第一个Key所关联的Set和其后所有Keys所关联的Sets中成员的差异。如果Key不存在，则视为空Set。    </p>
+<p>返回值：差异结果成员的集合。</p>
+<p>l SDIFFSTORE destination key [key …]      </p>
+<p>该命令和SDIFF命令在功能上完全相同，两者之间唯一的差别是SDIFF返回差异的结果成员，而该命令将差异成员存储在destination关联的Set中。如果destination键已经存在，该操作将覆盖它的成员。    </p>
+<p>返回值：返回差异成员的数量。</p>
+<p>l SINTER key [key …]      </p>
+<p>该命令将返回参数中所有Keys关联的Sets中成员的交集。因此如果参数中任何一个Key关联的Set为空，或某一Key不存在，那么该命令的结果将为空集。</p>
+<p>返回值：交集结果成员的集合。</p>
+<p>l SINTERSTORE destination key [key …]     </p>
+<p>该命令和SINTER命令在功能上完全相同，两者之间唯一的差别是SINTER返回交集的结果成员，而该命令将交集成员存储在destination关联的Set中。如果destination键已经存在，该操作将覆盖它的成员。    </p>
+<p>返回值：返回交集成员的数量。 </p>
+<p>l SUNION key [key …]      </p>
+<p>该命令将返回参数中所有Keys关联的Sets中成员的并集。    </p>
+<p>返回值：并集结果成员的集合。</p>
+<p>l SUNIONSTORE destination key [key …]      </p>
+<p>该命令和SUNION命令在功能上完全相同，两者之间唯一的差别是SUNION返回并集的结果成员，而该命令将并集成员存储在destination关联的Set中。如果destination键已经存在，该操作将覆盖它的成员。 </p>
+<p>返回值：返回并集成员的数量</p>
+<p>5.sortedSet类型常见操作</p>
+<p>Sorted-Sets和Sets类型极为相似，它们都是字符串的集合，都不允许重复的成员出现在一个Set中。它们之间的主要差别是Sorted-Sets中的每一个成员都会有一个分数(score)与之关联，Redis正是通过分数来为集合中的成员进行从小到大的排序。然而需要额外指出的是，尽管Sorted-Sets中的<em><strong>*成员必须是唯一*<em><strong>的，但是</strong></em>*分数*</strong>***</em>*(score)********却是可以重复****的。</p>
+<p>在Sorted-Set中添加、删除或更新一个成员都是非常快速的操作，由于Sorted-Sets中的成员在集合中的位置是有序的，因此，即便是访问位于集合中部的成员也仍然是非常高效的。事实上，Redis所具有的这一特征在很多其它类型的数据库中是很难实现的，换句话说，在该点上要想达到和Redis同样的高效，在其它数据库中进行建模是非常困难的。</p>
+<p>常见操作</p>
+<p>l ZADD key score member [score] [member]      </p>
+<p>添加参数中指定的所有成员及其分数到指定key的Sorted-Set中，在该命令中我们可以指定多组score/member作为参数。如果在添加时参数中的某一成员已经存在，该命令将更新此成员的分数为新值，同时再将该成员基于新值重新排序。如果键不存在，该命令将为该键创建一个新的Sorted-Sets Value，并将score/member对插入其中。</p>
+<p>返回值：本次操作实际插入的成员数量。</p>
+<p>l ZINCRBY key increment member      </p>
+<p>该命令将为指定Key中的指定成员增加指定的分数。如果成员不存在，该命令将添加该成员并假设其初始分数为0，此后再将其分数加上increment。如果Key不存，该命令将创建该Key及其关联的Sorted-Sets，并包含参数指定的成员，其分数为increment参数。</p>
+<p>返回值：以字符串形式表示的新分数。</p>
+<p>l ZCARD key      </p>
+<p>获取与该Key相关联的Sorted-Sets中包含的成员总数量。</p>
+<p>返回值：返回Sorted-Sets中的成员数量，如果该Key不存在，返回0。</p>
+<p>l ZCOUNT key min max     </p>
+<p>该命令用于获取<em><strong>*分数*</strong>***</em>*(score)****在min和max之间的成员数量。缺省情况下，min和max表示的范围是闭区间范围，即min &lt;= score &lt;= max内的成员将被返回。然而我们可以通过在min和max的前面添加”(“字符来表示开区间，如(min max表示min &lt; score &lt;= max，而(min (max表示min &lt; score &lt; max。</p>
+<p>返回值：分数指定范围内成员的数量。</p>
+<p>l ZRANGE key start stop [WITHSCORES]      </p>
+<p>该命令返回****排名****在参数start和stop指定范围内的成员，这里start和stop参数都是0-based，即0表示第一个成员，-1表示最后一个成员。如果start大于该Sorted-Set中的最大索引值，或start &gt; stop，此时一个空集合将被返回。如果stop大于最大索引值，该命令将返回从start到集合的最后一个成员。如果命令中带有可选参数WITHSCORES选项，该命令在返回的结果中将包含每个成员的分数值，如value1,score1,value2,score2…。　　    </p>
+<p>返回值：返回索引在start和stop之间的成员列表。</p>
+<p>l ZREVRANGE key start stop [WITHSCORES]   </p>
+<p>该命令的功能和ZRANGE基本相同，唯一的差别在于顺序相反。    </p>
+<p>返回值：返回指定的成员列表。</p>
+<p>l ZRANGEBYSCORE key min max [WITHSCORES] [LIMIT offset count]      </p>
+<p>该命令将返回****分数****在min和max范围内的成员，即满足表达式min &lt;= score &lt;= max的成员，其中返回的成员是按照其分数从低到高的顺序返回，如果成员具有相同的分数，则按成员的字典顺序返回。可选参数LIMIT用于限制返回成员的数量范围。可选参数offset表示从符合条件的第offset个成员开始返回，同时返回count个成员。</p>
+<p>返回值：返回分数在指定范围内的成员列表。</p>
+<p>l ZREVRANGEBYSCORE key max min [WITHSCORES] [LIMIT offset count]      </p>
+<p>该命令除了排序方式是基于从高到低的分数排序之外，其它功能和参数含义均与ZRANGEBYSCORE相同。    </p>
+<p>返回值：返回分数在指定范围内的成员列表。 </p>
+<p>l ZRANK key member      </p>
+<p>该命令将返回参数中指定****成员的位置值****（按分数由低到高的顺序），其中0表示第一个成员，它是Sorted-Set中分数最低的成员。</p>
+<p>返回值：如果该成员存在，则返回它的位置索引值。否则返回nil。</p>
+<p>l ZREVRANK key member      </p>
+<p>该命令的功能和ZRANK基本相同，唯一的差别在于顺序相反    </p>
+<p>返回值：如果该成员存在，则返回它的位置索引值。否则返回nil。 </p>
+<p>l ZSCORE key member     </p>
+<p>获取指定成员的分数。    </p>
+<p>返回值：如果该成员存在，以字符串的形式返回其分数，否则返回nil。</p>
+<p>l ZREM key member [member …]     </p>
+<p>该命令将移除参数中指定的成员，其中不存在的成员将被忽略。如果与该Key关联的Value不是Sorted-Set，相应的错误信息将被返回。</p>
+<p>返回值：实际被删除的成员数量。</p>
+<p>l ZREMRANGEBYRANK key start stop      </p>
+<p>删除索引位置位于start和stop之间的成员，start和stop都是0-based，即0表示分数最低的成员，-1表示最后一个成员，即分数最高的成员。     </p>
+<p>返回值：被删除的成员数量。</p>
+<p>l ZREMRANGEBYSCORE key min max      </p>
+<p>删除分数在min和max之间的所有成员，即满足表达式min &lt;= score &lt;= max的所有成员。对于min和max参数，可以采用开区间的方式表示，具体规则参照ZCOUNT。 </p>
+<p>返回值：被删除的成员数量</p>
+<p>6.Key通用操作</p>
+<p>l KEYS pattern     </p>
+<p>获取所有匹配pattern参数（正则）的Keys。需要说明的是，在我们的正常操作中应该尽量避免对该命令的调用，因为对于大型数据库而言，该命令是非常耗时的，对Redis服务器的性能打击也是比较大的。pattern支持glob-style的通配符格式，如*表示任意一个或多个字符，?表示任意字符，[abc]表示方括号中任意一个字母。    匹配模式的键列表。</p>
+<p>l DEL key [key …]     </p>
+<p>从数据库删除中参数中指定的keys，如果指定键不存在，则直接忽略。还需要另行指出的是，如果指定的Key关联的数据类型不是String类型，而是List、Set、Hashes和Sorted Set等容器类型，该命令删除每个键的时间复杂度为O(M)，其中M表示容器中元素的数量。而对于String类型的Key，其时间复杂度为O(1)。</p>
+<p>返回值：实际被删除的Key数量。</p>
+<p>l EXISTS key      </p>
+<p>判断指定键是否存在。    </p>
+<p>返回值：1表示存在，0表示不存在。</p>
+<p>l MOVE key db      </p>
+<p>将当前数据库中指定的键Key移动到参数中指定的数据库中。如果该Key在目标数据库中已经存在，或者在当前数据库中并不存在，该命令将不做任何操作并返回0。     </p>
+<p>返回值：移动成功返回1，否则0。</p>
+<p>在redis.conf文件中定义了redis的默认库的数量</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml1960\wps9.jpg" alt="img"> </p>
+<p>我们可以使用select 数值 来进行库的切换: select  10.</p>
+<p>l RENAME key newkey      </p>
+<p>为指定的键重新命名，如果参数中的两个Keys的名字相同，或者是源Key不存在，该命令都会返回相关的错误信息。如果newKey已经存在，则直接覆盖。  </p>
+<p>l RENAMENX key newkey     </p>
+<p>如果新值不存在，则将参数中的原值修改为新值。其它条件和RENAME一致。</p>
+<p>返回值：1表示修改成功，否则0。</p>
+<p>l PERSIST key     </p>
+<p>如果Key存在过期时间，该命令会将其过期时间消除，使该Key不再有超时，而是可以持久化存储。    </p>
+<p>返回值：1表示Key的过期时间被移除，0表示该Key不存在或没有过期时间。</p>
+<p>l EXPIRE key seconds      </p>
+<p>该命令为参数中指定的Key设定超时的秒数，在超过该时间后，Key被自动的删除。如果该Key在超时之前被修改，与该键关联的超时将被移除。 </p>
+<p>返回值：1表示超时被设置，0则表示Key不存在，或不能被设置。</p>
+<p>l EXPIREAT key timestamp  </p>
+<p>该命令的逻辑功能和EXPIRE完全相同，唯一的差别是该命令指定的超时时间是绝对时间，而不是相对时间。该时间参数是Unix timestamp格式的，即从1970年1月1日开始所流经的秒数。    </p>
+<p>返回值：1表示超时被设置，0则表示Key不存在，或不能被设置。 </p>
+<p>l TTL key      </p>
+<p>获取该键所剩的超时描述。 </p>
+<p>返回值：返回所剩描述，如果该键不存在或没有超时设置，则返回-1。</p>
+<p>l RANDOMKEY     </p>
+<p>从当前打开的数据库中随机的返回一个Key。    </p>
+<p>返回值：返回的随机键，如果该数据库是空的则返回nil。</p>
+<p>l TYPE key      </p>
+<p>获取与参数中指定键关联值的类型，该命令将以字符串的格式返回。    </p>
+<p>返回值：返回的字符串为string、list、set、hash和zset，如果key不存在返回none</p>
+<p>7.事务</p>
+<p>Redis 事务可以一次执行多个命令， 并且带有以下两个重要的保证：</p>
+<p>l 事务是一个单独的隔离操作：事务中的所有命令都会序列化、按顺序地执行。事务在执行的过程中，不会被其他客户端发送来的命令请求所打断。</p>
+<p>l 事务是一个原子操作：事务中的命令要么全部被执行，要么全部都不执行。</p>
+<p>一个事务从开始到执行会经历以下三个阶段：</p>
+<p>开始事务。<em><strong>*MULTI*</strong></em> </p>
+<p>命令入队。执行的redis的操作</p>
+<p>执行事务。<em><strong>*EXEC*</strong></em> </p>
+<p>事务常用命令</p>
+<p>l MULTI</p>
+<p>Redis Multi 命令用于标记一个事务块的开始。</p>
+<p>事务块内的多条命令会按照先后顺序被放进一个队列当中，最后由 EXEC 命令原子性(atomic)地执行。</p>
+<p>返回值:总是返回OK</p>
+<p>l EXEC</p>
+<p>Redis Exec 命令用于执行所有事务块内的命令</p>
+<p>返回值: 事务块内所有命令的返回值，按命令执行的先后顺序排列。 当操作被打断时，返回空值 nil 。</p>
+<p>l DISCARD</p>
+<p>Redis Discard 命令用于取消事务，放弃执行事务块内的所有命令。</p>
+<p>返回值: 总是返回 OK 。</p>
+<p>l WATCH</p>
+<p>Redis Watch 命令用于监视一个(或多个) key ，如果在事务执行之前这个(或这些) key 被其他命令所改动，那么事务将被打断</p>
+<p>l UNWATCH</p>
+<p>Redis Unwatch 命令用于取消 WATCH 命令对所有 key 的监视</p>
+<h1 id="Redis-java-客户端-jedis"><a href="#Redis-java-客户端-jedis" class="headerlink" title="*Redis java*****客户端*****jedis*"></a><em><strong>*Redis java*</strong>***</em>*客户端****<em><strong>*jedis*</strong></em></h1><p>Jedis介绍与快速入门</p>
+<p>通过java来操作redis：使用jedis</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml1960\wps10.jpg" alt="img"> </p>
+<p>搭建jedis环境：</p>
+<p>新建一个javaproject，复制jar包到lib下，右键addpath构建路径</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml1960\wps11.jpg" alt="img"> </p>
+<p>编写代码</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml1960\wps12.jpg" alt="img"> </p>
+<p>程序执行报错：</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml1960\wps13.jpg" alt="img"> </p>
+<p>原因:</p>
+<p>1.redis服务器是否开启：linux上加载redis-server和redis.conf查看开启</p>
+<p>2.linux的防火墙是否关闭：service iptables stop  关了之后在重启redis服务器</p>
+<p>3.在redis.conf配置文件中 bind 127.0.0.1 代表的是外部不可以访问redis（可以把它注释掉，前面加#）</p>
+<p>通过以上操作，错误信息不一样了：</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml1960\wps14.jpg" alt="img"> </p>
+<p>原因：是我们没有设置密码</p>
+<p>我们需要在redis.conf文件中设置密码admin：查找到requirepass，将前面的#删掉，然后将后面的改为admin，：wq保存退出</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml1960\wps15.jpg" alt="img"> </p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml1960\wps16.jpg" alt="img"> </p>
+<p>有密码的情况下，在命令行下连接redis需加上-a：</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml1960\wps17.jpg" alt="img"> </p>
+<p>string类型常见操作</p>
+<p>//string操作</p>
+<p><em><strong>*public*</strong></em> <em><strong>*class*</strong></em> JedisDemo2 {</p>
+<p>​    Jedis jedis;</p>
+<p>​    @Before</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> createJedis() {</p>
+<p>​        jedis = <em><strong>*new*</strong></em> Jedis(“192.168.19.128”);</p>
+<p>​        // 设置密码</p>
+<p>​        jedis.auth(“admin”);</p>
+<p>​    }</p>
+<p>​    // 演示 set get</p>
+<p>​    @Test</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> test1() {</p>
+<p>​        jedis.set(“username”, “tom”);        </p>
+<p>​        String value = jedis.get(“username”);</p>
+<p>​        System.****<em>out*</em>***.println(value);</p>
+<p>​    }</p>
+<p>​    </p>
+<p>​    //演示mset mget</p>
+<p>​    @Test</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> test2(){</p>
+<p>​        jedis.mset(“password”,”123”,”age”,”20”);</p>
+<p>​        </p>
+<p>​        List<String> values = jedis.mget(“username”,”password”,”age”);</p>
+<p>​        </p>
+<p>​        System.****<em>out*</em>***.println(values);</p>
+<p>​    }</p>
+<p>​    </p>
+<p>​    //演示 append  setrange getrange</p>
+<p>​    @Test</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> test3(){</p>
+<p>​        //jedis.append(“username”,” is boy”);</p>
+<p>​        </p>
+<p>​        //jedis.setrange(“username”, 7,”girl”);</p>
+<p>​        System.****<em>out*</em>***.println(jedis.get(“username”));</p>
+<p>​        </p>
+<p>​        </p>
+<p>​        System.****<em>out*</em>***.println(jedis.getrange(“username”, 7, -1));</p>
+<p>​    }</p>
+<p>}</p>
+<p>list类型常见操作：</p>
+<p>//list操作</p>
+<p><em><strong>*public*</strong></em> <em><strong>*class*</strong></em> JedisDemo3 {</p>
+<p>​    Jedis jedis;</p>
+<p>​    @Before</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> createJedis() {</p>
+<p>​        jedis = <em><strong>*new*</strong></em> Jedis(“192.168.19.128”);</p>
+<p>​        // 设置密码</p>
+<p>​        jedis.auth(“admin”);</p>
+<p>​    }</p>
+<p>​    // 演示lpush lrange</p>
+<p>​    @Test</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> test1() {</p>
+<p>​        jedis.lpush(“names”, “tom”, “james”, “张三”, “李四”);</p>
+<p>​        List<String> names = jedis.lrange(“names”, 0, -1);</p>
+<p>​        System.****<em>out*</em>***.println(names);</p>
+<p>​    }</p>
+<p>​    // lset</p>
+<p>​    @Test</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> test2() {</p>
+<p>​        // jedis.lset(“names”, 1, “王五”);</p>
+<p>​        // List<String> names = jedis.lrange(“names”, 0, -1);</p>
+<p>​        // System.out.println(names);</p>
+<p>​        String value = jedis.lindex(“names”, 1);</p>
+<p>​        System.****<em>out*</em>***.println(value);</p>
+<p>​    }</p>
+<p>​    // linsert</p>
+<p>​    @Test</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> test3() {</p>
+<p>​        jedis.linsert(“names”, LIST_POSITION.****<em>BEFORE*</em>***, “james”, “fox”);</p>
+<p>​        List<String> names = jedis.lrange(“names”, 0, -1);</p>
+<p>​        System.****<em>out*</em>***.println(names);</p>
+<p>​    }</p>
+<p>​    </p>
+<p>​    // lrem</p>
+<p>​    @Test</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> test4(){</p>
+<p>​        jedis.lrem(“names”, 1, “tom”);</p>
+<p>​        List<String> names = jedis.lrange(“names”, 0, -1);</p>
+<p>​        System.****<em>out*</em>***.println(names);</p>
+<p>​    }</p>
+<p>}</p>
+<p>hash类型常见操作</p>
+<p>//hash操作</p>
+<p><em><strong>*public*</strong></em> <em><strong>*class*</strong></em> JedisDemo4 {</p>
+<p>​    Jedis jedis;</p>
+<p>​    @Before</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> createJedis() {</p>
+<p>​        jedis = <em><strong>*new*</strong></em> Jedis(“192.168.19.128”);</p>
+<p>​        // 设置密码</p>
+<p>​        jedis.auth(“admin”);</p>
+<p>​    }</p>
+<p>​    // 演示hset hget</p>
+<p>​    @Test</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> test1() {</p>
+<p>​        jedis.hset(“user”, “username”, “tom”);</p>
+<p>​        String value = jedis.hget(“user”, “username”);</p>
+<p>​        System.****<em>out*</em>***.println(value);</p>
+<p>​    }</p>
+<p>​    // 演示hmset hmget</p>
+<p>​    @Test</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> test2() {</p>
+<p>​        Map&lt;String, String&gt; hash = <em><strong>*new*</strong></em> HashMap&lt;String, String&gt;();</p>
+<p>​        hash.put(“password”, “123”);</p>
+<p>​        hash.put(“sex”, “male”);</p>
+<p>​        jedis.hmset(“user”, hash);</p>
+<p>​        List<String> values = jedis.hmget(“user”, “username”, “password”, “sex”);</p>
+<p>​        System.****<em>out*</em>***.println(values);</p>
+<p>​    }</p>
+<p>​    </p>
+<p>​    //演示 hgetall hkeys kvals</p>
+<p>​    @Test</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> test3(){</p>
+<p>​        Map&lt;String, String&gt; map = jedis.hgetAll(“user”);</p>
+<p>​        <em><strong>*for*</strong></em>(String key:map.keySet()){</p>
+<p>​            System.****<em>out*</em>***.println(key+”  “+map.get(key));</p>
+<p>​        }</p>
+<p>​        </p>
+<p>​        Set<String> keys = jedis.hkeys(“user”);</p>
+<p>​        System.****<em>out*</em>***.println(keys);</p>
+<p>​        </p>
+<p>​        List<String> values = jedis.hvals(“user”);</p>
+<p>​        System.****<em>out*</em>***.println(values);</p>
+<p>​    }</p>
+<p>​    </p>
+<p>//    演示hdel</p>
+<p>​    @Test</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> test4(){</p>
+<p>​        jedis.hdel(“user”, “username”,”password”);</p>
+<p>​        Map&lt;String, String&gt; map = jedis.hgetAll(“user”);</p>
+<p>​        <em><strong>*for*</strong></em>(String key:map.keySet()){</p>
+<p>​            System.****<em>out*</em>***.println(key+”  “+map.get(key));</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>}</p>
+<p>set类型常见操作</p>
+<p>//set操作</p>
+<p><em><strong>*public*</strong></em> <em><strong>*class*</strong></em> JedisDemo5 {</p>
+<p>​    Jedis jedis;</p>
+<p>​    @Before</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> createJedis() {</p>
+<p>​        jedis = <em><strong>*new*</strong></em> Jedis(“192.168.19.128”);</p>
+<p>​        // 设置密码</p>
+<p>​        jedis.auth(“admin”);        </p>
+<p>​    }</p>
+<p>​    </p>
+<p>​    //演示sadd smembers</p>
+<p>​    @Test</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> test1(){</p>
+<p>​        jedis.sadd(“language1”,”java”,”c++”,”ruby”,”python”);</p>
+<p>​        </p>
+<p>​        Set<String> smembers = jedis.smembers(“language1”);</p>
+<p>​        System.****<em>out*</em>***.println(smembers);</p>
+<p>​    }</p>
+<p>​    </p>
+<p>​    //演示srem</p>
+<p>​    @Test</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> test2(){</p>
+<p>​        jedis.srem(“language1”, “java”);</p>
+<p>​        Set<String> smembers = jedis.smembers(“language1”);</p>
+<p>​        System.****<em>out*</em>***.println(smembers);</p>
+<p>​    }</p>
+<p>​    </p>
+<p>​    //差集 sdiff</p>
+<p>​    @Test</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> test3(){</p>
+<p>​        jedis.sadd(“language1”,”java”,”c++”,”ruby”,”python”);</p>
+<p>​        jedis.sadd(“language2”,”ios”,”c++”,”c#”,”android”);</p>
+<p>​        </p>
+<p>​        Set<String> sdiff = jedis.sdiff(“language1”,”language2”);</p>
+<p>​        System.****<em>out*</em>***.println(sdiff);</p>
+<p>​    }</p>
+<p>​    </p>
+<p>​    //交集</p>
+<p>​    @Test</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> test4(){</p>
+<p>​        jedis.sadd(“language1”,”java”,”c++”,”ruby”,”python”);</p>
+<p>​        jedis.sadd(“language2”,”ios”,”c++”,”c#”,”android”);</p>
+<p>​        Set<String> sinter = jedis.sinter(“language1”,”language2”);</p>
+<p>​        System.****<em>out*</em>***.println(sinter);</p>
+<p>​    }</p>
+<p>​    </p>
+<p>​    //并集</p>
+<p>​    @Test</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> test5(){</p>
+<p>​        jedis.sadd(“language1”,”java”,”c++”,”ruby”,”python”);</p>
+<p>​        jedis.sadd(“language2”,”ios”,”c++”,”c#”,”android”);</p>
+<p>​        Set<String> sunion = jedis.sunion(“language1”,”language2”);</p>
+<p>​        System.****<em>out*</em>***.println(sunion);</p>
+<p>​    }</p>
+<p>​    </p>
+<p>}</p>
+<p>sortedSet类型常见操作</p>
+<p>//sortedset操作</p>
+<p><em><strong>*public*</strong></em> <em><strong>*class*</strong></em> JedisDemo6 {</p>
+<p>​    Jedis jedis;</p>
+<p>​    @Before</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> createJedis() {</p>
+<p>​        jedis = <em><strong>*new*</strong></em> Jedis(“192.168.19.128”);</p>
+<p>​        // 设置密码</p>
+<p>​        jedis.auth(“admin”);</p>
+<p>​    }</p>
+<p>​    // 演示zadd zrange zrangeByScore</p>
+<p>​    @Test</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> test1() {</p>
+<p>​        Map&lt;String, Double&gt; sm = <em><strong>*new*</strong></em> HashMap&lt;String, Double&gt;();</p>
+<p>​        sm.put(“张三”, 70.0);</p>
+<p>​        sm.put(“李四”, 80.0);</p>
+<p>​        sm.put(“王五”, 90.0);</p>
+<p>​        sm.put(“赵六”, 60.0);</p>
+<p>​        jedis.zadd(“zkey”, sm);</p>
+<p>​        Set<String> set = jedis.zrange(“zkey”, 0, -1);</p>
+<p>​        System.****<em>out*</em>***.println(set);</p>
+<p>​        // 根据分数获取</p>
+<p>​        Set<String> set1 = jedis.zrangeByScore(“zkey”, 70.0, 90.0);</p>
+<p>​        System.****<em>out*</em>***.println(set1);</p>
+<p>​    }</p>
+<p>​    // 获取分数元素 zrangeWithScores</p>
+<p>​    @Test</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> test2() {</p>
+<p>​        Map&lt;String, Double&gt; sm = <em><strong>*new*</strong></em> HashMap&lt;String, Double&gt;();</p>
+<p>​        sm.put(“张三”, 70.0);</p>
+<p>​        sm.put(“李四”, 80.0);</p>
+<p>​        sm.put(“王五”, 90.0);</p>
+<p>​        sm.put(“赵六”, 60.0);</p>
+<p>​        jedis.zadd(“zkey”, sm);</p>
+<p>​        Set<Tuple> zws = jedis.zrangeWithScores(“zkey”, 0, -1);</p>
+<p>​        <em><strong>*for*</strong></em> (Tuple t : zws) {</p>
+<p>​            System.****<em>out*</em>***.println(t.getScore() + “  “ + t.getElement());</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>​    // zrank</p>
+<p>​    @Test</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> test3() {</p>
+<p>​        Map&lt;String, Double&gt; sm = <em><strong>*new*</strong></em> HashMap&lt;String, Double&gt;();</p>
+<p>​        sm.put(“张三”, 70.0);</p>
+<p>​        sm.put(“李四”, 80.0);</p>
+<p>​        sm.put(“王五”, 90.0);</p>
+<p>​        sm.put(“赵六”, 60.0);</p>
+<p>​        jedis.zadd(“zkey”, sm);</p>
+<p>​        Long num = jedis.zrank(“zkey”, “赵六”);</p>
+<p>​        System.****<em>out*</em>***.println(num);</p>
+<p>​    }</p>
+<p>​    // zscore</p>
+<p>​    @Test</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> test4() {</p>
+<p>​        Map&lt;String, Double&gt; sm = <em><strong>*new*</strong></em> HashMap&lt;String, Double&gt;();</p>
+<p>​        sm.put(“张三”, 70.0);</p>
+<p>​        sm.put(“李四”, 80.0);</p>
+<p>​        sm.put(“王五”, 90.0);</p>
+<p>​        sm.put(“赵六”, 60.0);</p>
+<p>​        jedis.zadd(“zkey”, sm);</p>
+<p>​        Double zscore = jedis.zscore(“zkey”, “张三”);</p>
+<p>​        System.****<em>out*</em>***.println(zscore);</p>
+<p>​    }</p>
+<p>​    // zrem</p>
+<p>​    @Test</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> test5() {</p>
+<p>​        Map&lt;String, Double&gt; sm = <em><strong>*new*</strong></em> HashMap&lt;String, Double&gt;();</p>
+<p>​        sm.put(“张三”, 70.0);</p>
+<p>​        sm.put(“李四”, 80.0);</p>
+<p>​        sm.put(“王五”, 90.0);</p>
+<p>​        sm.put(“赵六”, 60.0);</p>
+<p>​        jedis.zadd(“zkey”, sm);</p>
+<p>​        jedis.zrem(“zkey”, “李四”);</p>
+<p>​        </p>
+<p>​        Set<Tuple> zws = jedis.zrangeWithScores(“zkey”, 0, -1);</p>
+<p>​        <em><strong>*for*</strong></em> (Tuple t : zws) {</p>
+<p>​            System.****<em>out*</em>***.println(t.getScore() + “  “ + t.getElement());</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>}</p>
+<p>key的常见操作</p>
+<p>//key的通用操作</p>
+<p><em><strong>*public*</strong></em> <em><strong>*class*</strong></em> JedisDemo7 {</p>
+<p>​    Jedis jedis;</p>
+<p>​    @Before</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> createJedis() {</p>
+<p>​        jedis = <em><strong>*new*</strong></em> Jedis(“192.168.19.128”);</p>
+<p>​        // 设置密码</p>
+<p>​        jedis.auth(“admin”);</p>
+<p>​    }</p>
+<p>​    // keys patten</p>
+<p>​    @Test</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> test1(){</p>
+<p>​        Set<String> keys = jedis.keys(“*”);</p>
+<p>​        System.****<em>out*</em>***.println(keys);</p>
+<p>​    }</p>
+<p>​    </p>
+<p>​    // del key</p>
+<p>​    @Test</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> test2(){</p>
+<p>​        Long del = jedis.del(“user”);</p>
+<p>​        System.****<em>out*</em>***.println(del);</p>
+<p>​    }</p>
+<p>​    </p>
+<p>​    //关于key时间设置</p>
+<p>​    @Test</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> test3(){</p>
+<p>​        //jedis.expire(“username”, 200); //设置生命周期为200秒</p>
+<p>​        jedis.persist(“username”);</p>
+<p>​        Long ttl = jedis.ttl(“username”); //获取生命周期值</p>
+<p>​        System.****<em>out*</em>***.println(ttl);</p>
+<p>​        </p>
+<p>​    }</p>
+<p>}</p>
+<h1 id="Redis-数据持久化"><a href="#Redis-数据持久化" class="headerlink" title="*Redis*****数据持久化****"></a><em><strong>*Redis*</strong>***</em>*数据持久化****</h1><p>Redis将内存存储和持久化存储相结合，既可提供数据访问的高效性，又可保证数据存储的安全性</p>
+<p>1.Redis数据持久化机制介绍</p>
+<p>1). RDB持久化：该机制是指在指定的时间间隔内将****内存中的数据集快照****写入磁盘。  </p>
+<p>2). AOF(append only file)持久化:该机制将以****日志的形式记录服务器所处理的每一个写操作****，在Redis服务器启动之初会读取该文件来重新构建数据库，以保证启动后数据库中的数据是完整的。</p>
+<p>3). 同时应用AOF和RDB。 </p>
+<p>4). 无持久化：可通过配置的方式禁用Redis服务器的持久化功能，这样我们就可以将Redis视为一个功能加强版的memcached了</p>
+<p>2.Redis数据持久化配置与测试</p>
+<p>l RDB快照方式:缺省情况下，Redis会将数据集的快照dump到dump.rdb文件中。此外，我们也可以通过配置文件来修改Redis服务器dump快照的频率，在打开redis.conf文件之后，我们搜索save，可以看到下面的配置信息：</p>
+<p>Ø save 900 1        </p>
+<p>#在900秒(15分钟)之后，如果至少有1个key发生变化，则dump内存快照。</p>
+<p>Ø save 300 10       </p>
+<p>#在300秒(5分钟)之后，如果至少有10个key发生变化，则dump内存快照。</p>
+<p>Ø save 60 10000     </p>
+<p>#在60秒(1分钟)之后，如果至少有10000个key发生变化，则dump内存快照。</p>
+<p>注意:关于dump.rdb文件存储的位置：它是设置是在redis.conf文件中dir ./</p>
+<p>dir ./这段配置指的是服务器启动时的当前路径（在哪启动服务器时，这个rdb文件就在哪创建）。</p>
+<p>l AOF日志文件方式：</p>
+<p>Ø AOF日志持久化机制的开启：需要手动设置，在redis.conf文件中</p>
+<p>将appendonly  no  改为 appendonly  yes</p>
+<p>Ø AOF同步方式的配置：</p>
+<p>在Redis的配置文件中存在三种同步方式，它们分别是：</p>
+<p>appendfsync  always   #每次有数据修改发生时都会写入AOF文件。</p>
+<p>appendfsync  everysec  #每秒钟同步一次，该策略为AOF的缺省策略。</p>
+<p>appendfsync  no      #从不同步。高效但是数据不会被持久化。</p>
+<p>3.RDB与AOF对比总结</p>
+<p>l RDB存在哪些优势呢？</p>
+<p>1). 数据的备份和恢复非常方便，因为一个数据库只有一个持久化文件</p>
+<p>2). 性能最大化。对于Redis的服务进程而言，在开始持久化时，它唯一需要做的只是fork出子进程，之后再由子进程完成这些持久化的工作，这样就可以极大的避免服务进程执行IO操作了。</p>
+<p>3). 相比于AOF机制，如果数据集很大，RDB的启动效率会更高。</p>
+<p>l RDB又存在哪些劣势呢？</p>
+<p>1).系统一旦在定时持久化之前出现宕机现象，此前没有来得及写入磁盘的数据都将丢失。</p>
+<p>2). 由于RDB是通过fork子进程来协助完成数据持久化工作的，因此，如果当数据集较大时，可能会导致整个服务器停止服务几百毫秒，甚至是1秒钟。</p>
+<p>l AOF的优势有哪些呢？</p>
+<p>1). 该机制可以带来更高的数据安全性，即数据持久性。Redis中提供了3种同步策略，即每秒同步、每修改同步和不同步。</p>
+<p>2).对日志文件的写入操作采用的是append模式，因此在写入过程中即使出现宕机现象，也不会破坏日志文件中已经存在的内容。</p>
+<p>3). 如果日志过大，Redis可以自动启用rewrite机制迅速“瘦身”(也可手动触发aof的rewrite操作，命令： bgrewriteaof)</p>
+<p>4). AOF日志格式清晰、易于理解，很容易用AOF日志文件完成数据的重建。  </p>
+<p>l AOF的劣势有哪些呢？</p>
+<p>1). 对于相同数量的数据集而言，AOF文件通常要大于RDB文件。</p>
+<p>2). 根据同步策略的不同，AOF在运行效率上往往会慢于RDB。总之，每秒同步策略的效率是比较高的，同步禁用策略的效率和RDB一样高效。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/15/15.1.Redis/" data-id="cknllgmcf0044sgwd1bpzefip" data-title="Redis" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/04/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8CSQL%E8%AF%AD%E5%8F%A5/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          数据库和SQL语句
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/04/15/4.7.%E5%86%85%E9%83%A8%E7%B1%BB/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">内部类</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/17/19.3.github/">github</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">代理和反向代理</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/24.%E7%AE%97%E6%B3%95/">算法</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/23.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/22.3.%E5%B8%B8%E8%A7%81cmd%E5%91%BD%E4%BB%A4/">常见cmd命令</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 swx<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

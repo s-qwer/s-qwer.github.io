@@ -6,17 +6,31 @@
   
   <title>Tomcat | swx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="我的博客">
+  <meta name="description" content="Tomcat是Apache 软件基金会（Apache Software Foundation）的Jakarta 项目中的一个核心项目，由Apache、Sun 和其他一些公司及个人共同开发而成。由于有了Sun 的参与和支持，最新的Servlet 和JSP 规范总是能在Tomcat 中得到体现，Tomcat 5支持最新的Servlet 2.4 和JSP 2.0 规范。因为Tomcat 技术先进、性能稳">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tomcat">
 <meta property="og:url" content="https://s-qwer.github.io/2021/04/07/7.Tomcat/index.html">
 <meta property="og:site_name" content="swx">
-<meta property="og:description" content="我的博客">
+<meta property="og:description" content="Tomcat是Apache 软件基金会（Apache Software Foundation）的Jakarta 项目中的一个核心项目，由Apache、Sun 和其他一些公司及个人共同开发而成。由于有了Sun 的参与和支持，最新的Servlet 和JSP 规范总是能在Tomcat 中得到体现，Tomcat 5支持最新的Servlet 2.4 和JSP 2.0 规范。因为Tomcat 技术先进、性能稳">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml4240/wps1.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml4240/wps2.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml4240/wps3.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml4240/wps4.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml4240/wps5.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml4240/wps6.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml4240/wps7.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml4240/wps8.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml4240/wps9.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml4240/wps10.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml4240/wps11.jpg">
+<meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml4240/wps12.jpg">
 <meta property="article:published_time" content="2021-04-07T11:47:13.000Z">
-<meta property="article:modified_time" content="2021-04-07T11:47:13.980Z">
+<meta property="article:modified_time" content="2021-04-15T05:34:03.870Z">
 <meta property="article:author" content="swx">
+<meta property="article:tag" content="Tomcat">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml4240/wps1.jpg">
   
     <link rel="alternate" href="/atom.xml" title="swx" type="application/atom+xml">
   
@@ -99,14 +113,118 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <p>Tomcat是Apache 软件基金会（Apache Software Foundation）的Jakarta 项目中的一个核心项目，由<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Apache/6265">Apache</a>、Sun 和其他一些公司及个人共同开发而成。由于有了Sun 的参与和支持，最新的Servlet 和JSP 规范总是能在Tomcat 中得到体现，Tomcat 5支持最新的Servlet 2.4 和JSP 2.0 规范。因为Tomcat 技术先进、性能稳定，而且免费，因而深受Java 爱好者的喜爱并得到了部分软件开发商的认可，成为目前比较流行的Web 应用服务器。</p>
+<p>Tomcat 服务器是一个免费的开放源代码的Web 应用服务器，属于轻量级应用<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9C%8D%E5%8A%A1%E5%99%A8">服务器</a>，在中小型系统和并发访问用户不是很多的场合下被普遍使用，是开发和调试JSP 程序的首选。对于一个初学者来说，可以这样认为，当在一台机器上配置好Apache 服务器，可利用它响应<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/HTML">HTML</a>（<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%A0%87%E5%87%86%E9%80%9A%E7%94%A8%E6%A0%87%E8%AE%B0%E8%AF%AD%E8%A8%80/6805073">标准通用标记语言</a>下的一个应用）页面的访问请求。实际上Tomcat是Apache 服务器的扩展，但运行时它是独立运行的，所以当你运行tomcat 时，它实际上作为一个与Apache 独立的进程单独运行的。</p>
+<p>诀窍是，当配置正确时，Apache 为HTML页面服务，而Tomcat 实际上运行JSP 页面和Servlet。另外，Tomcat和<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/IIS">IIS</a>等Web服务器一样，具有处理HTML页面的功能，另外它还是一个Servlet和JSP容器，独立的Servlet容器是Tomcat的默认模式。不过，Tomcat处理静态<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/HTML">HTML</a>的能力不如Apache服务器。</p>
+<p>Tomcat就是一个web的服务器，用来发布web项目。</p>
+<p>下载：<a target="_blank" rel="noopener" href="http://tomcat.apache.org/download-70.cgi">http://tomcat.apache.org/download-70.cgi</a></p>
+<p>解压文件之后，bin目录下的startup.bat，会出现一个dos命令界面，不要关闭的情况下，在浏览器中输入localhost:8080/会跳转到一个页面,这样就表示安装成功了。</p>
+<p>安装注意事项：</p>
+<p>Tomcat运行需要依赖Java环境，也就是说需要在电脑上安装了JDK之后才可以安装和启动Tomcat。因为Tomcat启动的时候需要使用JRE的环境。必须要配置JAVA_HOME环境变量（这个必须要在系统变量中才行），如果没有配置JAVA_HOME环境变量，那么服务器在启动的时候就会一闪然后关闭。（可以将startup.bat用记事本打开，在最后的end后面的最后一行写上pause，令它停止一下，再打开就会显示错误信息）</p>
+<p>如果电脑上安装了一个应用之后，有可能会占用Tomcat的端口，如果将Tomcat端口占用了，同样这个Tomcat启动不了的。Tomcat默认的端口号是8080（很少会有程序占用，除非你启动了两个Tomcat，但是一般80端口容易被其他程序所占用）。因为80端口是HTTP协议的默认端口（一般在http协议下的输入网址字母后面都可以跟：80，无影响，所以可以省略）。</p>
+<p>解决端口号冲突导致Tomcat的startup.bat打开不了的方法：</p>
+<p>1.将占用端口的程序结束掉。</p>
+<p>在cmd命令符中输入命令查看端口号：netstat -ano</p>
+<p>假如出现了这个：</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml4240\wps1.jpg" alt="img"> </p>
+<p>8080的端口是PID为9428的占用了，可以在任务管理器中结束这个9428的进程</p>
+<p>\2. 改变自身程序的端口。</p>
+<p>修改Tomcat的端口号：进入tomcat/conf/server.xml</p>
+<p>将配置文件中的</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml4240\wps2.jpg" alt="img"> </p>
+<p>改为其他的即可。</p>
+<p>查看日志：</p>
+<p>C:\Users\vcc\Desktop\apache-tomcat-9.0.41-windows-x64\apache-tomcat-9.0.41\logs</p>
+<p>Tomcat的目录结构：</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml4240\wps3.jpg" alt="img"> </p>
+<p>bin        :二进制文件（命令文件：开启和关闭）</p>
+<p>conf    :配置文件</p>
+<p>lib        :tomcat所需要的jar包</p>
+<p>logs        :tomcat服务器日志文件</p>
+<p>temp    :tomcat运行产生临时文件</p>
+<p>webapps    :需要发布的项目需要放在webapps下，这样就相当于发布出去了（ROOT中的index.jsp就是发布项目的首页）</p>
+<p>work    :JSP翻译（编译）成Servlet产生的代码</p>
+<p>发布一个Tomcat项目：</p>
+<p>可以发布静态，动态项目</p>
+<p>如果是静态的项目，只需要有静态页面就够了</p>
+<p>动态WEB资源目录结构：</p>
+<p>website</p>
+<p>​    |——静态页面（HTML、CSS、JS、图片）</p>
+<p>​    |——JSP页面</p>
+<p>​    |——<em><strong>*WEB-INF*</strong></em></p>
+<p>​            |—–<em><strong>*web.xml*</strong></em>    （必须的，有配置、servlet）</p>
+<p>​            |—–classes    （可选的，java类，servlet被编译）</p>
+<p>​            |—–lib        （可选的，第三方的jar包）</p>
+<p>项目的发布方式：</p>
+<p>\1. 直接将项目复制到tomcat/webapps下</p>
+<p>将项目复制到tomcat/webapps中，启动服务器：bin/startup.bat</p>
+<p>访问项目（本机访问）：<a target="_blank" rel="noopener" href="http://localhost:8080/aaa/index.html%EF%BC%88index.html%E6%98%AF%E4%B8%BB%E9%A1%B5%EF%BC%8C%E4%B9%9F%E5%8F%AF%E4%BB%A5%E4%B8%8D%E5%86%99%EF%BC%89%EF%BC%88%E4%B9%9F%E5%8F%AF%E4%BB%A5%E5%B0%86localhost%E6%94%B9%E4%B8%BAip%E5%9C%B0%E5%9D%80%EF%BC%8C%E4%BE%9B%E5%85%B6%E4%BB%96%E7%94%B5%E8%84%91%E8%AE%BF%E9%97%AE%EF%BC%89">http://localhost:8080/aaa/index.html（index.html是主页，也可以不写）（也可以将localhost改为ip地址，供其他电脑访问）</a></p>
+<p>\2. 在tomcat/conf/server.xml配置tomcat的虚拟路径</p>
+<p>虚拟路径：配置一个名称与一个真实的路径进行绑定，然后访问这个名称从而找到真实路径。</p>
+<p>在tomcat/conf/server.xml中进行配置（配置的相关变量属性可以在tomcat的文档中找到，tomcat的文档可以在localhost:8080/下找到）。</p>
+<p>要添加<Context></Context>表示配置虚拟路径</p>
+<p>docBase：项目路径（文档的根路径）</p>
+<p>path：虚拟路径</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml4240\wps4.jpg" alt="img"> </p>
+<p>启动服务器访问：<a target="_blank" rel="noopener" href="http://localhost:8080/itheima/index.html">http://localhost:8080/虚拟路径/index.html</a></p>
+<p>3.在tomcat/conf/Catalina/localhost/下配置tomcat的虚拟路径</p>
+<p>第三种方式也需要配置虚拟路径，第二种需要修改server.xml。server.xml是tomcat的核心配置文件，一旦修改错了，那么tomcat服务器就会出现问题。推荐使用第三种配置方式。</p>
+<p>在tomcat/conf/Catalina/localhost下创建一个xml文件：</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml4240\wps5.jpg" alt="img"> </p>
+<p>文件的名称就是虚拟路径，只需要访问虚拟路径就可以访问C:\ccc这个路径</p>
+<p>启动服务器访问：<a target="_blank" rel="noopener" href="http://localhost:8080/itheima/index.html">http://localhost:8080/虚拟路径/index.html</a></p>
+<p>在Eclipse中集成Tomcat</p>
+<p>1.选择Eclipse的服务的配置：</p>
+<p>打开Eclipse–选择window下的preferences–选择Server下的runtimeenvironment–add添加服务选择ApacheTomcat你的版本，选择安装路径，finish</p>
+<p>2.配置服务</p>
+<p>切换到javaee视图–在控制台位置找到servers，点击下面的添加–选择ApacheTomcat你的版本，finish–添加好的服务右击open，修改其中的两步</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml4240\wps6.jpg" alt="img"> </p>
+<p>\3. 在eclipse中发布项目</p>
+<p>空白处new一个DynamicWebProject，设置项目名称名字，设置模块版本为2.5，finish</p>
+<p>（java的代码写到JavaResources的src下，静态页面、jsp写到WebContent下）</p>
+<p>创建一个html页面（在WebContent下new），写完之后在下面的Servers右击AddAndRemove，将项目add到右边，finish</p>
+<p>在Servers右击start表示开启服务器（现在可以在Tomcat的WebApps下看到项目已经配置了）</p>
+<p>\4. 访问项目</p>
+<p>浏览器输入<a target="_blank" rel="noopener" href="http://localhost:8080/web_test/">http://localhost:8080/项目名字/</a>就可以访问了。</p>
+<p>网站访问的过程：BS模式下</p>
+<p><a target="_blank" rel="noopener" href="http://www.baidu.com/">http://www.baidu.com</a></p>
+<p>http是协议</p>
+<p>www是万维网的主机名</p>
+<p>baidu.com是域名</p>
+<p>访问域名的时候，会先去本地的host文件中查找这个域名是否有匹配的ip地址，如果有，会直接返回，如果没有就会去网络上的DNS服务器查找域名所匹配的ip地址，如果找到了就会直接返回这个ip地址，然后根据80端口去访问相应的ip服务器，如果没有就会出错（404）</p>
+<p>DNS服务器：DNS（Domain Name Server，域名服务器）是进行域名(domain name)和与之相对应的IP地址 (IP address)转换的服务器。DNS中保存了一张域名(domain name)和与之相对应的IP地址 (IP address)的表，以解析消息的域名。 域名是Internet上某一台计算机或计算机组的名称，用于在数据传输时标识计算机的电子方位（有时也指地理位置）。域名是由一串用点分隔的名字组成的，通常包含组织名，而且始终包括两到三个字母的后缀，以指明组织的类型或该域所在的国家或地区。</p>
+<p>Tomcat虚拟主机的配置：</p>
+<p>虚拟主机：在电脑上设置一个目录，使用一个名称与该目录进行绑定。这个路径称为是虚拟主机。主机是可以发布web项目的。</p>
+<p>1.抓取一个页面（以百度为例）</p>
+<p>2.创建一个路径（虚拟主机的目录）：</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml4240\wps7.jpg" alt="img"> </p>
+<p>baidu是虚拟主机的目录，website是项目名称，将抓取的页面放入到项目中</p>
+<p>3.配置tomcat的虚拟主机：conf下的server.xml配置。appBase是虚拟主机的目录，name是虚拟主机的名称</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml4240\wps8.jpg" alt="img"> </p>
+<p>4.修改本地的hosts文件：找到C:\Windows\System32\drivers\etc\hosts，修改hosts文件</p>
+<p>首先需要知道本机的ip地址：cmd中输入ipconfig /all 找到ip地址</p>
+<p>在最下面添加：<img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml4240\wps9.jpg" alt="img"></p>
+<p>5.启动服务器访问项目：在bin下启动服务器：startup.bat</p>
+<p>在浏览器输入：<a target="_blank" rel="noopener" href="http://www.baidu.com:8080/website/baidu.htm">http://www.baidu.com:8080/website/baidu.htm</a></p>
+<p>但是一般输入的时候不用输入这么多，所以需要修改一些配置，在conf下的server.xml配置</p>
+<p>修改端口号：8080改为80</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml4240\wps10.jpg" alt="img"> </p>
+<p>将路径中的website去掉：在自己的虚拟主机中再配置一个虚拟路径</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml4240\wps11.jpg" alt="img"> </p>
+<p>（只要输入一个/就会去website下查找）上述因为添加了注释的汉字，所以格式需要另存一下，改为utf-8（不然会报错）</p>
+<p>配置默认的首页（将baidu.htm去掉）：在conf/web.xml下添加baidu.htm为默认页面</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml4240\wps12.jpg" alt="img"> </p>
+<p>注意：修改conf的配置文件后，需要重启服务器</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/07/7.Tomcat/" data-id="ckneu28sp00140kwdfsz1ac8c" data-title="Tomcat" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/07/7.Tomcat/" data-id="cknllgmbj001vsgwdhwvv4eev" data-title="Tomcat" class="article-share-link">分享</a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li></ul>
+
     </footer>
   </div>
   
@@ -145,7 +263,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
     </div>
   </div>
 
@@ -155,7 +273,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
     </div>
   </div>
 
@@ -177,23 +295,23 @@
       <ul>
         
           <li>
-            <a href="/2021/04/13/5.3.MySQL%E8%B8%A9%E5%9D%91/">MySQL踩坑</a>
+            <a href="/2021/04/17/19.3.github/">github</a>
           </li>
         
           <li>
-            <a href="/2021/04/13/5.1.MySQL%E5%88%9D%E7%BA%A7/">MySQL初级</a>
+            <a href="/2021/04/17/%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">代理和反向代理</a>
           </li>
         
           <li>
-            <a href="/2021/04/12/19.1.Gitee/">Gitee</a>
+            <a href="/2021/04/17/24.%E7%AE%97%E6%B3%95/">算法</a>
           </li>
         
           <li>
-            <a href="/2021/04/11/10.5.%E9%A1%B9%E7%9B%AE%E6%8F%90%E4%BA%A4/">项目提交</a>
+            <a href="/2021/04/17/23.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
           </li>
         
           <li>
-            <a href="/2021/04/07/10.6.%E9%A1%B9%E7%9B%AE%E5%A4%96%E5%8C%85/">项目外包</a>
+            <a href="/2021/04/17/22.3.%E5%B8%B8%E8%A7%81cmd%E5%91%BD%E4%BB%A4/">常见cmd命令</a>
           </li>
         
       </ul>

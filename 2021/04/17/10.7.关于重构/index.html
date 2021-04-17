@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>关于重构 | swx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="什么是重构？Martin Fowler曾出版了两本有关重构的书籍，他认为： 重构指的是，在不改变代码的外部行为，只改善其内部结构的方式下，修改软件系统的过程。重构是一种有条理的清理代码的方式，可以最大程度地减少引入bug的机会。本质上，重构意味着在代码编写完成后，改进代码的设计。 重构有什么好处？首先，重构可以将混乱、不正确和&#x2F;或重复的代码转换成整洁的代码。它可以解决多位开发人员协同工作时可能引发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于重构">
+<meta property="og:url" content="https://s-qwer.github.io/2021/04/17/10.7.%E5%85%B3%E4%BA%8E%E9%87%8D%E6%9E%84/index.html">
+<meta property="og:site_name" content="swx">
+<meta property="og:description" content="什么是重构？Martin Fowler曾出版了两本有关重构的书籍，他认为： 重构指的是，在不改变代码的外部行为，只改善其内部结构的方式下，修改软件系统的过程。重构是一种有条理的清理代码的方式，可以最大程度地减少引入bug的机会。本质上，重构意味着在代码编写完成后，改进代码的设计。 重构有什么好处？首先，重构可以将混乱、不正确和&#x2F;或重复的代码转换成整洁的代码。它可以解决多位开发人员协同工作时可能引发">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/Pn4Sm0RsAughAuEz9WJKmOEboib3KY1y335WhibibfKKEic84Md2OlBMT0UxxICJs15MOBWP5zulrkg2x6icPO3ZqtA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="article:published_time" content="2021-04-17T05:16:25.000Z">
+<meta property="article:modified_time" content="2021-04-17T08:29:50.298Z">
+<meta property="article:author" content="swx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_png/Pn4Sm0RsAughAuEz9WJKmOEboib3KY1y335WhibibfKKEic84Md2OlBMT0UxxICJs15MOBWP5zulrkg2x6icPO3ZqtA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+  
+    <link rel="alternate" href="/atom.xml" title="swx" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swx</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://s-qwer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-10.7.关于重构" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/17/10.7.%E5%85%B3%E4%BA%8E%E9%87%8D%E6%9E%84/" class="article-date">
+  <time class="dt-published" datetime="2021-04-17T05:16:25.000Z" itemprop="datePublished">2021-04-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      关于重构
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="什么是重构？"><a href="#什么是重构？" class="headerlink" title="什么是重构？"></a><strong>什么是重构？</strong></h1><p>Martin Fowler曾出版了两本有关重构的书籍，他认为：</p>
+<p>重构指的是，在不改变代码的外部行为，只改善其内部结构的方式下，修改软件系统的过程。重构是一种有条理的清理代码的方式，可以最大程度地减少引入bug的机会。本质上，重构意味着在代码编写完成后，改进代码的设计。</p>
+<h1 id="重构有什么好处？"><a href="#重构有什么好处？" class="headerlink" title="重构有什么好处？"></a><strong>重构有什么好处？</strong></h1><p>首先，重构可以将混乱、不正确和/或重复的代码转换成整洁的代码。它可以解决多位开发人员协同工作时可能引发的代码标准化问题。重构可以提高可读性，改善源代码的可维护性以及整体结构和功能。重构可以使代码更易于扩展和添加新功能。删除不必要的代码（比如重复代码）可以减少代码所使用的内存，并加快执行速度。 </p>
+<p>例如，在2014年，Kickstarter的工程师面临着一个巨大的挑战：由于用户数量呈指迅速增长，导致查询性能下降。为此，他们将MySQL查询重构为Redis，减少了100毫秒的加载时间，从而减少了加载时间的差异并提高了网站的整体速度。</p>
+<h1 id="技术负债与重构"><a href="#技术负债与重构" class="headerlink" title="技术负债与重构"></a><strong>技术负债与重构</strong></h1><p><img src="https://mmbiz.qpic.cn/mmbiz_png/Pn4Sm0RsAughAuEz9WJKmOEboib3KY1y335WhibibfKKEic84Md2OlBMT0UxxICJs15MOBWP5zulrkg2x6icPO3ZqtA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>简而言之，重构是消除或减少技术负债的一种方式。</p>
+<p>重构对于长期维持的代码质量、安全性和性能至关重要。如果没有定期的重构，开发人员就会承受巨大的技术负债。重构代码的机会越少，技术负债就会越多，开发新功能也会变得越来越难。</p>
+<h1 id="重构的指标"><a href="#重构的指标" class="headerlink" title="重构的指标"></a><strong>重构的指标</strong></h1><p>我们可以通过各种指标，衡量重构代码的优先级。在指标的帮助下，我们可以有条不紊地计划重构，每一次都专心完成最重要的任务。</p>
+<p>此外，你需要通过指标来衡量重构的效果。我们不仅需要重构低效的代码，而且还可以通过修改低效代码增加价值。为了获得真正的价值，你需要进行测试，包括单元测试和功能测试。除此之外，还有一些其他方面的指标，比如发现的bug数减少，以及降低循环复杂性（重构的目标是降低复杂性）。高度复杂的方法或功能（比如超过350行的方法或功能）就是良好的重构对象。</p>
+<p>此外，我们还需要考虑，如何将重构融合到更广泛的团队目标或有关工作流和任务的里程碑中。</p>
+<h1 id="代码重构示例"><a href="#代码重构示例" class="headerlink" title="代码重构示例"></a><strong>代码重构示例</strong></h1><p>代码重构的示例非常多，为了简洁起见，我们介绍以下几种：</p>
+<p><strong>红色，绿色和重构</strong></p>
+<p>重构与单元测试息息相关。最常见的形式之一就是敏捷方法固有的测试驱动开发（Test-Driven Development，即TDD）。你可以在编写代码之前先编写测试。从本质上来说，应该由测试来驱动程序，说明代码应该执行的操作。</p>
+<p>红色，绿色和重构是测试驱动开发的一个示例：</p>
+<ul>
+<li>红色：编写没有实现代码的测试套件，必然会失败。</li>
+<li>绿色：编写实现代码，刚刚好可以通过测试套件。</li>
+<li>重构：寻找优化和改进代码的方法。</li>
+</ul>
+<p><strong>提取方法（又名提取函数）</strong></p>
+<p>将代码片段从现有方法移到新方法中，而新方法的名称明确说明了其功能。这种技术有助于降低复杂性并提高代码的可读性。</p>
+<p><strong>提取变量</strong> </p>
+<p>如果遇到难以理解的表达式，或者该表达式在整个代码中重复了多次，则可以通过提取变量重构，将表达式或其中一部分放入一个复杂度较低且更易于理解的变量中。这样可以减少复杂性和代码重复。</p>
+<p><strong>按抽象建立分支</strong></p>
+<p>按抽象建立分支可以逐步对软件系统进行大规模地修改，而你则可以一边修改代码，一边定期发布系统。这种方法可以降低在分支上重构代码的复杂性，避免在合并代码时出现问题。</p>
+<p><strong>方法组合</strong></p>
+<p>代码过长不便于理解，而且也不方便修改。方法组合指的是一系列的操作，将方法改成顺序结构并删除重复的代码。这些操作包括内联方法、内联模板、用查询代替模板、拆分临时变量以及删除对参数的赋值等。</p>
+<h1 id="重构代码的工具"><a href="#重构代码的工具" class="headerlink" title="重构代码的工具"></a><strong>重构代码的工具</strong></h1><p>你需要专业的重构工具吗？Martin Fowler表示，自动化的工具有帮助但不是必需的。他指出：</p>
+<p>“许多语言都有IDE，可以自动执行许多常见的重构。这些是非常有价值的工具，可以帮助我更快地重构代码。但是，这些工具不是必不可少的，我经常在没有工具支持的情况下编写程序，每次只迈出一小步，并通过频繁的测试来发现错误。”</p>
+<p>许多开发环境都可以自动化重构，一些常见的重构工具包括：</p>
+<ul>
+<li>Visual studio intellicode</li>
+<li>Eclipse IDE</li>
+<li>Spring Tool Suite 4</li>
+<li>Rider</li>
+<li>IntelliJ IDEA</li>
+<li>SonarQube</li>
+</ul>
+<h1 id="重构与工程经理的难题"><a href="#重构与工程经理的难题" class="headerlink" title="重构与工程经理的难题"></a><strong>重构与工程经理的难题</strong></h1><p>为了解决引发重构需求的问题，首先我们需要弄清楚公司的运营方式。在着手重构之前，请先回答下列几个问题：</p>
+<ul>
+<li>哪些任务最优先？</li>
+<li>开发的速度如何？</li>
+<li>开发人员是否感觉到了快速交付代码的压力？</li>
+<li>解决技术负债的流程都有哪些？</li>
+<li>实施了哪些类型的代码审核？</li>
+<li>团队成员是否具备适当的重构技能？</li>
+<li>公司的文档标准是什么？</li>
+</ul>
+<p>如果不解决引发重构需求的根本问题，那么问题只会愈演愈糟。</p>
+<h1 id="高级管理层对重构的支持"><a href="#高级管理层对重构的支持" class="headerlink" title="高级管理层对重构的支持"></a><strong>高级管理层对重构的支持</strong></h1><p>你们公司可能并没有在基础设施和维护上投入太多资金。</p>
+<p>可能会有人说，应该将花费在重构上的时间投入到新功能开发上。</p>
+<p>但是，我们仍然应该看一看重构的好处，以及它们与工作流程、客户、收入和业务增长的关系。重构得当可以改善代码，交付有效更新以及急需的功能，从而吸引新客户和回头客。即使在成功发布产品之后，软件公司也可以通过这种方式保持竞争力。 </p>
+<p>为了获取高层管理的支持，还有一个更好的方法，即量化团队当前花费在修复原始代码中的错误或bug上的时间。具体一点，比如每天一个小时？每天两个小时？持续记录一个星期，你就会惊讶地发现原来团队每年需要花费数周或数月时间来修复遗留的代码。</p>
+<h1 id="团队支持与重构：一个Sprint还是马拉松？"><a href="#团队支持与重构：一个Sprint还是马拉松？" class="headerlink" title="团队支持与重构：一个Sprint还是马拉松？"></a><strong>团队支持与重构：一个Sprint还是马拉松？</strong></h1><p>很难在团队内部开展重构工作？提及重构就会哀声载道？顺利开展重构的最重要的标志就是有计划、有目标以及有文档记录的行动。Ron Jeffries（极限编程的三大创始人之一）将重构比喻为清道：</p>
+<p>“花些时间清出一条道来，那么下一次我们就可以直奔我们要构建的下一个功能，而无需绕过杂草和灌木丛。”</p>
+<p>但是，他强调指出，糟糕的代码需要花费很长的时间来清理，而且重构应该经过深思熟虑：</p>
+<p>“如果我们只改进手头的代码，而忽略目前不涉及的代码，那么以后必然会走回头路。”</p>
+<p>在同一个Sprint中，我们经常发现后面的功能用到了我们之前清理过的代码。我们就会立即享受重构的好处。如果我们等积攒了一堆技术负债，再开始重构，那么我们享受的好处会延迟，甚至可能会在一些没大有用的地方浪费精力。</p>
+<p>产品工程师兼首席技术官Andreas Klinger是Fix-it Friday的粉丝，他表示：</p>
+<p>“Fix-it Friday的规则很简单：除非当前的项目十万火急，否则周五的工作就应该是重构。让工程师选择他们的工作。我们不应该因为微观管理而抹杀这种乐趣。有些人会尝试新的库。有些人会修复积压的bug。这两种工作都很好。我们尝试鼓励大家平衡这些任务。”</p>
+<p>无论采用哪种方法，你都需要慎重思考，询问团队哪些代码最影响他们的效率。</p>
+<ul>
+<li>修复哪些代码对你的其他代码产生的影响最大？</li>
+<li>解决哪些问题得到的回报最多？</li>
+</ul>
+<p>你不太可能找到一整块专门的时间来重构代码，重构代码必然会牺牲你花费在其他项目上的时间，但请不要低估定期坚持开展小范围的重构带来的影响。聚沙成塔，集腋成裘，最终你会获得丰厚的回报。</p>
+<h1 id="文档与重构"><a href="#文档与重构" class="headerlink" title="文档与重构"></a><strong>文档与重构</strong></h1><p>标准化命名约定之类的文档可以让每个人都达成共识。Xerox的高级开发人员的研究发现，缺乏文档是重构最大的难题之一。</p>
+<p>记录重构的工作内容不仅可以记录花费的时间，而且还可以为将来的团队成员提供说明。</p>
+<p>最后，你还通过文档记录下自己的成功：重构带来的最大成功是什么？这些可以成为代码审核的考虑因素吗？</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/17/10.7.%E5%85%B3%E4%BA%8E%E9%87%8D%E6%9E%84/" data-id="cknllgmb1000isgwdbruzbxwu" data-title="关于重构" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/04/17/8.4.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BJS/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          网页前端之JS
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/04/17/13.2.MyBatis-Plus/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">MyBatis-Plus</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/17/19.3.github/">github</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">代理和反向代理</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/24.%E7%AE%97%E6%B3%95/">算法</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/23.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/22.3.%E5%B8%B8%E8%A7%81cmd%E5%91%BD%E4%BB%A4/">常见cmd命令</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 swx<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

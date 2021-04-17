@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>网页前端之JS | swx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="HTML是用来写网页的 CSS是美化页面的 JavaScript是WEB上强大的脚本语言 JAVA编程语言：独立写程序，独立运行。编译–运行 脚本语言：无法独立执行。必须嵌入到其他语言中结合使用。直接被浏览器解析执行 作用：控制页面特效展示 语言特征：JavaScript无需编译，直接被浏览器解释并执行 JavaScript无法单独执行，必须嵌入到HTML代码中执行 JavaScript的执行过程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网页前端之JS">
+<meta property="og:url" content="https://s-qwer.github.io/2021/04/17/8.4.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BJS/index.html">
+<meta property="og:site_name" content="swx">
+<meta property="og:description" content="HTML是用来写网页的 CSS是美化页面的 JavaScript是WEB上强大的脚本语言 JAVA编程语言：独立写程序，独立运行。编译–运行 脚本语言：无法独立执行。必须嵌入到其他语言中结合使用。直接被浏览器解析执行 作用：控制页面特效展示 语言特征：JavaScript无需编译，直接被浏览器解释并执行 JavaScript无法单独执行，必须嵌入到HTML代码中执行 JavaScript的执行过程">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-04-17T05:24:00.000Z">
+<meta property="article:modified_time" content="2021-04-17T09:48:25.543Z">
+<meta property="article:author" content="swx">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="swx" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swx</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://s-qwer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-8.4.网页前端之JS" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/17/8.4.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BJS/" class="article-date">
+  <time class="dt-published" datetime="2021-04-17T05:24:00.000Z" itemprop="datePublished">2021-04-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      网页前端之JS
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>HTML是用来写网页的</p>
+<p>CSS是美化页面的</p>
+<p>JavaScript是WEB上强大的脚本语言</p>
+<p>JAVA编程语言：独立写程序，独立运行。编译–运行</p>
+<p>脚本语言：无法独立执行。必须嵌入到其他语言中结合使用。直接被浏览器解析执行</p>
+<p>作用：控制页面特效展示</p>
+<p>语言特征：JavaScript无需编译，直接被浏览器解释并执行</p>
+<p>JavaScript无法单独执行，必须嵌入到HTML代码中执行</p>
+<p>JavaScript的执行过程由上到下依次执行</p>
+<p>注意：JavaScript没有访问系统文件的权限</p>
+<p>JavaScript无需编译，由上到下依次解释执行，所以在保证可读性的情况下，允许使用链式编程</p>
+<p>JavaScript和java没有任何直接关系</p>
+<p>组成</p>
+<p>ECMAScript（核心）：规定了JS的语法和基本对象</p>
+<p>DOM 文档对象模型（标记型文档。HTML）：处理网页内容的方法和接口</p>
+<p>BOM  浏览器对象模型：与浏览器交互的方法和接口</p>
+<p>引入方式：</p>
+<p>\1. 内部脚本：在当前页面内部写script标签，script内部即可书写JavaScript代码。</p>
+<p>格式：</p>
+<script type=”text/javascript”>
+
+JavaScript的代码
+
+</sctipt>
+
+注意：script标签理论上可以书写在HTML文件的任意位置
+
+\2. 外部引入：在HTML文档中，通过<script src=””>标签引入.js文件
+
+格式：
+
+<script type=”text/javascript” src=”demo.js”></script>
+
+<p>注意：外部引用时，script标签内不能有script代码，即使写了也不会执行</p>
+<p>开发规范规定，script标签的放置位置为：在结束标签</body>前</p>
+<p>(在学习时，可以先放在head标签之中，最后在放到结束标签</body>前)</p>
+<p>优点：保证html展示内容优先加载，最后加载脚本，增强用户体验性</p>
+<p>JavaScript的语法及规则：alert相当于是System.out.println()</p>
+<p>\1. 注释：<br>单行注释： //  Hbuilder快捷键：ctrl+/</p>
+<p>多行注释：/**/  Hbuilder快捷键：ctrl+shift+/</p>
+<p>\2. 变量：标示内存中的一块空间，用于存储数据，且数据是可变的。<br>声明：var 变量名；  变量赋予默认值，默认值为undefined</p>
+<p>var 变量名=值；</p>
+<p>注意：必须以字母或下划线开头，中间可以使数字，字符或下划线。</p>
+<p>变量名不能包含空格等符号</p>
+<p>不能使用JavaScript的关键字作为变量名，如：function、this、class</p>
+<p>JavaScript严格区分大小写</p>
+<p>基本数据类型：5类</p>
+<p>string：字符串类型  “” ‘’ 都是字符串，JavaScript中没有单个字符</p>
+<p>boolean：布尔类型  固定值为false和true</p>
+<p>number：数字类型 任意数字</p>
+<p>null：空 一个占位符</p>
+<p>undefined：未定义类型  该类型只有一个固定值，即undefined，表示变量声明却未定义具体的值</p>
+<p>注意：因为undefined是从null中派生出来的，所以undefined==null</p>
+<p>JavaScript区别于java，是弱类型语言，变量的使用不用严格遵循规范，所以一个变量声明好之后，还可以赋予任意类型的值。</p>
+<p>typeof() 可以分辨变量值属于哪种基本数据类型：undefined、string、boolean、number。 如果一个变量是引用类型或者null类型的话，会返回object。</p>
+<p>ECMAScript实现之初的一个bug：null属于基本数据类型，然而typeof(null)返回的却是object</p>
+<p>引用数据类型:引用数据类型通常叫做类（class），但在JavaScript中，因为不存在编译过程，所以没有类的概念，所处理的引用数据类型都是对象。</p>
+<p>标准创建方式： var str= new String();  //和java相同</p>
+<p>var str= new String;  //js独有的方式</p>
+<p>\3. 运算符：与java基本一致<br>比较运算符：== 逻辑等。 仅仅对比值<br>                === 全等。对比值并且对比类型<br>逻辑运算符：没有&amp; |  只有三个</p>
+<p>&amp;&amp;：and</p>
+<p>||：  or</p>
+<p>!：  not</p>
+<p>\4. 正则对象<br>RegExp对象的创建方式：</p>
+<p>var reg= new RegExp(“表达式”);  （开发中基本不用）</p>
+<p>var reg=/^表达式$/；  直接量（开发中常用）</p>
+<p>直接量中存在边界，即^代表开始，$代表结束</p>
+<p>直接量方式的正则是对象，不是字符串，别用引号</p>
+<p>使用正则对象：方法：compile：编译正则表达式  （不咋用）</p>
+<p>exec：检索字符串中指定的值，返回找到的值，并确定其位置 （不咋用）</p>
+<p>test方法： 正则对象.test(string);  用来校验字符串是否匹配正则，全部字符匹配返回true，有一个字符不匹配返回false</p>
+<p>注意：/表达式/ 普通方式，只要有成立正则的字符存在，就返回true，除非全部字符不符合正则，返回false（检查不严格，适合字符串查找、替换）</p>
+<p>/^表达式$/ 直接量方式，只要有无法成立正则表达式的字符存在，就返回false（检查严格，适合表单校验）</p>
+<p>\5. JS数组对象<br>特性：JS数组可以看作java中的ArrayList集合。</p>
+<p>数组中的每一个成员都没有类型限制，即可以存放任意类型。</p>
+<p>数组的长度可以自动修改</p>
+<p>四种创建方式：</p>
+<p>（1）var arr=[1,2,3,”a”,true];  常用的js数组  （常用）</p>
+<p>（2）var arr=new Array();  创建一个数组对象，数组长度默认为0 （常用）</p>
+<p>（3）var arr= new Array(4);  数组长度是4，相当于开辟了长度为4的空间，每个元素是undefined。</p>
+<p>（4）var arr =new Array(“a”,1,true);创建了一个数组，长度为3，元素是“a”,1,true<br>常用属性：length  设置或返回数组中元素的数目</p>
+<p>常用方法： join（string）  把数组的所有元素放入一个字符串。元素通过指定的分隔符string进行分隔 （对原来的数组无影响）</p>
+<p>pop（） 删除并返回数组的最后一个元素（原先数组无了）</p>
+<p>push（新元素） 向数组的末尾添加一个或更多的元素，并返回新的长度（原先数组无了）</p>
+<p>reverse（） 颠倒数组中元素的顺序（物理翻转，就是把元素下标进行互换）该方法的返回值就是翻转成功的新数组。（会对当前的数组进行操作，原来的数组无了）</p>
+<p>\6. 全局函数(global)</p>
+<p>undefined属于全局函数的属性，但是我们在使用的时候不用加global.undefined<br>（1）执行： eval（string）  计算JavaScript字符串，并把它作为脚本代码来执行</p>
+<p>作用：增强程序的扩展性</p>
+<p>注意：只可以传递原始数据类型string，传递string对象无作用。</p>
+<p>（2）编码和解码</p>
+<p>URL/URI编码：中文和特殊符号  %十六进制</p>
+<p>作用：保证数据传递的完整性</p>
+<p>encodeURI（string）  把字符串进行URI编码，返回值就是编码后的结果</p>
+<p>decodeURI（string）  解码某个编码的URI</p>
+<p>（3）URI和URL的区别</p>
+<p>URI是统一资源标识符  标识资源详细名称  必须包含资源名</p>
+<p>URL是统一资源定位器  定位资源的网络位置  必须包含http：//</p>
+<p>资源：就是可以通过浏览器访问的信息统称为资源（图片、文本、HTML、CSS等等）</p>
+<p>（4）字符串转数字</p>
+<p>parseInt(string)  解析一个字符串并返回一个整数  小数点后面部分直接去掉</p>
+<p>parseFloat(string)  解析一个字符串并返回一个浮点数</p>
+<p>注意：如果字符串的某个字符从字面值上无法转为数字，那么从该字符开始停止转换，仅返回前面正确的转换值。</p>
+<p>如果字符串的第一个字符就无法从字面值上转为数字，那么停止转换，返回NaN（Not A Number，一个数字类型的标识，表示不是一个正确的数字）</p>
+<p>\7. 自定义函数/自定义方法</p>
+<p>函数：如果一段代码需要被重复编写使用，那么我们为了方便统一编写使用，可以将其封装进一个函数（方法）中</p>
+<p>作用：增强代码的复用性</p>
+<p>格式： function 方法名(参数列表){</p>
+<p>函数体</p>
+<p>}</p>
+<p>注意：JavaScript函数定义必须用小写的function</p>
+<p>无需定义返回值类型，在function后面直接写方法名</p>
+<p>参数的定义无需使用var关键字，否则会报错</p>
+<p>函数体中，return可以不写，也可以return具体值，也可以仅仅写return</p>
+<p>JavaScript函数调用执行完毕一定有返回值，值及类型根据return决定，如果未return具体值，则返回值为undefined</p>
+<p>函数如果同名，JavaScript中不存在方法重载，只有方法相互覆盖，所以最后定义的函数覆盖之前的定义。</p>
+<p>再调用时仅仅根据方法名来调用函数，即使实际参与函数与形参不匹配，也不会影响正常调用。</p>
+<p>如果实参未赋值，就使用默认值undefined</p>
+<p>\8. 自定义对象</p>
+<p>①function构造函数：JavaScript中的引用数据类型都是对象，而对象在JavaScript中可以用函数来表示。（相当于java中创建某个class类）</p>
+<p>无形参格式：function 对象名(){</p>
+<p>函数体</p>
+<p>}</p>
+<p>例如：</p>
+<p>声明一个Person对象：</p>
+<p>function Person(){</p>
+<p>this.name=”swx”;  // this 就是当前的Person对象</p>
+<p>this.age=”23”;   //name  age是对象的属性</p>
+<p>}</p>
+<p>var p=new Person();  //创建了一个Person对象</p>
+<p>alert(p.name);</p>
+<p>为属性赋值：</p>
+<p>（1）构造参数赋值：function Person(n,a){</p>
+<p>this.name=n;  </p>
+<p>this.age=a;  </p>
+<p>}</p>
+<p>var p=new Person(“swx”,”23”);</p>
+<p>（2）创建对象后，调用属性进行赋值</p>
+<p>p.name=”sss”;</p>
+<p>属性定义方式：</p>
+<p>（1）this关键字，在对象声明定义阶段，定义一个属性</p>
+<p>（2）创建对象后，使用对象.属性 方式来动态定义属性</p>
+<p>p.sex=”男”;  //为Person对象声明了一个新的属性sex并赋值为男</p>
+<p>应用场景：适用于对象构建及代码复用</p>
+<p>②对象直接量</p>
+<p>开发中可以用一种简单的方式直接创建自定义的JavaScript对象，这种方式称为“对象直接量”</p>
+<p>格式： var 对象名 = {属性名1：“属性值1”，属性名2：“属性值2”，属性名3：“属性值3”……};  //  不一定非要字符串了 可以直接数字18</p>
+<p>该方式直接创建出实例对象，无需构建函数，无需再new创建实例对象，直接使用即可。</p>
+<p>适用场景：适用于快速创建实例对象及数据封装</p>
+<p>BOM对象 </p>
+<p>BOM（Browser Object Model）浏览器对象模型</p>
+<p>浏览器：IE、火狐、谷歌、360等任意浏览器</p>
+<p>作用：用来执行浏览器的相关操作（例如：浏览器的地址，弹出消息等）</p>
+<p>一般情况下，window代表了BOM对象</p>
+<p>window对象是JavaScript的内置对象，使用window对象调用方法时可以省略window不写</p>
+<p>（1）消息框</p>
+<p>alert()  警告框，用来弹出警告消息 </p>
+<p>注意：不同浏览器显示的组件样式不同，我们无需关注</p>
+<p>confirm() 确认框 用于告知用户信息并收集用户的选择</p>
+<p>有一个返回值，boolean类型</p>
+<p>（2）定时器</p>
+<p>循环定时器：调用一次就会创建并循环执行一个定时器</p>
+<p>格式：setInterval(调用的方法名()，毫秒值);  </p>
+<p>会有一个返回值，返回值就是这个定时器的id</p>
+<p>取消：clearInterval(id);  取消id的定时器</p>
+<p>一次性定时器：调用一次就会创建并执行一个计时器一次</p>
+<p>格式：setTimeout(调用的方法名()，毫秒值);</p>
+<p>也会有一个返回值，返回值就是这个定时器的id</p>
+<p>取消：clearTimeout(定时器ID);  这个id在当前页面要求是唯一的。</p>
+<p>（3）location对象</p>
+<p>包含浏览器地址栏的信息</p>
+<p>常用属性：href  设置或返回完整的URL  （直接调用会返回当前页面的URL，设置href属性=””;浏览器就会跳转到对应的路径，这里可以是html页面，也可以是外网路径，但必须要加https：//）</p>
+<p>DOM对象</p>
+<p>DOM（Document Object Model）文档对象模型</p>
+<p>文档：标记型文档（HTML等）</p>
+<p>DOM是将标记型文档中所有内容（标签、文本、属性）都封装成对象</p>
+<p>通过操作对象的属性或者方法，来达到操作或者改变HTML展示效果的目的</p>
+<p>HTML文件会加载并解析到内存中，会生成一张DOM树</p>
+<p>DOM树：</p>
+<p>每个标签都会被加载成DOM树上的一个元素节点对象</p>
+<p>每个标签的属性会被加载成DOM树上的一个属性节点对象</p>
+<p>每个标签的内容体会被加载成DOM树上的一个文本节点对象</p>
+<p>整个DOM树，是一个文档节点对象，即DOM对象</p>
+<p><em><strong>*一个HTML文档加载到内存中就会形成一个DOM对象*</strong></em></p>
+<p>特点：必定会有一个根节点</p>
+<p>每个节点都是节点对象</p>
+<p>常见的节点关系：父子节点关系</p>
+<p>文本节点对象没有子节点（叶子节点）</p>
+<p>每个节点都有一个父节点，零到多个子节点</p>
+<p>只有根节点没有父节点</p>
+<p>获取元素对象的四种方式： document的相关方法，所以要用document调用</p>
+<p>getElementById();  通过元素id获取对应元素对象 （可以通过id获取对应的元素对象，如果找不到，返回null）</p>
+<p>getElementsByName();  通过元素的****name属性****获取符合要求的所有元素</p>
+<p>getElementsByTagName();  通过元素的****元素名属性（标签名）****获取符合要求的所有元素</p>
+<p>getElementsByClassName();  通过元素的****class属性****获取符合要求的所有元素</p>
+<p>注意事项：</p>
+<p>获取某个或某些元素节点对象，必须保证元素节点对象先被加载到内存中。（这就是为什么script标签为什么推荐放在</body>之前的原因，这就可以保证元素都被加载完了，再运行script标签时就能找到相应的标签）</p>
+<p>元素对象常见属性：</p>
+<p>value: 可以修改元素的值</p>
+<p>元素对象.value  获取元素对象的value属性值</p>
+<p>元素对象.value=属性值  设置元素对象的value属性值</p>
+<p>className： 可以修改元素的样式</p>
+<p> //本来是class，但是class是关键字，所以要用className</p>
+<p>元素对象.className  获取元素对象的class属性值</p>
+<p>元素对象.className=属性值  设置元素对象的class属性值</p>
+<p>checked：  可以修改单选/复选的选中与否</p>
+<p>元素对象.checked  获取元素对象的checked属性值</p>
+<p>元素对象.checked=属性值  设置元素对象的checked属性值</p>
+<p>HTML中checked=”checked”,JavaScript中返回true，false</p>
+<p>innerHTML：  可以操作元素的内容体</p>
+<p>元素对象.innerHTML  获取元素对象的内容体</p>
+<p>元素对象.innerHTML=值  设置元素对象的内容体</p>
+<p>追加内容体信息：  元素对象.innerHTML+=值</p>
+<p>JS事件</p>
+<p>通常鼠标或热键的动作称之为事件（Event）。</p>
+<p>作用：通过JS事件，我们可以完成页面的指定特效</p>
+<p>JS事件驱动机制：</p>
+<p>事件源：专门产生事件的组件 </p>
+<p>事件：由事件源所产生的动作或者事情 </p>
+<p>监听器：专门处理事件源所产生的事件</p>
+<p>注册/绑定监听器：让监听器时刻监听事件源是否有指定事件产生，如果事件源产生指定事件，则调用监听器处理</p>
+<p>JS常见事件：  一般都是放在标签中，事件=“方法()”</p>
+<p>\1. 点击事件（onclick）：由鼠标或热键点击元素组件时触发</p>
+<p>\2. 焦点事件</p>
+<p>焦点：即整个页面的注意力。  默认一个正常页面最多仅有一个焦点 （例如：文本框中闪烁的小竖线）</p>
+<p>通常焦点也能反映出用户目前的关注点，或者正在操作的组件。</p>
+<p>获取焦点事件（onfocus）：当元素组件获取焦点时触发</p>
+<p>失去焦点事件（onblur）：元素组件失去焦点时触发</p>
+<p>\3. 域内容改变事件（onchange）：元素组件的值发生改变时触发</p>
+<p>\4. 加载完毕事件（onload）：元素组件加载完毕时触发</p>
+<p>//以前有推荐script代码放在最后是因为要元素标签加载完在调取，现在有了这个方法，也可以让元素组件加载完再调取。</p>
+<p>\5. 表单提交事件（onsubmit）：表单的提交按钮被点击时触发</p>
+<p>注意：该事件需要返回boolean类型的值来执行  提交/阻止表单数据的操作</p>
+<p>事件得到true，提交表单数据</p>
+<p>事件得到false，阻止表单数据提交</p>
+<p>在form标签处写。</p>
+<p>用于表单的校验，也可以控制表单的提交  onsubmit=”return run1()” run1方法中必须要有返回值（可以进行表单校验，符合返回true，会提交表单；不符合返回false，表单提交会被阻止）</p>
+<p>\6. 键位弹起事件（onkeyup）：在组件中输入某些内容时，键盘键位弹起时触发该事件（可以进行校验）</p>
+<p>\7. 常用鼠标事件</p>
+<p>鼠标移入事件（onmouseover）：鼠标移入某个元素组件时触发</p>
+<p>鼠标移出事件（onmouseout）：鼠标移出某个元素组件时触发</p>
+<p>JS事件的两种绑定方式：</p>
+<p>\1. 元素事件句柄绑定：将事件以元素属性的方式写到标签内部，进而绑定对应函数</p>
+<p>//可以绑定一个或者多个 无参、带参函数，如果是带参的话，外面是“”里面是’’。多个函数时，函数之间用“ ， ”隔开，顺序就是执行顺序。</p>
+<p>优点：开发快捷；传参方便；可以绑定多个函数</p>
+<p>缺点：JS和HTML代码高度糅合在一起，不利于多部门的项目开发维护</p>
+<p>\2. DOM绑定方式：使用DOM的属性方式绑定事件</p>
+<p>两种：（1）对象.事件属性  一次只能绑定一个函数，不能传递参数</p>
+<p>window.onload=run1；</p>
+<p>（2）匿名函数  可以绑定多个函数，可以传递参数</p>
+<p>window.onload=function(){</p>
+<p>//这个方法是页面加载的方法，可以在这里调取此页面的所有元素，获得元素后就可以继续使用匿名函数调取方法</p>
+<p>run1();</p>
+<p>run2();</p>
+<p>}</p>
+<p>优点：使得HTML代码和JS代码完全分离</p>
+<p>缺点：不能传递参数；一个事件只能绑定一个函数。解决：匿名函数就可以，匿名函数内部就可以绑定多个函数</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/17/8.4.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BJS/" data-id="cknllgmc7003ssgwd8bk20zr0" data-title="网页前端之JS" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/04/17/8.5.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E4%B9%8Bbootstrap/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          网页前端框架之bootstrap
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/04/17/10.7.%E5%85%B3%E4%BA%8E%E9%87%8D%E6%9E%84/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">关于重构</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/17/19.3.github/">github</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">代理和反向代理</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/24.%E7%AE%97%E6%B3%95/">算法</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/23.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/22.3.%E5%B8%B8%E8%A7%81cmd%E5%91%BD%E4%BB%A4/">常见cmd命令</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 swx<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>初识java | swx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="java概述特性1.简单语法规则和c++类似，是对C++的简化和提高，使用接口取代了多重继承，并取消了指针，java还有垃圾自动收集。 提供了丰富的类库，API文档和第三方开发包，还有大量基于java 的开源项目。 2.面向对象（Object Oriented）是对现实世界的一种抽象，面向对象会把相关的数据和方法组织为一个整体来看待。所有的元素都要通过类和对象来访问。 3.分布性Java语言支持I">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初识java">
+<meta property="og:url" content="https://s-qwer.github.io/2021/03/26/4.2.%E5%88%9D%E8%AF%86java%EF%BC%9A%E7%89%B9%E6%80%A7%E3%80%81%E7%89%88%E6%9C%AC%E3%80%81%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:site_name" content="swx">
+<meta property="og:description" content="java概述特性1.简单语法规则和c++类似，是对C++的简化和提高，使用接口取代了多重继承，并取消了指针，java还有垃圾自动收集。 提供了丰富的类库，API文档和第三方开发包，还有大量基于java 的开源项目。 2.面向对象（Object Oriented）是对现实世界的一种抽象，面向对象会把相关的数据和方法组织为一个整体来看待。所有的元素都要通过类和对象来访问。 3.分布性Java语言支持I">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-26T03:42:16.000Z">
+<meta property="article:modified_time" content="2021-04-12T16:34:06.231Z">
+<meta property="article:author" content="swx">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="概述">
+<meta property="article:tag" content="版本">
+<meta property="article:tag" content="安装">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="swx" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swx</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://s-qwer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-4.2.初识java：特性、版本、安装" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/26/4.2.%E5%88%9D%E8%AF%86java%EF%BC%9A%E7%89%B9%E6%80%A7%E3%80%81%E7%89%88%E6%9C%AC%E3%80%81%E5%AE%89%E8%A3%85/" class="article-date">
+  <time class="dt-published" datetime="2021-03-26T03:42:16.000Z" itemprop="datePublished">2021-03-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      初识java
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="java概述"><a href="#java概述" class="headerlink" title="java概述"></a>java概述</h1><h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><h3 id="1-简单"><a href="#1-简单" class="headerlink" title="1.简单"></a>1.简单</h3><p>语法规则和c++类似，是对C++的简化和提高，使用接口取代了多重继承，并取消了指针，java还有垃圾自动收集。</p>
+<p>提供了丰富的类库，API文档和第三方开发包，还有大量基于java 的开源项目。</p>
+<h3 id="2-面向对象（Object-Oriented）"><a href="#2-面向对象（Object-Oriented）" class="headerlink" title="2.面向对象（Object Oriented）"></a>2.面向对象（Object Oriented）</h3><p>是对现实世界的一种抽象，面向对象会把相关的数据和方法组织为一个整体来看待。所有的元素都要通过类和对象来访问。</p>
+<h3 id="3-分布性"><a href="#3-分布性" class="headerlink" title="3.分布性"></a>3.分布性</h3><p>Java语言支持Internet应用的开发，java中有net.api，他提供了用于网络应用编程的类库，包括URL、URLConnection、Socket、ServerSocket等。Java的RMI（远程方法激活）机制也是开发分布式应用的重要手段。</p>
+<p>包括操作分布和数据分布。操作分布是指在多个不同的主机上布置相关操作，而数据分布是将数据分别存放在多个不同的主机上。</p>
+<h3 id="4-平台独立性和可移植性（write-once-run-anywhere）"><a href="#4-平台独立性和可移植性（write-once-run-anywhere）" class="headerlink" title="4.平台独立性和可移植性（write once ,run anywhere）"></a>4.平台独立性和<em><strong>可移植性</strong></em>（write once ,run anywhere）</h3><p>核心是jvm。</p>
+<p>在应用中编写java代码，用Eclipse或javac把java代码编译为.class文件，然后把.class文件打成.jar文件，.jar文件可以在windows、MacOS、Linux系统下运行。</p>
+<h3 id="5-解释性"><a href="#5-解释性" class="headerlink" title="5.解释性"></a>5.解释性</h3><p>运行java程序需要解释器，任何移植了java解释器的计算机或其他设备都可以用java字节码进行解释运行。</p>
+<h3 id="6-安全性"><a href="#6-安全性" class="headerlink" title="6. 安全性"></a>6. 安全性</h3><p>删除了类C语言中的指针和内存释放等语法，有效避免了用户对内存的非法操作。Java程序代码要经过代码校验，指针校验等很多测试步骤才能运行。</p>
+<h3 id="7-健壮性"><a href="#7-健壮性" class="headerlink" title="7. 健壮性"></a>7. 健壮性</h3><p>Java的强类型机制，异常处理，垃圾的自动收集等。开发工具如：Eclipse、NetBeans。</p>
+<h3 id="8-多线程"><a href="#8-多线程" class="headerlink" title="8.多线程"></a>8.多线程</h3><p>Java在用户空间实现的多线程（实现多线程的方式有：在用户空间、在内核空间、在用户和内核空间中混合实现）应用程序在同一时间并行执行多项任务，而且相应的同步机制可以保证不同的线程可以正确的共享数据。</p>
+<h3 id="9-高性能"><a href="#9-高性能" class="headerlink" title="9.高性能"></a>9.高性能</h3><p>Hotspot JVM提供了JIT（just in time）编译器即动态编译器，能够在运行时将代码编译为机器码，运行效率比较高。</p>
+<h3 id="10-动态"><a href="#10-动态" class="headerlink" title="10.动态"></a>10.动态</h3><p>可以动态调整库内方法和增加变量，而客户端不需要作任何更改。</p>
+<h3 id="11-开源"><a href="#11-开源" class="headerlink" title="11.开源"></a>11.<em>开源</em></h3><p> java的这个特性决定了它的广泛应用。</p>
+<h2 id="运行和工作原理"><a href="#运行和工作原理" class="headerlink" title="运行和工作原理"></a>运行和工作原理</h2><p>Java源代码（HelloWorld.java）  <a href="%E7%BB%8Fjavac%E7%BC%96%E8%AF%91">–&gt;</a>   java字节码文件（HelloWorld.class）<a href="%E7%BB%8Fjava%E6%89%A7%E8%A1%8C">–&gt;</a>  机器码  –&gt;  运行结果</p>
+<p>1.首先编写java源代码程序，扩展名为.java</p>
+<p>2.在命令行模式中，输入javac命令:<code>javac 源文件名.java</code>对源代码进行编译，生成字节码文件,扩展名为.class</p>
+<p>3.编译完成后，如果没有报错信息，输入java命令:<code>java 类名</code>对class字节码文件进行解释运行，执行时不需要添加.class扩展名</p>
+<p>这里是我最早接触java时，还没有用到开发工具，在cmd命令行进行的HelloWorld输出。当时踩得坑如下：</p>
+<ul>
+<li><p>文件隐藏了扩展名</p>
+</li>
+<li><p>javac+文件名，java+类名 （所以当时需要文件名和类名一致）</p>
+</li>
+<li><p>严格区分大小写</p>
+</li>
+<li><p>非法字符：/65307确是中文问题，要保证全部英文状态</p>
+</li>
+<li><p>括号成对</p>
+</li>
+<li><p>最后贴一个梦开始的main方法：</p>
+<p>public static void main(String[] args){</p>
+<p>​    System.out.println(“HelloWorld”);</p>
+<p>}</p>
+</li>
+</ul>
+<h2 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h2><table><thead><tr><th>版本</th><th>名称</th><th>发行日期</th></tr></thead><tbody><tr><td>JDK 1.0</td><td>Oak(橡树)</td><td>1996-01-23</td></tr><tr><td>JDK 1.1</td><td>none（无）</td><td>1997-02-19</td></tr><tr><td>JDK 1.1.4</td><td>Sparkler（宝石）</td><td>1997-09-12</td></tr><tr><td>JDK 1.1.5</td><td>Pumpkin（南瓜）</td><td>1997-12-13</td></tr><tr><td>JDK 1.1.6</td><td>Abigail（阿比盖尔–女子名）</td><td>1998-04-24</td></tr><tr><td>JDK 1.1.7</td><td>Brutus（布鲁图–古罗马政治家和将军）</td><td>1998-09-28</td></tr><tr><td>JDK 1.1.8</td><td>Chelsea（切尔西–城市名）</td><td>1999-04-08</td></tr><tr><td>J2SE 1.2</td><td>Playground（运动场）</td><td>1998-12-04</td></tr><tr><td>J2SE 1.2.1</td><td>none（无）</td><td>1999-03-30</td></tr><tr><td>J2SE 1.2.2</td><td>Cricket（蟋蟀）</td><td>1999-07-08</td></tr><tr><td>J2SE 1.3</td><td>Kestrel（美洲红隼）</td><td>2000-05-08</td></tr><tr><td>J2SE 1.3.1</td><td>Ladybird（瓢虫）</td><td>2001-05-17</td></tr><tr><td>J2SE 1.4.0</td><td>Merlin（灰背隼）</td><td>2002-02-13</td></tr><tr><td>J2SE 1.4.1</td><td>grasshopper（蚱蜢）</td><td>2002-09-16</td></tr><tr><td>J2SE 1.4.2</td><td>Mantis（螳螂）</td><td>2003-06-26</td></tr><tr><td>Java SE 5.0 (1.5.0)</td><td>Tiger（老虎）</td><td>2004-09-30</td></tr><tr><td>Java SE 6.0 (1.6.0)</td><td>Mustang（野马）</td><td>2006-04</td></tr><tr><td>Java SE 7.0 (1.7.0)</td><td>Dolphin（海豚）</td><td>2011-07-28</td></tr><tr><td>Java SE 8.0 (1.8.0)</td><td>Spider（蜘蛛）</td><td>2014-03-18</td></tr><tr><td>Java SE 9.0</td><td>none（无）</td><td>2017-09-21</td></tr><tr><td>Java SE 10.0</td><td>none（无）</td><td>2018-03-21</td></tr><tr><td>Java SE 11.0</td><td>none（无）</td><td>2018-09-25</td></tr></tbody></table>
+
+<p>这里的JAVA就是指JDK开发工具</p>
+<h3 id="Java2"><a href="#Java2" class="headerlink" title="Java2"></a>Java2</h3><p>1998年12月8日，Sun公司发布了第二代Java平台（简称为Java2）的3个版本</p>
+<p>J2ME（Java2 Micro Edition，Java2平台的微型版）：主要用于嵌入式系统的开发，应用于移动、无线及有限资源的环境</p>
+<p>J2SE（Java 2 Standard Edition，Java 2平台的标准版）：应用于桌面应用软件的编程</p>
+<p>J2EE（Java 2 Enterprise Edition，Java 2平台的企业版）：应用于基于Java的应用服务器</p>
+<h3 id="Java5"><a href="#Java5" class="headerlink" title="Java5"></a>Java5</h3><p>2004年9月30日</p>
+<h4 id="1-自动拆装箱"><a href="#1-自动拆装箱" class="headerlink" title="1.自动拆装箱"></a>1.自动拆装箱</h4><h4 id="2-泛型"><a href="#2-泛型" class="headerlink" title="2.泛型"></a>2.泛型</h4><h4 id="3-增强for"><a href="#3-增强for" class="headerlink" title="3.增强for"></a>3.增强for</h4><p>说明：是for循环的一种，简化数组和Collection集合的遍历（增强for就是来替代迭代器的）</p>
+<p>格式：</p>
+<p>for(元素数据类型 变量 : 数组或者Collection集合) {</p>
+<p>​        使用变量即可，该变量就是元素</p>
+<p>​    }</p>
+<p>注意事项：增强for的目标要先进行不为null的判断，然后再使用</p>
+<h4 id="4-静态导入"><a href="#4-静态导入" class="headerlink" title="4.静态导入"></a>4.静态导入</h4><p>说明：可以直接导入到方法级别</p>
+<p>格式：import static 包名….类名.方法名;</p>
+<p>注意事项：</p>
+<p>​    方法必须是静态的</p>
+<p>​    如果有多个同名的静态方法，容易不知道使用谁?这个时候要使用的话，就必须在调用前面加静态的包，类名前缀。由此可见，意义不大，所以一般不用。</p>
+<h4 id="5-可变参数"><a href="#5-可变参数" class="headerlink" title="5.可变参数"></a>5.可变参数</h4><p>说明：定义方法的时候不知道该定义多少个参数，当调用的时候才知道需要几个参数。</p>
+<p>格式：</p>
+<p>public static int sunm(int… a){}</p>
+<p>​    修饰符 返回值类型 方法名(数据类型…  变量名){</p>
+<p>}</p>
+<p>注意事项：</p>
+<p>​    这里的变量(a)其实是一个数组</p>
+<p>​    如果一个方法有可变参数，并且有多个参数，那么，可变参数肯定是最后一个（如果不是最后一个，相当于前面的都包含了，最后单独的多出来了，所以就会报错。只有当可变参数是最后一个才是正常的）</p>
+<p>Arrays工具类中的一个方法：把数组转成集合</p>
+<p>​    public  static  <T>  List<T>  asList(T… a)</p>
+<p>注意事项：集合的长度不能改变，因为其本质还是一个数组。（所以对集合进行操作时，只要改变了其长度就会报错）</p>
+<h4 id="6-枚举"><a href="#6-枚举" class="headerlink" title="6.枚举"></a>6.枚举</h4><h3 id="Java7"><a href="#Java7" class="headerlink" title="Java7"></a>Java7</h3><h4 id="1-二进制字面量"><a href="#1-二进制字面量" class="headerlink" title="1.二进制字面量"></a>1.二进制字面量</h4><p>JDK7开始，可以用二进制来表示整数（byte,short,int和long）。</p>
+<p>好处：可以使代码更容易被理解。语法非常简单，只要在二进制数值前面加 0b或者0B</p>
+<h4 id="2-数字字面量可以出现下划线"><a href="#2-数字字面量可以出现下划线" class="headerlink" title="2.数字字面量可以出现下划线"></a>2.数字字面量可以出现下划线</h4><p>为了增强对数值的阅读性，如我们经常把数据用逗号分隔一样。JDK7提供了_对数据进行分隔。</p>
+<p>注意事项：</p>
+<p>​    不能出现在进制标识和数值之间</p>
+<p>​    不能出现在数值开头和结尾</p>
+<p>​    不能出现在小数点旁边</p>
+<h4 id="3-switch-语句可以用字符串"><a href="#3-switch-语句可以用字符串" class="headerlink" title="3.switch 语句可以用字符串"></a>3.switch 语句可以用字符串</h4><h4 id="4-泛型简化（泛型推断）"><a href="#4-泛型简化（泛型推断）" class="headerlink" title="4.泛型简化（泛型推断）"></a>4.泛型简化（泛型推断）</h4><h4 id="5-异常的多个catch合并"><a href="#5-异常的多个catch合并" class="headerlink" title="5.异常的多个catch合并"></a>5.异常的多个catch合并</h4><p>出现了一个新的异常处理方案：</p>
+<p>try {</p>
+<p>} catch (异常名1  |  异常名2  |  异常名3   …   变量 ) {</p>
+<p>​    }</p>
+<p>这个方式虽然简洁，但是也不够好：</p>
+<p>A：处理方式是一致的。（实际开发中，好多时候可能就是针对同类型的问题，给出同一个处理）</p>
+<p>B：多个异常间必须是平级关系</p>
+<h4 id="6-try-with-resources-语句"><a href="#6-try-with-resources-语句" class="headerlink" title="6.try-with-resources 语句"></a>6.try-with-resources 语句</h4><p>try ( 必须是java.lang.AutoCloseable的子类对象 ) { … }</p>
+<p>好处：</p>
+<p>​    资源自动释放，不需要close()了</p>
+<p>​    把需要关闭资源的部分都定义在（）中就ok了</p>
+<p>这个接口的子类主要是流体系的对象(JDK7的API中AutoCloseable的子类)</p>
+<h3 id="Java8"><a href="#Java8" class="headerlink" title="Java8"></a>Java8</h3><p>2014年3月18日，普遍使用的版本，是java5以来最具革命性的版本。支持32位</p>
+<h4 id="1-允许接口中有默认方法，静态方法实现"><a href="#1-允许接口中有默认方法，静态方法实现" class="headerlink" title="1.允许接口中有默认方法，静态方法实现"></a>1.允许接口中有默认方法，静态方法实现</h4><h4 id="2-Lambda表达式"><a href="#2-Lambda表达式" class="headerlink" title="2.Lambda表达式"></a>2.Lambda表达式</h4><h4 id="3-函数式接口"><a href="#3-函数式接口" class="headerlink" title="3.函数式接口"></a>3.函数式接口</h4><h4 id="4-内置函数式接口"><a href="#4-内置函数式接口" class="headerlink" title="4.内置函数式接口"></a>4.内置函数式接口</h4><h4 id="5-Streams"><a href="#5-Streams" class="headerlink" title="5.Streams"></a>5.Streams</h4><h4 id="6-Map"><a href="#6-Map" class="headerlink" title="6.Map"></a>6.Map</h4><h4 id="7-时间日期API"><a href="#7-时间日期API" class="headerlink" title="7. 时间日期API"></a>7. 时间日期API</h4><h4 id="8-Annotations"><a href="#8-Annotations" class="headerlink" title="8.Annotations"></a>8.Annotations</h4><h3 id="Java11"><a href="#Java11" class="headerlink" title="Java11"></a>Java11</h3><p>2018年9月26日</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="明确概念"><a href="#明确概念" class="headerlink" title="明确概念"></a>明确概念</h3><p>1.JDK（java development kit）：java开发工具包JRE+tools</p>
+<p>​    是提供给java开发人员使用的，其中包含了java的开发工具，也包括了JRE</p>
+<p>​    Java的开发工具：编译工具（javac.exe）和打包工具（jar.exe）</p>
+<p>2.JRE（java runtime environment）：java运行环境 JVM+class library</p>
+<p>​    包括java虚拟机和java程序所需的核心类库等</p>
+<p>3.JVM（java virture machine）：java虚拟机</p>
+<p>可以去网上查找jdk并下载安装，这里推荐使用JDK1.8</p>
+<h3 id="配置JDK环境变量"><a href="#配置JDK环境变量" class="headerlink" title="配置JDK环境变量"></a>配置JDK环境变量</h3><p>要使java文件写在其他文件下面，仍可以运行，就需要配置环境变量。</p>
+<p>我的电脑→属性→高级系统设置→环境变量→系统变量：以下三个环境变量 已存在则点击“编辑”，不存在则点击“新建”</p>
+<p>1.新建JAVA_HOME（变量名）指向的是JDK的安装路径（变量值），在此路径下能找到bin、lib等目录。</p>
+<p>2.编辑PATH环境变量,目的是为了指向JDK的bin目录，这里面放的是各种编译执行命令。目的是<strong>使javac指令可以在任意目录下运行</strong>。</p>
+<p>配置方法一：</p>
+<p>​    将javac指令所在目录也就是JDK安装目录下的bin目录配置到path变量下，即可使javac指令在任意目录下运行。系统中本来有path环境变量，直接放后面就行，中间用分号间隔。path环境变量具有先后顺序</p>
+<p>具体方法：</p>
+<p>​    将JDK安装目录下的bin目录添加到最左边并添加分号</p>
+<p>配置方法二（因为jdk可能有多个）：</p>
+<p>​    新建变量名为：JAVA_HOME            变量值为：JDK安装目录            将path环境变量中的JDK目录修改为：%JAVA_HOME%\bin；（%%相当于引用）</p>
+<p>​    切换JDK时只需修改变量值</p>
+<p>Tips：操作系统因不明原因导致%JAVA_HOME%环境变量失效，即使正确配置“Path”中的内容，也无法验证通过。此时可以采用“弃用JAVA_HOME”的办法，在“Path”环境变量中，直接添加JDK下bin文件夹的完整地址（即配置方法一）。</p>
+<p>如果“弃用JAVA_HOME”之后依然无法通过验证，则要打开JDK的bin文件夹，检查此文件夹下是否有“java.exe”和“javac.exe”这两个文件，这两个可执行文件实际上就是java命令和javac命令的“本体”，如果缺失了这两个文件，JDK就无法正常使用，环境也就永远无法验证通过。</p>
+<p>3.CLASSPATH（class文件的环境变量）一般<strong>不用配置</strong>，仅了解，不推荐配置在系统的环境变量中</p>
+<p>​    创建新的变量名称：classpath          变量值设定为指定的含有class文件的目录，多个目录之间使用分号（；）分割。</p>
+<p>​    作用：使classpath目录中的.class文件可以在任意目录运行</p>
+<p>classpath目录中的配置存在先后顺序，先在第一个目录下查找，没有的话；.再继续查找第二个，依次类推</p>
+<p>​    区别：path环境变量里面记录的是可执行性文件，如：.exe文件。</p>
+<p>​    classpath环境变量里面记录的是java类的运行文件所在的目录如：.class文件</p>
+<h3 id="验证结果"><a href="#验证结果" class="headerlink" title="验证结果"></a>验证结果</h3><p>cmd中输入<code>java -version</code> 或者输入<code>javac</code></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>​    这里的下载安装很简单，最主要的是JDK的环境变量配置。原理就是在path的环境变量中加入java的bin文件夹（这个bin文件夹 中会有javac.exe和java.exe），这样在运行java时，就会找到javac命令和java命令并运行。设置JAVA_HOME的目的是为了防止有多个java时，在切换版本时需要不断更改操作path，为了方便操作，当path中运行到%JAVA_HOME%.bin时，会去再访问JAVA_HOME这个变量下的java文件夹，最终目的是一样的。classpath就是一组目录的集合，它设置了一个搜索路径，当运行某个类时，会依次查找这个目录下的这个类，找到了就会运行，如果找不到就会报错。所以一般情况下，不用配置classpath，用默认的配置在当前文件下查找这个类即可。</p>
+<p>​    这里的配置环境变量是接触的第一个环境变量。环境变量这个东西一通百通，以后的环境变量配置也可以参照这个原理，其根本目的都是要使系统的path路径中可以找到你的软件的bin目录。教程只是一方面，背后的原理才是以后会独立配置的关键。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/03/26/4.2.%E5%88%9D%E8%AF%86java%EF%BC%9A%E7%89%B9%E6%80%A7%E3%80%81%E7%89%88%E6%9C%AC%E3%80%81%E5%AE%89%E8%A3%85/" data-id="cknllgmbe001hsgwdckps67wt" data-title="初识java" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/03/26/10.4.%E9%A1%B9%E7%9B%AE%E8%B8%A9%E5%9D%91/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          项目踩坑
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/03/25/4.1.java%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E4%B9%8BIDEA/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">java开发工具之IDEA</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/17/19.3.github/">github</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">代理和反向代理</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/24.%E7%AE%97%E6%B3%95/">算法</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/23.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/17/22.3.%E5%B8%B8%E8%A7%81cmd%E5%91%BD%E4%BB%A4/">常见cmd命令</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 swx<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
