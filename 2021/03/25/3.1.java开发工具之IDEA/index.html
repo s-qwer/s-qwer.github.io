@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>java开发工具之IDEA | swx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="IDEA介绍IDEA 全称 IntelliJ IDEA，是java编程语言开发的集成环境（集成开发环境IDE（Integrated Development Environment）:把开发，运行，编译集成在一起）。IntelliJ在业界被公认为最好的java开发工具，尤其在智能代码助手、代码自动提示、重构、JavaEE支持、各类版本工具(git、svn等)、JUnit、CVS整合、代码分析、 创新">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java开发工具之IDEA">
+<meta property="og:url" content="https://s-qwer.github.io/2021/03/25/3.1.java%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E4%B9%8BIDEA/index.html">
+<meta property="og:site_name" content="swx">
+<meta property="og:description" content="IDEA介绍IDEA 全称 IntelliJ IDEA，是java编程语言开发的集成环境（集成开发环境IDE（Integrated Development Environment）:把开发，运行，编译集成在一起）。IntelliJ在业界被公认为最好的java开发工具，尤其在智能代码助手、代码自动提示、重构、JavaEE支持、各类版本工具(git、svn等)、JUnit、CVS整合、代码分析、 创新">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWfbzkZ1UiapTicga31j6w7oSrPR83iahT0WyyjGViax2MHm7BN4vSV25Mkg/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWPEfHh4J5MwWia0dJ6OwdoRs7BTZVPsibxgICz0aWYpDEzZE9JBsldIQA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWQmzbSjUuddQ1M5HolHMoGyOtscdEdibHRaQt0M3xeONvObF3RsrnJfg/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWQmzbSjUuddQ1M5HolHMoGyOtscdEdibHRaQt0M3xeONvObF3RsrnJfg/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWeXJlIYYZ5yU9w0TXqqFApqRfoSbRMSZMu6bOhllCKEiaehIqmvCDdGw/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWozxeT70eCw3QDjjZEcicXxr7YkPiaAE43lyRXU88EMR03MRtFicRqAQ1g/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWrwGLeicySTnyUD1ZRH1Ge37bdK3Lr6t4nmd1l5kPBQrPxXzz2EvvQjA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWjJwY4wwXngccbGVJbL9w92g4vB9xQiaVSTL7xibEoWGLXEH1Ufc7QjOA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWnjsC32TbeR66PK4wr3g92nmdMYYiaNrrQGRxWxEAPCh1Adu5AEfnDnA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWPETajnwylHwQvO6QvWfcFvCXNL50lxMyicmW3k7LPg7Yib159OMEiaVdw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCqoz4dPTicpfofx0aUICa9dU0ZdGxvvuHv0Gxu85WvLFSRWiah2p6tcDw/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCp1H6w3F6DPcMM7A93OBmgiaJCJtF9t7XrxvJFtn57ic1icib6AzC6tiaUcw/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCiaOTkEVAOYNUKmyYGxTx6qdN8QWDeViaqkcicKsfqMbTLkSkMCndnicjIg/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCsBp8625jJrS1SP4LrrDibz2qwcjZibT7XqHlQhoJ55XYxgWe9r9RibJuA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCAZuEutmsuEmic1lmSClfveKemWXibZqz2ep2A44AsqGSSXSXgveD4liag/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCtYIKLt8ZkLQ8rmIO5fCTib51gZvyGGOzwhvWmNxEiblZKNBibsTLwGxLw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCSlicmLibmIsRslic8JdFfz2Q1uK3QgEBD5kn2qY7ZbG0kJuVLnf9NeBicw/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCc70TxcjXYXQlicCbrk5SjzSqf9KBJKMicw6MDcanbe8V7WuM6xIC73CA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCRPPpgthYoBj24AlKm6TsCCyRUB5aVruGGxQAicSAj8AuwibDgtEFhHkg/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUC9QFMKzLTrtiaDnU9wUb2a9YvNY0dpJkXN2nEmVhJiaqLTfic1Z6nRdt5Q/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCE8dU7IxEEoiaknVuNQjQCqHB6rftAEia1BPB4a6Gr4KXqniarOp6JP34w/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCQoDia6qpsnAbYDfYYk7kdRxYqqRqXan7IrRkq7vOLIliaEibYb6yczr0w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCVdTF7EZkNIkfKdyONHp7AA1amyfVmUD1xPCdhibvxtvU58cUia5vgBEw/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCiaNQMn3gO7PelrVHnraSibbX6AqdpwJokibBx4IaX2krm3wOibokmiaglhQ/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCoBEhL91j8SL1Oiajx2crej1tIvtkyn5XrRlE0KeMzibml1xOibgRIykuw/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCAq0TibZIlhbxSI3rhibXnKB9ibubwZVk53waw4DIveOia3IeJEbDhaaRzA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCXJN0kicBLLO4oce3opDHAdnqicNiaicyMggH83Gu5O93fCQhStTlusKYLg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUC9k2ep1cGnGROQbs5qLaA1go7dYGicWzgMI267lIJ155Q1wUBpAKrp6w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCfPSMWDuXZrJcVwDV46f2936yss72wEoaxm1VZ1BSvlevaXOVdNVjXA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCLGR8H8YgXnIg5Ou1BjXxCJO9brkqa44WViawzrabug9ypkwRCA438Ow/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCHHCQZaOF9rVYy7xjMW3oGSiaK3iahzic3Ss2xiaZZBDPibIVkbxeEZxsYAA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCnm6GE8SbIbXs5fsQicc9HDpKuG3N5XngeB9zQe1icq6ZicT28TIHDeaBA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCJtwciau1o4EAicf0NemhU46vSsNkIX5Y9wMrTrpz8qKcb0wOK3xIfchw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCCeld6NVtO5MaHcNtMh1bCFGHy0yRxqaNiaJQywnnDicMGwjosJicXicXeA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCW9T5QbNZSmuKv1aV3VmLZHjEOg749d85cvUfGaQp9PfmwT5Hw18TPw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUC21QpUpdeOZzWHEhSyKiau5DdZ8OFEeeZ77fIAGERJsVdbyZicYh9XYUg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCXwFmKicTU9rOUd3mDtGCC1KTibxYicwK8Sc25mia8AycibGgJ37lu1ib1vIg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/QCu849YTaIMwibTxtyZ5ggYDuJKVwq4B9qtGEpF2zibnntvBOD4fRJ8Atdjy2t3TI0qkH6z6m7ciah6ER4GhSA9Ag/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/QCu849YTaIMwibTxtyZ5ggYDuJKVwq4B9NQ6URxjciav5STm3AMr6Al1cPFBHlkibNm8AFo22iaSajuQyUMibV90H0w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/QCu849YTaIMwibTxtyZ5ggYDuJKVwq4B9jmk7G9H6NGnyXdCZ9tfopCtiaB0W0d89a5MTu7jZvCLEb3h1Q2Ea4aA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/QCu849YTaIMwibTxtyZ5ggYDuJKVwq4B91Kia9RjAEXo4sdr9QhE0icsybC0Vpt4L55eqqFdJb3VpQwxBO5doQXcw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/QCu849YTaIMwibTxtyZ5ggYDuJKVwq4B96r46MRAvpZHP4KoiaLzxB9gHQoWVZTfKzPnzphiaVFicDSnlohPXTRuQA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/QCu849YTaIMwibTxtyZ5ggYDuJKVwq4B927IIibSTv7XQEd5DfeBRlmII9px6oYFCxfnodiaEuKnIQr2BEXManmGQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCnomY6Mu7RricncKiaGFyBLfm49JM9IB909xZ3asaGJ9rPLqYiapmMLC8g/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCxicp9of0h1ysbxGCbB8YiaPVhicpW8xMdHQaEnrcyWaVEMdIEric1Wqp1w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCLNKc3jFnIKYUYUJicHeQGdj3QQplrZzNJo63NhicAibRSB8fTXvTIwy8g/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCjxkOECykPSpPCxw72fpRQSibrCibeR7ibHibxnUe5Na9qfKkltgSdKo2icg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCqRj0Qibo89LJbnKZRYCeEmvZibYDjFOHPruxZntK3cibWUDxR9ibPmicGsA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCDu6azuO6iavaibIaKjJVkOdffJFkeYQBUVPf3TJQGelkicSK3RUvzmscA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCaW1hKVvt9Wlgop9Wiaw1ukIeuvza4BkuFb96hX0DpWNsPQibntVAOIIg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCqknTxMR0rjDZt2kHsgqFlOyjzQ7XcKKIB7YtoCprS6mdRLCFZzoXwA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCCRwYLnISXVxFkD5noUicbeS3NgcTwKUWtXUG3WgZbIdt62BLZkGkuNg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCBYVzFx98Eyenu25afLXpk4GAnibZcKuOB7XPPxlvPdsuPBVCTMXBoJg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUC6LDoUDUrKhvQ0pJl9FO0Uw4UVm3QE1FYMD60j0rW85DzgymmKsSXNg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCfoDwLaAadpVLKI29n57ibhL6MvRBVgqjVgSBgz81BdmlIJTwH49qia9Q/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCtDmHNVCNhRkEXQ764ib7a8Z68dU6SCNVJAYBF2T3I5pT1CEGU2YuEKQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCQVYUkJiavibPaOfZWdY7B2OHtFM64hyL4OYVQ0srW3E1vibArAmCXkFzg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUC2TZkNFGLW3EOibcLVl8Xf6Q6Jv7h0oeGgh9eW08S4zPzoudSA1w3lXQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUC1CTXMvUwUAHMicb4Rqd0QPjk1RsOJ9K61KaMOK4pskFXRrJChB97gew/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUClCOXeXS3CNwiczQWXN0Zej2XD4bySqpUOcNo8EvicLekUHhqgsqVwKHw/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCAI2pa28zw5AP3pniczSNLqanx5kZ1o25ND6ysFLjIckxicNLfUPgACyA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCgZ5xgF4IeTeXqbg0BT1hOCibX9dAaBmgbiaJA24vcib0FxJnQtdyDY2hA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCQiahMxAkt3ILdRM8H111axd1BhKaSEkic6u4QwibNfSe8stbzuUb9BD0w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUC03FOSY1FR1ttlCzuB3DED8VQaBFVsaqHrMbEuEXvMolpLDAT6cHb1w/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCJY4YB7dWyom6MZmdNFDsy4m3h2UpiaUdzSyS2vfarrOuwicrypPnibjQA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCLfVFrc59HhSzTXsAicRl3ibPgbPQBYTh7moKmVzZIrZ6IWMb2vqWzH4A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCXnz3YErWQH7Y5yXyU0shiaESNuoHLs3mgF1B2n6HnjbKGPeQ5sgk35Q/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCw1DXaYL0OXmjuib5UUrRJjsfoMMmXV63rCuBda4CloECXGSlWaE78kQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCphlxOnqBPc4nyMyUS2tYgbdIA9Hp9yicakyXAKrq6oOSvVlpSQq3vibA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCUibHgHy8sc9Cl4W8sqF3y93gqTvd8ibewV2yEYlIzgEEkyG1PqFrczwg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUC9ZvpmQeXn3snS2ZbRnxOQZBvZMgyc7errfPhicoN324tyDzG7V0kgAg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCprERNlI8XrFKe9tJvU5m06MwkGbO93YF696U0404Wg6uBwZ9nzHUnw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCxeKpRrqibNCEJVcXT97icRya8bEOibQA7m8obfd6dL2CgPpw8OfvFIuiaw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUC0BmFVuAwI6jymoCm8PMrh27umCSxjd6WSIxhXyWRAGlIsLO6icCxf6w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCIj99tVrBhQZHZdp79leg0OqgwuBRib2Yvd3SEqHnlZAPgLEiaNvsxHQg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCAibq15uPsaibBn7WuCiaGJwHDrGVxUbvGxFwDWWQTIKElqD4ukjN2JicnA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUC699vEsKurssqH5eGJtyia1aHQeLsKb4ny78bvrKvqK2hLoxicUOQ256A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCrbXbiaciblZIkn0rthiaXcd8cpN0jEcoVar7FIjmTKBu3klyb8G9Oj8xw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCVkibroqcHeVrGsnzyEmIUPNrY4nRxwyvLZme5UlQW6wnicFPQiaazK8gg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCpB9sjs9lUQP25nmh2KibxbTS8xZHZhiagynpibFUPI45DLHs0gfY0YtbQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCkq8hSBQLS9UJS5JKyibyQvrDrMuytxubKlILk7AsIiceoSztgmibUN50g/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWg7sfKREk1jXhGr6tMrlHbeDa6ryODeLkGyicrw0XRuNGbxCEy2fp3vw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWUVWiaEyOT6LQ8em6iaWpiaB2Ftspouqzkegxuu4DV3jScvUz6DpahDpJw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="article:published_time" content="2021-03-25T03:46:22.000Z">
+<meta property="article:modified_time" content="2021-04-19T06:06:54.679Z">
+<meta property="article:author" content="swx">
+<meta property="article:tag" content="快捷键">
+<meta property="article:tag" content="IDEA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_jpg/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWfbzkZ1UiapTicga31j6w7oSrPR83iahT0WyyjGViax2MHm7BN4vSV25Mkg/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+  
+    <link rel="alternate" href="/atom.xml" title="swx" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swx</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://s-qwer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-3.1.java开发工具之IDEA" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/25/3.1.java%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E4%B9%8BIDEA/" class="article-date">
+  <time class="dt-published" datetime="2021-03-25T03:46:22.000Z" itemprop="datePublished">2021-03-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      java开发工具之IDEA
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="IDEA介绍"><a href="#IDEA介绍" class="headerlink" title="IDEA介绍"></a>IDEA介绍</h1><p>IDEA 全称 IntelliJ IDEA，是java编程语言开发的集成环境（集成开发环境IDE（Integrated Development Environment）:把开发，运行，编译集成在一起）。IntelliJ在业界被公认为最好的java开发工具，尤其在智能代码助手、代码自动提示、重构、JavaEE支持、各类版本工具(git、svn等)、JUnit、CVS整合、代码分析、 创新的GUI设计等方面的功能可以说是超常的。IDEA属于JetBrains这个公司，旗下的知名软件还有：PyCharm-智能 Python 集成开发工具，WebStorm - 最智能的 JavaScript IDE。</p>
+<p>​    在刚接触java的时候，跟着视频下载了eclipse，白色的界面，很有教科书的感觉。当时看到一些博主，微信公众号的推送的代码示例截图，编写代码的工具都是黑色的，感觉很像命令行的风格，以为很高大上，就很羡慕（其实只是界面皮肤的问题）。后来才接触到了idea，默认的一种黑色的界面给了我逼格很高的感觉，想着终于拥有了大佬一样的开发工具，我也算是大佬了，hhhh。就像是长江后浪推前浪，有的人认为eclipse也是在不断完善，认为新兴的idea始终无法替代eclipse；也有的人自从接触了idea就爱不释手，毫不犹豫的抛弃了eclipse。说到底这也只是个工具而已，能够帮助我们更高效、简洁、方便的开发代码，达到我们的目的，使用什么工具又有什么所谓呢。</p>
+<h1 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h1><p>目前常用</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Ctrl + D</strong></td>
+<td>复制光标所在行 或 复制选择内容，并把复制内容插入光标位置下面</td>
+</tr>
+<tr>
+<td><strong>Ctrl + /</strong></td>
+<td>注释光标所在行代码，会根据当前不同文件类型使用不同的注释符号</td>
+</tr>
+<tr>
+<td><strong>Ctrl + F</strong></td>
+<td>在当前文件进行文本查找</td>
+</tr>
+<tr>
+<td>ctrl+shift+f</td>
+<td>在全局搜索</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="ctrl"><a href="#ctrl" class="headerlink" title="ctrl"></a>ctrl</h2><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Ctrl + R</strong></td>
+<td>在当前文件进行文本替换 （必备）</td>
+</tr>
+<tr>
+<td><strong>Ctrl + O</strong></td>
+<td><strong>选择可重写的方法</strong></td>
+</tr>
+<tr>
+<td>Ctrl + W</td>
+<td>递进式选择代码块。可选中光标所在的单词或段落，连续按会在原有选中的基础上再扩展选中范围 （必备）</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Ctrl + Y</td>
+<td>删除光标所在行 或 删除选中的行 （必备）</td>
+</tr>
+<tr>
+<td>Ctrl + E</td>
+<td>显示最近打开的文件记录列表</td>
+</tr>
+<tr>
+<td>Ctrl + U</td>
+<td>前往当前光标所在的方法的父类的方法 / 接口定义</td>
+</tr>
+<tr>
+<td>Ctrl + N</td>
+<td>根据输入的 类名 查找类文件</td>
+</tr>
+<tr>
+<td>Ctrl + H</td>
+<td>显示当前类的层次结构</td>
+</tr>
+<tr>
+<td>Ctrl + I</td>
+<td>选择可继承的方法</td>
+</tr>
+<tr>
+<td>Ctrl + G</td>
+<td>在当前文件跳转到指定行处</td>
+</tr>
+<tr>
+<td>Ctrl + J</td>
+<td>插入自定义动态代码模板</td>
+</tr>
+<tr>
+<td>Ctrl + P</td>
+<td>方法参数提示显示</td>
+</tr>
+<tr>
+<td>Ctrl + Q</td>
+<td>光标所在的变量 / 类名 / 方法名等上面（也可以在提示补充的时候按），显示文档内容</td>
+</tr>
+<tr>
+<td>Ctrl + B</td>
+<td>进入光标所在的方法/变量的接口或是定义出，等效于 Ctrl + 左键单击</td>
+</tr>
+<tr>
+<td>Ctrl + K</td>
+<td>版本控制提交项目，需要此项目有加入到版本控制才可用</td>
+</tr>
+<tr>
+<td>Ctrl + T</td>
+<td>版本控制更新项目，需要此项目有加入到版本控制才可用</td>
+</tr>
+<tr>
+<td>Ctrl + +</td>
+<td>展开代码</td>
+</tr>
+<tr>
+<td>Ctrl + -</td>
+<td>折叠代码</td>
+</tr>
+<tr>
+<td>Ctrl + [</td>
+<td>移动光标到当前所在代码的花括号开始位置</td>
+</tr>
+<tr>
+<td>Ctrl + ]</td>
+<td>移动光标到当前所在代码的花括号结束位置</td>
+</tr>
+<tr>
+<td>Ctrl + Space</td>
+<td>基础代码补全，默认在 Windows 系统上被输入法占用，需要进行修改，建议修改为 Ctrl + 逗号 （必备）</td>
+</tr>
+<tr>
+<td>Ctrl + Delete</td>
+<td>删除光标后面的单词或是中文句</td>
+</tr>
+<tr>
+<td>Ctrl + BackSpace</td>
+<td>删除光标前面的单词或是中文句</td>
+</tr>
+<tr>
+<td>Ctrl + F1</td>
+<td>在光标所在的错误代码出显示错误信息</td>
+</tr>
+<tr>
+<td>Ctrl + F3</td>
+<td>调转到所选中的词的下一个引用位置</td>
+</tr>
+<tr>
+<td>Ctrl + F4</td>
+<td>关闭当前编辑文件</td>
+</tr>
+<tr>
+<td>Ctrl + F8</td>
+<td>在 Debug 模式下，设置光标当前行为断点，如果当前已经是断点则去掉断点</td>
+</tr>
+<tr>
+<td>Ctrl + F9</td>
+<td>执行 Make Project 操作</td>
+</tr>
+<tr>
+<td>Ctrl + F11</td>
+<td>选中文件 / 文件夹，使用助记符设定 / 取消书签</td>
+</tr>
+<tr>
+<td>Ctrl + F12</td>
+<td>弹出当前文件结构层，可以在弹出的层上直接输入，进行筛选</td>
+</tr>
+<tr>
+<td>Ctrl + Tab</td>
+<td>编辑窗口切换，如果在切换的过程又加按上delete，则是关闭对应选中的窗口</td>
+</tr>
+<tr>
+<td>Ctrl + Enter</td>
+<td>智能分隔行</td>
+</tr>
+<tr>
+<td>Ctrl + End</td>
+<td>跳到文件尾</td>
+</tr>
+<tr>
+<td>Ctrl + Home</td>
+<td>跳到文件头</td>
+</tr>
+<tr>
+<td>Ctrl + 1,2,3…9</td>
+<td>定位到对应数值的书签位置</td>
+</tr>
+<tr>
+<td>Ctrl + 左键单击</td>
+<td>在打开的文件标题上，弹出该文件路径</td>
+</tr>
+<tr>
+<td>Ctrl + 光标定位</td>
+<td>按 Ctrl 不要松开，会显示光标所在的类信息摘要</td>
+</tr>
+<tr>
+<td>Ctrl + 左方向键</td>
+<td>光标跳转到当前单词 / 中文句的左侧开头位置</td>
+</tr>
+<tr>
+<td>Ctrl + 右方向键</td>
+<td>光标跳转到当前单词 / 中文句的右侧开头位置</td>
+</tr>
+<tr>
+<td>Ctrl + 前方向键</td>
+<td>等效于鼠标滚轮向前效果</td>
+</tr>
+<tr>
+<td>Ctrl + 后方向键</td>
+<td>等效于鼠标滚轮向后效果</td>
+</tr>
+</tbody></table>
+<h2 id="alt"><a href="#alt" class="headerlink" title="alt"></a>alt</h2><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Alt + Enter</strong></td>
+<td><strong>IntelliJ IDEA 根据光标所在问题，提供快速修复选择，光标放在的位置不同提示的结果也不同 （必备）</strong></td>
+</tr>
+<tr>
+<td><strong>Alt + Insert</strong></td>
+<td><strong>代码自动生成，如生成对象的 set / get 方法，构造函数，toString() 等</strong></td>
+</tr>
+<tr>
+<td>Alt + Q</td>
+<td>弹出一个提示，显示当前类的声明 / 上下文信息</td>
+</tr>
+<tr>
+<td>Alt + `</td>
+<td>显示版本控制常用操作菜单弹出层</td>
+</tr>
+<tr>
+<td>Alt + F1</td>
+<td>显示当前文件选择目标弹出层，弹出层中有很多目标可以进行选择</td>
+</tr>
+<tr>
+<td>Alt + F2</td>
+<td>对于前面页面，显示各类浏览器打开目标选择弹出层</td>
+</tr>
+<tr>
+<td>Alt + F3</td>
+<td>选中文本，逐个往下查找相同文本，并高亮显示</td>
+</tr>
+<tr>
+<td>Alt + F7</td>
+<td>查找光标所在的方法 / 变量 / 类被调用的地方</td>
+</tr>
+<tr>
+<td>Alt + F8</td>
+<td>在 Debug 的状态下，选中对象，弹出可输入计算表达式调试框，查看该输入内容的调试结果</td>
+</tr>
+<tr>
+<td>Alt + Home</td>
+<td>定位 / 显示到当前文件的 Navigation Bar</td>
+</tr>
+<tr>
+<td>Alt + 左方向键</td>
+<td>按左方向切换当前已打开的文件视图</td>
+</tr>
+<tr>
+<td>Alt + 右方向键</td>
+<td>按右方向切换当前已打开的文件视图</td>
+</tr>
+<tr>
+<td>Alt + 前方向键</td>
+<td>当前光标跳转到当前文件的前一个方法名位置</td>
+</tr>
+<tr>
+<td>Alt + 后方向键</td>
+<td>当前光标跳转到当前文件的后一个方法名位置</td>
+</tr>
+<tr>
+<td>Alt + 1,2,3…9</td>
+<td>显示对应数值的选项卡，其中 1 是 Project 用得最多</td>
+</tr>
+</tbody></table>
+<h2 id="shift"><a href="#shift" class="headerlink" title="shift"></a>shift</h2><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Shift + 滚轮前后滚动</strong></td>
+<td>当前文件的横向滚动轴滚动</td>
+</tr>
+<tr>
+<td>Shift + F1</td>
+<td>如果有外部文档可以连接外部文档</td>
+</tr>
+<tr>
+<td>Shift + F2</td>
+<td>跳转到上一个高亮错误 或 警告位置</td>
+</tr>
+<tr>
+<td>Shift + F3</td>
+<td>在查找模式下，查找匹配上一个</td>
+</tr>
+<tr>
+<td>Shift + F4</td>
+<td>对当前打开的文件，使用新Windows窗口打开，旧窗口保留</td>
+</tr>
+<tr>
+<td>Shift + F6</td>
+<td>对文件 / 文件夹 重命名</td>
+</tr>
+<tr>
+<td>Shift + F7</td>
+<td>在 Debug 模式下，智能步入。断点所在行上有多个方法调用，会弹出进入哪个方法</td>
+</tr>
+<tr>
+<td>Shift + F8</td>
+<td>在 Debug 模式下，跳出，表现出来的效果跟 F9 一样</td>
+</tr>
+<tr>
+<td>Shift + F9</td>
+<td>等效于点击工具栏的 Debug 按钮</td>
+</tr>
+<tr>
+<td>Shift + F10</td>
+<td>等效于点击工具栏的 Run 按钮</td>
+</tr>
+<tr>
+<td>Shift + F11</td>
+<td>弹出书签显示层</td>
+</tr>
+<tr>
+<td>Shift + Tab</td>
+<td>取消缩进</td>
+</tr>
+<tr>
+<td>Shift + ESC</td>
+<td>隐藏当前 或 最后一个激活的工具窗口</td>
+</tr>
+<tr>
+<td>Shift + End</td>
+<td>选中光标到当前行尾位置</td>
+</tr>
+<tr>
+<td>Shift + Home</td>
+<td>选中光标到当前行头位置</td>
+</tr>
+<tr>
+<td>Shift + Enter</td>
+<td>开始新一行。光标所在行下空出一行，光标定位到新行位置</td>
+</tr>
+<tr>
+<td>Shift + 左键单击</td>
+<td>在打开的文件名上按此快捷键，可以关闭当前打开文件</td>
+</tr>
+</tbody></table>
+<h2 id="ctrl-alt"><a href="#ctrl-alt" class="headerlink" title="ctrl+alt"></a>ctrl+alt</h2><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Ctrl + Alt + L</strong></td>
+<td>格式化代码，可以对当前文件和整个包目录使用 （必备）</td>
+</tr>
+<tr>
+<td><strong>Ctrl + Alt + T</strong></td>
+<td><strong>对选中的代码弹出环绕选项弹出层</strong></td>
+</tr>
+<tr>
+<td><strong>Ctrl + Alt + B</strong></td>
+<td><strong>在某个调用的方法名上使用会跳到具体的实现处，可以跳过接口</strong></td>
+</tr>
+<tr>
+<td>Ctrl + Alt + V</td>
+<td>快速引进变量</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + O</td>
+<td>优化导入的类，可以对当前文件和整个包目录使用 （必备）</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + I</td>
+<td>光标所在行 或 选中部分进行自动代码缩进，有点类似格式化</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + J</td>
+<td>弹出模板选择窗口，讲选定的代码加入动态模板中</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + H</td>
+<td>调用层次</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + Y</td>
+<td>同步、刷新</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + S</td>
+<td>打开 IntelliJ IDEA 系统设置</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + F7</td>
+<td>显示使用的地方。寻找被该类或是变量被调用的地方，用弹出框的方式找出来</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + F11</td>
+<td>切换全屏模式</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + Enter</td>
+<td>光标所在行上空出一行，光标定位到新行</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + Home</td>
+<td>弹出跟当前文件有关联的文件弹出层</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + Space</td>
+<td>类名自动完成</td>
+</tr>
+<tr>
+<td><strong>Ctrl + Alt + 左方向键</strong></td>
+<td><strong>退回到上一个操作的地方 （必备）（注意与其他软件快捷键冲突）</strong></td>
+</tr>
+<tr>
+<td><strong>Ctrl + Alt + 右方向键</strong></td>
+<td><strong>前进到上一个操作的地方 （必备）（注意与其他软件快捷键冲突）</strong></td>
+</tr>
+<tr>
+<td>Ctrl + Alt + 前方向键</td>
+<td>在查找模式下，跳到上个查找的文件</td>
+</tr>
+<tr>
+<td>Ctrl + Alt + 后方向键</td>
+<td>在查找模式下，跳到下个查找的文件</td>
+</tr>
+</tbody></table>
+<h2 id="Ctrl-Shift"><a href="#Ctrl-Shift" class="headerlink" title="Ctrl + Shift"></a>Ctrl + Shift</h2><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Ctrl + Shift + U</strong></td>
+<td><strong>对选中的代码进行大 / 小写轮流转换 （必备）</strong></td>
+</tr>
+<tr>
+<td><strong>Ctrl + Shift + Z</strong></td>
+<td>取消撤销 （必备）</td>
+</tr>
+<tr>
+<td><strong>Ctrl + Shift + F</strong></td>
+<td>根据输入内容查找整个项目 或 指定目录内文件 （必备）</td>
+</tr>
+<tr>
+<td><strong>Ctrl + Shift + /</strong></td>
+<td>代码块注释 （必备）</td>
+</tr>
+<tr>
+<td><strong>Ctrl + Shift + Space</strong></td>
+<td>智能代码提示</td>
+</tr>
+<tr>
+<td><strong>Ctrl + Shift + Enter</strong></td>
+<td>自动结束代码，行末自动添加分号 （必备）</td>
+</tr>
+<tr>
+<td><strong>Ctrl + Shift + Backspace</strong></td>
+<td>退回到上次修改的地方</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + J</td>
+<td>自动将下一行合并到当前行末尾 （必备）</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + R</td>
+<td>根据输入内容替换对应内容，范围为整个项目 或 指定目录内文件 （必备）</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + W</td>
+<td>递进式取消选择代码块。可选中光标所在的单词或段落，连续按会在原有选中的基础上再扩展取消选中范围 （必备）</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + N</td>
+<td>通过文件名定位 / 打开文件 / 目录，打开目录需要在输入的内容后面多加一个正斜杠 （必备）</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + I</td>
+<td>快速查看光标所在的方法 或 类的定义</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + E</td>
+<td>显示最近修改的文件列表的弹出层</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + T</td>
+<td>对当前类生成单元测试类，如果已经存在的单元测试类则可以进行选择</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + C</td>
+<td>复制当前文件磁盘路径到剪贴板</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + V</td>
+<td>弹出缓存的最近拷贝的内容管理器弹出层</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + H</td>
+<td>显示方法层次结构</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + B</td>
+<td>跳转到类型声明处</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + A</td>
+<td>查找动作 / 设置</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + [</td>
+<td>选中从光标所在位置到它的顶部中括号位置</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + ]</td>
+<td>选中从光标所在位置到它的底部中括号位置</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + +</td>
+<td>展开所有代码</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + -</td>
+<td>折叠所有代码</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + F7</td>
+<td>高亮显示所有该选中文本，按Esc高亮消失</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + F8</td>
+<td>在 Debug 模式下，指定断点进入条件</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + F9</td>
+<td>编译选中的文件 / 包 / Module</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + F12</td>
+<td>编辑器最大化</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + 1,2,3…9</td>
+<td>快速添加指定数值的书签</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + 左方向键</td>
+<td>在代码文件上，光标跳转到当前单词 / 中文句的左侧开头位置，同时选中该单词 / 中文句</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + 右方向键</td>
+<td>在代码文件上，光标跳转到当前单词 / 中文句的右侧开头位置，同时选中该单词 / 中文句</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + 左方向键</td>
+<td>在光标焦点是在工具选项卡上，缩小选项卡区域</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + 右方向键</td>
+<td>在光标焦点是在工具选项卡上，扩大选项卡区域</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + 前方向键</td>
+<td>光标放在方法名上，将方法移动到上一个方法前面，调整方法排序</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + 后方向键</td>
+<td>光标放在方法名上，将方法移动到下一个方法前面，调整方法排序</td>
+</tr>
+</tbody></table>
+<h2 id="Alt-Shift"><a href="#Alt-Shift" class="headerlink" title="Alt + Shift"></a>Alt + Shift</h2><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Alt + Shift + F7</td>
+<td>在 Debug 模式下，下一步，进入当前方法体内，如果方法体还有方法，则会进入该内嵌的方法中，依此循环进入</td>
+</tr>
+<tr>
+<td>Alt + Shift + N</td>
+<td>选择 / 添加 task</td>
+</tr>
+<tr>
+<td>Alt + Shift + F</td>
+<td>显示添加到收藏夹弹出层</td>
+</tr>
+<tr>
+<td>Alt + Shift + C</td>
+<td>查看最近操作项目的变化情况列表</td>
+</tr>
+<tr>
+<td>Alt + Shift + F</td>
+<td>添加到收藏夹</td>
+</tr>
+<tr>
+<td>Alt + Shift + I</td>
+<td>查看项目当前文件</td>
+</tr>
+<tr>
+<td>Alt + Shift + F9</td>
+<td>弹出 Debug 的可选择菜单</td>
+</tr>
+<tr>
+<td>Alt + Shift + F10</td>
+<td>弹出 Run 的可选择菜单</td>
+</tr>
+<tr>
+<td>Alt + Shift + 左键双击</td>
+<td>选择被双击的单词 / 中文句，按住不放，可以同时选择其他单词 / 中文句</td>
+</tr>
+<tr>
+<td>Alt + Shift + 前方向键</td>
+<td>移动光标所在行向上移动</td>
+</tr>
+<tr>
+<td>Alt + Shift + 后方向键</td>
+<td>移动光标所在行向下移动</td>
+</tr>
+</tbody></table>
+<h2 id="Ctrl-Shift-Alt"><a href="#Ctrl-Shift-Alt" class="headerlink" title="Ctrl + Shift + Alt"></a>Ctrl + Shift + Alt</h2><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ctrl + Shift + Alt + V</td>
+<td>无格式黏贴</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + Alt + N</td>
+<td>前往指定的变量 / 方法</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + Alt + S</td>
+<td>打开当前项目设置</td>
+</tr>
+<tr>
+<td>Ctrl + Shift + Alt + C</td>
+<td>复制参考信息</td>
+</tr>
+</tbody></table>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>介绍</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>F2</td>
+<td>跳转到下一个高亮错误 或 警告位置 （必备）</td>
+</tr>
+<tr>
+<td>F3</td>
+<td>在查找模式下，定位到下一个匹配处</td>
+</tr>
+<tr>
+<td>F4</td>
+<td>编辑源</td>
+</tr>
+<tr>
+<td>F7</td>
+<td>在 Debug 模式下，进入下一步，如果当前行断点是一个方法，则进入当前方法体内，如果该方法体还有方法，则不会进入该内嵌的方法中</td>
+</tr>
+<tr>
+<td>F8</td>
+<td>在 Debug 模式下，进入下一步，如果当前行断点是一个方法，则不进入当前方法体内</td>
+</tr>
+<tr>
+<td>F9</td>
+<td>在 Debug 模式下，恢复程序运行，但是如果该断点下面代码还有断点则停在下一个断点上</td>
+</tr>
+<tr>
+<td>F11</td>
+<td>添加书签</td>
+</tr>
+<tr>
+<td>F12</td>
+<td>回到前一个工具窗口</td>
+</tr>
+<tr>
+<td>Tab</td>
+<td>缩进</td>
+</tr>
+<tr>
+<td>ESC</td>
+<td>从工具窗口进入代码文件窗口</td>
+</tr>
+<tr>
+<td>连按两次Shift</td>
+<td>弹出 Search Everywhere 弹出层</td>
+</tr>
+<tr>
+<td>sou</td>
+<td>System.Out</td>
+</tr>
+<tr>
+<td>fori</td>
+<td>for(int i=0;i&lt; ;i++)</td>
+</tr>
+<tr>
+<td>itar</td>
+<td>Iterate elements of array</td>
+</tr>
+</tbody></table>
+<p>使用IDEA读取底层源码的快捷键集合<br>自己常用的两种方式:<br>如果是看接口的底层,就用<strong>ctrl+alt</strong><br>如果是看其他的底层,就双击锁定,然后<strong>两下shift</strong>即可.<br>如果看继承树,<strong>ctrl+h</strong></p>
+<p>感觉通常都是<code>ctrl+键</code>是主要功能，shift是全选，alt</p>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>Alt+回车</code></td>
+<td>导入包,自动修正</td>
+</tr>
+<tr>
+<td><code>Ctrl+Alt+L</code></td>
+<td>格式化代码</td>
+</tr>
+<tr>
+<td><code>Alt+Insert</code></td>
+<td>生成代码(如get,set方法,构造函数等)</td>
+</tr>
+<tr>
+<td><code>Ctrl+F</code></td>
+<td>查找文本</td>
+</tr>
+<tr>
+<td><code>Ctrl+N</code></td>
+<td>查找类</td>
+</tr>
+<tr>
+<td><code>Ctrl+Shift+N</code></td>
+<td>查找文件</td>
+</tr>
+<tr>
+<td><code>Ctrl+Shift+Alt+N</code></td>
+<td>查找类中的方法或变量</td>
+</tr>
+<tr>
+<td><code>Ctrl+R</code></td>
+<td>在当前文件进行文本替换</td>
+</tr>
+<tr>
+<td><code>Ctrl+Y</code></td>
+<td>删除光标所在行 或 删除选中的行</td>
+</tr>
+<tr>
+<td><code>Ctrl+Space</code></td>
+<td>代码提示</td>
+</tr>
+<tr>
+<td><code>Ctrl+Shift+Space</code></td>
+<td>自动补全代码(常用)</td>
+</tr>
+<tr>
+<td><code>Ctrl+P</code></td>
+<td>方法参数提示</td>
+</tr>
+<tr>
+<td><code>Ctrl+/</code>或<code>Ctrl+Shift+/</code></td>
+<td>注释（//或者/…./）</td>
+</tr>
+<tr>
+<td><code>Ctrl+D</code></td>
+<td>复制光标所在行 或 复制选择内容，并把复制内容插入光标位置下面</td>
+</tr>
+<tr>
+<td><strong><code>Ctrl+Shift+Up/Down</code></strong></td>
+<td>代码向上/下移动</td>
+</tr>
+<tr>
+<td><strong><code>Alt+ Up/Down</code></strong></td>
+<td>在方法间快速移动定位</td>
+</tr>
+<tr>
+<td><strong><code>Ctrl + U</code></strong></td>
+<td>前往当前光标所在的方法的父类的方法 / 接口定义</td>
+</tr>
+<tr>
+<td><strong><code>Ctrl+Alt+left/right </code></strong></td>
+<td>返回至上次浏览的位置</td>
+</tr>
+<tr>
+<td><code>F2 或Shift+F2 </code></td>
+<td>高亮错误或警告快速定位</td>
+</tr>
+<tr>
+<td><strong><code>选中文本，按Alt+F3</code></strong></td>
+<td>逐个往下查找相同文本，并高亮显示</td>
+</tr>
+</tbody></table>
+<h1 id="IDEA一些问题"><a href="#IDEA一些问题" class="headerlink" title="IDEA一些问题"></a>IDEA一些问题</h1><p>1.idea查看源码时会显示<code>/*compiled code*/</code>，一般新版的idea会自带反编译功能，如果出现了表示反编译没有成功。</p>
+<p>解决方案：</p>
+<p>File-&gt;setting-&gt;Plugins，然后下拉，找到Java Bytecode Decompiler  打钩  应用保存 重启</p>
+<p>如果发现已经打过勾仍出现这种情况，可能是因为用了 java decompiler Intellij Plugin这个插件，取消打勾之后重启也可。</p>
+<h1 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h1><p>接下展示如何创建、运行和打包一个打印 Hello，World 的简单 Java 应用程序！熟悉 IntelliJ IDEA 特性，以提高作为开发人员的工作效率: 编码辅助和补充工具。</p>
+<h2 id="创建一个新的-Java-项目"><a href="#创建一个新的-Java-项目" class="headerlink" title="创建一个新的 Java 项目"></a><strong>创建一个新的 Java 项目</strong></h2><p>在 IntelliJ IDEA 中，一个项目可以帮助您将源代码、测试、使用的库、构建说明和个人设置组织到一个单元中。</p>
+<p>\1. 启动 IntelliJ IDEA。</p>
+<p>如果打开欢迎屏幕，请单击“新建项目”。否则，从主菜单中选择 File | New | Project。</p>
+<p>\2. 在 New Project 向导中，从左侧的列表中选择 Java。</p>
+<p>\3. 要在 intellijidea 中开发 Java 应用程序，您需要 javasdk (JDK)。</p>
+<p>如果所需的 JDK 已经在 IntelliJ IDEA 中定义，那么从 Project SDK 列表中选择它。</p>
+<p>如果 JDK 安装在您的计算机上，但是没有在 IDE 中定义，那么选择 Add JDK 并指定 JDK home 目录的路径(例如,/library/java/javavialmachines/JDK-13.0.1)。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWfbzkZ1UiapTicga31j6w7oSrPR83iahT0WyyjGViax2MHm7BN4vSV25Mkg/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>如果您的计算机上没有必要的 JDK，选择 Download JDK。在下一个对话框中，指定 JDK 供应商(例如 OpenJDK)、版本，如果需要则更改安装路径，然后单击 Download。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWPEfHh4J5MwWia0dJ6OwdoRs7BTZVPsibxgICz0aWYpDEzZE9JBsldIQA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>在本教程中，我们不打算使用任何其他库或框架，因此请单击“下一步”。不要从模板创建项目。在本教程中，我们将从头开始执行所有操作，因此请单击“下一步”。</p>
+<p>为项目命名，例如：HelloWorld。 如有必要，请更改默认项目位置并单击“完成”。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWQmzbSjUuddQ1M5HolHMoGyOtscdEdibHRaQt0M3xeONvObF3RsrnJfg/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1" alt="图片"></p>
+<h2 id="创建-package-和-class"><a href="#创建-package-和-class" class="headerlink" title="创建 package 和 class"></a><strong>创建 package 和 class</strong></h2><p>包用于将属于同一类别或提供类似功能的类组合在一起，用于构造和组织具有数百个类的大型应用程序。</p>
+<p>\1. 在 Project 工具窗口中，选择 src 文件夹，按 Alt + Insert，然后选择 Java Class</p>
+<p>\2. 在 Name 字段中，键入 com.example.HelloWorld. HelloWorld 并单击 OK. IntelliJ IDEA 创建 com.example.HelloWorld 包和 HelloWorld 类。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWQmzbSjUuddQ1M5HolHMoGyOtscdEdibHRaQt0M3xeONvObF3RsrnJfg/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1" alt="图片"></p>
+<p>与该文件一起，IntelliJ IDEA 自动为您的类生成了一些内容。在这种情况下，IDE 插入了包语句和类声明。这是通过文件模板来完成的。根据您创建的文件的类型，IDE 插入初始代码和预期在该类型的所有文件中存在的格式。有关如何使用和配置模板的详细信息，请参阅文件模板。</p>
+<h2 id="开始编码"><a href="#开始编码" class="headerlink" title="开始编码"></a><strong>开始编码</strong></h2><p>通过动态模板增加 main 方法</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWeXJlIYYZ5yU9w0TXqqFApqRfoSbRMSZMu6bOhllCKEiaehIqmvCDdGw/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1" alt="图片"></p>
+<h2 id="输出-print-方法"><a href="#输出-print-方法" class="headerlink" title="输出 print 方法"></a>输出 print 方法</h2><p><img src="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWozxeT70eCw3QDjjZEcicXxr7YkPiaAE43lyRXU88EMR03MRtFicRqAQ1g/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1" alt="图片"></p>
+<h2 id="运行方法"><a href="#运行方法" class="headerlink" title="运行方法"></a>运行方法</h2><p><img src="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWrwGLeicySTnyUD1ZRH1Ge37bdK3Lr6t4nmd1l5kPBQrPxXzz2EvvQjA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1" alt="图片"></p>
+<h2 id="将工程打包为-Jar-包"><a href="#将工程打包为-Jar-包" class="headerlink" title="将工程打包为 Jar 包"></a>将工程打包为 Jar 包</h2><p><img src="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWjJwY4wwXngccbGVJbL9w92g4vB9xQiaVSTL7xibEoWGLXEH1Ufc7QjOA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1" alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWnjsC32TbeR66PK4wr3g92nmdMYYiaNrrQGRxWxEAPCh1Adu5AEfnDnA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1" alt="图片"></p>
+<p>如果你能看到 <code>out/artifacts</code> 文件夹，那么你将能看到 Jar 包</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWPETajnwylHwQvO6QvWfcFvCXNL50lxMyicmW3k7LPg7Yib159OMEiaVdw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h2 id="运行打包的应用程序，执行-Jar"><a href="#运行打包的应用程序，执行-Jar" class="headerlink" title="运行打包的应用程序，执行 Jar"></a>运行打包的应用程序，执行 Jar</h2><h1 id="操作基础"><a href="#操作基础" class="headerlink" title="操作基础"></a>操作基础</h1><p>当你会构建一个应用程序了，接下来就是一些基础操作，你可能不知道的基础操作。为什么使用 IDE？不就是因为想提高效率么？很多有用的特性都不知道，怎么提高效率？</p>
+<p><strong>在相同内容后生成光标，一个一个选择</strong> ：</p>
+<p>具体什么意思可以看下面这个动图就行了，需要配合快捷键使用，可以在相同的关键字后面生成光标，这样删除、修改添加新的代码不就方便了吗？</p>
+<ul>
+<li>Windows：<code>Alt + J</code></li>
+<li>Mac: <code>Ctrl + ``G</code></li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCqoz4dPTicpfofx0aUICa9dU0ZdGxvvuHv0Gxu85WvLFSRWiah2p6tcDw/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1" alt="图片"></p>
+<p><strong>在所有的相同的内容后添加光标，一步到位：</strong></p>
+<p>使用快捷键就能在所有的 word 后生成光标</p>
+<ul>
+<li>Windows：<code>Ctrl + Shift + Alt + J</code></li>
+<li>Mac: <code>Ctrl + Command + G</code></li>
+</ul>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCp1H6w3F6DPcMM7A93OBmgiaJCJtF9t7XrxvJFtn57ic1icib6AzC6tiaUcw/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1" alt="图片"></p>
+<p><strong>数列光标：</strong></p>
+<p>方法：alt + 按住鼠标左键拖动就能达到下面动图的效果了，效率 max！</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCiaOTkEVAOYNUKmyYGxTx6qdN8QWDeViaqkcicKsfqMbTLkSkMCndnicjIg/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1" alt="图片"></p>
+<p><strong>行尾添加光标</strong> </p>
+<p>alt + 按住鼠标左键拖动，从左侧拖动到右侧。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCsBp8625jJrS1SP4LrrDibz2qwcjZibT7XqHlQhoJ55XYxgWe9r9RibJuA/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1" alt="图片"></p>
+<p><strong>在指定位置添加光标操作</strong> </p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCAZuEutmsuEmic1lmSClfveKemWXibZqz2ep2A44AsqGSSXSXgveD4liag/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1" alt="图片"></p>
+<h2 id="格式批量调整"><a href="#格式批量调整" class="headerlink" title="格式批量调整"></a><strong>格式批量调整</strong></h2><p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCtYIKLt8ZkLQ8rmIO5fCTib51gZvyGGOzwhvWmNxEiblZKNBibsTLwGxLw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>将上访左侧的代码批量变为右侧代码</p>
+<blockquote>
+<p>ctrl + alt + enter 将光标移动到当前行的上一行</p>
+</blockquote>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCSlicmLibmIsRslic8JdFfz2Q1uK3QgEBD5kn2qY7ZbG0kJuVLnf9NeBicw/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1" alt="图片"></p>
+<h2 id="批量添加-Swagger-属性注释"><a href="#批量添加-Swagger-属性注释" class="headerlink" title="批量添加 Swagger 属性注释"></a><strong>批量添加 Swagger 属性注释</strong></h2><p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCc70TxcjXYXQlicCbrk5SjzSqf9KBJKMicw6MDcanbe8V7WuM6xIC73CA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>将上图左侧只有注释的类，添加上 swagger 信息</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCRPPpgthYoBj24AlKm6TsCCyRUB5aVruGGxQAicSAj8AuwibDgtEFhHkg/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1" alt="图片"></p>
+<p><strong>在多个相同结构 Json 中提取某字段信息</strong></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUC9QFMKzLTrtiaDnU9wUb2a9YvNY0dpJkXN2nEmVhJiaqLTfic1Z6nRdt5Q/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>提取左侧 Json 中所有的 role 字段</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCE8dU7IxEEoiaknVuNQjQCqHB6rftAEia1BPB4a6Gr4KXqniarOp6JP34w/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1" alt="图片"></p>
+<h1 id="IDEA-常用快捷键"><a href="#IDEA-常用快捷键" class="headerlink" title="IDEA 常用快捷键"></a>IDEA 常用快捷键</h1><p>上面介绍了一些配合鼠标使用的快捷键，还有一些常用快捷键。</p>
+<p><strong>方法参数提示</strong><br><code>ctrl + p</code></p>
+<blockquote>
+<p>非常实用的快捷键, 有的时候我们自己写的方法, 或者在看一些源码时, 都非常有用</p>
+</blockquote>
+<p><strong>文本大小写转换</strong></p>
+<p>ctrl + shift + U</p>
+<p><strong>折叠代码/展开代码</strong></p>
+<p>ctrl + - / ctrl + +</p>
+<p><strong>全局查找文本</strong></p>
+<p>ctrl + shift + F</p>
+<p><strong>快速查找和打开最近使用过的文件码</strong></p>
+<p>ctrl + E</p>
+<p><strong>自动代码片</strong></p>
+<p>ctrl + j</p>
+<p><strong>实现接口方法</strong></p>
+<p>ctrl + i</p>
+<p><strong>查看当前类的子类</strong></p>
+<p>ctrl + h</p>
+<p><strong>将当前行和下一行进行合并</strong></p>
+<p>ctrl + shfit + j</p>
+<p><strong>将光标跳到当前行的上一行</strong></p>
+<blockquote>
+<p>有时候在写完一行代码的时候需要添加注释, 或者为类属性添加注释的时候需要跳到当前行的上一行, 这个快捷键就非常方便</p>
+</blockquote>
+<p>ctrl + alt + enter</p>
+<p><strong>idea git 提交</strong></p>
+<p>ctrl + k</p>
+<p><strong>删除当前行</strong></p>
+<p>ctrl + y</p>
+<p><strong>重写 或者 实现接口或父类方法</strong></p>
+<p>ctrl + o</p>
+<p><strong>显示类之间的关系</strong></p>
+<p>ctrl + alt + u</p>
+<p><strong>删除类中没有用到的 package</strong></p>
+<p>ctrl + alt + o</p>
+<p><strong>进入设置界面</strong></p>
+<p>ctrl + alt + s</p>
+<p><strong>在当前光标在的这样一行的下一行添加一行</strong></p>
+<p>ctrl + shfit + enter</p>
+<p><strong>弹出， 当前类中的方法集合</strong></p>
+<p>ctrl + F12</p>
+<blockquote>
+<p>最常用的快捷键之一, 快速的查找方法</p>
+</blockquote>
+<p><strong>添加书签</strong></p>
+<p>ctrl + F11</p>
+<p><strong>搜索文件</strong></p>
+<p>ctrl + shift + n</p>
+<p><strong>搜索类合</strong></p>
+<p>ctrl + n</p>
+<blockquote>
+<p>最常用的快捷键之一, 项目慢慢的变大, 文件越来越多, 每次用鼠标去找 就太低效了</p>
+</blockquote>
+<h5 id="快速生成-try-if-等语句"><a href="#快速生成-try-if-等语句" class="headerlink" title="快速生成 try, if 等语句"></a><strong>快速生成</strong> <strong><code>try, if</code> 等语句</strong></h5><p>alt + shift + t</p>
+<blockquote>
+<p>当你试用了之后, 你会爱上这个快捷键的</p>
+</blockquote>
+<p><strong>抽取局部变量</strong></p>
+<p>ctrl + alt + v</p>
+<blockquote>
+<p>将当前选中的代码抽取为一个局部变量</p>
+</blockquote>
+<p><strong>进入到实现子类中</strong></p>
+<p>ctrl + alt + b</p>
+<blockquote>
+<p>在使用<code>mvc</code>框架的时候, 往往我们只有一个接口的实例 这个快捷键可以直接到实现类中</p>
+</blockquote>
+<p><strong>格式化代码</strong></p>
+<blockquote>
+<p>让代码变得优美, 是每个程序员都应该注意的事, 方便自己和他人阅读, 利人利己</p>
+</blockquote>
+<p><strong>idea 多光标选择</strong></p>
+<p><strong>按下滚轮上下拖动鼠标即可</strong></p>
+<p>ctrl + alt + L</p>
+<h5 id="idea-批量修改相同内容"><a href="#idea-批量修改相同内容" class="headerlink" title="idea 批量修改相同内容"></a><strong>idea 批量修改相同内容</strong></h5><p>ctrl + alt + shift + j</p>
+<blockquote>
+<p>有的时候数据需要批量处理, 比如, 正常来说我们的实体类, 在使用<code>mybatis</code> 等逆向工程进行生成的时候, 一般属性是有注释的, 但是在针对如果我们使用了<code>swagger</code> 等插件需要来显示传递实体所代表的含义的时候, 就需要我们自己一个个的去写, 就会显得异常麻烦</p>
+</blockquote>
+<p><strong>运行当前类</strong></p>
+<p>ctrl + shift + F10</p>
+<blockquote>
+<p>在写一些测试代码的时候 这个快捷键就显得特别方便</p>
+</blockquote>
+<p><strong>从多项目中启动一个 debug 模式</strong></p>
+<p>alt + shfit + F9</p>
+<blockquote>
+<p>在微服务中 多个工程在一个项目中的时候, 这个方法就比较的好用, 这样就不用自己一个一个的去点省去很多没必要的操作</p>
+</blockquote>
+<p><strong>从多项目中启动一个 正常模式</strong></p>
+<p>alt + shfit + F10</p>
+<h5 id="重新编译当前项目"><a href="#重新编译当前项目" class="headerlink" title="重新编译当前项目"></a><strong>重新编译当前项目</strong></h5><p>ctrl + shift + F9</p>
+<blockquote>
+<p>当你发现有的问题 特别的奇怪, 命名表面上没问题, 但就是项目运行不了的时候, 重新编译一下获取就好了</p>
+</blockquote>
+<p>查看当前类在哪些地方被使用过</p>
+<h5 id="快速的查看选中类-选中方法的定义"><a href="#快速的查看选中类-选中方法的定义" class="headerlink" title="快速的查看选中类, 选中方法的定义"></a>快速的查看选中类, 选中方法的定义</h5><blockquote>
+<p>有的时候我们不想进入方法内部, 或者进入类的内部查看细节, 想要在外面就探查清楚, 就可以使用此种方法</p>
+</blockquote>
+<p>ctrl + shift + i</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCQoDia6qpsnAbYDfYYk7kdRxYqqRqXan7IrRkq7vOLIliaEibYb6yczr0w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>比较强大的几个快捷键之一 <code>Ctrl + ~ </code>(感叹号旁边的按键)</p>
+<p><strong>共有五种可供选择的操作</strong></p>
+<p><strong>Switch Code Formatter (切换代码格式化程序)</strong></p>
+<p><strong>1. Color Scheme (配色方案)</strong></p>
+<p>可以设置一些常用的配色, 字体样式, 可以一键切换</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCVdTF7EZkNIkfKdyONHp7AA1amyfVmUD1xPCdhibvxtvU58cUia5vgBEw/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1" alt="图片"><strong>2.</strong> <strong><code>Code Style Scheme</code></strong></p>
+<p><strong>3.</strong> <strong><code>Keymap</code> (快捷键列表)</strong></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCiaNQMn3gO7PelrVHnraSibbX6AqdpwJokibBx4IaX2krm3wOibokmiaglhQ/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1" alt="图片"></p>
+<p><strong>4. View Mode (显示模式)</strong></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCoBEhL91j8SL1Oiajx2crej1tIvtkyn5XrRlE0KeMzibml1xOibgRIykuw/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1" alt="图片"></p>
+<p><strong>5. Look and Feel (设置软件主题)</strong></p>
+<p><strong>idea 调出版本控制操作</strong></p>
+<p>alt + ~</p>
+<p>\4. IDEA常用设置</p>
+<h3 id="IDEA-以新窗口的形式打开多个项目"><a href="#IDEA-以新窗口的形式打开多个项目" class="headerlink" title="IDEA 以新窗口的形式打开多个项目"></a><strong>IDEA 以新窗口的形式打开多个项目</strong></h3><blockquote>
+<p>File - Settings - Appearance &amp; Behavior - System Settings</p>
+</blockquote>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCAq0TibZIlhbxSI3rhibXnKB9ibubwZVk53waw4DIveOia3IeJEbDhaaRzA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h3 id="修改-IDEA-默认编码-gt-UTF-8"><a href="#修改-IDEA-默认编码-gt-UTF-8" class="headerlink" title="修改 IDEA 默认编码 -&gt; UTF-8"></a><strong>修改 IDEA 默认编码 -&gt; UTF-8</strong></h3><blockquote>
+<p>File - Settings - Editor - File Encodings</p>
+</blockquote>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCXJN0kicBLLO4oce3opDHAdnqicNiaicyMggH83Gu5O93fCQhStTlusKYLg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h3 id="设置统一编译器和编译版本"><a href="#设置统一编译器和编译版本" class="headerlink" title="设置统一编译器和编译版本"></a><strong>设置统一编译器和编译版本</strong></h3><blockquote>
+<p>File - Setting - Build - Compiler - Java Compiler</p>
+</blockquote>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUC9k2ep1cGnGROQbs5qLaA1go7dYGicWzgMI267lIJ155Q1wUBpAKrp6w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h3 id="设置类注释"><a href="#设置类注释" class="headerlink" title="设置类注释"></a><strong>设置类注释</strong></h3><blockquote>
+<p>File - Editor- File and Code Templates</p>
+</blockquote>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCfPSMWDuXZrJcVwDV46f2936yss72wEoaxm1VZ1BSvlevaXOVdNVjXA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><code>$$end$$</code> 可以设置光标结束的位置</p>
+<h3 id="自动导包"><a href="#自动导包" class="headerlink" title="自动导包"></a><strong>自动导包</strong></h3><blockquote>
+<p>File - Editor- General - Auto Import</p>
+</blockquote>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCLGR8H8YgXnIg5Ou1BjXxCJO9brkqa44WViawzrabug9ypkwRCA438Ow/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h3 id="内存使用量展示"><a href="#内存使用量展示" class="headerlink" title="内存使用量展示"></a><strong>内存使用量展示</strong></h3><blockquote>
+<p>由于日常开发时都是在公司的办公电脑上进行的，所以内存总是不够用，但是又不清楚 IDEA 具体实时的占用了多少内存。这个时候对于一些内存并不是太够的开发人员来说能看到实时的内存使用量还是比较好的</p>
+<p>File - Settings - Appearance &amp; Behavior</p>
+</blockquote>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCHHCQZaOF9rVYy7xjMW3oGSiaK3iahzic3Ss2xiaZZBDPibIVkbxeEZxsYAA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h3 id="开启悬浮提示"><a href="#开启悬浮提示" class="headerlink" title="开启悬浮提示"></a><strong>开启悬浮提示</strong></h3><blockquote>
+<p>有时候在看代码的时候，不清楚一个类具体是干什么的，就会点进去看这个类的注释，但是强大的 IDEA 是支持不用点进去就可以看到注释的以及类的相关信息的。</p>
+<p>File - Settings - Editor - General</p>
+</blockquote>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCnm6GE8SbIbXs5fsQicc9HDpKuG3N5XngeB9zQe1icq6ZicT28TIHDeaBA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h3 id="Ctrl-鼠标滚轴修改字体大小"><a href="#Ctrl-鼠标滚轴修改字体大小" class="headerlink" title="Ctrl+鼠标滚轴修改字体大小"></a><strong>Ctrl+鼠标滚轴修改字体大小</strong></h3><blockquote>
+<p>IDEA 也支持向浏览器那样按住 Ctrl+鼠标滚轴来改变编辑区的字体的大小</p>
+<p>File–&gt;Settings–&gt;Editor–&gt;General。</p>
+</blockquote>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCJtwciau1o4EAicf0NemhU46vSsNkIX5Y9wMrTrpz8qKcb0wOK3xIfchw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h3 id="显示多行-Tab"><a href="#显示多行-Tab" class="headerlink" title="显示多行 Tab"></a><strong>显示多行 Tab</strong></h3><blockquote>
+<p>当我们打开的标签页多了的时候，默认的会隐藏在右侧，当我们需要的时候在右侧找到后再打开。IDEA 是支持多行显示的，这样在大屏幕的显示器上也不用总去点击右侧的去找刚才打开过的文件了</p>
+<p>File - Settings - Editor - General - Editor Tabs</p>
+</blockquote>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCCeld6NVtO5MaHcNtMh1bCFGHy0yRxqaNiaJQywnnDicMGwjosJicXicXeA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h3 id="设置字体-行距-让代码看着更舒服"><a href="#设置字体-行距-让代码看着更舒服" class="headerlink" title="设置字体, 行距 让代码看着更舒服"></a><strong>设置字体, 行距 让代码看着更舒服</strong></h3><blockquote>
+<p>File - Settings - Editor - Font</p>
+</blockquote>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCW9T5QbNZSmuKv1aV3VmLZHjEOg749d85cvUfGaQp9PfmwT5Hw18TPw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h3 id="IDEA-GIT-配置"><a href="#IDEA-GIT-配置" class="headerlink" title="IDEA GIT 配置"></a><strong>IDEA GIT 配置</strong></h3><blockquote>
+<p>File - Settings - Version Control - Git</p>
+</blockquote>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUC21QpUpdeOZzWHEhSyKiau5DdZ8OFEeeZ77fIAGERJsVdbyZicYh9XYUg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h3 id="IDEA-MAVEN-配置"><a href="#IDEA-MAVEN-配置" class="headerlink" title="IDEA MAVEN 配置"></a><strong>IDEA MAVEN 配置</strong></h3><blockquote>
+<p>File - Settings - Build - Build Tools - Maven</p>
+</blockquote>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCXwFmKicTU9rOUd3mDtGCC1KTibxYicwK8Sc25mia8AycibGgJ37lu1ib1vIg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>maven 阿里镜像配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;mirror&gt;</span><br><span class="line">    &lt;id&gt;nexus&lt;&#x2F;id&gt;</span><br><span class="line">    &lt;mirrorOf&gt;*&lt;&#x2F;mirrorOf&gt;</span><br><span class="line">    &lt;url&gt;http:&#x2F;&#x2F;maven.aliyun.com&#x2F;nexus&#x2F;content&#x2F;groups&#x2F;public&#x2F;&lt;&#x2F;url&gt;</span><br><span class="line">&lt;&#x2F;mirror&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="自动编译"><a href="#自动编译" class="headerlink" title="自动编译"></a><strong>自动编译</strong></h2><p>具体步骤：顶部工具栏 File -&gt;Other Settings -&gt; Default Settings -&gt; Auto Import</p>
+<p>说明：开启自动编译之后，结合Ctrl+Shift+F9 会有热更新效果。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/QCu849YTaIMwibTxtyZ5ggYDuJKVwq4B9qtGEpF2zibnntvBOD4fRJ8Atdjy2t3TI0qkH6z6m7ciah6ER4GhSA9Ag/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>具体步骤：敲击 Ctrl + Shift + Alt + / 然后双击Shift搜索进入Registry ，找到compiler.automake.allow.when.app.running ，然后勾选上。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/QCu849YTaIMwibTxtyZ5ggYDuJKVwq4B9NQ6URxjciav5STm3AMr6Al1cPFBHlkibNm8AFo22iaSajuQyUMibV90H0w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/QCu849YTaIMwibTxtyZ5ggYDuJKVwq4B9jmk7G9H6NGnyXdCZ9tfopCtiaB0W0d89a5MTu7jZvCLEb3h1Q2Ea4aA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>最后 如果想知道SpringBoot如何具体实现热部署的请点击SpringBoot+IDEA实现热部署教程：</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/f658fed35786">https://www.jianshu.com/p/f658fed35786</a></p>
+<h2 id="取消大小写敏感"><a href="#取消大小写敏感" class="headerlink" title="取消大小写敏感"></a><strong>取消大小写敏感</strong></h2><p>具体步骤：</p>
+<p>File | Settings | Editor | General | Code Completion Case | Sensitive Completion = None</p>
+<p>取消大小敏感，在编写代码的时候，代码的自动提示将更加全面和丰富。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/QCu849YTaIMwibTxtyZ5ggYDuJKVwq4B91Kia9RjAEXo4sdr9QhE0icsybC0Vpt4L55eqqFdJb3VpQwxBO5doQXcw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h2 id="调整字体类型和字体大小"><a href="#调整字体类型和字体大小" class="headerlink" title="调整字体类型和字体大小"></a><strong>调整字体类型和字体大小</strong></h2><p>默认的白色背景和细小的字体会影响大家的编码体验，这里特意提供了调整代码窗的快捷配置。打开配置，搜索Font，然后再Font可以调整字体类型，Size可以调整字体大小，如图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/QCu849YTaIMwibTxtyZ5ggYDuJKVwq4B96r46MRAvpZHP4KoiaLzxB9gHQoWVZTfKzPnzphiaVFicDSnlohPXTRuQA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h2 id="将快捷键设置为跟Eclipse一样"><a href="#将快捷键设置为跟Eclipse一样" class="headerlink" title="将快捷键设置为跟Eclipse一样"></a><strong>将快捷键设置为跟Eclipse一样</strong></h2><p>很多人可能并不习惯IDEA的快捷键，为了方便，这里我们将快捷键设置为跟 Eclipse一样。</p>
+<p>具体步骤: File -&gt; Settings -&gt; Keymap - &gt; 选择Eclipse .</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/QCu849YTaIMwibTxtyZ5ggYDuJKVwq4B927IIibSTv7XQEd5DfeBRlmII9px6oYFCxfnodiaEuKnIQr2BEXManmGQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>从Eclipse转过来的小伙伴 可以放心使用</p>
+<h2 id="打开常用工具栏"><a href="#打开常用工具栏" class="headerlink" title="打开常用工具栏"></a><strong>打开常用工具栏</strong></h2><p>具体步骤：顶部导航栏 - View -&gt; 勾选 Toolbar &amp; Tool Buttons</p>
+<p>\5. IDEA 常用插件</p>
+<p><strong>AlibabaCloudToolkit</strong></p>
+<p>这个插件更加适用于小型项目，或者在测试环境开发。生产环境 个人感觉不太适用。</p>
+<p>个人经常会有这样的需求，每次自己更新完测试环境之后, 就需要 <code>Maven</code> 打包<code>clean install</code>, 然后<code>copy</code> <code>jar</code> 包, 利用<code>ftp</code>工具上传<code>jar</code>包到测试服务器, 然后<code>kill</code> 服务, 在启动服务 <code>java -jar</code> , 有时更新频繁 这就是一件非常麻烦的事</p>
+<p><code>Cloud Toolkit</code> 是本地 <code>IDE</code> 插件，帮助开发者更高效地开发、测试、诊断并部署应用。通过插件，您可以将本地应用一键部署到云端<code>（ECS、EDAS 和 Kubernetes 等</code>）和任意服务器；并且它还内置了 <code>Arthas</code> 程序诊断、<code>Dubbo工具</code>、<code>Terminal Shell</code> 终端和 <code>MySQL</code> 执行器等工具。</p>
+<p>官方链接：<a target="_blank" rel="noopener" href="https://www.aliyun.com/product/cloudtoolkit">https://www.aliyun.com/product/cloudtoolkit</a></p>
+<p>简单的说, 安装了这个插件之后，Idea 就具备了一些 Jenkins 的自动部署的功能</p>
+<p><strong>1</strong> 安装</p>
+<p>在 Idea 工具中 Plugins 直接搜索安装</p>
+<p><strong>2</strong> 使用</p>
+<p>在安装完成之后, 在工具栏中就会出现阿里云的按钮, <strong>点击按钮</strong></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCnomY6Mu7RricncKiaGFyBLfm49JM9IB909xZ3asaGJ9rPLqYiapmMLC8g/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>然后点击 <code>Deploy to Host</code>, 然后下方就会出现添加主机页面</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCxicp9of0h1ysbxGCbB8YiaPVhicpW8xMdHQaEnrcyWaVEMdIEric1Wqp1w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>点击 <code>Add Host</code></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCLNKc3jFnIKYUYUJicHeQGdj3QQplrZzNJo63NhicAibRSB8fTXvTIwy8g/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>以我自己的博客为例, 输入完配置之后, 点击 <code>Test Connection</code>, 出现 <code>Succeeded</code>, 点击 <code>add</code>, 代表添加成功</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCjxkOECykPSpPCxw72fpRQSibrCibeR7ibHibxnUe5Na9qfKkltgSdKo2icg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>然后再点击 <code>Deploy to Host</code></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCqRj0Qibo89LJbnKZRYCeEmvZibYDjFOHPruxZntK3cibWUDxR9ibPmicGsA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>点击<code>Run</code>, <code>idea</code> 便会, 先使用<code>maven</code>打包, 后发送到服务器的指定位置</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCDu6azuO6iavaibIaKjJVkOdffJFkeYQBUVPf3TJQGelkicSK3RUvzmscA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCaW1hKVvt9Wlgop9Wiaw1ukIeuvza4BkuFb96hX0DpWNsPQibntVAOIIg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>后续还可以 监听启动日志, 很简单, 就是 <code>Advanced</code> 里面, 大家看看就知道了,<br>后续有时间再完善笔记吧</p>
+<p><strong>IDEA 插件 Git Flow</strong></p>
+<h2 id="插件作用：集成-Git-Flow-让我们更加专注在-开发-这件事上。"><a href="#插件作用：集成-Git-Flow-让我们更加专注在-开发-这件事上。" class="headerlink" title="插件作用：集成 Git Flow 让我们更加专注在 开发 这件事上。"></a>插件作用：集成 Git Flow 让我们更加专注在 开发 这件事上。</h2><p>Git Flow：</p>
+<p><a target="_blank" rel="noopener" href="https://medium.com/@rafavinnce/gitflow-branch-guide-8a523360c053">https://medium.com/@rafavinnce/gitflow-branch-guide-8a523360c053</a></p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a><strong>安装</strong></h2><p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCqknTxMR0rjDZt2kHsgqFlOyjzQ7XcKKIB7YtoCprS6mdRLCFZzoXwA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a><strong>使用</strong></h2><p>最开始还没有初始化的时候，点击右下脚 GitFlow init</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCCRwYLnISXVxFkD5noUicbeS3NgcTwKUWtXUG3WgZbIdt62BLZkGkuNg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>直接 默认 设置就好，点击 Ok 之后，就可以开始使用了。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCBYVzFx98Eyenu25afLXpk4GAnibZcKuOB7XPPxlvPdsuPBVCTMXBoJg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>按照最规范的流程走，可以避免在未来某个阶段掉坑里。</p>
+<p>Git 版本管理规范：</p>
+<p>master：永远处于production-ready状态</p>
+<ul>
+<li>主分支，产品的功能全部实现后，最终在master分支对外发布；</li>
+<li>只读分支，只能从release或hotfix分支合并，不能修改；</li>
+<li>所有在master分支的推送应该做标签记录，方便追溯。</li>
+</ul>
+<p>develop：最新的下次发布的开发状态</p>
+<ul>
+<li>主开发分支，基于master分支克隆，发布到下一个release；</li>
+<li>只读分支，feature功能分支完成，合并到develop（不推送）；</li>
+<li>develop拉取release分支，提测；</li>
+<li>release/hotfix分支上线完毕，合并到develop并推送。</li>
+</ul>
+<p>feature：开发新功能都从develop分支出来，完成后merge回develop</p>
+<ul>
+<li>功能开发分支，基于develop分支克隆，用于新需求的开发；</li>
+<li>功能开发完毕后合并到develop分支（未正式上线之前不能推送到远程中央仓库）</li>
+<li>feature可以同时存在多个，用于团队多功能同步开发，属于临时分支，开发完毕后可以删除。</li>
+</ul>
+<p>release：准备要release的版本，只修bug。从develop出来，完成后merge回master和develop</p>
+<ul>
+<li>测试分支，feature分支合并到develop分支之后，从develop分支克隆；</li>
+<li>只要用于提交给测试人员进行功能测试，测试过程中如果发现BUG在release分支修复，修复完成上线后合并到</li>
+<li>develop/master分支并推送完成，做标签记录；</li>
+<li>临时分支，上线后可删除。</li>
+</ul>
+<p>hotfix：等不及release版本就必须马上修复master上线。从master出来，完成后merge回master和develop</p>
+<ul>
+<li>补丁分支，基于master分支克隆，主要用于对线上的版本进行BUG修复；</li>
+<li>修复完毕后合并到develop/master分支并推送，做标签记录；</li>
+<li>所有hotfix分支的修改会进入到下一个release；</li>
+<li>临时分支，补丁修复上线后可以删除；</li>
+</ul>
+<p><strong>IDEA 插件 PlantUML</strong></p>
+<h3 id="1-背景"><a href="#1-背景" class="headerlink" title="1. 背景"></a><strong>1.</strong> 背景</h3><p>之前介绍过 使用 Vscode 画 UML，实际上 idea 中也有类似的插件 可以画 UML 图。</p>
+<p>PlantUML 语法：<a target="_blank" rel="noopener" href="https://plantuml.com/zh/component-diagram">https://plantuml.com/zh/component-diagram</a></p>
+<h3 id="安装插件安装地址："><a href="#安装插件安装地址：" class="headerlink" title="安装插件安装地址："></a>安装插件安装地址：</h3><h3 id="https-plugins-jetbrains-com-plugin-7017-plantuml-integration"><a href="#https-plugins-jetbrains-com-plugin-7017-plantuml-integration" class="headerlink" title="https://plugins.jetbrains.com/plugin/7017-plantuml-integration"></a><a target="_blank" rel="noopener" href="https://plugins.jetbrains.com/plugin/7017-plantuml-integration">https://plugins.jetbrains.com/plugin/7017-plantuml-integration</a></h3><p>在安装完官方的插件之后，还需要额外安装一个 graphviz ，不然有的复杂的用例图就没办法展示了。</p>
+<p>graphviz：<a target="_blank" rel="noopener" href="https://graphviz.org/download/">https://graphviz.org/download/</a></p>
+<p><strong>2.</strong> windows 安装</p>
+<p><em>choco install graphviz</em></p>
+<p>使用</p>
+<blockquote>
+<p>新建文件 - PlantUML File - 选择想要创建的类型</p>
+</blockquote>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUC6LDoUDUrKhvQ0pJl9FO0Uw4UVm3QE1FYMD60j0rW85DzgymmKsSXNg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h3 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a><strong>流程图</strong></h3><p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCfoDwLaAadpVLKI29n57ibhL6MvRBVgqjVgSBgz81BdmlIJTwH49qia9Q/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>流程图 CODE</strong></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCtDmHNVCNhRkEXQ764ib7a8Z68dU6SCNVJAYBF2T3I5pT1CEGU2YuEKQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p> <strong>用例图</strong></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCQVYUkJiavibPaOfZWdY7B2OHtFM64hyL4OYVQ0srW3E1vibArAmCXkFzg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>用例图 Code</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">@startuml</span><br><span class="line">left to right direction</span><br><span class="line"></span><br><span class="line">actor 普通 as User</span><br><span class="line">actor 审核 as Aduitor</span><br><span class="line">actor 编辑 as Editor</span><br><span class="line">actor 营销 as Marketing</span><br><span class="line">actor 运营 as Operator</span><br><span class="line">actor 管理员 as Admin</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Admin --|&gt; User</span><br><span class="line"></span><br><span class="line">rectangle 社区 &#123;</span><br><span class="line">  User -- (查看文章)</span><br><span class="line">  User -- (发布文章&#x2F;帖子)</span><br><span class="line"></span><br><span class="line">  (帖子管理) &lt;|-- (置顶)</span><br><span class="line">  (帖子管理) &lt;|-- (审核)</span><br><span class="line">  (帖子管理) &lt;|-- (推荐)</span><br><span class="line">  (帖子管理) &lt;|-- (删除)</span><br><span class="line"></span><br><span class="line">  (社区运营) &lt;|-- (帖子管理)</span><br><span class="line">   Operator -- (社区运营)</span><br><span class="line">   Aduitor -- (社区运营)</span><br><span class="line">   Editor -- (社区运营)</span><br><span class="line">   Marketing -- (社区运营)</span><br><span class="line"></span><br><span class="line">  (App 配置) &lt;|-- (商品图片配置)</span><br><span class="line">  (App 配置) &lt;|-- (启动页配置)</span><br><span class="line">  (App 配置) &lt;|-- (活动 Banner)</span><br><span class="line">  (App 配置) &lt;|-- (互动 Banner)</span><br><span class="line">  (App 配置) &lt;|-- (商城配置)</span><br><span class="line">  (App 配置) &lt;|-- (功能配置)</span><br><span class="line">  (App 配置) &lt;|-- (产品配置)</span><br><span class="line">  (App 配置) &lt;|-- (系统配置)</span><br><span class="line">  (App 配置) &lt;|-- (新人礼包)</span><br><span class="line">  (App 配置) &lt;|-- (个人中心)</span><br><span class="line">  (App 配置) &lt;|-- (渠道配置)</span><br><span class="line">  Admin -- (App 配置)</span><br><span class="line">&#125;</span><br><span class="line">@enduml</span><br></pre></td></tr></table></figure>
+
+<p><strong>类图</strong></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUC2TZkNFGLW3EOibcLVl8Xf6Q6Jv7h0oeGgh9eW08S4zPzoudSA1w3lXQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>彩虹括号 🌈 Rainbow Brackets</p>
+<p>由于很多人没有养成好的编码风格，没有随手 format 代码的习惯，甚至有些同事会写代码超过几百行，阅读起来将非常痛苦。</p>
+<p>痛苦的原因之一就是找到上下文，由于括号太多，不确定当前代码行是否属于某个代码块，此时这个插件就会帮上大忙.</p>
+<h3 id="界面效果"><a href="#界面效果" class="headerlink" title="界面效果"></a>界面效果</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUC1CTXMvUwUAHMicb4Rqd0QPjk1RsOJ9K61KaMOK4pskFXRrJChB97gew/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片">动图</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUClCOXeXS3CNwiczQWXN0Zej2XD4bySqpUOcNo8EvicLekUHhqgsqVwKHw/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1" alt="图片"></p>
+<p><strong>阿里巴巴编码规范：Alibaba Java Coding Guidelines</strong></p>
+<p>实时监测代码的规范性, 从代码层面减少空指针等异常的出现，阿里巴巴出品的<code>Java代码</code>规范插件, 可以扫描整个项目找到不规范的地方 并且大部分可以自动修复。</p>
+<p>虽说检测功能没有 <code>findbugs</code> 强大，但是可以自动修复, 阿里巴巴 Java 编码指南插件支持。</p>
+<p>让代码变得更规范， 是我们每一位程序员都应该记在心中的事。</p>
+<h3 id="变量驼峰命名规范"><a href="#变量驼峰命名规范" class="headerlink" title="变量驼峰命名规范"></a>变量驼峰命名规范</h3><p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCAI2pa28zw5AP3pniczSNLqanx5kZ1o25ND6ysFLjIckxicNLfUPgACyA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>当鼠标移到变量上时, 就会自动提示 不符合 <code>lowerCamelCase</code>命名风格</p>
+<h3 id="字符串比较提示-equals"><a href="#字符串比较提示-equals" class="headerlink" title="字符串比较提示 equals"></a>字符串比较提示 <code>equals</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    String str &#x3D; null;</span><br><span class="line"></span><br><span class="line">    if (str.equals(&quot;test&quot;)) &#123;</span><br><span class="line">      System.out.println(&quot;success&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>WARNING</p>
+<p>当我们初学 <code>Java</code>时, 很有可能会犯这样的错误, 这里很明显会报空指针异常, 而在编辑器中</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCgZ5xgF4IeTeXqbg0BT1hOCibX9dAaBmgbiaJA24vcib0FxJnQtdyDY2hA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>安装插件之后, 编辑器已经给出详细提示,<code>&quot;test“</code> 应该做为 <code>equals</code>方法的调用方, 并给出了原因, 应为这样很容易导致空指针异常, 并给出了例子</p>
+<h3 id="当你的类命名不规范时"><a href="#当你的类命名不规范时" class="headerlink" title="当你的类命名不规范时"></a>当你的类命名不规范时</h3><p>比如我创建了一个测试类 <code>test.java</code>，就会出现如下提示</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCQiahMxAkt3ILdRM8H111axd1BhKaSEkic6u4QwibNfSe8stbzuUb9BD0w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>类名，首字母需要大写。缺少作者注释。</p>
+<p><strong>mybatis 插件：Free Mybatis plugin</strong></p>
+<blockquote>
+<p>安装此插件后可以节约很多的开发时间, 在 <code>mapper</code> 层接口可以直接进入 <code>xml</code>文件中</p>
+</blockquote>
+<h3 id="IntelliJ-Lombok-plugin"><a href="#IntelliJ-Lombok-plugin" class="headerlink" title="IntelliJ Lombok plugin"></a><strong>IntelliJ Lombok plugin</strong></h3><p>Lombok pom.xml 文件配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.projectlombok&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;lombok&lt;&#x2F;artifactId&gt;</span><br><span class="line">    &lt;version&gt;1.16.18&lt;&#x2F;version&gt;</span><br><span class="line">    &lt;scope&gt;provided&lt;&#x2F;scope&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>生命很宝贵, 没有必要浪费在这个重复的工作上, 尤其是如果我们使用传统的 get set 方法, 在实体类进行变更的时候, 或多添加了列, 或减少了列, 又要重新生成对应的 get set 这难道不就是浪费时间浪费生命吗?</p>
+</blockquote>
+<p>还不熟悉使用的可以看这篇文章，Java 开发之 Lombok 必知必会：</p>
+<p>juejin.im/post/5cf3edf7e51d454f71439c79</p>
+<h3 id="GenAllSetter"><a href="#GenAllSetter" class="headerlink" title="GenAllSetter"></a><strong>GenAllSetter</strong></h3><p>在 Java 方法中, 根据 new 关键词, 为 Java Bean 生成所有Setter方法。按 GenAllSetter 键两次, 会为 Setter 方法生成默认值。</p>
+<h3 id="GenDaoCode"><a href="#GenDaoCode" class="headerlink" title="GenDaoCode"></a><strong>GenDaoCode</strong></h3><p>一键生成 dao xml service</p>
+<h3 id="CodeGlance"><a href="#CodeGlance" class="headerlink" title="CodeGlance"></a><strong>CodeGlance</strong></h3><p>在右侧生成代码地图</p>
+<h3 id="RestfulToolkit"><a href="#RestfulToolkit" class="headerlink" title="RestfulToolkit"></a><strong>RestfulToolkit</strong></h3><p>一套 Restful 服务开发辅助工具</p>
+<ul>
+<li>1.根据 URL 直接跳转到对应的方法定义 ( Ctrl \ or Ctrl Alt N );</li>
+<li>2.提供了一个 Services tree 的显示窗口;</li>
+<li>3.一个简单的 http 请求工具;</li>
+<li>4.在请求方法上添加了有用功能: 复制生成 URL;,复制方法参数…</li>
+<li>5.其他功能: java 类上添加 Convert to JSON 功能，格式化 json 数据 ( Windows: Ctrl + Enter; Mac: Command + Enter )。</li>
+</ul>
+<h3 id="Grep-Console"><a href="#Grep-Console" class="headerlink" title="Grep Console"></a><strong>Grep Console</strong></h3><p>高亮log不同级别日志，看日志的时候一目了然。</p>
+<h3 id="MyBatis-Log-Plugin"><a href="#MyBatis-Log-Plugin" class="headerlink" title="MyBatis Log Plugin"></a><strong>MyBatis Log Plugin</strong></h3><p>把 Mybatis 输出的sql日志还原成完整的sql语句，看起来更直观。</p>
+<h3 id="GsonFormat"><a href="#GsonFormat" class="headerlink" title="GsonFormat"></a><strong>GsonFormat</strong></h3><blockquote>
+<p>快速的讲一个 json转换为一个实体 安装完插件后 alt + s 放入正确的 json格式</p>
+</blockquote>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_gif/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUC03FOSY1FR1ttlCzuB3DED8VQaBFVsaqHrMbEuEXvMolpLDAT6cHb1w/640?wx_fmt=gif&tp=webp&wxfrom=5&wx_lazy=1" alt="图片"></p>
+<h3 id="VisualVm-Launcher"><a href="#VisualVm-Launcher" class="headerlink" title="VisualVm Launcher"></a><strong>VisualVm Launcher</strong></h3><p>运行java程序的时候启动visualvm，方便查看jvm的情况 比如堆内存大小的分配</p>
+<p>某个对象占用了多大的内存，jvm调优必备工具</p>
+<h3 id="jclasslib-bytecode-viewer"><a href="#jclasslib-bytecode-viewer" class="headerlink" title="jclasslib bytecode viewer"></a><strong>jclasslib bytecode viewer</strong></h3><p>一款可视化的字节码查看插件</p>
+<h3 id="Codota"><a href="#Codota" class="headerlink" title="Codota"></a><strong>Codota</strong></h3><p>支持智能代码自动提示，该功能可以增强 IDEA 的代码提示功能。</p>
+<p>支持 JDK 和知名第三方库的函数的使用方法搜索，可以看到其他知名开源项目对该函数的用法。当我们第一次使用某个类，对某个函数不够熟悉时，可以通过该插件搜索相关用法，快速模仿学习。</p>
+<h3 id="Auto-filling-Java-call-arguments"><a href="#Auto-filling-Java-call-arguments" class="headerlink" title="Auto filling Java call arguments"></a><strong>Auto filling Java call arguments</strong></h3><p>开发中，我们通常会调用其它已经编写好的函数，调用后需要填充参数，但是绝大多数情况下，传入的变量名称和该函数的参数名一致，当参数较多时，手动单个填充参数非常浪费时间。</p>
+<p>该插件就可以帮你解决这个问题。安装完该插件以后，调用一个函数，使用 Alt+Enter 组合键，调出 “Auto fill call parameters” 自动使用该函数定义的参数名填充。</p>
+<h3 id="Rainbow-Brackets"><a href="#Rainbow-Brackets" class="headerlink" title="Rainbow Brackets"></a><strong>Rainbow Brackets</strong></h3><p>由于很多人没有养成好的编码风格，没有随手 format 代码的习惯，甚至有些同事会写代码超过几百行，阅读起来将非常痛苦。</p>
+<p>痛苦的原因之一就是找到上下文，由于括号太多，不确定当前代码行是否属于某个代码块，此时这个插件就会帮上大忙。</p>
+<h3 id="SequenceDiagram"><a href="#SequenceDiagram" class="headerlink" title="SequenceDiagram"></a><strong>SequenceDiagram</strong></h3><p>SequenceDiagram 可以根据代码调用链路自动生成时序图，超级赞，超级推荐！</p>
+<p>这对研究源码，梳理工作中的业务代码有极大的帮助，堪称神器。</p>
+<p>安装完成后，在某个类的某个函数中，右键 –&gt; Sequence Diagaram 即可调出。</p>
+<h3 id="Java-Stream-Debugger"><a href="#Java-Stream-Debugger" class="headerlink" title="Java Stream Debugger"></a><strong>Java Stream Debugger</strong></h3><p>Stream 非常好用，可以灵活对数据进行操作，但是对很多刚接触的人来说，不好理解。</p>
+<p>那么 Java Stream Debugger 这款神器的 IDEA 就可以帮到你。它可以将 Stream 的操作步骤可视化，非常有助于我们的学习。</p>
+<p>下面是刚刚介绍的这些插件的名字。</p>
+<ul>
+<li>AlibabaCloudToolkit</li>
+<li>Git Flow</li>
+<li>PlantUML</li>
+<li>Rainbow Brackets</li>
+<li>Alibaba Java Coding Guidelines</li>
+<li>翻译插件</li>
+<li>mybatis 插件</li>
+<li>IntelliJ Lombok plugin</li>
+<li>GenAllSetter</li>
+<li>GenDaoCode</li>
+<li>CodeGlance</li>
+<li>RestfulToolkit</li>
+<li>Grep Console</li>
+<li>MyBatis Log Plugin</li>
+<li>GsonFormat</li>
+<li>VisualVm Launcher</li>
+<li>jclasslib bytecode viewer</li>
+<li>Codota</li>
+<li>Auto filling Java call arguments</li>
+<li>Rainbow Brackets</li>
+<li>SequenceDiagram</li>
+<li>Java Stream Debugger</li>
+<li>Ace Jump</li>
+</ul>
+<p>\6. 好看字体</p>
+<p>最近JetBrains公司推出了一款优雅美观的字体：JetBrainsMono。</p>
+<h3 id="对比-Consolas"><a href="#对比-Consolas" class="headerlink" title="对比 Consolas"></a>对比 Consolas</h3><p>对比之前一直在使用 <code>Consolas</code> 字体</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCJY4YB7dWyom6MZmdNFDsy4m3h2UpiaUdzSyS2vfarrOuwicrypPnibjQA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCLfVFrc59HhSzTXsAicRl3ibPgbPQBYTh7moKmVzZIrZ6IWMb2vqWzH4A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h3 id="下载字体"><a href="#下载字体" class="headerlink" title="下载字体"></a>下载字体</h3><p>官网下载：<a target="_blank" rel="noopener" href="https://www.jetbrains.com/lp/mono/">https://www.jetbrains.com/lp/mono/</a></p>
+<p>坚果云下载：jianguoyun.com/p/DRPh-GkQ_7eJCBiv2uMC</p>
+<p>Windows 安装</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCXnz3YErWQH7Y5yXyU0shiaESNuoHLs3mgF1B2n6HnjbKGPeQ5sgk35Q/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<ul>
+<li>下载后，解压文件</li>
+<li>直接双击扩展名为 <code>tff</code> 后缀的文件</li>
+<li>重启 <code>IDEA</code></li>
+<li><code>Perferences/Setting -&gt; Editor -&gt; Font</code>，选择 JetBrains Mono 确认即可</li>
+</ul>
+<p>\7. 版本控制 </p>
+<p>这里主要盘点一下在 IDEA 中进行版本控制时，大部分人没注意到的一些细节吧，主要包括下面这写。</p>
+<ul>
+<li>查看每一行代码的条件人, 提交时间（大部分人不知道）</li>
+<li>克隆远程代码</li>
+<li>拉取远程代码</li>
+<li>将暂存区代码提交到本地库</li>
+<li>将本地库 提交到远程库</li>
+<li>切换分支, 或拉取远程分支</li>
+<li>查看当前打开类 历史记录</li>
+<li>Stash</li>
+<li>Check Out</li>
+</ul>
+<p>查看每一行代码的条件人, 提交时间（大部分人不知道）</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCw1DXaYL0OXmjuib5UUrRJjsfoMMmXV63rCuBda4CloECXGSlWaE78kQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>选择后入下图所示</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCphlxOnqBPc4nyMyUS2tYgbdIA9Hp9yicakyXAKrq6oOSvVlpSQq3vibA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>鼠标移动上去还能看到提交详细信息</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCUibHgHy8sc9Cl4W8sqF3y93gqTvd8ibewV2yEYlIzgEEkyG1PqFrczwg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>克隆远程代码</p>
+<blockquote>
+<p>git clone origin url</p>
+</blockquote>
+<p><strong>常规操作</strong></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUC9ZvpmQeXn3snS2ZbRnxOQZBvZMgyc7errfPhicoN324tyDzG7V0kgAg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>装逼操作</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCprERNlI8XrFKe9tJvU5m06MwkGbO93YF696U0404Wg6uBwZ9nzHUnw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>拉取远程代码</p>
+<blockquote>
+<p>git pull</p>
+</blockquote>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCxeKpRrqibNCEJVcXT97icRya8bEOibQA7m8obfd6dL2CgPpw8OfvFIuiaw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>快捷方式</p>
+<p>ctrl + t</p>
+<p>将暂存区代码提交到本地库</p>
+<blockquote>
+<p>git commit -m ‘message’</p>
+</blockquote>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUC0BmFVuAwI6jymoCm8PMrh27umCSxjd6WSIxhXyWRAGlIsLO6icCxf6w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"> <img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCIj99tVrBhQZHZdp79leg0OqgwuBRib2Yvd3SEqHnlZAPgLEiaNvsxHQg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>将本地库 提交到远程库</p>
+<blockquote>
+<p>git push</p>
+</blockquote>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCAibq15uPsaibBn7WuCiaGJwHDrGVxUbvGxFwDWWQTIKElqD4ukjN2JicnA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>快捷键</p>
+<p>ctrl + shif 或 alt + 1 + 8</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">切换分支, 或拉取远程分支</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUC699vEsKurssqH5eGJtyia1aHQeLsKb4ny78bvrKvqK2hLoxicUOQ256A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>以下提供几种快捷方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ctrl + shift + &#96; 或 alt + ~ + 7 或</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCrbXbiaciblZIkn0rthiaXcd8cpN0jEcoVar7FIjmTKBu3klyb8G9Oj8xw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>查看当前打开类 历史记录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alt + ~ + 4查看项目工程历史记录</span><br></pre></td></tr></table></figure>
+
+<p>选中工程后</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alt + ~ + 4</span><br></pre></td></tr></table></figure>
+
+<p>或 <code>alt + 9</code> 切换到 <code>Version Control</code> 面板 选择log</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCVkibroqcHeVrGsnzyEmIUPNrY4nRxwyvLZme5UlQW6wnicFPQiaazK8gg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>Stash</p>
+<p>应用场景</p>
+<p>我在本地修改好后，发现远程分支已经被改动了，此时我本地也被改动了就造成了冲突，无法push或者pull。此时可以使用git stash</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git stash &#x2F;&#x2F;把本地的改动暂存起来</span><br><span class="line">git pull &#x2F;&#x2F;拉取远端分支（此时本地分支会回滚到上次commit的情况，新的改动都存在了stash中）</span><br><span class="line">git stash pop &#x2F;&#x2F; 将栈顶改动重新加回本地分支，就可以继续修改了，当然，如果改好了就是add,commit,push啥的。。</span><br></pre></td></tr></table></figure>
+
+<p>不小心改动了其他分支，例如忘记切换，直接在master分支上做改动，这里假设我的分支是test分支</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git stash &#x2F;&#x2F;把本地当前改动暂存起来，此时master分支就恢复到了上次拉取时的状态</span><br><span class="line">git checkout test &#x2F;&#x2F;切换到需要改动的分支</span><br><span class="line">git stash pop &#x2F;&#x2F;将改动pop到自己当前的分支</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Idea 将现在本地的修改存储在 Stash 中<code>alt + ~</code>加 <code>9</code></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCpB9sjs9lUQP25nmh2KibxbTS8xZHZhiagynpibFUPI45DLHs0gfY0YtbQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>将 Stash 中的代码还原</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruwBkQUFiaMLcXTcEKOFSszUCkq8hSBQLS9UJS5JKyibyQvrDrMuytxubKlILk7AsIiceoSztgmibUN50g/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h3 id="Check-Out"><a href="#Check-Out" class="headerlink" title="Check Out"></a>Check Out</h3><p>将本地修改的代码还原对应命令 <code>git checkout &lt;file&gt;</code></p>
+<p>\8. Terminal 配置</p>
+<p>将 Idea 的 Terminal 改为 Git Bash。使用体验翻倍</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWg7sfKREk1jXhGr6tMrlHbeDa6ryODeLkGyicrw0XRuNGbxCEy2fp3vw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>以前用着这么恶心的 CMD Terminal 我居然没有想法去修改。设置看图</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/ePw3ZeGRruw9I5jwWKz2iaLTicUXmdtMTWUVWiaEyOT6LQ8em6iaWpiaB2Ftspouqzkegxuu4DV3jScvUz6DpahDpJw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/03/25/3.1.java%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E4%B9%8BIDEA/" data-id="ckno8ff8e0055swwd04tcfrqb" data-title="java开发工具之IDEA" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/03/26/4.2.%E5%88%9D%E8%AF%86java%EF%BC%9A%E7%89%B9%E6%80%A7%E3%80%81%E7%89%88%E6%9C%AC%E3%80%81%E5%AE%89%E8%A3%85/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          初识java
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/03/23/4.5.java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E9%99%84%E5%BD%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">java基础知识附录</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%84%E8%8C%83/" rel="tag">规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%A7%84%E8%8C%83/" style="font-size: 10px;">规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/19/19.4.SVN/">SVN</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/">WEB之上传和下载</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/">WEB之listener和filter</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/">WEB之cookie和session</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.6.WEB%E4%B9%8Bajax/">WEB之ajax</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 swx<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

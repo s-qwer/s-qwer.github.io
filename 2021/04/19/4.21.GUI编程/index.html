@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>GUI编程 | swx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="GUI(图形用户界面) Java为GUI提供的对象都存在java.Awt和javax.Swing两个包中 GUI：Graphical User Interface(图形用户接口)。 用图形的方式，来显示计算机操作的界面，这样更方便更直观。 CLI：Command line User Interface (命令行用户接口） 就是常见的Dos命令行操作。 需要记忆一些常用的命令，操作不直观。 java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GUI编程">
+<meta property="og:url" content="https://s-qwer.github.io/2021/04/19/4.21.GUI%E7%BC%96%E7%A8%8B/index.html">
+<meta property="og:site_name" content="swx">
+<meta property="og:description" content="GUI(图形用户界面) Java为GUI提供的对象都存在java.Awt和javax.Swing两个包中 GUI：Graphical User Interface(图形用户接口)。 用图形的方式，来显示计算机操作的界面，这样更方便更直观。 CLI：Command line User Interface (命令行用户接口） 就是常见的Dos命令行操作。 需要记忆一些常用的命令，操作不直观。 java">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s-qwer.github.io/4.21.GUI%E7%BC%96%E7%A8%8B/wps1.jpg">
+<meta property="article:published_time" content="2021-04-19T03:35:41.000Z">
+<meta property="article:modified_time" content="2021-04-19T06:20:56.601Z">
+<meta property="article:author" content="swx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s-qwer.github.io/4.21.GUI%E7%BC%96%E7%A8%8B/wps1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="swx" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swx</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://s-qwer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-4.21.GUI编程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/4.21.GUI%E7%BC%96%E7%A8%8B/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T03:35:41.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      GUI编程
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>GUI(图形用户界面)</p>
+<p>Java为GUI提供的对象都存在java.Awt和javax.Swing两个包中</p>
+<p>GUI：Graphical User Interface(图形用户接口)。</p>
+<p>用图形的方式，来显示计算机操作的界面，这样更方便更直观。</p>
+<p>CLI：Command line User Interface (命令行用户接口）</p>
+<p>就是常见的Dos命令行操作。</p>
+<p>需要记忆一些常用的命令，操作不直观。</p>
+<p>java.awt：Abstract Window ToolKit (抽象窗口工具包)，需要调用本地系统方法实现功能。属重量级控件。</p>
+<p>javax.swing：在AWT的基础上，建立的一套图形界面系统，其中提供了更多的组件，而且完全由Java实现。增强了移植性，属轻量级控件。</p>
+<p>javax是java扩展包</p>
+<p>和本地系统相关的，就是重量级控件，因为移植性很差。完全由java实现的，移植性就很好，属于轻量级控件。（这里的轻重是与操作系统的关系）</p>
+<p><img src="/4.21.GUI%E7%BC%96%E7%A8%8B/wps1.jpg" alt="img"> </p>
+<p>Component（组件）</p>
+<p>Container：为容器，是一个特殊的组件，该组件中可以通过add方法添加其他组件进来。</p>
+<p>Window：窗体  没有边界和标题</p>
+<p>Panel：面板</p>
+<p>Frame：框架  有边界和标题</p>
+<p>Dialog：对话框</p>
+<p>FileDialog：文件对话框</p>
+<p>Button：按钮</p>
+<p>Label：标签</p>
+<p>Checkbox：复选框</p>
+<p>TextComponent：文本组件</p>
+<p>TextArea：文本域  多行多列</p>
+<p>TextField：文本框  单行多列</p>
+<p>Frame  f = new Frame(“my window”);//构造方法命名 setTile是方法命名</p>
+<p>f.setLayout(new FlowLayout());//设置为流式布局</p>
+<p>f.setSize(300,400);//设置窗体大小 Dimension</p>
+<p>f.setLocation(300,200);//设置窗体出现在屏幕的位置 Point</p>
+<p>f.setVisible(true);//设置窗体是否可见</p>
+<p>一个方法：setBounds（int x,int y,int width,int height）</p>
+<p>前后是有顺序关系的，如果f.setVisible(true);在前面就会先显示再加载到指定位置。一般是这个步骤：创建窗体对象；设置窗体属性；设置窗体可见</p>
+<p>事件监听机制</p>
+<p>事件源：事件发生的地方</p>
+<p>事件：要发生的事情</p>
+<p>事件处理：针对发生的事情做出的处理方案</p>
+<p>事件监听器：就是把事件源和事件关联起来</p>
+<p>窗体布局：窗体中组件的排列方式</p>
+<p>流式布局FlowLayout：从上到下，从左到右。</p>
+<p>边界布局BorderLayout：东西南北中</p>
+<p>网格布局GridLayout：网格状，标准n行n列</p>
+<p>网格包布局GridBagLayout：可以将任意个相连的网格状连在一起当一个</p>
+<p>卡片布局CardLayout：类似于卡片，点一个卡片会在主界面加载一个</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.21.GUI%E7%BC%96%E7%A8%8B/" data-id="ckno8ff5b001yswwd17nr84w8" data-title="GUI编程" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/04/19/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          反射和注解
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/04/19/4.18.%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">网络编程</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%84%E8%8C%83/" rel="tag">规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%A7%84%E8%8C%83/" style="font-size: 10px;">规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/19/19.4.SVN/">SVN</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/">WEB之上传和下载</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/">WEB之listener和filter</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/">WEB之cookie和session</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.6.WEB%E4%B9%8Bajax/">WEB之ajax</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 swx<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

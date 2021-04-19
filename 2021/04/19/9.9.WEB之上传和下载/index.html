@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>WEB之上传和下载 | swx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="*文件上传*文件上传：将本地的文件通过流写入到服务器的过程。 文件上传的技术： JSPSmartUpload    ：应用在JSP上的文件上传和下载的组件。 FileUpload：应用在Java环境上的文件上传的功能。 Servlet3.0：提供文件上传的功能（前面我们选得都是2.5版本） Struts2：提供文件上传的功能 文件上传的三个要素： 表单的提交的方式需要是POST 表单中需要有元素，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WEB之上传和下载">
+<meta property="og:url" content="https://s-qwer.github.io/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/index.html">
+<meta property="og:site_name" content="swx">
+<meta property="og:description" content="*文件上传*文件上传：将本地的文件通过流写入到服务器的过程。 文件上传的技术： JSPSmartUpload    ：应用在JSP上的文件上传和下载的组件。 FileUpload：应用在Java环境上的文件上传的功能。 Servlet3.0：提供文件上传的功能（前面我们选得都是2.5版本） Struts2：提供文件上传的功能 文件上传的三个要素： 表单的提交的方式需要是POST 表单中需要有元素，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps31.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps32.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps33.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps34.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps35.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps36.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps37.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps38.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps39.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps40.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps41.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps42.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps43.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps44.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps45.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps46.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps47.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps48.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps49.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps50.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps51.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps52.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps53.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps54.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps55.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps56.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps57.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps58.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps59.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps60.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps61.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps62.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps63.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps64.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps65.jpg">
+<meta property="article:published_time" content="2021-04-19T06:30:56.000Z">
+<meta property="article:modified_time" content="2021-04-19T06:37:27.573Z">
+<meta property="article:author" content="swx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s-qwer.github.io/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps31.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="swx" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swx</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://s-qwer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-9.9.WEB之上传和下载" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:30:56.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      WEB之上传和下载
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="文件上传"><a href="#文件上传" class="headerlink" title="*文件上传*"></a><em><strong>*文件上传*</strong></em></h1><p>文件上传：将本地的文件通过流写入到服务器的过程。</p>
+<p>文件上传的技术：</p>
+<p>JSPSmartUpload    ：应用在JSP上的文件上传和下载的组件。</p>
+<p>FileUpload：应用在Java环境上的文件上传的功能。</p>
+<p>Servlet3.0：提供文件上传的功能（前面我们选得都是2.5版本）</p>
+<p>Struts2：提供文件上传的功能</p>
+<p>文件上传的三个要素：</p>
+<p>表单的提交的方式需要是POST</p>
+<p>表单中需要有<input type=”file”>元素，需要有name属性和值。</p>
+<p>表单enctype=”multipart/form-data”</p>
+<p>写一个JSP，再写一个表单form，method为post提交，设置文件上传项，name属性和值，<em><strong>*Content-Type: application/x-www-form-urlencoded*</strong>***</em>*是默认的，改为****enctype=”multipart/form-data”，用HTTPWathch进行抓包分析：</p>
+<p>没有设置enctype属性</p>
+<p>POST /web06/jsp/upload.jsp HTTP/1.1</p>
+<p>Accept: text/html, application/xhtml+xml, <em>/</em></p>
+<p>X-HttpWatch-RID: 22006-10011</p>
+<p>Referer: <a target="_blank" rel="noopener" href="http://localhost:8080/web06/jsp/upload.jsp">http://localhost:8080/web06/jsp/upload.jsp</a></p>
+<p>Accept-Language: zh-CN</p>
+<p>User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko</p>
+<p><em><strong>*Content-Type: application/x-www-form-urlencoded*</strong></em></p>
+<p>Accept-Encoding: gzip, deflate</p>
+<p>Host: localhost:8080</p>
+<p>Content-Length: 53</p>
+<p>DNT: 1</p>
+<p>Connection: Keep-Alive</p>
+<p>Cache-Control: no-cache</p>
+<p>Cookie: JSESSIONID=D51DCB996556C94861B2C72C4D978010</p>
+<p>info=info&amp;upload=C%3A%5CUsers%5Cjt%5CDesktop%5Caa.txt</p>
+<p>没有文件上传中的文件的具体内容</p>
+<p>设置enctype属性：</p>
+<p>POST /web06/jsp/upload.jsp HTTP/1.1</p>
+<p>Accept: text/html, application/xhtml+xml, <em>/</em></p>
+<p>X-HttpWatch-RID: 22006-10026</p>
+<p>Referer: <a target="_blank" rel="noopener" href="http://localhost:8080/web06/jsp/upload.jsp">http://localhost:8080/web06/jsp/upload.jsp</a></p>
+<p>Accept-Language: zh-CN</p>
+<p>User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko</p>
+<p><em><strong>*Content-Type: multipart/form-data;*</strong></em> boundary=—————————7e139d10110a64</p>
+<p>Accept-Encoding: gzip, deflate</p>
+<p>Host: localhost:8080</p>
+<p>Content-Length: 322</p>
+<p>DNT: 1</p>
+<p>Connection: Keep-Alive</p>
+<p>Cache-Control: no-cache</p>
+<p>Cookie: JSESSIONID=D51DCB996556C94861B2C72C4D978010</p>
+<p>—————————–7e139d10110a64</p>
+<p>Content-Disposition: form-data; name=”info”</p>
+<p>aaa</p>
+<p>—————————–7e139d10110a64</p>
+<p>Content-Disposition: form-data; name=”upload”; filename=”C:\Users\jt\Desktop\aa.txt”</p>
+<p>Content-Type: text/plain</p>
+<p>hello world！！！</p>
+<p>—————————–7e139d10110a64–</p>
+<p>—————————–7e139d10110a64代表分割线，将内容分割（分为2块就是三个分割线），–代表结束</p>
+<p>文件上传的原理分析：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps31.jpg" alt="img"> </p>
+<p>//普通项的aaa是jsp页面上写的名字。普通项就是表单中的其他内容，文件上传项是文件上传的相关内容。</p>
+<p>进行一个文件的上传：</p>
+<p>1.引入文件上传的相关的jar包</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps32.jpg" alt="img"> </p>
+<p>2.编写文件上传的JSP页面</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps33.jpg" alt="img"> </p>
+<p>3.编写文件上传的Servlet</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps34.jpg" alt="img"> </p>
+<p>上传的内容没有在工程里，而是直接在文件下。</p>
+<p>文件上传的API</p>
+<p>1.DiskFileItemFactory：磁盘文件项工厂</p>
+<p>构造方法：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps35.jpg" alt="img"> </p>
+<p>DiskFileItemFactory()和DiskFileItemFactory(int sizeThreshold,File repostory)</p>
+<p>sizeThreshold:设置文件上传的缓冲区的大小，默认值为10kb。</p>
+<p>repository:设置文件上传过程中产生临时文件（如果超过了缓冲区的大小，就会产生临时文件）存放的路径。</p>
+<p>方法：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps36.jpg" alt="img"> </p>
+<p>setSizeThreshold()：设置缓冲区的大小</p>
+<p>setRepository()：设置临时文件存放的路径</p>
+<p>举例代码：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps37.jpg" alt="img"> </p>
+<p>上传的文件如果没有超过缓冲区的大小，会直接在上传的目标文件夹下上传成功；如果超过了缓冲区的大小，会在你设定的临时文件下有一个TMP文件，当上传成功时，目标文件夹下会有一个文件，这个TMP文件也不会消失，用来续传或者其他操作。</p>
+<p>2.ServletFileUpload：核心解析类</p>
+<p>构造方法：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps38.jpg" alt="img"> </p>
+<p>方法：</p>
+<p>判断表单的enctype属性是否正确：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps39.jpg" alt="img"> </p>
+<p>解析Request对象，返回一个List集合（每个部分的对象FileItem）：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps40.jpg" alt="img"> </p>
+<p>设置单个文件的大小：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps41.jpg" alt="img"> </p>
+<p>设置上传的文件的总大小：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps42.jpg" alt="img"> </p>
+<p>设置中文文件名上传的乱码的问题（一般不会出现）：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps43.jpg" alt="img"> </p>
+<p>设置监听文件上传的进度：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps44.jpg" alt="img"> </p>
+<p>3.FileItem文件项</p>
+<p>方法：</p>
+<p>判断表单项是普通项还是文件上传项。如果为true代表是普通项：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps45.jpg" alt="img"> </p>
+<p>普通项的方法：</p>
+<p>获得普通项的名称：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps46.jpg" alt="img"> </p>
+<p>获得普通项的值：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps47.jpg" alt="img"> </p>
+<p>文件上传项的方法：</p>
+<p>获得文件上传的文件名的方法：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps48.jpg" alt="img"> </p>
+<p>获得文件上传的文件内容的方法：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps49.jpg" alt="img"> </p>
+<p>获得文件上传的文件的大小：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps50.jpg" alt="img"> </p>
+<p>删除文件上传过程中的临时文件：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps51.jpg" alt="img"> </p>
+<p>JS控制多文件上传：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps52.jpg" alt="img"> </p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps53.jpg" alt="img"> </p>
+<p>文件上传兼容浏览器问题：如果使用IE老版本的浏览器会出现一个文件名称获取错误问题。IE老版本获取文件名称的时候，会带有路径。</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps54.jpg" alt="img"> </p>
+<p>一般的浏览器获得的filename都是aa.txt，但是老版本的IE浏览器是会获得全路径的文件名，会造成报错。</p>
+<p>解决：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps55.jpg" alt="img"> </p>
+<p>//检索\最后出现的坐标，当这个坐标存在的时候，截取这个左边开始到结束的内容</p>
+<p>文件上传同一个目录下文件同名问题：张三向服务器上传了一个文件aa.txt内容是hello world。李四向服务器上传了一个文件aa.txt内容hello Java。后上传的文件将先上传的文件覆盖了。</p>
+<p>使用唯一文件名进行解决：</p>
+<p>UUID的randomUUID方法toString后得到的是一个包含-的字符串（由数字，字母和-组成）</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps56.jpg" alt="img"> </p>
+<p>文件上传同一个目录下文件过多的问题：现在所有的用户都上传文件，如果网站访问量比较大，如果都上传到同一个目录下，在同一个目录下存放的文件太多了，也会对程序有影响（其实打开该目录的时候，都会很卡，更别说读写操作）。</p>
+<p>解决方法：</p>
+<p>进行目录分离：</p>
+<p>按时间分离        ：按月、周、天、小时。</p>
+<p>按用户分离        ：按张三、李四。</p>
+<p>按个数分离        ：一个目录下存放3000个文件。</p>
+<p><em><strong>*按目录分离算法*</strong>***</em>*分离****    <em><strong>*：按照某种特定算法进行分离。*</strong></em></p>
+<p><em><strong>*上传一个文件，得到一个唯一的文件名。*</strong></em></p>
+<p><em><strong>*唯一文件名获取其hashCode值。—–int类型的值（32位*</strong>***</em>*，*<strong><strong><strong>*无论正负*</strong></strong></strong>*）****</p>
+<p><em><strong>*让hashCode的值 &amp; 0xf;—–得出的这个值作为一级目录。*</strong></em></p>
+<p><em><strong>*让hashCode右移4位  &amp; 0xf;—-得出的这个值作为二级目录。*</strong></em></p>
+<p><em><strong>*以此类推。*</strong></em></p>
+<p><em><strong>*分析算法：*</strong></em></p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps57.jpg" alt="img"> </p>
+<p>每级目录下又可以划分为：0000-1111有16个子目录</p>
+<p>代码实现：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps58.jpg" alt="img"> </p>
+<p>一般情况下，服务器是不会关闭的。因为服务器关闭后，会发现存放的上传文件都不见了，所以一般不关闭服务器，或者直接将上传的文件存入到本地磁盘中。</p>
+<h1 id="文件下载"><a href="#文件下载" class="headerlink" title="*文件下载*"></a><em><strong>*文件下载*</strong></em></h1><p>文件下载：将服务器上的一个文件，通过流写入到客户端上。</p>
+<p>文件下载的方式：</p>
+<p>1.使用超链接的方式实现文件的下载：</p>
+<p>在<a href=”文件的路径”>超链接</a></p>
+<p><em><strong>*注意：超链接的方式，如果浏览器不能识别这种格式的文件，*</strong>***</em>*就会*<strong><strong><strong>*提示下载，*</strong></strong></strong>*点击确定，就会下载。*<strong><strong><strong>*如果支持该格式的文件，*</strong></strong></strong>*就会****<em><strong>*直接打开。*</strong></em></p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps59.jpg" alt="img"> </p>
+<p><em><strong>*2.*</strong>***</em>*通过手动编写代码的方式实现文件的下载*<strong><strong><strong>*（*</strong></strong></strong>*无论浏览器支持不支持该格式的文件，都会询问是否下载，点击确定后就是下载****<em><strong>*）*</strong></em></p>
+<p><em><strong>*设置两个头和一个流*</strong>***</em>*：****</p>
+<p><em><strong>*Content-Type*</strong></em>            <em><strong>*:文件的MIME的类型*</strong>***</em>*（*<strong><strong><strong>*可以获取到*</strong></strong></strong>*）****</p>
+<p><em><strong>*Content-Disposition*</strong></em>    <em><strong>*:浏览器支持该格式的文件，提示下载*</strong>***</em>*（*<strong><strong><strong>*固定的格式*</strong></strong></strong>*）****</p>
+<p><em><strong>*设置代表该文件的输入流*</strong>***</em>*(输出流是固定*<strong><strong><strong>*的是**</strong> *<strong>*response.getOutputStream()*</strong></strong></strong>*)****</p>
+<p>文件下载的页面</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps60.jpg" alt="img"> </p>
+<p>文件下载的Servlet</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps61.jpg" alt="img"> </p>
+<p>中文文件的下载：（出现乱码问题）</p>
+<p>因为不同的浏览器对中文文件的下载的编码不一样的：</p>
+<p>IE浏览器采用的是URL编码</p>
+<p>Firefox浏览器采用的是Base64编码</p>
+<p>所以需要判断客户端使用的浏览器的类型：User-Agent请求头可以获得客户端浏览器信息。</p>
+<p>写一个工具类的base64编码方法，再调用这个方法进行转换，因为这个编码方法进行了加密。</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps62.jpg" alt="img"> </p>
+<p>案例：给定目录下的文件下载</p>
+<p>需求：给定一个目录（这个目录可以是任意盘符下的任意路径—这个路径下有多少级目录，每级目录中有多少个文件都是未知的）。将这个路径中的文件显示到页面上，在页面上给每个文件都提供相应的下载的链接，当点击这个链接的时候，对该文件进行下载。</p>
+<p>分析：</p>
+<p>树形结构的遍历，使用队列：根节点都入队然后出队，最后剩余的是叶节点：6 7 8 9 10</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps63.jpg" alt="img"> </p>
+<p>文件列表显示的代码实现：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps64.jpg" alt="img"> </p>
+<p>下载代码的实现：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps65.jpg" alt="img"> </p>
+<p>中文名字的文件经过IE浏览器编码时，会将其中的空格转换为加号，所以在这里需要将其中的加号再转换为空格。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/" data-id="ckno8ff5n0034swwdackb5xod" data-title="WEB之上传和下载" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/04/19/19.4.SVN/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          SVN
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">WEB之listener和filter</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%84%E8%8C%83/" rel="tag">规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%A7%84%E8%8C%83/" style="font-size: 10px;">规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/19/19.4.SVN/">SVN</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/">WEB之上传和下载</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/">WEB之listener和filter</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/">WEB之cookie和session</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.6.WEB%E4%B9%8Bajax/">WEB之ajax</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 swx<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>WEB之cookie和session | swx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="用户打开一个浏览器，点击多个超链接访问服务器的web资源，然后关闭浏览器，整个过程称为是一次会话。 会话技术：每个用户与服务器进行交互过程中，产生一些各自的数据，程序想要把这些数据进行保存，就需要使用会话技术。 分类： 1.Cookie技术：Cookie是客户端技术，程序把每个用户的数据以cookie的形式保存到各自浏览器中。当用户使用浏览器再次访问服务器中的web资源的时候，就会带着各自的数据过">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WEB之cookie和session">
+<meta property="og:url" content="https://s-qwer.github.io/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/index.html">
+<meta property="og:site_name" content="swx">
+<meta property="og:description" content="用户打开一个浏览器，点击多个超链接访问服务器的web资源，然后关闭浏览器，整个过程称为是一次会话。 会话技术：每个用户与服务器进行交互过程中，产生一些各自的数据，程序想要把这些数据进行保存，就需要使用会话技术。 分类： 1.Cookie技术：Cookie是客户端技术，程序把每个用户的数据以cookie的形式保存到各自浏览器中。当用户使用浏览器再次访问服务器中的web资源的时候，就会带着各自的数据过">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s-qwer.github.io/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps1.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps2.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps3.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps4.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps5.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps6.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps7.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps8.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps9.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps10.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps11.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps12.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps13.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps14.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps15.jpg">
+<meta property="article:published_time" content="2021-04-19T06:30:26.000Z">
+<meta property="article:modified_time" content="2021-04-19T06:36:48.232Z">
+<meta property="article:author" content="swx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s-qwer.github.io/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="swx" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swx</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://s-qwer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-9.7.WEB之cookie和session" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:30:26.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      WEB之cookie和session
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>用户打开一个浏览器，点击多个超链接访问服务器的web资源，然后关闭浏览器，整个过程称为是一次会话。</p>
+<p>会话技术：每个用户与服务器进行交互过程中，产生一些各自的数据，程序想要把这些数据进行保存，就需要使用会话技术。</p>
+<p>分类：</p>
+<p>1.Cookie技术：Cookie是客户端技术，程序把每个用户的数据以cookie的形式保存到各自浏览器中。当用户使用浏览器再次访问服务器中的web资源的时候，就会带着各自的数据过去。这样，web资源处理的就是用户各自的数据了。</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps1.jpg" alt="img"> </p>
+<p>2.Session技术：Session是服务器端技术，利用这个技术，服务器在运行时为每一个用户的浏览器创建一个****独享的session对象。****由于session为用户浏览器独享，所有用户在访问服务器的时候，可以把各自的数据放在各自的session中，当用户再次访问服务器中的web资源的时候，其他web资源再从用户各自的session中取出数据为用户服务。</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps2.jpg" alt="img"> </p>
+<p>Cookie的使用：</p>
+<p>获得从浏览器带过来的Cookie，通过HttpServletRequest对象中的方法：</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps3.jpg" alt="img"> </p>
+<p>向浏览器回写Cookie，通过HttpServletResponse对象中的方法：</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps4.jpg" alt="img"> </p>
+<p>cookie的构造方法：</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps5.jpg" alt="img"> </p>
+<p>其他方法：</p>
+<p>获得Cookie的名称的方法</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps6.jpg" alt="img"> </p>
+<p>获得Cookie的值的方法</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps7.jpg" alt="img"> </p>
+<p>设置Cookie的有效域名（设置了之后，它之下的域名访问时也会有cookie）</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps8.jpg" alt="img"> </p>
+<p>设置Cookie的有效路径（设置之后，它之下的路径也会有cookie，“/”是指整个项目）</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps9.jpg" alt="img"> </p>
+<p>设置Cookie的有效时长（0是指删除，以秒为单位）</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps10.jpg" alt="img"> </p>
+<p>Cookie的分类：</p>
+<p>1.默认级别的Cookie：指的是没有设置有效时间的Cookie，默认的情况下只要关闭了浏览器，Cookie也会被销毁。（Cookie存在于浏览器的内存中，当关闭了浏览器Cookie就销毁了）。</p>
+<p>2.持久级别的Cookie：指的是有有效时间的Cookie，这种Cookie的内容不是保存在浏览器的内存中，将Cookie的内容保存（持久化）到硬盘上。这个时候，关闭浏览器，再次打开浏览器就会加载硬盘上的文件，从而Cookie中的数据就不会丢失。</p>
+<p>Cookie的使用细节：</p>
+<p>一个Cookie只用标识一种信息，至少含有一个标识该信息的名称和值。</p>
+<p>一个web站点可以给一个浏览器发送多个Cookie。一个web浏览器可以存储多个web站点的Cookie。</p>
+<p>浏览器一般只允许存放300个Cookie，每个站点最多可以存放20个Cookie，每个Cookie的大小限制为4KB（老版本浏览器）。—–<em><strong>*浏览器存放的Cookie的大小和个数是有限制的。*</strong></em></p>
+<p>如果创建了一个Cookie，并发送到浏览器，默认情况下它是一个****会话级别的Cookie****。用户退出浏览器就被删除。如果希望将这个Cookie存到磁盘上，需要设置有效时长调用setMaxAge(int maxAge)方法，以秒为单位的。</p>
+<p>需要手动删除持久性Cookie，可以将Cookie的有效时长设置为0.必须注意：删除Cookie时候，path必须一致，否则无法删除。</p>
+<p>Session：Session称为是一次会话，Cookie将用户产生的私有的数据保存到浏览器端，Session将用户产生的私有的数据保存到服务器端。注意：****一个浏览器独占一个session对象****。因此，在需要保存用户数据时候，服务器程序可以将用户数据写到session对象中，当用户使用浏览器访问其他程序时，其他程序可以从用户的session中取出该用户的数据，为用户服务。</p>
+<p>为什么有Cookie还要有Session：</p>
+<p>Cookie局限性：Cookie保存的数据是有个数和大小的限制的。数据是保存客户端浏览器上（相对不是很安全）。</p>
+<p>Session：Session没有个数和大小限制。数据是保存在服务器上（相对比较安全）。</p>
+<p>Session对象由服务器创建，开发人员可以调用request对象的getSession方法得到Session对象。</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps11.jpg" alt="img"> </p>
+<p>Session的实现原理：</p>
+<p>****基于Cookie的****，响应头基于Cookie的set-cookie回写了一个Session的ID。</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps12.jpg" alt="img"> </p>
+<p>向session中存入数据：</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps13.jpg" alt="img"> </p>
+<p>从session域中获取数据：</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps14.jpg" alt="img"> </p>
+<p>从session域中移除数据：</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps15.jpg" alt="img"> </p>
+<p>Session作为域对象，作用范围就是****一次会话****的范围。一次会话，指的是用户打开浏览器点击多个超链接，访问服务器资源，到最后关闭浏览器的过程。（一般保存私有信息，验证码）</p>
+<p>Servlet的域对象的总结：</p>
+<p>1.请求范围（ServletRequest）</p>
+<p>创建：当用户向服务器发送一次请求，服务器创建一个request对象。</p>
+<p>销毁：当服务器对这次请求作出了响应，服务器就会销毁这个request对象。</p>
+<p>存数据：void setAttribute(String name,Object value);</p>
+<p>取数据：Object getAttribute(String name);</p>
+<p>作用范围：一次请求。（转发就是一次请求）。</p>
+<p>2.会话范围（HttpSession）</p>
+<p>创建：服务器端****第一次调用getSession()****方法的时候。</p>
+<p>销毁：三种情况：</p>
+<p>Session过期，默认的过期时间30分钟(web.xml中配置)。</p>
+<p>非正常关闭服务器（直接点击控制台的Terminate就是非正常关闭服务器，点击Servers的stop就是正常关闭）。（正常关闭服务器—session会被序列化到Tomcat的work下的localhost的工程下找到）。</p>
+<p>手动调用session.invalidate();</p>
+<p>存数据：void setAttribute(String name,Object value);</p>
+<p>取数据：Object getAttribute(String name);</p>
+<p>作用范围：一次会话（多次请求）</p>
+<p>3.应用范围（ServletContext）</p>
+<p>创建：服务器启动的时候创建，为每个web项目创建一个单独ServletContext对象。</p>
+<p>销毁：服务器关闭的时候，或者项目从服务器中移除的时候。</p>
+<p>存数据：void setAttribute(String name,Object value);</p>
+<p>取数据：Object getAttribute(String name);</p>
+<p>作用范围：整个应用</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/" data-id="ckno8ff5m0031swwddc4chfys" data-title="WEB之cookie和session" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          WEB之listener和filter
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/04/19/9.6.WEB%E4%B9%8Bajax/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">WEB之ajax</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%84%E8%8C%83/" rel="tag">规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%A7%84%E8%8C%83/" style="font-size: 10px;">规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/19/19.4.SVN/">SVN</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/">WEB之上传和下载</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/">WEB之listener和filter</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/">WEB之cookie和session</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.6.WEB%E4%B9%8Bajax/">WEB之ajax</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 swx<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

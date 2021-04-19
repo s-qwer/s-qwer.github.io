@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>WEB之listener和filter | swx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="*监听器*监听器就是一个实现了特定接口的Java类，这个Java类用于监听另一个Java类的方法调用或者属性的改变。当被监听对象发生上述事件后，监听器某个方法将会立即被执行。 用途：用来监听其他对象的变化的。主要应用在图形化界面开发上。Java中GUI，Android 监听器的术语： 事件源：指的是被监听对象（汽车） 监听器：指的是监听的对象（报警器） 事件源和监听器绑定：在汽车上安装报警器 事件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WEB之listener和filter">
+<meta property="og:url" content="https://s-qwer.github.io/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/index.html">
+<meta property="og:site_name" content="swx">
+<meta property="og:description" content="*监听器*监听器就是一个实现了特定接口的Java类，这个Java类用于监听另一个Java类的方法调用或者属性的改变。当被监听对象发生上述事件后，监听器某个方法将会立即被执行。 用途：用来监听其他对象的变化的。主要应用在图形化界面开发上。Java中GUI，Android 监听器的术语： 事件源：指的是被监听对象（汽车） 监听器：指的是监听的对象（报警器） 事件源和监听器绑定：在汽车上安装报警器 事件">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps1.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps2.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps3.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps4.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps5.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps6.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps7.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps8.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps9.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps10.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps11.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps12.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps13.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps14.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps15.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps16.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps17.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps18.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps19.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps20.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps21.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps22.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps23.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps24.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps25.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps26.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps27.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps28.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps29.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps30.jpg">
+<meta property="article:published_time" content="2021-04-19T06:30:44.000Z">
+<meta property="article:modified_time" content="2021-04-19T06:37:09.335Z">
+<meta property="article:author" content="swx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s-qwer.github.io/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="swx" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swx</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://s-qwer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-9.8.WEB之listener和filter" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:30:44.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      WEB之listener和filter
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="监听器"><a href="#监听器" class="headerlink" title="*监听器*"></a><em><strong>*监听器*</strong></em></h1><p>监听器就是一个实现了特定接口的Java类，这个Java类用于监听另一个Java类的方法调用或者属性的改变。当被监听对象发生上述事件后，监听器某个方法将会立即被执行。</p>
+<p>用途：用来监听其他对象的变化的。主要应用在图形化界面开发上。Java中GUI，Android</p>
+<p>监听器的术语：</p>
+<p>事件源：指的是被监听对象（汽车）</p>
+<p>监听器：指的是监听的对象（报警器）</p>
+<p>事件源和监听器绑定：在汽车上安装报警器</p>
+<p>事件：指的是事件源对象的改变（踹了汽车一脚）—-主要功能获得事件源对象。</p>
+<p>例子：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps1.jpg" alt="img"> </p>
+<p>执行过程：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps2.jpg" alt="img"> </p>
+<p>（这里的WindowEvent e就是事件对象，e.getSource可以得到MyFrame的对象）</p>
+<p>Servlet中的监听器：</p>
+<p>在Servlet中定义了多种类型的监听器，它们用于监听的事件源分别是ServletContext、HttpSession和ServletRequest这三个域对象。</p>
+<p>分类：</p>
+<p>1.监听三个域对象的创建和销毁 的监听器（三个）</p>
+<p>2.监听三个域对象的属性变更（属性添加、移除、替换）的监听器（三个）</p>
+<p>3.监听HttpSession中JavaBean的状态改变（钝化、活化、绑定、解除绑定）的监听（两个）</p>
+<p>ServletContextListener监听器：用来监听ServletContext域对象的创建和销毁的监听器。</p>
+<p>ServletContext创建：在服务器启动的时候，为每个web应用创建单独的ServletContext对象。</p>
+<p>ServletContext销毁：在服务器关闭的时候，或者项目从web服务器中移除的时候。</p>
+<p>ServletContextListener监听器的方法：</p>
+<p>监听ServletContext对象的创建：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps3.jpg" alt="img"> </p>
+<p>监听ServletContext对象的销毁：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps4.jpg" alt="img"> </p>
+<p>编写一个监听器：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps5.jpg" alt="img"> </p>
+<p>对监听器进行配置（在web.xml中添加，将这个类的全路径复制）：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps6.jpg" alt="img"> </p>
+<p>ServletContextListener的企业用途：</p>
+<p>1.加载框架的配置文件：Spring框架提供了一个核心监听器ContextLoaderListener。（服务器启动时执行方法，这个方法里的内容就是加载配置文件）</p>
+<p>2.定时任务调度：（服务器启动后进行计时，到点后进行定时任务执行）</p>
+<p>HttpSessionListener监听器：用来监听HttpSession对象的创建和销毁。</p>
+<p>HttpSession的创建：服务器端第一次调用getSession()方法时候。</p>
+<p>HttpSession的销毁：1.非正常关闭服务器（正常关闭服务器session会被序列化，再次启动时会被反序列化，序列化文件可以在work下的localhost中找到）。</p>
+<p>2.Session过期（默认过期时间30分钟，不操作30分钟）。</p>
+<p>3.手动调用session.invalidate()方法。</p>
+<p>HttpSessionListener监听器的方法：</p>
+<p>监听HttpSession对象创建：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps7.jpg" alt="img"> </p>
+<p>监听HttpSession对象销毁：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps8.jpg" alt="img"> </p>
+<p>编写一个监听器：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps9.jpg" alt="img"> </p>
+<p>监听器的配置：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps10.jpg" alt="img"> </p>
+<p>注意：访问HTML是否会创建Session：不会</p>
+<p>访问JSP是否会创建Session：会（会被转化为servlet，默认调用了getSession方法）</p>
+<p>访问Servlet是否会创建Session    ：不会（默认没有调用getSession方法）</p>
+<p>ServletRequestListener监听器：用来监听ServletRequest对象的创建和销毁</p>
+<p>ServletRequest对象的创建：从客户端向服务器发送一次请求，服务器就会创建request对象。</p>
+<p>ServletRequest对象的销毁：服务器对这次请求作出了响应之后，request对象就销毁了。</p>
+<p>ServletRequestListener监听器的方法：</p>
+<p>监听ServletRequest对象的创建：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps11.jpg" alt="img"> </p>
+<p>监听ServletRequest对象的销毁：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps12.jpg" alt="img"> </p>
+<p>编写一个监听器：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps13.jpg" alt="img"> </p>
+<p>监听器配置：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps14.jpg" alt="img"> </p>
+<p>注意：</p>
+<p>访问HTML页面是否创建请求对象    ：会</p>
+<p>访问JSP页面是否创建请求对象：会</p>
+<p>访问Servlet是否创建请求对象：会</p>
+<p>实现一个统计当前在线人数的案例：可以用ServletContextListener记录一个count值，这个count值整个项目都能取到。用HttpSessionListene记录count值的变化，当创建一个session时+1，销毁时-1。配置监听器。最后通过${count}输出。</p>
+<p>监听三个域对象的属性变更的监听器：</p>
+<p>1.ServletContextAttributeListener监听ServletContext对象中的属性变更（属性添加，移除，替换）的监听器</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps15.jpg" alt="img"> </p>
+<p>2.HttpSessionAttributeListener监听HttpSession对象中的属性变更（属性添加，移除，替换）的监听器</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps16.jpg" alt="img"> </p>
+<p>3.ServletRequestAttributeListener监听ServletRequest对象中的属性变更（属性添加，移除，替换）的监听器</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps17.jpg" alt="img"> </p>
+<p>演示HttpSessionAttributeListener监听器：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps18.jpg" alt="img"> </p>
+<p>配置监听器：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps19.jpg" alt="img"> </p>
+<p>编写实例JSP：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps20.jpg" alt="img"> </p>
+<p>监听HttpSession中Java类状态改变的监听器</p>
+<p>保存在Session域中的Java类可以有多种状态：绑定到session中；从session中解除绑定；随session对象持久化到一个存储设备中（钝化）；随session对象从一个存储设备中恢复（活化）。</p>
+<p>Servlet规范中定义了两个特殊的监听的接口****来帮助Java类了解自己在Session域中的状态****：</p>
+<p>HttpSessionBindingListener接口</p>
+<p>HttpSessionActivationListener接口</p>
+<p><em><strong>*实现这两个接口的类不需要在web.xml中进行配置。*</strong></em></p>
+<p>HttpSessionBindingListener监听器：监听Java类在HttpSession中的绑定和解除绑定的状态的监听器</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps21.jpg" alt="img"> </p>
+<p>先新建一个bean1类，这个类中有属性name，get和set方法。再让它实现HttpSessionBindingListener接口：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps22.jpg" alt="img"> </p>
+<p>新建一个jsp页面，在里面新建一个bean1对象，set方法设置这个对象的名字，调用session的setAttribute方法进行绑定（java类写入session）。removeAttribute方法就可以解除绑定。</p>
+<p>HttpSessionActivationListener监听器：监听HttpSession中Java类的钝化和活化监听器。</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps23.jpg" alt="img"> </p>
+<p>（钝化相当于序列化，被写入硬盘）不仅要实现HttpSessionActivationListener接口，还要实现Serializable接口</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps24.jpg" alt="img"> </p>
+<p>应用：节省内存空间，如果有大量的session同时存在，会很耗费空间。可以将其中的一部分序列化保存在硬盘中，当需要用到的时候再反序列化从内存中取到。</p>
+<p>而在正常的开发中，服务器一般不关闭，所以需要手动将一部分的session进行序列化。（正常情况下，只有关闭了服务器，session才会被序列化）所以手动配置完成session的序列化和反序列化：</p>
+<p>配置代码是：</p>
+<Context>
+
+<Manager className="org.apache.catalina.session.PersistentManager" maxIdleSwap="1">
+
+<p>​    <Store className="org.apache.catalina.session.FileStore" directory="itheima"/></p>
+</Manager>
+
+</Context>
+
+<p>//  1分钟不操作，就会序列化到itheima中</p>
+<p>这个Context标签代码可以配置在：</p>
+<p><em><strong>*tomcat/conf/context.xml*</strong></em>    <em><strong>*:所有tomcat下虚拟主机和虚拟目录下的工程都会序列化session*</strong></em></p>
+<p><em><strong>*tomcat/conf/Catalina/localhost/context.xml:localhost虚拟主机下的所有项目会序列化session*</strong></em></p>
+<p><em><strong>*工程/META-INF/context.xml:当前工程才会序列化session。*</strong></em></p>
+<h1 id="过滤器"><a href="#过滤器" class="headerlink" title="*过滤器*"></a><em><strong>*过滤器*</strong></em></h1><p>Filter称为过滤器，它是Servlet技术中最实用的技术，web开发人员通过Filter技术，对web服务器所管理的资源（JSP，Servlet，静态图片或静态html文件）进行拦截，从而实现一些特殊的功能。</p>
+<p>Filter就是过滤从客户端向服务器发送的请求。</p>
+<p>可以进行敏感词汇的禁止，动态页面的缓存等</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps25.jpg" alt="img"> </p>
+<p>Filter将其中的敏感词汇改为**，再继续进行传输</p>
+<p>编写一个Filter：编写一个类实现Filter接口</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps26.jpg" alt="img"> </p>
+<p>对过滤器进行配置：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps27.jpg" alt="img"> </p>
+<p>/*指全部请求都要执行FilterDemo1。chain.doFilter（request,response）；指放行（没有这个的话什么内容都不会在后面显示）</p>
+<p>FilterChain对象</p>
+<p>FilterChain过滤器链：在一个web应用中，可以开发编写多个Filter，这些Filter组合起来称为是一个过滤器链。</p>
+<p>Web服务器根据Filter在web.xml文件中的注册顺序（mapping的配置顺序）决定先调用那个Filter。依次调用后面的过滤器，如果没有下一个过滤器，调用目标资源</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps28.jpg" alt="img"> </p>
+<p>//假设Filter1，2，3中都有chain.doFilter（request,response）；方法，先执行Filter1，执行到chain.doFilter（request,response）；方法时在执行Filter2，执行到chain.doFilter（request,response）；方法时在执行Filter3，在执行web资源，然后再执行Filter3中chain.doFilter（request,response）；方法后的内容，在执行Filter2中chain.doFilter（request,response）；方法后的内容，Filter1，返回</p>
+<p>Filter的生命周期：Filter的创建和销毁是由web服务器负责。Web应用程序启动的时候，web服务器创建Filter的实例对象。并调用其init方法进行初始化（filter对象只会创建一次，init方法也只会执行一次）。</p>
+<p>每次filter进行拦截的时候，都会执行doFilter的方法。</p>
+<p>当服务器关闭的时候，应用从服务器中移除的时候，服务器会销毁Filter对象。</p>
+<p>FilterConfig对象：用来获得Filter的相关的配置的对象。</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps29.jpg" alt="img"> </p>
+<p>在配置文档中配置过滤器的初始化参数</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps30.jpg" alt="img"> </p>
+<p>过滤器的相关配置,这些配置都是在maping中配置</p>
+<p><url-pattern>的配置</p>
+<p>完全路径匹配：以/开始  比如/aaa  /aaa/bbb</p>
+<p>目录匹配：以/开始 以<em>结束  比如/</em>  /aaa/*  /aaa/bbb/*</p>
+<p>扩展名匹配    ：不能以/开始 以<em>开始 比如</em>.jsp  *.do  *.action</p>
+<p><servlet-name>的配置</p>
+<p>专门以Servlet的配置的名称拦截Servlet。（不常用，因为如果需要拦截Servlet，可以在maping配置中写出这个Servlet的路径拦截）</p>
+<p><dispatcher>的配置</p>
+<p>默认的情况下过滤器会拦截请求。如果进行转发（需要拦截这次转发FORWARD）。</p>
+<p>dispatcher的取值</p>
+<p><em><strong>*REQUEST*</strong></em>    <em><strong>*:默认值。默认过滤器拦截的就是请求。*</strong></em></p>
+<p><em><strong>*FORWARD:转发。*</strong></em></p>
+<p>INCLUDE    :页面包含的时候进行拦截</p>
+<p>ERROR    :页面出现全局错误页面跳转的时候进行拦截</p>
+<p>如果想拦截多个，可以多配置几个</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/" data-id="ckno8ff5n0032swwdb4w84sdt" data-title="WEB之listener和filter" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          WEB之上传和下载
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">WEB之cookie和session</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%84%E8%8C%83/" rel="tag">规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%A7%84%E8%8C%83/" style="font-size: 10px;">规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/19/19.4.SVN/">SVN</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/">WEB之上传和下载</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/">WEB之listener和filter</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/">WEB之cookie和session</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.6.WEB%E4%B9%8Bajax/">WEB之ajax</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 swx<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

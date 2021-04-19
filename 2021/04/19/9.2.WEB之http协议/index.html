@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>WEB之http协议 | swx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="HTTP协议：规定了浏览器和服务器端的数据交互的格式 http是一个简单的请求-响应协议，它通常运行在TCP之上。它指定了客户端可能发送给服务器什么样的消息以及得到什么样的响应。请求和响应消息的头以ASCII码形式给出；而消息内容则具有一个类似MIME的格式。HTTP是应用层协议。 特性： 1.基于请求和响应模型：必须要先有请求，后有响应；请求和响应必须成对出现 2.简单快捷：因为发送请求的时候只">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WEB之http协议">
+<meta property="og:url" content="https://s-qwer.github.io/2021/04/19/9.2.WEB%E4%B9%8Bhttp%E5%8D%8F%E8%AE%AE/index.html">
+<meta property="og:site_name" content="swx">
+<meta property="og:description" content="HTTP协议：规定了浏览器和服务器端的数据交互的格式 http是一个简单的请求-响应协议，它通常运行在TCP之上。它指定了客户端可能发送给服务器什么样的消息以及得到什么样的响应。请求和响应消息的头以ASCII码形式给出；而消息内容则具有一个类似MIME的格式。HTTP是应用层协议。 特性： 1.基于请求和响应模型：必须要先有请求，后有响应；请求和响应必须成对出现 2.简单快捷：因为发送请求的时候只">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s-qwer.github.io/9.2.WEB%E4%B9%8Bhttp%E5%8D%8F%E8%AE%AE/wps1.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/9.2.WEB%E4%B9%8Bhttp%E5%8D%8F%E8%AE%AE/wps2.jpg">
+<meta property="article:published_time" content="2021-04-19T06:29:20.000Z">
+<meta property="article:modified_time" content="2021-04-19T06:32:09.420Z">
+<meta property="article:author" content="swx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s-qwer.github.io/9.2.WEB%E4%B9%8Bhttp%E5%8D%8F%E8%AE%AE/wps1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="swx" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swx</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://s-qwer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-9.2.WEB之http协议" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/9.2.WEB%E4%B9%8Bhttp%E5%8D%8F%E8%AE%AE/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:29:20.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      WEB之http协议
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>HTTP协议：规定了浏览器和服务器端的数据交互的格式</p>
+<p>http是一个简单的请求-响应协议，它通常运行在<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/TCP/33012">TCP</a>之上。它指定了客户端可能发送给服务器什么样的消息以及得到什么样的响应。请求和响应消息的头以ASCII码形式给出；而消息内容则具有一个类似MIME的格式。HTTP是应用层协议。</p>
+<p>特性：</p>
+<p>1.基于请求和响应模型：必须要先有请求，后有响应；请求和响应必须成对出现</p>
+<p>2.简单快捷：因为发送请求的时候只需要发送请求方式和请求路径即可</p>
+<p>版本：</p>
+<p>HTTP1.0：该协议对每一次请求和相应进行一次建立连接和拆除（每进行一次请求建立连接，相应完毕后拆除连接）</p>
+<p>HTTP1.1：该协议相当于TCP，双方规定了连接方式和连接类型，会一直进行请求相应</p>
+<p>分析HTTP协议：</p>
+<p>可以用HTTPWatch（只能在ie浏览器上使用），也可以用浏览器自带的查看HTTP协议的工具（F12就可进入）</p>
+<p>创建一个html页面：</p>
+<p>demo1.html</p>
+<p><img src="/9.2.WEB%E4%B9%8Bhttp%E5%8D%8F%E8%AE%AE/wps1.jpg" alt="img"> </p>
+<p>method默认为get方式，可以手动修改为post方式</p>
+<p>demo2.html</p>
+<p><img src="/9.2.WEB%E4%B9%8Bhttp%E5%8D%8F%E8%AE%AE/wps2.jpg" alt="img"> </p>
+<p>在浏览器中输入<a target="_blank" rel="noopener" href="http://localhost:8080/web_set/demo1.html">http://localhost:8080/web_set/demo1.html</a></p>
+<p>打开HTTPWatch工具，点击record。输入表单内容，提交。点击项目下的Stream查看：</p>
+<p>GET方式的请求部分：</p>
+<p>GET /web_test/demo2.html?name=aaa&amp;name=man HTTP/1.1</p>
+<p>Accept: text/html, application/xhtml+xml, <em>/</em></p>
+<p>X-HttpWatch-RID: 9561-10011</p>
+<p>Referer: <a target="_blank" rel="noopener" href="http://localhost:8080/web_test/demo1.html">http://localhost:8080/web_test/demo1.html</a></p>
+<p>Accept-Language: zh-CN</p>
+<p>User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko</p>
+<p>Accept-Encoding: gzip, deflate</p>
+<p>Host: localhost:8080</p>
+<p>DNT: 1</p>
+<p>Connection: Keep-Alive</p>
+<p>POST请求：</p>
+<p>POST /web_test/demo2.html HTTP/1.1</p>
+<p>Accept: text/html, application/xhtml+xml, <em>/</em></p>
+<p>X-HttpWatch-RID: 9561-10041</p>
+<p>Referer: <a target="_blank" rel="noopener" href="http://localhost:8080/web_test/demo1.html">http://localhost:8080/web_test/demo1.html</a></p>
+<p>Accept-Language: zh-CN</p>
+<p>User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko</p>
+<p>Content-Type: application/x-www-form-urlencoded</p>
+<p>Accept-Encoding: gzip, deflate</p>
+<p>Host: localhost:8080</p>
+<p>Content-Length: 19</p>
+<p>DNT: 1</p>
+<p>Connection: Keep-Alive</p>
+<p>Cache-Control: no-cache</p>
+<p>name=bbb&amp;name=woman</p>
+<p>请求部分内容：3部分</p>
+<p>请求行：</p>
+<p>请求方式：有很多种，GET和POST最常见</p>
+<p><em><strong>*GET：请求的参数会显示到地址栏。通常是有大小的限制。没有请求体*</strong></em></p>
+<p><em><strong>*POST：请求的参数不会显示到地址栏（在请求体中）。POST没有大小的限制。有请求体（请求参数）。只有表单设置method=*</strong>***</em>*”*<strong><strong><strong>*post*</strong></strong></strong>*”****<em><strong>*才是post请求。*</strong></em></p>
+<p>请求路径：一般都是固定的</p>
+<p>协议版本：一般都是固定的</p>
+<p>请求头:请求头的格式一般都是一个key对应一个value的，也有一个key对应多个value的情况</p>
+<p>一些常见的请求头：</p>
+<p>Referer    ：代表网页的来源。（防盗链）</p>
+<p>User-Agent    ：获得客户端浏览器类型</p>
+<p>请求体：只有POST请求方式才有请求体，而且请求体是POST方式请求参数</p>
+<p>响应部分：</p>
+<p>HTTP/1.1 200 OK</p>
+<p>Server: Apache-Coyote/1.1</p>
+<p>Accept-Ranges: bytes</p>
+<p>ETag: W/“151-1484111223984”</p>
+<p>Last-Modified: Wed, 11 Jan 2017 05:07:03 GMT</p>
+<p>Content-Type: text/html</p>
+<p>Content-Length: 151</p>
+<p>Date: Wed, 11 Jan 2017 05:14:00 GMT</p>
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Insert title here</title>
+
+</head>
+
+<body>
+
+<h1>Success锛侊紒锛?/h1>
+
+</body>
+
+</html>
+
+<p>响应部分的内容：3部分</p>
+<p>响应行：</p>
+<p>协议版本</p>
+<p>状态码：</p>
+<p><em><strong>*200*</strong></em>    <em><strong>*：代表响应成功*</strong></em></p>
+<p><em><strong>*302*</strong></em>    <em><strong>*：需要进行重定向操作*</strong></em></p>
+<p><em><strong>*304*</strong></em>    <em><strong>*：需要查找本地缓存*</strong></em></p>
+<p><em><strong>*404*</strong></em>    <em><strong>*：请求资源不存在*</strong></em></p>
+<p><em><strong>*405：请求的方式不对*</strong></em></p>
+<p><em><strong>*500*</strong></em>    <em><strong>*：服务器内部错误*</strong></em></p>
+<p>状态码描述</p>
+<p>响应头:通常一个key对应一个value，也有一个key对应多个value</p>
+<p>一些常见的响应头：</p>
+<p>Location    ：重定向的路径</p>
+<p>Refresh    ：定时刷新</p>
+<p>Content-Disposition：文件下载的时候使用</p>
+<p>响应体：就是显示到浏览器上页面的代码</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.2.WEB%E4%B9%8Bhttp%E5%8D%8F%E8%AE%AE/" data-id="ckno8ff5k002tswwd9h44e77l" data-title="WEB之http协议" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/04/19/9.3.WEB%E4%B9%8Bservlet/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          WEB之servlet
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/04/19/9.1.WEB%E4%B9%8B%E6%A6%82%E8%BF%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">WEB之概述</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%84%E8%8C%83/" rel="tag">规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%A7%84%E8%8C%83/" style="font-size: 10px;">规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/19/19.4.SVN/">SVN</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/">WEB之上传和下载</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/">WEB之listener和filter</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/">WEB之cookie和session</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.6.WEB%E4%B9%8Bajax/">WEB之ajax</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 swx<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

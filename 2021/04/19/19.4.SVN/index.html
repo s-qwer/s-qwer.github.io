@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>SVN | swx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="*SVN-版本控制*SVN是Subversion的简称，是一个自由开源的版本控制系统。 Subversion将文件存放在中心版本库里，这个版本库很像一个普通的文件服务器，不同的是，它可以记录每一次文件和目录的修改情况，这样就可以借此将数据恢复到以前的版本，并可以查看数据的更改细节 早期版本控制使用的是CVS,后来SVN替代了CVS,随着android兴起，出现Git版本控制工具   问题: 怎样让">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SVN">
+<meta property="og:url" content="https://s-qwer.github.io/2021/04/19/19.4.SVN/index.html">
+<meta property="og:site_name" content="swx">
+<meta property="og:description" content="*SVN-版本控制*SVN是Subversion的简称，是一个自由开源的版本控制系统。 Subversion将文件存放在中心版本库里，这个版本库很像一个普通的文件服务器，不同的是，它可以记录每一次文件和目录的修改情况，这样就可以借此将数据恢复到以前的版本，并可以查看数据的更改细节 早期版本控制使用的是CVS,后来SVN替代了CVS,随着android兴起，出现Git版本控制工具   问题: 怎样让">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps1.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps2.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps3.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps4.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps5.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps6.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps7.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps8.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps9.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps10.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps11.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps12.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps13.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps14.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps15.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps16.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps17.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps18.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps19.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps20.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps21.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps22.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps23.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps24.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps25.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps26.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps27.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps28.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps29.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps30.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps31.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps32.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps33.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps34.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps35.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps36.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps37.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps38.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps39.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps40.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps41.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps42.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps43.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps44.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps45.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps46.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps47.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps48.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps49.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps50.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps51.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps52.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps53.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps54.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps55.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps56.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps57.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps58.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps59.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps60.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps61.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps62.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps63.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps64.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps65.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps66.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps67.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/19.4.SVN/wps68.jpg">
+<meta property="article:published_time" content="2021-04-19T06:40:24.000Z">
+<meta property="article:modified_time" content="2021-04-19T06:40:46.252Z">
+<meta property="article:author" content="swx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s-qwer.github.io/19.4.SVN/wps1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="swx" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swx</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://s-qwer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-19.4.SVN" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/19.4.SVN/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:40:24.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      SVN
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="SVN-版本控制"><a href="#SVN-版本控制" class="headerlink" title="*SVN-版本控制*"></a><em><strong>*SVN-版本控制*</strong></em></h1><p>SVN是Subversion的简称，是一个自由开源的版本控制系统。</p>
+<p>Subversion将文件存放在中心版本库里，这个版本库很像一个普通的<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/566090.htm">文件服务器</a>，不同的是，它可以记录每一次文件和目录的修改情况，这样就可以借此将<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/185060.htm">数据恢复</a>到以前的版本，并可以查看数据的更改细节</p>
+<p>早期版本控制使用的是CVS,后来SVN替代了CVS,随着android兴起，出现Git版本控制工具</p>
+<p><img src="/19.4.SVN/wps1.jpg" alt="img"> </p>
+<p>问题: 怎样让系统允许用户共享信息，而不会让他们因意外而互相干扰？</p>
+<p><em><strong>*1.*</strong>***</em>*复制*<strong><strong><strong>*-*</strong></strong></strong>*修改*<strong><strong><strong>*-*</strong></strong></strong>*合并方案*<strong><strong><strong>*(Subversion*</strong></strong></strong>*默认的模式****<em><strong>*)*</strong></em></p>
+<p>在这种模型里，每一个客户读取项目配置库建立一个私有工作副本——版本库中文件和目录的本地映射。用户并行工作，修改各自的工作副本，最终，各个私有的复制合并在一起，成为最终的版本，这种系统通常可以辅助合并操作，但是最终要靠人工去确定正误。</p>
+<p><em><strong>*2.*</strong>***</em>*锁定*<strong><strong><strong>*-*</strong></strong></strong>*修改*<strong><strong><strong>*-*</strong></strong></strong>*解锁方案****</p>
+<p>在这样的模型里，在一个时间段里配置库的一个文件只允许被一个人修改。 此模式不适合软件开发这种工作。</p>
+<p>SVN架构</p>
+<p><img src="/19.4.SVN/wps2.jpg" alt="img"> </p>
+<p>Subversion支持<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1634.htm">Linux</a>和<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/4821.htm">Windows</a>，更多是安装在Linux下。</p>
+<p>svn服务器有2种运行方式：<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/2106199.htm">独立服务器</a>（source download，这种是个安装包，解压后就可以用）和借助<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/28283.htm">apache</a>（binary packages，这种是二进制的文件，针对不同的操作系统有不同的版本，下载安装就可以用，后面用的就是这个）运行。两种方式各有利弊，用户可以自行选择。</p>
+<p>svn存储版本数据也有2种方式：<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1303712.htm">BDB</a>(一种<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/121511.htm">事务</a>安全型表类型，需要数据库)和<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1633161.htm">FSFS</a>(一种不需要数据库的<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/51839.htm">存储系统</a>)。因为BDB方式在服务器中断时，有可能锁住数据，所以还是FSFS方式更安全一点，我们用的就是FSFS，类似于文件</p>
+<h1 id="SVN的使用"><a href="#SVN的使用" class="headerlink" title="*SVN的使用*"></a><em><strong>*SVN的使用*</strong></em></h1><p>SVN是一种集中式管理代码的版本控制系统，原理就是把代码都保存到一个固定的位置（仓库），每次从这个位置拷贝更新代码，进行编辑；再把修改后的代码提交到该目录中。多人协作开发也是如此。因此需要一个类似Oracle或者Mysql的服务器用于保存和管理库文件（要保存的代码等文件）的服务端——VisualSVN Server（windows上用）。还需要一个用户的操作端，用于提交更新检出代码，常用的有Eclipse的Svn插件，以及TortoiseSVN（小乌龟）。</p>
+<p>SubVersion 官网：<a target="_blank" rel="noopener" href="http://subversion.apache.org/">http://subversion.apache.org/</a></p>
+<p>服务器端-VisualSVN安装与配置</p>
+<p>1.VisualSVN下载：</p>
+<p><img src="/19.4.SVN/wps3.jpg" alt="img"> </p>
+<p>下载好后点击下一步，next进行安装</p>
+<p>2.VisualSVN安装与创建仓库</p>
+<p><img src="/19.4.SVN/wps4.jpg" alt="img"> </p>
+<p>标准版就行，企业版会收费</p>
+<p><img src="/19.4.SVN/wps5.jpg" alt="img"> </p>
+<p>在开始运行中录入 services.msc</p>
+<p><img src="/19.4.SVN/wps6.jpg" alt="img"> </p>
+<p>这个服务要开启</p>
+<p>然后在C盘中的program files下的VisualSVN Server下的bin下的visualSVN Server Manager文件</p>
+<p>也可以在开始运行中查找visualSVN Server Manager就可以打开图形化管理界面</p>
+<p><img src="/19.4.SVN/wps7.jpg" alt="img"> </p>
+<p>3.VisualSVN创建工程目录</p>
+<p><img src="/19.4.SVN/wps8.jpg" alt="img"> </p>
+<p>选择fsfs类型，名字，权限，下一步</p>
+<p>4.VisualSVN权限控制</p>
+<p>创建用户</p>
+<p><img src="/19.4.SVN/wps9.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps10.jpg" alt="img"> </p>
+<p>创建完成之后，可以点击工程名然后右击复制URL路径，浏览器访问就可以看到仓库。可以右击properties选择用户的权限。</p>
+<p>创建组：可能会有很多用户，不便于管理，所以创建了组</p>
+<p><img src="/19.4.SVN/wps11.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps12.jpg" alt="img"> </p>
+<p>分配权限</p>
+<p><img src="/19.4.SVN/wps13.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps14.jpg" alt="img"> </p>
+<p>客户端-TortoiseSVN安装与使用</p>
+<p>它是一个基于windows系统的svn图形化界面</p>
+<p>1.TortoiseSVN下载</p>
+<p>可以在<a target="_blank" rel="noopener" href="http://subversion.apache.org/%E4%B8%8B%E6%89%BE%E5%88%B0%E4%B8%8B%E8%BD%BD">http://subversion.apache.org/下找到下载</a></p>
+<p><img src="/19.4.SVN/wps15.jpg" alt="img"> </p>
+<p>2.TortoiseSVN安装</p>
+<p>安装后需要重启电脑</p>
+<p>检查是否安装成功</p>
+<p><img src="/19.4.SVN/wps16.jpg" alt="img"> </p>
+<p>3.Tortoise SVN常用操作</p>
+<p>浏览仓库</p>
+<p><img src="/19.4.SVN/wps17.jpg" alt="img"> </p>
+<p>这个URL是服务器端的copy的URL</p>
+<p><img src="/19.4.SVN/wps18.jpg" alt="img"> </p>
+<p>正常情况下，在浏览仓库时会要求录入username与password，第二次访问的时候不需要输入，已保存</p>
+<p>我们可以清空svn客户端的缓存：</p>
+<p>新建一个文件夹，右击选择</p>
+<p><img src="/19.4.SVN/wps19.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps20.jpg" alt="img"> </p>
+<p>这样再访问，checkout的时候就需要输入用户名和密码</p>
+<p><img src="/19.4.SVN/wps21.jpg" alt="img"> </p>
+<p>Checkout：检出svn服务器上的项目</p>
+<p>可以先创建一个自己的文件夹，在里面右击选择仓库</p>
+<p><img src="/19.4.SVN/wps22.jpg" alt="img"> </p>
+<p>在本地位置的后面加\bos</p>
+<p>注意：检出后会有一个.svn隐藏目录，这个目录不要随意修改，相当于是配置信息</p>
+<p><img src="/19.4.SVN/wps23.jpg" alt="img"> </p>
+<p>Add</p>
+<p>在这个文件夹中新建一个文件：</p>
+<p><img src="/19.4.SVN/wps24.jpg" alt="img"> </p>
+<p>这样图标的文件代表它没有由svn管理，可以右击选择</p>
+<p><img src="/19.4.SVN/wps25.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps26.jpg" alt="img"> </p>
+<p>这个代表的是它要添加到svn服务器（并没有传到服务器，必须要提交才可以）</p>
+<p>Commit</p>
+<p>上面那个文件右击后会有commit</p>
+<p><img src="/19.4.SVN/wps27.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps28.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps29.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps30.jpg" alt="img">代表添加成功</p>
+<p>Update</p>
+<p>Update，它是更新操作,可以将svn服务器上的内容更新到本地</p>
+<p><img src="/19.4.SVN/wps31.jpg" alt="img"> </p>
+<p>更新(还原)到历史版本</p>
+<p>查看当前日志</p>
+<p><img src="/19.4.SVN/wps32.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps33.jpg" alt="img"> </p>
+<p>也可以通过下面的方式来更新历史版本</p>
+<p><img src="/19.4.SVN/wps34.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps35.jpg" alt="img"> </p>
+<p>选择show log的版本，ok</p>
+<p>Delete</p>
+<p>标记删除操作，本地文件会删除，但是父目录会出现感叹号。我们需要在它的父目录进行提交，才能真正从服务器删除</p>
+<p><img src="/19.4.SVN/wps36.jpg" alt="img"> </p>
+<p>导入导出</p>
+<p><img src="/19.4.SVN/wps37.jpg" alt="img"> </p>
+<p>Import：将本地资源导入到svn服务器</p>
+<p>Export：导出项目，和checkout的区别,它不存在.svn隐藏文件（只是把其中的内容download下来）</p>
+<p>冲突问题与解决（重要）</p>
+<p>多个用户同时操作同一个文件时，就可能产生冲突情况。同时提交会出现</p>
+<p><img src="/19.4.SVN/wps38.jpg" alt="img"> </p>
+<p>然后文件夹会多出来几个文件：</p>
+<p><img src="/19.4.SVN/wps39.jpg" alt="img"> </p>
+<p>HelloWorld.java 它是服务器上的文件与本地文件合并</p>
+<p>HelloWorld.java.mine 本地修改后的文件</p>
+<p>HelloWorld.java.r4 修改前的文件</p>
+<p>HelloWorld.java.r5 对方修改后的文件</p>
+<p>这个冲突产生后如何解决，我们可以采用手动Merge：</p>
+<p>选择带感叹号的文件右击</p>
+<p><img src="/19.4.SVN/wps40.jpg" alt="img"> </p>
+<p>保存，标记已解决冲突。解决冲突后，重新commit.</p>
+<h1 id="客户端-Eclipse-SVN插件安装与使用-重要"><a href="#客户端-Eclipse-SVN插件安装与使用-重要" class="headerlink" title="*客户端-Eclipse SVN插件安装与使用(重要)*"></a><em><strong>*客户端-Eclipse SVN插件安装与使用(重要)*</strong></em></h1><p>下载与安装SVN插件</p>
+<p>在网页上搜索svn eclipse 官网下载一个svn插件,将它直接复制到eclipse安装目录下的dropins中</p>
+<p>我们怎样可以知道svn插件安装成功：</p>
+<p>在eclipse中的window下的preferences中搜索svn</p>
+<p><img src="/19.4.SVN/wps41.jpg" alt="img"> </p>
+<p>Eclipse SVN插件使用</p>
+<p>浏览仓库，将eclipse工程导入到svn服务器</p>
+<p><img src="/19.4.SVN/wps42.jpg" alt="img"> </p>
+<p>在svn资源库研究</p>
+<p><img src="/19.4.SVN/wps43.jpg" alt="img"> </p>
+<p>输入服务器工程的URL</p>
+<p>怎样将eclipse中的工程导入到svn仓库，可以在工程上右键</p>
+<p><img src="/19.4.SVN/wps44.jpg" alt="img"> </p>
+<p>选择服务器的URL。完成后，它其实没有真正的导入，需要我们右击在进行提交才真正导入到svn仓库</p>
+<p>Checkout 导出 导入</p>
+<p>选择SVN资源库研究，点击项目下的文件夹右击，可以进行检出，导出，导入等操作</p>
+<p><img src="/19.4.SVN/wps45.jpg" alt="img"> </p>
+<p>Add  commit  update 更新到历史版本</p>
+<p><img src="/19.4.SVN/wps46.jpg" alt="img"> </p>
+<p>Eclipse的svn插件解决冲突</p>
+<p><img src="/19.4.SVN/wps47.jpg" alt="img"> </p>
+<p>产生了冲突 </p>
+<p>我们在工程上执行更新操作，就可以查看到冲突的文件</p>
+<p><img src="/19.4.SVN/wps48.jpg" alt="img"> </p>
+<p>解决冲突</p>
+<p><img src="/19.4.SVN/wps49.jpg" alt="img"> </p>
+<p>选择编辑冲突，进行编辑时，左边是自己的，右边的东西可以选中，然后点击右上角的图标进行操作。</p>
+<p>编辑完成后进行保存，再标记为冲突解决</p>
+<p><img src="/19.4.SVN/wps50.jpg" alt="img"> </p>
+<p>然后在提交</p>
+<p>理论篇(了解)命令行的方式</p>
+<p>服务器-SubVersion安装与配置</p>
+<p>官网上的source download下载的安装包解压后的目录结构</p>
+<p><img src="/19.4.SVN/wps51.jpg" alt="img"> </p>
+<p>bin目录存放svn相关命令</p>
+<p>​    svnadmin:给服务器管理员使用，创建仓库，帐户等</p>
+<p>​    svnserve:启动svn服务器</p>
+<p>​    svn:客户端命令工具</p>
+<p>iconv目录存放svn依赖插件</p>
+<p>licenses 目录存放版权信息文件</p>
+<p>share存放国际化文件</p>
+<p>当安装完成后，默认情况下会将subversion安装目录bin加入到环境变量path中，如果没有，需要手动添加（这里有一个VisualSVN Server的bin目录，还有现在下载的subversion的bin目录）</p>
+<p><img src="/19.4.SVN/wps52.jpg" alt="img"> </p>
+<p>查看服务器版本号：svnserve –version （注意电脑上有一个VisualSVN Server，还有一个subversion）</p>
+<p><img src="/19.4.SVN/wps53.jpg" alt="img"> </p>
+<p>启动svn服务器</p>
+<p>\1. 在服务器指定目录建立仓库  d:/my-reps</p>
+<p>svnadmin create itcast</p>
+<p>查看仓库目录结构</p>
+<p><img src="/19.4.SVN/wps54.jpg" alt="img"> </p>
+<p>conf 存放当前仓库的配置文件</p>
+<p>db 存放仓库版本的控制文件</p>
+<p>hooks 仓库脚本</p>
+<p>locks 锁文件</p>
+<p>\2. 启动服务</p>
+<p>svnserve –d –r 路径</p>
+<p><img src="/19.4.SVN/wps55.jpg" alt="img"> </p>
+<p>\3. 测试客户端连接服务器，默认端口3690</p>
+<p>svn checkout svn://localhost/itcast</p>
+<p>客户端-命令行方式</p>
+<p>1.checkout</p>
+<p>svn checkout svn://localhost/itcast 默认端口3690</p>
+<p>2.add</p>
+<p><img src="/19.4.SVN/wps56.jpg" alt="img"> </p>
+<p>3.commit</p>
+<p><img src="/19.4.SVN/wps57.jpg" alt="img"> </p>
+<p>直接提交会出错的原因:1.没有日志信息</p>
+<p><img src="/19.4.SVN/wps58.jpg" alt="img"> </p>
+<p>-m添加日志信息，还会出错的原因:权限问题</p>
+<p>我们可以在D:\my-reps\itcast 查找到conf/ svnserve.conf文件，修改其中的权限write，再进行命令输入</p>
+<p><img src="/19.4.SVN/wps59.jpg" alt="img"> </p>
+<p>4.Update操作</p>
+<p><img src="/19.4.SVN/wps60.jpg" alt="img"> </p>
+<p>扩展篇（开发中的svn目录规范）</p>
+<p>svn目录规范</p>
+<p>在visualSVN中创建仓库时，可以选择svn目录结构</p>
+<p><img src="/19.4.SVN/wps61.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps62.jpg" alt="img"> </p>
+<p>Trunk 主干目录，此目录下的文件为基准文件</p>
+<p>Branches 用于开发的分支目录</p>
+<p>Tags 用于发布的版本目录（一般为只读）</p>
+<p>假设有一个项目OA,我们完成了1.0版本，这时就可以打一个tags</p>
+<p>后续我们在OA项目上添加一个新的模块(及时通讯),我们就可以开一个分支,又有一个公司需要在我们OA基础上添加财务管理模块，我们又可以打一个分支。这些分支都在Branches中</p>
+<p>我们后续针对OA的1.0版本在升级，我们不需要原来附加功能,就可以在原来的主干Trunk上继续开发，形成OA2.0版本，开发完成后就可以在打一个tags</p>
+<p>打一个分支或标记</p>
+<p><img src="/19.4.SVN/wps63.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps64.jpg" alt="img"> </p>
+<p>分支的定义规则:</p>
+<p>​    Project name+日期时间+功能点</p>
+<p>Tags的定义规则</p>
+<p>​    Project name+版本号</p>
+<p>​    版本号定义为三段数字编号</p>
+<p>​    xxx.xxx.xxx</p>
+<p>​    第一个:革命性的产品升级版</p>
+<p>​    第二个:新功能版</p>
+<p>​    第三个:修正bug</p>
+<p>切换主干，分支与标记</p>
+<p><img src="/19.4.SVN/wps65.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps66.jpg" alt="img"> </p>
+<p>Tags一般是只读，它代表的是发布的版本，所以我们不要进行改变。</p>
+<p>主干与分支的合并</p>
+<p>如果要将主干内容合并到分支上，我们需要在分支的工作副本上操作。</p>
+<p>如果要将分支的改变合并到主干上，我们需要在主干的工作副本上操作。</p>
+<p>我们的需要是将分支的改变合并到主干上：</p>
+<p><img src="/19.4.SVN/wps67.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps68.jpg" alt="img"> </p>
+<p>注意:在合并时要选择在相应的版本号，合并后，可能会出现冲突，将冲突解决，commit就可以。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/19.4.SVN/" data-id="ckno8ff4x000zswwdcqi9d3uo" data-title="SVN" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">WEB之上传和下载</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%84%E8%8C%83/" rel="tag">规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%A7%84%E8%8C%83/" style="font-size: 10px;">规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/19/19.4.SVN/">SVN</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/">WEB之上传和下载</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/">WEB之listener和filter</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/">WEB之cookie和session</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.6.WEB%E4%B9%8Bajax/">WEB之ajax</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 swx<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

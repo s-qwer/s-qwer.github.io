@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>JDBC | swx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="jdbc（Java数据库连接）是一种用于执行SQL语句的Java API，由一组用Java语言编写的类和接口组成。 驱动：两个设备（应用）之间通信的桥梁。 SUN公司提供一套统一的规范（接口）。然后各个数据库生产商提供这套接口的实现。这套接口规范就是JDBC的规范。 JDBC的环境准备： \1. 创建数据库和表 \2. 创建项目，引入jar包 JDBC的开发步骤： 1.加载驱动：Class.for">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JDBC">
+<meta property="og:url" content="https://s-qwer.github.io/2021/04/19/4.20.JDBC/index.html">
+<meta property="og:site_name" content="swx">
+<meta property="og:description" content="jdbc（Java数据库连接）是一种用于执行SQL语句的Java API，由一组用Java语言编写的类和接口组成。 驱动：两个设备（应用）之间通信的桥梁。 SUN公司提供一套统一的规范（接口）。然后各个数据库生产商提供这套接口的实现。这套接口规范就是JDBC的规范。 JDBC的环境准备： \1. 创建数据库和表 \2. 创建项目，引入jar包 JDBC的开发步骤： 1.加载驱动：Class.for">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps1.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps2.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps3.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps4.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps5.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps6.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps7.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps8.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps9.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps10.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps11.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps12.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps13.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps14.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps15.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps16.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps17.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps18.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps19.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps20.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps21.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps22.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps23.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps24.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps25.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps26.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps27.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps28.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps29.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps30.jpg">
+<meta property="og:image" content="https://s-qwer.github.io/4.20.JDBC/wps31.jpg">
+<meta property="article:published_time" content="2021-04-19T06:18:28.000Z">
+<meta property="article:modified_time" content="2021-04-19T06:20:20.939Z">
+<meta property="article:author" content="swx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s-qwer.github.io/4.20.JDBC/wps1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="swx" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swx</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://s-qwer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-4.20.JDBC" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/4.20.JDBC/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:18:28.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      JDBC
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>jdbc（Java数据库连接）是一种用于执行<a target="_blank" rel="noopener" href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=12370852&ss_c=ssc.citiao.link">SQL语句</a>的Java API，由一组用Java语言编写的类和接口组成。</p>
+<p>驱动：两个设备（应用）之间通信的桥梁。</p>
+<p>SUN公司提供一套统一的规范（接口）。然后各个数据库生产商提供这套接口的实现。这套接口规范就是JDBC的规范。</p>
+<p>JDBC的环境准备：</p>
+<p>\1. 创建数据库和表</p>
+<p>\2. 创建项目，引入jar包</p>
+<p>JDBC的开发步骤：</p>
+<p>1.加载驱动：Class.forname</p>
+<p>2.获得连接：DriverManager</p>
+<p>\3. 基本操作：执行SQL：</p>
+<p>获得执行SQL语句的对象：createStatement()方法，返回值是Statement</p>
+<p>编写SQL语句：String sql = “select * from user”;</p>
+<p>执行SQL：executeQuery(sql)方法，返回值是ResultSet</p>
+<p>遍历该set集合</p>
+<p>\4. 释放资源：集合、执行SQL语句的对象、获得的连接都要释放资源</p>
+<p>DriverManager：驱动管理类</p>
+<p>作用：1.注册驱动：DriverManager.registerDriver(Driver driver);</p>
+<p>这个方法可以完成驱动的注册，但是实际开发中一般不会使用这个方法完成驱动的注册，而是使用Class.forname(“com.mysql.jdbc.Driver”);</p>
+<p>因为如果需要注册驱动，就会使用DriverManager.registerDriver(new Driver());，但是查看Driver源代码发现，在代码中有一段静态代码块，静态代码块已经调用了注册驱动的方法，如果再手动调用该方法注册驱动，就会导致驱动被注册两次</p>
+<p>2.获得连接：DriverManager.getConnection(String url, String username, String password);</p>
+<p>url：与数据库连接的路径</p>
+<p>user    ：与数据库连接的用户名</p>
+<p>password：与数据库连接的密码</p>
+<p>url的写法：jdbc:mysql://localhost:3306/web_test3</p>
+<p>jdbc    :连接数据库的协议</p>
+<p>mysql:是jdbc的子协议</p>
+<p>localhost:连接的MySQL数据库服务器的主机地址。（连接是本机就可以写成localhost），如果连接不是本机的，就需要写上连接主机的IP地址。</p>
+<p>3306:MySQL数据库服务器的端口号</p>
+<p>web_test3:数据库名称</p>
+<p>url如果连接的是本机的路径，可以简化为：jdbc:mysql:///web_test3</p>
+<p>Connection：与数据库连接对象</p>
+<p>作用：1.创建执行SQL语句的对象：</p>
+<p>Statement:执行SQL Statement createStatement()</p>
+<p>CallableStatement:执行数据库中存储过程 CallableStatement prepareCall(String sql)</p>
+<p>PreparedStatement:（主要用这个）执行SQL.对SQL进行预处理。解决SQL注入漏洞 PreparedStatement preparedStatement (String sql)</p>
+<p>\2. 管理事务</p>
+<p>void setAutoCommit(boolean autoCommit):将此连接的自动提交模式改为给定状态</p>
+<p>void commit():将所有上一次提交/回滚后进行的更改变为永久性更改，并释放此Connection对象当前持有的所有数据库锁</p>
+<p>void rollback():取消在当前事务中进行的所有更改，并释放此Connection对象当前持有的所有数据库锁</p>
+<p>Statement：执行SQL</p>
+<p>作用：1.执行SQL</p>
+<p>boolean execute(String sql); 执行查询，修改，添加，删除的SQL语句 （如果第一个结果为ResultSet对象，则返回true；如果是更新计数或者不存在任何结果，返回false）</p>
+<p>ResultSet executeQuery(String sql); 执行查询（执行select语句）</p>
+<p>int executeUpate(String sql);执行修改，添加，删除的SQL语句 （SQL DDL语句也可以）（返回的是影响的行数）</p>
+<p>2.执行批处理</p>
+<p>void addBatch(String sql)  将给定的sql命令添加到此Statement对象的当前命令列表中</p>
+<p>void clearBatch()  清空此Statement对象的当前SQL命令列表</p>
+<p>int[] executeBatch()  将一批命令交给数据库来执行，如果全部命令执行成功，则返回更新计数组成的数组</p>
+<p>ResultSet：结果集，通过select语句的查询结果（只有select语句才有结果集）</p>
+<p>结果集的遍历：</p>
+<p>boolean next（）；  将光标从当前位置向下移一行（刚开始是在第一行之前的空白，调用了该方法之后会移动到第一行）</p>
+<p>结果集的获取：</p>
+<p>结果集获取可以使用结果集中的: getXXX(); 方法通常都会有一个重载的方法（int、long、String，Object就比较通用）</p>
+<p>传递的参数可以是列号也可以是列名：</p>
+<p>getXXX(int columnIndex);</p>
+<p>getXXX(String columnName); （一般传的参数是列名，因为查询的话，有可能结果的列号不一样）</p>
+<p>资源释放：</p>
+<p>JDBC程序执行结束后，将与数据库进行交互的对象释放掉，通常是ResultSet,Statement,Connection</p>
+<p>这几个对象中尤其是Connection对象是非常稀有的。这个对象一定要做到尽量晚创建，尽早释放掉。</p>
+<p>将资源释放的代码写入到finally的代码块中，确保资源会释放。但是资源释放的时候仍可能出现异常，所以资源释放的代码应该写的标准：再用trycatch语句进行判空，判完之后要将对象赋值为null：因为可以让垃圾回收器尽快的将资源回收。</p>
+<p>JDBC的CRUD操作：</p>
+<p>添加、删除、修改操作：</p>
+<p>\1. 创建Connection和Statement并赋值为null</p>
+<p>\2. try语句中进行：注册驱动，获得连接，创建执行SQL语句对象，编写相应的SQL语句，执行SQL（excuteUpdate(sql)方法），对返回值进行判断。</p>
+<p>\3. 释放资源（判空，抛异常，赋值为null）</p>
+<p>查询操作：查询多条记录和查询一条记录</p>
+<p>1.创建Connection和Statement和ResultSet并赋值为null</p>
+<p>2.try语句中进行：注册驱动，获得连接，创建执行SQL语句对象，编写相应的SQL语句，执行SQL（excuteQuery（sql）方法）。多条语句进行遍历while，一条语句进行判断if，并输出</p>
+<p>3.释放资源（判空，抛异常，赋值为null）</p>
+<p>JDBC的工具类的抽取：因为注册驱动，获得连接，释放资源的代码都是相同的，所以可以抽取成一个工具类。</p>
+<p>/**</p>
+<p> * JDBC的工具类</p>
+<p> * <em><strong>*@author*</strong></em> swx</p>
+<p> */</p>
+<p><em><strong>*public*</strong></em> <em><strong>*class*</strong></em> JDBCUtils {</p>
+<p>​    <em><strong>*private*</strong></em> <em><strong>*static*</strong></em> <em><strong>*final*</strong></em> String ****<em>driverClassName*</em>***;</p>
+<p>​    <em><strong>*private*</strong></em> <em><strong>*static*</strong></em> <em><strong>*final*</strong></em> String ****<em>url*</em>***;</p>
+<p>​    <em><strong>*private*</strong></em> <em><strong>*static*</strong></em> <em><strong>*final*</strong></em> String ****<em>username*</em>***;</p>
+<p>​    <em><strong>*private*</strong></em> <em><strong>*static*</strong></em> <em><strong>*final*</strong></em> String ****<em>password*</em>***;</p>
+<p>​    <em><strong>*static*</strong></em>{</p>
+<p>​        ****<em>driverClassName*</em>***=”com.mysql.jdbc.Driver”;</p>
+<p>​        ****<em>url*</em>***=”jdbc:mysql:///web_test3”;</p>
+<p>​        ****<em>username*</em>***=”root”;</p>
+<p>​        ****<em>password*</em>***=”abc”;</p>
+<p>​    }</p>
+<p>​    /**</p>
+<p>​     * 注册驱动的方法</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*static*</strong></em> <em><strong>*void*</strong></em> loadDriver(){</p>
+<p>​        <em><strong>*try*</strong></em> {</p>
+<p>​            Class.<strong>forName</strong>(****<em>driverClassName*</em>***);</p>
+<p>​        } <em><strong>*catch*</strong></em> (ClassNotFoundException e) {</p>
+<p>​            e.printStackTrace();</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>​    </p>
+<p>​    /**</p>
+<p>​     * 获得连接的方法</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*static*</strong></em> Connection getConnection(){</p>
+<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
+<p>​        <em><strong>*try*</strong></em>{</p>
+<p>​            // 将驱动一并注册:</p>
+<p>​            <strong>loadDriver</strong>();</p>
+<p>​            // 获得连接</p>
+<p>​            conn = DriverManager.<strong>getConnection</strong>(<em><strong>*<em>url*</em>***,</strong></em>*<em>username*</em>***, ****<em>password*</em>***);</p>
+<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
+<p>​            e.printStackTrace();</p>
+<p>​        }</p>
+<p>​        <em><strong>*return*</strong></em> conn;</p>
+<p>​    }</p>
+<p>​    </p>
+<p>​    /**</p>
+<p>​     * 释放资源的方法</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*static*</strong></em> <em><strong>*void*</strong></em> release(Statement stmt,Connection conn){</p>
+<p>​        <em><strong>*if*</strong></em>(stmt != <em><strong>*null*</strong></em>){</p>
+<p>​            <em><strong>*try*</strong></em> {</p>
+<p>​                stmt.close();</p>
+<p>​            } <em><strong>*catch*</strong></em> (SQLException e) {</p>
+<p>​                e.printStackTrace();</p>
+<p>​            }</p>
+<p>​            </p>
+<p>​            stmt = <em><strong>*null*</strong></em>;</p>
+<p>​        }</p>
+<p>​        <em><strong>*if*</strong></em>(conn != <em><strong>*null*</strong></em>){</p>
+<p>​            <em><strong>*try*</strong></em> {</p>
+<p>​                conn.close();</p>
+<p>​            } <em><strong>*catch*</strong></em> (SQLException e) {</p>
+<p>​                e.printStackTrace();</p>
+<p>​            }</p>
+<p>​            conn = <em><strong>*null*</strong></em>;</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>​    </p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*static*</strong></em> <em><strong>*void*</strong></em> release(ResultSet rs,Statement stmt,Connection conn){</p>
+<p>​        // 资源释放：</p>
+<p>​        <em><strong>*if*</strong></em>(rs != <em><strong>*null*</strong></em>){</p>
+<p>​            <em><strong>*try*</strong></em> {</p>
+<p>​                rs.close();</p>
+<p>​            } <em><strong>*catch*</strong></em> (SQLException e) {</p>
+<p>​                e.printStackTrace();</p>
+<p>​            }</p>
+<p>​            </p>
+<p>​            rs = <em><strong>*null*</strong></em>;</p>
+<p>​        }</p>
+<p>​        <em><strong>*if*</strong></em>(stmt != <em><strong>*null*</strong></em>){</p>
+<p>​            <em><strong>*try*</strong></em> {</p>
+<p>​                stmt.close();</p>
+<p>​            } <em><strong>*catch*</strong></em> (SQLException e) {</p>
+<p>​                e.printStackTrace();</p>
+<p>​            }</p>
+<p>​            </p>
+<p>​            stmt = <em><strong>*null*</strong></em>;</p>
+<p>​        }</p>
+<p>​        <em><strong>*if*</strong></em>(conn != <em><strong>*null*</strong></em>){</p>
+<p>​            <em><strong>*try*</strong></em> {</p>
+<p>​                conn.close();</p>
+<p>​            } <em><strong>*catch*</strong></em> (SQLException e) {</p>
+<p>​                e.printStackTrace();</p>
+<p>​            }</p>
+<p>​            conn = <em><strong>*null*</strong></em>;</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>}</p>
+<p>静态代码块可以写成配置文件</p>
+<p>配置文件：两种</p>
+<p>\1. 属性文件：扩展名为.properties  内容是key=value</p>
+<p>\2. XML文件</p>
+<p>定义一个配置文件：写好键值对的相应配置，修改文件扩展名为.properties</p>
+<p><img src="/4.20.JDBC/wps1.jpg" alt="img"> </p>
+<p>在工具类中解析属性文件：依然在静态代码块中进行解析：</p>
+<p><img src="/4.20.JDBC/wps2.jpg" alt="img"> </p>
+<p>SQL注入漏洞：通过知道用户名，然后进行sql语句查询就可以进行登录。</p>
+<p><img src="/4.20.JDBC/wps3.jpg" alt="img"> </p>
+<p>“+username+”和“+password+” 是字符串拼接</p>
+<p><img src="/4.20.JDBC/wps4.jpg" alt="img"> </p>
+<p>当用户名输入为aaa’ or ‘1=1 ，密码随意写，就能登录成功：</p>
+<p>select * from user where username = ‘ aaa’ or ‘ 1=1  ‘ and password = ‘ asdafaf ’</p>
+<p>因为先进行and运算，true and false 结果为false 。再进行or运算， true or false 结果为true，所以可以成功。</p>
+<p>当用户名输入为aaa’ or ‘1=1 ，密码随意写，也能登录成功：</p>
+<p>select * from user where username = ‘ aaa’ –  ‘ and password = ‘ asdafaf ’</p>
+<p>因为– 代表注释，相当于aaa后面的都没了，结果为true，所以可以成功。</p>
+<p>出现漏洞的原因就是因为 or  和 – 都是SQL的关键字</p>
+<p>解决方案：得在后台，后端解决。（因为可以绕过前端）</p>
+<p>需要采用PreparedStatement对象解决SQL注入漏洞。这个对象将SQL预先进行编译，使用?作为占位符。?所代表内容是SQL所固定。再次传入变量（包含SQL的关键字）。这个时候也不会识别这些关键字。</p>
+<p><em><strong>*public*</strong></em> <em><strong>*class*</strong></em> UserDao {</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*boolean*</strong></em> login(String username,String password){</p>
+<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
+<p>​        PreparedStatement pstmt = <em><strong>*null*</strong></em>;</p>
+<p>​        ResultSet rs = <em><strong>*null*</strong></em>;</p>
+<p>​        // 定义一个变量:</p>
+<p>​        <em><strong>*boolean*</strong></em> flag = <em><strong>*false*</strong></em>;</p>
+<p>​        <em><strong>*try*</strong></em>{</p>
+<p>​            // 获得连接:</p>
+<p>​            conn = JDBCUtils.<strong>getConnection</strong>();</p>
+<p>​            // 编写SQL语句:</p>
+<p>​            String sql = “select * from user where username = ? and password = ?”;</p>
+<p>​            // 预编译SQL</p>
+<p>​            pstmt = conn.prepareStatement(sql);</p>
+<p>​            // 设置参数:</p>
+<p>​            pstmt.setString(1, username); //1代表第一个问号</p>
+<p>​            pstmt.setString(2, password); // 2代表第二个问号</p>
+<p>​            // 执行SQL语句:</p>
+<p>​            rs = pstmt.executeQuery();</p>
+<p>​            <em><strong>*if*</strong></em>(rs.next()){</p>
+<p>​                // 说明根据用户名和密码可以查询到这条记录</p>
+<p>​                flag = <em><strong>*true*</strong></em>;</p>
+<p>​            }</p>
+<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
+<p>​            e.printStackTrace();</p>
+<p>​        }<em><strong>*finally*</strong></em>{</p>
+<p>​            JDBCUtils.<strong>release</strong>(rs, pstmt, conn);//这里传的pstmt实际是stmt的子类，实际上用的是多态</p>
+<p>​        }</p>
+<p>​        <em><strong>*return*</strong></em> flag;</p>
+<p>​    }</p>
+<p>所以以后的Statement都最好用PreparedStatement</p>
+<p>增加操作：String sql = “insert into user values (null,?,?,?,?)”;</p>
+<p>​            // 预编译SQL:</p>
+<p>​            pstmt = conn.prepareStatement(sql);</p>
+<p>​            // 设置参数:</p>
+<p>​            pstmt.setString(1, “eee”);</p>
+<p>​            pstmt.setString(2, “abc”);</p>
+<p>​            pstmt.setString(3, “旺财”);</p>
+<p>​            pstmt.setInt(4, 32);</p>
+<p>​            // 执行SQL</p>
+<p>​            <em><strong>*int*</strong></em> num = pstmt.executeUpdate();</p>
+<p>​            <em><strong>*if*</strong></em>(num &gt; 0){</p>
+<p>​                System.****<em>out*</em>***.println(“保存成功！”);</p>
+<p>​            }</p>
+<p>修改操作：String sql = “update user set username = ?,password =?,nickname=?,age = ? where id = ?”;</p>
+<p>​            // 预编译SQL:</p>
+<p>​            pstmt = conn.prepareStatement(sql);</p>
+<p>​            // 设置参数:</p>
+<p>​            pstmt.setString(1, “abc”);</p>
+<p>​            pstmt.setString(2, “1234”);</p>
+<p>​            pstmt.setString(3, “旺旺”);</p>
+<p>​            pstmt.setInt(4, 23);</p>
+<p>​            pstmt.setInt(5, 6);</p>
+<p>​            // 执行SQL：</p>
+<p>​            <em><strong>*int*</strong></em> num = pstmt.executeUpdate();</p>
+<p>​            <em><strong>*if*</strong></em>(num &gt; 0){</p>
+<p>​                System.****<em>out*</em>***.println(“修改成功！”);</p>
+<p>​            }</p>
+<p>删除操作：String sql = “delete from user where id = ?”;</p>
+<p>​            // 预编译SQL</p>
+<p>​            pstmt = conn.prepareStatement(sql);</p>
+<p>​            // 设置参数:</p>
+<p>​            pstmt.setInt(1, 4);</p>
+<p>​            // 执行SQL:</p>
+<p>​            <em><strong>*int*</strong></em> num = pstmt.executeUpdate();</p>
+<p>​            <em><strong>*if*</strong></em>(num &gt; 0){</p>
+<p>​                System.****<em>out*</em>***.println(“删除成功！”);</p>
+<p>​            }</p>
+<p>查找操作：String sql = “select * from user”;</p>
+<p>​            // 预编译SQL:</p>
+<p>​            pstmt = conn.prepareStatement(sql);</p>
+<p>​            // 设置参数:</p>
+<p>​            // 执行SQL:</p>
+<p>​            rs = pstmt.executeQuery();</p>
+<p>​            // 遍历结果集:</p>
+<p>​            while(rs.next()){</p>
+<p>​                System.out.println(rs.getInt(“id”)+” “+rs.getString(“username”)+” “+rs.getString(“password”)+” “+rs.getString(“nickname”));</p>
+<p>}</p>
+<p>JDBC的批处理：之前进行JDBC的操作的时候，都是一条SQL语句执行。现在如果使用批处理，可以将一批SQL一起执行。</p>
+<p>用Statement进行批处理：@Test</p>
+<p>​    /**</p>
+<p>​     * 批处理基本操作</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo1(){</p>
+<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
+<p>​        Statement stmt = <em><strong>*null*</strong></em>;</p>
+<p>​        <em><strong>*try*</strong></em>{</p>
+<p>​            // 获得连接:</p>
+<p>​            conn = JDBCUtils.<strong>getConnection</strong>();</p>
+<p>​            // 创建执行批处理对象:</p>
+<p>​            stmt = conn.createStatement();</p>
+<p>​            // 编写一批SQL语句：</p>
+<p>​            String sql1 = “create database test1”;</p>
+<p>​            String sql2 = “use test1”;</p>
+<p>​            String sql3 = “create table user(id int primary key auto_increment,name varchar(20))”;</p>
+<p>​            String sql4 = “insert into user values (null,’aaa’)”;</p>
+<p>​            String sql5 = “insert into user values (null,’bbb’)”;</p>
+<p>​            String sql6 = “insert into user values (null,’ccc’)”;</p>
+<p>​            String sql7 = “update user set name = ‘mmm’ where id = 2”;</p>
+<p>​            String sql8 = “delete from user where id = 1”;</p>
+<p>​            // 添加到批处理</p>
+<p>​            stmt.addBatch(sql1);</p>
+<p>​            stmt.addBatch(sql2);</p>
+<p>​            stmt.addBatch(sql3);</p>
+<p>​            stmt.addBatch(sql4);</p>
+<p>​            stmt.addBatch(sql5);</p>
+<p>​            stmt.addBatch(sql6);</p>
+<p>​            stmt.addBatch(sql7);</p>
+<p>​            stmt.addBatch(sql8);</p>
+<p>​            // 执行批处理:</p>
+<p>​            stmt.executeBatch();</p>
+<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
+<p>​            e.printStackTrace();</p>
+<p>​        }<em><strong>*finally*</strong></em>{</p>
+<p>​            JDBCUtils.<strong>release</strong>(stmt, conn);</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>使用PreparedStatement进行批量插入：</p>
+<p>@Test</p>
+<p>​    /**</p>
+<p>​     * 批量插入记录:</p>
+<p>​     * * 默认情况下MySQL批处理没有开启的，需要在url后面拼接一个参数即可：</p>
+<p>?rewriteBatchedStatements=true</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo2(){</p>
+<p>​        // 记录开始时间:</p>
+<p>​        <em><strong>*long*</strong></em> begin = System.<strong>currentTimeMillis</strong>();</p>
+<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
+<p>​        PreparedStatement pstmt = <em><strong>*null*</strong></em>;</p>
+<p>​        <em><strong>*try*</strong></em>{</p>
+<p>​            // 获得连接:</p>
+<p>​            conn = JDBCUtils.<strong>getConnection</strong>();</p>
+<p>​            // 编写SQL语句：</p>
+<p>​            String sql = “insert into user values (null,?)”;</p>
+<p>​            // 预编译SQL:</p>
+<p>​            pstmt = conn.prepareStatement(sql);</p>
+<p>​            <em><strong>*for*</strong></em>(<em><strong>*int*</strong></em> i=1;i&lt;=10000;i++){</p>
+<p>​                pstmt.setString(1, “name”+i);</p>
+<p>​                // 添加到批处理</p>
+<p>​                pstmt.addBatch();</p>
+<p>​                // 注意问题：</p>
+<p>​                // 执行批处理：每1000次进行一次批量处理和清空，以防止内存溢出</p>
+<p>​                <em><strong>*if*</strong></em>(i % 1000 == 0){</p>
+<p>​                    // 执行批处理:</p>
+<p>​                    pstmt.executeBatch();</p>
+<p>​                    // 清空批处理:</p>
+<p>​                    pstmt.clearBatch();</p>
+<p>​                }</p>
+<p>​            }</p>
+<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
+<p>​            e.printStackTrace();</p>
+<p>​        }<em><strong>*finally*</strong></em>{</p>
+<p>​            JDBCUtils.<strong>release</strong>(pstmt, conn);</p>
+<p>​        }</p>
+<p>​        <em><strong>*long*</strong></em> end = System.<strong>currentTimeMillis</strong>();</p>
+<p>​        System.****<em>out*</em>***.println((end-begin));</p>
+<p>​    }</p>
+<p>JDBC的事务：</p>
+<p>事务指的是逻辑上的一组操作，组成这组操作各个逻辑单元要么全都成功，要么全都失败。</p>
+<p>如果写一个转账代码，没有加事务的话，可能会出现扣钱了，但是另一个账户没有加钱的情况，所以需要加事务。</p>
+<p>@Test</p>
+<p>​    /**</p>
+<p>​     * 完成转账的案例</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo1(){</p>
+<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
+<p>​        PreparedStatement pstmt = <em><strong>*null*</strong></em>;</p>
+<p>​        <em><strong>*try*</strong></em>{</p>
+<p>​            /**</p>
+<p>​             * 完成转账代码：</p>
+<p>​             * * 扣除某个账号的钱</p>
+<p>​             * * 给另外一个账号加钱</p>
+<p>​             */</p>
+<p>​            // 获得连接：</p>
+<p>​            conn = JDBCUtils.<strong>getConnection</strong>();</p>
+<p>​            <em><strong>*// 开启事务*</strong></em></p>
+<p>​            <em><strong>*conn.setAutoCommit(*</strong>***</em>*false*<strong><strong><strong>*);*</strong></strong></strong>*//设置为false是需要手动提交，设为true的话，写一条sql语句就会提交一句****</p>
+<p>​            // 编写SQL语句：</p>
+<p>​            String sql = “update account set money = money + ? where name = ?”;</p>
+<p>​            // 预编译SQL:</p>
+<p>​            pstmt = conn.prepareStatement(sql);</p>
+<p>​            // 设置参数:</p>
+<p>​            // 用aaa账号给bbb账号转1000元</p>
+<p>​            pstmt.setDouble(1, -1000);</p>
+<p>​            pstmt.setString(2, “aaa”);</p>
+<p>​            // 执行SQL：扣除aaa账号1000元</p>
+<p>​            pstmt.executeUpdate();</p>
+<p>​            </p>
+<p>​            <em><strong>*int*</strong></em> i = 1 / 0; //假设这里出现了异常，结果账户的钱也不会发生改变</p>
+<p>​            </p>
+<p>​            // 给bbb账号加1000</p>
+<p>​            pstmt.setDouble(1, 1000);</p>
+<p>​            pstmt.setString(2, “bbb”);</p>
+<p>​            pstmt.executeUpdate();</p>
+<p>​            </p>
+<p>​            <em><strong>*// 提交事务:*</strong></em></p>
+<p>​            <em><strong>*conn.commit();*</strong></em></p>
+<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
+<p>​            <em><strong>*// 回滚事务:*</strong></em></p>
+<p>​            <em><strong>*try*</strong></em> <em><strong>*{*</strong></em></p>
+<p>​                <em><strong>*conn.rollback();*</strong></em></p>
+<p>​            <em><strong>*}*</strong></em> <em><strong>*catch*</strong></em> <em><strong>*(SQLException e1) {*</strong></em></p>
+<p>​                <em><strong>*e1.printStackTrace();*</strong></em></p>
+<p>​            <em><strong>*}*</strong></em></p>
+<p>​            e.printStackTrace();</p>
+<p>​        }<em><strong>*finally*</strong></em>{</p>
+<p>​            JDBCUtils.<strong>release</strong>(pstmt, conn);</p>
+<p>​        }</p>
+<p>​    }</p>
+<h1 id="连接池"><a href="#连接池" class="headerlink" title="*连接池*"></a><em><strong>*连接池*</strong></em></h1><p>连接池是装有连接的容器，线程使用连接的话，可以从连接池中进行获取，使用完成之后将连接归还给连接池。</p>
+<p>连接对象创建和销毁是需要耗费时间的，在服务器初始化的时候就初始化一些连接。把这些连接放入到内存中，使用的时候可以从内存中获取，使用完成之后将连接放入连接池中。从内存中获取和归还的效率要远远高于创建和销毁的效率。（提升性能）</p>
+<p>自定义连接池：</p>
+<p>\1. 编写一个类实现DataSource接口</p>
+<p>\2. 重写getConnection方法</p>
+<p>\3. 初始化多个连接在内存中</p>
+<p>\4. 编写归还连接的方法</p>
+<p><img src="/4.20.JDBC/wps5.jpg" alt="img"> </p>
+<p>测试：</p>
+<p><img src="/4.20.JDBC/wps6.jpg" alt="img"> </p>
+<p>但是这个自定义连接池也存在两个问题：</p>
+<p>使用接口的实现类完成的构造：</p>
+<p>MyDataSource dataSource = new MyDataSource(); 这种写法不利于程序的扩展：</p>
+<p>应该用这样的DataSource dataSource = new MyDataSource(); （多态）</p>
+<p>但是这样的话，因为DataSource下没有addBack方法所以下面的调用会出错；同时因为调用了addBack方法，会对使用连接池的用户增加难度（因为要理解什么是addBack方法，额外提供了方法归还连接）</p>
+<p>解决：不提供自定义的方法addBack就可以解决这个问题，所以需要改写一个方法解决归还的问题。</p>
+<p>在Connection中是有一个close方法的，colse方法完成了连接的销毁。现在需要写一个方法，将原有的连接的close方法改为归还。</p>
+<p>增强一个类中的方法：</p>
+<p>\1. 采用继承：是最简单的一种增强某个类中的方法的方式。</p>
+<p>条件：需要控制这个类的构造才能进行继承。</p>
+<p>\2. 采用装饰者模式：比如：BufferedInputStream（InputStream）</p>
+<p>条件：增强的类和被增强的那个类要实现同样的接口；在增强的类中要有被增强的那个类的引用。</p>
+<p>\3. 动态代理</p>
+<p>使用装饰者模式增强Connection中的close方法：（因为接口内的方法需要全部重写，而继承的话，可以只重写某一个或几个方法）</p>
+<p>为了简化编程，提供一个模板类（模板类原封不动的将接口中的所有方法都实现，但是都没有增强）。编写一个装饰类继承模板类。在装饰类中只需要增强某一个方法即可。</p>
+<p><img src="/4.20.JDBC/wps7.jpg" alt="img"> </p>
+<p>连接池的代码：</p>
+<p><em><strong>*public*</strong></em> <em><strong>*class*</strong></em> MyDataSource <em><strong>*implements*</strong></em> DataSource {</p>
+<p>​    // 将一些连接存入到内存中，可以定义一个集合，用于存储连接对象。</p>
+<p>​    <em><strong>*private*</strong></em> List<Connection> connList = <em><strong>*new*</strong></em> ArrayList<Connection>();</p>
+<p>​    </p>
+<p>​    // 在初始化的时候提供一些连接</p>
+<p>​    <em><strong>*public*</strong></em> MyDataSource() {</p>
+<p>​        // 初始化连接：</p>
+<p>​        <em><strong>*for*</strong></em>(<em><strong>*int*</strong></em> i = 1;i&lt;=3;i++){</p>
+<p>​            // 向集合中存入连接:</p>
+<p>​            connList.add(JDBCUtils.<strong>getConnection</strong>());</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>​    </p>
+<p>​    // 从连接池中获得连接的方法</p>
+<p>​    @Override</p>
+<p>​    <em><strong>*public*</strong></em> Connection getConnection() <em><strong>*throws*</strong></em> SQLException {</p>
+<p>​        Connection conn = connList.remove(0);</p>
+<p>​        <em><strong>*// 增强连接：*</strong></em></p>
+<p>​        <em><strong>*MyConnectionWrapper connWrapper =*</strong></em> <em><strong>*new*</strong></em> <em><strong>*MyConnectionWrapper(conn, connList);*</strong></em></p>
+<p>​        <em><strong>*return*</strong></em> connWrapper;</p>
+<p>​    }</p>
+<p>​    </p>
+<p>​    <em><strong>*// 编写一个归还连接的方法:*</strong></em></p>
+<p>​    <em><strong>*/*public void addBack(Connection*</strong></em> <em><strong>*conn*</strong>***</em>*){****</p>
+<p>​        <em><strong>*connList.add(*</strong>***</em>*conn****<em><strong>*);*</strong></em></p>
+<p>​    <em><strong>*}*/*</strong></em></p>
+<p>}</p>
+<p>测试：</p>
+<p><img src="/4.20.JDBC/wps8.jpg" alt="img"> </p>
+<h1 id="Druid开源连接池"><a href="#Druid开源连接池" class="headerlink" title="*Druid开源连接池*"></a><em><strong>*Druid开源连接池*</strong></em></h1><p>Druid是阿里旗下开源连接池产品，使用非常简单，可以与Spring框架进行快速整合。</p>
+<p>在项目下新建一个文件夹folder名为lib，复制mysql的驱动包，druid的jar包到lib中，添加buid path。</p>
+<p>/<em>可以直接添加工具类，配置文件。然后直接获得连接，执行SQL语句，释放资源。（但是最好用连接池，不用这个）</em>/</p>
+<p>使用这个druid连接池可以去百度搜索它的帮助文档查看相关的API。核心类：DruidDataSource</p>
+<p>利用这个核心类可以创建对象，然后手动设置数据库连接的参数：setXxx的方法，（也可以使用配置文件进行获取参数）获得连接：getConnection方法。最后释放资源中conn的释放不是销毁而是归还到连接池中（Druid连接池底层一定重写了这个方法变成了归还）</p>
+<p>@Test</p>
+<p>​    /**</p>
+<p>​     * Druid的使用:</p>
+<p>​     * * 手动设置参数的方式</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo1(){</p>
+<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
+<p>​        PreparedStatement pstmt = <em><strong>*null*</strong></em>;</p>
+<p>​        ResultSet rs = <em><strong>*null*</strong></em>;</p>
+<p>​        <em><strong>*try*</strong></em>{</p>
+<p>​            // 使用连接池：</p>
+<p>​            DruidDataSource dataSource = <em><strong>*new*</strong></em> DruidDataSource();</p>
+<p>​            // 手动设置数据库连接的参数:</p>
+<p>​            dataSource.setDriverClassName(“com.mysql.jdbc.Driver”);</p>
+<p>​            dataSource.setUrl(“jdbc:mysql:///web_test4”);</p>
+<p>​            dataSource.setUsername(“root”);</p>
+<p>​            dataSource.setPassword(“abc”);</p>
+<p>​            // 获得连接：</p>
+<p>//            conn = JDBCUtils.getConnection();</p>
+<p>​            conn = dataSource.getConnection();</p>
+<p>​            // 编写SQL:</p>
+<p>​            String sql = “select * from account”;</p>
+<p>​            // 预编译SQL:</p>
+<p>​            pstmt = conn.prepareStatement(sql);</p>
+<p>​            // 设置参数:</p>
+<p>​            // 执行SQL:</p>
+<p>​            rs = pstmt.executeQuery();</p>
+<p>​            <em><strong>*while*</strong></em>(rs.next()){</p>
+<p>​                System.****<em>out*</em>***.println(rs.getInt(“id”)+” “+rs.getString(“name”)+” “+rs.getDouble(“money”));</p>
+<p>​            }</p>
+<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
+<p>​            e.printStackTrace();</p>
+<p>​        }<em><strong>*finally*</strong></em>{</p>
+<p>​            JDBCUtils.<strong>release</strong>(rs, pstmt, conn);</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>也可以用配置文件进行参数的获取：</p>
+<p>@Test</p>
+<p>​    /**</p>
+<p>​     * Druid的使用:</p>
+<p>​     * * 配置文件方式设置参数</p>
+<p>​     * Druid配置方式可以使用属性文件配置的。</p>
+<p>​     * * 文件名称没有规定但是属性文件中的key要一定的。</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo2(){</p>
+<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
+<p>​        PreparedStatement pstmt = <em><strong>*null*</strong></em>;</p>
+<p>​        ResultSet rs = <em><strong>*null*</strong></em>;</p>
+<p>​        <em><strong>*try*</strong></em>{</p>
+<p>​            // 使用连接池：</p>
+<p>​            // 从属性文件中获取：</p>
+<p>​            Properties properties = <em><strong>*new*</strong></em> Properties();</p>
+<p>​            properties.load(<em><strong>*new*</strong></em> FileInputStream(“src/druid.properties”));</p>
+<p>//这里()内需要传一个InputStream，现在可以这样子传，在WEB中是另一种。</p>
+<p>​            DataSource dataSource = DruidDataSourceFactory.<strong>createDataSource</strong>(properties);</p>
+<p>​            // 获得连接：</p>
+<p>//            conn = JDBCUtils.getConnection();</p>
+<p>​            conn = dataSource.getConnection();</p>
+<p>​            // 编写SQL:</p>
+<p>​            String sql = “select * from account”;</p>
+<p>​            // 预编译SQL:</p>
+<p>​            pstmt = conn.prepareStatement(sql);</p>
+<p>​            // 设置参数:</p>
+<p>​            // 执行SQL:</p>
+<p>​            rs = pstmt.executeQuery();</p>
+<p>​            <em><strong>*while*</strong></em>(rs.next()){</p>
+<p>​                System.****<em>out*</em>***.println(rs.getInt(“id”)+” “+rs.getString(“name”)+” “+rs.getDouble(“money”));</p>
+<p>​            }</p>
+<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
+<p>​            e.printStackTrace();</p>
+<p>​        }<em><strong>*finally*</strong></em>{</p>
+<p>​            JDBCUtils.<strong>release</strong>(rs, pstmt, conn);</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>虽然可以在这里进行配置文件的配置，但是不太好，可以放在JDBC的工具类中。</p>
+<h1 id="C3P0开源连接池"><a href="#C3P0开源连接池" class="headerlink" title="*C3P0开源连接池*"></a><em><strong>*C3P0开源连接池*</strong></em></h1><p>C3P0是一个开源的JDBC<a target="_blank" rel="noopener" href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=8024867&ss_c=ssc.citiao.link">连接池</a>，它实现了数据源和JNDI绑定，支持JDBC3规范和JDBC2的标准扩展。目前使用它的开源项目有<a target="_blank" rel="noopener" href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=54630&ss_c=ssc.citiao.link">Hibernate</a>，Spring等。</p>
+<p>C3P0的核心类是：ComboPooledDataSource</p>
+<p>手动设置参数：</p>
+<p>@Test</p>
+<p>​    /**</p>
+<p>​     * 手动设置参数的方式:</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo1(){</p>
+<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
+<p>​        PreparedStatement pstmt = <em><strong>*null*</strong></em>;</p>
+<p>​        ResultSet rs = <em><strong>*null*</strong></em>;</p>
+<p>​        <em><strong>*try*</strong></em>{</p>
+<p>​            // 获得连接：从连接池中获取：</p>
+<p>​            // 创建连接池：</p>
+<p>​            ComboPooledDataSource dataSource = <em><strong>*new*</strong></em> ComboPooledDataSource();</p>
+<p>​            // 设置连接参数:</p>
+<p>​            dataSource.setDriverClass(“com.mysql.jdbc.Driver”);</p>
+<p>​            dataSource.setJdbcUrl(“jdbc:mysql:///web_test4”);</p>
+<p>​            dataSource.setUser(“root”);</p>
+<p>​            dataSource.setPassword(“abc”);</p>
+<p>​            // 从连接池中获得连接:</p>
+<p>​            conn = dataSource.getConnection();</p>
+<p>​            // 编写SQL：</p>
+<p>​            String sql = “select * from account”;</p>
+<p>​            // 预编译SQL:</p>
+<p>​            pstmt = conn.prepareStatement(sql);</p>
+<p>​            // 执行SQL：</p>
+<p>​            rs = pstmt.executeQuery();</p>
+<p>​            <em><strong>*while*</strong></em>(rs.next()){</p>
+<p>​                System.****<em>out*</em>***.println(rs.getInt(“id”)+” “+rs.getString(“name”)+” “+rs.getDouble(“money”));</p>
+<p>​            }</p>
+<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
+<p>​            e.printStackTrace();</p>
+<p>​        }<em><strong>*finally*</strong></em>{</p>
+<p>​            JDBCUtils.<strong>release</strong>(rs, pstmt, conn);</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>配置文件设置参数：</p>
+<p>默认情况下，c3p0会在类加载的resource路径下查找一个配置文件“/c3p0-config.xml”。所以XML文件应该在应用的CLASSPATH下的一个文件夹或者jar包中，如果是WEB的话会在WEB-INF/classes下，其他的话也是类似的路径。c3p0不仅支持xml文件，也支持properties文件（以后的重点）。</p>
+<p>配置连接池：</p>
+<p>在src下新建一个xml文件，设置名为c3p0-config.xml，可以在帮助文档中找到xml的配置代码:</p>
+<p><default-config>…… </default-config>  默认配置</p>
+<p>&lt;named-config  name=” ”&gt; ……</named-config>  自定义配置</p>
+<p>可以修改其中的配置key，value。</p>
+<p><img src="/4.20.JDBC/wps9.jpg" alt="img"> </p>
+<p>使用连接池：</p>
+<p>@Test</p>
+<p>​    /**</p>
+<p>​     * 采用配置文件的方式：</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo2(){</p>
+<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
+<p>​        PreparedStatement pstmt = <em><strong>*null*</strong></em>;</p>
+<p>​        ResultSet rs = <em><strong>*null*</strong></em>;</p>
+<p>​        <em><strong>*try*</strong></em>{</p>
+<p>​            // 获得连接：从连接池中获取：</p>
+<p>​            // 创建连接池：//创建连接池默认去类路径下查找c3p0-config.xml，并且将其中的各种参数加载好</p>
+<p>​            ComboPooledDataSource dataSource = <em><strong>*new*</strong></em> ComboPooledDataSource();</p>
+<p>//()里面可以传递配置的名称从而加载不同的参数。如果名称没有匹配的，会加载默认的配置参数</p>
+<p>​            // 从连接池中获得连接:</p>
+<p>​            conn = dataSource.getConnection();</p>
+<p>​            // 编写SQL：</p>
+<p>​            String sql = “select * from account”;</p>
+<p>​            // 预编译SQL:</p>
+<p>​            pstmt = conn.prepareStatement(sql);</p>
+<p>​            // 执行SQL：</p>
+<p>​            rs = pstmt.executeQuery();</p>
+<p>​            <em><strong>*while*</strong></em>(rs.next()){</p>
+<p>​                System.****<em>out*</em>***.println(rs.getInt(“id”)+” “+rs.getString(“name”)+” “+rs.getDouble(“money”));</p>
+<p>​            }</p>
+<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
+<p>​            e.printStackTrace();</p>
+<p>​        }<em><strong>*finally*</strong></em>{</p>
+<p>​            JDBCUtils.<strong>release</strong>(rs, pstmt, conn);</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>参数可以设置很多个，很多种，所以其应用很灵活。</p>
+<p>以上的代码都不规范，因为每次都会创建一个新的连接池，会浪费资源，所以需要对工具类进行改写和完善</p>
+<p><img src="/4.20.JDBC/wps10.jpg" alt="img"> </p>
+<h1 id="DBUtils"><a href="#DBUtils" class="headerlink" title="*DBUtils*"></a><em><strong>*DBUtils*</strong></em></h1><p>Commons DbUtils是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Apache/8512995">Apache</a>组织提供的一个对<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/JDBC">JDBC</a>进行简单封装的开源工具类库，使用它能够简化<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/JDBC">JDBC</a>应用程序的开发，同时也不会影响程序的性能。</p>
+<p>因为JDBC手写比较麻烦，而且有非常多的代码是类似的。比如获得连接，预编译SQL，释放资源等..那么可以将这些代码抽取出来放到工具类中。将类似的代码进行抽取。大大简化JDBC的编程。</p>
+<p>API</p>
+<p>QueryRunner对象：核心运行类</p>
+<p>构造方法：</p>
+<p>无参构造</p>
+<p><img src="/4.20.JDBC/wps11.jpg" alt="img"> </p>
+<p>带参构造</p>
+<p><img src="/4.20.JDBC/wps12.jpg" alt="img"> </p>
+<p>方法：</p>
+<p>增删改的方法</p>
+<p><img src="/4.20.JDBC/wps13.jpg" alt="img"> </p>
+<p><img src="/4.20.JDBC/wps14.jpg" alt="img"> </p>
+<p>查找的方法</p>
+<p><img src="/4.20.JDBC/wps15.jpg" alt="img"> </p>
+<p><img src="/4.20.JDBC/wps16.jpg" alt="img"> </p>
+<p>在一般情况下如果执行CRUD的操作：</p>
+<p>构造：</p>
+<p>QueryRunner(DataSource ds);</p>
+<p>方法：</p>
+<p>int update(String sql,Object… args);</p>
+<p>T query(String sql,ResultSetHandler rsh,Object… args);</p>
+<p>如果有事务管理的话使用另一套完成CRUD的操作</p>
+<p>构造：</p>
+<p>QueryRunner();</p>
+<p>方法:</p>
+<p>int update(Connection conn,String sql,Object… args);</p>
+<p>T query(Connection conn,String sql,ResultSetHandler rsh,Object… args);</p>
+<p>批量处理的方法</p>
+<p><img src="/4.20.JDBC/wps17.jpg" alt="img"> </p>
+<p>还有一个类：DbUtils</p>
+<p>提交事务的方法：（这里的close不是销毁而是归还）</p>
+<p><img src="/4.20.JDBC/wps18.jpg" alt="img"> </p>
+<p>回滚事务的方法：</p>
+<p><img src="/4.20.JDBC/wps19.jpg" alt="img"> </p>
+<p>添加DBUtils的构建路径</p>
+<p>DBUtils的添加操作：</p>
+<p>​    @Test</p>
+<p>​    /**</p>
+<p>​     * 添加操作</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo1() <em><strong>*throws*</strong></em> SQLException{</p>
+<p>​        // 创建核心类：QueryRunner:</p>
+<p>​        QueryRunner queryRunner = <em><strong>*new*</strong></em> QueryRunner(JDBCUtils2.<strong>getDataSource</strong>());</p>
+<p>​        queryRunner.update(“insert into account values (null,?,?)”, “ddd”,10000);</p>
+<p>​    }</p>
+<p>DBUtils的修改操作：</p>
+<p>​    @Test</p>
+<p>​    /**</p>
+<p>​     * 修改操作</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo2() <em><strong>*throws*</strong></em> SQLException{</p>
+<p>​        // 创建核心类:</p>
+<p>​        QueryRunner queryRunner = <em><strong>*new*</strong></em> QueryRunner(JDBCUtils2.<strong>getDataSource</strong>());</p>
+<p>​        queryRunner.update(“update account set name=?,money=? where id =?”, “eee”,20000,4);</p>
+<p>​    }</p>
+<p>DBUtils的删除操作：</p>
+<p>@Test</p>
+<p>​    /**</p>
+<p>​     * 删除操作</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo3() <em><strong>*throws*</strong></em> SQLException{</p>
+<p>​        // 创建核心类:</p>
+<p>​        QueryRunner queryRunner = <em><strong>*new*</strong></em> QueryRunner(JDBCUtils2.<strong>getDataSource</strong>());</p>
+<p>​        queryRunner.update(“delete from account where id = ?”, 3);</p>
+<p>​    }</p>
+<p>DBUtils的查询操作：</p>
+<p>查询一条记录：</p>
+<p>创建一个对象：Account（这个对象实例其实就是javabean）</p>
+<p><img src="/4.20.JDBC/wps20.jpg" alt="img"> </p>
+<p>也要重写toString方法</p>
+<p>查询的代码实现：T query(String sql,ResultSetHandler rsh,Object… args);</p>
+<p><img src="/4.20.JDBC/wps21.jpg" alt="img"> </p>
+<p>查询多条语句：</p>
+<p><img src="/4.20.JDBC/wps22.jpg" alt="img"> </p>
+<p>ResultSetHandler接口的实现类：</p>
+<p>\1. ArrayHandler和ArrayListHandler</p>
+<p>ArrayHandler：将查询到的一条记录封装到一个数组当中，这个数组应该是Object[]</p>
+<p><img src="/4.20.JDBC/wps23.jpg" alt="img"> </p>
+<p>ArrayListHandler：将多条记录封装到一个装有Object[]的List集合中。</p>
+<p><img src="/4.20.JDBC/wps24.jpg" alt="img"> </p>
+<p>\2. BeanHandler和BeanListHandler（重要）</p>
+<p>BeanHandler：将一条记录封装到一个JavaBean中。</p>
+<p><img src="/4.20.JDBC/wps25.jpg" alt="img"> </p>
+<p>必须保证Acoount中的变量和SQL中的列名一致</p>
+<p>BeanListHandler：将多条记录封装到一个装有JavaBean的List集合中。</p>
+<p><img src="/4.20.JDBC/wps26.jpg" alt="img"> </p>
+<p>\3. MapHandler和MapListHandler</p>
+<p>MapHandler：将一条记录封装到一个Map集合中，Map的key是列名，Map的value就是表中列的记录值。</p>
+<p><img src="/4.20.JDBC/wps27.jpg" alt="img"> </p>
+<p>MapListHandler：将多条记录封装到一个装有Map的List集合中。</p>
+<p><img src="/4.20.JDBC/wps28.jpg" alt="img"> </p>
+<p>\4. ColumnListHandler、ScalarHandler、KeyedHandler</p>
+<p>ColumnListHandler：将数据库中的某列的值封装到List集合中。</p>
+<p><img src="/4.20.JDBC/wps29.jpg" alt="img"> </p>
+<p>ScalarHandler：将单个值封装。</p>
+<p><img src="/4.20.JDBC/wps30.jpg" alt="img"> </p>
+<p>KeyedHandler（了解即可，用的很少）：将一条记录封装到一个Map集合中。将多条记录封装到一个装有Map集合的Map集合中。而且外面的Map的key是可以指定的（可以指定为数据库中的某一列名）。</p>
+<p><img src="/4.20.JDBC/wps31.jpg" alt="img"> </p>
+<p>因为可能是不同的类型，为了通用性，一般都用Object类型。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.20.JDBC/" data-id="ckno8ff6f004zswwd4cf877lj" data-title="JDBC" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/04/19/4.22.%E5%85%B3%E4%BA%8Enull/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          关于null
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/04/19/4.16.%E6%B3%9B%E5%9E%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">泛型</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%84%E8%8C%83/" rel="tag">规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%A7%84%E8%8C%83/" style="font-size: 10px;">规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/04/19/19.4.SVN/">SVN</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/">WEB之上传和下载</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/">WEB之listener和filter</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/">WEB之cookie和session</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/19/9.6.WEB%E4%B9%8Bajax/">WEB之ajax</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 swx<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
