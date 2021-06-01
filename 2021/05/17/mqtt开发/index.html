@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>mqtt开发 | swx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="一、MQTT简介　　MQTT（Message Queuing Telemetry Transport，消息队列遥测传输协议），是一种基于发布&#x2F;订阅（publish&#x2F;subscribe）模式的轻量级协议，该协议构建于TCP&#x2F;IP协议之上，MQTT最大优点在于，可以以极少的代码和有限的带宽，为连接远程设备提供实时可靠的消息服务。作为一种低开销、低带宽占用的即时通讯协议，使其在物联网、小型设备、移动应用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mqtt开发">
+<meta property="og:url" content="https://s-qwer.github.io/2021/05/17/mqtt%E5%BC%80%E5%8F%91/index.html">
+<meta property="og:site_name" content="swx">
+<meta property="og:description" content="一、MQTT简介　　MQTT（Message Queuing Telemetry Transport，消息队列遥测传输协议），是一种基于发布&#x2F;订阅（publish&#x2F;subscribe）模式的轻量级协议，该协议构建于TCP&#x2F;IP协议之上，MQTT最大优点在于，可以以极少的代码和有限的带宽，为连接远程设备提供实时可靠的消息服务。作为一种低开销、低带宽占用的即时通讯协议，使其在物联网、小型设备、移动应用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605102238662-898370272.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605102252608-944330398.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605102335266-676428342.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605104229092-389692380.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605151628068-1384773304.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605151704715-960809801.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605151733877-1519140836.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605152431784-1397999979.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605152552524-263522902.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605153026425-2133395564.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605153226279-1867348754.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605153331531-1709676768.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605154347388-598122694.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605154907571-2147358753.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605154920946-49908453.png">
+<meta property="article:published_time" content="2021-05-17T08:13:19.000Z">
+<meta property="article:modified_time" content="2021-05-17T09:29:09.965Z">
+<meta property="article:author" content="swx">
+<meta property="article:tag" content="mqtt">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605102238662-898370272.png">
+  
+    <link rel="alternate" href="/atom.xml" title="swx" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swx</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://s-qwer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-mqtt开发" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/05/17/mqtt%E5%BC%80%E5%8F%91/" class="article-date">
+  <time class="dt-published" datetime="2021-05-17T08:13:19.000Z" itemprop="datePublished">2021-05-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      mqtt开发
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="一、MQTT简介"><a href="#一、MQTT简介" class="headerlink" title="一、MQTT简介"></a>一、MQTT简介</h1><p>　　MQTT（Message Queuing Telemetry Transport，消息队列遥测传输协议），是一种基于发布/订阅（publish/subscribe）模式的轻量级协议，该协议构建于TCP/IP协议之上，MQTT最大优点在于，可以以极少的代码和有限的带宽，为连接远程设备提供实时可靠的消息服务。作为一种低开销、低带宽占用的即时通讯协议，使其在物联网、小型设备、移动应用等方面有较广泛的应用。</p>
+<p>　　MQTT是一个基于客户端-服务器的消息发布/订阅传输协议。MQTT协议是轻量、简单、开放和易于实现的，这些特点使它适用范围非常广泛。在很多情况下，包括受限的环境中，如：机器与机器（M2M）通信和物联网（IoT）。其在，通过卫星链路通信传感器、偶尔拨号的医疗设备、智能家居、及一些小型化设备中已广泛使用。</p>
+<h1 id="二、特性"><a href="#二、特性" class="headerlink" title="二、特性"></a>二、特性</h1><p>　　MQTT协议工作在低带宽、不可靠的网络的远程传感器和控制设备通讯而设计的协议，它具有以下主要的几项特性：</p>
+<p>　　（1）使用发布/订阅消息模式，提供一对多的消息发布，解除应用程序耦合。</p>
+<p>　　（2）对负载内容屏蔽的消息传输。</p>
+<p>　　（3）使用TCP/IP提供网络连接。</p>
+<p>　　主流的MQTT是基于TCP连接进行数据推送的，但是同样有基于UDP的版本，叫做MQTT-SN。这两种版本由于基于不同的连接方式，优缺点自然也就各有不同了。</p>
+<p>　　（4）有三种消息发布服务质量：</p>
+<p>　　“至多一次”，消息发布完全依赖底层TCP/IP网络。会发生消息丢失或重复。这一级别可用于如下情况，环境传感器数据，丢失一次读记录无所谓，因为不久后还会有第二次发送。这一种方式主要普通APP的推送，倘若你的智能设备在消息推送时未联网，推送过去没收到，再次联网也就收不到了。</p>
+<p>　　“至少一次”，确保消息到达，但消息重复可能会发生。</p>
+<p>　　“只有一次”，确保消息到达一次。在一些要求比较严格的计费系统中，可以使用此级别。在计费系统中，消息重复或丢失会导致不正确的结果。这种最高质量的消息发布服务还可以用于即时通讯类的APP的推送，确保用户收到且只会收到一次。　</p>
+<p>　　（5）小型传输，开销很小（固定长度的头部是2字节），协议交换最小化，以降低网络流量。</p>
+<p>　　这就是为什么在介绍里说它非常适合“在物联网领域，传感器与服务器的通信，信息的收集”，要知道嵌入式设备的运算能力和带宽都相对薄弱，使用这种协议来传递消息再适合不过了。</p>
+<h1 id="三、实现方式"><a href="#三、实现方式" class="headerlink" title="三、实现方式"></a>三、实现方式</h1><p>　　实现MQTT协议需要客户端和服务器端通讯完成，在通讯过程中，MQTT协议中有三种身份：发布者（Publish）、代理（Broker）（服务器）、订阅者（Subscribe）。其中，消息的发布者和订阅者都是客户端，消息代理是服务器，消息发布者可以同时是订阅者。</p>
+<p>　　MQTT传输的消息分为：主题（Topic）和负载（payload）两部分：</p>
+<p>　　（1）Topic，可以理解为消息的类型，订阅者订阅（Subscribe）后，就会收到该主题的消息内容（payload）；</p>
+<p>　　（2）payload，可以理解为消息的内容，是指订阅者具体要使用的内容。</p>
+<h1 id="四、MQTT的搭建（ubuntu）"><a href="#四、MQTT的搭建（ubuntu）" class="headerlink" title="四、MQTT的搭建（ubuntu）"></a>四、MQTT的搭建（ubuntu）</h1><p>　　1、apt-get安装mqtt相关包</p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605102238662-898370272.png" alt="img"></p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605102252608-944330398.png" alt="img"></p>
+<p>　　2、测试mosquitto是否正确运行</p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605102335266-676428342.png" alt="img"></p>
+<p>　　3、本机终端测试mqtt</p>
+<p>　　打开一个终端，订阅主题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mosquitto_sub -h 192.168.1.102 -t &quot;mqtt&quot; -v</span><br></pre></td></tr></table></figure>
+
+<p>　　【-h】指定要连接的MQTT服务器<br>　　【-t】订阅主题，此处为mqtt<br>　　【-v】打印更多的调试信息</p>
+<p>　　再打开一个终端，发布主题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mosquitto_pub -h 192.168.1.102 -t &quot;mqtt&quot; -m &quot;Hello Stonegeek&quot;</span><br></pre></td></tr></table></figure>
+
+<p>　　【-h】指定要连接的MQTT服务器<br>　　【-t】向指定主题推送消息<br>　　【-m】指定消息内容</p>
+<p>　　结果展示</p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605104229092-389692380.png" alt="img"></p>
+<h1 id="五、MQTT权限配置"><a href="#五、MQTT权限配置" class="headerlink" title="五、MQTT权限配置"></a>五、MQTT权限配置</h1><p>　　前面我们基于Mosquitto服务器已经搭建成功了，但是默认是允许匿名用户登录，对于正式上线的项目则是需要进行用户认证（当然，用户一般都会与数据库映射，不过在这里我们就会直接将用户写入配置文件中）</p>
+<p>　　1、Mosquitto服务器的配置文件为/etc/mosquitto/mosquitto.conf，关于用户认证的方式和读取的配置都在这个文件中进行</p>
+<p>　　配置文件参数说明：</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>allow_anonymous</th>
+<th>password_file</th>
+<th>acl_file</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>True(默认)</td>
+<td></td>
+<td></td>
+<td>允许匿名方式登录</td>
+</tr>
+<tr>
+<td>2</td>
+<td>False</td>
+<td>password_file</td>
+<td></td>
+<td>开启用户验证机制</td>
+</tr>
+<tr>
+<td>3</td>
+<td>False</td>
+<td>password_file</td>
+<td>acl_file</td>
+<td>开启用户验证机制，但访问控制不起作用</td>
+</tr>
+<tr>
+<td>4</td>
+<td>True</td>
+<td>password_file</td>
+<td>acl_file</td>
+<td>用户名及密码不为空，将自动进行用户验证且受到访问控制的限制；用户名及密码为空，将不进行用户验证且受到访问控制的限制</td>
+</tr>
+<tr>
+<td>5</td>
+<td>False</td>
+<td></td>
+<td></td>
+<td>无法启动服务</td>
+</tr>
+</tbody></table>
+<p>　　allow_anonymous允许匿名</p>
+<p>　　password-file密码文件</p>
+<p>　　acl_file访问控制列表</p>
+<p>　　2、修改配置文件</p>
+<p>　　命令：sudo vi /etc/mosquitto/mosquitto.conf</p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605151628068-1384773304.png" alt="img"></p>
+<p>　　3、添加用户信息</p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605151704715-960809801.png" alt="img"></p>
+<p>　　命令解释： -c 创建一个用户、/etc/mosquitto/pwfile.example 是将用户创建到 pwfile.example 文件中、admin 是用户名。　</p>
+<p>　　　　　　　　同样连续会提示连续输入两次密码。注意第二次创建用户时不用加 -c 如果加 -c 会把第一次创建的用户覆盖。</p>
+<p>　　　　　　　　至此两个用户创建成功，此时如果查看 pwfile.example 文件会发现其中多了两个用户。</p>
+<p>　　4、添加Topic和用户的关系</p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605151733877-1519140836.png" alt="img"></p>
+<p>　　5、用户认证测试</p>
+<p>　　（1）重启Mosquitto步骤　　　　</p>
+<p>　　查看mosquitto的进程</p>
+<p>　　命令：ps -aux|grep mosquitto</p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605152431784-1397999979.png" alt="img"></p>
+<p>　　（2）杀死进程</p>
+<p>　　命令：sudo kill -9 pid</p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605152552524-263522902.png" alt="img"></p>
+<p>　　（3）启动</p>
+<p>　　命令：mosquitto -c /etc/mosquitto/mosquitto.conf </p>
+<p>　　（4）订阅端启动（不加用户）</p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605153026425-2133395564.png" alt="img"></p>
+<p>　　订阅端启动（加用户）</p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605153226279-1867348754.png" alt="img"></p>
+<p>　　（5）发布端启动</p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605153331531-1709676768.png" alt="img"></p>
+<h1 id="六、MQTT实现（Java语言）"><a href="#六、MQTT实现（Java语言）" class="headerlink" title="六、MQTT实现（Java语言）"></a>六、MQTT实现（Java语言）</h1><p>　　<strong>注意：由于我们在上面配置了MQTT的用户权限控制，所以下面的用户只能使用stonegeek登录，否则项目会运行报错，而且我们在上面设置的访问控制列表中只有mtopic主题，所以我们必须使用此主题，否则，订阅者会收不到已发布的主题内容（已经测试过了）</strong></p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605154347388-598122694.png" alt="img"></p>
+<p>　　下面是我们Java语言实现的MQTT服务的发布/订阅</p>
+<h3 id="1、添加Maven依赖"><a href="#1、添加Maven依赖" class="headerlink" title="1、添加Maven依赖"></a>1、添加Maven依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;org.eclipse.paho&lt;&#x2F;groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;org.eclipse.paho.client.mqttv3&lt;&#x2F;artifactId&gt;</span><br><span class="line">  &lt;version&gt;1.1.1&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、ServerMQTT-class"><a href="#2、ServerMQTT-class" class="headerlink" title="2、ServerMQTT.class"></a>2、ServerMQTT.class</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.stonegeek;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttClient;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttConnectOptions;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttDeliveryToken;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttException;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttMessage;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttPersistenceException;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttTopic;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 服务器向多个客户端推送主题，即不同客户端可向服务端订阅相同的主题</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServerMQTT</span> </span>&#123;</span><br><span class="line">    <span class="comment">//tcp://MQTT安装的服务器地址:MQTT定义的端口号</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String HOST = <span class="string">&quot;tcp://192.168.1.102:1883&quot;</span>;</span><br><span class="line">    <span class="comment">//定义一个主题</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String TOPIC = <span class="string">&quot;mtopic&quot;</span>;</span><br><span class="line">    <span class="comment">//定义MQTT的ID，可以在MQTT服务配置中指定</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String clientid = <span class="string">&quot;server11&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> MqttClient client;</span><br><span class="line">    <span class="keyword">private</span> MqttTopic topic11;</span><br><span class="line">    <span class="keyword">private</span> String userName = <span class="string">&quot;stonegeek&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String passWord = <span class="string">&quot;123456&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> MqttMessage message;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 构造函数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> MqttException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ServerMQTT</span><span class="params">()</span> <span class="keyword">throws</span> MqttException </span>&#123;</span><br><span class="line">        <span class="comment">// MemoryPersistence设置clientid的保存形式，默认为以内存保存</span></span><br><span class="line">        client = <span class="keyword">new</span> MqttClient(HOST, clientid, <span class="keyword">new</span> MemoryPersistence());</span><br><span class="line">        connect();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *  用来连接服务器</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">connect</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        MqttConnectOptions options = <span class="keyword">new</span> MqttConnectOptions();</span><br><span class="line">        options.setCleanSession(<span class="keyword">false</span>);</span><br><span class="line">        options.setUserName(userName);</span><br><span class="line">        options.setPassword(passWord.toCharArray());</span><br><span class="line">        <span class="comment">// 设置超时时间</span></span><br><span class="line">        options.setConnectionTimeout(<span class="number">10</span>);</span><br><span class="line">        <span class="comment">// 设置会话心跳时间</span></span><br><span class="line">        options.setKeepAliveInterval(<span class="number">20</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            client.setCallback(<span class="keyword">new</span> PushCallback());</span><br><span class="line">            client.connect(options);</span><br><span class="line"></span><br><span class="line">            topic11 = client.getTopic(TOPIC);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> topic</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> message</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> MqttPersistenceException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> MqttException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">publish</span><span class="params">(MqttTopic topic , MqttMessage message)</span> <span class="keyword">throws</span> MqttPersistenceException,</span></span><br><span class="line"><span class="function">            MqttException </span>&#123;</span><br><span class="line">        MqttDeliveryToken token = topic.publish(message);</span><br><span class="line">        token.waitForCompletion();</span><br><span class="line">        System.out.println(<span class="string">&quot;message is published completely! &quot;</span></span><br><span class="line">                + token.isComplete());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *  启动入口</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> MqttException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> MqttException </span>&#123;</span><br><span class="line">        ServerMQTT server = <span class="keyword">new</span> ServerMQTT();</span><br><span class="line"></span><br><span class="line">        server.message = <span class="keyword">new</span> MqttMessage();</span><br><span class="line">        server.message.setQos(<span class="number">1</span>);</span><br><span class="line">        server.message.setRetained(<span class="keyword">true</span>);</span><br><span class="line">        server.message.setPayload(<span class="string">&quot;hello,topic11&quot;</span>.getBytes());</span><br><span class="line">        server.publish(server.topic11 , server.message);</span><br><span class="line">        System.out.println(server.message.isRetained() + <span class="string">&quot;------ratained状态&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3、ClientMQTT-class"><a href="#3、ClientMQTT-class" class="headerlink" title="3、ClientMQTT.class"></a>3、ClientMQTT.class</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.stonegeek;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.ScheduledExecutorService;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttClient;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttConnectOptions;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttException;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttTopic;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClientMQTT</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String HOST = <span class="string">&quot;tcp://192.168.1.102:1883&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String TOPIC = <span class="string">&quot;mtopic&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String clientid = <span class="string">&quot;client11&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> MqttClient client;</span><br><span class="line">    <span class="keyword">private</span> MqttConnectOptions options;</span><br><span class="line">    <span class="keyword">private</span> String userName = <span class="string">&quot;stonegeek&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String passWord = <span class="string">&quot;123456&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ScheduledExecutorService scheduler;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// host为主机名，clientid即连接MQTT的客户端ID，一般以唯一标识符表示，MemoryPersistence设置clientid的保存形式，默认为以内存保存</span></span><br><span class="line">            client = <span class="keyword">new</span> MqttClient(HOST, clientid, <span class="keyword">new</span> MemoryPersistence());</span><br><span class="line">            <span class="comment">// MQTT的连接设置</span></span><br><span class="line">            options = <span class="keyword">new</span> MqttConnectOptions();</span><br><span class="line">            <span class="comment">// 设置是否清空session,这里如果设置为false表示服务器会保留客户端的连接记录，这里设置为true表示每次连接到服务器都以新的身份连接</span></span><br><span class="line">            options.setCleanSession(<span class="keyword">true</span>);</span><br><span class="line">            <span class="comment">// 设置连接的用户名</span></span><br><span class="line">            options.setUserName(userName);</span><br><span class="line">            <span class="comment">// 设置连接的密码</span></span><br><span class="line">            options.setPassword(passWord.toCharArray());</span><br><span class="line">            <span class="comment">// 设置超时时间 单位为秒</span></span><br><span class="line">            options.setConnectionTimeout(<span class="number">10</span>);</span><br><span class="line">            <span class="comment">// 设置会话心跳时间 单位为秒 服务器会每隔1.5*20秒的时间向客户端发送个消息判断客户端是否在线，但这个方法并没有重连的机制</span></span><br><span class="line">            options.setKeepAliveInterval(<span class="number">20</span>);</span><br><span class="line">            <span class="comment">// 设置回调</span></span><br><span class="line">            client.setCallback(<span class="keyword">new</span> PushCallback());</span><br><span class="line">            MqttTopic topic = client.getTopic(TOPIC);</span><br><span class="line">            <span class="comment">//setWill方法，如果项目中需要知道客户端是否掉线可以调用该方法。设置最终端口的通知消息</span></span><br><span class="line">            options.setWill(topic, <span class="string">&quot;close&quot;</span>.getBytes(), <span class="number">2</span>, <span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">            client.connect(options);</span><br><span class="line">            <span class="comment">//订阅消息</span></span><br><span class="line">            <span class="keyword">int</span>[] Qos  = &#123;<span class="number">1</span>&#125;;</span><br><span class="line">            String[] topic1 = &#123;TOPIC&#125;;</span><br><span class="line">            client.subscribe(topic1, Qos);</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> MqttException </span>&#123;</span><br><span class="line">        ClientMQTT client = <span class="keyword">new</span> ClientMQTT();</span><br><span class="line">        client.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4、PushCallback-class"><a href="#4、PushCallback-class" class="headerlink" title="4、PushCallback.class"></a>4、PushCallback.class</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.stonegeek;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttCallback;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttMessage;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 发布消息的回调类 </span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 必须实现MqttCallback的接口并实现对应的相关接口方法CallBack 类将实现 MqttCallBack。 </span></span><br><span class="line"><span class="comment"> * 每个客户机标识都需要一个回调实例。在此示例中，构造函数传递客户机标识以另存为实例数据。 </span></span><br><span class="line"><span class="comment"> * 在回调中，将它用来标识已经启动了该回调的哪个实例。 </span></span><br><span class="line"><span class="comment"> * 必须在回调类中实现三个方法： </span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *  public void messageArrived(MqttTopic topic, MqttMessage message)接收已经预订的发布。 </span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *  public void connectionLost(Throwable cause)在断开连接时调用。 </span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *  public void deliveryComplete(MqttDeliveryToken token)) </span></span><br><span class="line"><span class="comment"> *  接收到已经发布的 QoS 1 或 QoS 2 消息的传递令牌时调用。 </span></span><br><span class="line"><span class="comment"> *  由 MqttClient.connect 激活此回调。 </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PushCallback</span> <span class="keyword">implements</span> <span class="title">MqttCallback</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">connectionLost</span><span class="params">(Throwable cause)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 连接丢失后，一般在这里面进行重连</span></span><br><span class="line">        System.out.println(<span class="string">&quot;连接断开，可以做重连&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deliveryComplete</span><span class="params">(IMqttDeliveryToken token)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;deliveryComplete---------&quot;</span> + token.isComplete());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">messageArrived</span><span class="params">(String topic, MqttMessage message)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">// subscribe后得到的消息会执行到这里面</span></span><br><span class="line">        System.out.println(<span class="string">&quot;接收消息主题 : &quot;</span> + topic);</span><br><span class="line">        System.out.println(<span class="string">&quot;接收消息Qos : &quot;</span> + message.getQos());</span><br><span class="line">        System.out.println(<span class="string">&quot;接收消息内容 : &quot;</span> + <span class="keyword">new</span> String(message.getPayload()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5、结果展示"><a href="#5、结果展示" class="headerlink" title="5、结果展示"></a>5、结果展示</h3><p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605154907571-2147358753.png" alt="img"></p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605154920946-49908453.png" alt="img"></p>
+<p>发布消息：</p>
+<ol>
+<li>MqttClient client = new MqttClient(“tcp://localhost:1883”, MqttClient.generateClientId());</li>
+<li>client.connect();</li>
+<li>MqttMessage message = new MqttMessage();</li>
+<li>message.setPayload(“Hello world from Java”.getBytes());</li>
+<li>client.publish(“iot_data”, message);</li>
+<li>client.disconnect();</li>
+</ol>
+<p>消费消息：</p>
+<ol>
+<li>MqttClient client=new MqttClient(“tcp://localhost:1883”, MqttClient.generateClientId());</li>
+<li>client.setCallback( new SimpleMqttCallBack() );</li>
+<li>client.connect();</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/05/17/mqtt%E5%BC%80%E5%8F%91/" data-id="ckpdvjpq0005enswd09211mv9" data-title="mqtt开发" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          推荐研读书籍
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/04/30/16.2.Docker%E4%B9%8BPortainer-io/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Docker之Portainer.io</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">MySQL基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Portainer-io/" rel="tag">Portainer.io</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/" rel="tag">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/" rel="tag">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springfox/" rel="tag">springfox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swagger/" rel="tag">swagger</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6/" rel="tag">书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E8%97%8F/" rel="tag">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" rel="tag">编程规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" rel="tag">设计规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" rel="tag">软件说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag">面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">MySQL基础概念</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Portainer-io/" style="font-size: 10px;">Portainer.io</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/WEB/" style="font-size: 10px;">WEB</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springfox/" style="font-size: 10px;">springfox</a> <a href="/tags/swagger/" style="font-size: 10px;">swagger</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%B9%A6/" style="font-size: 10px;">书</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%94%B6%E8%97%8F/" style="font-size: 10px;">收藏</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" style="font-size: 10px;">设计规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">软件说明</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">面向对象</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/">推荐研读书籍</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/17/mqtt%E5%BC%80%E5%8F%91/">mqtt开发</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/30/16.2.Docker%E4%B9%8BPortainer-io/">Docker之Portainer.io</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/23/5.4.MySQL%E9%9D%A2%E8%AF%95/">MySQL面试</a>
+          </li>
+        
+          <li>
+            <a href="/2021/04/22/12.5.Springfox/">Springfox</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 swx<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

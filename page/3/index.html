@@ -77,6 +77,977 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-4.20.JDBC" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/4.20.JDBC/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:18:28.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/4.20.JDBC/">JDBC</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>jdbc（Java数据库连接）是一种用于执行<a target="_blank" rel="noopener" href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=12370852&ss_c=ssc.citiao.link">SQL语句</a>的Java API，由一组用Java语言编写的类和接口组成。</p>
+<p>驱动：两个设备（应用）之间通信的桥梁。</p>
+<p>SUN公司提供一套统一的规范（接口）。然后各个数据库生产商提供这套接口的实现。这套接口规范就是JDBC的规范。</p>
+<p>JDBC的环境准备：</p>
+<p>\1. 创建数据库和表</p>
+<p>\2. 创建项目，引入jar包</p>
+<p>JDBC的开发步骤：</p>
+<p>1.加载驱动：Class.forname</p>
+<p>2.获得连接：DriverManager</p>
+<p>\3. 基本操作：执行SQL：</p>
+<p>获得执行SQL语句的对象：createStatement()方法，返回值是Statement</p>
+<p>编写SQL语句：String sql = “select * from user”;</p>
+<p>执行SQL：executeQuery(sql)方法，返回值是ResultSet</p>
+<p>遍历该set集合</p>
+<p>\4. 释放资源：集合、执行SQL语句的对象、获得的连接都要释放资源</p>
+<p>DriverManager：驱动管理类</p>
+<p>作用：1.注册驱动：DriverManager.registerDriver(Driver driver);</p>
+<p>这个方法可以完成驱动的注册，但是实际开发中一般不会使用这个方法完成驱动的注册，而是使用Class.forname(“com.mysql.jdbc.Driver”);</p>
+<p>因为如果需要注册驱动，就会使用DriverManager.registerDriver(new Driver());，但是查看Driver源代码发现，在代码中有一段静态代码块，静态代码块已经调用了注册驱动的方法，如果再手动调用该方法注册驱动，就会导致驱动被注册两次</p>
+<p>2.获得连接：DriverManager.getConnection(String url, String username, String password);</p>
+<p>url：与数据库连接的路径</p>
+<p>user    ：与数据库连接的用户名</p>
+<p>password：与数据库连接的密码</p>
+<p>url的写法：jdbc:mysql://localhost:3306/web_test3</p>
+<p>jdbc    :连接数据库的协议</p>
+<p>mysql:是jdbc的子协议</p>
+<p>localhost:连接的MySQL数据库服务器的主机地址。（连接是本机就可以写成localhost），如果连接不是本机的，就需要写上连接主机的IP地址。</p>
+<p>3306:MySQL数据库服务器的端口号</p>
+<p>web_test3:数据库名称</p>
+<p>url如果连接的是本机的路径，可以简化为：jdbc:mysql:///web_test3</p>
+<p>Connection：与数据库连接对象</p>
+<p>作用：1.创建执行SQL语句的对象：</p>
+<p>Statement:执行SQL Statement createStatement()</p>
+<p>CallableStatement:执行数据库中存储过程 CallableStatement prepareCall(String sql)</p>
+<p>PreparedStatement:（主要用这个）执行SQL.对SQL进行预处理。解决SQL注入漏洞 PreparedStatement preparedStatement (String sql)</p>
+<p>\2. 管理事务</p>
+<p>void setAutoCommit(boolean autoCommit):将此连接的自动提交模式改为给定状态</p>
+<p>void commit():将所有上一次提交/回滚后进行的更改变为永久性更改，并释放此Connection对象当前持有的所有数据库锁</p>
+<p>void rollback():取消在当前事务中进行的所有更改，并释放此Connection对象当前持有的所有数据库锁</p>
+<p>Statement：执行SQL</p>
+<p>作用：1.执行SQL</p>
+<p>boolean execute(String sql); 执行查询，修改，添加，删除的SQL语句 （如果第一个结果为ResultSet对象，则返回true；如果是更新计数或者不存在任何结果，返回false）</p>
+<p>ResultSet executeQuery(String sql); 执行查询（执行select语句）</p>
+<p>int executeUpate(String sql);执行修改，添加，删除的SQL语句 （SQL DDL语句也可以）（返回的是影响的行数）</p>
+<p>2.执行批处理</p>
+<p>void addBatch(String sql)  将给定的sql命令添加到此Statement对象的当前命令列表中</p>
+<p>void clearBatch()  清空此Statement对象的当前SQL命令列表</p>
+<p>int[] executeBatch()  将一批命令交给数据库来执行，如果全部命令执行成功，则返回更新计数组成的数组</p>
+<p>ResultSet：结果集，通过select语句的查询结果（只有select语句才有结果集）</p>
+<p>结果集的遍历：</p>
+<p>boolean next（）；  将光标从当前位置向下移一行（刚开始是在第一行之前的空白，调用了该方法之后会移动到第一行）</p>
+<p>结果集的获取：</p>
+<p>结果集获取可以使用结果集中的: getXXX(); 方法通常都会有一个重载的方法（int、long、String，Object就比较通用）</p>
+<p>传递的参数可以是列号也可以是列名：</p>
+<p>getXXX(int columnIndex);</p>
+<p>getXXX(String columnName); （一般传的参数是列名，因为查询的话，有可能结果的列号不一样）</p>
+<p>资源释放：</p>
+<p>JDBC程序执行结束后，将与数据库进行交互的对象释放掉，通常是ResultSet,Statement,Connection</p>
+<p>这几个对象中尤其是Connection对象是非常稀有的。这个对象一定要做到尽量晚创建，尽早释放掉。</p>
+<p>将资源释放的代码写入到finally的代码块中，确保资源会释放。但是资源释放的时候仍可能出现异常，所以资源释放的代码应该写的标准：再用trycatch语句进行判空，判完之后要将对象赋值为null：因为可以让垃圾回收器尽快的将资源回收。</p>
+<p>JDBC的CRUD操作：</p>
+<p>添加、删除、修改操作：</p>
+<p>\1. 创建Connection和Statement并赋值为null</p>
+<p>\2. try语句中进行：注册驱动，获得连接，创建执行SQL语句对象，编写相应的SQL语句，执行SQL（excuteUpdate(sql)方法），对返回值进行判断。</p>
+<p>\3. 释放资源（判空，抛异常，赋值为null）</p>
+<p>查询操作：查询多条记录和查询一条记录</p>
+<p>1.创建Connection和Statement和ResultSet并赋值为null</p>
+<p>2.try语句中进行：注册驱动，获得连接，创建执行SQL语句对象，编写相应的SQL语句，执行SQL（excuteQuery（sql）方法）。多条语句进行遍历while，一条语句进行判断if，并输出</p>
+<p>3.释放资源（判空，抛异常，赋值为null）</p>
+<p>JDBC的工具类的抽取：因为注册驱动，获得连接，释放资源的代码都是相同的，所以可以抽取成一个工具类。</p>
+<p>/**</p>
+<p> * JDBC的工具类</p>
+<p> * <em><strong>*@author*</strong></em> swx</p>
+<p> */</p>
+<p><em><strong>*public*</strong></em> <em><strong>*class*</strong></em> JDBCUtils {</p>
+<p>​    <em><strong>*private*</strong></em> <em><strong>*static*</strong></em> <em><strong>*final*</strong></em> String ****<em>driverClassName*</em>***;</p>
+<p>​    <em><strong>*private*</strong></em> <em><strong>*static*</strong></em> <em><strong>*final*</strong></em> String ****<em>url*</em>***;</p>
+<p>​    <em><strong>*private*</strong></em> <em><strong>*static*</strong></em> <em><strong>*final*</strong></em> String ****<em>username*</em>***;</p>
+<p>​    <em><strong>*private*</strong></em> <em><strong>*static*</strong></em> <em><strong>*final*</strong></em> String ****<em>password*</em>***;</p>
+<p>​    <em><strong>*static*</strong></em>{</p>
+<p>​        ****<em>driverClassName*</em>***=”com.mysql.jdbc.Driver”;</p>
+<p>​        ****<em>url*</em>***=”jdbc:mysql:///web_test3”;</p>
+<p>​        ****<em>username*</em>***=”root”;</p>
+<p>​        ****<em>password*</em>***=”abc”;</p>
+<p>​    }</p>
+<p>​    /**</p>
+<p>​     * 注册驱动的方法</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*static*</strong></em> <em><strong>*void*</strong></em> loadDriver(){</p>
+<p>​        <em><strong>*try*</strong></em> {</p>
+<p>​            Class.<strong>forName</strong>(****<em>driverClassName*</em>***);</p>
+<p>​        } <em><strong>*catch*</strong></em> (ClassNotFoundException e) {</p>
+<p>​            e.printStackTrace();</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>​    </p>
+<p>​    /**</p>
+<p>​     * 获得连接的方法</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*static*</strong></em> Connection getConnection(){</p>
+<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
+<p>​        <em><strong>*try*</strong></em>{</p>
+<p>​            // 将驱动一并注册:</p>
+<p>​            <strong>loadDriver</strong>();</p>
+<p>​            // 获得连接</p>
+<p>​            conn = DriverManager.<strong>getConnection</strong>(<em><strong>*<em>url*</em>***,</strong></em>*<em>username*</em>***, ****<em>password*</em>***);</p>
+<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
+<p>​            e.printStackTrace();</p>
+<p>​        }</p>
+<p>​        <em><strong>*return*</strong></em> conn;</p>
+<p>​    }</p>
+<p>​    </p>
+<p>​    /**</p>
+<p>​     * 释放资源的方法</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*static*</strong></em> <em><strong>*void*</strong></em> release(Statement stmt,Connection conn){</p>
+<p>​        <em><strong>*if*</strong></em>(stmt != <em><strong>*null*</strong></em>){</p>
+<p>​            <em><strong>*try*</strong></em> {</p>
+<p>​                stmt.close();</p>
+<p>​            } <em><strong>*catch*</strong></em> (SQLException e) {</p>
+<p>​                e.printStackTrace();</p>
+<p>​            }</p>
+<p>​            </p>
+<p>​            stmt = <em><strong>*null*</strong></em>;</p>
+<p>​        }</p>
+<p>​        <em><strong>*if*</strong></em>(conn != <em><strong>*null*</strong></em>){</p>
+<p>​            <em><strong>*try*</strong></em> {</p>
+<p>​                conn.close();</p>
+<p>​            } <em><strong>*catch*</strong></em> (SQLException e) {</p>
+<p>​                e.printStackTrace();</p>
+<p>​            }</p>
+<p>​            conn = <em><strong>*null*</strong></em>;</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>​    </p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*static*</strong></em> <em><strong>*void*</strong></em> release(ResultSet rs,Statement stmt,Connection conn){</p>
+<p>​        // 资源释放：</p>
+<p>​        <em><strong>*if*</strong></em>(rs != <em><strong>*null*</strong></em>){</p>
+<p>​            <em><strong>*try*</strong></em> {</p>
+<p>​                rs.close();</p>
+<p>​            } <em><strong>*catch*</strong></em> (SQLException e) {</p>
+<p>​                e.printStackTrace();</p>
+<p>​            }</p>
+<p>​            </p>
+<p>​            rs = <em><strong>*null*</strong></em>;</p>
+<p>​        }</p>
+<p>​        <em><strong>*if*</strong></em>(stmt != <em><strong>*null*</strong></em>){</p>
+<p>​            <em><strong>*try*</strong></em> {</p>
+<p>​                stmt.close();</p>
+<p>​            } <em><strong>*catch*</strong></em> (SQLException e) {</p>
+<p>​                e.printStackTrace();</p>
+<p>​            }</p>
+<p>​            </p>
+<p>​            stmt = <em><strong>*null*</strong></em>;</p>
+<p>​        }</p>
+<p>​        <em><strong>*if*</strong></em>(conn != <em><strong>*null*</strong></em>){</p>
+<p>​            <em><strong>*try*</strong></em> {</p>
+<p>​                conn.close();</p>
+<p>​            } <em><strong>*catch*</strong></em> (SQLException e) {</p>
+<p>​                e.printStackTrace();</p>
+<p>​            }</p>
+<p>​            conn = <em><strong>*null*</strong></em>;</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>}</p>
+<p>静态代码块可以写成配置文件</p>
+<p>配置文件：两种</p>
+<p>\1. 属性文件：扩展名为.properties  内容是key=value</p>
+<p>\2. XML文件</p>
+<p>定义一个配置文件：写好键值对的相应配置，修改文件扩展名为.properties</p>
+<p><img src="/4.20.JDBC/wps1.jpg" alt="img"> </p>
+<p>在工具类中解析属性文件：依然在静态代码块中进行解析：</p>
+<p><img src="/4.20.JDBC/wps2.jpg" alt="img"> </p>
+<p>SQL注入漏洞：通过知道用户名，然后进行sql语句查询就可以进行登录。</p>
+<p><img src="/4.20.JDBC/wps3.jpg" alt="img"> </p>
+<p>“+username+”和“+password+” 是字符串拼接</p>
+<p><img src="/4.20.JDBC/wps4.jpg" alt="img"> </p>
+<p>当用户名输入为aaa’ or ‘1=1 ，密码随意写，就能登录成功：</p>
+<p>select * from user where username = ‘ aaa’ or ‘ 1=1  ‘ and password = ‘ asdafaf ’</p>
+<p>因为先进行and运算，true and false 结果为false 。再进行or运算， true or false 结果为true，所以可以成功。</p>
+<p>当用户名输入为aaa’ or ‘1=1 ，密码随意写，也能登录成功：</p>
+<p>select * from user where username = ‘ aaa’ –  ‘ and password = ‘ asdafaf ’</p>
+<p>因为– 代表注释，相当于aaa后面的都没了，结果为true，所以可以成功。</p>
+<p>出现漏洞的原因就是因为 or  和 – 都是SQL的关键字</p>
+<p>解决方案：得在后台，后端解决。（因为可以绕过前端）</p>
+<p>需要采用PreparedStatement对象解决SQL注入漏洞。这个对象将SQL预先进行编译，使用?作为占位符。?所代表内容是SQL所固定。再次传入变量（包含SQL的关键字）。这个时候也不会识别这些关键字。</p>
+<p><em><strong>*public*</strong></em> <em><strong>*class*</strong></em> UserDao {</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*boolean*</strong></em> login(String username,String password){</p>
+<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
+<p>​        PreparedStatement pstmt = <em><strong>*null*</strong></em>;</p>
+<p>​        ResultSet rs = <em><strong>*null*</strong></em>;</p>
+<p>​        // 定义一个变量:</p>
+<p>​        <em><strong>*boolean*</strong></em> flag = <em><strong>*false*</strong></em>;</p>
+<p>​        <em><strong>*try*</strong></em>{</p>
+<p>​            // 获得连接:</p>
+<p>​            conn = JDBCUtils.<strong>getConnection</strong>();</p>
+<p>​            // 编写SQL语句:</p>
+<p>​            String sql = “select * from user where username = ? and password = ?”;</p>
+<p>​            // 预编译SQL</p>
+<p>​            pstmt = conn.prepareStatement(sql);</p>
+<p>​            // 设置参数:</p>
+<p>​            pstmt.setString(1, username); //1代表第一个问号</p>
+<p>​            pstmt.setString(2, password); // 2代表第二个问号</p>
+<p>​            // 执行SQL语句:</p>
+<p>​            rs = pstmt.executeQuery();</p>
+<p>​            <em><strong>*if*</strong></em>(rs.next()){</p>
+<p>​                // 说明根据用户名和密码可以查询到这条记录</p>
+<p>​                flag = <em><strong>*true*</strong></em>;</p>
+<p>​            }</p>
+<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
+<p>​            e.printStackTrace();</p>
+<p>​        }<em><strong>*finally*</strong></em>{</p>
+<p>​            JDBCUtils.<strong>release</strong>(rs, pstmt, conn);//这里传的pstmt实际是stmt的子类，实际上用的是多态</p>
+<p>​        }</p>
+<p>​        <em><strong>*return*</strong></em> flag;</p>
+<p>​    }</p>
+<p>所以以后的Statement都最好用PreparedStatement</p>
+<p>增加操作：String sql = “insert into user values (null,?,?,?,?)”;</p>
+<p>​            // 预编译SQL:</p>
+<p>​            pstmt = conn.prepareStatement(sql);</p>
+<p>​            // 设置参数:</p>
+<p>​            pstmt.setString(1, “eee”);</p>
+<p>​            pstmt.setString(2, “abc”);</p>
+<p>​            pstmt.setString(3, “旺财”);</p>
+<p>​            pstmt.setInt(4, 32);</p>
+<p>​            // 执行SQL</p>
+<p>​            <em><strong>*int*</strong></em> num = pstmt.executeUpdate();</p>
+<p>​            <em><strong>*if*</strong></em>(num &gt; 0){</p>
+<p>​                System.****<em>out*</em>***.println(“保存成功！”);</p>
+<p>​            }</p>
+<p>修改操作：String sql = “update user set username = ?,password =?,nickname=?,age = ? where id = ?”;</p>
+<p>​            // 预编译SQL:</p>
+<p>​            pstmt = conn.prepareStatement(sql);</p>
+<p>​            // 设置参数:</p>
+<p>​            pstmt.setString(1, “abc”);</p>
+<p>​            pstmt.setString(2, “1234”);</p>
+<p>​            pstmt.setString(3, “旺旺”);</p>
+<p>​            pstmt.setInt(4, 23);</p>
+<p>​            pstmt.setInt(5, 6);</p>
+<p>​            // 执行SQL：</p>
+<p>​            <em><strong>*int*</strong></em> num = pstmt.executeUpdate();</p>
+<p>​            <em><strong>*if*</strong></em>(num &gt; 0){</p>
+<p>​                System.****<em>out*</em>***.println(“修改成功！”);</p>
+<p>​            }</p>
+<p>删除操作：String sql = “delete from user where id = ?”;</p>
+<p>​            // 预编译SQL</p>
+<p>​            pstmt = conn.prepareStatement(sql);</p>
+<p>​            // 设置参数:</p>
+<p>​            pstmt.setInt(1, 4);</p>
+<p>​            // 执行SQL:</p>
+<p>​            <em><strong>*int*</strong></em> num = pstmt.executeUpdate();</p>
+<p>​            <em><strong>*if*</strong></em>(num &gt; 0){</p>
+<p>​                System.****<em>out*</em>***.println(“删除成功！”);</p>
+<p>​            }</p>
+<p>查找操作：String sql = “select * from user”;</p>
+<p>​            // 预编译SQL:</p>
+<p>​            pstmt = conn.prepareStatement(sql);</p>
+<p>​            // 设置参数:</p>
+<p>​            // 执行SQL:</p>
+<p>​            rs = pstmt.executeQuery();</p>
+<p>​            // 遍历结果集:</p>
+<p>​            while(rs.next()){</p>
+<p>​                System.out.println(rs.getInt(“id”)+” “+rs.getString(“username”)+” “+rs.getString(“password”)+” “+rs.getString(“nickname”));</p>
+<p>}</p>
+<p>JDBC的批处理：之前进行JDBC的操作的时候，都是一条SQL语句执行。现在如果使用批处理，可以将一批SQL一起执行。</p>
+<p>用Statement进行批处理：@Test</p>
+<p>​    /**</p>
+<p>​     * 批处理基本操作</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo1(){</p>
+<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
+<p>​        Statement stmt = <em><strong>*null*</strong></em>;</p>
+<p>​        <em><strong>*try*</strong></em>{</p>
+<p>​            // 获得连接:</p>
+<p>​            conn = JDBCUtils.<strong>getConnection</strong>();</p>
+<p>​            // 创建执行批处理对象:</p>
+<p>​            stmt = conn.createStatement();</p>
+<p>​            // 编写一批SQL语句：</p>
+<p>​            String sql1 = “create database test1”;</p>
+<p>​            String sql2 = “use test1”;</p>
+<p>​            String sql3 = “create table user(id int primary key auto_increment,name varchar(20))”;</p>
+<p>​            String sql4 = “insert into user values (null,’aaa’)”;</p>
+<p>​            String sql5 = “insert into user values (null,’bbb’)”;</p>
+<p>​            String sql6 = “insert into user values (null,’ccc’)”;</p>
+<p>​            String sql7 = “update user set name = ‘mmm’ where id = 2”;</p>
+<p>​            String sql8 = “delete from user where id = 1”;</p>
+<p>​            // 添加到批处理</p>
+<p>​            stmt.addBatch(sql1);</p>
+<p>​            stmt.addBatch(sql2);</p>
+<p>​            stmt.addBatch(sql3);</p>
+<p>​            stmt.addBatch(sql4);</p>
+<p>​            stmt.addBatch(sql5);</p>
+<p>​            stmt.addBatch(sql6);</p>
+<p>​            stmt.addBatch(sql7);</p>
+<p>​            stmt.addBatch(sql8);</p>
+<p>​            // 执行批处理:</p>
+<p>​            stmt.executeBatch();</p>
+<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
+<p>​            e.printStackTrace();</p>
+<p>​        }<em><strong>*finally*</strong></em>{</p>
+<p>​            JDBCUtils.<strong>release</strong>(stmt, conn);</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>使用PreparedStatement进行批量插入：</p>
+<p>@Test</p>
+<p>​    /**</p>
+<p>​     * 批量插入记录:</p>
+<p>​     * * 默认情况下MySQL批处理没有开启的，需要在url后面拼接一个参数即可：</p>
+<p>?rewriteBatchedStatements=true</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo2(){</p>
+<p>​        // 记录开始时间:</p>
+<p>​        <em><strong>*long*</strong></em> begin = System.<strong>currentTimeMillis</strong>();</p>
+<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
+<p>​        PreparedStatement pstmt = <em><strong>*null*</strong></em>;</p>
+<p>​        <em><strong>*try*</strong></em>{</p>
+<p>​            // 获得连接:</p>
+<p>​            conn = JDBCUtils.<strong>getConnection</strong>();</p>
+<p>​            // 编写SQL语句：</p>
+<p>​            String sql = “insert into user values (null,?)”;</p>
+<p>​            // 预编译SQL:</p>
+<p>​            pstmt = conn.prepareStatement(sql);</p>
+<p>​            <em><strong>*for*</strong></em>(<em><strong>*int*</strong></em> i=1;i&lt;=10000;i++){</p>
+<p>​                pstmt.setString(1, “name”+i);</p>
+<p>​                // 添加到批处理</p>
+<p>​                pstmt.addBatch();</p>
+<p>​                // 注意问题：</p>
+<p>​                // 执行批处理：每1000次进行一次批量处理和清空，以防止内存溢出</p>
+<p>​                <em><strong>*if*</strong></em>(i % 1000 == 0){</p>
+<p>​                    // 执行批处理:</p>
+<p>​                    pstmt.executeBatch();</p>
+<p>​                    // 清空批处理:</p>
+<p>​                    pstmt.clearBatch();</p>
+<p>​                }</p>
+<p>​            }</p>
+<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
+<p>​            e.printStackTrace();</p>
+<p>​        }<em><strong>*finally*</strong></em>{</p>
+<p>​            JDBCUtils.<strong>release</strong>(pstmt, conn);</p>
+<p>​        }</p>
+<p>​        <em><strong>*long*</strong></em> end = System.<strong>currentTimeMillis</strong>();</p>
+<p>​        System.****<em>out*</em>***.println((end-begin));</p>
+<p>​    }</p>
+<p>JDBC的事务：</p>
+<p>事务指的是逻辑上的一组操作，组成这组操作各个逻辑单元要么全都成功，要么全都失败。</p>
+<p>如果写一个转账代码，没有加事务的话，可能会出现扣钱了，但是另一个账户没有加钱的情况，所以需要加事务。</p>
+<p>@Test</p>
+<p>​    /**</p>
+<p>​     * 完成转账的案例</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo1(){</p>
+<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
+<p>​        PreparedStatement pstmt = <em><strong>*null*</strong></em>;</p>
+<p>​        <em><strong>*try*</strong></em>{</p>
+<p>​            /**</p>
+<p>​             * 完成转账代码：</p>
+<p>​             * * 扣除某个账号的钱</p>
+<p>​             * * 给另外一个账号加钱</p>
+<p>​             */</p>
+<p>​            // 获得连接：</p>
+<p>​            conn = JDBCUtils.<strong>getConnection</strong>();</p>
+<p>​            <em><strong>*// 开启事务*</strong></em></p>
+<p>​            <em><strong>*conn.setAutoCommit(*</strong>***</em>*false*<strong><strong><strong>*);*</strong></strong></strong>*//设置为false是需要手动提交，设为true的话，写一条sql语句就会提交一句****</p>
+<p>​            // 编写SQL语句：</p>
+<p>​            String sql = “update account set money = money + ? where name = ?”;</p>
+<p>​            // 预编译SQL:</p>
+<p>​            pstmt = conn.prepareStatement(sql);</p>
+<p>​            // 设置参数:</p>
+<p>​            // 用aaa账号给bbb账号转1000元</p>
+<p>​            pstmt.setDouble(1, -1000);</p>
+<p>​            pstmt.setString(2, “aaa”);</p>
+<p>​            // 执行SQL：扣除aaa账号1000元</p>
+<p>​            pstmt.executeUpdate();</p>
+<p>​            </p>
+<p>​            <em><strong>*int*</strong></em> i = 1 / 0; //假设这里出现了异常，结果账户的钱也不会发生改变</p>
+<p>​            </p>
+<p>​            // 给bbb账号加1000</p>
+<p>​            pstmt.setDouble(1, 1000);</p>
+<p>​            pstmt.setString(2, “bbb”);</p>
+<p>​            pstmt.executeUpdate();</p>
+<p>​            </p>
+<p>​            <em><strong>*// 提交事务:*</strong></em></p>
+<p>​            <em><strong>*conn.commit();*</strong></em></p>
+<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
+<p>​            <em><strong>*// 回滚事务:*</strong></em></p>
+<p>​            <em><strong>*try*</strong></em> <em><strong>*{*</strong></em></p>
+<p>​                <em><strong>*conn.rollback();*</strong></em></p>
+<p>​            <em><strong>*}*</strong></em> <em><strong>*catch*</strong></em> <em><strong>*(SQLException e1) {*</strong></em></p>
+<p>​                <em><strong>*e1.printStackTrace();*</strong></em></p>
+<p>​            <em><strong>*}*</strong></em></p>
+<p>​            e.printStackTrace();</p>
+<p>​        }<em><strong>*finally*</strong></em>{</p>
+<p>​            JDBCUtils.<strong>release</strong>(pstmt, conn);</p>
+<p>​        }</p>
+<p>​    }</p>
+<h1 id="连接池"><a href="#连接池" class="headerlink" title="*连接池*"></a><em><strong>*连接池*</strong></em></h1><p>连接池是装有连接的容器，线程使用连接的话，可以从连接池中进行获取，使用完成之后将连接归还给连接池。</p>
+<p>连接对象创建和销毁是需要耗费时间的，在服务器初始化的时候就初始化一些连接。把这些连接放入到内存中，使用的时候可以从内存中获取，使用完成之后将连接放入连接池中。从内存中获取和归还的效率要远远高于创建和销毁的效率。（提升性能）</p>
+<p>自定义连接池：</p>
+<p>\1. 编写一个类实现DataSource接口</p>
+<p>\2. 重写getConnection方法</p>
+<p>\3. 初始化多个连接在内存中</p>
+<p>\4. 编写归还连接的方法</p>
+<p><img src="/4.20.JDBC/wps5.jpg" alt="img"> </p>
+<p>测试：</p>
+<p><img src="/4.20.JDBC/wps6.jpg" alt="img"> </p>
+<p>但是这个自定义连接池也存在两个问题：</p>
+<p>使用接口的实现类完成的构造：</p>
+<p>MyDataSource dataSource = new MyDataSource(); 这种写法不利于程序的扩展：</p>
+<p>应该用这样的DataSource dataSource = new MyDataSource(); （多态）</p>
+<p>但是这样的话，因为DataSource下没有addBack方法所以下面的调用会出错；同时因为调用了addBack方法，会对使用连接池的用户增加难度（因为要理解什么是addBack方法，额外提供了方法归还连接）</p>
+<p>解决：不提供自定义的方法addBack就可以解决这个问题，所以需要改写一个方法解决归还的问题。</p>
+<p>在Connection中是有一个close方法的，colse方法完成了连接的销毁。现在需要写一个方法，将原有的连接的close方法改为归还。</p>
+<p>增强一个类中的方法：</p>
+<p>\1. 采用继承：是最简单的一种增强某个类中的方法的方式。</p>
+<p>条件：需要控制这个类的构造才能进行继承。</p>
+<p>\2. 采用装饰者模式：比如：BufferedInputStream（InputStream）</p>
+<p>条件：增强的类和被增强的那个类要实现同样的接口；在增强的类中要有被增强的那个类的引用。</p>
+<p>\3. 动态代理</p>
+<p>使用装饰者模式增强Connection中的close方法：（因为接口内的方法需要全部重写，而继承的话，可以只重写某一个或几个方法）</p>
+<p>为了简化编程，提供一个模板类（模板类原封不动的将接口中的所有方法都实现，但是都没有增强）。编写一个装饰类继承模板类。在装饰类中只需要增强某一个方法即可。</p>
+<p><img src="/4.20.JDBC/wps7.jpg" alt="img"> </p>
+<p>连接池的代码：</p>
+<p><em><strong>*public*</strong></em> <em><strong>*class*</strong></em> MyDataSource <em><strong>*implements*</strong></em> DataSource {</p>
+<p>​    // 将一些连接存入到内存中，可以定义一个集合，用于存储连接对象。</p>
+<p>​    <em><strong>*private*</strong></em> List<Connection> connList = <em><strong>*new*</strong></em> ArrayList<Connection>();</p>
+<p>​    </p>
+<p>​    // 在初始化的时候提供一些连接</p>
+<p>​    <em><strong>*public*</strong></em> MyDataSource() {</p>
+<p>​        // 初始化连接：</p>
+<p>​        <em><strong>*for*</strong></em>(<em><strong>*int*</strong></em> i = 1;i&lt;=3;i++){</p>
+<p>​            // 向集合中存入连接:</p>
+<p>​            connList.add(JDBCUtils.<strong>getConnection</strong>());</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>​    </p>
+<p>​    // 从连接池中获得连接的方法</p>
+<p>​    @Override</p>
+<p>​    <em><strong>*public*</strong></em> Connection getConnection() <em><strong>*throws*</strong></em> SQLException {</p>
+<p>​        Connection conn = connList.remove(0);</p>
+<p>​        <em><strong>*// 增强连接：*</strong></em></p>
+<p>​        <em><strong>*MyConnectionWrapper connWrapper =*</strong></em> <em><strong>*new*</strong></em> <em><strong>*MyConnectionWrapper(conn, connList);*</strong></em></p>
+<p>​        <em><strong>*return*</strong></em> connWrapper;</p>
+<p>​    }</p>
+<p>​    </p>
+<p>​    <em><strong>*// 编写一个归还连接的方法:*</strong></em></p>
+<p>​    <em><strong>*/*public void addBack(Connection*</strong></em> <em><strong>*conn*</strong>***</em>*){****</p>
+<p>​        <em><strong>*connList.add(*</strong>***</em>*conn****<em><strong>*);*</strong></em></p>
+<p>​    <em><strong>*}*/*</strong></em></p>
+<p>}</p>
+<p>测试：</p>
+<p><img src="/4.20.JDBC/wps8.jpg" alt="img"> </p>
+<h1 id="Druid开源连接池"><a href="#Druid开源连接池" class="headerlink" title="*Druid开源连接池*"></a><em><strong>*Druid开源连接池*</strong></em></h1><p>Druid是阿里旗下开源连接池产品，使用非常简单，可以与Spring框架进行快速整合。</p>
+<p>在项目下新建一个文件夹folder名为lib，复制mysql的驱动包，druid的jar包到lib中，添加buid path。</p>
+<p>/<em>可以直接添加工具类，配置文件。然后直接获得连接，执行SQL语句，释放资源。（但是最好用连接池，不用这个）</em>/</p>
+<p>使用这个druid连接池可以去百度搜索它的帮助文档查看相关的API。核心类：DruidDataSource</p>
+<p>利用这个核心类可以创建对象，然后手动设置数据库连接的参数：setXxx的方法，（也可以使用配置文件进行获取参数）获得连接：getConnection方法。最后释放资源中conn的释放不是销毁而是归还到连接池中（Druid连接池底层一定重写了这个方法变成了归还）</p>
+<p>@Test</p>
+<p>​    /**</p>
+<p>​     * Druid的使用:</p>
+<p>​     * * 手动设置参数的方式</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo1(){</p>
+<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
+<p>​        PreparedStatement pstmt = <em><strong>*null*</strong></em>;</p>
+<p>​        ResultSet rs = <em><strong>*null*</strong></em>;</p>
+<p>​        <em><strong>*try*</strong></em>{</p>
+<p>​            // 使用连接池：</p>
+<p>​            DruidDataSource dataSource = <em><strong>*new*</strong></em> DruidDataSource();</p>
+<p>​            // 手动设置数据库连接的参数:</p>
+<p>​            dataSource.setDriverClassName(“com.mysql.jdbc.Driver”);</p>
+<p>​            dataSource.setUrl(“jdbc:mysql:///web_test4”);</p>
+<p>​            dataSource.setUsername(“root”);</p>
+<p>​            dataSource.setPassword(“abc”);</p>
+<p>​            // 获得连接：</p>
+<p>//            conn = JDBCUtils.getConnection();</p>
+<p>​            conn = dataSource.getConnection();</p>
+<p>​            // 编写SQL:</p>
+<p>​            String sql = “select * from account”;</p>
+<p>​            // 预编译SQL:</p>
+<p>​            pstmt = conn.prepareStatement(sql);</p>
+<p>​            // 设置参数:</p>
+<p>​            // 执行SQL:</p>
+<p>​            rs = pstmt.executeQuery();</p>
+<p>​            <em><strong>*while*</strong></em>(rs.next()){</p>
+<p>​                System.****<em>out*</em>***.println(rs.getInt(“id”)+” “+rs.getString(“name”)+” “+rs.getDouble(“money”));</p>
+<p>​            }</p>
+<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
+<p>​            e.printStackTrace();</p>
+<p>​        }<em><strong>*finally*</strong></em>{</p>
+<p>​            JDBCUtils.<strong>release</strong>(rs, pstmt, conn);</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>也可以用配置文件进行参数的获取：</p>
+<p>@Test</p>
+<p>​    /**</p>
+<p>​     * Druid的使用:</p>
+<p>​     * * 配置文件方式设置参数</p>
+<p>​     * Druid配置方式可以使用属性文件配置的。</p>
+<p>​     * * 文件名称没有规定但是属性文件中的key要一定的。</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo2(){</p>
+<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
+<p>​        PreparedStatement pstmt = <em><strong>*null*</strong></em>;</p>
+<p>​        ResultSet rs = <em><strong>*null*</strong></em>;</p>
+<p>​        <em><strong>*try*</strong></em>{</p>
+<p>​            // 使用连接池：</p>
+<p>​            // 从属性文件中获取：</p>
+<p>​            Properties properties = <em><strong>*new*</strong></em> Properties();</p>
+<p>​            properties.load(<em><strong>*new*</strong></em> FileInputStream(“src/druid.properties”));</p>
+<p>//这里()内需要传一个InputStream，现在可以这样子传，在WEB中是另一种。</p>
+<p>​            DataSource dataSource = DruidDataSourceFactory.<strong>createDataSource</strong>(properties);</p>
+<p>​            // 获得连接：</p>
+<p>//            conn = JDBCUtils.getConnection();</p>
+<p>​            conn = dataSource.getConnection();</p>
+<p>​            // 编写SQL:</p>
+<p>​            String sql = “select * from account”;</p>
+<p>​            // 预编译SQL:</p>
+<p>​            pstmt = conn.prepareStatement(sql);</p>
+<p>​            // 设置参数:</p>
+<p>​            // 执行SQL:</p>
+<p>​            rs = pstmt.executeQuery();</p>
+<p>​            <em><strong>*while*</strong></em>(rs.next()){</p>
+<p>​                System.****<em>out*</em>***.println(rs.getInt(“id”)+” “+rs.getString(“name”)+” “+rs.getDouble(“money”));</p>
+<p>​            }</p>
+<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
+<p>​            e.printStackTrace();</p>
+<p>​        }<em><strong>*finally*</strong></em>{</p>
+<p>​            JDBCUtils.<strong>release</strong>(rs, pstmt, conn);</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>虽然可以在这里进行配置文件的配置，但是不太好，可以放在JDBC的工具类中。</p>
+<h1 id="C3P0开源连接池"><a href="#C3P0开源连接池" class="headerlink" title="*C3P0开源连接池*"></a><em><strong>*C3P0开源连接池*</strong></em></h1><p>C3P0是一个开源的JDBC<a target="_blank" rel="noopener" href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=8024867&ss_c=ssc.citiao.link">连接池</a>，它实现了数据源和JNDI绑定，支持JDBC3规范和JDBC2的标准扩展。目前使用它的开源项目有<a target="_blank" rel="noopener" href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=54630&ss_c=ssc.citiao.link">Hibernate</a>，Spring等。</p>
+<p>C3P0的核心类是：ComboPooledDataSource</p>
+<p>手动设置参数：</p>
+<p>@Test</p>
+<p>​    /**</p>
+<p>​     * 手动设置参数的方式:</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo1(){</p>
+<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
+<p>​        PreparedStatement pstmt = <em><strong>*null*</strong></em>;</p>
+<p>​        ResultSet rs = <em><strong>*null*</strong></em>;</p>
+<p>​        <em><strong>*try*</strong></em>{</p>
+<p>​            // 获得连接：从连接池中获取：</p>
+<p>​            // 创建连接池：</p>
+<p>​            ComboPooledDataSource dataSource = <em><strong>*new*</strong></em> ComboPooledDataSource();</p>
+<p>​            // 设置连接参数:</p>
+<p>​            dataSource.setDriverClass(“com.mysql.jdbc.Driver”);</p>
+<p>​            dataSource.setJdbcUrl(“jdbc:mysql:///web_test4”);</p>
+<p>​            dataSource.setUser(“root”);</p>
+<p>​            dataSource.setPassword(“abc”);</p>
+<p>​            // 从连接池中获得连接:</p>
+<p>​            conn = dataSource.getConnection();</p>
+<p>​            // 编写SQL：</p>
+<p>​            String sql = “select * from account”;</p>
+<p>​            // 预编译SQL:</p>
+<p>​            pstmt = conn.prepareStatement(sql);</p>
+<p>​            // 执行SQL：</p>
+<p>​            rs = pstmt.executeQuery();</p>
+<p>​            <em><strong>*while*</strong></em>(rs.next()){</p>
+<p>​                System.****<em>out*</em>***.println(rs.getInt(“id”)+” “+rs.getString(“name”)+” “+rs.getDouble(“money”));</p>
+<p>​            }</p>
+<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
+<p>​            e.printStackTrace();</p>
+<p>​        }<em><strong>*finally*</strong></em>{</p>
+<p>​            JDBCUtils.<strong>release</strong>(rs, pstmt, conn);</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>配置文件设置参数：</p>
+<p>默认情况下，c3p0会在类加载的resource路径下查找一个配置文件“/c3p0-config.xml”。所以XML文件应该在应用的CLASSPATH下的一个文件夹或者jar包中，如果是WEB的话会在WEB-INF/classes下，其他的话也是类似的路径。c3p0不仅支持xml文件，也支持properties文件（以后的重点）。</p>
+<p>配置连接池：</p>
+<p>在src下新建一个xml文件，设置名为c3p0-config.xml，可以在帮助文档中找到xml的配置代码:</p>
+<p><default-config>…… </default-config>  默认配置</p>
+<p>&lt;named-config  name=” ”&gt; ……</named-config>  自定义配置</p>
+<p>可以修改其中的配置key，value。</p>
+<p><img src="/4.20.JDBC/wps9.jpg" alt="img"> </p>
+<p>使用连接池：</p>
+<p>@Test</p>
+<p>​    /**</p>
+<p>​     * 采用配置文件的方式：</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo2(){</p>
+<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
+<p>​        PreparedStatement pstmt = <em><strong>*null*</strong></em>;</p>
+<p>​        ResultSet rs = <em><strong>*null*</strong></em>;</p>
+<p>​        <em><strong>*try*</strong></em>{</p>
+<p>​            // 获得连接：从连接池中获取：</p>
+<p>​            // 创建连接池：//创建连接池默认去类路径下查找c3p0-config.xml，并且将其中的各种参数加载好</p>
+<p>​            ComboPooledDataSource dataSource = <em><strong>*new*</strong></em> ComboPooledDataSource();</p>
+<p>//()里面可以传递配置的名称从而加载不同的参数。如果名称没有匹配的，会加载默认的配置参数</p>
+<p>​            // 从连接池中获得连接:</p>
+<p>​            conn = dataSource.getConnection();</p>
+<p>​            // 编写SQL：</p>
+<p>​            String sql = “select * from account”;</p>
+<p>​            // 预编译SQL:</p>
+<p>​            pstmt = conn.prepareStatement(sql);</p>
+<p>​            // 执行SQL：</p>
+<p>​            rs = pstmt.executeQuery();</p>
+<p>​            <em><strong>*while*</strong></em>(rs.next()){</p>
+<p>​                System.****<em>out*</em>***.println(rs.getInt(“id”)+” “+rs.getString(“name”)+” “+rs.getDouble(“money”));</p>
+<p>​            }</p>
+<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
+<p>​            e.printStackTrace();</p>
+<p>​        }<em><strong>*finally*</strong></em>{</p>
+<p>​            JDBCUtils.<strong>release</strong>(rs, pstmt, conn);</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>参数可以设置很多个，很多种，所以其应用很灵活。</p>
+<p>以上的代码都不规范，因为每次都会创建一个新的连接池，会浪费资源，所以需要对工具类进行改写和完善</p>
+<p><img src="/4.20.JDBC/wps10.jpg" alt="img"> </p>
+<h1 id="DBUtils"><a href="#DBUtils" class="headerlink" title="*DBUtils*"></a><em><strong>*DBUtils*</strong></em></h1><p>Commons DbUtils是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Apache/8512995">Apache</a>组织提供的一个对<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/JDBC">JDBC</a>进行简单封装的开源工具类库，使用它能够简化<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/JDBC">JDBC</a>应用程序的开发，同时也不会影响程序的性能。</p>
+<p>因为JDBC手写比较麻烦，而且有非常多的代码是类似的。比如获得连接，预编译SQL，释放资源等..那么可以将这些代码抽取出来放到工具类中。将类似的代码进行抽取。大大简化JDBC的编程。</p>
+<p>API</p>
+<p>QueryRunner对象：核心运行类</p>
+<p>构造方法：</p>
+<p>无参构造</p>
+<p><img src="/4.20.JDBC/wps11.jpg" alt="img"> </p>
+<p>带参构造</p>
+<p><img src="/4.20.JDBC/wps12.jpg" alt="img"> </p>
+<p>方法：</p>
+<p>增删改的方法</p>
+<p><img src="/4.20.JDBC/wps13.jpg" alt="img"> </p>
+<p><img src="/4.20.JDBC/wps14.jpg" alt="img"> </p>
+<p>查找的方法</p>
+<p><img src="/4.20.JDBC/wps15.jpg" alt="img"> </p>
+<p><img src="/4.20.JDBC/wps16.jpg" alt="img"> </p>
+<p>在一般情况下如果执行CRUD的操作：</p>
+<p>构造：</p>
+<p>QueryRunner(DataSource ds);</p>
+<p>方法：</p>
+<p>int update(String sql,Object… args);</p>
+<p>T query(String sql,ResultSetHandler rsh,Object… args);</p>
+<p>如果有事务管理的话使用另一套完成CRUD的操作</p>
+<p>构造：</p>
+<p>QueryRunner();</p>
+<p>方法:</p>
+<p>int update(Connection conn,String sql,Object… args);</p>
+<p>T query(Connection conn,String sql,ResultSetHandler rsh,Object… args);</p>
+<p>批量处理的方法</p>
+<p><img src="/4.20.JDBC/wps17.jpg" alt="img"> </p>
+<p>还有一个类：DbUtils</p>
+<p>提交事务的方法：（这里的close不是销毁而是归还）</p>
+<p><img src="/4.20.JDBC/wps18.jpg" alt="img"> </p>
+<p>回滚事务的方法：</p>
+<p><img src="/4.20.JDBC/wps19.jpg" alt="img"> </p>
+<p>添加DBUtils的构建路径</p>
+<p>DBUtils的添加操作：</p>
+<p>​    @Test</p>
+<p>​    /**</p>
+<p>​     * 添加操作</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo1() <em><strong>*throws*</strong></em> SQLException{</p>
+<p>​        // 创建核心类：QueryRunner:</p>
+<p>​        QueryRunner queryRunner = <em><strong>*new*</strong></em> QueryRunner(JDBCUtils2.<strong>getDataSource</strong>());</p>
+<p>​        queryRunner.update(“insert into account values (null,?,?)”, “ddd”,10000);</p>
+<p>​    }</p>
+<p>DBUtils的修改操作：</p>
+<p>​    @Test</p>
+<p>​    /**</p>
+<p>​     * 修改操作</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo2() <em><strong>*throws*</strong></em> SQLException{</p>
+<p>​        // 创建核心类:</p>
+<p>​        QueryRunner queryRunner = <em><strong>*new*</strong></em> QueryRunner(JDBCUtils2.<strong>getDataSource</strong>());</p>
+<p>​        queryRunner.update(“update account set name=?,money=? where id =?”, “eee”,20000,4);</p>
+<p>​    }</p>
+<p>DBUtils的删除操作：</p>
+<p>@Test</p>
+<p>​    /**</p>
+<p>​     * 删除操作</p>
+<p>​     */</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo3() <em><strong>*throws*</strong></em> SQLException{</p>
+<p>​        // 创建核心类:</p>
+<p>​        QueryRunner queryRunner = <em><strong>*new*</strong></em> QueryRunner(JDBCUtils2.<strong>getDataSource</strong>());</p>
+<p>​        queryRunner.update(“delete from account where id = ?”, 3);</p>
+<p>​    }</p>
+<p>DBUtils的查询操作：</p>
+<p>查询一条记录：</p>
+<p>创建一个对象：Account（这个对象实例其实就是javabean）</p>
+<p><img src="/4.20.JDBC/wps20.jpg" alt="img"> </p>
+<p>也要重写toString方法</p>
+<p>查询的代码实现：T query(String sql,ResultSetHandler rsh,Object… args);</p>
+<p><img src="/4.20.JDBC/wps21.jpg" alt="img"> </p>
+<p>查询多条语句：</p>
+<p><img src="/4.20.JDBC/wps22.jpg" alt="img"> </p>
+<p>ResultSetHandler接口的实现类：</p>
+<p>\1. ArrayHandler和ArrayListHandler</p>
+<p>ArrayHandler：将查询到的一条记录封装到一个数组当中，这个数组应该是Object[]</p>
+<p><img src="/4.20.JDBC/wps23.jpg" alt="img"> </p>
+<p>ArrayListHandler：将多条记录封装到一个装有Object[]的List集合中。</p>
+<p><img src="/4.20.JDBC/wps24.jpg" alt="img"> </p>
+<p>\2. BeanHandler和BeanListHandler（重要）</p>
+<p>BeanHandler：将一条记录封装到一个JavaBean中。</p>
+<p><img src="/4.20.JDBC/wps25.jpg" alt="img"> </p>
+<p>必须保证Acoount中的变量和SQL中的列名一致</p>
+<p>BeanListHandler：将多条记录封装到一个装有JavaBean的List集合中。</p>
+<p><img src="/4.20.JDBC/wps26.jpg" alt="img"> </p>
+<p>\3. MapHandler和MapListHandler</p>
+<p>MapHandler：将一条记录封装到一个Map集合中，Map的key是列名，Map的value就是表中列的记录值。</p>
+<p><img src="/4.20.JDBC/wps27.jpg" alt="img"> </p>
+<p>MapListHandler：将多条记录封装到一个装有Map的List集合中。</p>
+<p><img src="/4.20.JDBC/wps28.jpg" alt="img"> </p>
+<p>\4. ColumnListHandler、ScalarHandler、KeyedHandler</p>
+<p>ColumnListHandler：将数据库中的某列的值封装到List集合中。</p>
+<p><img src="/4.20.JDBC/wps29.jpg" alt="img"> </p>
+<p>ScalarHandler：将单个值封装。</p>
+<p><img src="/4.20.JDBC/wps30.jpg" alt="img"> </p>
+<p>KeyedHandler（了解即可，用的很少）：将一条记录封装到一个Map集合中。将多条记录封装到一个装有Map集合的Map集合中。而且外面的Map的key是可以指定的（可以指定为数据库中的某一列名）。</p>
+<p><img src="/4.20.JDBC/wps31.jpg" alt="img"> </p>
+<p>因为可能是不同的类型，为了通用性，一般都用Object类型。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.20.JDBC/" data-id="ckpdvjpq4005mnswd7jmr7244" data-title="JDBC" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-4.16.泛型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/4.16.%E6%B3%9B%E5%9E%8B/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:12:27.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/4.16.%E6%B3%9B%E5%9E%8B/">泛型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>JDK5以后出现了自动装箱，所以在需要引用类型的时候如果是个基本类型也是可以的，是因为有自动装箱。</p>
+<p>当我们往集合中存储了String和Integer两种类型时的数据时，而在遍历时都进行String类型的转化时，就会报错。但这个报错在编译期间不会出现，在编译的时候只有警告，只有执行的时候才会出现。于是集合也开始在创建对象的时候明确元素的数据类型，这就是泛型。</p>
+<p>泛型：是一种把类型明确的工作推迟到创建对象或者调用方法的时候才去明确的特殊的类型。参数化类型，把类型当作参数一样的传递。</p>
+<p>格式：&lt;数据类型&gt;  此处的数据类型只能是引用类型</p>
+<p>好处：1.运行时期的问题提取到了编译期间</p>
+<p>\2. 避免了强制类型转换</p>
+<p>\3. 简化了程序设计，解决了黄色警告线</p>
+<p>在API中，如果类，接口，抽象类中出现了<E>，就说明要使用泛型。一般来说就是在集合中使用。</p>
+<p>JDK7的新特性：泛型推断。</p>
+<p>早期我们使用Object类型可以接收任意的对象类型。但是在实际的使用中，会有类型转换的问题（向上转型是没有任何问题的，但是在向下转型的时候隐含了类型转换的问题），也就存在着隐患，这样的程序是不安全的，所以在JDK5以后Java提供了泛型来解决这个问题，提高程序的安全性。</p>
+<p>应用：</p>
+<p>1.泛型类：把泛型定义在类上</p>
+<p>格式:public class 类名&lt;泛型类型1,…&gt;</p>
+<p>注意:泛型类型必须是引用类型</p>
+<p>2.泛型方法：把泛型定义在方法上</p>
+<p>格式:public &lt;泛型类型&gt; 返回类型 方法名(泛型类型 .)</p>
+<p>方法可以接收任意的类型</p>
+<p>3.泛型接口：把泛型定义在接口上</p>
+<p>格式:public  interface 接口名&lt;泛型类型1…&gt;</p>
+<p>实现类在实现接口的时候：</p>
+<p>1.已经知道是什么类型的了：</p>
+<p>public class InterImpl implements Inter<String>{}</p>
+<p>\2. 还不知道是什么类型：(这种情况用的比较多)</p>
+<p>public class InterImpl<T> implements Inter<T>{}</p>
+<p>泛型通配符：泛型如果写的时候，前后必须一致（ArrayList<T> array=new ArrayList<T>();  这里的前后两个T必须一致，？可以表示任意）</p>
+<p>\1. &lt;?&gt;:任意类型，如果没有明确，那么就是Object以及任意的Java类了</p>
+<p>\2. &lt;? extends E&gt;：向下限定，E及其子类</p>
+<p>\3. &lt;? super E&gt;：向上限定，E及其父类</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.16.%E6%B3%9B%E5%9E%8B/" data-id="ckpdvjpos001snswd1357a60r" data-title="泛型" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-4.15.枚举" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/4.15.%E6%9E%9A%E4%B8%BE/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:12:20.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/4.15.%E6%9E%9A%E4%B8%BE/">枚举</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>枚举：是有限个值的集合。</p>
+<p>是指将变量的值一一列出来,变量的值只限于列举出来的值的范围内</p>
+<p>如果没有枚举类，我们自己定义一个类的话，会非常麻烦。（//需要用到构造方法私有，静态方法调用，对象调用方法，匿名类重写方法等）</p>
+<p>格式：</p>
+<p>public enum 枚举类名 {</p>
+<p>​            枚举项1，枚举项2，枚举项3…;</p>
+<p>}</p>
+<p>public String toString():  返回枚举常量的名称，它包含在声明中（枚举重写了toString方法，返回的是枚举项的名字）</p>
+<p>注意事项</p>
+<p>定义枚举类要用关键字enum</p>
+<p>所有枚举类都是Enum的子类</p>
+<p>枚举类的第一行上必须是枚举项，最后一个枚举项后的分号是可以省略的，但是如果枚举类有其他的东西，这个分号就不能省略。建议不要省略</p>
+<p>枚举类可以有构造器，但必须是private的，它默认的也是private的。枚举项的用法比较特殊：枚举(“”);</p>
+<p>枚举类也可以有抽象方法，但是枚举项必须重写该方法</p>
+<p>枚举在switch语句中的使用</p>
+<p>枚举类中的几个常见方法</p>
+<p>int compareTo(E o) 比较此枚举与指定对象的顺序，枚举中隐含数字 1 2 3 …</p>
+<p>String name() 返回此枚举常量的名称，在其枚举声明中对其进行声明</p>
+<p>int ordinal()  返回枚举常量的序数（它在枚举声明中的位置，初始常量序数为0）</p>
+<p>String toString() 返回枚举常量的名称，它包含在声明中</p>
+<p><T> T valueOf(Class<T> type,String name)  静态方法，返回带指定名称的指定枚举类型的枚举常量</p>
+<p>values()  此方法虽然在JDK文档中查找不到，但每个枚举类都具有该方法，它遍历枚举类的所有枚举值非常方便</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.15.%E6%9E%9A%E4%B8%BE/" data-id="ckpdvjpor001qnswd8cdrfhzo" data-title="枚举" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-4.23JVM" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/4.23JVM/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T03:36:18.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/4.23JVM/">JVM</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Java语言是跨平台的，jvm不是跨平台的。</p>
+<p>虚拟机（Virture Machine）指通过软件的具有完整硬件系统功能的、运行在一个完全隔离环境中的完整计算机系统。</p>
+<p>Java的源代码经过编译后生成的不是特定CPU使用的本地代码，而是名为字节代码的程序。直接代码的运行环境就叫做java虚拟机（JVM），边转换边运行。</p>
+<p>java中的内存分配：java程序在运行时，需要在内存中的分配空间。</p>
+<p>为了提高运算效率，就对空间进行了不同区域的划分，因为每一片区域都有特定的处理数据方式和内存管理方式。</p>
+<p>\1. 栈：存储局部变量（加载的变量、方法）</p>
+<p>结构：先进后出</p>
+<p>特点：栈内存的数据用完（脱离数据域）就释放掉。（堆内存的数据可能要使用多次。）</p>
+<p>\2. 堆：存储new出来的东西（里面含有该new类的成员变量、静态标记、方法标记）</p>
+<p>特点：每一个new出来的东西都有地址值；每个变量都有默认值：</p>
+<p>byte,short,int,long  0</p>
+<p>float,double  0.0</p>
+<p>char  \u000</p>
+<p>boolean  false </p>
+<p>引用类型  null</p>
+<p>使用完毕就变成了垃圾，但是并没有立即回收，会在垃圾回收器空闲时候回收。</p>
+<p>C++中用析构函数来回收释放空间。</p>
+<p>栈内存的两个引用指向同一个堆内存空间，无论是它们谁的操作，都是针对同一个地方。</p>
+<p>3.方法区：class类区（包括类的成员变量和成员方法）、静态区（static）、常量池</p>
+<p>4.本地方法区：和系统相关</p>
+<p>5.寄存器：CPU使用</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.23JVM/" data-id="ckpdvjpov0020nswdglqv6wxx" data-title="JVM" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-4.24.JUC并发编程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/4.24.JUC%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T03:36:12.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/4.24.JUC%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">JUC并发编程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.24.JUC%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" data-id="ckpdvjpow0023nswd9cab7xgs" data-title="JUC并发编程" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-4.17.反射和注解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/04/19/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/" class="article-date">
@@ -410,7 +1381,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/" data-id="ckno8ff620044swwd2yrdf293" data-title="反射和注解" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/" data-id="ckpdvjppo004bnswdgecn0usj" data-title="反射和注解" class="article-share-link">分享</a>
       
       
       
@@ -491,7 +1462,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.21.GUI%E7%BC%96%E7%A8%8B/" data-id="ckno8ff5b001yswwd17nr84w8" data-title="GUI编程" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.21.GUI%E7%BC%96%E7%A8%8B/" data-id="ckpdvjpov001znswd0knw6jk9" data-title="GUI编程" class="article-share-link">分享</a>
       
       
       
@@ -633,7 +1604,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.18.%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" data-id="ckno8ff5a001rswwdcr7ibf54" data-title="网络编程" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.18.%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" data-id="ckpdvjpot001unswd0mtz8ksz" data-title="网络编程" class="article-share-link">分享</a>
       
       
       
@@ -872,7 +1843,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.19.%E5%A4%9A%E7%BA%BF%E7%A8%8B/" data-id="ckno8ff5a001uswwd1p4x6194" data-title="多线程" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.19.%E5%A4%9A%E7%BA%BF%E7%A8%8B/" data-id="ckpdvjpot001wnswdbad7acyr" data-title="多线程" class="article-share-link">分享</a>
       
       
       
@@ -1160,543 +2131,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.13.IO%E6%B5%81/" data-id="ckno8ff620042swwdat1jdpua" data-title="IO流" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.13.IO%E6%B5%81/" data-id="ckpdvjppn0048nswdhrki22qw" data-title="IO流" class="article-share-link">分享</a>
       
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-4.12.集合" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/4.12.%E9%9B%86%E5%90%88/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T03:35:08.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/4.12.%E9%9B%86%E5%90%88/">集合</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>面向对象语言对事物的体现都是以对象的形式，所以为了方便对多个对象的操作，而想要存储多个对象，就不能是一个基本的变量，而应该是一个容器类的变量，StringBuffer的结果是一个字符串，对象数组的长度是固定的，为了适应变化的需求，即创造一个可变的对象的容器，Java就提供了集合类。</p>
-<p>数组和集合的区别：</p>
-<p>A：长度区别：数组的长度固定  集合长度可变</p>
-<p>B：内容不同：数组存储的是同一种类型的元素  集合可以存储不同类型的元素</p>
-<p>C：元素的数据类型：数组可以存储基本数据类型，也可以存储引用数据类型  集合只能存储引用类型</p>
-<p>集合类的特点</p>
-<p>集合只用于存储对象，集合长度是可变的，集合可以存储不同类型的对象。</p>
-<h1 id="Collection（单列集合）"><a href="#Collection（单列集合）" class="headerlink" title="*Collection（单列集合）*"></a><em><strong>*Collection（单列集合）*</strong></em></h1><p>总接口：Collection  util包下</p>
-<p>是集合的顶层接口，它的子体系有重复的，有唯一的，有有序的，有无序的。</p>
-<p>功能：</p>
-<p>\1. 添加功能 boolean add(Object obj)  添加一个元素（这个方法永远返回的是true）</p>
-<p> boolean addAll(Collection c)  添加一个集合的元素(无论重复与否)</p>
-<p>\2. 删除功能  void clear() 移除所有元素</p>
-<p>boolean remove(Object o)  移除一个元素</p>
-<p>boolean removeAll(Collection c) 移除一个集合的元素（只要有一个元素被移除了就会返回true）</p>
-<p>\3. 判断功能  boolean contains（Object obj） 判断集合中是否包含指定的元素<br>                        boolean containsAll （Collection c） 判断集合中是否包含指定的集合元素（只有包含所有的元素才叫包含）</p>
-<p>boolean isEmpty（）  判断集合是否为空</p>
-<p>\4. 获取功能<br>                <em><strong>*Iterator<E>  iterator() 迭代器，集合的专用遍历方式*</strong></em></p>
-<p>\5. 长度功能  int size() 元素的个数（数组和字符串的长度方法都是length方法，集合是size方法）</p>
-<p>\6. 交集功能 boolean retainAll(Collection c)  两个集合都有的元素（假设有两个集合A,B，A对B做交集，最终的结果保存在A中，B不变，返回值表示的是A是否发生过改变）</p>
-<p>\7. 把集合转换为数组 Object[] toArray（）</p>
-<p>集合的遍历：依次获取集合中的每一个元素</p>
-<p>1.Object[] toArray（）：把集合转换为数组，通过对数组的遍历，可以实现集合的遍历 （然而这种方法object中没有length方法，所以无法得到元素的长度，所以还需要对object进行转换为字符串，这种转型是向下转型，需要强转，转完就可以调用字符串的length方法得到长度）</p>
-<p>2.<em><strong>*Iterator<E>  iterator()*</strong></em></p>
-<p>Object next()  获取元素，并移动到下一个位置</p>
-<p>boolean hasNext()  如果仍有元素可以迭代，则返回true</p>
-<p>可以用while循环while(it.hasNext){}，也可以用for循环for(Iterator it= c.iterator;it.hasNext();){}遍历</p>
-<p>不要多次使用it.next()方法，因为每次使用都是调用下一个对象</p>
-<p>迭代器：是遍历集合的一种方式。迭代器是依赖于集合而存在的。</p>
-<p>迭代器在真正的具体的子类中，以内部类的方式实现的。</p>
-<p>集合的使用步骤：</p>
-<p>\1. 创建集合对象</p>
-<p>\2. 创建元素对象</p>
-<p>\3. 把元素添加到集合</p>
-<p>\4. 遍历集合：a.通过集合对象获取迭代器对象</p>
-<p>b.通过迭代器对象的hasNext()方法判断是否有元素</p>
-<p>c.通过迭代器对象的next()方法获取元素并移动到下一个位置</p>
-<h2 id="List"><a href="#List" class="headerlink" title="*List*"></a><em><strong>*List*</strong></em></h2><p>****有序****的 collection（也称为序列）。此接口的用户可以对列表中每个元素的插入位置进行精确地控制。用户可以根据元素的整数索引（在列表中的位置）访问元素，并搜索列表中的元素。</p>
-<p>与 set 不同，列表通常允许****重复****的元素。</p>
-<p>特点：有序（存储和取出的元素一致），可重复的。</p>
-<p>List接口的特有功能：</p>
-<p>1.添加功能：void add(int index,Object element)  在指定的位置添加元素（index是length长度的值就不会报错，超过这个值就会出现越界）</p>
-<p>2.获取功能：Object get(int index) 获取指定位置的元素</p>
-<p>3.列表迭代器：ListIterator listIterator()  List集合特有的迭代器（该迭代器继承了Iterator迭代器，所以可以直接使用hasNext()和next()方法）</p>
-<p>特有功能：</p>
-<p>Object  previous()  获取上一个元素</p>
-<p>boolean hasPrevious()  判断是否有元素</p>
-<p>ListIterator可以实现逆向遍历，但是必须先正向遍历，才能逆向遍历，否则没有输出（因为刚开始指针在第一个位置上，上一个元素没有值）无意义，所以一般不使用。</p>
-<p>4.删除功能：Object remove(int index) 根据索引删除元素，返回被删除的元素</p>
-<p>5.修改功能：Object set(int index,Object element) 根据索引修改元素，返回被修改的元素</p>
-<p>List集合的特有遍历：size（）和get（）方法的结合</p>
-<p>并发修改异常：迭代器是依赖于集合而存在的，在判断成功后，集合添加了新的元素，而迭代器不知道，所以会报错。</p>
-<p>解决方案：</p>
-<p>A：迭代器迭代元素，迭代器修改元素（Iterator迭代器没有添加功能，而ListIterator迭代器有add方法，但是这种方法添加的元素是在迭代的元素后面的）</p>
-<p>B：集合遍历元素，集合修改元素（普通for循环，元素是在最后添加的）<br>（1）ArrayList：底层数据结构是数组，查询快，增删慢。线程不安全，效率高。</p>
-<p>（2）Vector：底层数据结构是数组，查询快，增删慢。线程安全，效率低。（基本不用了，后面有替代）</p>
-<p>特有功能：1.添加功能：public void addElement(Object obj)</p>
-<p>2.获取功能：public Object elementAt(int index)</p>
-<p>public Enumeration elements() （相当于迭代器）有两个方法：</p>
-<p>boolean hasMoreElements()</p>
-<p>object  nextElement()</p>
-<p>这个麻烦，所以用现在的迭代器</p>
-<p>JDK升级的原因：安全，效率，简化书写</p>
-<p>（3）LinkList：底层数据结构是链表，查询慢，增删快。线程不安全，效率高。</p>
-<p>LinkedList类特有功能：</p>
-<p>\1. 添加功能：public void addFirst( Object obj)  可以实现栈的先进后出</p>
-<p>public void addLast( Object obj)</p>
-<p>\2. 获取功能：public Object getFirst()<br>                        public Object getLast()</p>
-<p>\3. 删除功能：public Object removeFirst()<br>                        public Object removeLast()</p>
-<p>三种选用的话，一般情况下，用的是ArrayList，vector基本不用，查询多用ArrayList，增删多用LinkList。</p>
-<p>例子：1.ArrayList去除集合中字符串的重复值（字符串的内容相同）</p>
-<p>A：常见集合对象</p>
-<p>B：添加多个字符串元素（包含内容相同的）</p>
-<p>C：创建新集合</p>
-<p>D：遍历旧集合，获得每一个元素</p>
-<p>E：拿这个元素到新集合去找，看有没有：有，就不管，没有就添加到新集合</p>
-<p>F：遍历新集合</p>
-<p>如果要求不能创建新的集合呢：可以借鉴选择排序思想，注意如果有连续的字符情况，替换后会少判断一次，所以再加个y–</p>
-<p>\2. ArrayList去除集合中自定义对象的重复值(对象的成员变量值都相同时才算重复)</p>
-<p>如果用字符串的判断方法，会发现做不出来：因为contains()方法的底层依赖的是equals()方法，而自定义方法没有equals()方法时调用的是父类Object类的方法，该方法没有被重写，比较的是地址值，每个对象的地址值都不一样，所以无法去除重复值。</p>
-<p>\3. 用LinkedList模拟栈（stack）数据结构的集合，并测试</p>
-<p>是要自己构建一个类，底层实现使用的是LinkedList，这个类的功能要完成的是栈数据结构的功能。</p>
-<p>集合的toString方法源码：子类中没有某一种方法的时候，去父类中查找。</p>
-<h2 id="Set"><a href="#Set" class="headerlink" title="*Set*"></a><em><strong>*Set*</strong></em></h2><p>一个不包含重复元素的 collection（即使存储了多个重复元素，打印时候仍是不重复的元素）。无序（存储顺序和取出顺序不一致）唯一：存储时的顺序可能和读取时的数据一致，但这代表不了有序，因为这是特例，还有可能其他情况</p>
-<p>（1）HashSet<br>它不保证set的迭代顺序；特别是不保证该顺序恒久不变。</p>
-<p>HashSet如何保证元素唯一性：底层数据结构是哈希表(元素是链表的数组)；哈希表依赖于哈希值存储</p>
-<p>添加功能add()底层依赖两个方法：</p>
-<p>int hashCode()</p>
-<p>boolean equals(Object obj)</p>
-<p>首先比较哈希值hashCode()值：</p>
-<p>如果相同：比较地址值或者equals()：true则重复不添加，false则不重复，添加到集合中</p>
-<p>如果不同：就直接添加到集合中</p>
-<p>如果直接写自定义案例HasSet还是会出现重复的元素，是因为你自定义的类没有重写hashCode()方法和equals()方法，所以不会进行判断，会直接添加到集合中。可以直接快捷键alt+shift+h构造hashCode()方法和equals()方法。</p>
-<p>LinkedHashSet类：元素****有序****唯一，底层数据结构由哈希表和链表组成</p>
-<p>由链表保证元素有序</p>
-<p>由哈希表保证元素唯一</p>
-<p>（2）TreeSet类：能够对元素按照某种规则进行排序</p>
-<p>使用元素的自然顺序对元素进行排序（自然排序，无参构造）或者根据创建 set 时提供的 Comparator 进行排序（比较器排序，带参构造），具体取决于使用的构造方法。 </p>
-<p>当实现带参构造的这个构造时，可以放在基本类中，也可以单独定义一个类实现Comaprator接口，但推荐的是直接使用内部类，在new TreeSet的时候直接在（）写这个接口的实现类</p>
-<p>特点：排序和唯一</p>
-<p>TreeSet是如何保证元素的排序和唯一性的：底层数据结构是红黑树(红黑树是一种自平衡的二叉树)</p>
-<p>唯一性：是根据比较的返回值是否是0来决定的。</p>
-<p>排序：A.自然排序（元素具备比较性）：让元素所属的类实现自然排序接口Comaprable</p>
-<p>B.比较器排序（集合具备比较性）：让集合的构造方法接收一个比较器接口的子类对象Comparator（实现的时候注意主要条件，次要条件（字面意思和隐含的意思都要实现）可以用多个三目运算符实现）</p>
-<p>源码：看TreeMap的方法。真正的比较是依赖于元素的compareTo()方法，而这个方法是定义在Comparable里面的，所以要重写该方法必须实现Comparable接口。这个接口的默认就是自然排序</p>
-<p>一般用HashSet</p>
-<h1 id="Map（双列集合）"><a href="#Map（双列集合）" class="headerlink" title="*Map（双列集合）*"></a><em><strong>*Map（双列集合）*</strong></em></h1><p>特点：将键映射到值的对象，一个映射不能包含重复的键，每个键最多只能映射到一个值。可以存储键值对的元素。</p>
-<p>Map集合存储元素是成对出现的；键是唯一的，值是可重复的。</p>
-<p>Collection集合存储元素是单独出现的；Collection集合下Set是唯一的，List是可重复的。</p>
-<p>注意：Map集合的数据结构值仅仅针对键有效，跟值无关</p>
-<p>  Collection集合的数据结构是针对元素有效</p>
-<p>\1. 添加功能：V put(K key,V value)  添加元素；修改元素</p>
-<p>如果键是第一次存储，就直接存储元素，并返回null</p>
-<p>如果键不是第一次存储，就用值把以前的值替换掉，返回以前的值</p>
-<p>\2. 删除功能：void clear()  移除所有的键值对元素（太暴力不建议使用）</p>
-<p>V remove(Object key) 根据键删除键值对元素，并把值返回</p>
-<p>\3. 判断功能：boolean containsKey(Object key) 判断集合是否包含指定的键</p>
-<p>boolean containsValue(Object value) 判断集合是否包含指定的值    boolean isEmpty()  判断集合是否为空</p>
-<p>\4. 获取功能：Set&lt;Map.Entry&lt;K,V&gt;&gt;  entrySet()返回的是键值对对象的集合（entry是条目的意思）</p>
-<p>V get(Object key) 根据键获取值（如果不存在返回null）</p>
-<p>Set<K> keySet() 获取集合中所有键的集合</p>
-<p>Collection<V> values() 获取集合中所有值的集合</p>
-<p>\5. 长度功能：int size()  返回集合中的键值对的对数</p>
-<p>Map集合的遍历：</p>
-<p>A. 根据键找值：</p>
-<p>（1）获取所有的键的集合<br>（2）遍历键的集合，获取得到每一个键值</p>
-<p>（3）根据键去找值</p>
-<p>B. 根据键值对对象找键和值</p>
-<p>（1）获取所有键值对对象的集合</p>
-<p>（2）遍历键值对对象的集合，得到每一个键值对对象</p>
-<p>（3）根据键值对对象获取键和值</p>
-<h2 id="HashMap"><a href="#HashMap" class="headerlink" title="*HashMap*"></a><em><strong>*HashMap*</strong></em></h2><p>是基于哈希表的Map接口实现</p>
-<p>哈希表的作用是用来保证键的唯一性。</p>
-<p>以0开头的是八进制，注意后面的数字中不能超过8。</p>
-<p>LinkedHashMap类：Map 接口的哈希表和链接列表实现，具有可预知的迭代顺序。</p>
-<p>由链表保证键的有序（有序指的是存储和取出的顺序一致）</p>
-<p>由哈希表保证键的唯一性</p>
-<h2 id="TreeMap"><a href="#TreeMap" class="headerlink" title="*TreeMap*"></a><em><strong>*TreeMap*</strong></em></h2><p>是基于红黑树的Map接口的实现</p>
-<p>键是红黑树结构，可以保证键的排序和唯一性</p>
-<p>集合的嵌套遍历：</p>
-<p>HashMap嵌套HashMap</p>
-<p>HashMap嵌套ArrayList</p>
-<p>ArrayList嵌套HashMap</p>
-<p>HashMap：先创建HashMap的集合，再获取key的set集合，再遍历的时候增强for循环遍历得到key对应的value，最后再输出。</p>
-<p>ArrayList：先创建ArrayList的集合，再遍历的时候直接增强for循环。</p>
-<p>HashMap和Hashtable的区别（t就是小写）：</p>
-<p>HashMap：线程不安全，效率高。允许null键和null值</p>
-<p>Hashtable：线程安全，效率低。不允许null键和null值</p>
-<p>List，Set不是继承自Map接口，它们继承自Collection接口。Map接口本身就是一个顶层接口。</p>
-<p>Collections类是Object包下由静态方法组成。是针对集合进行操作的工具类。</p>
-<p>Collections成员方法：</p>
-<p>public static <T> void sort(List<T> list) 排序，默认情况下是自然排序</p>
-<p>public static <T> int binarySearch(List&lt;?&gt; list,T key) 二分查找</p>
-<p>public static <T> T max(Collection&lt;?&gt; coll) 最大值</p>
-<p>public static void reverse(List&lt;?&gt; list) 反转</p>
-<p>public static void shuffle(List&lt;?&gt; list) 随机置换（每调一次方法就会对List中的元素随机排序）</p>
-<p>如果同时有自然排序和比较器排序，以比较器排序为主</p>
-<p>Collection和Collections的区别：</p>
-<p>Collection：是单列集合的顶层接口，有子接口List和Set</p>
-<p>Collections:是针对集合进行操作的工具类，有对集合进行排序和二分查找的方法。</p>
-<p>该使用哪种集合：看需求</p>
-<p>是否是键值对象形式：</p>
-<p>是：Map</p>
-<p>键是否需要排序：</p>
-<p>是：TreeMap</p>
-<p>否：HashMap</p>
-<p>否：Collection</p>
-<p>元素是否唯一：</p>
-<p>是：Set</p>
-<p>元素是否需要排序：</p>
-<p>是：TreeSet</p>
-<p>否：HashSet</p>
-<p>不知道就用HashSet</p>
-<p>否：List</p>
-<p>线程要安全吗：</p>
-<p>是：Vector（其实也不用，多线程中有个更好的方法）</p>
-<p>否：ArrayList或者LinkedList</p>
-<p>增删多：LinkedList</p>
-<p>查询多：ArrayList</p>
-<p>不知道就用ArrayList</p>
-<p>不知道就用ArrayList</p>
-<p>集合的常见方法及遍历方式：</p>
-<p>Collection：</p>
-<p>add()</p>
-<p>remove()</p>
-<p>contains()</p>
-<p>iterator()</p>
-<p>size()</p>
-<p>遍历：增强for和迭代器</p>
-<p>|–List</p>
-<p>get()</p>
-<p>遍历：多了个普通for</p>
-<p>|–Set</p>
-<p>Map：</p>
-<p>put()</p>
-<p>remove()</p>
-<p>containsKey(),containsValue()</p>
-<p>keySet()</p>
-<p>get()</p>
-<p>value()</p>
-<p>entrySet()</p>
-<p>size()</p>
-<p>遍历：根据键找值；根据键值对对象分别找键和值</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.12.%E9%9B%86%E5%90%88/" data-id="ckno8ff57001jswwdft9s5yv0" data-title="集合" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-4.14.异常处理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/4.14.%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T03:34:57.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/4.14.%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">异常处理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>异常就是Java程序出现了不正常的情况。</p>
-<p>程序的异常：Throwable</p>
-<p>严重问题：Error 我们不处理，一般这种问题都是很严重的，比如内存溢出</p>
-<p>问题：Exception</p>
-<p>编译期问题：不是RuntimeException的异常 必须进行处理的，因为不处理，编译就不能通过</p>
-<p>运行期问题：RuntimeException 这种问题我们也不处理，因为是代码不严谨的问题，需要修正代码。</p>
-<p>如果程序出现了问题，我们没有做任何处理，最终jvm会做出默认的处理：把异常的名称，原因及出现的问题等信息输出在控制台；同时会结束程序。</p>
-<p>我们可以自己进行异常处理方案：</p>
-<p>A：try…catch…finally处理格式：</p>
-<p>try{</p>
-<p>可能出现问题的代码；</p>
-<p>}catch(异常类名 变量名){</p>
-<p>针对问题的处理；</p>
-<p>}finally{</p>
-<p>释放资源；</p>
-<p>}</p>
-<p>变形格式：</p>
-<p>try{</p>
-<p>可能出现问题的代码；</p>
-<p>}catch(异常类名 变量名){</p>
-<p>针对问题的处理；</p>
-<p>}</p>
-<p>注意：try里面的代码越少越好。catch里面必须有内容，哪怕是给出一个简单的提示</p>
-<p>两个异常的处理：（1）每一个都写一个try…catch…</p>
-<p>（2）写一个try，多个catch：</p>
-<p>try{</p>
-<p>可能出现问题的代码；</p>
-<p>}catch(异常类名 变量名){</p>
-<p>针对问题的处理；</p>
-<p>}catch(异常类名 变量名){</p>
-<p>针对问题的处理；</p>
-<p>}</p>
-<p>一旦try里面出了问题，就会在这里把问题给抛出去，然后和catch里面的问题进行匹配，一旦有匹配的，就执行catch里面的处理，然后结束try…catch…，继续执行后面的语句（碰到第一个问题就会抛出并查找并输出，然后执行后面的。）</p>
-<p>注意：1.能明确的尽量明确，不要用大的来处理（Exception e）</p>
-<p>\2. 平级关系的异常谁前谁后无所谓，如果出现了子父关系，父必须在后面。（如果父在前面的话，父后面的异常处理就多余了）</p>
-<p>finally的特点：</p>
-<p>被finally控制的语句体一定会执行，但是特殊情况：在执行到finally之前jvm退出了(比如System.exit(0))就不会执行</p>
-<p>finally的作用：用于释放资源，在IO流操作和数据库操作中会见到</p>
-<p>1.final,finally和finalize的区别：</p>
-<p>final：最终的意思，可以修饰类，成员变量，成员方法。</p>
-<p>修饰类，类不能被继承。</p>
-<p>修饰成员变量，变量是常量。</p>
-<p>修饰成员方法，方法不能被重写。</p>
-<p>finally：是异常处理的一部分，用来释放资源。</p>
-<p>一般来说代码肯定会执行，特殊情况：在执行到finally之前jvm退出了(比如System.exit(0))就不会执行</p>
-<p>finalize：是Object类的一个方法，用于垃圾回收。</p>
-<p>2.如果catch里面有return语句，请问finally的代码还会执行吗?如果会，请问是在return前还是return后。</p>
-<p>会。前。准确的说应该是在中间。（这里的return语句返回路径已经形成，但还是会执行finally语句）</p>
-<p>\3. try…catch…finally的格式变形：</p>
-<p>（1）try…catch…finally</p>
-<p>（2）try…catch</p>
-<p>（3）try…catch…catch</p>
-<p>（4）try…catch…catch…finally</p>
-<p>（5）try…finally  这种格式的做法目前是为了释放资源</p>
-<p>必须要有try</p>
-<p>B：throws</p>
-<p>定义功能方法时，需要把出现的问题暴露出来让调用者去处理。那么就通过throws在方法上标识。（有些时候我们没有权限去处理某个异常，有可能处理不了，所以java提供了另一种处理方案：抛出）</p>
-<p>格式：throws 异常类名 可以跟多个，用逗号隔开</p>
-<p>注意：这个格式必须跟在方法的括号后面。（在方法声明上抛出是为了告诉调用者我有问题） 调用者的处理方式：1.在方法上继续抛异常 2.用try…catch…</p>
-<p>尽量不要再main方法上抛出异常</p>
-<p>throw：程序不能继续运行，需要进行跳转时，如果出现了异常情况，我们可以把异常抛出，这个时候抛出的应该是异常的对象而不是异常的类名。</p>
-<p>throws和throw的区别：</p>
-<p>throws：用在方法声明后面，跟的是异常类名；可以跟多个异常类名，用逗号隔开；表示抛出异常，由该方法的调用者来处理；throws表示出现异常的一种可能性，并不一定会发生这些异常</p>
-<p>throw：用在方法体内，跟的是异常对象名；只能抛出一个异常对象名；表示抛出异常，由方法体内的语句处理；throw则是抛出了异常，执行throw则一定抛出了某种异常</p>
-<p>处理异常的原则:如果该功能内部可以将问题处理,用try；如果处理不了,交由调用者处理,这是用throws。后续程序需要继续运行就try；后续程序不需要继续运行就throws</p>
-<p>编译时异常和运行时异常的区别：</p>
-<p>编译时异常：Java程序必须显示处理，否则程序就会发生错误，无法通过编译</p>
-<p>运行时异常：无需显示处理，也可以和编译时异常一样处理</p>
-<p>在try里面发现问题后，jvm会帮我们生成一个异常对象，然后把这个对象抛出，和catch里面的类进行匹配。如果对象是某个类型的，就会执行该catch里面的处理信息。</p>
-<p>Throwable中的方法：</p>
-<p>public String getMessage() 获取异常信息，返回字符串。</p>
-<p>public String toString() 获取异常类名和异常信息，返回字符串:此对象的类的name（全路径名）  </p>
-<p>+  “: ” (冒号和一个空格)  </p>
-<p>+  调用此对象getLocalizedMessage()方法的结果（这里默认返回的是getMessage()的内容）</p>
-<p>printStackTrace() 获取异常类名和异常信息，以及异常出现在程序中的位置。返回值void。把信息输出在控制台</p>
-<p>printStackTrace(PrintStream s) 通常用该方法将异常内容保存在日志文件中，以便查阅。 </p>
-<p>自定义异常：当java中没有对应的异常，需要我们自己来定义一个异常要想自己写的类是一个异常类，就必须继承自Exception（非运行时异常，再调用时需要处理异常）或者继承自RuntimeException（运行时异常，再调用时不用处理异常）</p>
-<p>自定义异常不用写方法体（有时候需要写构造方法:无参，带参：super(message);）</p>
-<p>注意事项：子类重写父类方法时，子类的方法必须抛出相同的异常或父类异常的子类。(父亲坏了,儿子不能比父亲更坏)</p>
-<p>如果父类抛出了多个异常,子类重写父类时,只能抛出相同的异常或者是他的子集,子类不能抛出父类没有的异常</p>
-<p>如果被重写的方法没有异常抛出,那么子类的方法绝对不可以抛出异常,如果子类方法内有异常发生,那么子类只能try,不能throws</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.14.%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" data-id="ckno8ff58001mswwddtf5fjzb" data-title="异常处理" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-19.3.github" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/17/19.3.github/" class="article-date">
-  <time class="dt-published" datetime="2021-04-17T10:24:12.000Z" itemprop="datePublished">2021-04-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/17/19.3.github/">github</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/17/19.3.github/" data-id="ckno8ff4w000xswwdh76rfd2t" data-title="github" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-代理和反向代理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/17/%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" class="article-date">
-  <time class="dt-published" datetime="2021-04-17T10:16:03.000Z" itemprop="datePublished">2021-04-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/17/%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">代理和反向代理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="正向代理-Forward-Proxy"><a href="#正向代理-Forward-Proxy" class="headerlink" title="*正向代理*****(Forward Proxy)****"></a><em><strong>*正向代理*</strong>***</em>*(Forward Proxy)****</h1><p>一般情况下，如果没有特别说明，代理技术默认说的是正向代理技术</p>
-<p>正向代理(forward)是一个位于客户端【用户A】和原始服务器(origin server)【服务器B】之间的服务器【代理服务器Z】，为了从原始服务器取得内容，用户A向代理服务器Z发送一个请求并指定目标(服务器B)，然后代理服务器Z向服务器B转交请求并将获得的内容返回给客户端。客户端必须要进行一些特别的设置才能使用正向代理。</p>
-<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml8040\wps1.png" alt="img"> </p>
-<p>正向代理就是代理服务器替代访问方【用户A】去访问目标服务器【服务器B】</p>
-<p>，这就是正向代理的意义所在</p>
-<p>使用正向代理服务器作用：</p>
-<p>1.访问本无法访问的服务器B</p>
-<p>我们抛除复杂的网络路由情节来看，假设图中路由器从左到右命名为R1,R2假 设最初用户A要访问服务器B需要经过R1和R2路由器这样一个路由节点，如果路由器R1或者路由器R2发生故障，那么就无法访问服务器B了。但是如果用户 A让代理服务器Z去代替自己访问服务器B，由于代理服务器Z没有在路由器R1或R2节点中，而是通过其它的路由节点访问服务器B，那么用户A就可以得到服务器B的数据了。现实中的例子就是“翻墙”。不过自从VPN技术被广泛应用外，“翻墙”不但使用了传统的正向代理技术，有的还使用了VPN技术。</p>
-<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml8040\wps2.png" alt="img"> </p>
-<p>2.加速访问服务器B</p>
-<p>这种说法目前不像以前那么流行了，主要是带宽流量的飞速发展。早期的正向代理中，很多人使用正向代理就是提速。假设用户A到服务器B，经过R1路由器和R2路由器，而R1到R2路由器的链路是一个低带宽链路。而用户A到代理服务器Z，从代理服务器Z到服务器B都是高带宽链路。那么很显然就可以加速访问服务器B了</p>
-<p>3.Cache作用</p>
-<p>Cache（缓存）技术和代理服务技术是紧密联系的（不光是正向代理，反向代理也使用了Cache（缓存）技术。如果在用户A访问服务器B某数据J之前，已经有人通过代理服务器Z访问过服务器B上得数据J，那么代理服务器Z会把数据J保存一段时间，如果有人正好取该数据J，那么代理服务器Z不再访问服务器B，而把缓存的数据J直接发给用户A。这一技术在Cache中术语就叫Cache命中。如果有更多的像用户A的用户来访问代理服务器Z，那么这些用户都可以直接从代理服务器Z中取得数据J，而不用千里迢迢的去服务器B下载数据了。</p>
-<p>4.客户端访问授权</p>
-<p>这方面的内容现今使用的还是比较多的，例如一些公司采用ISA SERVER做为正向代理服务器来授权用户是否有权限访问互联网。</p>
-<p>防火墙作为网关，用来过滤外网对其的访问。假设用户A和用户B都设置了代理服务器，用户A允许访问互联网，而用户B不允许访问互联网（这个在代理服务器Z上做限制）这样用户A因为授权，可以通过代理服务器访问到服务器B，而用户B因为没有被代理服务器Z授权，所以访问服务器B时，数据包会被直接丢 弃。</p>
-<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml8040\wps3.png" alt="img"></p>
-<p>5.隐藏访问者的行踪</p>
-<p>服务器B并不知道访问自己的实际是用户A，因为代理服务器Z代替用户A去直接与服务器B进行交互。如果代理服务器Z被用户A完全控制（或不完全控制），会惯以“肉鸡”术语称呼</p>
-<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml8040\wps4.png" alt="img"></p>
-<p>总结：正向代理是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。客户端必须设置正向代理服务器，当然前提是要知道正向代理服务器的IP地址，还有代理程序的端口。</p>
-<h1 id="反向代理（-reverse-proxy-）"><a href="#反向代理（-reverse-proxy-）" class="headerlink" title="*反向代理（*****reverse proxy*****）*"></a><em><strong>*反向代理（*</strong>***</em>*reverse proxy****<em><strong>*）*</strong></em></h1><p>反向代理正好与正向代理相反，对于客户端而言代理服务器就像是原始服务器，并且客户端不需要进行任何特别的设置。客户端向反向代理的命名空间(name-space)中的内容发送普通请求，接着反向代理将判断向何处(原始服务器)转交请求，并将获得的内容返回给客户端。</p>
-<p>使用反向代理服务器的作用：</p>
-<p>1.保护和隐藏原始资源服务器</p>
-<p>用户A始终认为它访问的是原始服务器B而不是代理服务器Z，但实用际上反向代理服务器接受用户A的应答，从原始资源服务器B中取得用户A的需求资源，然后发送给用户A。由于防火墙的作用，只允许代理服务器Z访问原始资源服务器B。尽管在这个虚拟的环境下，防火墙和反向代理的共同作用保护了原始资源服务器B，但用户A并不知情。</p>
-<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml8040\wps5.png" alt="img"></p>
-<p>2.负载均衡</p>
-<p>当反向代理服务器不止一个的时候，我们甚至可以把它们做成集群，当更多的用户访问资源服务器B的时候，让不同的代理服务器Z（x）去应答不同的用户，然后发送不同用户需要的资源。</p>
-<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml8040\wps6.png" alt="img"></p>
-<p>当然反向代理服务器像正向代理服务器一样拥有CACHE的作用，它可以缓存原始资源服务器B的资源，而不是每次都要向原始资源服务器B请求数据，特别是一些静态的数据，比如图片和文件，如果这些反向代理服务器能够做到和用户X来自同一个网络，那么用户X访问反向代理服务器X，就会得到很高质量的速度。这正是CDN技术的核心。当然，CDN最关键的核心技术智能DNS。只是展示CDN技术实际上利用的正是反向代理原理这块。</p>
-<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml8040\wps7.png" alt="img"> </p>
-<p>总结：</p>
-<p>反向代理结论与正向代理正好相反，对于客户端而言它就像是原始服务器，并且客户端不需要进行任何特别的设置。客户端向反向代理的命名空间(name-space)中的内容发送普通请求，接着反向代理将判断向何处(原始服务器)转交请求，并将获得的内容返回给客户端，就像这些内容原本就是它自己的一样。</p>
-<p>基本上，网上做正反向代理的程序很多，能做正向代理的软件大部分也可以做反向代理。开源软件中最流行的就是squid，既可以做正向代理，也有很多人用来做反向代理的前端服务器。另外MS ISA也可以用来在WINDOWS平台下做正向代理。反向代理中最主要的实践就是WEB服务，近些年来最火的就是Nginx了。网上有人说NGINX不能做正向代理，其实是不对的。NGINX也可以做正向代理，不过用的人比较少了</p>
-<h1 id="透明代理"><a href="#透明代理" class="headerlink" title="*透明代理*"></a><em><strong>*透明代理*</strong></em></h1><p>透明代理的意思是客户端根本不需要知道有代理服务器的存在，它改编你的request fields（报文），并会传送真实IP。注意，加密的透明代理则是属于匿名代理，意思是不用设置使用代理了。</p>
-<p>透明代理实践的例子就是时下很多公司使用的行为管理软件。</p>
-<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml8040\wps8.png" alt="img"></p>
-<p>用户A和用户B并不知道行为管理设备充当透明代理行为，当用户A或用户B向服务器A或服务器B提交请求的时候，透明代理设备根据自身策略拦截并修改用户A或B的报文，并作为实际的请求方，向服务器A或B发送请求，当接收信息回传，透明代理再根据自身的设置把允许的报文发回至用户A或B，如上图，如果透明代理设置不允许访问服务器B，那么用户A或者用户B就不会得到服务器B的数据。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/17/%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" data-id="ckno8ff5x003pswwd8op07j24" data-title="代理和反向代理" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-24.算法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/17/24.%E7%AE%97%E6%B3%95/" class="article-date">
-  <time class="dt-published" datetime="2021-04-17T10:12:44.000Z" itemprop="datePublished">2021-04-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/17/24.%E7%AE%97%E6%B3%95/">算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>照片压缩完的格式一般是JPEG。</p>
-<p>文件存储</p>
-<p>文件是将数据存储在磁盘等存储媒介的一种形式。程序文件中最基本的存储数据单位是字节B=byte。文件就是字节数据的集合。在任何情况下，文件中的字节数都是连续存储的。</p>
-<p>压缩算法：数据压缩的算法，包括压缩和还原（解压缩）的两个步骤。在不改变原有文件属性的前提下，降低文件字节空间和占用空间的一种算法。</p>
-<p>1.有损和无损</p>
-<p>有损压缩：有失真，不能完全准确的恢复原始数据。多媒体数据的压缩。该方法压缩比较大。Eg：预测编码、音感编码、分形压缩、小波压缩、JPEG/MPEG。</p>
-<p>无损压缩：无失真。可执行文件和普通文件、磁盘的压缩，多媒体数据的压缩。该方法的压缩比较小。Eg：差分编码、RLE、Huffman编码、LZW编码、算术编码。</p>
-<p>\2. .对称性</p>
-<p>\3. 帧间与帧内（MPEG和JPEG）</p>
-<p>\4. 实时性（需要简单快速高效的算法和高速复杂的CPU/DSP芯片）</p>
-<p>\5. 分级处理</p>
-<p>\6. 可逆压缩和非可逆压缩</p>
-<p>RLE（Run Length Encoding，行程长度编码）算法的机制：相同字符去重化，字符*重复次数。针对连续的字节序列压缩效果比较好。</p>
-<p>哈夫曼算法：多次出现的数据用小于8位的字节数来表示，不常用的数据则可以用超过8位的字节数表示。用二叉树实现。</p>
-<p>图像文件的格式一般有：</p>
-<p>BMP：使用windows自带的画笔来做成的一种图像形式</p>
-<p>JPEG：数码相机等常用的一种。非可逆压缩</p>
-<p>TIFF：一种通过在文件中包含“标签”就能快速显示出数据性质的图像形式。</p>
-<p>GIF：美国开发的一种数据形式，要求色数不超过256个。可逆压缩</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/17/24.%E7%AE%97%E6%B3%95/" data-id="ckno8ff54001bswwd3s2k6r56" data-title="算法" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li></ul>
-
     </footer>
   </div>
   
@@ -1709,7 +2147,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/">下一页 &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/4/">下一页 &raquo;</a>
   </nav>
 
 </section>
@@ -1723,7 +2161,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%84%E8%8C%83/" rel="tag">规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">MySQL基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Portainer-io/" rel="tag">Portainer.io</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/" rel="tag">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/" rel="tag">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springfox/" rel="tag">springfox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swagger/" rel="tag">swagger</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6/" rel="tag">书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E8%97%8F/" rel="tag">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" rel="tag">编程规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" rel="tag">设计规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" rel="tag">软件说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag">面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
     </div>
   </div>
 
@@ -1733,7 +2171,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%A7%84%E8%8C%83/" style="font-size: 10px;">规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">MySQL基础概念</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Portainer-io/" style="font-size: 10px;">Portainer.io</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/WEB/" style="font-size: 10px;">WEB</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springfox/" style="font-size: 10px;">springfox</a> <a href="/tags/swagger/" style="font-size: 10px;">swagger</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%B9%A6/" style="font-size: 10px;">书</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%94%B6%E8%97%8F/" style="font-size: 10px;">收藏</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" style="font-size: 10px;">设计规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">软件说明</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">面向对象</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
     </div>
   </div>
 
@@ -1742,7 +2180,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
     </div>
   </div>
 
@@ -1755,23 +2193,23 @@
       <ul>
         
           <li>
-            <a href="/2021/04/19/19.4.SVN/">SVN</a>
+            <a href="/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/">推荐研读书籍</a>
           </li>
         
           <li>
-            <a href="/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/">WEB之上传和下载</a>
+            <a href="/2021/05/17/mqtt%E5%BC%80%E5%8F%91/">mqtt开发</a>
           </li>
         
           <li>
-            <a href="/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/">WEB之listener和filter</a>
+            <a href="/2021/04/30/16.2.Docker%E4%B9%8BPortainer-io/">Docker之Portainer.io</a>
           </li>
         
           <li>
-            <a href="/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/">WEB之cookie和session</a>
+            <a href="/2021/04/23/5.4.MySQL%E9%9D%A2%E8%AF%95/">MySQL面试</a>
           </li>
         
           <li>
-            <a href="/2021/04/19/9.6.WEB%E4%B9%8Bajax/">WEB之ajax</a>
+            <a href="/2021/04/22/12.5.Springfox/">Springfox</a>
           </li>
         
       </ul>

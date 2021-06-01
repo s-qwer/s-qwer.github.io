@@ -77,6 +77,733 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-1.6.推荐研读书籍" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/" class="article-date">
+  <time class="dt-published" datetime="2021-05-29T06:44:11.000Z" itemprop="datePublished">2021-05-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/">推荐研读书籍</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="计算机基础"><a href="#计算机基础" class="headerlink" title="计算机基础"></a>计算机基础</h2><h2 id="java"><a href="#java" class="headerlink" title="java"></a>java</h2><p>《深入理解java虚拟机》</p>
+<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><h2 id="规范规约"><a href="#规范规约" class="headerlink" title="规范规约"></a>规范规约</h2><p>《JAVA开发手册 华山版》     –阿里巴巴集团</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/" data-id="ckpdvjpo70005nswdh5eqb8g1" data-title="推荐研读书籍" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B9%A6/" rel="tag">书</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%94%B6%E8%97%8F/" rel="tag">收藏</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-mqtt开发" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/05/17/mqtt%E5%BC%80%E5%8F%91/" class="article-date">
+  <time class="dt-published" datetime="2021-05-17T08:13:19.000Z" itemprop="datePublished">2021-05-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/05/17/mqtt%E5%BC%80%E5%8F%91/">mqtt开发</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="一、MQTT简介"><a href="#一、MQTT简介" class="headerlink" title="一、MQTT简介"></a>一、MQTT简介</h1><p>　　MQTT（Message Queuing Telemetry Transport，消息队列遥测传输协议），是一种基于发布/订阅（publish/subscribe）模式的轻量级协议，该协议构建于TCP/IP协议之上，MQTT最大优点在于，可以以极少的代码和有限的带宽，为连接远程设备提供实时可靠的消息服务。作为一种低开销、低带宽占用的即时通讯协议，使其在物联网、小型设备、移动应用等方面有较广泛的应用。</p>
+<p>　　MQTT是一个基于客户端-服务器的消息发布/订阅传输协议。MQTT协议是轻量、简单、开放和易于实现的，这些特点使它适用范围非常广泛。在很多情况下，包括受限的环境中，如：机器与机器（M2M）通信和物联网（IoT）。其在，通过卫星链路通信传感器、偶尔拨号的医疗设备、智能家居、及一些小型化设备中已广泛使用。</p>
+<h1 id="二、特性"><a href="#二、特性" class="headerlink" title="二、特性"></a>二、特性</h1><p>　　MQTT协议工作在低带宽、不可靠的网络的远程传感器和控制设备通讯而设计的协议，它具有以下主要的几项特性：</p>
+<p>　　（1）使用发布/订阅消息模式，提供一对多的消息发布，解除应用程序耦合。</p>
+<p>　　（2）对负载内容屏蔽的消息传输。</p>
+<p>　　（3）使用TCP/IP提供网络连接。</p>
+<p>　　主流的MQTT是基于TCP连接进行数据推送的，但是同样有基于UDP的版本，叫做MQTT-SN。这两种版本由于基于不同的连接方式，优缺点自然也就各有不同了。</p>
+<p>　　（4）有三种消息发布服务质量：</p>
+<p>　　“至多一次”，消息发布完全依赖底层TCP/IP网络。会发生消息丢失或重复。这一级别可用于如下情况，环境传感器数据，丢失一次读记录无所谓，因为不久后还会有第二次发送。这一种方式主要普通APP的推送，倘若你的智能设备在消息推送时未联网，推送过去没收到，再次联网也就收不到了。</p>
+<p>　　“至少一次”，确保消息到达，但消息重复可能会发生。</p>
+<p>　　“只有一次”，确保消息到达一次。在一些要求比较严格的计费系统中，可以使用此级别。在计费系统中，消息重复或丢失会导致不正确的结果。这种最高质量的消息发布服务还可以用于即时通讯类的APP的推送，确保用户收到且只会收到一次。　</p>
+<p>　　（5）小型传输，开销很小（固定长度的头部是2字节），协议交换最小化，以降低网络流量。</p>
+<p>　　这就是为什么在介绍里说它非常适合“在物联网领域，传感器与服务器的通信，信息的收集”，要知道嵌入式设备的运算能力和带宽都相对薄弱，使用这种协议来传递消息再适合不过了。</p>
+<h1 id="三、实现方式"><a href="#三、实现方式" class="headerlink" title="三、实现方式"></a>三、实现方式</h1><p>　　实现MQTT协议需要客户端和服务器端通讯完成，在通讯过程中，MQTT协议中有三种身份：发布者（Publish）、代理（Broker）（服务器）、订阅者（Subscribe）。其中，消息的发布者和订阅者都是客户端，消息代理是服务器，消息发布者可以同时是订阅者。</p>
+<p>　　MQTT传输的消息分为：主题（Topic）和负载（payload）两部分：</p>
+<p>　　（1）Topic，可以理解为消息的类型，订阅者订阅（Subscribe）后，就会收到该主题的消息内容（payload）；</p>
+<p>　　（2）payload，可以理解为消息的内容，是指订阅者具体要使用的内容。</p>
+<h1 id="四、MQTT的搭建（ubuntu）"><a href="#四、MQTT的搭建（ubuntu）" class="headerlink" title="四、MQTT的搭建（ubuntu）"></a>四、MQTT的搭建（ubuntu）</h1><p>　　1、apt-get安装mqtt相关包</p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605102238662-898370272.png" alt="img"></p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605102252608-944330398.png" alt="img"></p>
+<p>　　2、测试mosquitto是否正确运行</p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605102335266-676428342.png" alt="img"></p>
+<p>　　3、本机终端测试mqtt</p>
+<p>　　打开一个终端，订阅主题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mosquitto_sub -h 192.168.1.102 -t &quot;mqtt&quot; -v</span><br></pre></td></tr></table></figure>
+
+<p>　　【-h】指定要连接的MQTT服务器<br>　　【-t】订阅主题，此处为mqtt<br>　　【-v】打印更多的调试信息</p>
+<p>　　再打开一个终端，发布主题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mosquitto_pub -h 192.168.1.102 -t &quot;mqtt&quot; -m &quot;Hello Stonegeek&quot;</span><br></pre></td></tr></table></figure>
+
+<p>　　【-h】指定要连接的MQTT服务器<br>　　【-t】向指定主题推送消息<br>　　【-m】指定消息内容</p>
+<p>　　结果展示</p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605104229092-389692380.png" alt="img"></p>
+<h1 id="五、MQTT权限配置"><a href="#五、MQTT权限配置" class="headerlink" title="五、MQTT权限配置"></a>五、MQTT权限配置</h1><p>　　前面我们基于Mosquitto服务器已经搭建成功了，但是默认是允许匿名用户登录，对于正式上线的项目则是需要进行用户认证（当然，用户一般都会与数据库映射，不过在这里我们就会直接将用户写入配置文件中）</p>
+<p>　　1、Mosquitto服务器的配置文件为/etc/mosquitto/mosquitto.conf，关于用户认证的方式和读取的配置都在这个文件中进行</p>
+<p>　　配置文件参数说明：</p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>allow_anonymous</th>
+<th>password_file</th>
+<th>acl_file</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>True(默认)</td>
+<td></td>
+<td></td>
+<td>允许匿名方式登录</td>
+</tr>
+<tr>
+<td>2</td>
+<td>False</td>
+<td>password_file</td>
+<td></td>
+<td>开启用户验证机制</td>
+</tr>
+<tr>
+<td>3</td>
+<td>False</td>
+<td>password_file</td>
+<td>acl_file</td>
+<td>开启用户验证机制，但访问控制不起作用</td>
+</tr>
+<tr>
+<td>4</td>
+<td>True</td>
+<td>password_file</td>
+<td>acl_file</td>
+<td>用户名及密码不为空，将自动进行用户验证且受到访问控制的限制；用户名及密码为空，将不进行用户验证且受到访问控制的限制</td>
+</tr>
+<tr>
+<td>5</td>
+<td>False</td>
+<td></td>
+<td></td>
+<td>无法启动服务</td>
+</tr>
+</tbody></table>
+<p>　　allow_anonymous允许匿名</p>
+<p>　　password-file密码文件</p>
+<p>　　acl_file访问控制列表</p>
+<p>　　2、修改配置文件</p>
+<p>　　命令：sudo vi /etc/mosquitto/mosquitto.conf</p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605151628068-1384773304.png" alt="img"></p>
+<p>　　3、添加用户信息</p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605151704715-960809801.png" alt="img"></p>
+<p>　　命令解释： -c 创建一个用户、/etc/mosquitto/pwfile.example 是将用户创建到 pwfile.example 文件中、admin 是用户名。　</p>
+<p>　　　　　　　　同样连续会提示连续输入两次密码。注意第二次创建用户时不用加 -c 如果加 -c 会把第一次创建的用户覆盖。</p>
+<p>　　　　　　　　至此两个用户创建成功，此时如果查看 pwfile.example 文件会发现其中多了两个用户。</p>
+<p>　　4、添加Topic和用户的关系</p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605151733877-1519140836.png" alt="img"></p>
+<p>　　5、用户认证测试</p>
+<p>　　（1）重启Mosquitto步骤　　　　</p>
+<p>　　查看mosquitto的进程</p>
+<p>　　命令：ps -aux|grep mosquitto</p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605152431784-1397999979.png" alt="img"></p>
+<p>　　（2）杀死进程</p>
+<p>　　命令：sudo kill -9 pid</p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605152552524-263522902.png" alt="img"></p>
+<p>　　（3）启动</p>
+<p>　　命令：mosquitto -c /etc/mosquitto/mosquitto.conf </p>
+<p>　　（4）订阅端启动（不加用户）</p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605153026425-2133395564.png" alt="img"></p>
+<p>　　订阅端启动（加用户）</p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605153226279-1867348754.png" alt="img"></p>
+<p>　　（5）发布端启动</p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605153331531-1709676768.png" alt="img"></p>
+<h1 id="六、MQTT实现（Java语言）"><a href="#六、MQTT实现（Java语言）" class="headerlink" title="六、MQTT实现（Java语言）"></a>六、MQTT实现（Java语言）</h1><p>　　<strong>注意：由于我们在上面配置了MQTT的用户权限控制，所以下面的用户只能使用stonegeek登录，否则项目会运行报错，而且我们在上面设置的访问控制列表中只有mtopic主题，所以我们必须使用此主题，否则，订阅者会收不到已发布的主题内容（已经测试过了）</strong></p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605154347388-598122694.png" alt="img"></p>
+<p>　　下面是我们Java语言实现的MQTT服务的发布/订阅</p>
+<h3 id="1、添加Maven依赖"><a href="#1、添加Maven依赖" class="headerlink" title="1、添加Maven依赖"></a>1、添加Maven依赖</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">  &lt;groupId&gt;org.eclipse.paho&lt;&#x2F;groupId&gt;</span><br><span class="line">  &lt;artifactId&gt;org.eclipse.paho.client.mqttv3&lt;&#x2F;artifactId&gt;</span><br><span class="line">  &lt;version&gt;1.1.1&lt;&#x2F;version&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、ServerMQTT-class"><a href="#2、ServerMQTT-class" class="headerlink" title="2、ServerMQTT.class"></a>2、ServerMQTT.class</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.stonegeek;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttClient;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttConnectOptions;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttDeliveryToken;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttException;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttMessage;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttPersistenceException;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttTopic;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 服务器向多个客户端推送主题，即不同客户端可向服务端订阅相同的主题</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ServerMQTT</span> </span>&#123;</span><br><span class="line">    <span class="comment">//tcp://MQTT安装的服务器地址:MQTT定义的端口号</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String HOST = <span class="string">&quot;tcp://192.168.1.102:1883&quot;</span>;</span><br><span class="line">    <span class="comment">//定义一个主题</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String TOPIC = <span class="string">&quot;mtopic&quot;</span>;</span><br><span class="line">    <span class="comment">//定义MQTT的ID，可以在MQTT服务配置中指定</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String clientid = <span class="string">&quot;server11&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> MqttClient client;</span><br><span class="line">    <span class="keyword">private</span> MqttTopic topic11;</span><br><span class="line">    <span class="keyword">private</span> String userName = <span class="string">&quot;stonegeek&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String passWord = <span class="string">&quot;123456&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> MqttMessage message;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 构造函数</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> MqttException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ServerMQTT</span><span class="params">()</span> <span class="keyword">throws</span> MqttException </span>&#123;</span><br><span class="line">        <span class="comment">// MemoryPersistence设置clientid的保存形式，默认为以内存保存</span></span><br><span class="line">        client = <span class="keyword">new</span> MqttClient(HOST, clientid, <span class="keyword">new</span> MemoryPersistence());</span><br><span class="line">        connect();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *  用来连接服务器</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">connect</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        MqttConnectOptions options = <span class="keyword">new</span> MqttConnectOptions();</span><br><span class="line">        options.setCleanSession(<span class="keyword">false</span>);</span><br><span class="line">        options.setUserName(userName);</span><br><span class="line">        options.setPassword(passWord.toCharArray());</span><br><span class="line">        <span class="comment">// 设置超时时间</span></span><br><span class="line">        options.setConnectionTimeout(<span class="number">10</span>);</span><br><span class="line">        <span class="comment">// 设置会话心跳时间</span></span><br><span class="line">        options.setKeepAliveInterval(<span class="number">20</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            client.setCallback(<span class="keyword">new</span> PushCallback());</span><br><span class="line">            client.connect(options);</span><br><span class="line"></span><br><span class="line">            topic11 = client.getTopic(TOPIC);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> topic</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> message</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> MqttPersistenceException</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> MqttException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">publish</span><span class="params">(MqttTopic topic , MqttMessage message)</span> <span class="keyword">throws</span> MqttPersistenceException,</span></span><br><span class="line"><span class="function">            MqttException </span>&#123;</span><br><span class="line">        MqttDeliveryToken token = topic.publish(message);</span><br><span class="line">        token.waitForCompletion();</span><br><span class="line">        System.out.println(<span class="string">&quot;message is published completely! &quot;</span></span><br><span class="line">                + token.isComplete());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *  启动入口</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> args</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@throws</span> MqttException</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> MqttException </span>&#123;</span><br><span class="line">        ServerMQTT server = <span class="keyword">new</span> ServerMQTT();</span><br><span class="line"></span><br><span class="line">        server.message = <span class="keyword">new</span> MqttMessage();</span><br><span class="line">        server.message.setQos(<span class="number">1</span>);</span><br><span class="line">        server.message.setRetained(<span class="keyword">true</span>);</span><br><span class="line">        server.message.setPayload(<span class="string">&quot;hello,topic11&quot;</span>.getBytes());</span><br><span class="line">        server.publish(server.topic11 , server.message);</span><br><span class="line">        System.out.println(server.message.isRetained() + <span class="string">&quot;------ratained状态&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3、ClientMQTT-class"><a href="#3、ClientMQTT-class" class="headerlink" title="3、ClientMQTT.class"></a>3、ClientMQTT.class</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.stonegeek;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.ScheduledExecutorService;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttClient;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttConnectOptions;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttException;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttTopic;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ClientMQTT</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String HOST = <span class="string">&quot;tcp://192.168.1.102:1883&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String TOPIC = <span class="string">&quot;mtopic&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String clientid = <span class="string">&quot;client11&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> MqttClient client;</span><br><span class="line">    <span class="keyword">private</span> MqttConnectOptions options;</span><br><span class="line">    <span class="keyword">private</span> String userName = <span class="string">&quot;stonegeek&quot;</span>;</span><br><span class="line">    <span class="keyword">private</span> String passWord = <span class="string">&quot;123456&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ScheduledExecutorService scheduler;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// host为主机名，clientid即连接MQTT的客户端ID，一般以唯一标识符表示，MemoryPersistence设置clientid的保存形式，默认为以内存保存</span></span><br><span class="line">            client = <span class="keyword">new</span> MqttClient(HOST, clientid, <span class="keyword">new</span> MemoryPersistence());</span><br><span class="line">            <span class="comment">// MQTT的连接设置</span></span><br><span class="line">            options = <span class="keyword">new</span> MqttConnectOptions();</span><br><span class="line">            <span class="comment">// 设置是否清空session,这里如果设置为false表示服务器会保留客户端的连接记录，这里设置为true表示每次连接到服务器都以新的身份连接</span></span><br><span class="line">            options.setCleanSession(<span class="keyword">true</span>);</span><br><span class="line">            <span class="comment">// 设置连接的用户名</span></span><br><span class="line">            options.setUserName(userName);</span><br><span class="line">            <span class="comment">// 设置连接的密码</span></span><br><span class="line">            options.setPassword(passWord.toCharArray());</span><br><span class="line">            <span class="comment">// 设置超时时间 单位为秒</span></span><br><span class="line">            options.setConnectionTimeout(<span class="number">10</span>);</span><br><span class="line">            <span class="comment">// 设置会话心跳时间 单位为秒 服务器会每隔1.5*20秒的时间向客户端发送个消息判断客户端是否在线，但这个方法并没有重连的机制</span></span><br><span class="line">            options.setKeepAliveInterval(<span class="number">20</span>);</span><br><span class="line">            <span class="comment">// 设置回调</span></span><br><span class="line">            client.setCallback(<span class="keyword">new</span> PushCallback());</span><br><span class="line">            MqttTopic topic = client.getTopic(TOPIC);</span><br><span class="line">            <span class="comment">//setWill方法，如果项目中需要知道客户端是否掉线可以调用该方法。设置最终端口的通知消息</span></span><br><span class="line">            options.setWill(topic, <span class="string">&quot;close&quot;</span>.getBytes(), <span class="number">2</span>, <span class="keyword">true</span>);</span><br><span class="line"></span><br><span class="line">            client.connect(options);</span><br><span class="line">            <span class="comment">//订阅消息</span></span><br><span class="line">            <span class="keyword">int</span>[] Qos  = &#123;<span class="number">1</span>&#125;;</span><br><span class="line">            String[] topic1 = &#123;TOPIC&#125;;</span><br><span class="line">            client.subscribe(topic1, Qos);</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> MqttException </span>&#123;</span><br><span class="line">        ClientMQTT client = <span class="keyword">new</span> ClientMQTT();</span><br><span class="line">        client.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="4、PushCallback-class"><a href="#4、PushCallback-class" class="headerlink" title="4、PushCallback.class"></a>4、PushCallback.class</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.stonegeek;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttCallback;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;</span><br><span class="line"><span class="keyword">import</span> org.eclipse.paho.client.mqttv3.MqttMessage;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 发布消息的回调类 </span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 必须实现MqttCallback的接口并实现对应的相关接口方法CallBack 类将实现 MqttCallBack。 </span></span><br><span class="line"><span class="comment"> * 每个客户机标识都需要一个回调实例。在此示例中，构造函数传递客户机标识以另存为实例数据。 </span></span><br><span class="line"><span class="comment"> * 在回调中，将它用来标识已经启动了该回调的哪个实例。 </span></span><br><span class="line"><span class="comment"> * 必须在回调类中实现三个方法： </span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *  public void messageArrived(MqttTopic topic, MqttMessage message)接收已经预订的发布。 </span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *  public void connectionLost(Throwable cause)在断开连接时调用。 </span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *  public void deliveryComplete(MqttDeliveryToken token)) </span></span><br><span class="line"><span class="comment"> *  接收到已经发布的 QoS 1 或 QoS 2 消息的传递令牌时调用。 </span></span><br><span class="line"><span class="comment"> *  由 MqttClient.connect 激活此回调。 </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PushCallback</span> <span class="keyword">implements</span> <span class="title">MqttCallback</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">connectionLost</span><span class="params">(Throwable cause)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 连接丢失后，一般在这里面进行重连</span></span><br><span class="line">        System.out.println(<span class="string">&quot;连接断开，可以做重连&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deliveryComplete</span><span class="params">(IMqttDeliveryToken token)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;deliveryComplete---------&quot;</span> + token.isComplete());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">messageArrived</span><span class="params">(String topic, MqttMessage message)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">// subscribe后得到的消息会执行到这里面</span></span><br><span class="line">        System.out.println(<span class="string">&quot;接收消息主题 : &quot;</span> + topic);</span><br><span class="line">        System.out.println(<span class="string">&quot;接收消息Qos : &quot;</span> + message.getQos());</span><br><span class="line">        System.out.println(<span class="string">&quot;接收消息内容 : &quot;</span> + <span class="keyword">new</span> String(message.getPayload()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5、结果展示"><a href="#5、结果展示" class="headerlink" title="5、结果展示"></a>5、结果展示</h3><p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605154907571-2147358753.png" alt="img"></p>
+<p>　　<img src="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605154920946-49908453.png" alt="img"></p>
+<p>发布消息：</p>
+<ol>
+<li>MqttClient client = new MqttClient(“tcp://localhost:1883”, MqttClient.generateClientId());</li>
+<li>client.connect();</li>
+<li>MqttMessage message = new MqttMessage();</li>
+<li>message.setPayload(“Hello world from Java”.getBytes());</li>
+<li>client.publish(“iot_data”, message);</li>
+<li>client.disconnect();</li>
+</ol>
+<p>消费消息：</p>
+<ol>
+<li>MqttClient client=new MqttClient(“tcp://localhost:1883”, MqttClient.generateClientId());</li>
+<li>client.setCallback( new SimpleMqttCallBack() );</li>
+<li>client.connect();</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/05/17/mqtt%E5%BC%80%E5%8F%91/" data-id="ckpdvjpq0005enswd09211mv9" data-title="mqtt开发" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-16.2.Docker之Portainer-io" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/30/16.2.Docker%E4%B9%8BPortainer-io/" class="article-date">
+  <time class="dt-published" datetime="2021-04-30T00:53:27.000Z" itemprop="datePublished">2021-04-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/30/16.2.Docker%E4%B9%8BPortainer-io/">Docker之Portainer.io</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>轮子Portainer.io：<code>提供GUI界面的容器管理工具</code>，给开发者的工具箱又增加了一个炫酷又实用的瑞士军刀</p>
+<h3 id="Portainer-io的优势"><a href="#Portainer-io的优势" class="headerlink" title="Portainer.io的优势"></a>Portainer.io的优势</h3><ul>
+<li>轻量级 （2,3个命令就可启动，镜像少于30M）</li>
+<li>健壮、 友好</li>
+<li>可以用于Docker监控和构建</li>
+<li>提供Docker环境的详细信息</li>
+<li>可在界面管理 Container、Image、Network、Volume、Config</li>
+<li>Portainer易于部署 - 这只需要一个Docker命令（可以从任何地方运行）。</li>
+<li>可以轻松监控完整的Docker-container环境</li>
+</ul>
+<h3 id="Portainer-io特性"><a href="#Portainer-io特性" class="headerlink" title="Portainer.io特性"></a>Portainer.io特性</h3><ul>
+<li>漂亮的Dashboard，很容器操作和监视</li>
+<li>许多内置的操作模板</li>
+<li>尽乎实时的 监视Container、Image…</li>
+<li>支持Docker-Swarm 集群监视</li>
+</ul>
+<h3 id="安装Portaniner-io"><a href="#安装Portaniner-io" class="headerlink" title="安装Portaniner.io"></a>安装Portaniner.io</h3><p>查看系统信息</p>
+<p><img src="/Docker%E4%B9%8BPortainer-io/image-20210430090238318.png" alt="image-20210430090238318"></p>
+<p>为Porttainer.io 创建Volume</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker volume create portainer_data</span><br></pre></td></tr></table></figure>
+
+<p>启动portainer容器,配置在宿主机9000端口映射</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> sudo docker run -d -p 9000:9000 -v &#x2F;var&#x2F;run&#x2F;docker.sock:&#x2F;var&#x2F;run&#x2F;docker.sock -v portainer_data:&#x2F;data portainer&#x2F;portainer</span><br><span class="line"> </span><br><span class="line">Unable to find image &#39;portainer&#x2F;portainer:latest&#39; locally</span><br><span class="line">latest: Pulling from portainer&#x2F;portainer</span><br><span class="line">d1e017099d17: Pull complete</span><br><span class="line">f4f2fd75fb8a: Pull complete</span><br><span class="line">Digest: sha256:026381c60682b82a863f0c3737a9b4a414beaddd4cf050477a7749ff5ac61189</span><br><span class="line">Status: Downloaded newer image for portainer&#x2F;portainer:latest</span><br><span class="line">82756791026adda45c288ca465ef38ca2e2aefaad2b27da6ae3831a517db4ad8</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>请确保OS防火墙允许9000端口访问</p>
+</blockquote>
+<h2 id="睁眼看Portainer-io"><a href="#睁眼看Portainer-io" class="headerlink" title="睁眼看Portainer.io"></a>睁眼看Portainer.io</h2><p>完成完整安装后，使用主机或Docker的ip，使用Docker引擎的端口9000，使用浏览器运行portainer。</p>
+<p><strong>注意：</strong>如果在Docker主机上启用了OS防火墙，则确保允许9000端口，否则其GUI将不会出现。</p>
+<p>首次访问请注册用户 </p>
+<p><a target="_blank" rel="noopener" href="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182343108-861664830.jpg"><img src="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182343108-861664830.jpg" alt="img"></a></p>
+<p>我是在Docker宿主机上安装的portainer.io，故我选择Local<a target="_blank" rel="noopener" href="https://imgkr.cn-bj.ufileos.com/c033213b-44f9-4504-9724-f6033a4fc848.png"><img src="https://imgkr.cn-bj.ufileos.com/c033213b-44f9-4504-9724-f6033a4fc848.png" alt="img"></a></p>
+<p><a target="_blank" rel="noopener" href="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182405271-235493057.jpg"><img src="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182405271-235493057.jpg" alt="img"></a></p>
+<p>概览如下：<a target="_blank" rel="noopener" href="https://imgkr.cn-bj.ufileos.com/ae09f2dd-9409-472b-b2da-c157a5e7238c.png"><img src="https://imgkr.cn-bj.ufileos.com/ae09f2dd-9409-472b-b2da-c157a5e7238c.png" alt="img"></a></p>
+<p><a target="_blank" rel="noopener" href="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182422755-1732405567.jpg"><img src="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182422755-1732405567.jpg" alt="img"></a></p>
+<p>点击任意一个红框对象，进入‘Dashboard Endpoint summary’<a target="_blank" rel="noopener" href="https://imgkr.cn-bj.ufileos.com/0afebf3e-76a4-424c-8400-026deeda565a.png"><img src="https://imgkr.cn-bj.ufileos.com/0afebf3e-76a4-424c-8400-026deeda565a.png" alt="img"></a></p>
+<p><a target="_blank" rel="noopener" href="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182441387-2088153585.jpg"><img src="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182441387-2088153585.jpg" alt="img"></a></p>
+<h2 id="简单的Docker监控"><a href="#简单的Docker监控" class="headerlink" title="简单的Docker监控"></a>简单的Docker监控</h2><ul>
+<li>在Container标签页使用container命令操作测试容器：<a target="_blank" rel="noopener" href="https://imgkr.cn-bj.ufileos.com/2cbfa789-ed9e-49ff-acbc-1bfdef695ac9.gif"><img src="https://imgkr.cn-bj.ufileos.com/2cbfa789-ed9e-49ff-acbc-1bfdef695ac9.gif" alt="img"></a></li>
+</ul>
+<blockquote>
+<p>“</p>
+<p>这个页面会显示所有的容器，包括Stopped，可使用docker system prune -a:Remove all unused images not just dangling ones</p>
+</blockquote>
+<p>   <a target="_blank" rel="noopener" href="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182521552-288701408.jpg"><img src="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182521552-288701408.jpg" alt="img"></a></p>
+<p>   点击每个容器，可进入查看容器的详细信息： Container status/Container health/Container details/Connected networks/Volumes</p>
+<ul>
+<li>Image标签页，这里显示所有Image,这类可以拉取、构建、导入导出镜像<a target="_blank" rel="noopener" href="https://imgkr.cn-bj.ufileos.com/3a1b0c25-600c-47dd-be88-1392d607833b.png"><img src="https://imgkr.cn-bj.ufileos.com/3a1b0c25-600c-47dd-be88-1392d607833b.png" alt="img"></a><ul>
+<li><ul>
+<li><a target="_blank" rel="noopener" href="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182551017-1223402107.jpg"><img src="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182551017-1223402107.jpg" alt="img"></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>根据模板快速创建服务堆栈 点击‘’App Template’， 进入容器构建页面。 选择WordPress模板，<a target="_blank" rel="noopener" href="https://imgkr.cn-bj.ufileos.com/41d3f021-cb1c-485d-aed3-6c787b063c22.png"><img src="https://imgkr.cn-bj.ufileos.com/41d3f021-cb1c-485d-aed3-6c787b063c22.png" alt="img"></a><ul>
+<li><ul>
+<li><a target="_blank" rel="noopener" href="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182636232-329590926.jpg"><img src="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182636232-329590926.jpg" alt="img"></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>操作之后，可生成新的服务堆栈：<a target="_blank" rel="noopener" href="https://imgkr.cn-bj.ufileos.com/522e395e-c6d3-4aae-8ce1-ae73ddac0149.png"><img src="https://imgkr.cn-bj.ufileos.com/522e395e-c6d3-4aae-8ce1-ae73ddac0149.png" alt="img"></a></li>
+</ul>
+<p>​    <a target="_blank" rel="noopener" href="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182656862-701038819.jpg"><img src="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182656862-701038819.jpg" alt="img"></a></p>
+<blockquote>
+<p>是不是很6，这个服务堆栈已经使用WordPress模板预置，配置详情查看Update页面设定的远程docker-stack.yml地址： <a target="_blank" rel="noopener" href="https://github.com/portainer/templates/blob/master/stacks/wordpress/docker-stack.yml">https://github.com/portainer/templates/blob/master/stacks/wordpress/docker-stack.yml</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">version: &#39;3&#39;</span><br><span class="line">services:</span><br><span class="line">   db:</span><br><span class="line">     image: mysql:5.7</span><br><span class="line">     volumes:</span><br><span class="line">       - db_data:&#x2F;var&#x2F;lib&#x2F;mysql</span><br><span class="line">     restart: always</span><br><span class="line">     environment:</span><br><span class="line">       MYSQL_ROOT_PASSWORD: $&#123;MYSQL_DATABASE_PASSWORD&#125;</span><br><span class="line">       MYSQL_DATABASE: wordpress</span><br><span class="line">       MYSQL_USER: wordpress</span><br><span class="line">       MYSQL_PASSWORD: wordpress</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">   wordpress:</span><br><span class="line">     image: wordpress:latest</span><br><span class="line">     ports:</span><br><span class="line">       - 80</span><br><span class="line">     restart: always</span><br><span class="line">     environment:</span><br><span class="line">       WORDPRESS_DB_HOST: db:3306</span><br><span class="line">       WORDPRESS_DB_USER: wordpress</span><br><span class="line">       WORDPRESS_DB_PASSWORD: wordpress</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">volumes:</span><br><span class="line">    db_data:</span><br></pre></td></tr></table></figure>
+
+<p>其他Stack、Service、Network、Volume、Config请自行倒腾, 外围配置Extension,Registries 可配置安全特性和 镜像注册中心。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/30/16.2.Docker%E4%B9%8BPortainer-io/" data-id="ckpdvjpoh000wnswd3b8mb6n7" data-title="Docker之Portainer.io" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Portainer-io/" rel="tag">Portainer.io</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-5.4.MySQL面试" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/23/5.4.MySQL%E9%9D%A2%E8%AF%95/" class="article-date">
+  <time class="dt-published" datetime="2021-04-23T05:38:52.000Z" itemprop="datePublished">2021-04-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/23/5.4.MySQL%E9%9D%A2%E8%AF%95/">MySQL面试</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h4 id="1、为什么使用索引？"><a href="#1、为什么使用索引？" class="headerlink" title="1、为什么使用索引？"></a>1、为什么使用索引？</h4><ul>
+<li>通过创建唯一性索引，可以保证数据库表中每一行数据的唯一性。</li>
+<li>可以大大加快数据的检索速度，这也是创建索引的最主要的原因。</li>
+<li>帮助服务器避免排序和临时表</li>
+<li>将随机IO变为顺序IO。</li>
+<li>可以加速表和表之间的连接，特别是在实现数据的参考完整性方面特别有意义。</li>
+</ul>
+<h4 id="2、Innodb为什么要用自增id作为主键？"><a href="#2、Innodb为什么要用自增id作为主键？" class="headerlink" title="2、Innodb为什么要用自增id作为主键？"></a>2、Innodb为什么要用自增id作为主键？</h4><p>如果表使用自增主键，那么每次插入新的记录，记录就会顺序添加到当前索引节点的后续位置，当一页写满，就会自动开辟一个新的页。如果使用非自增主键（如果身份证号或学号等），由于每次插入主键的值近似于随机，因此每次新纪录都要被插到现有索引页得中间某个位置， 频繁的移动、分页操作造成了大量的碎片，得到了不够紧凑的索引结构，后续不得不通过OPTIMIZE TABLE（optimize table）来重建表并优化填充页面。</p>
+<h4 id="3、MyISAM和InnoDB实现B树索引方式的区别是什么？"><a href="#3、MyISAM和InnoDB实现B树索引方式的区别是什么？" class="headerlink" title="3、MyISAM和InnoDB实现B树索引方式的区别是什么？"></a>3、MyISAM和InnoDB实现B树索引方式的区别是什么？</h4><ul>
+<li><p>MyISAM，B+Tree叶节点的data域存放的是数据记录的地址，在索引检索的时候，首先按照B+Tree搜索算法搜索索引，如果指定的key存在，则取出其data域的值，然后以data域的值为地址读取相应的数据记录，这被称为“非聚簇索引”</p>
+</li>
+<li><p>InnoDB，其数据文件本身就是索引文件，相比MyISAM，索引文件和数据文件是分离的，其表数据文件本身就是按B+Tree组织的一个索引结构，树的节点data域保存了完整的数据记录，这个索引的key是数据表的主键，因此InnoDB表数据文件本身就是主索引，这被称为“聚簇索引”或者聚集索引，而其余的索引都作为辅助索引，辅助索引的data域存储相应记录主键的值而不是地址，这也是和MyISAM不同的地方。</p>
+<p>在根据主索引搜索时，直接找到key所在的节点即可取出数据；在根据辅助索引查找时，则需要先取出主键的值，再走一遍主索引。因此，在设计表的时候，不建议使用过长的字段为主键，也不建议使用非单调的字段作为主键，这样会造成主索引频繁分裂。</p>
+</li>
+</ul>
+<h4 id="4、说一下MySQL是如何执行一条SQL的？具体步骤有哪些？"><a href="#4、说一下MySQL是如何执行一条SQL的？具体步骤有哪些？" class="headerlink" title="4、说一下MySQL是如何执行一条SQL的？具体步骤有哪些？"></a>4、说一下MySQL是如何执行一条SQL的？具体步骤有哪些？</h4><p><img src="https://mmbiz.qpic.cn/mmbiz_png/BktAsjcTbXibO8fSmnSmyBZMyXpt8qodOSD7I7hsC1RRwlM66kxQ3AicCDSfdyriaCM2sOppbdIzkY0V11fOm8Igw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片">SQL执行的全部过程</p>
+<p>Server层按顺序执行sql的步骤为：</p>
+<ol>
+<li>客户端请求-&gt;</li>
+<li>连接器（验证用户身份，给予权限） -&gt;</li>
+<li>查询缓存（存在缓存则直接返回，不存在则执行后续操作）-&gt;</li>
+<li>分析器（对SQL进行词法分析和语法分析操作） -&gt;</li>
+<li>优化器（主要对执行的sql优化选择最优的执行方案方法） -&gt;</li>
+<li>执行器（执行时会先看用户是否有执行权限，有才去使用这个引擎提供的接口）-&gt;</li>
+<li>去引擎层获取数据返回（如果开启查询缓存则会缓存查询结果）</li>
+</ol>
+<p>简单概括：</p>
+<ul>
+<li><strong>连接器</strong>：管理连接、权限验证；</li>
+<li><strong>查询缓存</strong>：命中缓存则直接返回结果；</li>
+<li><strong>分析器</strong>：对SQL进行词法分析、语法分析；（判断查询的SQL字段是否存在也是在这步）</li>
+<li><strong>优化器</strong>：执行计划生成、选择索引；</li>
+<li><strong>执行器</strong>：操作引擎、返回结果；</li>
+<li><strong>存储引擎</strong>：存储数据、提供读写接口。</li>
+</ul>
+<h4 id="5、你了解MySQL的内部构造吗？一般可以分为哪两个部分？"><a href="#5、你了解MySQL的内部构造吗？一般可以分为哪两个部分？" class="headerlink" title="5、你了解MySQL的内部构造吗？一般可以分为哪两个部分？"></a>5、你了解MySQL的内部构造吗？一般可以分为哪两个部分？</h4><p>可以分为服务层和存储引擎层两部分，其中：</p>
+<p><strong>服务层包括连接器、查询缓存、分析器、优化器、执行器等</strong>，涵盖MySQL的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图等。</p>
+<p><strong>存储引擎层负责数据的存储和提取</strong>。其架构模式是插件式的，支持InnoDB、MyISAM、Memory等多个存储引擎。现在最常用的存储引擎是InnoDB，它从MySQL 5.5.5版本开始成为了默认的存储引擎。</p>
+<h4 id="6、说一说Drop、Delete与Truncate的共同点和区别"><a href="#6、说一说Drop、Delete与Truncate的共同点和区别" class="headerlink" title="6、说一说Drop、Delete与Truncate的共同点和区别"></a>6、说一说Drop、Delete与Truncate的共同点和区别</h4><h6 id="第一种回答"><a href="#第一种回答" class="headerlink" title="第一种回答"></a>第一种回答</h6><p>Drop、Delete、Truncate都表示删除，但是三者有一些差别：</p>
+<p><strong>Delete</strong>用来删除表的全部或者一部分数据行，执行Delete之后，用户需要提交(commmit)或者回滚(rollback)来执行删除或者撤销删除，会触发这个表上所有的delete触发器。</p>
+<p><strong>Truncate</strong>删除表中的所有数据，这个操作不能回滚，也不会触发这个表上的触发器，TRUNCATE比Delete更快，占用的空间更小。</p>
+<p><strong>Drop</strong>命令从数据库中删除表，所有的数据行，索引和权限也会被删除，所有的DML触发器也不会被触发，这个命令也不能回滚。</p>
+<p>因此，在不再需要一张表的时候，用Drop；在想删除部分数据行时候，用Delete；在保留表而删除所有数据的时候用Truncate。</p>
+<h6 id="第二种回答"><a href="#第二种回答" class="headerlink" title="第二种回答"></a>第二种回答</h6><ul>
+<li>Drop直接删掉表;</li>
+<li>Truncate删除表中数据，再插入时自增长id又从1开始 ;</li>
+<li>Delete删除表中数据，可以加where字句。</li>
+</ul>
+<h6 id="具体解析"><a href="#具体解析" class="headerlink" title="具体解析"></a>具体解析</h6><ol>
+<li>DELETE语句执行删除的过程是每次从表中删除一行，并且同时将该行的删除操作作为事务记录在日志中保存以便进行进行回滚操作。TRUNCATE TABLE 则一次性地从表中删除所有的数据并不把单独的删除操作记录记入日志保存，删除行是不能恢复的。并且在删除的过程中不会激活与表有关的删除触发器。执行速度快。</li>
+<li>表和索引所占空间。当表被TRUNCATE 后，这个表和索引所占用的空间会恢复到初始大小，而DELETE操作不会减少表或索引所占用的空间。drop语句将表所占用的空间全释放掉。</li>
+<li>一般而言，drop &gt; truncate &gt; delete</li>
+<li>应用范围。TRUNCATE 只能对TABLE；DELETE可以是table和view</li>
+<li>TRUNCATE 和DELETE只删除数据，而DROP则删除整个表（结构和数据）。</li>
+<li>truncate与不带where的delete ：只删除数据，而不删除表的结构（定义）drop语句将删除表的结构被依赖的约束（constrain),触发器（trigger)索引（index);依赖于该表的存储过程/函数将被保留，但其状态会变为：invalid。</li>
+<li>delete语句为DML（Data Manipulation Language),这个操作会被放到 rollback segment中,事务提交后才生效。如果有相应的 tigger,执行的时候将被触发。</li>
+<li>truncate、drop是DDL（Data Define Language),操作立即生效，原数据不放到 rollback segment中，不能回滚</li>
+<li>在没有备份情况下，谨慎使用 drop 与 truncate。要删除部分数据行采用delete且注意结合where来约束影响范围。回滚段要足够大。要删除表用drop;若想保留表而将表中数据删除，如果与事务无关，用truncate即可实现。如果和事务有关，或老是想触发trigger,还是用delete。</li>
+<li>Truncate table 表名 速度快,而且效率高,因为: truncate table 在功能上与不带 WHERE 子句的 DELETE 语句相同：二者均删除表中的全部行。但 TRUNCATE TABLE 比 DELETE 速度快，且使用的系统和事务日志资源少。DELETE 语句每次删除一行，并在事务日志中为所删除的每行记录一项。TRUNCATE TABLE 通过释放存储表数据所用的数据页来删除数据，并且只在事务日志中记录页的释放。</li>
+<li>TRUNCATE TABLE 删除表中的所有行，但表结构及其列、约束、索引等保持不变。新行标识所用的计数值重置为该列的种子。如果想保留标识计数值，请改用 DELETE。如果要删除表定义及其数据，请使用 DROP TABLE 语句。</li>
+<li>对于由 FOREIGN KEY 约束引用的表，不能使用 TRUNCATE TABLE，而应使用不带 WHERE 子句的 DELETE 语句。由于 TRUNCATE TABLE 不记录在日志中，所以它不能激活触发器。</li>
+</ol>
+<h4 id="7、MySQL优化了解吗？说一下从哪些方面可以做到性能优化？"><a href="#7、MySQL优化了解吗？说一下从哪些方面可以做到性能优化？" class="headerlink" title="7、MySQL优化了解吗？说一下从哪些方面可以做到性能优化？"></a>7、MySQL优化了解吗？说一下从哪些方面可以做到性能优化？</h4><ul>
+<li>为搜索字段创建索引</li>
+<li>避免使用 Select *，列出需要查询的字段</li>
+<li>垂直分割分表</li>
+<li>选择正确的存储引擎</li>
+</ul>
+<h4 id="8、数据库隔离级别"><a href="#8、数据库隔离级别" class="headerlink" title="8、数据库隔离级别"></a>8、数据库隔离级别</h4><ul>
+<li><strong>未提交读</strong>，事务中发生了修改，即使没有提交，其他事务也是可见的，比如对于一个数A原来50修改为100，但是我还没有提交修改，另一个事务看到这个修改，而这个时候原事务发生了回滚，这时候A还是50，但是另一个事务看到的A是100.<strong>可能会导致脏读、幻读或不可重复读</strong></li>
+<li><strong>提交读</strong>，对于一个事务从开始直到提交之前，所做的任何修改是其他事务不可见的，举例就是对于一个数A原来是50，然后提交修改成100，这个时候另一个事务在A提交修改之前，读取的A是50，刚读取完，A就被修改成100，这个时候另一个事务再进行读取发现A就突然变成100了；<strong>可以阻止脏读，但是幻读或不可重复读仍有可能发生</strong></li>
+<li><strong>重复读</strong>，就是对一个记录读取多次的记录是相同的，比如对于一个数A读取的话一直是A，前后两次读取的A是一致的；<strong>可以阻止脏读和不可重复读，但幻读仍有可能发生</strong></li>
+<li><strong>可串行化读</strong>，在并发情况下，和串行化的读取的结果是一致的，没有什么不同，比如不会发生脏读和幻读；<strong>该级别可以防止脏读、不可重复读以及幻读</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">隔离级别</th>
+<th align="left">脏读</th>
+<th align="left">不可重复读</th>
+<th align="left">幻影读</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">READ-UNCOMMITTED 未提交读</td>
+<td align="left">√</td>
+<td align="left">√</td>
+<td align="left">√</td>
+</tr>
+<tr>
+<td align="left">READ-COMMITTED 提交读</td>
+<td align="left">×</td>
+<td align="left">√</td>
+<td align="left">√</td>
+</tr>
+<tr>
+<td align="left">REPEATABLE-READ 重复读</td>
+<td align="left">×</td>
+<td align="left">×</td>
+<td align="left">√</td>
+</tr>
+<tr>
+<td align="left">SERIALIZABLE 可串行化读</td>
+<td align="left">×</td>
+<td align="left">×</td>
+<td align="left">×</td>
+</tr>
+</tbody></table>
+<p>MySQL InnoDB 存储引擎的默认支持的隔离级别是 <strong>REPEATABLE-READ</strong>（可重读）</p>
+<p><strong>这里需要注意的是</strong>：与 SQL 标准不同的地方在于InnoDB 存储引擎在 REPEATABLE-READ（可重读）事务隔离级别 下使用的是<strong>Next-Key Lock 锁</strong>算法，因此可以避免幻读的产生，这与其他数据库系统(如 SQL Server)是不同的。所以 说InnoDB 存储引擎的默认支持的隔离级别是 REPEATABLE-READ（可重读） 已经可以完全保证事务的隔离性要 求，即达到了 SQL标准的SERIALIZABLE(可串行化)隔离级别。</p>
+<p>因为隔离级别越低，事务请求的锁越少，所以大部分数据库系统的隔离级别都是READ-COMMITTED(读取提交内 容):，但是你要知道的是InnoDB 存储引擎默认使用 <strong>REPEATABLE-READ（可重读）并不会有任何性能损失</strong>。</p>
+<p>InnoDB 存储引擎在分布式事务 的情况下一般会用到SERIALIZABLE(可串行化)隔离级别。</p>
+<h4 id="9、都知道数据库索引采用B-树而不是B树，原因也有很多，主要原因是什么？"><a href="#9、都知道数据库索引采用B-树而不是B树，原因也有很多，主要原因是什么？" class="headerlink" title="9、都知道数据库索引采用B+树而不是B树，原因也有很多，主要原因是什么？"></a>9、都知道数据库索引采用B+树而不是B树，原因也有很多，主要原因是什么？</h4><p>主要原因：B+树只要遍历叶子节点就可以实现整棵树的遍历，而且在数据库中基于范围的查询是非常频繁的，而B树只能中序遍历所有节点，效率太低。</p>
+<h4 id="10、文件索引和数据库索引为什么使用B-树-（第9个问题的详细回答）"><a href="#10、文件索引和数据库索引为什么使用B-树-（第9个问题的详细回答）" class="headerlink" title="10、文件索引和数据库索引为什么使用B+树?（第9个问题的详细回答）"></a>10、文件索引和数据库索引为什么使用B+树?（第9个问题的详细回答）</h4><p>文件与数据库都是需要较大的存储，也就是说，它们都不可能全部存储在内存中，故需要存储到磁盘上。而所谓索引，则为了数据的快速定位与查找，那么索引的结构组织要尽量减少查找过程中磁盘I/O的存取次数，因此B+树相比B树更为合适。数据库系统巧妙利用了局部性原理与磁盘预读原理，将一个节点的大小设为等于一个页，这样每个节点只需要一次I/O就可以完全载入，而红黑树这种结构，高度明显要深的多，并且由于逻辑上很近的节点(父子)物理上可能很远，无法利用局部性。</p>
+<p>最重要的是，B+树还有一个最大的好处：方便扫库。</p>
+<p>B树必须用中序遍历的方法按序扫库，而B+树直接从叶子结点挨个扫一遍就完了，B+树支持range-query非常方便，而B树不支持，这是数据库选用B+树的最主要原因。</p>
+<p>B+树查找效率更加稳定，B树有可能在中间节点找到数据，稳定性不够。</p>
+<p>B+tree的磁盘读写代价更低：B+tree的内部结点并没有指向关键字具体信息的指针(红色部分)，因此其内部结点相对B 树更小。如果把所有同一内部结点的关键字存放在同一块盘中，那么盘块所能容纳的关键字数量也越多。一次性读入内存中的需要查找的关键字也就越多，相对来说IO读写次数也就降低了；</p>
+<p>B+tree的查询效率更加稳定：由于内部结点并不是最终指向文件内容的结点，而只是叶子结点中关键字的索引，所以，任何关键字的查找必须走一条从根结点到叶子结点的路。所有关键字查询的路径长度相同，导致每一个数据的查询效率相当；</p>
+<h4 id="11、听说过视图吗？那游标呢？"><a href="#11、听说过视图吗？那游标呢？" class="headerlink" title="11、听说过视图吗？那游标呢？"></a>11、听说过视图吗？那游标呢？</h4><p>视图是一种虚拟的表，通常是有一个表或者多个表的行或列的子集，具有和物理表相同的功能 游标是对查询出来的结果集作为一个单元来有效的处理。一般不使用游标，但是需要逐条处理数据的时候，游标显得十分重要。</p>
+<h4 id="12、MySQL中为什么要有事务回滚机制？"><a href="#12、MySQL中为什么要有事务回滚机制？" class="headerlink" title="12、MySQL中为什么要有事务回滚机制？"></a>12、MySQL中为什么要有事务回滚机制？</h4><p>而在 MySQL 中，恢复机制是通过回滚日志（undo log）实现的，所有事务进行的修改都会先记录到这个回滚日志中，然后在对数据库中的对应行进行写入。当事务已经被提交之后，就无法再次回滚了。</p>
+<p>回滚日志作用：1)能够在发生错误或者用户执行 ROLLBACK 时提供回滚相关的信息 2) 在整个系统发生崩溃、数据库进程直接被杀死后，当用户再次启动数据库进程时，还能够立刻通过查询回滚日志将之前未完成的事务进行回滚，这也就需要回滚日志必须先于数据持久化到磁盘上，是我们需要先写日志后写数据库的主要原因。</p>
+<h4 id="13、数据库引擎InnoDB与MyISAM的区别"><a href="#13、数据库引擎InnoDB与MyISAM的区别" class="headerlink" title="13、数据库引擎InnoDB与MyISAM的区别"></a>13、数据库引擎InnoDB与MyISAM的区别</h4><p><strong>InnoDB</strong></p>
+<ul>
+<li>是 MySQL 默认的事务型存储引擎，只有在需要它不支持的特性时，才考虑使用其它存储引擎。</li>
+<li>实现了四个标准的隔离级别，默认级别是可重复读(REPEATABLE READ)。在可重复读隔离级别下，通过多版本并发控制(MVCC)+ 间隙锁(Next-Key Locking)防止幻影读。</li>
+<li>主索引是聚簇索引，在索引中保存了数据，从而避免直接读取磁盘，因此对查询性能有很大的提升。</li>
+<li>内部做了很多优化，包括从磁盘读取数据时采用的可预测性读、能够加快读操作并且自动创建的自适应哈希索引、能够加速插入操作的插入缓冲区等。</li>
+<li>支持真正的在线热备份。其它存储引擎不支持在线热备份，要获取一致性视图需要停止对所有表的写入，而在读写混合场景中，停止写入可能也意味着停止读取。</li>
+</ul>
+<p><strong>MyISAM</strong></p>
+<ul>
+<li>设计简单，数据以紧密格式存储。对于只读数据，或者表比较小、可以容忍修复操作，则依然可以使用它。</li>
+<li>提供了大量的特性，包括压缩表、空间数据索引等。</li>
+<li>不支持事务。</li>
+<li>不支持行级锁，只能对整张表加锁，读取时会对需要读到的所有表加共享锁，写入时则对表加排它锁。但在表有读取操作的同时，也可以往表中插入新的记录，这被称为并发插入(CONCURRENT INSERT)。</li>
+</ul>
+<p><strong>总结</strong></p>
+<ul>
+<li>事务: InnoDB 是事务型的，可以使用 <code>Commit</code> 和 <code>Rollback</code> 语句。</li>
+<li>并发: MyISAM 只支持表级锁，而 InnoDB 还支持行级锁。</li>
+<li>外键: InnoDB 支持外键。</li>
+<li>备份: InnoDB 支持在线热备份。</li>
+<li>崩溃恢复: MyISAM 崩溃后发生损坏的概率比 InnoDB 高很多，而且恢复的速度也更慢。</li>
+<li>其它特性: MyISAM 支持压缩表和空间数据索引。</li>
+</ul>
+<h4 id="14、数据库并发事务会带来哪些问题？"><a href="#14、数据库并发事务会带来哪些问题？" class="headerlink" title="14、数据库并发事务会带来哪些问题？"></a>14、数据库并发事务会带来哪些问题？</h4><p>数据库并发会带来脏读、幻读、丢弃更改、不可重复读这四个常见问题，其中：</p>
+<p><strong>脏读</strong>：在第一个修改事务和读取事务进行的时候，读取事务读到的数据为100，这是修改之后的数据，但是之后该事务满足一致性等特性而做了回滚操作，那么读取事务得到的结果就是脏数据了。</p>
+<p><strong>幻读</strong>：一般是T1在某个范围内进行修改操作（增加或者删除），而T2读取该范围导致读到的数据是修改之间的了，强调范围。</p>
+<p><strong>丢弃修改</strong>：两个写事务T1 T2同时对A=0进行递增操作，结果T2覆盖T1，导致最终结果是1 而不是2，事务被覆盖</p>
+<p><strong>不可重复读</strong>：T2 读取一个数据，然后T1 对该数据做了修改。如果 T2 再次读取这个数据，此时读取的结果和第一次读取的结果不同。</p>
+<h6 id="脏读"><a href="#脏读" class="headerlink" title="脏读"></a>脏读</h6><p><img src="https://mmbiz.qpic.cn/mmbiz_png/BktAsjcTbXibO8fSmnSmyBZMyXpt8qodOcxUR10xMFibrw1OFyGLLo9JNeibOa7pKvydFzqfBSPen6VHRbibKf9hlw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片">脏读</p>
+<p>第一个事务首先读取var变量为50，接着准备更新为100的时，并未提交，第二个事务已经读取var为100，此时第一个事务做了回滚。最终第二个事务读取的var和数据库的var不一样。</p>
+<h6 id="幻读（幻影读）"><a href="#幻读（幻影读）" class="headerlink" title="幻读（幻影读）"></a>幻读（幻影读）</h6><p><img src="https://mmbiz.qpic.cn/mmbiz_png/BktAsjcTbXibO8fSmnSmyBZMyXpt8qodO3EP98tOmFJLiaB6hOYtRMQQlGDGlmTHhniarrbWjUe7tuM8Oial10r0MA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片">幻读</p>
+<p>T1 读取某个范围的数据，T2 在这个范围内插入新的数据，T1 再次读取这个范围的数据，此时读取的结果和和第一次读取的结果不同。</p>
+<h6 id="丢弃修改"><a href="#丢弃修改" class="headerlink" title="丢弃修改"></a>丢弃修改</h6><p><img src="https://mmbiz.qpic.cn/mmbiz_png/BktAsjcTbXibO8fSmnSmyBZMyXpt8qodOmntibFjPnl30vZlMTicCQEGyvUwcJqAqEfLfQMUxiatdopLIGJxWOxEVg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片">丢弃修改</p>
+<p>T1 和 T2 两个事务都对一个数据进行修改，T1 先修改，T2 随后修改，T2 的修改覆盖了 T1 的修改。例如：事务1读取某表中的数据A=50，事务2也读取A=50，事务1修改A=A+50，事务2也修改A=A+50，最终结果A=100，事务1的修改被丢失。</p>
+<h6 id="不可重复读"><a href="#不可重复读" class="headerlink" title="不可重复读"></a>不可重复读</h6><p><img src="https://mmbiz.qpic.cn/mmbiz_png/BktAsjcTbXibO8fSmnSmyBZMyXpt8qodOEcNGkUZIhb3zWsic1ibS0GBiaj3N0rHNibbPCnYX5GlqLLaMs0RNmLNpEw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片">不可重复读</p>
+<p>T2 读取一个数据，T1 对该数据做了修改。如果 T2 再次读取这个数据，此时读取的结果和第一次读取的结果不同。</p>
+<h4 id="15、数据库悲观锁和乐观锁的原理和应用场景分别有什么？"><a href="#15、数据库悲观锁和乐观锁的原理和应用场景分别有什么？" class="headerlink" title="15、数据库悲观锁和乐观锁的原理和应用场景分别有什么？"></a>15、数据库悲观锁和乐观锁的原理和应用场景分别有什么？</h4><p>悲观锁，先获取锁，再进行业务操作，一般就是利用类似 SELECT … FOR UPDATE 这样的语句，对数据加锁，避免其他事务意外修改数据。当数据库执行SELECT … FOR UPDATE时会获取被select中的数据行的行锁，select for update获取的行锁会在当前事务结束时自动释放，因此必须在事务中使用。</p>
+<p>乐观锁，先进行业务操作，只在最后实际更新数据时进行检查数据是否被更新过。Java 并发包中的 AtomicFieldUpdater 类似，也是利用 CAS 机制，并不会对数据加锁，而是通过对比数据的时间戳或者版本号，来实现乐观锁需要的版本判断。</p>
+<h4 id="16、MySQL索引主要使用的两种数据结构是什么？"><a href="#16、MySQL索引主要使用的两种数据结构是什么？" class="headerlink" title="16、MySQL索引主要使用的两种数据结构是什么？"></a>16、MySQL索引主要使用的两种数据结构是什么？</h4><ul>
+<li><p><strong>哈希索引</strong>，对于哈希索引来说，底层的数据结构肯定是哈希表，因此<strong>在绝大多数需求为单条记录查询</strong>的时候，可以选择哈希索引，查询性能最快；其余大部分场景，建议选择BTree索引</p>
+</li>
+<li><p><strong>BTree索引</strong>，Mysql的BTree索引使用的是B树中的B+Tree，BTREE索引就是一种将索引值按一定的算法，存入一个树形的数据结构中（二叉树），每次查询都是从树的入口root开始，依次遍历node，获取leaf。</p>
+<p>但对于主要的两种存储引擎（MyISAM和InnoDB）的实现方式是不同的。</p>
+</li>
+</ul>
+<h4 id="17、数据库为什么要进行分库和分表呢？都放在一个库或者一张表中不可以吗？"><a href="#17、数据库为什么要进行分库和分表呢？都放在一个库或者一张表中不可以吗？" class="headerlink" title="17、数据库为什么要进行分库和分表呢？都放在一个库或者一张表中不可以吗？"></a>17、数据库为什么要进行分库和分表呢？都放在一个库或者一张表中不可以吗？</h4><p>分库与分表的目的在于，减小数据库的单库单表负担，提高查询性能，缩短查询时间。</p>
+<p><strong>通过分表</strong>，可以减少数据库的单表负担，将压力分散到不同的表上，同时因为不同的表上的数据量少了，起到提高查询性能，缩短查询时间的作用，此外，可以很大的缓解表锁的问题。分表策略可以归纳为垂直拆分和水平拆分:</p>
+<p><strong>水平分表</strong>：取模分表就属于随机分表，而时间维度分表则属于连续分表。如何设计好垂直拆分，我的建议：将不常用的字段单独拆分到另外一张扩展表. 将大文本的字段单独拆分到另外一张扩展表, 将不经常修改的字段放在同一张表中，将经常改变的字段放在另一张表中。对于海量用户场景，可以考虑取模分表，数据相对比较均匀，不容易出现热点和并发访问的瓶颈。</p>
+<p><strong>库内分表</strong>，仅仅是解决了单表数据过大的问题，但并没有把单表的数据分散到不同的物理机上，因此并不能减轻 MySQL 服务器的压力，仍然存在同一个物理机上的资源竞争和瓶颈，包括 CPU、内存、磁盘 IO、网络带宽等。</p>
+<p><strong>分库与分表带来的分布式困境与应对之策</strong>数据迁移与扩容问题—-一般做法是通过程序先读出数据，然后按照指定的分表策略再将数据写入到各个分表中。分页与排序问题—-需要在不同的分表中将数据进行排序并返回，并将不同分表返回的结果集进行汇总和再次排序，最后再返回给用户。</p>
+<h4 id="18、不可重复读和幻读区别是什么？可以举个例子吗？"><a href="#18、不可重复读和幻读区别是什么？可以举个例子吗？" class="headerlink" title="18、不可重复读和幻读区别是什么？可以举个例子吗？"></a>18、不可重复读和幻读区别是什么？可以举个例子吗？</h4><p><strong>不可重复读的重点是修改，幻读的重点在于新增或者删除。</strong></p>
+<ul>
+<li>例1（同样的条件, 你读取过的数据, 再次读取出来发现值不一样了 ）：事务1中的A先生读取自己的工资为 1000的操作还没完成，事务2中的B先生就修改了A的工资为2000，导致A再读自己的工资时工资变为 2000；这就是不可重复读。</li>
+<li>例2（同样的条件, 第1次和第2次读出来的记录数不一样 ）：假某工资单表中工资大于3000的有4人，事务1读取了所有工资大于3000的人，共查到4条记录，这时事务2 又插入了一条工资大于3000的记录，事务1再次读取时查到的记 录就变为了5条，这样就导致了幻读。</li>
+</ul>
+<h4 id="19、MySQL中有四种索引类型，可以简单说说吗？"><a href="#19、MySQL中有四种索引类型，可以简单说说吗？" class="headerlink" title="19、MySQL中有四种索引类型，可以简单说说吗？"></a>19、MySQL中有四种索引类型，可以简单说说吗？</h4><ul>
+<li><strong>FULLTEXT</strong> ：即为全文索引，目前只有MyISAM引擎支持。其可以在CREATE TABLE ，ALTER TABLE ，CREATE INDEX 使用，不过目前只有 CHAR、VARCHAR ，TEXT 列上可以创建全文索引。</li>
+<li><strong>HASH</strong> ：由于HASH的唯一（几乎100%的唯一）及类似键值对的形式，很适合作为索引。HASH索引可以一次定位，不需要像树形索引那样逐层查找,因此具有极高的效率。但是，这种高效是有条件的，即只在“=”和“in”条件下高效，对于范围查询、排序及组合索引仍然效率不高。</li>
+<li><strong>BTREE</strong> ：BTREE索引就是一种将索引值按一定的算法，存入一个树形的数据结构中（二叉树），每次查询都是从树的入口root开始，依次遍历node，获取leaf。这是MySQL里默认和最常用的索引类型。</li>
+<li><strong>RTREE</strong> ：RTREE在MySQL很少使用，仅支持geometry数据类型，支持该类型的存储引擎只有MyISAM、BDb、InnoDb、NDb、Archive几种。相对于BTREE，RTREE的优势在于范围查找。</li>
+</ul>
+<h4 id="20、视图的作用是什么？可以更改吗？"><a href="#20、视图的作用是什么？可以更改吗？" class="headerlink" title="20、视图的作用是什么？可以更改吗？"></a>20、视图的作用是什么？可以更改吗？</h4><p>视图是虚拟的表，与包含数据的表不一样，视图只包含使用时动态检索数据的查询；不包含任何列或数据。使用视图可以简化复杂的 sql 操作，隐藏具体的细节，保护数据；视图创建后，可以使用与表相同的方式利用它们。</p>
+<p>视图不能被索引，也不能有关联的触发器或默认值，如果视图本身内有order by 则对视图再次order by将被覆盖。</p>
+<p>创建视图：create view xxx as xxxx</p>
+<p>对于某些视图比如未使用联结子查询分组聚集函数Distinct Union等，是可以对其更新的，对视图的更新将对基表进行更新；但是视图主要用于简化检索，保护数据，并不用于更新，而且大部分视图都不可以更新。</p>
+<h4 id="21、为什么说B-tree比B-树更适合实际应用中操作系统的文件索引和数据库索引？"><a href="#21、为什么说B-tree比B-树更适合实际应用中操作系统的文件索引和数据库索引？" class="headerlink" title="21、为什么说B+tree比B 树更适合实际应用中操作系统的文件索引和数据库索引？"></a>21、为什么说B+tree比B 树更适合实际应用中操作系统的文件索引和数据库索引？</h4><p>B+tree的磁盘读写代价更低，B+tree的查询效率更加稳定 数据库索引采用B+树而不是B树的主要原因：B+树只要遍历叶子节点就可以实现整棵树的遍历，而且在数据库中基于范围的查询是非常频繁的，而B树只能中序遍历所有节点，效率太低。</p>
+<p><strong>B+树的特点</strong></p>
+<ul>
+<li>所有关键字都出现在叶子结点的链表中(稠密索引)，且链表中的关键字恰好是有序的;</li>
+<li>不可能在非叶子结点命中;</li>
+<li>非叶子结点相当于是叶子结点的索引(稀疏索引)，叶子结点相当于是存储(关键字)数据的数据层;</li>
+</ul>
+<h4 id="22、一道场景题：假如你所在的公司选择MySQL数据库作数据存储，一天五万条以上的增量，预计运维三年，你有哪些优化手段？"><a href="#22、一道场景题：假如你所在的公司选择MySQL数据库作数据存储，一天五万条以上的增量，预计运维三年，你有哪些优化手段？" class="headerlink" title="22、一道场景题：假如你所在的公司选择MySQL数据库作数据存储，一天五万条以上的增量，预计运维三年，你有哪些优化手段？"></a>22、一道场景题：假如你所在的公司选择MySQL数据库作数据存储，一天五万条以上的增量，预计运维三年，你有哪些优化手段？</h4><ul>
+<li>设计良好的数据库结构，允许部分数据冗余，尽量避免join查询，提高效率。</li>
+<li>选择合适的表字段数据类型和存储引擎，适当的添加索引。</li>
+<li>MySQL库主从读写分离。</li>
+<li>找规律分表，减少单表中的数据量提高查询速度。</li>
+<li>添加缓存机制，比如Memcached，Apc等。</li>
+<li>不经常改动的页面，生成静态页面。</li>
+<li>书写高效率的SQL。比如 SELECT * FROM TABEL 改为 SELECT field_1, field_2, field_3 FROM TABLE。</li>
+</ul>
+<h4 id="23、什么时候需要建立数据库索引呢？"><a href="#23、什么时候需要建立数据库索引呢？" class="headerlink" title="23、什么时候需要建立数据库索引呢？"></a>23、什么时候需要建立数据库索引呢？</h4><p>在最频繁使用的、用以缩小查询范围的字段,需要排序的字段上建立索引。不宜：1）对于查询中很少涉及的列或者重复值比较多的列 2）对于一些特殊的数据类型，不宜建立索引，比如文本字段（text）等。</p>
+<h4 id="24、覆盖索引是什么？"><a href="#24、覆盖索引是什么？" class="headerlink" title="24、覆盖索引是什么？"></a>24、覆盖索引是什么？</h4><p>如果一个索引包含（或者说覆盖）所有需要查询的字段的值，我们就称 之为“覆盖索引”。</p>
+<p>我们知道在InnoDB存储引 擎中，如果不是主键索引，叶子节点存储的是主键+列值。最终还是要“回表”，也就是要通过主键再查找一次,这样就 会比较慢。覆盖索引就是把要查询出的列和索引是对应的，不做回表操作！</p>
+<h4 id="25、数据库中的主键、超键、候选键、外键是什么？（很棒）"><a href="#25、数据库中的主键、超键、候选键、外键是什么？（很棒）" class="headerlink" title="25、数据库中的主键、超键、候选键、外键是什么？（很棒）"></a>25、数据库中的主键、超键、候选键、外键是什么？（很棒）</h4><ul>
+<li><strong>超键</strong>：在关系中能唯一标识<strong>元组的属性集</strong>称为关系模式的超键</li>
+<li><strong>候选键</strong>：不含有<strong>多余属性的超键</strong>称为候选键。也就是在候选键中，若再删除属性，就不是键了！</li>
+<li><strong>主键</strong>：<strong>用户选作元组标识的一个候选键程序主键</strong></li>
+<li><strong>外键</strong>：如果关系模式<strong>R中属性K是其它模式的主键</strong>，那么<strong>k在模式R中称为外键</strong>。</li>
+</ul>
+<p><strong>举例</strong>：</p>
+<table>
+<thead>
+<tr>
+<th align="left">学号</th>
+<th align="left">姓名</th>
+<th align="left">性别</th>
+<th align="left">年龄</th>
+<th align="left">系别</th>
+<th align="left">专业</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">20020612</td>
+<td align="left">李辉</td>
+<td align="left">男</td>
+<td align="left">20</td>
+<td align="left">计算机</td>
+<td align="left">软件开发</td>
+</tr>
+<tr>
+<td align="left">20060613</td>
+<td align="left">张明</td>
+<td align="left">男</td>
+<td align="left">18</td>
+<td align="left">计算机</td>
+<td align="left">软件开发</td>
+</tr>
+<tr>
+<td align="left">20060614</td>
+<td align="left">王小玉</td>
+<td align="left">女</td>
+<td align="left">19</td>
+<td align="left">物理</td>
+<td align="left">力学</td>
+</tr>
+<tr>
+<td align="left">20060615</td>
+<td align="left">李淑华</td>
+<td align="left">女</td>
+<td align="left">17</td>
+<td align="left">生物</td>
+<td align="left">动物学</td>
+</tr>
+<tr>
+<td align="left">20060616</td>
+<td align="left">赵静</td>
+<td align="left">男</td>
+<td align="left">21</td>
+<td align="left">化学</td>
+<td align="left">食品化学</td>
+</tr>
+<tr>
+<td align="left">20060617</td>
+<td align="left">赵静</td>
+<td align="left">女</td>
+<td align="left">20</td>
+<td align="left">生物</td>
+<td align="left">植物学</td>
+</tr>
+</tbody></table>
+<ol>
+<li>超键：于是我们从例子中可以发现 学号是标识学生实体的唯一标识。那么该元组的超键就为学号。除此之外我们还可以把它跟其他属性组合起来，比如：(<code>学号</code>，<code>性别</code>)，(<code>学号</code>，<code>年龄</code>)</li>
+<li>候选键：根据例子可知，学号是一个可以唯一标识元组的唯一标识，因此学号是一个候选键，实际上，候选键是超键的子集，比如 （学号，年龄）是超键，但是它不是候选键。因为它还有了额外的属性。</li>
+<li>主键：简单的说，例子中的元组的候选键为学号，但是我们选定他作为该元组的唯一标识，那么学号就为主键。</li>
+<li>外键是相对于主键的，比如在学生记录里，主键为学号，在成绩单表中也有学号字段，因此学号为成绩单表的外键，为学生表的主键。</li>
+</ol>
+<p><strong>主键为候选键的子集，候选键为超键的子集，而外键的确定是相对于主键的。</strong></p>
+<p>not in 和not exists的区别</p>
+<p>not in 是不能命中索引的</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/23/5.4.MySQL%E9%9D%A2%E8%AF%95/" data-id="ckpdvjppt004knswdhtjodnvg" data-title="MySQL面试" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-12.5.Springfox" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/22/12.5.Springfox/" class="article-date">
+  <time class="dt-published" datetime="2021-04-22T01:50:05.000Z" itemprop="datePublished">2021-04-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/22/12.5.Springfox/">Springfox</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="Swagger是什么"><a href="#Swagger是什么" class="headerlink" title="Swagger是什么"></a>Swagger是什么</h2><p>根据官网的介绍，Swagger是一系列用于Restful API开发的工具，开源的部分包括：</p>
+<ul>
+<li>OpenAPI Specification：API规范，规定了如何描述一个系统的API</li>
+<li>Swagger Codegen：用于通过API规范生成服务端和客户端代码</li>
+<li>Swagger Editor：用来编写API规范</li>
+<li>Swagger UI：用于展示API规范</li>
+</ul>
+<p>非开源的部分包括：</p>
+<ul>
+<li>Swagger Hub：云服务，相当于Editor + Codegen + UI</li>
+<li>Swagger Inspector：手动测试API的工具</li>
+<li>SoapUI Pro：功能测试和安全测试的自动化工具</li>
+<li>LoadUI Pro：压力测试和性能测试的自动化工具</li>
+</ul>
+<h2 id="Springfox是什么"><a href="#Springfox是什么" class="headerlink" title="Springfox是什么"></a>Springfox是什么</h2><p>在大量的中文教程中，Springfox以这样的方式出现</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>第二个看起来应该是springfox封装/修改的Swagger UI，第一个应该就是Springfox本体了，但为什么artifact有个swagger2的后缀？</p>
+<p>这就要从Springfox是什么说起了。Springfox其实是一个<code>通过扫描代码提取代码中的信息，生成API文档的工具</code>。API文档的格式不止Swagger的<code>OpenAPI Specification</code>，还有<code>RAML</code>，<code>jsonapi</code>，Springfox的目标同样包括支持这些格式。这就能解释那个swagger2的后缀了，这只是Springfox对Swagger的支持。</p>
+<p>在Swagger的教程中，都会提到<code>@Api</code>、<code>@ApiModel</code>、<code>@ApiOperation</code>这些注解，这些注解其实不是Springfox的，而是<code>Swagger</code>的。<code>springfox-swagger2</code>这个包依赖了<code>swagger-core</code>这个包，而这些注解正是在这里面。但是，<code>swagger-core</code>这个包是只支持<code>JAX-RS2</code>的，并不支持常用的<code>Spring MVC</code>。这就是<code>springfox-swagger</code>的作用了，它将上面那些用于<code>JAX-RS2</code>的注解适配到了<code>Spring MVC</code>上。</p>
+<p>除了Spring MVC外，Springfox还支持如下库</p>
+<ul>
+<li><code>Spring Data REST</code></li>
+<li><code>JSR 303</code>，这项标准的参考实现是<code>Hibernate Validator</code></li>
+</ul>
+<h2 id="Swagger注解的滥用"><a href="#Swagger注解的滥用" class="headerlink" title="Swagger注解的滥用"></a>Swagger注解的滥用</h2><p>在代码中的注解已经存储了大量的信息，如果再用<code>swagger-core</code>的注解将这些信息用另一种方式表达出来，很容易造成改了这里忘了改那里，即修改不同步。因此Springfox的开发者不推荐大家使用<code>swagger-core</code>的注解来描述API，认为<code>swagger-core</code>的注解只是补充，只能用于实现其他方法都不能实现的调整或者覆盖。例如，更应该使用<code>Jackson</code>的注解，而不是<code>@ApiModelProperty</code>；更应该使用<code>@NotNull</code>或者<code>@RequestParam#required</code>，而不是在文档里写一句<code>此字段必填</code>。</p>
+<p>但是，springfox的开发者忽略了一个事实，中文开发者用<code>swagger-core</code>的注解更多的是用来添加<code>中文描述</code>，所以，该用的时候还是用吧</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/22/12.5.Springfox/" data-id="ckpdvjpog000rnswd1xrehhze" data-title="Springfox" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springfox/" rel="tag">springfox</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swagger/" rel="tag">swagger</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-19.4.SVN" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/04/19/19.4.SVN/" class="article-date">
@@ -325,7 +1052,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/19.4.SVN/" data-id="ckno8ff4x000zswwdcqi9d3uo" data-title="SVN" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/19.4.SVN/" data-id="ckpdvjpok0010nswdbkzzcen3" data-title="SVN" class="article-share-link">分享</a>
       
       
       
@@ -537,7 +1264,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/" data-id="ckno8ff5n0034swwdackb5xod" data-title="WEB之上传和下载" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/" data-id="ckpdvjpp5002znswd97mtgilt" data-title="WEB之上传和下载" class="article-share-link">分享</a>
       
       
       
@@ -724,7 +1451,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/" data-id="ckno8ff5n0032swwdb4w84sdt" data-title="WEB之listener和filter" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/" data-id="ckpdvjpp5002xnswd9ka74t1i" data-title="WEB之listener和filter" class="article-share-link">分享</a>
       
       
       
@@ -834,7 +1561,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/" data-id="ckno8ff5m0031swwddc4chfys" data-title="WEB之cookie和session" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/" data-id="ckpdvjpp4002wnswd06ik74gd" data-title="WEB之cookie和session" class="article-share-link">分享</a>
       
       
       
@@ -927,1209 +1654,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/9.6.WEB%E4%B9%8Bajax/" data-id="ckno8ff5m002zswwdaeu7ahcb" data-title="WEB之ajax" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-9.5.WEB之JQuery" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/9.5.WEB%E4%B9%8BJQuery/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T06:29:56.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/9.5.WEB%E4%B9%8BJQuery/">WEB之JQuery</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>jQuery是一个快速、简洁的****JavaScript框架*<em><strong>，是继Prototype之后又一个优秀的JavaScript代码库（</strong>或JavaScript框架</em>*）。jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化HTML文档操作、事件处理、动画设计和Ajax交互。</p>
-<p>使用jquery可以更好完成以下操作：</p>
-<p>\1. html文档操作，对于dom相关操作优化</p>
-<p>\2. jquery提供更加方便与丰富事件处理</p>
-<p>\3. jquery提供简单动画特效</p>
-<p>\4. jquery提供ajax交互</p>
-<p>要使用任何一个js框架，都是需要导入相关的js文件。</p>
-<p>jquery的插件机制特别丰富,在开发中可以选择非常多的相关插件，例如，表单校验插件，树型结构等</p>
-<p>其它常用js框架:</p>
-<p>1.dojo 面向对象的js框架</p>
-<p>2.extjs 学习成本比较高 它提供大量的丰富组件，它的效果展示（动画）非常好</p>
-<p>3.prototype 早期比较流行js框架</p>
-<p>4.angularJS 它是一个mvc js框架，它提供双向数据绑定</p>
-<p><a target="_blank" rel="noopener" href="http://jquery.com/">http://jquery.com/</a> jquery官网</p>
-<p>jquery最新版本3.5.1 现在学习的版本1.8.3</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps1.jpg" alt="img"> </p>
-<p>因为jquery从jquery2.x以后对浏览器支持不是特别好，在pc端开发使用比较主流的是1.x版本</p>
-<p>对于开发中， 我们需要导入的是min.js文件，在学习阶段我们导入 jquery-1.8.3.js</p>
-<p>完成操作:页面加载完成后，弹出一个框显示hello jquery</p>
-<p>第一步:新建一个web工程，2.5版本。将jquery复制到项目的webcontent中</p>
-<p>导入js文件</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps2.jpg" alt="img"> </p>
-<p>第二步：完成操作</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps3.jpg" alt="img"> </p>
-<p>注意:源生的js绑定，它只能绑定一次（第二次绑定时会将第一次的覆盖掉），而jquery允许绑定多次（都可以显示出来）</p>
-<p>源生的js绑定：</p>
-<script type=”text/javascript”>
-
-window.onload=function(){
-
-alert(“hello jquery”);
-
-}
-
-</script>
-
-<p>jQuery的核心函数</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps4.jpg" alt="img"> </p>
-<p>jQuery.holdReady（hold）暂时不讲</p>
-<p>1.jQuery(callback)</p>
-<p>jQuery(callback)是$(document).ready()的简写</p>
-<p>$(document).ready(function(){});页面加载完成后，指定的函数执行</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps5.jpg" alt="img"> </p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps6.jpg" alt="img"> </p>
-<p>2.jQuery(html,<strong>[ownerDocument]</strong>)</p>
-<p>jQuery(html代码)它的作用是将一个dom对象包装成jquery对象</p>
-<p>jquery对象：jquery中定义的方法与属性，只有jquery对象可以调用</p>
-<p>这个核心函数的作用是将一个dom对象包装成了jquery对象，它的第一个参数是html代码，第二个参数是可选，它用于设置dom的相关属性</p>
-<p>3.jQuery([selector,[context]])</p>
-<p>这个核心函数的主要作用是用于在页面上查找，根据css选择器。参数1就是css选择器  jquery中提供了九种选择器；参数2 context 就是指定要查找的dom集</p>
-<p>4.关于jquery对象与dom对象转换</p>
-<p>dom对象—–àjquery对象  $(dom)</p>
-<p>jquery对象—-àdom对象   jquery对象[0] 或  jquery对象.get(0)</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps7.jpg" alt="img"> </p>
-<h1 id="jQuery选择器-（-重要-）"><a href="#jQuery选择器-（-重要-）" class="headerlink" title="*jQuery选择器*****（**重要**）****"></a><em><strong>*jQuery选择器*</strong>***</em>*（*<strong><strong><strong>*重要*</strong></strong></strong>*）****</h1><p>一、基本选择器</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps8.jpg" alt="img"> </p>
-<p>#id 根据 id属性查找一个元素</p>
-<p>element 根据元素的标签名称查找元素</p>
-<p>.class 根据元素的class属性查找元素</p>
-<p>*匹配所有元素（通配符）</p>
-<p>selector1,selector2…将每一个选择器匹配到元素合并后一起返回</p>
-<p>举例：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps9.jpg" alt="img"> </p>
-<p>1.得到id=d1的元素中的内容显示出：</p>
-<p>var html =$(“#d1”).html();  //获取所有html</p>
-<p>alert(html);</p>
-<p>var html =$(“#d1”).text();  //获取所有文本</p>
-<p>alert(text);</p>
-<p>2.将class=d元素中的内容后面添加XXX：</p>
-<p>$(“.d”).each(function(i){</p>
-<p>$(this).html($(this).html()+”XXX”);</p>
-<p>}</p>
-<p>3.得到id=d1这个div在整个页面上的div是第几个.：</p>
-<p>var index =$(“this”).index($(“#d1”));  //序号是从0开始</p>
-<p>alert(index);</p>
-<p>4.得到class=d的元素有几个：</p>
-<p>var size =$(.d).size();</p>
-<p>alert(size);</p>
-<p>5.将所有的class=d或id=d1元素中的内容设置为java:</p>
-<p>$(“.d,#d1”).html(“java”);</p>
-<p>$(“.d,#d1”).text(“java”);</p>
-<p>方法总结：</p>
-<p>1.html ()方法，无参数代表获取元素中的<strong>html代码</strong>，如果有参数代表设置元素的html信息</p>
-<p>2.text()方法，无参数代表获取元素中的<strong>文本信息</strong>，如果有参数代表设置元素的文本信息</p>
-<p>3.each()方法，它的使用可以帮助我们遍历元素，可以传递一个函数 each(function(n)),n就代表的是每一个元素的序号，在函数中可以通过this来获取其dom对象（注意dom对象和jQuery对象的转换）</p>
-<p>4.index()方法，它可以判断元素的序号</p>
-<p>二、层级选择器</p>
-<p>层级选择器是根据元素的关系来获取。关系是指父子关系，兄弟关系(可以看tab键的位置确定，同级的关系，父子的关系)</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps10.jpg" alt="img"> </p>
-<p>1.空格 得到元素下的所有子元素(包含直接子元素与间接子元素（子元素的子元素）)</p>
-<p>2.大于号&gt;  只获取直接的子元素</p>
-<p>3.加号+  只获取直接的下一个兄弟元素</p>
-<p>4.波浪线~ 所有的后边的兄弟元素</p>
-<p>举例：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps11.jpg" alt="img"> </p>
-<p>\1. 获取id=d的所有<a>子元素：$(“#d a”)  //3个</p>
-<p>\2. 获取id=d 的直接<a>子元素:$(“#d&gt;a”)  //2个</p>
-<p>\3. 获取id=d第一个<p>兄弟元素:$(“#d+p”)  //1个</p>
-<p>\4. 获取id=d的所有<p>兄弟元素:$(“#d~p”)  //2个</p>
-<p>5.将id=d下的所有子元素<a>的文字颜色设置成红色</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps12.jpg" alt="img"> </p>
-<p>方法总结：</p>
-<p>css()方法，它可以设置元素的样式,如果只有一个值  css(name,value),如果有多个值,css({name:value,name:value})</p>
-<p>三、过滤器</p>
-<p>过滤器它是在基本选择器与层次选择器获取到一批元素后，在进行过滤操作，使用过滤选择器基本都是”:”开头，除了属性过滤选择器[]</p>
-<p>1.基本过滤选择器</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps13.jpg" alt="img"> </p>
-<p>odd是奇数，even是偶数</p>
-<p>可以查文档使用</p>
-<p>举例：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps14.jpg" alt="img"> </p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps15.jpg" alt="img"> </p>
-<p>2.内容过滤选择器</p>
-<p>内容过滤选择器它是根据元素内部文本内容进行选中</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps16.jpg" alt="img"> </p>
-<p>举例：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps17.jpg" alt="img"> </p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps18.jpg" alt="img"> </p>
-<p>可以先创建一个css样式的divColor，然后这里可以用addClass()方法调取。</p>
-<p>3.可见性过滤选择器</p>
-<p>可见性过滤选择器它匹配display:none或表单中input hidden这样的元素</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps19.jpg" alt="img"> </p>
-<p>举例：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps20.jpg" alt="img"> </p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps21.jpg" alt="img"> </p>
-<p>方法总结：</p>
-<p>1.val() 获取元素当前的值  就是value值</p>
-<p>2.show() 让元素显示出来</p>
-<p>3.hide() 让元素隐藏起来</p>
-<p>4.属性过滤选择器：根据元素的属性来过滤</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps22.jpg" alt="img"> </p>
-<p>^=匹配开始</p>
-<p>$=匹配结尾</p>
-<p>*=匹配包含</p>
-<p>举例：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps23.jpg" alt="img"> </p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps24.jpg" alt="img"> </p>
-<p>方法总结：</p>
-<p>attr()设置或返回被选元素的属性值</p>
-<p>5.子元素过滤选择器</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps25.jpg" alt="img"> </p>
-<p>根据子元素顺序来获取。</p>
-<p>nth-child根据序号来选择，<em><strong>*序号是从1开始*</strong></em> <em><strong>*（2）*</strong></em>  也可以设置odd even 根据奇偶来设置（odd）（even） 也可以通过倍数来设置（3n）</p>
-<p>first-child 获取第一个</p>
-<p>last-child 获取最后一个</p>
-<p>only-child 获取只有一个子元素</p>
-<p>举例：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps26.jpg" alt="img"> </p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps27.jpg" alt="img"> </p>
-<p>6.表单过滤选择器：表单过滤选择器是用于选取表单中的元素</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps28.jpg" alt="img"> </p>
-<p>举例：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps29.jpg" alt="img"> </p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps30.jpg" alt="img"> </p>
-<p>方法总结：</p>
-<p>1.trim()它是去掉字符串左右空格 $.trim(value)</p>
-<p>常用事件处理：</p>
-<p>2.失去焦点事件 blur(function(){})</p>
-<p>3.click(function(){}) 点击事件</p>
-<p>4.submit() 表单提交</p>
-<p>7.表单对象属性过滤选择器</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps31.jpg" alt="img"> </p>
-<p>checked是用于radio,checkbox 判断选中</p>
-<p>selected是用于select下拉框选中</p>
-<p>举例：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps32.jpg" alt="img"> </p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps33.jpg" alt="img"> </p>
-<p>在开发中，使用比较多的选择器有:</p>
-<p>\1. 基本选择器  class id  element</p>
-<p>\2. 层次选择器  父子关系  兄弟关系</p>
-<p>3.过滤选择器  属性过滤   基本过滤  内容过滤  关于表单过滤</p>
-<h1 id="jQuery-DOM操作"><a href="#jQuery-DOM操作" class="headerlink" title="*jQuery DOM操作*"></a><em><strong>*jQuery DOM操作*</strong></em></h1><p>一、文档处理</p>
-<p>1.插入操作</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps34.jpg" alt="img"> </p>
-<p>内部插入是在该标签的内部的最开始（prepend）和最后（append）插入</p>
-<p>外部插入是在该标签某一项的前面（before）或者后面（after）插入</p>
-<p>举例：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps35.jpg" alt="img"> </p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps36.jpg" alt="img"> </p>
-<p>2.删除</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps37.jpg" alt="img"> </p>
-<p>举例：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps38.jpg" alt="img"> </p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps39.jpg" alt="img"> </p>
-<p>3.替换与克隆</p>
-<p>替换：<img src="/9.5.WEB%E4%B9%8BJQuery/wps40.jpg" alt="img"></p>
-<p>克隆：<img src="/9.5.WEB%E4%B9%8BJQuery/wps41.jpg" alt="img"></p>
-<p>第二个参数生效的情况下，第一个参数必须为true</p>
-<p>举例：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps42.jpg" alt="img"> </p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps43.jpg" alt="img"> </p>
-<p>综合练习：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps44.jpg" alt="img"> </p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps45.jpg" alt="img"> </p>
-<p>二、筛选</p>
-<p>1.过滤</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps46.jpg" alt="img"> </p>
-<p>过滤操作它相当于是我们在jquery中使用的过滤选择器，</p>
-<p>例如 eq可以根据序号来获取元素（从0开始计数） first与last来获取第一个元素与最后一个元素</p>
-<p>2.查找</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps47.jpg" alt="img"> </p>
-<p>是通过当前元素，获取祖先元素，父元素子元素等。</p>
-<p>find方法，它可以直接来查找指定的元素.</p>
-<h1 id="jQuery事件机制"><a href="#jQuery事件机制" class="headerlink" title="*jQuery事件机制*"></a><em><strong>*jQuery事件机制*</strong></em></h1><p>一、jQuery事件介绍</p>
-<p>Jquery中的事件与传统的javascript中事件区别:Jquery中事件允许绑定多个函数，而javascript中一个事件只能绑定一个函数.</p>
-<p>事件中的方法：javascript是onblur，而jquery中是blur</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps48.jpg" alt="img"> </p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps49.jpg" alt="img"> </p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps50.jpg" alt="img"> </p>
-<p>二、事件绑定</p>
-<p>1.传统的javascript中事件绑定操作</p>
-<p>写法1：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps51.jpg" alt="img"> </p>
-<p>写法2：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps52.jpg" alt="img"> </p>
-<p>2.Jquery事件绑定操作</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps53.jpg" alt="img"> </p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps54.jpg" alt="img"> </p>
-<p>bind与live它们的区别：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps55.jpg" alt="img"> </p>
-<p>三、一次性事件和自动触发</p>
-<p>1.一次性事件</p>
-<p>one()为每一个匹配元素的特定事件（像click）绑定一个一次性的事件处理函数</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps56.jpg" alt="img"> </p>
-<p>2.事件触发</p>
-<p>trigger()在每一个匹配的元素上触发某类事件</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps57.jpg" alt="img"> </p>
-<p>四、事件切换</p>
-<p>1.hover：这个操作它可以绑定两个函数，当触发mouseover时第一个函数执行，当触发mouseout时第二个函数执行</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps58.jpg" alt="img"> </p>
-<p>2000是一个时间，2000ms</p>
-<p>2.toggle：用于绑定两个或多个事件处理器函数，以响应被选元素的轮流的 click 事件</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps59.jpg" alt="img"> </p>
-<h1 id="jQueryAjax编程"><a href="#jQueryAjax编程" class="headerlink" title="*jQueryAjax编程*"></a><em><strong>*jQueryAjax编程*</strong></em></h1><p>一、jquery ajax开发介绍</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps60.jpg" alt="img"> </p>
-<p>1.$.ajax()它是jquery提供的最基本的ajax编程方式。它的功能比较强大，但是使用比较麻烦，一般不使用，它是将远程数据加载到XMLHttpRequest对象中。</p>
-<p>2.load  get  post 它们简化了$.ajax操作，get post针对get与post请求的，它们是开发中使用的比较多。</p>
-<p>3.getScript  getJSON 它们是用于解决ajax跨域问题的</p>
-<p>二、load（仅了解，用的不多）</p>
-<p>载入远程 HTML 文件代码并插入至 DOM 中</p>
-<p>load(url,参数，回调函数)</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps61.jpg" alt="img"> </p>
-<p>服务器端的load对应的servlet下的get方法下的代码：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps62.jpg" alt="img"> </p>
-<p>load方法是将服务器响应的数据直接插入到指定的dom元素中。jquery中的load方法如果有参数请求方式是post，如果没有参数请求方式是get</p>
-<p>三、$.ajax（了解）</p>
-<p>$.ajax它是jquery中最基本的ajax操作，load  get  post都简化了$.ajax操作</p>
-<p>上述的代码不使用load操作，使用原始的$.ajax操作</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps63.jpg" alt="img"> </p>
-<p>四、$.post与$.get（重要）</p>
-<p>$.get与$.post它们针对于get与post请求</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps64.jpg" alt="img"> </p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps65.jpg" alt="img"> </p>
-<p>五、$.getJSON和$.getScript</p>
-<p>jQuery ajax开发基于json（重点）</p>
-<p>json介绍：</p>
-<p><a target="_blank" rel="noopener" href="http://baike.baidu.com/view/136475.htm">JSON</a>(<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/16168.htm">JavaScript</a> Object Notation) 是一种轻量级的数据交换格式，是javascript的一个子集.</p>
-<p>json简单说就是javascript中的对象和数组.</p>
-<p>对象: {key：value,key：value,…}</p>
-<p>数组: [“java”,”javascript”,”vb”,…]</p>
-<p>注意:在json中它的两种结构可以互相嵌套</p>
-<p>{key:[value1,value2],key:value}</p>
-<p>[{name:xxx},{key:value},{key:value}]</p>
-<p>Fastjson介绍：</p>
-<p>将java的对象转换成json数据,也可以将一个json转换成java对象(不常用)</p>
-<p>Fastjson是阿里提供的一个开源json插件（工具）</p>
-<p>对于json处理的插件有很多：  fastjson  jsonlib  flexjson  Jackson</p>
-<p>Fastjson的使用介绍：</p>
-<p>\1. 导入相应的jar包</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps66.jpg" alt="img"> </p>
-<p>\2. 演示fastjson将java对象转换成json数据：</p>
-<p>String  json=JSONObject.toJsonString(java对象);</p>
-<p>问题1:将java对象转换成json时，名称是否可以自己来指定?</p>
-<p>用注解@JSONField(name=”xxx”)，下面那个属性的名字就会变成xxx</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps67.jpg" alt="img"> </p>
-<p>问题2:如果java对象中存在日期类型属性java.util.Date,是否可以用指定的格式来转换成json</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps68.jpg" alt="img"> </p>
-<p>问题3:如果java类中的某些属性不想生成json中</p>
-<p>String  json=JSONObject.toJsonString(java对象，fiter); 添加一个过滤器</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps69.jpg" alt="img"> </p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps70.jpg" alt="img"> </p>
-<p>问题4:关于fastjson将java对象转换成json时的循环引用问题</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps71.jpg" alt="img"> </p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps72.jpg" alt="img"> </p>
-<p>这里的后面重复元素会显示为引用，但我们不想这样，所以可以通过以下设置可以取消循环引用</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps73.jpg" alt="img"> </p>
-<p>jQuery ajax开发基于xml(了解)</p>
-<p>XStream介绍：可以使用XStream工具来完成xml与java对象之间的转换。它也可以完成java对象与json之间的转换</p>
-<p>XStream使用时需要导入的jar包：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps74.jpg" alt="img"> </p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps75.jpg" alt="img"> </p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps76.jpg" alt="img"> </p>
-<p>XStream怎样将java对象转换成xml：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps77.jpg" alt="img"> </p>
-<p>XStream相关的常用方法</p>
-<p>1.设置别名（在转换前设置，在new后设置）</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps78.jpg" alt="img"> </p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps79.jpg" alt="img"> </p>
-<p>2.忽略属性（在转换前设置，在new后设置）</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps80.jpg" alt="img"> </p>
-<p>3.将类的属性设置成xml中字段的属性</p>
-<p>​    <img src="/9.5.WEB%E4%B9%8BJQuery/wps81.jpg" alt="img"></p>
-<p>上述的操作都可以用注解使用</p>
-<p>要想使用XStream的注解，必须开启注解扫描.（在转换前设置，在new后设置）</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps82.jpg" alt="img"> </p>
-<p>在java类中的上面加注解</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps83.jpg" alt="img"> </p>
-<h1 id="Ajax跨域问题"><a href="#Ajax跨域问题" class="headerlink" title="*Ajax跨域问题*"></a><em><strong>*Ajax跨域问题*</strong></em></h1><p>跨域它是不同的域名(服务器)之间的相互的资源的访问</p>
-<p>当协议，域名，端口号任意一个不相同，它们就是不同的域。</p>
-<p>正常情况下，因为浏览器安全问题，不同域的资源是不可以访问的</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps84.jpg" alt="img"> </p>
-<p>跨域解决方案</p>
-<p>什么情况下会使用到跨域？</p>
-<p>一般情况是在自己的内部的工程中会出现跨域情况。</p>
-<p>有三种解决方案:</p>
-<p>1.代理方案 前端页面访问本地的服务器，本地服务器访问其它域的资源，它是服务器端的跨域问题解决。<br>2.jsonp JSONP(JSON with Padding)是<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/136475.htm">JSON</a>的一种“使用模式”，可用于解决主流浏览器的跨域数据访问的问题。由于同源策略，一般来说位于 server1.example.com 的网页无法与不是 server2.example.com的服务器沟通，而 HTML 的<script> 元素是一个例外。利用 <script> 元素的这个开放策略，网页可以得到从其他来源动态产生的 JSON 资料，而这种使用模式就是所谓的 JSONP。用 JSONP 抓到的资料并不是 JSON，而是任意的JavaScript，用 JavaScript 直译器执行而不是用 JSON 解析器解析。（其实就是利用script标签可以跨域的特性）</p>
-<p>3.XHR2全称XMLHttpRequest Level2它是HTML5提供的方法，一般是在移动开发中使用</p>
-<p>jQuery解决跨域操作</p>
-<p>在jquery中我们可以使用$.ajax,$.getJSON,$.getScript来解跨域问题</p>
-<p>1.$.ajax解决跨域问题</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps85.jpg" alt="img"> </p>
-<p>关于json与jsonp格式的区别</p>
-<p>Json格式 :[value1,value],{name:value}</p>
-<p>Jsonp格式: callback(json)</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps86.jpg" alt="img"> </p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps87.jpg" alt="img"> </p>
-<p>2.Jquery中如何使用jsonp完成跨域问题</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps88.jpg" alt="img"> </p>
-<p>3.$.getJSON解决跨域问题</p>
-<p>$.getJSON它就是$.ajax解决跨域问题的简化操作</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps89.jpg" alt="img"> </p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps90.jpg" alt="img"> </p>
-<h1 id="jQuery-的分页操作"><a href="#jQuery-的分页操作" class="headerlink" title="*jQuery*****的分页操作****"></a><em><strong>*jQuery*</strong>***</em>*的分页操作****</h1><p>1.前端使用bootstrap的分页组件来完成数据分页显示。</p>
-<p>2.服务器端使用javaee经典三层架构</p>
-<p>3.使用c3p0连接池，dbutils来完成数据库操作。</p>
-<p>分页的意义：因为数据量比较大，为了用户有更好的体验。一般情况下，数据在展示时都会进行分页操作</p>
-<p>分页的种类：</p>
-<p>1.物理分页 :使用数据库本身提供的分页操作来完成数据查询，查询到的就是当前页的信息。例如mysql可以使用limit  oracle数据库可以使用rownum来完成。这种方案的优点是性能比较好，但是它存在不通用问题。</p>
-<p>2.逻辑分页 ：它是利用数据库的游标（absolute光标）来操作 （将数据库所有数据都查询出来，存储在内存中），性能比较低，但是它通用。</p>
-<p>​    现在开发中一般使用的比较多的是物理分页</p>
-<p>分页基本原理：分页实现可以使用ajax分页，也可以使用服务器端分页，它们原理是一样的，现在主要用ajax分页</p>
-<p>Mysql中的limit如何完成分页数据查询操作：</p>
-<p>Select * from 表名  limit num1,num2;</p>
-<p>Num1代表的是从第几行开始查询，起始值是0</p>
-<p>Num2代表的是要查询几条记录</p>
-<p>例如查询第二页数据(每页显示5条)</p>
-<p>Select * from product limit (页码-1)*每页条数,(每页条数);</p>
-<p>完成分页操作必备条件:</p>
-<p>\1. 页码pageNo  默认是1 会根据上一页，下一页，首页尾页选择变化，我们通过js来控制。</p>
-<p>\2. 每页显示条数pageSize 人为设置。</p>
-<p>\3. 总条数</p>
-<p>\4. 总页数=总条数/每页显示条数 (在js中要取整)</p>
-<p>5.封装的当前页的数据</p>
-<p>JAVAEE三层架构</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps91.jpg" alt="img"> </p>
-<p>采用三层架构优点:利于开发与复用 结构清晰，利用标准化</p>
-<p>三层:</p>
-<p>Web层：它主要包含的关于javaweb相关操作，例如request,response,session对象操作，它调用业务层来实现具体的功能。</p>
-<p>业务层(service层):它主要是业务逻辑操作，它不包含web常用对象，它只是java代码。</p>
-<p>数据访问层(dao层):它主要是与数据库进行交互，完成crud操作。</p>
-<p>缺点:开发难度加大，性能得到一定的消耗（调用时候）</p>
-<p>Bootstrap分布组件使用介绍</p>
-<p>注意：在使用bootstrap的分页组件时，需要导入相关的css文件与js文件，并且bootstrap它依赖于jquery,在导入bootstrap的js文件前要导入jquery的js文件，并且它的版本要求必须是1.9.1以上版本</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps92.jpg" alt="img"> </p>
-<p>（css、jQuery、js文件）</p>
-<p>查bootstrap的相关代码复制修改一些参数就可以实现效果</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps93.jpg" alt="img"> </p>
-<p>代码实现：</p>
-<p>创建工程</p>
-<p>1.完成前期准备工作：</p>
-<p>相关的jar包的导入：C3p0连接池jar 、Dbutils、json处理的相关jar包、mysql的驱动jar</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps94.jpg" alt="img"> </p>
-<p>创建服务器端的结构：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps95.jpg" alt="img"> </p>
-<p>创建实体类Product在domain包下：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps96.jpg" alt="img">get、set方法</p>
-<p>需要c3p0连接池：在src下配置C3p0的配置文件.properties。我们创建一个JdbcUtils 工具类在util包下，在使用dbutils的QueryRunner时需要Connection对象或DataSource对象</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps97.jpg" alt="img"> </p>
-<p>2.完成所有产品的查询操作</p>
-<p>创建产品页面，向服务器发送请求（获取所有产品信息）</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps98.jpg" alt="img"> </p>
-<p>在web层下创建一个ProductServlet来接收请求，获取所有的产品信息。配置信息的名字为/product</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps99.jpg" alt="img"> </p>
-<p>在Service（业务）层下创建业务层ProductService（实际开发中代码很繁杂）</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps100.jpg" alt="img"> </p>
-<p>创建DAO持久化层ProductDAO</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps101.jpg" alt="img"> </p>
-<p>3.完成产品的分页显示</p>
-<p>在浏览器端提供pageNo与pageSize,将它们作为参数传递到服务器</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps102.jpg" alt="img"> </p>
-<p>服务器来处理分页</p>
-<p>Web：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps103.jpg" alt="img"> </p>
-<p>Service：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps104.jpg" alt="img"> </p>
-<p>Dao：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps105.jpg" alt="img"> </p>
-<p>怎样在浏览器端展示分页条：在分页条中需要总页数据，也就是说，总页数我们需要在服务器端查询获得到，需要服务器端返回它。我们可以定义一个PageBean这样一个对象，在这个PageBean中我们封装分页需要的数据，将它在服务器端生成，服务器端就不需要直接返回List<Product>,.面是返回一个PageBean的json数据</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps106.jpg" alt="img">get、set方法</p>
-<p>我们可以在service中来对PageBean进行数据封装，servlet最终是将PageBean转换成json响应到浏览器</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps107.jpg" alt="img"> </p>
-<p>响应到浏览器的json数据</p>
-<p>{“content”:[{“count”:100,”id”:1,”name”:”电视机”,”price”:2000},{“count”:200,”id”:2,”name”:”洗衣机”,”price”:1000},{“count”:300,”id”:3,”name”:”空调”,”price”:3000},{“count”:50,”id”:4,”name”:”投影仪”,”price”:2000},{“count”:100,”id”:5,”name”:”HP电脑”,”price”:4000}],”pageNo”:1,”pageSize”:5,”totalCount”:11,”totalPage”:3}</p>
-<p>在浏览器端展示分页信息：</p>
-<p>关于数据展示：</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps108.jpg" alt="img"> </p>
-<p>pageNo=json.pageNo；</p>
-<p>pageSize=json.pageSize；</p>
-<p>totalCount=json.totalCount；</p>
-<p>totalPage=json.totalPage；</p>
-<p>也可以设置一个css的style样式</p>
-<p>关于分页条码：</p>
-<p>它是一个动态生成的数据，我们需要拼接html代码来完成</p>
-<p>a.处理当前页高亮显示</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps109.jpg" alt="img"> </p>
-<p>b.点击页码，可以跳转到指定的页</p>
-<p>将跳转的页码代码进行抽取成一个带页码参数的方法，然后$(function(){这个方法})；</p>
-<p>会出现问题，进行修复操作:</p>
-<p>​    1.在真正生成数据与分页条前将数据清空并恢复成原始状态</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps110.jpg" alt="img"> </p>
-<p>2.处理参数pageNum，将pageNo，pageSize，totalCount，totalPage设置为全局变量</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps111.jpg" alt="img"> </p>
-<p>c.处理上一页操作</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps112.jpg" alt="img"> </p>
-<p>d.处理下一页操作</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps113.jpg" alt="img"> </p>
-<h1 id="jQuery扩展-了解"><a href="#jQuery扩展-了解" class="headerlink" title="*jQuery扩展(了解)*"></a><em><strong>*jQuery扩展(了解)*</strong></em></h1><p>1.serialize与serializeArray</p>
-<p>serialize:它的作用是将表单的数据序列化（用的比较多）</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps114.jpg" alt="img"> </p>
-<p>serializeArray:将表单序列化，返回的是json数据格式（需要进行处理才能得到我们想要的格式）</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps115.jpg" alt="img"> </p>
-<p>2.插件机制与自定义插件</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps116.jpg" alt="img"> </p>
-<p>在开发中使用jquery,除了它本身提供的API,我们更多的还会使用jquery的插件。例如jquery easyui….</p>
-<p>2.1 jQuery.extend();</p>
-<p>上面这个是扩展jquery全局对象本身  $.post  $.ajax  $.get</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps117.jpg" alt="img"> </p>
-<p>2.2 jQuery.fn.extend();</p>
-<p>这个是扩展jquery元素集（对象）  $(“#f”).find()  $(“abc”).val()</p>
-<p>通过创建一个插件完成表单数据转换成json操作</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps118.jpg" alt="img"> </p>
-<p>如果表单中出现一个名称对应多个值的元素，会出现后面的会把前面的覆盖掉，怎样处理?</p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps119.jpg" alt="img"> </p>
-<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps120.jpg" alt="img"> </p>
-<p>在js逻辑运算中，0、”“、null、false、undefined、NaN都会判为false，其他都为true</p>
-<p>只要“||”前面为false,不管“||”后面是true还是false，都返回“||”后面的值。</p>
-<p>只要“||”前面为true,不管“||”后面是true还是false，都返回“||”前面的值。</p>
-<p>只要“&amp;&amp;”前面是false，无论“&amp;&amp;”后面是true还是false，结果都将返“&amp;&amp;”前面的值</p>
-<p>只要“&amp;&amp;”前面是true，无论“&amp;&amp;”后面是true还是false，结果都将返“&amp;&amp;”后面的值</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/9.5.WEB%E4%B9%8BJQuery/" data-id="ckno8ff6a004iswwdd60404w4" data-title="WEB之JQuery" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-9.4.WEB之JSP" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/9.4.WEB%E4%B9%8BJSP/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T06:29:46.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/9.4.WEB%E4%B9%8BJSP/">WEB之JSP</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>JSP：Java Server Pages (Java服务器端页面)，其实就在HTML中嵌入Java代码。</p>
-<p>JSP将Java代码和特定变动内容嵌入到静态的页面中，实现以静态页面为模板，动态生成其中的部分内容。JSP引入了被称为“JSP动作”的XML标签，用来调用内建功能。另外，可以创建JSP标签库，然后像使用标准HTML或XML标签一样使用它们。标签库能增强功能和服务器性能，而且不受<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%B7%A8%E5%B9%B3%E5%8F%B0">跨平台</a>问题的限制。JSP文件在运行时会被其编译器转换成更原始的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Servlet">Servlet</a>代码。JSP编译器可以把JSP文件编译成用Java代码写的Servlet，然后再由Java编译器来编译成能快速执行的二进制<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9C%BA%E5%99%A8%E7%A0%81">机器码</a>，也可以直接编译成二进制码。</p>
-<p>SUN公司提供了动态网页开发技术：Servlet。Servlet技术生成动态网页的时候很麻烦，需要通过response获得输出流，调用print方法进行打印的。这种编程方式很麻烦，而且美工也不容易处理，SUN公司发现了这些问题，推出了一个新的动态网页开发技术JSP。</p>
-<p>缺点：Servlet需要进行配置，不方便维护；Servlet很难向网页中输出HTML页面内容</p>
-<p>JSP的简单使用：</p>
-<p>创建一个web项目，2.5版本，finish。在WebContent下新建一个包，新建一个JSPfile。将其中的编码改为UTF-8</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps1.jpg" alt="img"> </p>
-<p>JSP需要发布到服务器中才可以运行：</p>
-<p>在services中添加这个web项目，finish。启动服务器。浏览器输入访问。</p>
-<p>运行原理：JSP文件翻译成Java文件，将这个Java文件编译生成class文件，运行class文件。JSP在执行时，会被服务器翻译为Servlet编译执行，JSP就是一个Servlet。</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps2.jpg" alt="img"> </p>
-<p>JSP = HTML + Java代码 + JSP自身东西</p>
-<p>JSP的脚本元素就是在JSP中嵌入Java代码。</p>
-<p>分类：</p>
-<p>1.声明标签：写在这个脚本中的代码，翻译成Servlet内部的成员变量或成员方法（JSP声明 翻译成 Servlet成员部分的内容。声明变量，方法，内部类）</p>
-<p>语法：&lt;%! 变量或方法声明 %&gt;</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps3.jpg" alt="img"> </p>
-<p>2.表达式标签：写在这个脚本中的代码，翻译成方法内部的out.print();当中的内容（翻译out.print(),在service方法内部。用于生成HTML页面源码）</p>
-<p>语法：&lt;%= 表达式 %&gt;</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps4.jpg" alt="img"> </p>
-<p>3.程序代码标签：写在这个脚本中的代码，翻译成方法内部的局部变量或方法内部代码片段（嵌入Java代码 翻译成service方法内部的代码块。声明变量，内部类）</p>
-<p>语法：&lt;% 程序代码 %&gt;</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps5.jpg" alt="img"> </p>
-<p>因为Servlet被认为是线程不安全的，所以用声明标签来定义局部变量不合适，一般都会用程序代码标签来定义变量。</p>
-<p>JSP的开发模式：</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps6.jpg" alt="img"> </p>
-<p>以后开发一般都用MVC开发模式</p>
-<p>开发中的路径问题：</p>
-<p>提供一些页面，在页面中会提供链接或者表单，当点击链接或者表单的时候需要进行提交，提交到Servlet中。从页面向Servlet发送请求的地址（路径）应该如何编写。</p>
-<p>路径的分类：</p>
-<p>1.相对路径：相对路径不是以 / 开头的</p>
-<p>比如：</p>
-<p>在根路径下的页面访问Servlet：</p>
-<p>假如demo2.jsp的访问路径：<a target="_blank" rel="noopener" href="http://localhost:8080/web02/demo2.jsp">http://localhost:8080/web02/demo2.jsp</a></p>
-<p>ServletDemo1的访问路径：<a target="_blank" rel="noopener" href="http://localhost:8080/web02/ServletDemo1">http://localhost:8080/web02/ServletDemo1</a></p>
-<p>则：<img src="/9.4.WEB%E4%B9%8BJSP/wps7.jpg" alt="img"></p>
-<p>加不加./都可以</p>
-<p>在某个目录下的页面访问Servlet：</p>
-<p>假如demo2.jsp的访问路径：<a target="_blank" rel="noopener" href="http://localhost:8080/web02/demo2/demo2.jsp">http://localhost:8080/web02/demo2/demo2.jsp</a></p>
-<p>ServletDemo1的访问路径：<a target="_blank" rel="noopener" href="http://localhost:8080/web02/ServletDemo1">http://localhost:8080/web02/ServletDemo1</a></p>
-<p>则：<img src="/9.4.WEB%E4%B9%8BJSP/wps8.jpg" alt="img"></p>
-<p>需要先返回上一级再去访问</p>
-<p>2.绝对路径（通常用这个）：通常以 / 开始的路径</p>
-<p><em><strong>*使用绝对路径，不需要关心当前文件和要请求的文件的相对位置的关系*</strong></em></p>
-<p><em><strong>*绝对路径分成服务器端路径和客户端路径*</strong>***</em>*：****</p>
-<p><em><strong>*客户端路径  需要带工程名*</strong></em></p>
-<p><em><strong>*服务器端路径 不需要带工程名*</strong></em></p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps9.jpg" alt="img"> </p>
-<p>这个例子的工程名是web02</p>
-<p>JSP的模板修改JSP的字符集编码：在window下的Preferences中找到jsp</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps10.jpg" alt="img"> </p>
-<p>JSP的注释：</p>
-<p>1.HTML的注释：</p>
-<p>写法：<!--HTML的注释 --></p>
-<p>存在时机：存在JSP的源码中，翻译成Servlet后这个注释也存在，在生成HTML响应到页面的时候这个注释也会存在。</p>
-<p>2.JAVA代码的注释：</p>
-<p>写法：&lt;% // 单行注释 </p>
-<p>/* 多行注释 */ </p>
-<p>/*<em>文档注释</em>/</p>
-<p> %&gt;</p>
-<p>存在时机：存在JSP的源码中，翻译成Servlet后Java代码的注释也会存在，但是生成HTML响应到页面后，这种注释就消失了。</p>
-<p>3.JSP自身的注释：</p>
-<p>写法：&lt;%– JSP的注释 –%&gt;</p>
-<p>存在时机：存在JSP的源码中，翻译Servlet后注释就没有了。</p>
-<p>注意：HTML的注释只能注释一些元素，不能注释java代码</p>
-<h1 id="JSP的指令元素"><a href="#JSP的指令元素" class="headerlink" title="*JSP的指令元素*"></a><em><strong>*JSP的指令元素*</strong></em></h1><p>作用：用于指示JSP执行的某些步骤；用于指示JSP变现特定行为</p>
-<p>语法：&lt;%@ 指令名称 属性名称=属性的值 属性名称=属性的值 %&gt;</p>
-<p>分类：page指令：指示JSP的页面设置属性和行为</p>
-<p>include指令：指示JSP包含哪些其他页面</p>
-<p>taglib指令：指示JSP页面包含哪些标签库</p>
-<p>page指令：</p>
-<p>写法：&lt;%@ page 属性名=属性值 属性名=属性值 属性名=属性值 %&gt;</p>
-<p>Page指令用来定义JSP文件的全局属性。</p>
-<p>这些属性可以单独使用，也可以几个或多个同时使用。</p>
-<p>在JSP页面中，只有import属性可以出现多次，其他属性都只能出现一次。</p>
-<p>language属性：声明使用脚本的语言。只能是java。</p>
-<p>extends属性：标明JSP编译成Servlet的时候继承的类。默认值：HttpJspBase。</p>
-<p>session属性：标明JSP中是否可以直接使用session对象。默认值是true。</p>
-<p>buffer属性：标明JSP对客户端输出缓冲区大小。默认值8kb。</p>
-<p>autoFlush属性：如果缓冲区大小溢出，是否自动刷出。默认true。</p>
-<p><em><strong>*import属性：用于导入Java包或类。*</strong>***</em>*（*<strong><strong><strong>*写完java代码后alt+/自动导入*</strong></strong></strong>*）****</p>
-<p><em><strong>*contentType属性：标明JSP被浏览器解析和打开的时候采用的默认的字符集。*</strong></em></p>
-<p><em><strong>*pageEncoding属性：JSP文件及JSP翻译后的Servlet保存到硬盘上采用字符集。*</strong></em></p>
-<p>isErrorPage属性：处理JSP页面异常。默认为false，改为true后，可以&lt;%= exception.getMessage&gt;就可以输出异常信息</p>
-<p>errorPage属性：处理JSP页面异常。(后面可以跟一个jsp的页面地址，当出现异常时，就可以跳转到)</p>
-<p>isELIgnored属性：通知JSP是否忽略EL表达式。默认是false。改为true后，EL内的信息会直接输出，EL写进标签就会报错。</p>
-<p>include指令：</p>
-<p>写法：&lt;%@ include 属性名=属性值%&gt;</p>
-<p>作用：在JSP页面中****静态包含****一个文件，同时由该JSP解析包含的文件内容。</p>
-<p>file属性：指示JSP页面包含页面路径。</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps11.jpg" alt="img"> </p>
-<p>注意：应该将被包含的页面的结构去掉（会有重复的HTML标签，被包含的去掉）。在被包含的页面中定义变量，在包含的页面中还可以使用。</p>
-<p>taglib指令:</p>
-<p>写法：&lt;%@ taglib 属性名=属性值%&gt;</p>
-<p>作用：用于在JSP页面中引入标签库。</p>
-<p>uri属性：引入的标签库的路径</p>
-<p>prefix属性：引入标签库的别名（前缀）</p>
-<p>JSP的内置对象：指的是可以直接在JSP页面中使用的对象。</p>
-<p>JSP当中有9大内置对象（具体类型）：</p>
-<p>l request（HttpServletRequest）：从客户端向服务器发送的请求对象</p>
-<p>l response    （HttpServletResponse）：从服务器端向客户端作出响应对象</p>
-<p>l session    （HttpSession）：服务器为客户端创建会话对象</p>
-<p>l application（ServletContext）：代表应用。获得的ServletContext对象。</p>
-<p>l out    （JspWriter）：向输出流写入内容的对象。</p>
-<p>l page（Object）：当前的JSP翻译成Servlet后的对象的引用。</p>
-<p>l pageContext    （PageContext）：本JSP的页面的上下文对象。</p>
-<p>l config（ServletConfig）：本JSP的ServletConfig对象。</p>
-<p>l exception（Throwable）：表示JSP页面运行时产生的异常对象。</p>
-<p>pageContext对象：pageContext对象直接翻译为“页面上下文”对象，代表的是当前页面运行的一些属性。</p>
-<p>它是javax.servlet.jsp.PageContext类的实例对象。</p>
-<p>1.提供了page范围的数据存取的方法：</p>
-<p>向page范围中存入数据：</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps12.jpg" alt="img"> </p>
-<p>从page范围获取数据</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps13.jpg" alt="img"> </p>
-<p>从page范围移除数据</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps14.jpg" alt="img"> </p>
-<p>查找属性的方法：</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps15.jpg" alt="img"> </p>
-<p>2.通过这个对象获得其他的8个内置对象：</p>
-<p>获得其他8个内置对象的方法</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps16.jpg" alt="img"> </p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps17.jpg" alt="img"> </p>
-<p>JSP的四个作用范围</p>
-<p>PageScope：页面范围。</p>
-<p>页面范围指的是在当前的页面内有效，出了这个页面，用pageContext保存的数据就无效了。</p>
-<p>RequestScope：请求范围。</p>
-<p>从客户端向服务器发送一次请求，服务器对这次请求作出了响应之后，用request保存的数据就无效了。</p>
-<p>SessionScope：会话范围。</p>
-<p>每个浏览器向服务器发送请求（多次请求）。将该会话结束，用session保存的数据就无效了。</p>
-<p>ApplicationScope：应用范围。</p>
-<p>在整个应用中任意的地方都可以获取。用application保存。</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps18.jpg" alt="img"> </p>
-<p>调取的时候使用重载方法：</p>
-<p>pageContext.getAttribute(“name”,PageContext.SESSION_SCOPE)</p>
-<p>findAttribute方法：查找属性方法，先根据小范围的名称进行查找，如果找到了就返回，如果没有找到就会去比其大一个域的范围进行查找。（page–request–session–application）</p>
-<p>JSP的动作标签：用于在JSP页面中提供业务逻辑功能，避免在JSP页面中直接编写Java代码（会有大量的&lt;%  &gt;），造成jsp页面难以维护。</p>
-<p>常用的动作标签：</p>
-<p><em><strong>*&lt;jsp:forward**** ****page=“”********&gt;*</strong></em> <em><strong>*&lt;********/********jsp:forward********&gt;*</strong></em>    <em><strong>*：请求转发。*</strong></em></p>
-<p><em><strong>*&lt;jsp:include**** ****page=********””********&gt;*</strong></em> <em><strong>*&lt;/********jsp:include********&gt;*</strong>***</em>*：包含（*<strong><strong><strong>*是一种*</strong></strong></strong>*动态包含）。****</p>
-<p>&lt;jsp:param value=“” name=“” /&gt;：传递参数。（很少使用，因为可以用set/getAttribute来设置获取参数）</p>
-<p>动态包含的原理：</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps19.jpg" alt="img"> </p>
-<p>查看Tomcat的work下的localhost下的项目下会找到被包含的jsp都被编译成了java和clss文件。</p>
-<h1 id="EL"><a href="#EL" class="headerlink" title="*EL*"></a><em><strong>*EL*</strong></em></h1><p>EL（Expression Language） 是为了使JSP写起来更加简单。表达式语言的灵感来自于 ECMAScript 和 XPath 表达式语言，它提供了在 JSP 中简化表达式的方法，让Jsp的代码更加简化。</p>
-<p>EL：Expression Language表达式语言。</p>
-<p>EL和JSTL一起使用取代JSP页面中嵌入Java代码写法。（去掉&lt;&gt;和%）</p>
-<p>EL的语法：${ EL表达式 }</p>
-<p>EL的功能：</p>
-<p><em><strong>*1.*</strong>***</em>*EL获取数据*<strong><strong><strong>*（*</strong></strong></strong>*域对象中****<em><strong>*）*</strong></em></p>
-<p>EL表达式语句在执行的时候，会调用pageContext.findAttribute()方法。分别从page、request、session、application范围查找相应对象，找到就会返回相应对象，找不到返回””(不是null，是空的字符串)。EL所获取的数据需要在四个作用范围中。</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps20.jpg" alt="img"> </p>
-<p>这两种方式的区别：如果没有存入数据，前者获取输出的是null，后者输出的是“”。直接写${name}会先从最小范围查找，找不到的话会向上一级域查找（其实相当于调用了pageContext.findAttribute()方法）。</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps21.jpg" alt="img"> </p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps22.jpg" alt="img"> </p>
-<p>（需要引包：alt+/）</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps23.jpg" alt="img"> </p>
-<p>如果map的key中包含了特殊字符，不能使用.必须使用[]。</p>
-<p>因为：  .用来获取对象的属性的  []用来获得下标</p>
-<p>例如，包含特殊字符.</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps24.jpg" alt="img"> </p>
-<p><em><strong>*2.*</strong>***</em>*EL执行运算****</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps25.jpg" alt="img"> </p>
-<p>会自动类型转换，即使是字符串，也会转换成算数运算</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps26.jpg" alt="img"> </p>
-<p>lt：less than   gt：great than   ne：not equal</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps27.jpg" alt="img"> </p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps28.jpg" alt="img"> </p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps29.jpg" alt="img"> </p>
-<p>判断一个对象是否为空 也可以${not empty user}</p>
-<p>不支持位运算</p>
-<p><em><strong>*3.*</strong>***</em>*EL获取web开发常用的对象****</p>
-<p>EL表达式定义了11个web开发常用对象。使用这些对象可以很方便获取web开发中的一些常见对象，并可以读取这些对象中的数据。</p>
-<p><em><strong>*pageContext*</strong></em>    ：相当于JSP内置对象中pageContext（可以通过这个获取其他八个对象）</p>
-<p>pageScope：获取指定域下的名称的数据</p>
-<p>requestScope：获取指定域下的名称的数据</p>
-<p>sessionScope：获取指定域下的名称的数据</p>
-<p>applicationScope    ：获取指定域下的名称的数据</p>
-<p>param：在页面中接收请求参数（接收一个名称对应一个值参数）。相当于requset.getParam</p>
-<p>paramValues    ：在页面中接收请求参数（接收一个名称对应多个值参数）。</p>
-<p>header：在页面上获取请求头（获取一个key对应一个value 头）</p>
-<p>headerValues：在页面上获取请求头（获取一个key对应多个value 头）</p>
-<p>cookie：访问cookie的名称和值（${cookie.key.name} ${cookie.key.value}）</p>
-<p>initParam：获取全局初始化参数的值</p>
-<p>4.EL调用Java方法（基本不用）</p>
-<h1 id="JSTL"><a href="#JSTL" class="headerlink" title="*JSTL*"></a><em><strong>*JSTL*</strong></em></h1><p>JSTL（Java server pages standarded tag library，即JSP标准标签库）是由<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/JCP/2679009">JCP</a>（Java community Proces）所制定的标准规范，它主要提供给Java Web开发人员一个标准通用的标签库，并由Apache的Jakarta小组来维护。开发人员可以利用这些标签取代JSP页面上的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Java/85979">Java</a>代码，从而提高程序的可读性，降低程序的维护难度。</p>
-<p>JSTL：JSP的标准标签库。</p>
-<p>JSTL主要是和EL来取代传统页面上直接嵌入Java代码写法。提升程序可读性、维护性和方便性。</p>
-<p>版本：JSTL1.0、JSTL1.1和JSTL1.2版本</p>
-<p>1.0版本不支持EL表达式。<em><strong>*1.1和1.2支持了EL表达式。*</strong></em></p>
-<p>标签库：</p>
-<p><em><strong>*c标签（core标签库*</strong>***</em>*，*<strong><strong><strong>*核心标签库*</strong></strong></strong>*）****</p>
-<p>fmt标签（国际化标签库）</p>
-<p>xml标签（后台编写，前台标签不怎么用）</p>
-<p>sql标签（后台编写，前台标签不怎么用）</p>
-<p><em><strong>*jstl函数库（EL函数）*</strong></em></p>
-<p>使用：先导入JSTL的jar包到lib中</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps30.jpg" alt="img"> </p>
-<p>新建一个jsp页面：</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps31.jpg" alt="img"> </p>
-<p>在上面导入标签库：</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps32.jpg" alt="img"> </p>
-<p>可以直接使用：</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps33.jpg" alt="img"> </p>
-<p>value相当于是值，var相当于是name，scope是域对象的范围</p>
-<p>JSTL有很多标签，可以查看文档使用，用的较多的是：</p>
-<p>JSTL的if标签使用：只有if没有else</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps34.jpg" alt="img"> </p>
-<p>test属性：条件</p>
-<p>var属性：将test中的条件的值赋给一个变量，在var中定义变量</p>
-<p>scope属性：作用范围</p>
-<p>&lt;c:if  var=”flag” test=”${ i&lt;10 }” scope =”page”&gt;  </c:if> </p>
-<p>后面可以直接使用flag  </p>
-<p>&lt;c:if  test=”${flag }” &gt;  </c:if></p>
-<p>JSTL的forEach标签使用：</p>
-<p><img src="/9.4.WEB%E4%B9%8BJSP/wps35.jpg" alt="img"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/9.4.WEB%E4%B9%8BJSP/" data-id="ckno8ff5l002yswwdfe4udkft" data-title="WEB之JSP" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-9.3.WEB之servlet" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/9.3.WEB%E4%B9%8Bservlet/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T06:29:35.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/9.3.WEB%E4%B9%8Bservlet/">WEB之servlet</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>动态网页的开发：Servlet和JSP</p>
-<p>Servlet其实就一个运行在web服务器上的小的Java程序，用于处理从web客户端发送的请求，并且对请求作出响应。</p>
-<p>静态页面不能写循环，判断，SQL等语句。而Servlet就可以写。</p>
-<p>使用Servlet：编写一个Java类实现Servlet的接口；配置Servlet</p>
-<p>相关内容可以查JAVAEE的API中的Servlet</p>
-<p>1.创建一个项目，在<img src="/9.3.WEB%E4%B9%8Bservlet/wps1.jpg" alt="img">中建包建类</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps2.jpg" alt="img"> </p>
-<p>其他方法保持不变</p>
-<p>2.配置这个类，在WEB-INF下的web.xml中配置</p>
-<p>双击类名，右击copy全路径</p>
-<p>前后的servlet-name必须要一致</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps3.jpg" alt="img"> </p>
-<p>启动服务器，打开浏览器：<a target="_blank" rel="noopener" href="http://localhost:8080/web_test/hello">http://localhost:8080/web_test/hello</a></p>
-<p><a target="_blank" rel="noopener" href="http://localhost:8080/web_test/+%E8%AE%BF%E9%97%AE%E8%B7%AF%E5%BE%84">http://localhost:8080/web_test/+访问路径</a></p>
-<p>执行流程：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps4.jpg" alt="img"> </p>
-<p>Servlet的实现关系：</p>
-<p>Servlet接口            </p>
-<p>​    |</p>
-<p>​    |</p>
-<p>GenericServlet类        通用的Servlet，是一个与协议无关的Servlet</p>
-<p>​    |</p>
-<p>​    |</p>
-<p>HttpServlet类            Http专用的Servlet</p>
-<p>SUN设计之初，是有野心，以后的互联网不仅仅只使用http协议，其他协议就可以通过GenericServlet实现。HttpServlet是一个与协议相关的Servlet是专门用来处理HTTP协议的请求。通常编写一个Servlet一般都会让这个Servlet<em><strong>*继承HttpServlet重写service方法*</strong>***</em>*（*<strong><strong><strong>*不用再实现Servlet接口，因为会有很多用不到的方法也要重写*</strong></strong></strong>*）****<em><strong>*。*</strong></em></p>
-<p><em><strong>*查看源码可以知道，*</strong>***</em>*在service方法内部根据请求方式不同执行不同的doXXX的方法（get请求执行doGet方法，如果是post请求就会执行doPost方法）。****</p>
-<p><em><strong>*所以*</strong>***</em>*一般*<strong><strong><strong>*继承了HttpServlet之后不需要重写service方法，只需要重写doGet和doPost方法即可。往往请求要处理的内容的代码都是一致的，所以需要让doGet和doPost相互调用可以简化编程*</strong></strong></strong>*（*<strong><strong><strong>*编码一次，另一个方法调用这个方法即可*</strong></strong></strong>*）****<em><strong>*。*</strong></em></p>
-<p>Eclipse中使用Servlet模版：（不用在web.xml中修改完成配置，这样是自动完成了Servlet的配置）</p>
-<p>右击new的时候选择新建Servlet；输入name（默认继承了HttpServlet）后，点击next；对Servlet进行配置：name和前面一致（一般不用改），URL mapping就是访问名字（右边edit可以修改），点击next；构造方法可以不用选，重写方法选择doGet和doPost方法。点击finish</p>
-<p>生命周期：一个对象从创建到销毁过程</p>
-<p>Servlet生命周期：Servlet对象从创建到销毁的过程</p>
-<p>Servlet中有****init,service,destroy****方法，这几个方法称为是Servlet生命周期相关的方法</p>
-<p>Servlet是在第一次被访问的时候会被实例化，只要Servlet一被实例化那么Servlet中的init方法就会执行（init只会执行一次，Servlet是单例的）。</p>
-<p>任何一次从客户端发送来的请求，那么Servlet中的service方法就会执行（在service方法的内部根据请求的方式不同调用不同doXXX方法）。</p>
-<p>当Servlet从服务器中移除或者服务器关闭的时候Servlet对象被销毁，里面的destroy方法就会执行，然后垃圾回收就会将其回收掉（在servers下点红色方框关闭服务器，在控制台下的红色方框是强制退出，不是服务器）</p>
-<p>Servlet的启动时加载：Servlet对象是第一次被访问的时候会被创建的，init方法就会执行。假设在init方法中做了一些比较耗时的操作（比如：加载了一些配置文件并且解析可能需要花费3秒钟）。第一个用户第一次访问这个Servlet的时候，需要等待3秒钟，这样会使体验感很差，所以要改为启动时加载。</p>
-<p>Servlet默认是在第一次访问的时候创建的对象，现在通过一个配置将Servlet的实例化的过程放在服务器启动的时候（****让服务器启动的时候创建Servlet的对象****）。如果现在这样做那么之前花费的时间就会在服务器启动的时候一起花费掉了。对于用户来讲就不需要额外花费这个时间。</p>
-<p>在web.xml中配置。值越小，优先级越高。有一个默认的Servlet启动优先级为1，所以配置的最高为2。（可以在Tomcat的conf下的web.xml中查看文档）</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps5.jpg" alt="img"> </p>
-<p>Servlet的访问路径的配置：<url-pattern>的配置方式</p>
-<p>1.完全路径匹配：以 / 开始   比如：/ServletDemo1    /aaa/ServletDemo2</p>
-<p>2.目录匹配：以 / 开始，以 /<em>结束  比如：/</em>    /aaa/*    /aaa/bbb/*</p>
-<p>3.扩展名匹配：不能以 / 开始，以<em>开始        比如：</em>.action    *.do    *.jsp</p>
-<p>（*代表的是任意字符）</p>
-<p>访问的优先级：完全路径匹配  &gt;  目录匹配  &gt;  扩展名匹配</p>
-<p>如果输入的三个都匹配，比如：/aaa/ServletDemo2.do  实际会先进行完全路径的匹配，再进行目录匹配，最后是扩展名匹配。</p>
-<p>ServletConfig对象：</p>
-<p>ServletConfig用来获得Servlet的相关的配置的对象。（init方法中可以传递这个对象）</p>
-<p>获得ServletConfig对象：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps6.jpg" alt="img"> </p>
-<p>ServletConfig对象的API：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps7.jpg" alt="img"> </p>
-<p>获得Servlet的初始化参数（值和名字） <param-name><param-value></p>
-<p>获得ServletContext对象</p>
-<p>获得Servlet的名称<servlet-name></servlet-name></p>
-<p>配置初始化参数的例子：在web.xml中添加配置：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps8.jpg" alt="img"> </p>
-<p>实现：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps9.jpg" alt="img"> </p>
-<p>ServletContext对象：</p>
-<p>ServletContext：Servlet的上下文对象。ServletContext对象对Servlet之前和之后的内容都知道。这个对象一个web项目只有一个。在服务器启动的时候为每个web项目创建一个单独的ServletContext对象。</p>
-<p>作用：</p>
-<p>1.用来获取web项目信息：因为一个web项目只有一个ServletContext对象，所以这个对象对整个项目的相关内容都是了解的</p>
-<p>获取文件的MIME类型：文件上传和下载的时候会用到这个方法（这些类型都可以在conf下的web.xml中找到）</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps10.jpg" alt="img"> </p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps11.jpg" alt="img"> </p>
-<p>获取web项目请求工程名：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps12.jpg" alt="img"> </p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps13.jpg" alt="img"> </p>
-<p>获取web项目的初始化参数：全局的参数</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps14.jpg" alt="img"> </p>
-<p>可以在前面配置全局的初始化参数（原来的局部配置参数是在Servlet标签内部配置的，现在配置全局的话在最前面配置）</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps15.jpg" alt="img"> </p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps16.jpg" alt="img"> </p>
-<p>2.读取web项目下的文件：之前使用IO流就可以读取文件（java项目中）。现在是一个web项目，web项目需要发布到tomcat下才能访问的。获取web项目下的文件如果使用传统的IO就会出现问题（原因：路径中使用的是相对路径，相对的是JRE环境，是Tomcat的bin路径）。</p>
-<p>使用getServletContext的getResourceAsStream方法或者getServletContext的getRealPath方法</p>
-<p>以/开头的都是相对路径。</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps17.jpg" alt="img"> </p>
-<p>3.作为域对象存取数据：</p>
-<p>域对象：指的是将数据存入到域对象中，这个数据就会有一定的作用范围。域指的是一定的作用范围。</p>
-<p>作为域对象的API：</p>
-<p>存入数据的方法：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps18.jpg" alt="img"> </p>
-<p>获取数据的方法：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps19.jpg" alt="img"> </p>
-<p>移除数据的方法：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps20.jpg" alt="img"> </p>
-<p>作用范围：</p>
-<p>ServletContext是在服务器启动的时候为每个web项目单独创建一个ServletContext对象。当web项目从服务器中移除，或者是关闭服务器的时候ServletContext对象会被销毁。向ServletContext中保存的数据一直存在（当服务器关闭的时候ServletContext对象被销毁，然后里面数据才会失效）。<em><strong>*范围：整个web应用。*</strong></em></p>
-<p>例子：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps21.jpg" alt="img"> </p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps22.jpg" alt="img"> </p>
-<p>在demo7中初始化的时候存入数据，发现访问demo7和8的时候都能访问到name的值，所以ServletContext的域对象是整个web应用。</p>
-<p>开发的软件是B/S结构的软件，可以通过浏览器访问服务器的软件。</p>
-<p>从浏览器输入一个地址访问服务器（将这个过程称为是请求：将浏览器向服务器发送的数据的封装）。服务器接收到请求，需要进行处理，处理以后需要将处理结果显示回浏览器端（将这个过程称为是响应：将服务器向浏览器发送数据的封装）。</p>
-<p>Response对象：</p>
-<p>Response关于响应行的方法：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps23.jpg" alt="img"> </p>
-<p>设置响应的状态码：</p>
-<p>200 正确</p>
-<p>302 重定向</p>
-<p>304 查找本地缓存</p>
-<p>404 请求资源不存在</p>
-<p>500 服务器内部错误</p>
-<p>Response关于响应头的方法：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps24.jpg" alt="img"> </p>
-<p>set开头的方法：针对一个key对应一个value的情况</p>
-<p>举例：比如有一个头 </p>
-<p>content-Type:text/html  setHeader(“content-Type”,”text/plain”);</p>
-<p>最终得到头的结果：content-Type:text/plain</p>
-<p>add开头的方法：针对一个key对应多个value的情况</p>
-<p>举例：比如有一个</p>
-<p>content-Type:text/html     addHeader(“content-Type”,”text/plain”);</p>
-<p>最终得到头的结果：content-Type:text/html,text/plain</p>
-<p>Response关于响应体的方法：</p>
-<p>向页面输出内容：字节和字符</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps25.jpg" alt="img"> </p>
-<p>Response其他的API：</p>
-<p>重定向的方法：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps26.jpg" alt="img"> </p>
-<p>设置浏览器打开页面时候采用的字符集：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps27.jpg" alt="img"> </p>
-<p>设置响应字符流的缓冲区字符集：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps28.jpg" alt="img"> </p>
-<p>服务器向浏览器回写Cookie的方法：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps29.jpg" alt="img"> </p>
-<p>// 一般由服务器向浏览器的方法都能在response中找到</p>
-<p>完成重定向：302状态码和Location响应头结合使用的效果</p>
-<p>Demo1跳转到了Demo2</p>
-<p>也可以使用response.sendRedirect(“/web01/ResponseDemo2”);替换重定向两句写法（实际开发中常用）</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps30.jpg" alt="img"> </p>
-<p>定时刷新效果：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps31.jpg" alt="img"> </p>
-<p>在HTML中完成页面跳转：使用<meata>标签的http-quiv设置。url的路径在后面介绍</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps32.jpg" alt="img"> </p>
-<p>这里的n秒后跳转的n是我们人为输入的定值，不能变化，所以我们可以用JS来完成读秒的效果：</p>
-<p>需要n变化，先要对这个n加标签：<span id=”span1”>i</span>,再对<body></body>加方法onload=“load()”，然后编写scrip语句：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps33.jpg" alt="img"> </p>
-<p>Response向页面响应中文（可能会出现乱码）</p>
-<p>1.使用字节流响应中文</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps34.jpg" alt="img"> </p>
-<p>这里的“中文”这两个字可能会产生乱码：因为这个乱码的产生与中文转成字节数组及浏览器打开方式（打开的时候采用的默认字符集）有关</p>
-<p>解决办法：将中文转成字节数组的时候和浏览器默认打开的时候采用的字符集一致即可</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps35.jpg" alt="img"> </p>
-<p><em><strong>*2.使用字符流相应中文*</strong></em></p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps36.jpg" alt="img"> </p>
-<p>这里一定会产生乱码：字符流是有缓冲区的，response获得字符流，response设计默认的缓冲区编码是ISO-8859-1。这个字符集不支持中文的。</p>
-<p>解决办法：设置response获得字符流缓冲区的编码和设置浏览器默认打开时候采用的字符集一致即可</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps37.jpg" alt="img"> </p>
-<p>字符流向页面响应中文，有一种简化的方式：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps38.jpg" alt="img"> </p>
-<p>Request对象：开发的软件都是B/S结构软件，从浏览器向服务器提交一些数据，将这些内容进行封装就封装成了一个请求对象（Request对象）</p>
-<p>1.获得客户机信息：</p>
-<p>****获得请求的方式****：get还是post</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps39.jpg" alt="img"> </p>
-<p>获得请求路径后的提交参数的字符串：？xx=xxx&amp;xxx=xxxxx</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps40.jpg" alt="img"> </p>
-<p>获得请求路径的URL和URI：URI范围比URL大（URI，统一资源标识符。URL，统一资源定位符。URI包括URL和URN。URL是全写，URI是名字）</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps41.jpg" alt="img"> </p>
-<p>****获得客户机的ip地址****：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps42.jpg" alt="img"> </p>
-<p>2.获得请求头的方法：</p>
-<p>获得一个key对应一个value的请求头：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps43.jpg" alt="img"> </p>
-<p>获得一个key对应多个value的请求头：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps44.jpg" alt="img"> </p>
-<p>3****.获得请求参数的方法****：</p>
-<p>获得提交的参数（一个name对应一个value）：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps45.jpg" alt="img"> </p>
-<p>获得提交的参数（一个name对应多个value）：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps46.jpg" alt="img"> </p>
-<p>获得提交的参数，将提交的参数的名称和对应的值存入到一个Map集合中：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps47.jpg" alt="img"> </p>
-<p>4.****作为域对象存取数据的方法****：</p>
-<p>向request域中存数据：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps48.jpg" alt="img"> </p>
-<p>从request域中获取数据：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps49.jpg" alt="img"> </p>
-<p>从request域中移除数据：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps50.jpg" alt="img"> </p>
-<p>Request对象其实就是从客户端浏览器向服务器发送的一次请求信息的封装。那么实质上向Request中所保存的数据有效期也是<em><strong>*一次请求范围。*</strong></em></p>
-<p><em><strong>*一次请求范围：从客户端浏览器向服务器发送一次请求，服务器针对这次请求对浏览器作出响应。当服务器作出响应之后，请求对象就销毁了，保存在其中的数据就无效了。*</strong></em></p>
-<p>代码演示：</p>
-<p>Request对象获取客户机信息：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps51.jpg" alt="img"> </p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps52.jpg" alt="img"> </p>
-<p>Request对象接收表单请求参数：</p>
-<p>编写一个静态页面：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps53.jpg" alt="img"> </p>
-<p>在RequestDemo2中接收参数：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps54.jpg" alt="img"> </p>
-<p>（数组无法直接输出，需要调用Arrays.toString（）方法输出）</p>
-<p>Request对象接收表单请求参数的中文乱码处理：</p>
-<p>POST方式接收中文：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps55.jpg" alt="img"> </p>
-<p>GET方式接收中文：(基本不用，因为一般表单提交都是用post方法)</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps56.jpg" alt="img"> </p>
-<p>从Servlet向JSP中跳转的方法：请求转发和重定向</p>
-<p>1.请求转发：</p>
-<p>通过ServletRequest对象获得RequestDispatcher对象</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps57.jpg" alt="img"> </p>
-<p>再根据RequestDispatcher中的方法进行请求转发</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps58.jpg" alt="img"> </p>
-<p>代码实现：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps59.jpg" alt="img"> </p>
-<p>请求转发后访问Servlet的页面：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps60.jpg" alt="img"> </p>
-<p>重定向：</p>
-<p>通过HttpServletResponse对象中的以下方法实现重定向</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps61.jpg" alt="img"> </p>
-<p>代码实现：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps62.jpg" alt="img"> </p>
-<p>重定向后访问Servlet的效果：</p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps63.jpg" alt="img"> </p>
-<p>请求转发和重定向的区别：</p>
-<p>请求转发是一次请求一次响应，而重定向是两次请求两次响应。</p>
-<p>请求转发地址栏不会变化的，重定向地址栏发生变化。</p>
-<p>请求转发路径不带工程名，重定向需要带工程名路径。</p>
-<p>请求转发只能在本网站内部，重定向可以定向到任何网站。</p>
-<p><em><strong>*如果需要使用request进行值传递，需要通过请求转发完成。如果页面需要跳转到其他网站上必须使用重定向。*</strong></em></p>
-<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps64.jpg" alt="img"> </p>
-<p>因为request对象作为域对象的范围是一次请求，所以如果JSP需要获取request中的数据的话，只能用请求转发；如果用重定向的话，存入的值会获取不到，为null。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/9.3.WEB%E4%B9%8Bservlet/" data-id="ckno8ff5l002wswwdd0ei9nfj" data-title="WEB之servlet" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-9.2.WEB之http协议" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/9.2.WEB%E4%B9%8Bhttp%E5%8D%8F%E8%AE%AE/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T06:29:20.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/9.2.WEB%E4%B9%8Bhttp%E5%8D%8F%E8%AE%AE/">WEB之http协议</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>HTTP协议：规定了浏览器和服务器端的数据交互的格式</p>
-<p>http是一个简单的请求-响应协议，它通常运行在<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/TCP/33012">TCP</a>之上。它指定了客户端可能发送给服务器什么样的消息以及得到什么样的响应。请求和响应消息的头以ASCII码形式给出；而消息内容则具有一个类似MIME的格式。HTTP是应用层协议。</p>
-<p>特性：</p>
-<p>1.基于请求和响应模型：必须要先有请求，后有响应；请求和响应必须成对出现</p>
-<p>2.简单快捷：因为发送请求的时候只需要发送请求方式和请求路径即可</p>
-<p>版本：</p>
-<p>HTTP1.0：该协议对每一次请求和相应进行一次建立连接和拆除（每进行一次请求建立连接，相应完毕后拆除连接）</p>
-<p>HTTP1.1：该协议相当于TCP，双方规定了连接方式和连接类型，会一直进行请求相应</p>
-<p>分析HTTP协议：</p>
-<p>可以用HTTPWatch（只能在ie浏览器上使用），也可以用浏览器自带的查看HTTP协议的工具（F12就可进入）</p>
-<p>创建一个html页面：</p>
-<p>demo1.html</p>
-<p><img src="/9.2.WEB%E4%B9%8Bhttp%E5%8D%8F%E8%AE%AE/wps1.jpg" alt="img"> </p>
-<p>method默认为get方式，可以手动修改为post方式</p>
-<p>demo2.html</p>
-<p><img src="/9.2.WEB%E4%B9%8Bhttp%E5%8D%8F%E8%AE%AE/wps2.jpg" alt="img"> </p>
-<p>在浏览器中输入<a target="_blank" rel="noopener" href="http://localhost:8080/web_set/demo1.html">http://localhost:8080/web_set/demo1.html</a></p>
-<p>打开HTTPWatch工具，点击record。输入表单内容，提交。点击项目下的Stream查看：</p>
-<p>GET方式的请求部分：</p>
-<p>GET /web_test/demo2.html?name=aaa&amp;name=man HTTP/1.1</p>
-<p>Accept: text/html, application/xhtml+xml, <em>/</em></p>
-<p>X-HttpWatch-RID: 9561-10011</p>
-<p>Referer: <a target="_blank" rel="noopener" href="http://localhost:8080/web_test/demo1.html">http://localhost:8080/web_test/demo1.html</a></p>
-<p>Accept-Language: zh-CN</p>
-<p>User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko</p>
-<p>Accept-Encoding: gzip, deflate</p>
-<p>Host: localhost:8080</p>
-<p>DNT: 1</p>
-<p>Connection: Keep-Alive</p>
-<p>POST请求：</p>
-<p>POST /web_test/demo2.html HTTP/1.1</p>
-<p>Accept: text/html, application/xhtml+xml, <em>/</em></p>
-<p>X-HttpWatch-RID: 9561-10041</p>
-<p>Referer: <a target="_blank" rel="noopener" href="http://localhost:8080/web_test/demo1.html">http://localhost:8080/web_test/demo1.html</a></p>
-<p>Accept-Language: zh-CN</p>
-<p>User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko</p>
-<p>Content-Type: application/x-www-form-urlencoded</p>
-<p>Accept-Encoding: gzip, deflate</p>
-<p>Host: localhost:8080</p>
-<p>Content-Length: 19</p>
-<p>DNT: 1</p>
-<p>Connection: Keep-Alive</p>
-<p>Cache-Control: no-cache</p>
-<p>name=bbb&amp;name=woman</p>
-<p>请求部分内容：3部分</p>
-<p>请求行：</p>
-<p>请求方式：有很多种，GET和POST最常见</p>
-<p><em><strong>*GET：请求的参数会显示到地址栏。通常是有大小的限制。没有请求体*</strong></em></p>
-<p><em><strong>*POST：请求的参数不会显示到地址栏（在请求体中）。POST没有大小的限制。有请求体（请求参数）。只有表单设置method=*</strong>***</em>*”*<strong><strong><strong>*post*</strong></strong></strong>*”****<em><strong>*才是post请求。*</strong></em></p>
-<p>请求路径：一般都是固定的</p>
-<p>协议版本：一般都是固定的</p>
-<p>请求头:请求头的格式一般都是一个key对应一个value的，也有一个key对应多个value的情况</p>
-<p>一些常见的请求头：</p>
-<p>Referer    ：代表网页的来源。（防盗链）</p>
-<p>User-Agent    ：获得客户端浏览器类型</p>
-<p>请求体：只有POST请求方式才有请求体，而且请求体是POST方式请求参数</p>
-<p>响应部分：</p>
-<p>HTTP/1.1 200 OK</p>
-<p>Server: Apache-Coyote/1.1</p>
-<p>Accept-Ranges: bytes</p>
-<p>ETag: W/“151-1484111223984”</p>
-<p>Last-Modified: Wed, 11 Jan 2017 05:07:03 GMT</p>
-<p>Content-Type: text/html</p>
-<p>Content-Length: 151</p>
-<p>Date: Wed, 11 Jan 2017 05:14:00 GMT</p>
-<!DOCTYPE html>
-
-<html>
-
-<head>
-
-<meta charset="UTF-8">
-
-<title>Insert title here</title>
-
-</head>
-
-<body>
-
-<h1>Success锛侊紒锛?/h1>
-
-</body>
-
-</html>
-
-<p>响应部分的内容：3部分</p>
-<p>响应行：</p>
-<p>协议版本</p>
-<p>状态码：</p>
-<p><em><strong>*200*</strong></em>    <em><strong>*：代表响应成功*</strong></em></p>
-<p><em><strong>*302*</strong></em>    <em><strong>*：需要进行重定向操作*</strong></em></p>
-<p><em><strong>*304*</strong></em>    <em><strong>*：需要查找本地缓存*</strong></em></p>
-<p><em><strong>*404*</strong></em>    <em><strong>*：请求资源不存在*</strong></em></p>
-<p><em><strong>*405：请求的方式不对*</strong></em></p>
-<p><em><strong>*500*</strong></em>    <em><strong>*：服务器内部错误*</strong></em></p>
-<p>状态码描述</p>
-<p>响应头:通常一个key对应一个value，也有一个key对应多个value</p>
-<p>一些常见的响应头：</p>
-<p>Location    ：重定向的路径</p>
-<p>Refresh    ：定时刷新</p>
-<p>Content-Disposition：文件下载的时候使用</p>
-<p>响应体：就是显示到浏览器上页面的代码</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/9.2.WEB%E4%B9%8Bhttp%E5%8D%8F%E8%AE%AE/" data-id="ckno8ff5k002tswwd9h44e77l" data-title="WEB之http协议" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-9.1.WEB之概述" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/9.1.WEB%E4%B9%8B%E6%A6%82%E8%BF%B0/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T06:29:06.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/9.1.WEB%E4%B9%8B%E6%A6%82%E8%BF%B0/">WEB之概述</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>WEB</p>
-<p>web（World Wide Web）即全球广域网，也称为万维网，它是一种基于超文本和HTTP的、全球性的、动态交互的、跨平台的分布式图形信息系统。是建立在Internet上的一种网络服务，为浏览者在Internet上查找和浏览信息提供了图形化的、易于访问的直观界面，其中的文档及超链接将Internet上的信息节点组织成一个互为关联的网状结构。</p>
-<p>javaWEB：使用Java语言进行WEB的开发。</p>
-<p>软件架构：</p>
-<p>CS架构的软件：Client/Server 客户端和服务器，这种软件往往需要安装。</p>
-<p>优点：界面很美观；可以减轻服务器端压力，将部分代码写到客户端。</p>
-<p>缺点：一旦服务器更新了，客户端也需要更新；分布式开发比较弱。</p>
-<p>****BS架构的软件****：Browser/Server 浏览器和服务器，这种软件不需要安装，只需要通过浏览器就可以访问。</p>
-<p>优点：服务器一旦更新，不需要更新客户端，因为客户端就是浏览器；比较强的分布式能力</p>
-<p>缺点：界面效果不如CS结构软件（可以用前端技术美化）；服务器端压力会比较大(会搭一些集群减轻压力，也会用Ajax异步交互)</p>
-<p>WEB服务器：</p>
-<p>硬件：其实就是一台电脑（这台电脑配置要求很高）</p>
-<p>软件：需要在这台电脑上安装web服务器的软件</p>
-<p>常见的WEB服务器：</p>
-<p>Tomcat        ：Apache组织提供的一个开源的免费的web服务器。满足EE的Servlet和JSP的规范。</p>
-<p>WebSphere    ：IBM公司开发的一个收费的大型web服务器。满足了EE开发的所有规范。</p>
-<p>WebLogic        ：BEA公司开发的一个收费的大型web服务器。满足了EE开发的所有规范。</p>
-<p>IIS            ：应用在.NET平台上。</p>
-<p>Apache        ：应用在PHP平台上。</p>
-<p>WEB开发中的资源：</p>
-<p>静态web资源：HTML   /   CSS   /   JS</p>
-<p>动态web资源：Servlet、JSP  （java的） /  PHP  /  ASP</p>
-<p><img src="/9.1.WEB%E4%B9%8B%E6%A6%82%E8%BF%B0/wps1.jpg" alt="img"> </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/9.1.WEB%E4%B9%8B%E6%A6%82%E8%BF%B0/" data-id="ckno8ff5k002rswwdf84z2l85" data-title="WEB之概述" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.6.WEB%E4%B9%8Bajax/" data-id="ckpdvjpp4002vnswd41fpbozv" data-title="WEB之ajax" class="article-share-link">分享</a>
       
       
       
@@ -2145,7 +1670,7 @@ alert(“hello jquery”);
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/2/">下一页 &raquo;</a>
   </nav>
 
 </section>
@@ -2159,7 +1684,7 @@ alert(“hello jquery”);
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%84%E8%8C%83/" rel="tag">规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">MySQL基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Portainer-io/" rel="tag">Portainer.io</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/" rel="tag">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/" rel="tag">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springfox/" rel="tag">springfox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swagger/" rel="tag">swagger</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6/" rel="tag">书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E8%97%8F/" rel="tag">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" rel="tag">编程规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" rel="tag">设计规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" rel="tag">软件说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag">面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
     </div>
   </div>
 
@@ -2169,7 +1694,7 @@ alert(“hello jquery”);
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%A7%84%E8%8C%83/" style="font-size: 10px;">规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">MySQL基础概念</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Portainer-io/" style="font-size: 10px;">Portainer.io</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/WEB/" style="font-size: 10px;">WEB</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springfox/" style="font-size: 10px;">springfox</a> <a href="/tags/swagger/" style="font-size: 10px;">swagger</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%B9%A6/" style="font-size: 10px;">书</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%94%B6%E8%97%8F/" style="font-size: 10px;">收藏</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" style="font-size: 10px;">设计规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">软件说明</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">面向对象</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
     </div>
   </div>
 
@@ -2178,7 +1703,7 @@ alert(“hello jquery”);
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
     </div>
   </div>
 
@@ -2191,23 +1716,23 @@ alert(“hello jquery”);
       <ul>
         
           <li>
-            <a href="/2021/04/19/19.4.SVN/">SVN</a>
+            <a href="/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/">推荐研读书籍</a>
           </li>
         
           <li>
-            <a href="/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/">WEB之上传和下载</a>
+            <a href="/2021/05/17/mqtt%E5%BC%80%E5%8F%91/">mqtt开发</a>
           </li>
         
           <li>
-            <a href="/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/">WEB之listener和filter</a>
+            <a href="/2021/04/30/16.2.Docker%E4%B9%8BPortainer-io/">Docker之Portainer.io</a>
           </li>
         
           <li>
-            <a href="/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/">WEB之cookie和session</a>
+            <a href="/2021/04/23/5.4.MySQL%E9%9D%A2%E8%AF%95/">MySQL面试</a>
           </li>
         
           <li>
-            <a href="/2021/04/19/9.6.WEB%E4%B9%8Bajax/">WEB之ajax</a>
+            <a href="/2021/04/22/12.5.Springfox/">Springfox</a>
           </li>
         
       </ul>

@@ -6,17 +6,18 @@
   
   <title>MySQL初级 | swx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="关系型数据库 服务器：硬件：指的就是一台计算机 软件：指的是需要在这台电脑上安装数据库服务器 一台电脑如果安装了MySQL，这台电脑称为是MySQL数据库服务器 MySQL数据库服务器存储的方式：   一台数据库服务器中会创建很多数据库（一个项目，会创建一个数据库）。在数据库中会创建很多张表（一个实体会创建一个表）。在表中会有很多记录（一个对象的实例会添加一条新的记录）。 SQL：结构化查询语言(">
+  <meta name="description" content="关系型数据库 服务器： ​    硬件：指的就是一台计算机 ​    软件：指的是需要在这台电脑上安装数据库服务器 一台电脑如果安装了MySQL，这台电脑称为是MySQL数据库服务器 MySQL数据库服务器存储的方式：   一台数据库服务器中会创建很多数据库（一个项目，会创建一个数据库）。在数据库中会创建很多张表（一个实体会创建一个表）。在表中会有很多记录（一个对象的实例会添加一条新的记录）。 S">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL初级">
 <meta property="og:url" content="https://s-qwer.github.io/2021/04/13/5.1.MySQL%E5%88%9D%E7%BA%A7/index.html">
 <meta property="og:site_name" content="swx">
-<meta property="og:description" content="关系型数据库 服务器：硬件：指的就是一台计算机 软件：指的是需要在这台电脑上安装数据库服务器 一台电脑如果安装了MySQL，这台电脑称为是MySQL数据库服务器 MySQL数据库服务器存储的方式：   一台数据库服务器中会创建很多数据库（一个项目，会创建一个数据库）。在数据库中会创建很多张表（一个实体会创建一个表）。在表中会有很多记录（一个对象的实例会添加一条新的记录）。 SQL：结构化查询语言(">
+<meta property="og:description" content="关系型数据库 服务器： ​    硬件：指的就是一台计算机 ​    软件：指的是需要在这台电脑上安装数据库服务器 一台电脑如果安装了MySQL，这台电脑称为是MySQL数据库服务器 MySQL数据库服务器存储的方式：   一台数据库服务器中会创建很多数据库（一个项目，会创建一个数据库）。在数据库中会创建很多张表（一个实体会创建一个表）。在表中会有很多记录（一个对象的实例会添加一条新的记录）。 S">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml5948/wps1.jpg">
 <meta property="article:published_time" content="2021-04-12T16:39:03.000Z">
-<meta property="article:modified_time" content="2021-04-17T09:36:42.193Z">
+<meta property="article:modified_time" content="2021-05-17T09:11:37.785Z">
 <meta property="article:author" content="swx">
+<meta property="article:tag" content="MySQL基础概念">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="file:///C:/Users/swx/AppData/Local/Temp/ksohtml5948/wps1.jpg">
   
@@ -102,83 +103,100 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <p>关系型数据库</p>
-<p>服务器：硬件：指的就是一台计算机</p>
-<p>软件：指的是需要在这台电脑上安装数据库服务器</p>
+<p>服务器：</p>
+<p>​    硬件：指的就是一台计算机</p>
+<p>​    软件：指的是需要在这台电脑上安装数据库服务器</p>
 <p>一台电脑如果安装了MySQL，这台电脑称为是MySQL数据库服务器</p>
 <p>MySQL数据库服务器存储的方式：</p>
 <p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml5948\wps1.jpg" alt="img"> </p>
 <p>一台数据库服务器中会创建很多数据库（一个项目，会创建一个数据库）。在数据库中会创建很多张表（一个实体会创建一个表）。在表中会有很多记录（一个对象的实例会添加一条新的记录）。</p>
 <p>SQL：结构化查询语言(Structured Query Language)简称SQL，是一种特殊目的的编程语言，是一种<a target="_blank" rel="noopener" href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=51720422&ss_c=ssc.citiao.link">数据库查询和程序设计语言</a>，用于存取数据以及查询、更新和管理关系数据库系统；同时也是<a target="_blank" rel="noopener" href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=71639443&ss_c=ssc.citiao.link">数据库脚本文件</a>的<a target="_blank" rel="noopener" href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=190718&ss_c=ssc.citiao.link">扩展名</a>。</p>
 <p>分类：</p>
-<p>DDL：数据定义语言：create，drop，alter..</p>
-<p>DCL：数据控制语言：grant，if…</p>
-<p>DML：数据操纵语言：insert，update，delete…</p>
-<p>DQL：数据查询语言：select   （不区分大小写）</p>
-<h1 id="对数据库进行CRUD的操作"><a href="#对数据库进行CRUD的操作" class="headerlink" title="对数据库进行CRUD的操作"></a>对数据库进行CRUD的操作</h1><p>创建数据库：</p>
-<p>语法：create database 数据库名称 [character set 字符集 collate 字符集校对规则];   utf-8的字符集写的时候是utf8</p>
+<p>​    DDL：数据定义语言：create，drop，alter..</p>
+<p>​    DCL：数据控制语言：grant，if…</p>
+<p>​    DML：数据操纵语言：insert，update，delete…</p>
+<p>​    DQL：数据查询语言：select   （不区分大小写）</p>
+<h1 id="对数据库进行CRUD的操作"><a href="#对数据库进行CRUD的操作" class="headerlink" title="对数据库进行CRUD的操作"></a>对数据库进行CRUD的操作</h1><h2 id="创建数据库："><a href="#创建数据库：" class="headerlink" title="创建数据库："></a>创建数据库：</h2><p>语法：</p>
+<p><code>create database 数据库名称 [character set 字符集 collate 字符集校对规则]; </code>  </p>
+<p>utf-8的字符集写的时候是utf8</p>
+<p>MySQL在5.5.3之后增加了这个utf8mb4的编码，mb4就是most bytes 4的意思，专门用来兼容四字节的unicode，比如emoji表情</p>
+<p>为了获取更好的兼容性，应该总是使用 utf8mb4 而非 utf8.  对于 CHAR 类型数据，utf8mb4 会多消耗一些空间，根据 Mysql 官方建议，使用 VARCHAR  替代 CHAR</p>
 <p>字符集校对规则可以在查询手册中查到，用来数据库排序展示</p>
-<p>查看数据库：</p>
-<p>语法：查看数据库服务器中所有的数据库：show databases;</p>
-<p>查看某个数据库的定义信息： show create database 数据库名称;</p>
-<p>修改数据库：</p>
-<p>语法：alter database 数据库名称 character set 字符集 collate 校对规则;</p>
-<p>删除数据库：</p>
-<p>语法:drop database 数据库名称;</p>
-<p>其他数据库操作：</p>
-<p>切换数据库：use 数据库名称;</p>
-<p>查看当前正在使用的数据库：select database();</p>
-<h1 id="对数据库表进行操作"><a href="#对数据库表进行操作" class="headerlink" title="对数据库表进行操作"></a>对数据库表进行操作</h1><p>创建表：</p>
-<p>语法：create table 表名称(字段名称 字段类型(长度) 约束,字段名称 字段类型(长度) 约束…);</p>
-<p>字段类型：一个实体对应一个表，一个实体属性对应表的一个字段。</p>
-<p>Java中的类型                        MySQL中的类型</p>
-<p>byte/short/int/long                     tinyint/smallint/int/bigint</p>
-<p>float                                float</p>
-<p>double                                double</p>
-<p>boolean                                bit</p>
-<p>char/String                            char和varchar类型</p>
-<p>Date                                date/time/datetime/timestamp</p>
-<p>File                                    BLOB/TEXT</p>
+<h2 id="查看数据库："><a href="#查看数据库：" class="headerlink" title="查看数据库："></a>查看数据库：</h2><p>语法：</p>
+<p>查看数据库服务器中所有的数据库：<code>show databases;</code></p>
+<p>查看某个数据库的定义信息： <code>show create database 数据库名称;</code></p>
+<h2 id="修改数据库："><a href="#修改数据库：" class="headerlink" title="修改数据库："></a>修改数据库：</h2><p>语法：</p>
+<p><code>alter database 数据库名称 character set 字符集 collate 校对规则;</code></p>
+<h2 id="删除数据库："><a href="#删除数据库：" class="headerlink" title="删除数据库："></a>删除数据库：</h2><p>语法:</p>
+<p><code>drop database 数据库名称;</code></p>
+<h2 id="其他数据库操作："><a href="#其他数据库操作：" class="headerlink" title="其他数据库操作："></a>其他数据库操作：</h2><p>切换数据库：<code>use 数据库名称;</code></p>
+<p>查看当前正在使用的数据库：<code>select database();</code></p>
+<h1 id="对数据库表进行操作"><a href="#对数据库表进行操作" class="headerlink" title="对数据库表进行操作"></a>对数据库表进行操作</h1><table>
+<thead>
+<tr>
+<th>Java中的类型</th>
+<th>MySQL中的类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>byte/short/int/long</td>
+<td>tinyint/smallint/int/bigint</td>
+</tr>
+<tr>
+<td>float</td>
+<td>float</td>
+</tr>
+<tr>
+<td>double</td>
+<td>double</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>bit</td>
+</tr>
+<tr>
+<td>char/String</td>
+<td>char和varchar类型</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>date/time/datetime/timestamp</td>
+</tr>
+<tr>
+<td>File</td>
+<td>BLOB/TEXT</td>
+</tr>
+</tbody></table>
 <p>char和varchar的区别：</p>
-<p>char代表是固定长度的字符或字符串。定义类型char(8),向这个字段存入字符串hello，那么数据库使用三个空格将其补全。</p>
-<p>varchar代表的是可变长度的字符串。定义类型varchar(8), 向这个字段存入字符串hello,那么存入到数据库的就是hello。</p>
+<p>​    char代表是固定长度的字符或字符串。定义类型char(8),向这个字段存入字符串hello，那么数据库使用三个空格将其补全。</p>
+<p>​    varchar代表的是可变长度的字符串。定义类型varchar(8), 向这个字段存入字符串hello,那么存入到数据库的就是hello。</p>
 <p>datetime和timestamp区别：</p>
-<p>datetime就是既有日期又有时间的日期类型，如果没有向这个字段中存值，数据库使用null存入到数据库中。</p>
-<p>timestamp也是既有日期又有时间的日期类型，如果没有向这个字段中存值，数据库使用当前的系统时间存入到数据库中。</p>
+<p>​    datetime就是既有日期又有时间的日期类型，如果没有向这个字段中存值，数据库使用null存入到数据库中。</p>
+<p>​    timestamp也是既有日期又有时间的日期类型，如果没有向这个字段中存值，数据库使用当前的系统时间存入到数据库中。</p>
 <p>BLOB是二进制的文件，TEXT是文本类型的文件（都很少使用）</p>
-<p>约束：</p>
-<p>约束作用：保证数据的完整性</p>
+<h2 id="约束："><a href="#约束：" class="headerlink" title="约束："></a>约束：</h2><p>约束作用：保证数据的完整性</p>
 <p>单表约束分类：</p>
-<p>主键约束：primary key 主键约束默认就是唯一 非空的</p>
-<p>唯一约束：unique</p>
-<p>非空约束：not null</p>
-<p>例如：</p>
-<p>建表语句：</p>
-<p>create database web_test1;</p>
-<p>use web_test1;</p>
-<p>create table user(</p>
-<p>​    id int primary key auto_increment,</p>
-<p>​    username varchar(20) unique,</p>
-<p>​    password varchar(20) not null,</p>
-<p>​    age int,</p>
-<p>​    birthday date</p>
-<p>);</p>
-<p>查看表：</p>
-<p>查看某个数据库下的所有的表： （必须先切换到这个数据库）</p>
-<p>语法：show tables;</p>
+<p>​    主键约束：primary key 主键约束默认就是唯一 非空的</p>
+<p>​    唯一约束：unique</p>
+<p>​    非空约束：not null</p>
+<h2 id="创建表："><a href="#创建表：" class="headerlink" title="创建表："></a>创建表：</h2><p>语法：<code>create table 表名称(字段名称 字段类型(长度) 约束,字段名称 字段类型(长度) 约束…);</code></p>
+<p>字段类型：一个实体对应一个表，一个实体属性对应表的一个字段。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> database web_test1;</span><br><span class="line"></span><br><span class="line">use web_test1;</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">user</span>(</span><br><span class="line"></span><br><span class="line">	id <span class="type">int</span> <span class="keyword">primary</span> key auto_increment,</span><br><span class="line"></span><br><span class="line">	username <span class="type">varchar</span>(<span class="number">20</span>) <span class="keyword">unique</span>,</span><br><span class="line"></span><br><span class="line">	password <span class="type">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="keyword">null</span>,</span><br><span class="line"></span><br><span class="line">	age <span class="type">int</span>,</span><br><span class="line"></span><br><span class="line">	birthday <span class="type">date</span></span><br><span class="line"></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h2 id="查看表："><a href="#查看表：" class="headerlink" title="查看表："></a>查看表：</h2><p>查看某个数据库下的所有的表： （必须先切换到这个数据库）</p>
+<p>语法：<code>show tables;</code></p>
 <p>查看某个表的结构信息：</p>
-<p>语法：desc 表名; （只是结构信息）</p>
-<p>删除表：</p>
-<p>语法：drop table 表名;</p>
-<p>修改表：</p>
-<p>添加列：alter table 表名 add 列名 类型(长度) 约束;</p>
-<p>修改列类型，长度和约束：alter table 表名 modify 列名 类型(长度) 约束;</p>
-<p>删除列：alter table 表名 drop 列名;</p>
-<p>修改列名称：alter table 表名 change 旧列名 新列名 类型(长度) 约束;</p>
-<p>修改表名：rename table 表名 to 新的表名;</p>
-<p>修改表的字符集：alter table 表名 character set 字符集;</p>
-<h1 id="对数据库表的记录进行操作"><a href="#对数据库表的记录进行操作" class="headerlink" title="对数据库表的记录进行操作"></a>对数据库表的记录进行操作</h1><p>添加表的记录：</p>
-<p>语法：向表中插入某些列：insert into 表名 (列名1,列名2,列名3…) values (值1,值2,值3…)</p>
-<p>向表中插入所有列：insert into 表名 values (值1,值2,值3…);</p>
+<p>语法：<code>desc 表名; </code>（只是结构信息）</p>
+<h2 id="删除表："><a href="#删除表：" class="headerlink" title="删除表："></a>删除表：</h2><p>语法：<code>drop table 表名;</code></p>
+<h2 id="修改表："><a href="#修改表：" class="headerlink" title="修改表："></a>修改表：</h2><p>​    添加列：<code>alter table 表名 add 列名 类型(长度) 约束;</code></p>
+<p>​    修改列类型，长度和约束：<code>alter table 表名 modify 列名 类型(长度) 约束;</code></p>
+<p>​    删除列：<code>alter table 表名 drop 列名;</code></p>
+<p>​    修改列名称：<code>alter table 表名 change 旧列名 新列名 类型(长度) 约束;</code></p>
+<p>​    修改表名：<code>rename table 表名 to 新的表名;</code></p>
+<p>​    修改表的字符集：<code>alter table 表名 character set 字符集;</code></p>
+<h1 id="对数据库表的记录进行操作"><a href="#对数据库表的记录进行操作" class="headerlink" title="对数据库表的记录进行操作"></a>对数据库表的记录进行操作</h1><h2 id="添加表的记录："><a href="#添加表的记录：" class="headerlink" title="添加表的记录："></a>添加表的记录：</h2><p>语法：</p>
+<p>​    向表中插入某些列：<code>insert into 表名 (列名1,列名2,列名3…) values (值1,值2,值3…)</code></p>
+<p>​    向表中插入所有列：<code>insert into 表名 values (值1,值2,值3…);</code></p>
 <p>//id一般是自动增长的，所以可以把值写为null</p>
 <p>注意事项</p>
 <p>1.值的类型与数据库中表列的类型一致。</p>
@@ -187,27 +205,25 @@
 <p>4.值的类型是字符串或者是日期类型，使用单引号引起来。</p>
 <p>直接向数据库中插入中文记录会出现错误！ </p>
 <p>解决方法：</p>
-<p>​    show variables like ‘%character%’;  –查看数据库中与字符集相关参数（数据库中都是utf8，而命令行中的是gbk）所以需要将MySQL数据库服务器中的客户端部分的字符集改为gbk。MySQL数据库服务器中的服务端还是utf8，但是MySQL数据库服务器已经可以识别了。</p>
-<p>​    找到MySQL的安装路径：my.ini文件，修改文件中[client]下的字符集，重新启动MySQL数据库服务器（在搜索程序和文件中输入 services.msc 打开服务 界面，找到MySQL停止，再启动），再show variables like ‘%character%’;  就可以看到改成功了。</p>
-<p>修改表的记录：</p>
-<p>语法:update 表名 set 列名=值,列名=值 [where 条件];</p>
+<ol>
+<li><code>show variables like &#39;%character%&#39;; </code> –查看数据库中与字符集相关参数（数据库中都是utf8，而命令行中的是gbk）所以需要将MySQL数据库服务器中的客户端部分的字符集改为gbk。MySQL数据库服务器中的服务端还是utf8，但是MySQL数据库服务器已经可以识别了。</li>
+</ol>
+<p>​    2.找到MySQL的安装路径：my.ini文件，修改文件中[client]下的字符集，重新启动MySQL数据库服务器（在搜索程序和文件中输入 services.msc 打开服务 界面，找到MySQL停止，再启动），再<code>show variables like &#39;%character%&#39;; </code> 就可以看到改成功了。</p>
+<h2 id="修改表的记录："><a href="#修改表的记录：" class="headerlink" title="修改表的记录："></a>修改表的记录：</h2><p>语法:<code>update 表名 set 列名=值,列名=值 [where 条件];</code></p>
 <p>注意事项</p>
 <p>1.值的类型与列的类型一致。</p>
 <p>2.值的最大长度不能超过列设置的最大长度。</p>
 <p>3.字符串类型和日期类型添加单引号。</p>
-<p>删除表的记录：</p>
-<p>语法：delete from 表名 [where 条件];</p>
+<h2 id="删除表的记录："><a href="#删除表的记录：" class="headerlink" title="删除表的记录："></a>删除表的记录：</h2><p>语法：<code>delete from 表名 [where 条件];</code></p>
 <p>注意事项</p>
 <p>1.删除表的记录，指的是删除表中的一行记录。</p>
 <p>2.删除如果没有条件，默认是删除表中的所有记录。</p>
 <p>删除表中的记录有两种做法:</p>
-<p>delete from user;</p>
-<p>删除所有记录，属于DML语句，一条记录一条记录删除。事务可以作用在DML语句上的（可以回滚）</p>
-<p>truncate table user;</p>
-<p>删除所有记录，属于DDL语句，将表删除，然后重新创建一个结构一样的表。事务不能控制DDL的（真的删除掉了）</p>
-<p>查看表的记录：</p>
-<p>基本查询：</p>
-<p>语法:select  [distinct]  *|列名 from 表 [条件];</p>
+<p><code>delete from user;</code> 删除所有记录，属于DML语句，一条记录一条记录删除。事务可以作用在DML语句上的（可以回滚）</p>
+<p><code>truncate table user;</code>删除所有记录，属于DDL语句，将表删除，然后重新创建一个结构一样的表。事务不能控制DDL的（真的删除掉了）</p>
+<h2 id="查看表的记录："><a href="#查看表的记录：" class="headerlink" title="查看表的记录："></a>查看表的记录：</h2><p>基本查询：</p>
+<p>语法:</p>
+<p><code>select  [distinct]  *|列名 from 表 [条件];</code></p>
 <p>[]代表可选，就是可加可不加。distinct表示不重复的</p>
 <p>*|列名 中的列名可以进行运算的。select name,english+chinese+math from exam;</p>
 <p>也可以取个别名进行查询：</p>
@@ -224,8 +240,12 @@
 <p>分组统计查询：</p>
 <p>聚合函数使用：（）括号中加对象</p>
 <p>sum();</p>
-<p>select sum(english)+sum(chinese)+sum(math) from exam;和select sum(english+chinese+math) from exam;的区别：第一个语句是按照列的方式统计，英语成绩总和+语文成绩总和+数学成绩总和。第二个语句先计算英语+数学+语文然后再求和。</p>
-<p>//如果其中有一个值为null时，select sum(english+chinese+math) from exam;语句不会把那一行数据加上（null加上任意数还是null），select sum(english)+sum(chinese)+sum(math) from exam;语句就会正确相加。如果某一列有null值，可以使用ifnull的函数：select sum(ifnull(english,0)+chinese+math) from exam;</p>
+<p>select sum(english)+sum(chinese)+sum(math) from exam;和select sum(english+chinese+math) from exam;的区别：</p>
+<p>第一个语句是按照列的方式统计，英语成绩总和+语文成绩总和+数学成绩总和。</p>
+<p>第二个语句先计算英语+数学+语文然后再求和。</p>
+<p>//如果其中有一个值为null时，select sum(english+chinese+math) from exam;语句不会把那一行数据加上（null加上任意数还是null），select sum(english)+sum(chinese)+sum(math) from exam;语句就会正确相加。</p>
+<p>如果某一列有null值，可以使用ifnull的函数：</p>
+<p><code>select sum(ifnull(english,0)+chinese+math) from exam;</code>如果english是null，赋值为0</p>
 <p>count();  统计个数 select count(*) from exam where name like ‘李%’;</p>
 <p>max();</p>
 <p>min();</p>
@@ -237,24 +257,29 @@
 <p>总结</p>
 <p>S(select)… F(from)…W(where)…G(group by)…H(having)…O(order by);</p>
 <p>顺序不能颠倒，可以省略</p>
-<h1 id="MySQL的密码重置-不成功"><a href="#MySQL的密码重置-不成功" class="headerlink" title="*MySQL的密码重置(不成功)*"></a><em><strong>*MySQL的密码重置(不成功)*</strong></em></h1><p>\1. 停止MySQL的服务：在搜索程序和文件中输入 services.msc 打开服务 界面，找到MySQL停止</p>
+<h1 id="MySQL的密码重置-不成功"><a href="#MySQL的密码重置-不成功" class="headerlink" title="MySQL的密码重置(不成功)"></a>MySQL的密码重置(不成功)</h1><p>\1. 停止MySQL的服务：在搜索程序和文件中输入 services.msc 打开服务 界面，找到MySQL停止</p>
 <p>\2. 在cmd下启动服务：mysqld –skip-grant-tables</p>
 <p>\3. 重新开启cmd的命令行（前面那个不要关掉）：mysql -u root -p 直接登入，不需要密码</p>
-<p>\4. 修改root密码：use mysql；  update user set password = password (‘xinmima’) where user =’root’;update user set password =password(‘sunweixuan’) where user =’root’;</p>
+<p>\4. 修改root密码：use mysql；  update user set password = password (‘xinmima’) where user =’root’;</p>
+<p>update user set password =password(‘sunweixuan’) where user =’root’;</p>
 <p>\5. 结束mysqld的进程:在任务管理器中的进程结束mysqld.exe</p>
 <p>\6. 重新启动mysql的服务：在搜索程序和文件中输入 services.msc 打开服务 界面，找到MySQL启动</p>
-<h1 id="数据库的备份和还原"><a href="#数据库的备份和还原" class="headerlink" title="*数据库的备份和还原*"></a><em><strong>*数据库的备份和还原*</strong></em></h1><p>数据库的备份：1.打开cmd的命令行窗口（以管理员身份运行）</p>
+<h1 id="数据库的备份和还原"><a href="#数据库的备份和还原" class="headerlink" title="数据库的备份和还原"></a>数据库的备份和还原</h1><p>数据库的备份：</p>
+<p>1.打开cmd的命令行窗口（以管理员身份运行）</p>
 <p>2.输入mysqldump -u root -p web_test1 &gt;C:/web_test1.sql （这样c盘中就有了web_test1.sql ）  （&gt;和&lt;是数据流向）</p>
 <p>数据库的还原：</p>
-<p>第一种：1.在数据库服务器内部创建数据库：creat</p>
+<p>第一种：</p>
+<p>1.在数据库服务器内部创建数据库：creat</p>
 <p>2.在命令行窗口输入：mysql -u root -p web_test1 &lt; C:/web_test1.sql</p>
-<p>第二种：1.在数据库服务器内部创建数据库：creat</p>
+<p>第二种：</p>
+<p>1.在数据库服务器内部创建数据库：creat</p>
 <p>2.切换到该数据库：use</p>
 <p>3.使用source命令还原：source C:/web_test1.sql</p>
-<h1 id="可视化工具-SQLyog"><a href="#可视化工具-SQLyog" class="headerlink" title="*可视化工具*****SQLyog****"></a><em><strong>*可视化工具*</strong>***</em>*SQLyog****</h1><p>MySQL的可视化工具有很多，基本上功能和内容都一样。</p>
+<h1 id="可视化工具"><a href="#可视化工具" class="headerlink" title="可视化工具"></a>可视化工具</h1><p>SQLyog、navicat等</p>
+<p>MySQL的可视化工具有很多，基本上功能和内容都一样。</p>
 <p>可以增删查改，可以执行SQL语句。</p>
-<h1 id="多表设计"><a href="#多表设计" class="headerlink" title="*多表设计*"></a><em><strong>*多表设计*</strong></em></h1><p>外键约束</p>
-<p>约束是用来保证数据的完整性。单表：主键约束、非空约束、唯一约束。</p>
+<h1 id="多表设计"><a href="#多表设计" class="headerlink" title="多表设计"></a>多表设计</h1><p>约束是用来保证数据的完整性。</p>
+<p>单表：主键约束、非空约束、唯一约束。</p>
 <p>多表：外键约束：用来保证数据完整性（多表之间）</p>
 <p>让两个表之间产生联系：</p>
 <p>在员工表上添加外键：alter table employee add foreign key (dno) references dept(did);  （添加外键dno指向dept表中的did列）</p>
@@ -274,14 +299,14 @@
 <p>\3. 多表查询：2类</p>
 <p>（1）连接查询</p>
 <p>l 交叉连接（了解）：查询到的是两个表的笛卡尔积（表1*表2=总记录条数）</p>
-<p>语法：select * from 表1 <em><strong>*cross join*</strong></em> 表2;</p>
-<p>select * from 表1,表2;</p>
+<p>语法：<code>select * from 表1 cross join 表2;</code></p>
+<p><code>select * from 表1,表2;</code></p>
 <p>l 内连接：inner join （inner可以省略）</p>
-<p>显示内连接：<em><strong>*在SQL中显示的调用inner join关键字*</strong></em></p>
-<p>语法：select * from 表1 inner join 表2 on 关联条件;</p>
+<p>显示内连接：在SQL中显示的调用inner join关键字</p>
+<p>语法：<code>select * from 表1 inner join 表2 on 关联条件;</code></p>
 <p>（select * from classes c inner join student s on c.cid = s.cno;）</p>
-<p>隐式内连接：<em><strong>*在SQL中没有调用inner join关键字*</strong></em></p>
-<p>语法：select * from 表1,表2 where 关联条件;</p>
+<p>隐式内连接：在SQL中没有调用inner join关键字</p>
+<p>语法：<code>select * from 表1,表2 where 关联条件;</code></p>
 <p>（SELECT * FROM classes c,student s WHERE c.cid = s.cno;）</p>
 <p>l 外连接：outer join  （outer可以省略）</p>
 <p>左外连接：语法：select * from 表1 left outer join 表2 on 关联条件; </p>
@@ -294,14 +319,34 @@
 <p>带any的子查询：SELECT * FROM classes WHERE cid &gt; ANY (SELECT cno FROM student )； （大于后面中最小值的）</p>
 <p>带all的子查询：SELECT * FROM classes WHERE cid &gt; ALL (SELECT cno FROM student)； （大于后面中最大值的）</p>
 <p>内连接与外连接的区别：左外连接和右外连接的交集就是内连接。</p>
+<p>IFNULL() 函数用于判断第一个表达式是否为 NULL，如果为 NULL 则返回第二个参数的值，如果不为 NULL 则返回第一个参数的值</p>
+<p>Case具有两种格式。</p>
+<p>简单Case函数</p>
+<p>​    格式说明   </p>
+<p>　　　　case 列名</p>
+<p>　　　　when  条件值1  then  选项1</p>
+<p>　　　　when  条件值2   then  选项2…….</p>
+<p>　　　　else   默认值    end</p>
+<p>Case搜索函数</p>
+<p>​    格式说明   </p>
+<p>　　　　case  </p>
+<p>　　　　when  列名= 条件值1  then  选项1</p>
+<p>　　　　when  列名=条件值2   then  选项2…….</p>
+<p>　　　　else   默认值 end</p>
+<p>UNION 操作符用于合并两个或多个 SELECT 语句的结果集。</p>
+<p>请注意，UNION 内部的 SELECT 语句必须拥有相同数量的列。列也必须拥有相似的数据类型。同时，每条 SELECT 语句中的列的顺序必须相同</p>
+<p>not in</p>
+<p>对于第二个表中的某个字段不想要，只想取第一个表中这个字段值时，可以在查询时利用where条件限定id字段not in 第一个表的id字段。这样第二个表的查询结果会自动把第一个表中已经存在的id字段自动去除。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/13/5.1.MySQL%E5%88%9D%E7%BA%A7/" data-id="ckno8ff5g002dswwd8xjd9gzp" data-title="MySQL初级" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/13/5.1.MySQL%E5%88%9D%E7%BA%A7/" data-id="ckpdvjpp0002fnswdbcyqbmps" data-title="MySQL初级" class="article-share-link">分享</a>
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">MySQL基础概念</a></li></ul>
+
     </footer>
   </div>
   
@@ -340,7 +385,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%84%E8%8C%83/" rel="tag">规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">MySQL基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Portainer-io/" rel="tag">Portainer.io</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/" rel="tag">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/" rel="tag">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springfox/" rel="tag">springfox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swagger/" rel="tag">swagger</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6/" rel="tag">书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E8%97%8F/" rel="tag">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" rel="tag">编程规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" rel="tag">设计规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" rel="tag">软件说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag">面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
     </div>
   </div>
 
@@ -350,7 +395,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%A7%84%E8%8C%83/" style="font-size: 10px;">规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">MySQL基础概念</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Portainer-io/" style="font-size: 10px;">Portainer.io</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/WEB/" style="font-size: 10px;">WEB</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springfox/" style="font-size: 10px;">springfox</a> <a href="/tags/swagger/" style="font-size: 10px;">swagger</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%B9%A6/" style="font-size: 10px;">书</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%94%B6%E8%97%8F/" style="font-size: 10px;">收藏</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" style="font-size: 10px;">设计规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">软件说明</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">面向对象</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
     </div>
   </div>
 
@@ -359,7 +404,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
     </div>
   </div>
 
@@ -372,23 +417,23 @@
       <ul>
         
           <li>
-            <a href="/2021/04/19/19.4.SVN/">SVN</a>
+            <a href="/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/">推荐研读书籍</a>
           </li>
         
           <li>
-            <a href="/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/">WEB之上传和下载</a>
+            <a href="/2021/05/17/mqtt%E5%BC%80%E5%8F%91/">mqtt开发</a>
           </li>
         
           <li>
-            <a href="/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/">WEB之listener和filter</a>
+            <a href="/2021/04/30/16.2.Docker%E4%B9%8BPortainer-io/">Docker之Portainer.io</a>
           </li>
         
           <li>
-            <a href="/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/">WEB之cookie和session</a>
+            <a href="/2021/04/23/5.4.MySQL%E9%9D%A2%E8%AF%95/">MySQL面试</a>
           </li>
         
           <li>
-            <a href="/2021/04/19/9.6.WEB%E4%B9%8Bajax/">WEB之ajax</a>
+            <a href="/2021/04/22/12.5.Springfox/">Springfox</a>
           </li>
         
       </ul>

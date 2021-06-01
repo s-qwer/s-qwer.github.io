@@ -14,7 +14,7 @@
 <meta property="og:description" content="HTML是页面的结构，CSS是美化页面 CSS（Cascading Style Sheets）：层叠样式表   样式表：存储样式的地方，多个样式 CSS通常称为CSS样式或层叠样式表，主要用于设置HTML页面中的文本内容（字体、大小、对齐方式等），图片的外形（高宽、边框样式、边距等）以及版面的布局等外观显示样式。 作用：修饰HTML页面，更丰富多彩的展示超文本信息 因为HTML在单独使用设置属性会">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-05T05:37:52.000Z">
-<meta property="article:modified_time" content="2021-04-06T07:44:17.510Z">
+<meta property="article:modified_time" content="2021-04-19T07:04:31.668Z">
 <meta property="article:author" content="swx">
 <meta property="article:tag" content="CSS">
 <meta name="twitter:card" content="summary">
@@ -346,11 +346,581 @@
 <h2 id="兼容问题"><a href="#兼容问题" class="headerlink" title="兼容问题"></a>兼容问题</h2><p>!important：</p>
 <p>​    CSS中的!important一般都是用于对低版本的除了iE 6 ，用来做hack的，后面缀上了!important的css语句，让浏览器首选执行这个语句，因为css有继承的样式，加上!importanrt可以覆盖父级的样式。 IE6不认识它的，IE7和别的浏览器中可以用，用来处理浏览器的兼容性。</p>
 <p>一、IE边框若显若无，须注意，定是高度设置已忘记；<br>二、浮动产生有缘故，若要父层包含住，紧跟浮动要清除，容器自然显其中；<br>三、三像素文本慢移不必慌，高度设置帮你忙；<br>四、兼容各个浏览须注意，默认设置行高可能是隐患；<br>五、独立清除浮动须铭记，行高设无，高设零，设计效果兼浏览；<br>六、学布局须思路，路随布局原理自然直，轻松驾驭html，流水布局少hack，代码清爽，兼容好，友好引擎喜欢迎。<br>七、所有标签皆有源，只是默认各不同，span是无极，无极生两仪—内联和块级，img较特殊，但也遵法理，其他只是改造各不同，一个*号全归原，层叠样式理须多练习，万物皆规律。<br>八、图片链接排版须小心，图片链接文字链接若对齐，padding和vertical-align:middle要设定，虽差微细倒无妨。<br>九、IE浮动双边距，请用display：inline拘。</p>
+<p>css三大特性</p>
+<p>层叠性：css样式冲突采取的原则(后者覆盖前者)</p>
+<p>继承性：对于部分属性样式会有天生的继承</p>
+<p>优先级：选择器优先级算法</p>
+<p>选择器</p>
+<p>在讲这三个特性之前我们需要来全面了解下选择器。</p>
+<p>种类</p>
+<p>下面我将选择进行划分为三大部分，对于基本选择器我就不说了，主要讲下伪类选择器，组合选择器及它们各自的使用场景。</p>
+<p>基本选择器</p>
+<p>类名：.box</p>
+<p>标签: div</p>
+<p>属性: input[type=“eamil”] | a[href*=“<a href="http://www.beige.world”]">http://www.beige.world”]</a></p>
+<p>ID: #box</p>
+<p>伪类选择器</p>
+<p>结构伪类: :nth-child(n) | :nth-of-type(n) | :hover</p>
+<p>伪元素: ::before | ::after</p>
+<p>组合选择器</p>
+<p>相邻兄弟 A + B</p>
+<p>普通兄弟 A ~ B</p>
+<p>子选择器 A &gt; B</p>
+<p>后代选择器 A B</p>
+<p>基本选择器</p>
+<p>算了还是讲下属性选择器吧🤔，这个选择器我在项目开发中还是用到过的</p>
+<p>直接看例子：</p>
+<p>/* 匹配包含title属性的a标签 =&gt; */</p>
+<p>a[title] {color: purple;}</p>
+<p>/* 存在href属性并且属性值为”<a target="_blank" rel="noopener" href="http://beige.world&quot;的标签*/">http://beige.world&quot;的标签*/</a></p>
+<p>/* */</p>
+<p>a[href=“<a href="http://beige.world”]">http://beige.world”]</a> {color: green;}</p>
+<p>/* 存在href属性并且属性值包含”baidu”的标签*/</p>
+<p>/*</p>
+<p>*/</p>
+<p>a[href*=“baidu”] {font-size: 20px;}</p>
+<p>/* 存在id属性并且属性值结尾是”-wrapper”的</p>
+<p>标签 */</p>
+<p>/*</p>
+<p>*/</p>
+<p>div[id$=”-wrapper”] {display: flex;}</p>
+<p>/* 存在class属性并且属性值包含以空格分隔的”logo”的</p>
+<p>元素 */</p>
+<p>/*</p>
+<p>*/</p>
+<p>div[class~=“logo”] { padding: 2px; }</p>
+<p>复制代码</p>
+<p>伪类选择器</p>
+<p>结构伪类</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>先讲这两比较作用类似的：nth-child(n) | nth-of-type(n)</p>
+<p>结构</p>
+<p>1</p>
+<p>a1</p>
+<p>b1</p>
+<p>a2</p>
+<p>b2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>复制代码</p>
+<p>CSS</p>
+<p>// 第一个li =&gt;</p>
+<p>1</p>
+<p>ul li:first-child { background-color: lightseagreen;}</p>
+<p>// 最后一个li =&gt;</p>
+<p>5</p>
+<p>ul li:last-child { background-color: lightcoral;}</p>
+<p>// 第三个li =&gt;</p>
+<p>3</p>
+<p>ul li:nth-child(3) { background-color: aqua; }</p>
+<p>// 第二个li下的第一个div(不是div标签的都不算) =&gt;</p>
+<p>b1</p>
+<p>ul li:nth-child(2) &gt; div:nth-of-type(1) {background-color: red}</p>
+<p>复制代码</p>
+<p>它俩的区别</p>
+<p>nth-child 选择父元素里面的第几个子元素，不管是第几个类型</p>
+<p>nth-of-type 选择指定类型的元素</p>
+<p>下面讲讲nth-child()括号中的公式，这个算是这个选择器的亮点了。</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>注意⚠：本质上就是选中第几个子元素</p>
+<p>n 可以是数字、关键字、公式</p>
+<p>n 如果是数字，就是选中第几个</p>
+<p>常见的关键字有 even 偶数、odd 奇数</p>
+<p>常见的公式如下(如果 n 是公式，则从 0 开始计算)</p>
+<p>但是第 0 个元素或者超出了元素的个数会被忽略</p>
+<p>对于这里面的公式平常也用不到太复杂的，我说下我的技巧：nth-child(3n + 3); 这里的n可以看做几个为一组，3可以看做选这组的第几个。</p>
+<p>例： nth-child(5n + 3) ：5个为一组，选一组中的第三个。 对于”-“号就表示选择的是前面的。</p>
+<p>组合选择器</p>
+<p>组合选择器本质上就是通过连接符来对两个选择器进行组合</p>
+<p>子选择器 A &gt; B</p>
+<p>后代选择器 A B</p>
+<p>上面这两我就不说了，相信大家都用烂了。主要说说下面这两个。</p>
+<p>相邻兄弟 A + B</p>
+<p>普通兄弟 A ~ B</p>
+<p>结构</p>
+<p>One</p>
+<p>Two!</p>
+<p>Three</p>
+<p>pppp</p>
+<p>One2</p>
+<p>pppp1</p>
+<p>Two2!</p>
+<p>pppp2</p>
+<p>复制代码</p>
+<p>选择器解析</p>
+<p>复制代码</p>
+<p>好了，在讲完这些选择器之后我们来看看它们的使用场景。</p>
+<p>组合选择器可以用于：hover伪类操纵自己包含的子元素及以外的元素。举个例子</p>
+<p>元素1</p>
+<p>元素2</p>
+<p>元素3</p>
+<p>元素2</p>
+<p>同级元素1</p>
+<p>同级元素2</p>
+<p>同级元素3</p>
+<p>复制代码</p>
+<p>#a:hover &gt; #b{…}</p>
+<p>#a:hover ~ div{…} // 鼠标停留在a元素的时候让所有同层级元素有某某样式</p>
+<p>// 防止选择器层级替换了下面的样式</p>
+<p>#a:hover + #c{…} // 鼠标停留在a元素的时候让同层级中的c元素有某某样式</p>
+<p>#a:hover + #c &gt; #b{…} // 鼠标停留在a元素的时候让同层级中的c元素下的b元素有某某样式</p>
+<p>复制代码</p>
+<p>上面这两选择器在做一些特效页的时候应该是会用到的。</p>
+<p>综合例子</p>
+<p>效果</p>
+<p>结构</p>
+<p>标题名称</p>
+<p>Bei Ge</p>
+<p>这里放内容简介，内容简介,这里放内容简介，内容简介,这里放内容简介，内容简介</p>
+<p>…</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>复制代码</p>
+<p>样式</p>
+<p>布局样式</p>
+<p>复制代码</p>
+<p>定义了一个animation动画</p>
+<p>@keyframes textAnimation {<br>/* 0% {<br>transform: translateX(150%);</p>
+<p>} */</p>
+<p>100% {<br>transform: translateX(0);</p>
+<p>}</p>
+<p>}</p>
+<p>复制代码</p>
+<p>悬浮在盒子设置样式</p>
+<p>.img-box:hover {<br>transform: scale(1.1);</p>
+<p>box-shadow: 2px 2px 13px 3px #ccc;</p>
+<p>}</p>
+<p>.img-box:hover img {<br>opacity: .5;</p>
+<p>}</p>
+<p>.img-box:hover .cover h3 {<br>opacity: 1;</p>
+<p>}</p>
+<p>.img-box:hover p {<br>animation: textAnimation .6s ease-out forwards;</p>
+<p>/* forwards让动画停留在最后一帧 */</p>
+<p>}</p>
+<p>.img-box:hover .cover .handle {<br>bottom: 5px;</p>
+<p>}</p>
+<p>.enter-box:hover ~ .img-box {<br>background-color: transparent;</p>
+<p>color: wheat;</p>
+<p>}</p>
+<p>.enter-box:hover + .img-box {<br>color: red;</p>
+<p>}</p>
+<p>复制代码</p>
+<p>上面这个例子有些还没有讲，但是相信大家之前也都学过，后文中也会说。主要会说些细节方面的东西。</p>
+<p>flex(弹性布局)</p>
+<p>transform: translate3D rodate3D</p>
+<p>animation(设定动画)</p>
+<p>3D or 透视(perspective)</p>
+<p>这里需要注意在使用伪类Hover的注意点，在使用他影响子级元素的时候尽量将选择器写全。例：</p>
+<p>先看下效果😗</p>
+<p>上面的效果相信大家都能写出来，所以我要讲的肯定不是怎么去实现这个效果，我要说下使用Hover时的一些细节。</p>
+<p>结构比较简单</p>
+<p>flex类名用于布局实现重置和水平居中，box: 绿色盒子;center: 紫色盒子 inner: 橙黄色盒子</p>
+<p>复制代码</p>
+<p>我们用了一个:hover让鼠标虚浮的时候让盒子变红</p>
+<p>.box:hover div {<br>background-color: red;</p>
+<p>}</p>
+<p>复制代码</p>
+<p>这里有一个问题不知道大家想过没有，为什么我这段代码只让center盒子变红了，inner为什么没有变红呢???</p>
+<p>展开查看</p>
+<p>因为CSS选择器的优先级!复制代码</p>
+<p>我们在实现的时候一般都会像下面这样写吧，这个时候使用伪类选择器改变元素样式的时候就要注意选择器优先级的问题了。</p>
+<p>.box .center {<br>width: 150px;</p>
+<p>height: 150px;</p>
+<p>background-color: blueviolet;</p>
+<p>}</p>
+<p>.box .center .inner {<br>width: 100px;</p>
+<p>height: 100px;</p>
+<p>background-color: coral;</p>
+<p>}</p>
+<p>复制代码</p>
+<p>这段代码的优先级比 .box .center高，所以他也就只能覆盖它了。</p>
+<p>.box:hover div {<br>background-color: red;</p>
+<p>}</p>
+<p>复制代码</p>
+<p>相信我们很多人如果在写鼠标悬浮大盒子让最里面的inner盒子变色的时候，都会这么写吧：</p>
+<p>.box:hover .inner {<br>background-color: red;</p>
+<p>}</p>
+<p>复制代码</p>
+<p>有用吗?没用!</p>
+<p>注意⚠: 优先级还是没有.box .center .inner高。</p>
+<p>层叠性</p>
+<p>所谓层叠性是指多种CSS样式的叠加。是浏览器处理冲突的一个能力,如果一个属性通过两个相同选择器设置到同一个元素上，那么这个时候一个属性就会将另一个属性层叠掉</p>
+<p>原则：</p>
+<p>样式冲突，遵循的原则是就近原则。 那个样式离着结构近，就执行那个样式。</p>
+<p>样式不冲突，不会层叠</p>
+<p>CSS层叠性最后的执行口诀： 长江后浪推前浪，前浪死在沙滩上。</p>
+<p>复制代码</p>
+<p>继承性</p>
+<p>：子标签会继承父标签的某些样式，如文本颜色和字号。 想要设置一个可继承的属性，只需将它应用于父元素即可。简单的理解就是： 子承父业</p>
+<p>CSS继承性口诀： 龙生龙，凤生凤，老鼠生的孩子会打洞</p>
+<p>复制代码</p>
+<p>我们恰当地使用继承可以简化代码，降低CSS样式的复杂性。比如有很多后代元素都需要某个样式，可以给父级指定一个，这些孩子继承过来就好了。</p>
+<p>注意点：在CSS的继承中不仅仅是儿子可以继承, 只要是后代都可以继承</p>
+<p>可继承的属性</p>
+<p>控制继承</p>
+<p>注意点: 对于天生自带的继承属性我们可以控制它是否需要继承</p>
+<p>四个属性</p>
+<p>inherit: 被应用属性继承父级的该属性(默认就是该值)</p>
+<p>initial初始化，把应用属性初始为它默认的样式，并且排除继承的干扰(默认会继承的属性也不在默认继承，而是表现出没有任何设置时候的默认样式)</p>
+<p>unset：意思是恢复其原本的继承方式。对color属性而言，就相当于inherit;而对于诸如border这样默认不继承的属性，就相当于initial。</p>
+<p>revert: 效果等同于unset且浏览器支持有限，这里不做演示</p>
+<p>效果图</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>演示</p>
+<p>Default link color</p>
+<p>Inherit the link color</p>
+<p>Reset the link color</p>
+<p>Unset the link color</p>
+<p>复制代码</p>
+<p>default中的a标签没有写默认为inherit属性，但是使用了浏览器预设样式表：可以理解为浏览器帮我们为写了个style，其优先级自然就高于其父元素了。</p>
+<p>inherit中的a标签在行内写了inherit，于是使用其父(或祖父，etc)元素的颜色值，在这里是绿色;</p>
+<p>initial中的a标签使用color属性初始值(黑色), 注意不要混淆属性初始值和浏览器样式表指定值，样式预设表是浏览器事先写好的样式，但是我color默认值就是黑色啊。</p>
+<p>unset，意思是恢复其原本的继承方式。对color属性而言，就相当于inherit;而对于诸如border这样默认不继承的属性，就相当于initial。</p>
+<p>如果我们需要控制元素所有属性的继承使用all属性</p>
+<p>.inherit a {<br>all: initial;</p>
+<p>/* 将所有的属性都恢复成默认值(天生继承也不再继承) */</p>
+<p>/* 行内设置过的除外：你的层级干不过人家 */</p>
+<p>}</p>
+<p>复制代码</p>
+<p>继承的权重是0</p>
+<p>这个不难，但是忽略很容易绕晕。其实，我们修改样式，一定要看该标签有没有被选中。</p>
+<p>(1) 如果选中了，那么以上面的公式来计权重。谁大听谁的。(2) 如果没有选中，那么权重是0，因为继承的权重为0.</p>
+<p>控制继承在我们封装自己的组件的时候是会用到的，我们在封装组件需要沿用样式，有些默认情况下不可继承父元素的属性：box-sizing，这个其实用的就很多。</p>
+<p>优先级</p>
+<p>要想了解优先级，肯定得了解选择器;但是选择器非常多的，前面列举的是日常开发用的比较多，其他的你可能一辈子都用不到，这里贴出C1~C4的选择器，感兴趣的同学可以看看。</p>
+<p>定义CSS样式时，经常出现两个或更多选择器应用在同一元素上，此时，</p>
+<p>选择器相同，则执行层叠性(后者覆盖前者)</p>
+<p>选择器不同，就会出现优先级的问题。</p>
+<p>权重计算公式</p>
+<p>关于CSS权重，我们需要一套计算公式来去计算，这个就是 CSS Specificity(特殊性)</p>
+<p>标签选择器计算权重公式</p>
+<p>继承或者 *0,0,0,0</p>
+<p>每个元素(标签选择器)0,0,0,1</p>
+<p>每个类，结构伪类(如:hover),属性选择器[type=“number”]0,0,1,0</p>
+<p>每个ID0,1,0,0</p>
+<p>每个行内样式 style=””1,0,0,0</p>
+<p>h1 + p::first-line0,0,0,3</p>
+<p>li &gt; a[href*=“beige.world”] &gt; .inline-warning0,0,2,2</p>
+<p>每个!important 重要的∞ 无穷大</p>
+<p>值从左到右，左面的最大，一级大于一级，数位之间没有进制，级别之间不可超越。</p>
+<p>常用的选择器记法：</p>
+<p>行内: 1,0,0,0</p>
+<p>#id: 0,1,0,0</p>
+<p>.class | :hover | :nth-child(): 0,0,1,0 (:hover这种一个冒号叫结构伪类)</p>
+<p>::after | ::before | ::first-line: 0,0,0,1 (这种两冒号的叫伪元素，在书写的时候虽然你可以写一个冒号但是浏览器还是给你补上去了，本质上就是两冒号)</p>
+<p>权重叠加</p>
+<p>我们经常用组合选择器，是有多个基础选择器组合而成，那么此时，就会出现权重叠加。</p>
+<p>就是一个简单的加法计算</p>
+<p>div ul li ——&gt; 0,0,0,3</p>
+<p>.nav ul li ——&gt; 0,0,1,2</p>
+<p>a:hover —–—&gt; 0,0,1,1</p>
+<p>.nav a ——&gt; 0,0,1,1</p>
+<p>注意⚠: 数位之间没有进制 比如说： 0,0,0,5 + 0,0,0,5 = 0,0,0,10 而不是 0,0, 1, 0， 所以不会存在10个div能赶上一个类选择器的情况。</p>
+<p>important适用优先级💡</p>
+<p>#id .box div {<br>color: red !important;</p>
+<p>}</p>
+<p>#id div.box div {<br>color: green !important; // 使用这个选择器中的颜色</p>
+<p>}</p>
+<p>复制代码</p>
+<p>通关答题</p>
+<p>下面来几道题，全对才算通过了噢😗</p>
+<p>文字</p>
+<p>复制代码</p>
+<p>什么颜色??</p>
+<p>展开查看答案</p>
+<p>yellow 上面两选择器的层级都是一样的, 后者覆盖前者 复制代码</p>
+<p>试问这行字体是什么颜色的?</p>
+<p>复制代码</p>
+<p>展开查看答案</p>
+<p>blue 复制代码</p>
+<p>123</p>
+<p>复制代码</p>
+<p>展开查看答案</p>
+<p>字体：80，有文字阴影，真实内容的宽：290px 高190px复制代码</p>
+<p>讲下这最后一题</p>
+<p>文字阴影有：因为从父元素中继承到了,字体: 80px;</p>
+<p>真实内容宽290px, 高190px</p>
+<p>常问的属性flex(弹性布局)</p>
+<p>transform: translate3D rodate3D</p>
+<p>animation(设定动画)</p>
+<p>3D or 透视(perspective)</p>
+<p>flex</p>
+<p>flex布局相信大家也都用烂了，用来让盒子垂直和水平居中好用的一批</p>
+<p>父项常用属性</p>
+<p>flex-direction：设置主轴的方向</p>
+<p>justify-content：设置主轴上的子元素排列方式</p>
+<p>flex-wrap：设置子元素是否换行</p>
+<p>align-content：设置侧轴上的子元素的排列方式(多行)</p>
+<p>align-items：设置侧轴上的子元素排列方式(单行)</p>
+<p>flex-flow：复合属性，相当于同时设置了 flex-direction 和 flex-wrap</p>
+<p>flex-direction</p>
+<p>在 flex 布局中，是分为主轴和侧轴两个方向，同样的叫法有 ： 行和列、x 轴和y 轴</p>
+<p>默认主轴方向就是 x 轴方向，水平向右</p>
+<p>默认侧轴方向就是 y 轴方向，水平向下</p>
+<p>&lt;img src=</p>
+<p>“ width=“185” height=“30” align=””&gt;</p>
+<p>： 主轴和侧轴是会变化的，就看 flex-direction 设置谁为主轴，剩下的就是侧轴。而我们的子元素是跟着主轴来排列的</p>
+<p>flex-wrap设置是否换行</p>
+<p>默认情况下，项目都排在一条线(又称”轴线”)上。flex-wrap属性定义，flex布局中默认是不换行的。</p>
+<p>nowrap 不换行</p>
+<p>wrap 换行</p>
+<p>justify-content 设置主轴上的子元素排列方式</p>
+<p>&lt;img src=</p>
+<p>“ width=“185” height=“30” align=””&gt;</p>
+<p>效果图</p>
+<p>： 这里讲下space-around和space-evenly</p>
+<p>space-around：项目之间的间距为左右两侧项目到容器间距的2倍。</p>
+<p>space-evenly：项目两侧之间的间距与项目与容器两侧的间距相等，相当于除去项目宽度和容器和项目的两侧间距，剩下的平均分配了剩余宽度作为项目左右margin。</p>
+<p>**设置侧轴上的子元素排列方式：align-items(单行)/align-content(多行) **</p>
+<p>上图写能设置多行只能用于子项出现 换行 的情况(多行)，在单行下是没有效果的。</p>
+<p>效果跟上面是一样的只不过是方向换了，上面是元素在主轴上排列，这个是在侧抽上，至于侧轴是不是Y轴就看你的flex-direciton怎么设置的了</p>
+<p>子项常见属性</p>
+<p>flex(复合属性): 默认: flex: 0 1 auto;</p>
+<p>flex-grow</p>
+<p>flex-shrink</p>
+<p>flex-basis</p>
+<p>align-self：控制子项自己在侧轴的排列方式</p>
+<p>order：定义子项的排列顺序(前后顺序), 0是第一个</p>
+<p>flex-grow</p>
+<p>默认0，用于决定项目在有剩余空间的情况下是否放大，默认不放大;注意，即便设置了固定宽度，也会放大。</p>
+<p>假设第一个项目默认为0，第二个项目为flex-grow:2，最后一个项目为1，则第二个项目在放大时所占空间是最后项目的两倍。</p>
+<p>可以这么理解:</p>
+<p>flex: 1 =&gt; 在剩余的空间里我就占一份</p>
+<p>flex: 2 =&gt; 在剩余的空间里我就占两份</p>
+<p>flex: 3 =&gt; 在剩余的空间里我就占三份</p>
+<p>假设三个盒子分别都设置了上面的属性: 那就将剩余空间分成6份, 各占自己的份数</p>
+<p>假设前两个没有设置, 就最后一个设置了flex: 3 === flex: 1, 那就将剩余空间都给它</p>
+<p>复制代码</p>
+<p>flex-shrink</p>
+<p>默认1，用于决定项目在空间不足时是否缩小，默认项目都是1，即空间不足时大家一起等比缩小;注意，即便设置了固定宽度，也会缩小。但如果某个项目flex-shrink设置为0，则即便空间不够，自身也不缩小。</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>上图中第二个项目flex-shrink为0，所以自身不会缩小。</p>
+<p>flex-basis</p>
+<p>默认auto，用于设置项目宽度，默认auto时，项目会保持默认宽度，或者以width为自身的宽度，但如果设置了flex-basis，权重会width属性高，因此会覆盖widtn属性。</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>上图中先设置了flex-basis属性，后设置了width属性，但宽度依旧以flex-basis属性为准。</p>
+<p>注意⚠: 如果当容器中有多个盒子并且还宽度100%, flex-basis会被影响, 如下图</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>解决办法就是在我们设置flex-basis宽度时, 最好给他设置flex-shrink为0不缩放</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>transform</p>
+<p>2D的属性相信大家都会用了, 本文主要深究transform的3D属性</p>
+<p>透视：perspctive</p>
+<p>3D呈现：transfrom-style</p>
+<p>3D 位移：translate3d(x, y, z)</p>
+<p>3D旋转：rotate3d(x, y, z)</p>
+<p>透视(perspective)</p>
+<p>在讲3D之间先来了解一下透视(视距)，只有了解了透视我们才能理解3D的物体投影在2D平面上</p>
+<p>透视也称为视距，所谓的视距就是人的眼睛到屏幕的距离</p>
+<p>实际上模仿人类的视觉位置，可视为安排一直眼睛去看</p>
+<p>距离透视点越近的在电脑平面成像越大，越远成像越小</p>
+<p>透视的单位是像素</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>注意: 透视需要写在被视察元素的父盒子上面</p>
+<p>拿图说话👇</p>
+<p>d：就是视距，视距就是指人的眼睛到屏幕的距离</p>
+<p>z：就是 z 轴，z 轴越大(正值)，我们看到的物体就越大</p>
+<p>来个栗子🌰</p>
+<p>给实例的父元素设置: perspective: 200px;</p>
+<p>复制代码</p>
+<p>上面我们在div的父盒子上设置了perspective，也就是说从3D成像的角度来讲我们人眼距离屏幕div是200的视距，translate3D设置Z轴让div往前挪了100，视距变小距离我们人眼距离也就越小，所以看到的div也就变大了。 (可以想像成在500米远看见的人， 和5米看见的人。)</p>
+<p>translate3d(x, y, z)</p>
+<p>3D的特点</p>
+<p>近大远小</p>
+<p>物体和面遮挡不可见</p>
+<p>三维坐标系</p>
+<p>x 轴：水平向右 – 注意：x 轴右边是正值，左边是负值</p>
+<p>y 轴：垂直向下 – 注意：y 轴下面是正值，上面是负值</p>
+<p>z 轴：垂直屏幕 – 注意：往外边的是正值，往里面的是负值</p>
+<p>“ alt=” “ width=“35” height=“30” align=””&gt;</p>
+<p>3D 呈现 transform-style</p>
+<p>transform-style：控制子元素是否开启三维立体环境，代码写给父级，但是影响的是子盒子</p>
+<p>transform-style: flat 代表子元素不开启 3D 立体空间，默认的</p>
+<p>transform-style: preserve-3d 子元素开启立体空间</p>
+<p>效果图</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>body {<br>perspective: 500px;</p>
+<p>}</p>
+<p>.box {<br>position: relative;</p>
+<p>width: 200px;</p>
+<p>height: 200px;</p>
+<p>margin: 100px auto;</p>
+<p>transition: all 2s;</p>
+<p>/* 让子元素保持3d立体空间环境 */</p>
+<p>transform-style: preserve-3d;</p>
+<p>}</p>
+<p>.box:hover {<br>transform: rotateY(60deg);</p>
+<p>}</p>
+<p>.box div {<br>position: absolute;</p>
+<p>top: 0;</p>
+<p>left: 0;</p>
+<p>width: 100%;</p>
+<p>height: 100%;</p>
+<p>background-color: pink;</p>
+<p>}</p>
+<p>.box div:last-child {<br>background-color: purple;</p>
+<p>transform: rotateX(60deg);</p>
+<p>}</p>
+<p>复制代码</p>
+<p>rotate3d(x, y, z)</p>
+<p>3D 旋转指可以让元素在三维平面内沿着 x 轴、y 轴、z 轴 或者自定义轴进行旋转</p>
+<p>transform: rotate3d(x, y, z, 45deg)` – 沿着自定义轴旋转 45 deg 为角度</p>
+<p>例子：</p>
+<p>公众号:</p>
+<p>前端自学驿站</p>
+<p>复制代码</p>
+<p>ul li {<br>float: left;</p>
+<p>margin: 0 5px;</p>
+<p>width: 120px;</p>
+<p>height: 35px;</p>
+<p>list-style: none;</p>
+<p>/* 一会我们需要给box 旋转 也需要透视 干脆给li加 里面的子盒子都有透视效果 */</p>
+<p>perspective: 500px;</p>
+<p>}</p>
+<p>.box {<br>position: relative;</p>
+<p>width: 100%;</p>
+<p>height: 100%;</p>
+<p>transform-style: preserve-3d;</p>
+<p>transition: all .4s;</p>
+<p>}</p>
+<p>.box:hover {<br>transform: rotateX(90deg);</p>
+<p>}</p>
+<p>.front,</p>
+<p>.bottom {<br>position: absolute;</p>
+<p>left: 0;</p>
+<p>top: 0;</p>
+<p>width: 100%;</p>
+<p>height: 100%;</p>
+<p>}</p>
+<p>.front {<br>background-color: pink;</p>
+<p>z-index: 1;</p>
+<p>transform: translateZ(17.5px);</p>
+<p>}</p>
+<p>.bottom {<br>background-color: purple;</p>
+<p>/* 这个x轴一定是负值 */</p>
+<p>/* 我们如果有移动 或者其他样式，必须先写我们的移动 */</p>
+<p>transform: translateY(17.5px) rotateX(-90deg);</p>
+<p>}</p>
+<p>复制代码</p>
+<p>animation</p>
+<p>动画(animation)是 CSS3 中最具颠覆性的特征之一，可通过设置多个节点来精确的控制一个或者一组动画，从而实现复杂的动画效果, 先定义动画在调用定义好的动画</p>
+<p>动画序列</p>
+<p>0% 是动画的开始，100 % 是动画的完成，这样的规则就是动画序列</p>
+<p>在 @keyframs 中规定某项 CSS 样式，就由创建当前样式逐渐改为新样式的动画效果</p>
+<p>动画是使元素从一个样式逐渐变化为另一个样式的效果，可以改变任意多的样式任意多的次数</p>
+<p>用百分比来规定变化发生的时间，或用 from 和 to，等同于 0% 和 100%</p>
+<p>@keyframes move{<br>0% {<br>transform: translate(0px)</p>
+<p>}</p>
+<p>form {<br>transform: translate(0px)</p>
+<p>}</p>
+<p>100% {<br>transform: translate(500px, 0)</p>
+<p>}</p>
+<p>to {<br>transform: translate(500px, 0)</p>
+<p>}</p>
+<p>}</p>
+<p>复制代码</p>
+<p>动画常见属性</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>动画简写方式</p>
+<p>/* animation: 动画名称 持续时间 运动曲线 何时开始 播放次数 是否反方向 起始与结束状态 */</p>
+<p>animation: name duration timing-function delay iteration-count direction fill-mode</p>
+<p>复制代码</p>
+<p>除了名字，持续时间，何时开始有严格顺序要求其它随意</p>
+<p>CSS实现扫描二维码</p>
+<p>效果</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>代码篇幅过长我放到gitHub仓库了，大家可以pull下来自行研究。</p>
+<p>地址：<a target="_blank" rel="noopener" href="https://github.com/it-beige/blog">https://github.com/it-beige/blog</a></p>
+<p>面试常问题BFC相关</p>
+<p>BFC(Block formatting context)直译为”块级格式化上下文”。</p>
+<p>在讲BFC之前得先说下display的属性值，只有它符合成为条件才资格触发BFC机制</p>
+<p>“ alt=“display属性值” width=“113” height=“30” align=””&gt;</p>
+<p>那些属性值会具有BFC的条件</p>
+<p>不是所有的元素模式都能产生BFC，w3c 规范： display 属性为 block, list-item, table 的元素，会产生BFC.</p>
+<p>大家有没有发现这个三个都是用来布局最为合理的元素，因为他们就是用来可视化布局。注意其他的，display属性，比如 line 等等，他们创建的是 IFC ，我们下面研究。</p>
+<p>这个BFC 有着具体的布局特性：</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>有宽度和高度，有 外边距margin 有内边距padding 有边框 border。就好比，你有了练习武术的体格了。 有潜力，有资质。</p>
+<p>什么情况下可以让元素产生BFC</p>
+<p>以上盒子具有BFC条件了，就是说有资质了，但是怎样触发才会产生BFC，从而创造这个封闭的环境呢?</p>
+<p>就好比，你光有资质还不行，你需要一定额外效果才能出发的武学潜力，要么你掉到悬崖下面，捡到了一本九阴真经，要么你学习葵花宝典，欲练此功必先…</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>同样，要给这些元素添加如下属性就可以触发BFC。</p>
+<p>float属性不为none</p>
+<p>position为absolute或fixed</p>
+<p>display为inline-block, table-cell, table-caption, flex, inline-flex</p>
+<p>overflow不为visible。</p>
+<p>BFC元素所具有的特性</p>
+<p>BFC布局规则特性：</p>
+<p>在BFC中，盒子从顶端开始垂直地一个接一个地排列</p>
+<p>盒子垂直方向的距离由margin决定。属于同一个BFC的两个相邻盒子的margin会发生重叠</p>
+<p>在BFC中，每一个盒子的左外边缘(margin-left)会触碰到容器的左边缘(border-left)(对于从右到左的格式来说，则触碰到右边缘)。</p>
+<p>BFC的区域不会与浮动盒子产生交集，而是紧贴浮动边缘。</p>
+<p>计算BFC的高度时，自然也会检测浮动或者定位的盒子高度</p>
+<p>它是一个独立的渲染区域，只有Block-level box参与， 它规定了内部的Block-level Box如何布局，并且与这个区域外部毫不相干。</p>
+<p>白话文： 孩子在家里愿意怎么折腾都行，但是出了家门口，你就的乖乖的，不能影响外面的任何人。</p>
+<p>复制代码</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>BFC的主要用途</p>
+<p>(1) 清除元素内部浮动</p>
+<p>只要把父元素设为BFC就可以清理子元素的浮动了，最常见的用法就是在父元素上设置overflow: hidden样式</p>
+<p>主要用到</p>
+<p>计算BFC的高度时，自然也会检测浮动或者定位的盒子高度。</p>
+<p>复制代码</p>
+<p>(2) 解决外边距合并(塌陷)问题</p>
+<p>主要用到</p>
+<p>盒子垂直方向的距离由margin决定。属于同一个BFC的两个相邻盒子的margin会发生重叠</p>
+<p>复制代码</p>
+<p>属于同一个sBFC的两个相邻盒子的margin会发生重叠，那么我们创建不属于同一个BFC，就不会发生margin重叠了。</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>(3) 制作右侧自适应的盒子问题</p>
+<p>主要用到</p>
+<p>普通流体元素BFC后，为了和浮动元素不产生任何交集，顺着浮动边缘形成自己的封闭上下文</p>
+<p>复制代码</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>BFC 总结</p>
+<p>BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。包括浮动，和外边距合并等等，因此，有了这个特性，我们布局的时候就不会出现意外情况了。</p>
+<p>IFC相关</p>
+<p>IFC(inline Formatting Context)叫做“行级格式化上下”相对BFC比较简单且问的也不是很多，这里大该做个了解</p>
+<p>布局规则如下：</p>
+<p>内部的盒子会在水平方向，一个个地放置(默认就是IFC);</p>
+<p>IFC的高度，由里面最高盒子的高度决定(里面的内容会撑开父盒子);</p>
+<p>当一行不够放置的时候会自动切换到下一行;</p>
+<p>哪些属性开启了性能加速</p>
+<p>何为硬件加速：就是将浏览器的渲染过程交给GPU(Graphics Processing Unit)处理，而不是使用自带的比较慢的渲染器。这样就可以使得animation与transition更加顺畅</p>
+<p>我们可以在浏览器中用CSS开启硬件加速，使GPU发挥功能，从而提升性能</p>
+<p>所谓GPU，就是图形处理器的缩写，相当于PC中的显卡。手机中的GPU也是为了对图形、图像处理而存在的，所谓强制渲染，就是hwa(hardware acceleration硬件加载)的一种，其存在的意义就是为了分担cpu的负担，其原理是通过GPU对软件图形的处理来减轻CPU的负担。从而使应用软件能够以更快的速度被处理，以达到提速的目的。</p>
+<p>硬件加速的原理</p>
+<p>浏览器接收到页面文档后，会将文档中的标记语言解析为DOM树。DOM树和CSS结合后形成浏览器构建页面的渲染树。渲染树中包含大量的渲染元素，每个渲染元素会被分到一个图层中，每个图层又会被加载到GPU形成渲染纹理，而图层在GPU中transform是不会触发repaint的，最终这些使用transform的图层都会由独立的合成器进程进行处理, CSS transform会创建了一个新的复合图层，可以被GPU直接用来执行transform操作。</p>
+<p>浏览器什么时候会创建一个独立的复合图层呢?事实上一般是在以下几种情况下：</p>
+<p>3D或者CSS transform</p>
+<p>和标签</p>
+<p>css filters(滤镜效果)</p>
+<p>元素覆盖时，比如使用了z-index属性</p>
+<p>为什么硬件加速会使页面流畅</p>
+<p>因为transform属性不会触发浏览器的repaint(重绘)，而绝对定位absolute中的left和top则会一直触发repaint(重绘)。</p>
+<p>为什么transform没有触发repaint呢?</p>
+<p>简而言之，transform动画由GPU控制，支持硬件加载，并不需要软件方面的渲染。并不是所有的CSS属性都能触发GPU的硬件加载，事实上只有少数的属性可以，比如transform、opacity、filter</p>
+<p>如何用CSS开启硬件加速</p>
+<p>CSS animation、transform以及transition不会自动开启GPU加速，而是由浏览器的缓慢的软件渲染引擎来执行，那我们怎样才可以切换到GPU模式呢，很多浏览器提供了某些触发的CSS规则。</p>
+<p>当浏览器检测到页面中某个DOM元素应用了某些CSS规则时就会开启，最显著的特征的元素是3D变化。</p>
+<p>.cube{<br>translate3d(250px,250px,250px);</p>
+<p>rotate3d(250px,250px,250px,-120deg)</p>
+<p>scale3d(0.5,0.5,0.5);</p>
+<p>}</p>
+<p>复制代码</p>
+<p>可能在一些情况下，我们并不需要对元素应用3D变幻的效果，那怎么办呢?这时候我们可以使用“欺骗”浏览器来开启硬件加速。虽然我们可能不想对元素应用3D变幻，可我们一样可以开启3D引擎。例如我们可以用transform:translateZ(0);来开启硬件加速</p>
+<p>.cube{<br>transform: translateZ(0);</p>
+<p>}</p>
+<p>复制代码</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/05/8.3.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BCSS/" data-id="ckno8ff67004dswwdchh0be3x" data-title="网页前端之CSS" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/05/8.3.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BCSS/" data-id="ckpdvjpq5005nnswdg2bwfy9c" data-title="网页前端之CSS" class="article-share-link">分享</a>
       
       
       
@@ -394,7 +964,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%84%E8%8C%83/" rel="tag">规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">MySQL基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Portainer-io/" rel="tag">Portainer.io</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/" rel="tag">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/" rel="tag">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springfox/" rel="tag">springfox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swagger/" rel="tag">swagger</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6/" rel="tag">书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E8%97%8F/" rel="tag">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" rel="tag">编程规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" rel="tag">设计规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" rel="tag">软件说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag">面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
     </div>
   </div>
 
@@ -404,7 +974,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%A7%84%E8%8C%83/" style="font-size: 10px;">规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">MySQL基础概念</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Portainer-io/" style="font-size: 10px;">Portainer.io</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/WEB/" style="font-size: 10px;">WEB</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springfox/" style="font-size: 10px;">springfox</a> <a href="/tags/swagger/" style="font-size: 10px;">swagger</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%B9%A6/" style="font-size: 10px;">书</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%94%B6%E8%97%8F/" style="font-size: 10px;">收藏</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" style="font-size: 10px;">设计规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">软件说明</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">面向对象</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
     </div>
   </div>
 
@@ -413,7 +983,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
     </div>
   </div>
 
@@ -426,23 +996,23 @@
       <ul>
         
           <li>
-            <a href="/2021/04/19/19.4.SVN/">SVN</a>
+            <a href="/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/">推荐研读书籍</a>
           </li>
         
           <li>
-            <a href="/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/">WEB之上传和下载</a>
+            <a href="/2021/05/17/mqtt%E5%BC%80%E5%8F%91/">mqtt开发</a>
           </li>
         
           <li>
-            <a href="/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/">WEB之listener和filter</a>
+            <a href="/2021/04/30/16.2.Docker%E4%B9%8BPortainer-io/">Docker之Portainer.io</a>
           </li>
         
           <li>
-            <a href="/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/">WEB之cookie和session</a>
+            <a href="/2021/04/23/5.4.MySQL%E9%9D%A2%E8%AF%95/">MySQL面试</a>
           </li>
         
           <li>
-            <a href="/2021/04/19/9.6.WEB%E4%B9%8Bajax/">WEB之ajax</a>
+            <a href="/2021/04/22/12.5.Springfox/">Springfox</a>
           </li>
         
       </ul>

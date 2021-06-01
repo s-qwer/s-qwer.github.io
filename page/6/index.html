@@ -77,6 +77,1034 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-4.11.java类型转换" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/16/4.11.java%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" class="article-date">
+  <time class="dt-published" datetime="2021-04-16T07:17:42.000Z" itemprop="datePublished">2021-04-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/16/4.11.java%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">java类型转换</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>类型列举</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td>byte</td>
+<td></td>
+</tr>
+<tr>
+<td>short</td>
+<td></td>
+</tr>
+<tr>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td>long</td>
+<td></td>
+</tr>
+<tr>
+<td>float</td>
+<td></td>
+</tr>
+<tr>
+<td>double</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>xml</td>
+<td></td>
+</tr>
+<tr>
+<td>json</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>bigDecimal</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p> Map 与实体类相互转换：</p>
+<p>1.引入fastjson依赖包</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.54<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>2.在类上引入包:<code>import com.alibaba.fastjson.JSON;</code></p>
+<p>3.进行类型转换：<code>JSON.parseObject(JSON.toJSONString(源数据), 转换后数据类型.class);</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/16/4.11.java%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" data-id="ckpdvjpop001inswd59qvgcnm" data-title="java类型转换" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-4.10.java扩展类" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/16/4.10.java%E6%89%A9%E5%B1%95%E7%B1%BB/" class="article-date">
+  <time class="dt-published" datetime="2021-04-16T07:17:29.000Z" itemprop="datePublished">2021-04-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/16/4.10.java%E6%89%A9%E5%B1%95%E7%B1%BB/">java扩展类</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/16/4.10.java%E6%89%A9%E5%B1%95%E7%B1%BB/" data-id="ckpdvjpoq001jnswd4hps91oo" data-title="java扩展类" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-19.1.git" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/16/19.1.git/" class="article-date">
+  <time class="dt-published" datetime="2021-04-16T04:46:21.000Z" itemprop="datePublished">2021-04-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/16/19.1.git/">git</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>git是目前世界上最先进的分布式版本控制系统。<br>Linus在1991年创建了开源的Linux,从此，Linux系统不断发展，已经成为最大的服务器系统软件了。Linus虽然创建了Linux,但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？事实是，<strong>在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus,然后由Linus本人通过手工方式合并代码！你也许会想，为什么Linus不把Linux代码放到版本控制系统里呢？不是有CVS、SVN这些免费的版本控制系统吗？因为Linus坚定地反对CVS和SVN,这些集中式的版本控制系统不但速度慢，而且必须联网才能使用。有一些商用的版本控制系统，虽然比CVS、SVN好用，但那是付费的，和Linux的开源精神不符。不过，到了2002年，Linux系统已经发展了十年了，代码库之大让Linus很难继续通过手工方式管理了，社区的弟兄们也对这种方式表达了强烈不满，于是Linus选择了一个商业的版本控制系统BitKeeper,BitKeeper的东家BitMover公司出于人道主义精神，授权Linux社区免费使用这个版本控制系统。</strong>安定团结的大好局面在2005年就被打破了，原因是Linux社区牛人聚集，不免沾染了一些梁山好汉的江湖习气。开发Samba的Andrew试图破解BitKeeper的协议（这么干的其实也不只他一个）,被BitMover公司发现了（监控工作做得不错！),于是BitMover公司怒了，要收回Linux社区的免费使用权。Linus可以向BitMover公司道个歉，保证以后会严格管教弟兄们，嗯，这是不可能的。实际情况是这样的：<br>Linus花了两周时间自己用C写了一个分布式版本控制系统，这就是Git!一个月之内，Linux系统的源码已经由Git管理了！牛是怎么定义的呢？大家可以体会一下。Git迅速成为最流行的分布式版本控制系统，尤其是2008年，GitHub网站上线了，它为开源项目免费提供Git存储，无数开源项目开始迁移至GitHub,包括jQuery,PHP,Ruby等等。历史就是这么偶然，如果不是当年BitMover公司威胁Linux社区，可能现在我们就没有免费而超级好用的Git了</p>
+<h1 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h1><p>版本控制：可以解决多人同时开发的代码问题，也可以解决找回历史代码的问题。</p>
+<p>分布式：Git是分布式版本控制系统，同一个Git仓库，可以分布到不同的机器上。首先找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器“仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交。可以自已搭建这台服务器，也可以使用GitHub网站。</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>傻瓜式安装</p>
+<h1 id="git命令"><a href="#git命令" class="headerlink" title="git命令"></a>git命令</h1><h2 id="在Windows的cmd-中使用linux的命令"><a href="#在Windows的cmd-中使用linux的命令" class="headerlink" title="在Windows的cmd 中使用linux的命令"></a>在Windows的cmd 中使用linux的命令</h2><p>cmd的命令功能肯定没有linux的命令功能好用，这点毋庸置疑。现在装好了Git，就可以在Windows的cmd中使用linux命令了。<br>关键词：环境变量 Git命令<br>怎么玩？如下2步操作：<br>假如你按照上述步骤将Git装在C盘，那么做如下操作：<br>操作1：找Git命令的【.exe文件】。</p>
+<p>操作2：添加到环境变量，就可以在cmd里使用linux命令了。</p>
+<p>最终效果：</p>
+<p>PyCharm也可以使用linux命令。【环境变量–全局—使用】</p>
+<p>备注：你可能需要关闭之前打开的cmd窗口/PyCharm窗口，重新打开新的cmd窗口//PyCharm窗口，使用命令才可能生效。<br>【效率会提高一点点】</p>
+<h2 id="创建一个版本库"><a href="#创建一个版本库" class="headerlink" title="创建一个版本库"></a>创建一个版本库</h2><p>(1)新建一个目录git_test,在git_test目录下创建一个版本库，命令如下：</p>
+<p>接着初始化仓库</p>
+<p>说明：可以看到在git_test目录下创建了一个.git隐藏目录，这就是版本库目录。</p>
+<p>4.版本的创建与回退<br>4.1 使用<br>(1)在git_test目录下创建一个文件code.txt,编辑内容如下：</p>
+<p>(2)使用如下两条命令可以创建一个版本：<br>git add code.txt<br>git commit -m “版本1”</p>
+<p>(3)使用如下命令可以查看版本记录：<br>git log</p>
+<p>(4)继续编辑code.txt,在里面增加一行。</p>
+<p>(5)使用如下命令再创建一个版本并查看版本记录：</p>
+<p>(6)现在若想回到某一个版本，可以使用如下命令：</p>
+<p>其中HEAD表示当前最新版本【请记死】，HEAD^表示当前版本的前一个版本，HEAD^^表示当前版本的前前个版本，也可以使用HEAD<del>1表示当前版本的前一个版本，HEAD</del>100表示当前版本的前100版本。</p>
+<p>因为版本1的内容是1行：<br>this is the first line</p>
+<p>因为版本2的内容是2行：<br>this is the first line<br>this is the second line</p>
+<p>因为<br>$ git reset –hard HEAD^ HEAD is now at 51d36c7 版本1<br>使指针HEAD指向（倒退）到版本1，<br>因此打印的内容就是版本1的内容，即this is the first line</p>
+<p>(7)假如我们现在又想回到版本2,这个时候怎么办？可以使用如下命令：<br>git reset –hard 版本号</p>
+<p>（8）在终端执行如下命令：</p>
+<p>版本2又回来了，内容也是原来的内容。</p>
+<p>接着玩</p>
+<p>退出终端，再重进：</p>
+<p>这个重进终端的操作让我们看不到版本2的版本号，要回到版本2怎么办？<br>命令：git reflog来查看操作记录。</p>
+<p>错误示例：<br>原因是按照当前版本1倒退的话，怎么也不会前进到版本2吧？逻辑错误。</p>
+<p>正确实例：<br>要用到版本号。</p>
+<p>查看版本2的内容：</p>
+<p>不理解版本1，版本2有啥区别？<br>这个东西像游戏更新一样，版本2是在版本1的基础上添加新功能的，版本1内容不发生改变。例如王者荣耀版本更新，界面总会变化，但是英雄的属性（技能，名字）一般不会改变。</p>
+<p>4.2 工作区和缓存区<br>4.2.1 工作区（WorkingDirectory)<br>工作区（WorkingDirectory) 电脑中的目录，比如我们的git_test,就是一个工作区。</p>
+<p>4.2.2 版本库（Repository)<br>工作区有一个隐藏目录.git,这个不是工作区，而是git的版本库。git的版本库里存了很多东西，其中最重要的就是称为stage(或者叫index)的<br>暂存区，<br>还有git为我们自动创建的第一个分支master,以及指向master的一个指针叫HEAD。</p>
+<p>因为我们创建git版本库时，git自动为我们创建了唯一一个master分 支，所以，现在，git commit就是往master分支上提交更改。<br>你可以简单理解为，需要提交的文件修改通通放到暂存区【计算机的缓存区】，然后，一次性提交暂存区的所有修改。</p>
+<p>前面讲了我们把文件往版本库里添加的时候，是分两步执行的：<br>第一步是用git add把文件添加进去，实际上就是把文件修改添加到暂存区<br>第二步是用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支。</p>
+<p>(1)下面在git test目录下再创建一个文件code2.txt,然后编辑内容如下：</p>
+<p>(2)然后编辑code.txt,操作如下：</p>
+<p>注意的是创建文件和编辑文件都是在工作区里完成。<br>（3）使用如下命令查看当前工作树的状态：<br>git status</p>
+<p>翻译一下：</p>
+<p>上面提示我们code.txt被修改，而code2.txt没有被跟踪。</p>
+<p>(4)我们使用如下命令把code.txt和code2.txt加入到暂存区，然后再执行git status命令，结果如下：</p>
+<p>注意：所有的 git add 命令是把所有提交的修改存放到暂存区。</p>
+<p>(5)然后，执行git commit就可以一次性把暂存区的所有修改提交到分支并创建一个版本。</p>
+<p>注意：指针HEAD永远指向当前版本。此时当前版本是版本3。</p>
+<p>(6)一旦提交后，如果你又没有对工作区做任何修改，那么工作区就是“干净”的。执行如下命令可以发现：</p>
+<p>现在我们的版本库变成了酱紫：</p>
+<p>4.3 管理修改<br>git管理的文件的修改，它只会提交暂存区的修改来创建版本。<br>(1)编辑code.txt,并使用git add命令将其添加到暂存区中。</p>
+<p>(2)继续编辑code.txt,并在其中添加一行。</p>
+<p>(3)git commit创建一个版本，并使用git status查看，发现第二次修改code.txt内容之后，并没有将其添加的工作区，所以创建版本的时候并没有被提交。</p>
+<p>注意：对于code.txt里的四行内容，每一个版本对应一行，例如版本1对应first line，以此类推。</p>
+<p>4.4 撤销修改<br>(1)继续上面的操作，提示我们可使用git checkout – &lt;文件&gt;来丢弃工作区的改动。执行如下命令，发现工作区干净了，第二次的改动内容也没了。</p>
+<p>(2)我们继续编辑code.txt,并在其中添加如下内容，并将其添加的暂存区。</p>
+<p>(3)git同样告诉我们，用命令git reset HEAD file可以把暂存区的修改撤销掉，重新放回工作区。</p>
+<p>(4)现在若想丢弃code.txt的修改，执行如下命令即可。</p>
+<p>现在，如果你不但改错了东西，还从暂存区提交到了版本库，则需要进行版本回退。</p>
+<p>小结：<br>场景1:当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用 命令git checkout – file<br>场景2:当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步：<br>第一步用命令git reset HEAD – file,就回到了场景1,<br>第二步按场景1操作。<br>场景3:已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节。</p>
+<p>4.5 对比文件的不同<br>对比工作区和某个版本中文件的不同：</p>
+<p>(1)继续编辑文件code.txt,在其中添加一行内容。</p>
+<p>(2)现在要对比工作区中code.txt和HEAD版本中code.txt的不同。使用如下命令：</p>
+<p>(3)使用如下命令丢弃工作区的改动。</p>
+<p>对比两个版本间文件的不同：<br>(1)现在要对比HEAD和HEAD ^版本中code.txt的不同，使用如下命令：</p>
+<p>反过来</p>
+<p>4.6 删除文件<br>(1)我们把目录中的code2.txt删除。</p>
+<p>这个时候，git知道删除了文件，因此，工作区和版本库就不一致了，git status命令会立刻提示哪些文件被删除了。</p>
+<p>(2)现在你有两个选择，一种情况是确实要从版本库中删除该文件，那就用命令 gitrm删掉【永久删除，无法撤消】，并且 git commit:</p>
+<p>另一种情况是删错了，可以直接使用git checkout – code2.txt,这样文件code2.txt又回来了。<br>注意：两种情况有区别：<br>当执行第一种情况时【永久删除，无法撤消】，再执行第二种情况，会报错：</p>
+<p>加长版：</p>
+<p>简短版：</p>
+<p>小结：<br>命令rm 删除是永久删除，要恢复数据的话可以恢复/扫描硬盘；<br>命令git rm用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容。</p>
+<ol start="5">
+<li>分支管理</li>
+<li>1概念<br>分支就是科幻电影里面的平行宇宙，当你正在电脑前努力学习Git的时候，另一个你正在另一个平行宇宙里努力学习SVN。<br>如果两个平行宇宙互不干扰，那对现在的你也没啥影响。不过，在某个时间点，两个平行宇宙合并了，结果，你既学会了git又学会了SVN!</li>
+</ol>
+<p>分支在实际中有什么用呢？<br>假设你准备开发一个新功能，但是需要两周才能完成，第一周你写了50%的代码，如果立刻提交，由于代码还没写完，不完整的代码库会导致别人不能干活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。</p>
+<p>现在有了分支，就不用怕了。你创建了一个属于你自己的分支，别人看不到，还继续在原来的分支上正常工作，而你在自己的分支上干活，想提交就提交，直到开发完毕后，再一次性合并到原来的分支上，这样，既安全，又不影响别人工作。</p>
+<p>5.2 创建与合并分支<br>git把我们之前每次提交的版本串成一条时间线，这条时间线就是一个分支。截止到目前只有一条时间线，在git里，这个分支叫主分支，即master分支。HEAD严格来说不是指向提交，而是指向master,master才是指向提交的，所以，HEAD指向的就是当前分支。</p>
+<p>(1)一开始的时候，master分支是一条线，git用master指向最新的提交，再用HEAD指向master,就能确定当前分支，以及当前分支的提交点：</p>
+<p>每次提交，master分支都会向前移动一步，这样，随着你不断提交，master分支的线也越来越长。<br>(2)当我们创建新的分支，例如dev时，git新建了一个指针叫dev,指向master相同的提交，再把HEAD指向dev,就表示当前分支在dev上：</p>
+<p>git创建一个分支很快，因为除了增加一个dev指针，改变HEAD的指向，工作区的文件都没有任何变化。</p>
+<p>(3)不过，从现在开始，对工作区的修改和提交就是针对dev分支了，比如新提交一次后，dev指针往前移动一步，而master指针不变：</p>
+<p>(4)假如我们在dev上的工作完成了，就可以把dev合并到master上。git怎么合并呢？最简单的方法，就是直接把master指向dev的当前提交，就完成了合并：</p>
+<p>git合并分支也很快，就改改指针，工作区内容也不变。<br>（5）合并完分支后，甚至可以删除dev分支。删除dev分支就是把dev指针给删掉，删掉后，我们就剩下了一条master分支：</p>
+<p>(1)执行如下命令可以查看当前有几个分支并且看到在哪个分支下工作。</p>
+<p>(2)下面创建一个分支dev并切换到其上进行工作。</p>
+<p>(3)下面我们修改code.txt内容，在里面添加一行，并进行提交。</p>
+<p>(4)dev分支的工作完成，我们就可以切换回master分支：</p>
+<p>查看code.txt,发现添加的内容没有了。因为那个提交是在dev分支上，而master分支此刻的提交点并没有变。【这里需要细细品味一下】</p>
+<p>(5)现在，我们把dev分支的工作成果合并到master分支上：<br>git merge命令用于合并指定分支到当前分支。合并后，再查看code.txt的内容，就可以看到，和dev分支的最新提交是完全一样的。</p>
+<p>注意到上面的rast-forward信息，Git告诉我们，这次合并是“快进模式“，也就是直接把master指向dev的当前提交，所以合并速度非常快。</p>
+<p>(6)合并完成后，就可以放心地删除dev分支了，删除后，查看branch,就只剩下master分支了。</p>
+<p>小结：<br>查看分支：git branch<br>创建分支：git branch <name><br>切换分支：git checkout <name><br>创建+切换分支：git checkout -b <name><br>合并某分支到当前分支：git merge <name><br>删除分支：git branch -d <name></p>
+<p>5.3 解决冲突<br>合并分支往往也不是一帆风顺的。<br>(1)再创建一个新分支dev。</p>
+<p>(2)修改code.txt内容，并进行提交。</p>
+<p>(3)切换回master分支。</p>
+<p>(4)在master的code.txt添加一行内容并进行提交。</p>
+<p>这种情况下，git无法执行”快速合并”，只能试图把各自的修改合并起来，但这种合并就可能会有冲突。</p>
+<p>(5)执行如下命令尝试将dev分支合并到master分支上来。</p>
+<p>冲突原因：<br>现在，master分支和dev分支各自都分别有新的提交，并且编辑了同一个文件，变成了这样：</p>
+<p>git告诉我们，code.txt文件存在冲突，必须手动解决冲突后再提交。</p>
+<p>最重要的一步：</p>
+<p>(6)git status也可以告诉我们冲突的文件：</p>
+<p>(7)查看code.txt的内容。</p>
+<p>(8)git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;,========,&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记不同分支的内容，我们修改如下后保存：</p>
+<p>(9)再提交。</p>
+<p>(10)现在，master分支和dev分支变成了下图所示：</p>
+<p>(11)用带参数的git log也可以看到分支的合并情况：</p>
+<p>(12)最后工作完成，可以删除dev分支：</p>
+<p>5.4 分支管理策略<br>通常，合并分支时，如果可能，git会用fast forward模式，但是有些快速合并不能成功而且合并时没有冲突，这个时候git会帮我们在合并之后做一次新的提交，但这种模式下，删除分支后，会丢掉分支信息。【弹窗说明信息】</p>
+<p>(1)创建切换到dev分支下。</p>
+<p>(2)新建一个文件code3.txt,编辑内容如下，并提交一个commit。</p>
+<p>(3)切换回master分支，编辑code.txt并进行一个提交。</p>
+<p>(4)合并dev分支的内容到master分支。</p>
+<p>(5)出现如下提示时，这是因为这次不能进行快速合并，所以git提示输入合并说明信息，输入之后合并内容之后git会自动创建一次新的提交。</p>
+<p>按 :x保存并退出。</p>
+<p>(6)使用分支命令查看分支信息。</p>
+<p>(7)删除dev分支。</p>
+<p>如果要强制禁用fast forward模式，git就会在merge时生成一个新的commit,这样，从分支历史上就可以看出分支信息。<br>(1)创建并切换到dev分支。</p>
+<p>(2)修改code.txt内容，并提交一个commit。</p>
+<p>(3)切换回master分支。</p>
+<p>（4）准备合并dev分支，请注意–no-ff参数，表示禁用Fast forward:</p>
+<p>因为本次合并要创建一个新的commit,所以加上-m参数，把commit描述写进去。</p>
+<p>5.5 Bug分支<br>软件开发中，bug就像家常便饭一样，有了bug就需要修复，在git中，由于分支是如此的强大，所以，<br>每个bug都可以通过一个新的临时分支来修复，修复后，合并分支，然后将临时分支删除。</p>
+<p>(1)当你接到一个修复一个代号001的bug的任务时，很自然地，你想创建一个分支bug-001来修复它，但是，等等，当前正在dev上进行的工作还没有提交：<br>建议先敲clear清屏。</p>
+<p>并不是你不想提交，而是工作只进行到一半，还没法提交，预计完成还需1天时间。但是，必须在两个小时内修复该bug,怎么办？</p>
+<p>(2)git还提供了一个stash功能，可以把当前工作现场“储藏“起来，等以后恢复现场后继续工作：【工作中可能会用到，在git pull之前先用这条命令。放入缓存是git stash，相对应的git stash pop从缓存中释放出来】</p>
+<p>更多请参考：传送门<br>(3)首先确定要在哪个分支上修复bug,假定需要在master分支上修复，就从master创建临时分支：</p>
+<p>(4)现在修复bug,这里假设把code.txt里的第9行删掉，然后提交。</p>
+<p>(5)修复完成后，切换到master分支，并完成合并，最后删除bug-001分支。</p>
+<p>(6)现在bug-001修复完成，是时候接着回到dev分支干活了！</p>
+<p>(7)工作区是干净的，刚才的工作现场存到哪去了？用git stash list命令看看：【帮助我们列出保存的工作现场】</p>
+<p>工作现场还在，git把stash内容存在某个地方了，需要恢复一下：</p>
+<p>小结：<br>修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；<br>当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug,修复后，再git stash pop,恢复工作现场。</p>
+<p>6.使用github<br>6.1 创建仓库<br>(1)注册github账户</p>
+<p>登录后，点击”New respository”</p>
+<p>(2)在新页面中，输入项目的名称【如2020】，勾选’readme.md’,点击’Create repository’</p>
+<p>这里完成。</p>
+<p>6.2 添加ssh账户<br>(1)点击账户头像后的下拉三角，选择’settings’如果某台机器需要与github上的仓库交互，那么就要把这台机器的ssh公钥添加到这个github账户上。</p>
+<p>(2)在git的命令行中，回到用户的主目录下，编辑文件.gitconfig,修改某台机器的git配置。<br>修改为注册github时的邮箱，填写用户名。</p>
+<p>完美：</p>
+<p>6.3 克隆项目</p>
+<p>接着：</p>
+<p>6.4 上传分支/推送代码<br>(1)项目克隆到本地之后，执行如下命令创建分支：</p>
+<p>(2)创建一个views.py并提交一个版本：</p>
+<p>(3)推送前github上文件列表如下图:</p>
+<p>(4)推送前github上分支列表如下图:</p>
+<p>(5)推送分支，就是把该分支上的所有本地提交推送到远程库，推送时要指定本地分支，这样，git就会把该分支推送到远程库对应的远程分支上：<br>git push origin 分支名称<br>例：<br>git push origin smart</p>
+<p>（6）再次查看github分支：<br>接下来操作重新加载页面：</p>
+<p>点击smart,再点击views.py,如图所示：</p>
+<p>6.5 将本地分支跟踪服务器分支<br> git branch –set-upstream-to=origin/远程分支名称 本地分支名称<br>1<br>例：</p>
+<p>  git branch –set-upstream-to=origin/smart smart<br>1</p>
+<p>我的社交网址：<a target="_blank" rel="noopener" href="https://github.com/Keegan-y">https://github.com/Keegan-y</a></p>
+<p>6.6 从远程分支上拉取代码<br>git pull orgin 分支名称<br>例：<br>git pull orgin smart<br>使用上述命令会把远程分支smart上的代码下载并合并到本地所在分支。</p>
+<p>7.工作使用git<br>不墨迹直接上代码：<br>loading…<br>项目经理：<br>(1)项目经理搭建项目的框架。<br>(2)搭建完项目框架之后，项目经理把项目框架代码放到服务器。</p>
+<p>普通员工：<br>(1)在自己的电脑上，生成ssh公钥，然后把公钥给项目经理，项目经理把它添加的服务器上面。<br>(2)项目经理会给每个组员的项目代码的地址，组员把代码下载到自己的电脑上。<br>(3)创建本地的分支dev,在dev分支中进行每天的开发。<br>(4)每一个员工开发完自己的代码之后，都需要将代码发布远程的dev分支上。</p>
+<p>项目里一般会有两个分支，如：<br>Master:用于保存发布的项目代码。<br>Dev:用于保存开发过程中的代码。所有的组员开发完自己的代码提交到该分支上。<br>补充小技巧：<br>首先，整体认知一下工作中git常用的就这么几个命令：<br>步骤1.创建项目目录，如git_test【强烈建议返回到2.安装配置一节，学一学在windows中用mkdir git_test。工作中点来点去，文件夹一多就不爽了，学会在windows上用linux命令，工作效率谁用谁知道<del>】<br>步骤2.git init【如果你考皮github上别人的代码，必须将别人的.git文件删掉。步骤：进入项目目录，如git_test，cd git_test，ls -al，rm -rf .git】【工作中linux必会的，赶快回到2.安装配置一节，学一学在windows使用linux命令，这样就不用装linux环境了，简单胜于复杂</del>】<br>步骤3.git add .<br>步骤4.git commit -m “整体提交”<br>步骤5.git remote add origin 【你的github/gitlab仓库地址】<br>步骤6.git checkout -b dev<br>步骤7.git push origin dev<br>当然不止于这7步，这些步骤会在你的实践中不断升华，壮大<del>。<br>先把git玩起来再说，否则很容易从入门到放弃。先玩起来</del><br>步骤操作如图所示：</p>
+<p>可以看到，代码推到仓库了。<br>掌握了上面基本命令，记住使用步骤，强烈建议建议建议你在PyCharm/Goland上操作git，能可视化+带提示帮你提交代码，解决冲突【你在git bash里搞不定冲突，在PyCharm/Goland上操作一看就知道怎么做了，人家可视化+提示，你只需要手指点一点即可，很简单，节约你的时间】，工具是个好东西，前面的步骤都是为了这样一句话铺垫：【PyCharm/Goland上玩git】<br>【不会的可以在评论区留言，我看到后会继续在后文补充。既然是git使用教程，那就是成体系的，知识技能是结构化安放的，方便查，方便增，是不？】</p>
+<p>到此，git使用教程就写完了，既是自己的实践记录【记不住哈哈】，也能帮助更多的道友管理控制代码，如果内容对读者有用，请关注我，为思考点赞！</p>
+<p>最后奉上导图笔记：</p>
+<p>8.思维导图笔记</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/16/19.1.git/" data-id="ckpdvjppl0041nswddos1d5lz" data-title="git" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-5.5.MySQL工具之Navicat" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/15/5.5.MySQL%E5%B7%A5%E5%85%B7%E4%B9%8BNavicat/" class="article-date">
+  <time class="dt-published" datetime="2021-04-15T05:39:28.000Z" itemprop="datePublished">2021-04-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/15/5.5.MySQL%E5%B7%A5%E5%85%B7%E4%B9%8BNavicat/">MySQL工具之Navicat</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><strong>安装Navicat</strong></p>
+<p>因为工作原因，需要经常连接不同的数据库，这里我安装的是Navicat Premium版本，在公众号后台回复 <strong>Navicat</strong> 即可获取。</p>
+<p>安装过程很简单，只要你能看懂中文，不停的下一步，等待安装完成即可。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2xKluMyr9zsylJ1bbEy5kAicNwLkqjO2V3j6G3XFBLhiaozUuKYzLCVkQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>连接不同数据库</strong></p>
+<p>这里分别介绍Oracle，MySQL，SQL Server这三种数据库的连接方法</p>
+<p><strong>连接Oracle</strong></p>
+<p>在连接Oracle之前我们需要先配置一下OCI文件，具体如下：</p>
+<p>点开主菜单里的【工具】——【选项…】,在弹出的对话框中找的OCI选项</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2ayiavVhGWNUtCxzSv7nRAL32mTpAlsHmG6XrhvA5NfV7JIUia6FnBDWA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>这里就要把你安装的oracle的安装目录下的bin文件夹里面的oci.dll文件导入</p>
+<p>E:\software\oracle\Oracle_win64\product\11.2.0\dbhome_1\BIN\oci.dll</p>
+<p>以上是我的安装目录下的文件，大家根据自己的安装目录不同来导进来</p>
+<p>导进来之后就重启Navicat，重启后会自动生效。</p>
+<p>重启Navicat后，点击菜单栏的连接，选择Oracle，如下图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2v4ibO1bTE1sICWwbjoGlYjlPrbKGNmCazdqNG3U4SJDY4lNvydb8vGA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>在弹出的对话框中做如下配置，其中连接名可以随意起，然后输入你要连接的主机名或IP地址，最后输入账号密码。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO26DXvmnuAFhema70Vibkj2nhLc13TEpb2SwxMibrVuY9ECoP4BudbRf0A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>如果你是使用DBA角色登录的，还需要点开高级选项卡，将角色选为DBA</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO225C85ic0Bd8oYibzpBoHLKtmog0ZBdlib7Pd8grxHDIia7aNwEVdfw46uA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>配置完了以后，我们可以点击连接测试</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2pBzAsdJSbnWUI9La2k8icmAKIbnMWpOMicy9FsgFO1CdKCiaC2p3OqUOA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片">这样Oracle的连接就配置好了。</p>
+<p><strong>连接MySQL和SQL Server</strong></p>
+<p>MySQL和SQL Server的连接相对比较简单，只需要输入主机名或IP地址，账号密码即可，具体如下图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2HxIZHHUhGKML0TC1mgA7djpa5KZ2cqyJyrW5HUAtr9xIwxAJBWxobg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2UzsMibLp6NUbiaAE5dNa09XeOjh61qyCmUib1uRzpy8p1PnwZd3FMuUxg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>配置好后，点击连接测试，在弹出连接成功窗口就表示我们配置好了。</p>
+<p>数据库连接成功后，下面是各个功能的介绍，我们以SQL Server数据库作为案例来介绍各个功能的使用。</p>
+<p><strong>创建数据库</strong></p>
+<p>右键我们刚新建的数据库连接——选择【新建数据库…】即可开始创建数据库了。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO25lWoNb7icSiaocd6c07JMQRVdvqrXHpnPpmOWMkEXk5lSUPhTxCvE3Fg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>可以根据你的要求来进行配置，配置完以后，还可以在【SQL预览】看到完整的SQL代码：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2f6LfOqSt2tKhHUhxV089tAicnqGw6gQr1ic6JpNzic21UDxVbicm2pul5g/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>数据传输</strong></p>
+<p>数据传输，顾名思义就是将数据从其他地方传输到当前数据库，例如我们将SQL_Road数据库中的数据传输到刚才新建的Test数据库中。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO29JIouv6OTsvv1tVHEARMD95v6JjKVnvJ2Cw07xzqUAOPp9ktxpNueQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>右键刚才创建好的Test数据库，在弹出的选项中选择【数据传输…】，在弹出的窗口中我们配置源数据库为【SQL_Road】,目标数据库配置为【Test】，这样就可以将SQL_Road中的对象传输到Test了，支持传输的对象包括：表，视图，函数和存储过程，具体如下图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2a5ovyOCg7icHWslZj0ZH0icOZG0GG2zF5McQWlWxXhb0h7IH8ScszhyQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>点击开始即可开始进行数据传输，传输效率还是很快的，即使你的数据量很大，也可以使用该方法进行数据传输，这里使用了不到2秒钟就将整个数据库对象迁移到新的数据库中了。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2gYlkicBOLCHXSicuics171YBiaBM06vu5TsoxFD1v8tMiatk27AFnl8icDBw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>此外如果你想导出整个数据库中的对象到文件，也可以使用该方法，只需要将方式改为文件即可，如下图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2dKibsOAkMktKzv4RcEnGCzF21WvhA8u23aO8mxQoXNGpbLRXkjrrasw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>如果你想自定义导出的内容，可以点击该窗口的【高级】选项进行自定义配置，如下图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2ibkdpgmia7AP9ciadmUt0kIpKZHJWBicQibibicdibEtaZFkHcicEGtjG1OSUCg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>配置完成后，点击开始，就会将你选择的数据库对象以脚本的形式导出到文件中。</p>
+<p>但是数据传输到文件有个不足的地方，就是会将数据记录也会一并导出，而很多时候，我们其实只需要表结构，那么我们可以使用下面的这个功能。</p>
+<p><strong>转储SQL文件</strong></p>
+<p>双击打开数据库后，我们右键架构名dbo，在弹出的选项中选择【转储SQL文件…】，这里还有两个子选项：【结构和数据…】和【仅结构…】，如下图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2klrr7KbWlHjd8oVYVaFhibky2ywFHxDfGbU0SNr80OElzF5bTVOor1g/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>他们的区别就是一个有数据记录，一个没有数据记录，如果你只要数据结构可以只选择【仅结构…】，这样就可以大大节省导出时间了。</p>
+<p><strong>打印模式/数据字典*<em>生成*</em></strong></p>
+<p>做数据库仓库往往面对的不是几张表，往往是成百上千张数据表，该怎么维护对DBA是个非常头疼的事，如果有个数据表结构或数据字典之类的就非常完美了。</p>
+<p>打印模式可以<strong>完美的生成所有表的数据表结构</strong>的。这里我们选择表数量较多的数据库ReportServer。右键dbo后，选择【打印模式…】，如下图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2NIZlTicjuVONVpYrhO0W1IqAeicswxic28stRoicXeJokqNTBNSQ3L0zWQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>可以看到右侧窗口里面出现了所有数据表的表结构，如下图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2TvxbdBAlYHmoILKSDia33M0MIm0IAghtK3LXibzq5icU19hqlFYkESx0w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>足足有10页之多，我们点击左上方的【打印】，将表结构打印成PDF文件，就可以得到一份非常完成的数据字典了，如下图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2aud0pqYSgMzwR3nXRMTNGibYQP3zXkCDrbTEU8UhTKDUhwZ2UDZxrSA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>内容中主键和索引也有仔细的标注出来，其中<strong>P代表主键</strong>，下面的<strong>index表示索引</strong>。</p>
+<p>这个功能绝对是一个神器！</p>
+<p><strong>在模式中查找</strong></p>
+<p>这个功能主要用来查找数据或结果，当你需要从当前数据库中查找数据记录或对象中包含某些字符时，可以使用该功能，具体如下：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO26F4rBdtKPq3pM6kk4v0iboN54ExFSJ6P0A8JrFI9x7Aj1zEICJeYw3Q/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>在弹出的对话框中，我们查找pre的结构，就可以将当前数据库符合要求的的所有对象都查找出来，如下图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2zfWey0meibpxuwyU8ljtT6r0JIvHybx1e5rCDeAHwty4T2PIEKdQ1uw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>逆向模式到模型</strong></p>
+<p>这又是一个神仙技能，谁用谁知道，右键dbo在弹出的选项中选择【逆向模式到模型..】,如下图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2gqmyJ95SwfRD1sZgybhd30aOiaV4LFDDSSKG7icQyHRGbTicMvBSqYjMQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>它可以<strong>将当前数据库中创建的所有表，以E-R图的模型清楚的告诉你每个表之间的关联关系</strong>，包括主外键，表结构，关联关系等，如下图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2uQjNXTMRT6dVMkyT4tsO8Bb1CnibJgJfWDEePaGpVe8sicmkHdib245iaQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>你以为就这？</p>
+<p>还支持<strong>模型转换，模型导出</strong>，说白了就是你可以<strong>将该模型转换成其他数据库的模型</strong>，从SQL Server转换成MySQL，Oracle，Postgresql都可以。点击左上角的三短横，选择【文件】——【模型转换】，如下图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2cyYKRyxc5KAibxWfnU2zWdvUn7wAicn2lxZCBSP8mibaOaiaUbW9TzWn9w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>在弹出的对话框中选择你要转换的类型，比如我们想转换成MySQL 5.6的，如下图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2x6TSHrBrmkymXceib25CkBfqVibGJlYibS0PL6VpSrOBPiacP71D1iciaBHw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>点击确定后，即可将当前的SQL Server模型立马转换成MySQL 5.6。给大家看下对比效果：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2BUAibtGeIM6N5WXroknLPhTjT4k0r9EaZA8QRgCKzsnnUHsfqict08Tw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>SQL Server模型</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2ImacDMUrYmibib6ZwhWa5hSwhtVXIhEUia6z4XxSz6chIVaeTzxmQcicuw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>MySQL模型</p>
+<p>转换成功后可以直接将转换后的模型导出成对应的SQL。</p>
+<p>点击【工具】——【导出SQL…】，如下图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2SmPTTmH3LNPNNlmst71wAL7cpjlJuicBexVXBLh230wCzz2j3PGfvBg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>选择导出位置，点确定即可，导出的SQL文件里面就是MySQL的建库代码了。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2pvSqyJrD6aqeYmPh2lrIt56UXRL4RKyxzukKiaJ8GvaE2JGyjrKZx6A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>能导出肯定就可以打印，同样如果需要将模型文件保存，也可以导出为PDF，PNG，SVG等格式，但是建议打印成PNG图片格式，因为PDF会分页，导致模型不完整。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2v0WVtdIJS4Qnj98H6rZwSic0mpKNvY4ML8OQEb4S5Y1cFk7icCmctdnA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>打印出来的图片如下：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qEuaqnkFyFSumPrJqFyURO2VXiacibexrSpbeY1Y7kANuyIKGGobrsFNTiaolsaEMXRaDt8kXdeoibNLA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>新建表</strong></p>
+<p>这个是比较常见的功能，相比其他管理工具，Navicat将建表过程中所涉及的各种常用功能都包含进去了，包含新字段，索引，主键，外键，唯一键等等与表有关的内容，具体如下图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qFfSo9UHuDNM7DO3hqcG0WgQEuibfiaJMxTYlVaxYzphdW6VfpKYm6uLw3X8dyOIWryib4Aw8OYCicCbg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>针对表的几个常用功能，我们再详细给大家介绍一下</p>
+<p><strong>字段</strong></p>
+<p>字段的功能很多，也是其他功能的前提，意思是你必须先创建了字段才能使用后面的一些功能。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qFfSo9UHuDNM7DO3hqcG0WgNIZBSp4nV53ZvBRxLqcpa9YunxHyn1qtDLf9lmialP9BQsZN1zELt6w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>其中第一排的添加字段，插入字段，删除字段，可以通过字面意思来理解。</p>
+<p>主键：选中某个字段，点击主键即可设置为主键</p>
+<p>标识：勾选后一般用作自增长列来使用</p>
+<p>注释：对字段的备注，通常为中文</p>
+<p>名：字段存在表里的字段名</p>
+<p>类型：字段数据类型</p>
+<p>长度：字段的长度，通常int和datetime可以不设置长度。</p>
+<p>比例：小数位数</p>
+<p>不是Null：该字段是否为空，勾选不为空，不勾选为空。</p>
+<p><strong>索引</strong></p>
+<p>用来创建索引，只需要选定指定的列，就可以在对应的列上创建索引了。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qFfSo9UHuDNM7DO3hqcG0WgZQSnF3fd6xNaee5ibV4VXEQ1u7cibJfo2D0NvfGbcic9C1l056rOP9fcQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>名：索引的名称，通常按命名规范以index或idx开头，当然你也可以自定义。</p>
+<p>字段：选择在哪个字段上创建索引。还可以选择排序规则，默认是升序ASC。</p>
+<p>索引类型：不同的数据库索引类型不同，SQL Server类型一般为聚集索引（Clustered）和非聚集索引（Non-Clustered）</p>
+<p>唯一键：用来限制字段的记录是否可以重复，勾选就是不可重复。</p>
+<p><strong>外键</strong></p>
+<p>用来创建外键约束的功能，目前的数据库设计中，通常不设置外键约束了。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qFfSo9UHuDNM7DO3hqcG0WgYfEockSvWia9MOegfNXLnFeSzJLnO0GgDqBTouNbAAnx2xP7SFVKU9A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>名：外键名称，通常以fk开头</p>
+<p>字段：用来设置外键的字段</p>
+<p>参考表：与之相关联的表</p>
+<p>参考字段：与之相关联表中的字段</p>
+<p>删除时：是否级联删除</p>
+<p>更新时：是否级联更新</p>
+<p><strong>唯一键</strong></p>
+<p>区别于主键，唯一键具有唯一性</p>
+<p>与主键的区别有：</p>
+<p>1.主键不允许空值，唯一索引允许空值</p>
+<p>2.主键只允许一个，唯一索引允许多个</p>
+<p>3.主键产生唯一的聚集索引，唯一索引产生唯一的非聚集索引</p>
+<p><strong>检查</strong></p>
+<p>用来约束数据插入的合法性，对应SQL中的CHECK或DEFAULT</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qFfSo9UHuDNM7DO3hqcG0WgxCROXWLcic26pQfMYHDX8K5Let2XYlibrAYzYtiaMwElzkX17mt1mFrvA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>触发器</strong></p>
+<p>用来创建与表相关的触发器，其中触发器的使用可以查看历史文章：</p>
+<p><a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/s?__biz=MzA3MTg4NjY4Mw==&mid=2457301529&idx=2&sn=b3881753e41e401ac374057bce52e768&chksm=88a5602dbfd2e93bcae925b00130230e7e8f1b957f29ce2f3e7471c4076ebba3bf36ad2b4ab1&scene=21#wechat_redirect">SQL高级知识V2——触发器</a></p>
+<p><strong>选项</strong></p>
+<p>这里主要用来设置自增长的种子值（起始值）和增量</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qFfSo9UHuDNM7DO3hqcG0WgTr5rCyPoOtCZKcLA7ibtWLy8M1o4opjVATrsNBelsORc2SoBQ3elGjA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>SQL预览</strong></p>
+<p>这里可以看到我们刚才对表做的配置所对应的SQL语句</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qFfSo9UHuDNM7DO3hqcG0WgVe1icibSk4HTrcOZKR3hnXwUqL22Ofo1XfLtpfbibYTI0jMdBhUcn5kQQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>查看对象模式</strong></p>
+<p>创建好的表有三种查看方式：列表，详细信息和ER图，如下图</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIovQPPbZyXibIAxiaY94ey9NUBALdy7jiaghl9WczAyTSFrLYB8dbNpJzibA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>列表模式</strong></p>
+<p>只显示表名，是表的默认显示方式</p>
+<p><strong>详细信息模式</strong></p>
+<p>会显示除了表名以为的其他信息，记录数，修改日期和表的注释等</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIo2vc7yZjic33zyty6PylhMMA9icpMGjtGb8croq8uo47TuF9RjtSyd3zQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>ER图模式</strong></p>
+<p>会以ER图的形式显示每个表之间的关联关系，如下图</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIoApicGEtFC7zxyYETTOrtKYs06TTTic2SNpsnEAKp99kTS3UvXYzXqFzg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>导入向导</strong></p>
+<p>用来引导用户导入数据到数据库对应的表</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qFfSo9UHuDNM7DO3hqcG0WgZSuMc6TCjM8JAytt1BYL0RvBNn7k1Lxafshibm5libYAUCzycBfmMc6w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>我们打算将Customers.xlsx里的数据导入到表Customers中，具体操作如下：</p>
+<p>在导入向导中选择要导入的文件类型，Navicat支持多种导入类型，这里我们选择导入Excel文档，然后点击下一步</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIo4kDbmWv2gicpicrUlQtmq33Zua6RkT4sZQXhXr9ibCkPnp6lw50Y29a4g/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>找的需要导入的文件，点击下一步</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIo1oic8nEeeSjQic5fIqLcGETvcWeJAra33SRQ2dNJouJ9ePIpNZJyIVdQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>配置字段名等内容，然后点击下一步</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIofmn6WiaXl270ic5y07kUErIXsYd4jy7a7YmbxyxfxguW716fRKJcnoDQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>选择要导入的目标表，你也可以直接新建一张表，这里我们导入到目标表Orders，然后点击下一步</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIoTQ7UYQWjlr4dC3iaqrVkqWKVPNmptZrjAU6u9ZlrnP1vPLqLUVuJckA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>配置源表和目标表之间的字段对应关系，点击下一步</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIoAo5sT3zWIOWYGCVKeC2DSPW0E0tM6z7GBM2XHwbTjo7HibAgXtzPYsw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>选择一个导入模式，如果是直接添加，可以选择添加模式，如果是要先清空目标表再导入可以选择复制模式，点击下一步</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIoJzoC5vQ9mb05YrSUsAoTR6FRGpgGmrSZIgq2Hke2Q1ZgA7a5xP0alA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>点击开始就可以导入数据了</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIoqhr3jY27uwVkalMIMw3VNtY2ZsZsrMgXQCKoJFDPDH66By1IxYCHnA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>导出向导</strong></p>
+<p>需要将数据库里的数据导出可以使用导出向导，具体如下：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIosDqVIic9Fyw1GIzhhynAp1gj2YfBHUgEE53B03vdPOgDARQUsqBicvBw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>在弹出的对话框中选择导出文件类型，点击下一步</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIo5SsBEomUrzic3fvd4TJr8Ig4sFTGGdHxtjCJMPjXU63pVEbmNUicexzQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>选择需要导出的表，点击下一步</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIocqzcibg1sEPdpbx0f0FqziaiahGak5Iz24y2kWFtzm3BfOcEkalwDCKIg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>选择需要导出的列，默认全部字段，也可以选择指定字段，点击下一步</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIoJuTZ3MzwxnY7PAbyvQypMRE4X4266DicRFzccGgKDibib8bwzHjBJ0VkQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>定义一些附加选项，导出包含标题，遇到导出错误继续等，点击下一步</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIoDqcgLqHnEASje1LdH85fxzASTibKuiaPuItStfxzjXKsydBho1xUpfQg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>点击开始执行导出操作</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIotFkCMS4qmA9ZaU9lQV72kd9yf3xQuXH8tNQYy0Trjc89OaPJVfbODw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>新建查询</strong></p>
+<p>新建查询有两种方式，可以直接右键选择新建查询，也可以点击菜单栏的查询-新建查询，如下图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIoZge8TTPMzoYaMaichOUmddo9OkwHGwIoVHSb7TpiauRtIgCHtnzZcoXw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>查询功能</strong></p>
+<p>查询是我们用的比较频繁的一个功能，在查询窗口里面有许多好用的功能</p>
+<p><strong>智能提醒</strong></p>
+<p>根据我们输入的字符来自动提醒一些关键字，字段名，表名，视图名，函数名等，如下：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIodFO8VeLldjRGdxUUCu7JqaVDcZhpzu3ET8A2urodtyUE674d2P9R8g/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>美化SQL</strong></p>
+<p>当你看到一段代码写的很复杂且都堆在一起，可以使用美化SQL功能，一键帮你把堆在一起的SQL美化得整整齐齐。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIo2ws81EQbUEv6OwTZVUCVv0SkYeQ4ibU7Mia0oUqubE856t8QFTYTZnkg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>美化前</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIop5eiciaJ9kT4iaL8sxibNmWaRI68twNTKSAUsiaF8lmc2N9OkJnhBb5lNGg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>美化后</p>
+<p><strong>其他功能</strong></p>
+<p>此外查询窗口还有很多其他功能，都集中在左上角的三短横上面，如下图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIoZfZE8m5xAlAiaWyiaoaB5ib4FJPHB48teicrvpL1iaZUc3mtIQ4ImHnBpKg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>这里将查询窗口的所有功能都汇集在一起，比如注释，查看执行计划，简化SQL等都在这里可以找到，小伙伴们可以一一尝试一下。</p>
+<p><strong>创建视图</strong></p>
+<p>Navicat提供一套创建视图的模板，主要是针对新手朋友。如下图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIotlErKxibGVngibLqbKfAmZmJgao6RMMOEOf1buYlRthMN4EMV1emOnRg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>这里我们只需要写查询语句即可，在SQL预览里可以看到完整的SQL语句。如下图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIo58Z7WQHwWh2LicjJAsBAAbEUictk2oYmex5u79n1C4SlHzmSsK6JA4MQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>点击预览，可以看到我们刚定义的视图结果，如下图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIoobd6t9vLPcZRnteqc9v8N0jeYhS5gtyCkicTPnh8ymjLHr5sKPjolgg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>创建函数和存储过程</strong></p>
+<p>函数和存储过程是类似的，区别是函数必须要有返回值，而存储过程可有可无。</p>
+<p>他们也有一套模板，选择函数后点击新建函数，弹出如下对话框：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIoJibuYXzHaia6wiaN41LwF9BQoqtteicJj4sDF5lFibicE6vXkYbT6F3ypGww/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>输入函数名或过程名，然后选择你想是想创建函数还是存储过程。然后输入参数名称和类型，也可以不带参数，点击下一步</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIoMVGCWGLLdRfME5vtAb7GP7jiaSZJ4bgwsmcZHVM1Cn1aCaEFVTDF6vg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>函数必须要有返回值，这里需要定义返回值类型，点击下一步或完成。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIoc3Jq9L01h8luBsFpIPcibrqXOs4A6ibXqK5GEHQsibB8cRW5kia1FdO90A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>这里会配置函数的一些附加信息，通常不用配置，直接点击完成即可。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIoTFmlaHv2ZIP9t0icQd6pMjFOAOHTibicYRdNXGTo18gyP0MPzDJueXRBQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>然后我们就可以看到函数的编辑窗口了</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIog39HtbibClCyegtdt1zjN8nIvxbIYcvpeLuaMI6oL7Dw5ic0copYAN2w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>写好函数里的语句后点击运行即可开始测试了。</p>
+<p><strong>备份和还原</strong></p>
+<p>通过Navicat，我们可以很方便的完成备份和还原操作，我们先来备份一个文件。</p>
+<p><strong>备份</strong></p>
+<p>点击菜单栏的SQL Server备份——新建备份，在弹出的窗口中配置备份内容，然后点击生成SQL即可。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIowFVnb9HfcicQHiagCnb3HLzyvpicUpF7Cf9S5qBB7CmfUfFtpckMdcRQg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>在这里我们可以看到备份的代码，然后点备份就会开始备份</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIo2N7mdeSiaMqEKbib8784hD9cYszwMFVrU2k1eqOdWqfF3Qib2UGvkiabhw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>还原</strong></p>
+<p>在备份完成后，我们可以选择还原该备份包</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIoFbj8G9rvic4Pod7YeTzZDFm4hFEh6eibImpO9KF62UYuunZGOlC6qV7g/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>在弹出的对话框中可以配置相关信息</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIoYkYWtRVp2H7l25ib5NPT6nQmdyx0v2eU6Rzmng4jvLFoQYnvWRYDn6w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>点击生成SQL就会看到执行备份的SQL命令，点击还原即可开始执行</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIoOXxlnPcECCGib8L7RGNOMze8FPzDmHiaib7BgGGlXQr0Yd6s0kLiaVzicqQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>历史日志记录</strong></p>
+<p>该功能可以很方便的查看到你在数据库中执行了哪些操作。点击菜单栏中的工具——历史日志，就可以看到我们的操作记录了，如下图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/icbViakEeV5qHqCWBvw7MFea3YE2vSiaxIoNM11YDOPrBnV7ibs8eQwJorWiaTRo1icrlFZu2rIjjjssomNk5dAZlIuQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h2 id="利用Navicat客户端实现定时插入删除数据"><a href="#利用Navicat客户端实现定时插入删除数据" class="headerlink" title="利用Navicat客户端实现定时插入删除数据"></a>利用Navicat客户端实现定时插入删除数据</h2><h3 id="开启MySQL定时"><a href="#开启MySQL定时" class="headerlink" title="开启MySQL定时"></a>开启MySQL定时</h3><p>查询状态</p>
+<p>新建查询&gt;运行：SHOW VARIABLES LIKE ‘event_scheduler’<br>查询看到默认为关闭</p>
+<p><img src="/5.5.MySQL%E5%B7%A5%E5%85%B7%E4%B9%8BNavicat/20190507145245502.png" alt="在这里插入图片描述"></p>
+<p>修改为开启<br>执行：SET GLOBAL event_scheduler = ON<br>开启，再次查询为ON，ok</p>
+<p><img src="/5.5.MySQL%E5%B7%A5%E5%85%B7%E4%B9%8BNavicat/20190507145450634.png" alt="在这里插入图片描述"></p>
+<h3 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h3><p><img src="/5.5.MySQL%E5%B7%A5%E5%85%B7%E4%B9%8BNavicat/20190507150455218.png" alt="在这里插入图片描述"></p>
+<h3 id="创建函数"><a href="#创建函数" class="headerlink" title="创建函数"></a>创建函数</h3><p>打开窗口<br>一次点击 函数&gt;新建函数&gt;完成</p>
+<p><img src="/5.5.MySQL%E5%B7%A5%E5%85%B7%E4%B9%8BNavicat/20190507143906791.png" alt="在这里插入图片描述"></p>
+<p>创建函数<br>在begin和end之间写一条要执行的sql<br>每分钟新增一条数据（定时删除可看最下方ps内容）</p>
+<p><img src="/5.5.MySQL%E5%B7%A5%E5%85%B7%E4%B9%8BNavicat/20190507144555462.png" alt="在这里插入图片描述"></p>
+<p>代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BEGIN</span><br><span class="line">	INSERT INTO hello (text,date) VALUES (&quot;每分钟增加一条&quot;,NOW());</span><br><span class="line">END</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>点保存，填写一个名字，再点击函数可以看到刚才新建的函数</p>
+<p><img src="/5.5.MySQL%E5%B7%A5%E5%85%B7%E4%B9%8BNavicat/20190507144312305.png" alt="在这里插入图片描述"></p>
+<h3 id="创建事件"><a href="#创建事件" class="headerlink" title="创建事件"></a>创建事件</h3><p>一次点击 事件&gt;新建 输入call +刚才函数起的名字，我的是：CALL hello_min_ins</p>
+<p><img src="/5.5.MySQL%E5%B7%A5%E5%85%B7%E4%B9%8BNavicat/20190507144717427.png" alt="在这里插入图片描述"></p>
+<p>点击 计划，设置 时间间隔和开始时间</p>
+<p><img src="/5.5.MySQL%E5%B7%A5%E5%85%B7%E4%B9%8BNavicat/20190507145730541.png" alt="在这里插入图片描述"></p>
+<p>起一个名字保存，点击事件可以看到刚才创建的事件<br>此事件用来定时调用之前创建的函数</p>
+<p><img src="/5.5.MySQL%E5%B7%A5%E5%85%B7%E4%B9%8BNavicat/20190507145816934.png" alt="在这里插入图片描述"></p>
+<p>完成<br>实现了每分钟新增一条数据</p>
+<p><img src="/5.5.MySQL%E5%B7%A5%E5%85%B7%E4%B9%8BNavicat/20190507150518156.png" alt="在这里插入图片描述"></p>
+<p>ps：如果想每分钟删除一条id最小的数据，新建函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BEGIN</span><br><span class="line">	DELETE FROM hello ORDER BY id LIMIT 1;</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+
+
+<p>ps：如果想每天删除七天前的数据，新建函数</p>
+<p>ps：如果想每天删除七天前的数据，新建函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BEGIN</span><br><span class="line">    DELETE FROM hello WHERE date &lt; DATE_SUB(CURDATE(), INTERVAL 7 DAY);</span><br><span class="line">END</span><br></pre></td></tr></table></figure>
+
+
+<p>事件里修改事件EVERY 1 DAY即可</p>
+<p><img src="/5.5.MySQL%E5%B7%A5%E5%85%B7%E4%B9%8BNavicat/20190507151600764.png" alt="在这里插入图片描述"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/15/5.5.MySQL%E5%B7%A5%E5%85%B7%E4%B9%8BNavicat/" data-id="ckpdvjppt004lnswd4uph09t2" data-title="MySQL工具之Navicat" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-21.1.微信开发" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/15/21.1.%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91/" class="article-date">
+  <time class="dt-published" datetime="2021-04-15T05:36:09.000Z" itemprop="datePublished">2021-04-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/15/21.1.%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91/">微信开发</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="微信公众平台开发"><a href="#微信公众平台开发" class="headerlink" title="微信公众平台开发"></a>微信公众平台开发</h1><h2 id="订阅号和服务号和企业号"><a href="#订阅号和服务号和企业号" class="headerlink" title="订阅号和服务号和企业号"></a>订阅号和服务号和企业号</h2><p>订阅号每天一条，收拢至订阅号文件夹，不强制推送；服务号每月一条，消息仍展示在聊天列表，但下发消息将即时提醒用户。</p>
+<p>1、订阅号：主要偏于为用户传达资讯（类似报纸杂志），认证前后都是每天只可以群发一条消息。</p>
+<p>2、服务号：主要偏于服务交互（类似银行，114，提供服务查询），认证前后都是每个月可群发4条消息；</p>
+<p>3、企业号：主要用于公司内部通讯使用，需要先验证身份才可以关注成功企业号。</p>
+<h2 id="验证登录和授权：AccessToken"><a href="#验证登录和授权：AccessToken" class="headerlink" title="验证登录和授权：AccessToken"></a>验证登录和授权：AccessToken</h2><h3 id="1-查看appid及appsecret"><a href="#1-查看appid及appsecret" class="headerlink" title="1.查看appid及appsecret"></a>1.查看appid及appsecret</h3><p>公众号后台界面查看</p>
+<h3 id="2-获取accessToken"><a href="#2-获取accessToken" class="headerlink" title="2.获取accessToken"></a>2.获取accessToken</h3><p>1.临时方法获取</p>
+<p>临时通过<a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/debug/">在线测试</a> 或者 浏览器/postman等方式发送get请求获取返回结果里的accessToken</p>
+<p>2.接口获取</p>
+<p>第三方需要一个access_token获取和刷新的中控服务器（这个服务器会提前进行刷新，确保无缝连接）。</p>
+<p>并发获取access_token会导致AccessToken互相覆盖，影响具体的业务功能，所以需要加并发锁</p>
+<h2 id="用户标识：openid和UnionID"><a href="#用户标识：openid和UnionID" class="headerlink" title="用户标识：openid和UnionID"></a>用户标识：openid和UnionID</h2><p>为了识别用户，每个用户针对每个公众号会产生一个安全的OpenID。如果需要在多公众号、移动应用之间做用户共通，则需前往微信开放平台，将这些公众号和应用绑定到一个开放平台账号下。绑定后，一个用户虽然对多个公众号和应用有多个不同的OpenID，但他对所有这些同一开放平台账号下的公众号和应用，只有一个UnionID，可以在用户管理-获取用户基本信息（UnionID机制）文档了解详情。</p>
+<p>​    <strong>一个用户对于一个公众号只会存在一个openid，即使取消关注了再关注，openid也不会改变。如果一个大公司下有多个公众号，会产生不同的openid，为了实现该公司下公众号间的数据互通，会有一个唯一的UnionID作为用户的唯一标识</strong></p>
+<h2 id="提供服务"><a href="#提供服务" class="headerlink" title="提供服务"></a>提供服务</h2><p>公众号主要通过公众号消息会话和公众号内网页来为用户提供服务的：</p>
+<h3 id="1、公众号消息会话"><a href="#1、公众号消息会话" class="headerlink" title="1、公众号消息会话"></a><strong>1、公众号消息会话</strong></h3><p>公众号是以微信用户的一个联系人形式存在的，消息会话是公众号与用户交互的基础。</p>
+<p>目前公众号内主要有这样几类消息服务的类型，分别用于不同的场景。</p>
+<p>1）群发消息：公众号可以以一定频次（订阅号为每天1次，服务号为每月4次），向用户群发消息，包括文字消息、图文消息、图片、视频、语音等。</p>
+<p><strong>在公众号后台管理界面的创作管理可以编辑后选择群发</strong></p>
+<p>2）被动回复消息：在用户给公众号发消息后，微信服务器会将消息发到开发者预先在开发者中心设置的服务器地址（开发者需要进行消息真实性验证），公众号可以在5秒内做出回复，可以回复一个消息，也可以回复命令告诉微信服务器这条消息暂不回复。被动回复消息可以设置加密（在公众平台官网的开发者中心处设置，设置后，按照消息加解密文档来进行处理。其他3种消息的调用因为是API调用而不是对请求的返回，所以不需要加解密）。</p>
+<p>3）客服消息：在用户给公众号发消息后的48小时内，公众号可以给用户发送不限数量的消息，主要用于客服场景。用户的行为会触发事件推送，某些事件推送是支持公众号据此发送客服消息的，详见微信推送消息与事件说明文档。</p>
+<p>4）模板消息：在需要对用户发送服务通知（如刷卡提醒、服务预约成功通知等）时，公众号可以用特定内容模板，主动向用户发送消息。</p>
+<h3 id="2、公众号内网页"><a href="#2、公众号内网页" class="headerlink" title="2、公众号内网页"></a><strong>2、公众号内网页</strong></h3><p>许多复杂的业务场景，需要通过网页形式来提供服务，这时需要用到：</p>
+<p>1）网页授权获取用户基本信息：通过该接口，可以获取用户的基本信息（获取用户的OpenID是无需用户同意的，获取用户的基本信息则需用户同意）</p>
+<p>2）微信JS-SDK：是开发者在网页上通过JavaScript代码使用微信原生功能的工具包，开发者可以使用它在网页上录制和播放微信语音、监听微信分享、上传手机本地图片、拍照等许多能力。</p>
+<h2 id="全局返回码"><a href="#全局返回码" class="headerlink" title="全局返回码"></a>全局返回码</h2><p>公众号每次调用接口时，可能获得正确或错误的返回码，开发者可以根据返回码信息调试接口，排查错误</p>
+<p>-1：系统繁忙，此时请开发者稍候再试</p>
+<p>0：请求成功</p>
+<p>4xxxx，6xxxx，9xxxx：各种问题的返回码</p>
+<h2 id="开始开发"><a href="#开始开发" class="headerlink" title="开始开发"></a>开始开发</h2><h3 id="1-申请服务器"><a href="#1-申请服务器" class="headerlink" title="1.申请服务器"></a>1.申请服务器</h3><h3 id="2-搭建服务"><a href="#2-搭建服务" class="headerlink" title="2.搭建服务"></a>2.搭建服务</h3><p>后端程序配置微信的设置</p>
+<h3 id="3-申请公众号"><a href="#3-申请公众号" class="headerlink" title="3.申请公众号"></a>3.申请公众号</h3><h3 id="4-开发者基本配置"><a href="#4-开发者基本配置" class="headerlink" title="4.开发者基本配置"></a>4.开发者基本配置</h3><h4 id="1-填写服务器配置"><a href="#1-填写服务器配置" class="headerlink" title="1.填写服务器配置"></a>1.填写服务器配置</h4><p>服务器地址（URL）、Token和EncodingAESKey</p>
+<p>URL是开发者用来接收微信消息和事件的接口URL。</p>
+<p>Token可由开发者可以任意填写，用作生成签名（该Token会和接口URL中包含的Token进行比对，从而验证安全性）。</p>
+<p>EncodingAESKey由开发者手动填写或随机生成，将用作消息体加解密密钥</p>
+<p>填写并提交信息后，微信服务器将发送GET请求到填写的服务器地址URL上，GET请求：signature（微信加密签名，signature结合了开发者填写的token参数和请求中的timestamp参数、nonce参数），timestamp（时间戳），nonce（随机数），echostr（随机字符串）</p>
+<p>通过检验signature对请求进行校验：</p>
+<p>1）将token、timestamp、nonce三个参数进行字典序排序 </p>
+<p>2）将三个参数字符串拼接成一个字符串进行sha1加密</p>
+<p> 3）将加密后的字符串与signature对比，true表示是微信发来的，false表示不是微信。</p>
+<p>若确认此次GET请求来自微信服务器，原样返回echostr参数内容，则接入生效，成为开发者成功，否则接入失败</p>
+<h4 id="2-后续可以在公众号后台的开发-基本配置里修改配置："><a href="#2-后续可以在公众号后台的开发-基本配置里修改配置：" class="headerlink" title="2.后续可以在公众号后台的开发/基本配置里修改配置："></a>2.后续可以在公众号后台的开发/基本配置里修改配置：</h4><p>开发者ID（AppID）：自动生成</p>
+<p>开发者密码(AppSecret)：可以重置自动生成复制</p>
+<p>IP白名单：配置自己的白名单以便调用测试接口获得access_token</p>
+<p>服务器地址(URL)：http://外网IP/wx ，端口固定为80（http://外网IP/wx）</p>
+<p>令牌(Token)：自主设置，这个token与前面的access_token不是一回事。这个token只用于验证开发者服务器</p>
+<p>消息加解密密钥(EncodingAESKey)</p>
+<h3 id="5-后端进行框架构思"><a href="#5-后端进行框架构思" class="headerlink" title="5.后端进行框架构思"></a>5.后端进行框架构思</h3><p>主要有三个部分：负责业务逻辑部分的服务器，负责对接微信API的API-Proxy服务器，以及唯一的AccessToken中控服务器</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/PiajxSqBRaEIQxibpLbyuSK9XkjDgZoL0xnC7SUbrIRwI8NhEGFeax6HoPcTMDqKGYxaSoNqBwocrj70Pt1EcKnQ/0?wx_fmt=png" alt="img"></p>
+<p>1）AccessToken中控服务器：</p>
+<p>负责： 提供主动刷新和被动刷新机制来刷新accessToken并存储（为了防止并发刷新，注意加并发锁），提供给业务逻辑有效的accessToken。</p>
+<p>优点： 避免业务逻辑方并发获取access_token，避免AccessToken互相覆盖，提高业务功能的稳定性。</p>
+<p>2）API-Proxy服务器：</p>
+<p>负责：专一与微信API对接，不同的服务器可以负责对接不同的业务逻辑，更可进行调用频率、权限限制。</p>
+<p>优点：某台API-proxy异常，还有其余服务器支持继续提供服务，提高稳定性，避免直接暴漏内部接口，有效防止恶意攻击，提高安全性</p>
+<p>3）后端服务的服务器</p>
+<h3 id="6-码代码"><a href="#6-码代码" class="headerlink" title="6.码代码"></a>6.码代码</h3><h3 id="7-在线测试"><a href="#7-在线测试" class="headerlink" title="7.在线测试"></a>7.在线测试</h3><p>在线测试接口可以输入access_token，进行接口测试，返回”请求失败”，说明代码有问题，检查代码逻辑。</p>
+<p>“请求成功”，然后根据返回结果查看是否符合预期</p>
+<h3 id="8-真实体验"><a href="#8-真实体验" class="headerlink" title="8.真实体验"></a>8.真实体验</h3><p>手机端微信关注测试</p>
+<h2 id="自定义菜单"><a href="#自定义菜单" class="headerlink" title="自定义菜单"></a>自定义菜单</h2><ol>
+<li>自定义菜单最多包括3个一级菜单，每个一级菜单最多包含5个二级菜单。</li>
+<li>一级菜单最多4个汉字，二级菜单最多7个汉字，多出来的部分将会以“…”代替。</li>
+<li>创建自定义菜单后，菜单的刷新策略是，在用户进入公众号会话页或公众号profile（简介）页时，如果发现上一次拉取菜单的请求在5分钟以前，就会拉取一下菜单，如果菜单有更新，就会刷新客户端的菜单。测试时可以尝试取消关注公众账号后再次关注，则可以看到创建后的效果</li>
+</ol>
+<h3 id="设置类型："><a href="#设置类型：" class="headerlink" title="设置类型："></a>设置类型：</h3><ol>
+<li><p>click：点击推事件。用户点击click类型按钮后，微信服务器会通过消息接口推送消息类型为event的结构给开发者（参考消息接口指南），并且带上按钮中开发者填写的key值，开发者可以通过自定义的key值与用户进行交互；</p>
+</li>
+<li><p>view：跳转URL。用户点击view类型按钮后，微信客户端将会打开开发者在按钮中填写的网页URL，可与网页授权获取用户基本信息接口结合，获得用户基本信息。</p>
+</li>
+<li><p>scancode_push：扫码推事件用户点击按钮后，微信客户端将调起扫一扫工具，完成扫码操作后显示扫描结果（如果是URL，将进入URL），且会将扫码的结果传给开发者，开发者可以下发消息。（这种是直接显示结果）</p>
+</li>
+<li><p>scancode_waitmsg：扫码推事件且弹出“消息接收中”提示框用户点击按钮后，微信客户端将调起扫一扫工具，完成扫码操作后，将扫码的结果传给开发者，同时收起扫一扫工具，然后弹出“消息接收中”提示框，随后可能会收到开发者下发的消息。（这种会直接返回公众号界面，并等待开发者下发消息）</p>
+</li>
+<li><p>pic_sysphoto：弹出系统拍照发图用户点击按钮后，微信客户端将调起系统相机，完成拍照操作后，会将拍摄的相片发送给开发者，并推送事件给开发者，同时收起系统相机，随后可能会收到开发者下发的消息。</p>
+</li>
+<li><p>pic_photo_or_album：弹出拍照或者相册发图用户点击按钮后，微信客户端将弹出选择器供用户选择“拍照”或者“从手机相册选择”。用户选择后即走其他两种流程。</p>
+</li>
+<li><p>pic_weixin：弹出微信相册发图器用户点击按钮后，微信客户端将调起微信相册，完成选择操作后，将选择的相片发送给开发者的服务器，并推送事件给开发者，同时收起相册，随后可能会收到开发者下发的消息。</p>
+</li>
+<li><p>location_select：弹出地理位置选择器用户点击按钮后，微信客户端将调起地理位置选择工具，完成选择操作后，将选择的地理位置发送给开发者的服务器，同时收起位置选择工具，随后可能会收到开发者下发的消息。</p>
+</li>
+<li><p>media_id：下发消息（除文本消息）用户点击media_id类型按钮后，微信服务器会将开发者填写的永久素材id对应的素材下发给用户，永久素材类型可以是图片、音频、视频、图文消息。请注意：永久素材id必须是在“素材管理/新增永久素材”接口上传后获得的合法id。</p>
+</li>
+<li><p>view_limited：跳转图文消息URL用户点击view_limited类型按钮后，微信客户端将打开开发者在按钮中填写的永久素材id对应的图文消息URL，永久素材类型只支持图文消息。请注意：永久素材id必须是在“素材管理/新增永久素材”接口上传后获得的合法id。</p>
+</li>
+</ol>
+<p>view类型：弹出网页（pc版本）</p>
+<p>media_id类型：显示图文消息</p>
+<p>click类型：发现公众号系统提示：“该公众号暂时无法提供服务“</p>
+<p>点击click类型button，微信后台会推送一个event类型的xml 给开发者，需要开发者进一步完善后台代码逻辑，增加对自定义菜单事件推送的响应，必须设置key值</p>
+<h3 id="创建-修改接口："><a href="#创建-修改接口：" class="headerlink" title="创建/修改接口："></a>创建/修改接口：</h3><p>这里的url应该是直接的url，nginx配置后需要前后端代码进行重定向</p>
+<p>“sub_button”: [ ]里为空，代表不包含二级菜单</p>
+<p>需要先获得access_token，然后POST（使用https协议） <a target="_blank" rel="noopener" href="https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN%EF%BC%8C%E8%AF%B7%E6%B1%82%E4%BD%93%E4%B8%BA%EF%BC%9A">https://api.weixin.qq.com/cgi-bin/menu/create?access_token=ACCESS_TOKEN，请求体为：</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;button&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;type&quot;: &quot;view&quot;, </span><br><span class="line">                &quot;name&quot;: &quot;安全帽绑定&quot;, </span><br><span class="line">                &quot;url&quot;: &quot;http:&#x2F;&#x2F;elinktech.cn&#x2F;about.html&quot;, </span><br><span class="line">                &quot;sub_button&quot;: [ ]</span><br><span class="line">            &#125;,</span><br><span class="line">        </span><br><span class="line">                    &#123;</span><br><span class="line">                &quot;type&quot;: &quot;view&quot;, </span><br><span class="line">                &quot;name&quot;: &quot;运营服务&quot;, </span><br><span class="line">                &quot;url&quot;: &quot;http:&#x2F;&#x2F;elinktech.cn&#x2F;daohang.html&quot;, </span><br><span class="line">                &quot;sub_button&quot;: [ ]</span><br><span class="line">            &#125;, </span><br><span class="line">            &#123;</span><br><span class="line">                &quot;type&quot;: &quot;view&quot;, </span><br><span class="line">                &quot;name&quot;: &quot;E联商城&quot;, </span><br><span class="line">                &quot;url&quot;: &quot;http:&#x2F;&#x2F;elinktech.cn&#x2F;shop.html&quot;, </span><br><span class="line">                &quot;sub_button&quot;: [ ]</span><br><span class="line">            &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>返回0表示设置成功。</p>
+<p>需要修改时，直接按流程发送，只是请求体里的东西作修改即可，不需要删除已有的菜单栏</p>
+<h3 id="查询接口："><a href="#查询接口：" class="headerlink" title="查询接口："></a>查询接口：</h3><p>GET <a target="_blank" rel="noopener" href="https://api.weixin.qq.com/cgi-bin/get_current_selfmenu_info?access_token=ACCESS_TOKEN%EF%BC%8C%E8%BF%94%E5%9B%9E%E7%BB%93%E6%9E%9C%E7%9A%84json%E5%8D%B3%E4%B8%BA%E6%8E%A5%E5%8F%A3">https://api.weixin.qq.com/cgi-bin/get_current_selfmenu_info?access_token=ACCESS_TOKEN，返回结果的json即为接口</a></p>
+<h3 id="删除接口："><a href="#删除接口：" class="headerlink" title="删除接口："></a>删除接口：</h3><p>GET <a target="_blank" rel="noopener" href="https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=ACCESS_TOKEN%EF%BC%8C%E8%BF%94%E5%9B%9E0%E5%8D%B3%E4%B8%BA%E5%88%A0%E9%99%A4%E6%88%90%E5%8A%9F">https://api.weixin.qq.com/cgi-bin/menu/delete?access_token=ACCESS_TOKEN，返回0即为删除成功</a></p>
+<h3 id="事件推送："><a href="#事件推送：" class="headerlink" title="事件推送："></a>事件推送：</h3><p>用户点击自定义菜单后，微信会把事件推送给开发者，请注意，点击菜单弹出子菜单，不会产生上报</p>
+<p>推送的事件有10种类型，对应接口的type：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">xml</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">ToUserName</span>&gt;</span>&lt;![CDATA[toUser]]&gt;<span class="tag">&lt;/<span class="name">ToUserName</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">FromUserName</span>&gt;</span>&lt;![CDATA[FromUser]]&gt;<span class="tag">&lt;/<span class="name">FromUserName</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">CreateTime</span>&gt;</span>123456789<span class="tag">&lt;/<span class="name">CreateTime</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">MsgType</span>&gt;</span>&lt;![CDATA[event]]&gt;<span class="tag">&lt;/<span class="name">MsgType</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Event</span>&gt;</span>&lt;![CDATA[CLICK]]&gt;<span class="tag">&lt;/<span class="name">Event</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">EventKey</span>&gt;</span>&lt;![CDATA[EVENTKEY]]&gt;<span class="tag">&lt;/<span class="name">EventKey</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">xml</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="个性化菜单接口"><a href="#个性化菜单接口" class="headerlink" title="个性化菜单接口"></a>个性化菜单接口</h3><p>可以通过该接口，让公众号的不同用户群体看到不一样的自定义菜单</p>
+<h2 id="接收消息"><a href="#接收消息" class="headerlink" title="接收消息"></a>接收消息</h2><p>当普通微信用户向公众账号发消息时，微信服务器将POST消息的XML数据包发到开发者填写的URL上。</p>
+<h3 id="1-接收文本消息"><a href="#1-接收文本消息" class="headerlink" title="1.接收文本消息"></a>1.接收文本消息</h3><p> 1.粉丝给公众号发送的文本消息</p>
+<p>粉丝给公众号发送文本消息：“欢迎开启公众号开发者模式”，在开发者后台，收到公众平台发送的xml 如下：（下文均隐藏了ToUserName 及 FromUserName 信息）</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">xml</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">ToUserName</span>&gt;</span>&lt;![CDATA[公众号]]&gt;<span class="tag">&lt;/<span class="name">ToUserName</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">FromUserName</span>&gt;</span>&lt;![CDATA[粉丝号]]&gt;<span class="tag">&lt;/<span class="name">FromUserName</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">CreateTime</span>&gt;</span>1460537339<span class="tag">&lt;/<span class="name">CreateTime</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">MsgType</span>&gt;</span>&lt;![CDATA[text]]&gt;<span class="tag">&lt;/<span class="name">MsgType</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">Content</span>&gt;</span>&lt;![CDATA[欢迎开启公众号开发者模式]]&gt;<span class="tag">&lt;/<span class="name">Content</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">MsgId</span>&gt;</span>6272960105994287618<span class="tag">&lt;/<span class="name">MsgId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">xml</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>解释：</p>
+<p>createTime 是微信公众平台记录粉丝发送该消息的具体时间</p>
+<p>text: 用于标记该xml 是文本消息，一般用于区别判断</p>
+<p>欢迎开启公众号开发者模式: 说明该粉丝发给公众号的具体内容是欢迎开启公众号开发者模式</p>
+<p>MsgId: 是公众平台为记录识别该消息的一个标记数值, 微信后台系统自动产生</p>
+<ol start="2">
+<li>被动回复文本消息</li>
+</ol>
+<p>即公众号给粉丝发送的文本消息，官方wiki链接: <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/Message_Management/Passive_user_reply_message">被动回复用户消息</a></p>
+<p>特别强调：</p>
+<p>1） 被动回复消息，即发送被动响应消息，不同于客服消息接口</p>
+<p>2） 它其实并不是一种接口，而是对微信服务器发过来消息的一次回复</p>
+<p>3） 收到粉丝消息后不想或者不能5秒内回复时，需回复“success”字符串</p>
+<p>4） 客服接口在满足一定条件下随时调用</p>
+<p>公众号想回复给粉丝一条文本消息，内容为“test”, 那么开发者发送给公众平台后台的xml 内容如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">xml</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">ToUserName</span>&gt;</span>&lt;![CDATA[粉丝号]]&gt;<span class="tag">&lt;/<span class="name">ToUserName</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">FromUserName</span>&gt;</span>&lt;![CDATA[公众号]]&gt;<span class="tag">&lt;/<span class="name">FromUserName</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">CreateTime</span>&gt;</span>1460541339<span class="tag">&lt;/<span class="name">CreateTime</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">MsgType</span>&gt;</span>&lt;![CDATA[text]]&gt;<span class="tag">&lt;/<span class="name">MsgType</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">Content</span>&gt;</span>&lt;![CDATA[test]]&gt;<span class="tag">&lt;/<span class="name">Content</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">xml</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>特别备注：</p>
+<p>1）ToUserName（接受者）、FromUserName(发送者) 字段请实际填写。</p>
+<p>2）createtime 只用于标记开发者回复消息的时间，微信后台发送此消息都是不受这个字段约束。</p>
+<p>3）text : 用于标记 此次行为是发送文本消息 （当然可以是image/voice等类型）。</p>
+<p>4）文本换行 ‘\n’。</p>
+<p> 3.回复success问题</p>
+<p>查询官方wiki 开头强调： 假如服务器无法保证在五秒内处理回复，则必须回复“success”或者“”（空串），否则微信后台会发起三次重试。</p>
+<p>解释一下为何有这么奇怪的规定。发起重试是微信后台为了尽可以保证粉丝发送的内容开发者均可以收到。如果开发者不进行回复，微信后台没办法确认开发者已收到消息，只好重试。</p>
+<p>真的是这样子吗？尝试一下收到消息后，不做任何回复。在日志中查看到微信后台发起了三次重试操作，日志截图如下：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/PiajxSqBRaEIQxibpLbyuSK9XkjDgZoL0xauONdVFJvic1Wfzxa0HnSEZ5libLcYibWWkb7gNDjt56DFs8kiaY3OtFtw/0?wx_fmt=png" alt="img"></p>
+<p>三次重试后，依旧没有及时回复任何内容，系统自动在粉丝会话界面出现错误提示“该公众号暂时无法提供服务，请稍后再试”。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/PiajxSqBRaEIQxibpLbyuSK9XkjDgZoL0xBp7Iiam8ydK0W4MOZa9bfHKgTesMkj3HXOnsYxttsodweib7mH9y5eQg/0?wx_fmt=png" alt="img"></p>
+<p>如果回复success，微信后台可以确定开发者收到了粉丝消息，没有任何异常提示。因此请大家注意回复success的问题。</p>
+<ol start="4">
+<li>流程图</li>
+</ol>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/PiajxSqBRaEIQxibpLbyuSK9XkjDgZoL0xEVXiblIZm80UCBlia6vYiaXD7Od9Ev3nujHoNkNCubr9WPo8L7opJGhIA/0?wx_fmt=png" alt="img"></p>
+<h3 id="2-接收图片消息"><a href="#2-接收图片消息" class="headerlink" title="2.接收图片消息"></a>2.接收图片消息</h3><p>MediaID</p>
+<p>目的：</p>
+<p>1）引入素材管理</p>
+<p>2）以文本消息，图片消息为基础，可自行理解剩余的语音消息、视频消息、地理消息等</p>
+<p>预实现功能：</p>
+<p>接受粉丝发送的图片消息，并立马回复相同的图片给粉丝。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/PiajxSqBRaEIQxibpLbyuSK9XkjDgZoL0x6zWAJ79NkGrlg34cGBjvqxtSxSVw5gPMsmlygTyhdDblrsNiaCX8GhQ/0?wx_fmt=png" alt="img"></p>
+<p> 1.接收图片消息</p>
+<p>即粉丝给公众号发送的图片消息。官方wiki链接：<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/Message_Management/Receiving_standard_messages.html">消息管理/接收消息-接受普通消息/ 图片消息</a>从实例讲解，粉丝给公众号发送一张图片消息，在公众号开发者后台接收到的xml如下:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;xml&gt;</span><br><span class="line"> &lt;ToUserName&gt;&lt;![CDATA[公众号]]&gt;&lt;/ToUserName&gt;</span><br><span class="line"> &lt;FromUserName&gt;&lt;![CDATA[粉丝号]]&gt;&lt;/FromUserName&gt;</span><br><span class="line"> &lt;CreateTime&gt;1460536575&lt;/CreateTime&gt;</span><br><span class="line"> &lt;MsgType&gt;&lt;![CDATA[image]]&gt;&lt;/MsgType&gt;</span><br><span class="line"> &lt;PicUrl&gt;&lt;![CDATA[http://mmbiz.qpic.cn/xxxxxx /0]]&gt;&lt;/PicUrl&gt;</span><br><span class="line"> &lt;MsgId&gt;6272956824639273066&lt;/MsgId&gt;</span><br><span class="line"> &lt;MediaId&gt;&lt;![CDATA[gyci5a-xxxxx-OL]]&gt;&lt;/MediaId&gt;</span><br><span class="line">&lt;/xml&gt;</span><br></pre></td></tr></table></figure>
+
+<p>特别说明：</p>
+<p>PicUrl: 这个参数是微信系统把“粉丝“发送的图片消息自动转化成url。 这个url可用浏览器打开查看到图片。</p>
+<p>MediaId: 是微信系统产生的id 用于标记该图片，详情可参考wiki<a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1444738727&token=&lang=zh_CN">素材管理/获取临时素材</a>，</p>
+<p> 2.被动回复图片消息</p>
+<p>即公众号给粉丝发送的图片消息。官方wiki链接：<a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/wiki?t=resource/res_main&id=mp1421140543&token=&lang=zh_CN">消息管理/发送消息-被动回复用户消息/ 图片消息</a>)</p>
+<p>特别说明：</p>
+<p>1） 被动回复消息，即发送被动响应消息，不同于客服消息接口</p>
+<p>2） 它其实并不是一种接口，而是对微信服务器发过来消息的一次回复</p>
+<p>3） 收到粉丝消息后不想或者不能5秒内回复时，需回复“success”字符串</p>
+<p>4） 客服接口在满足一定条件下随时调用</p>
+<p>开发者发送给微信后台的xml 如下：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;xml&gt;</span><br><span class="line"> &lt;ToUserName&gt;&lt;![CDATA[粉丝号]]&gt;&lt;/ToUserName&gt;</span><br><span class="line"> &lt;FromUserName&gt;&lt;![CDATA[公众号]]&gt;&lt;/FromUserName&gt;</span><br><span class="line"> &lt;CreateTime&gt;1460536576&lt;/CreateTime&gt;</span><br><span class="line"> &lt;MsgType&gt;&lt;![CDATA[image]]&gt;&lt;/MsgType&gt;</span><br><span class="line"> &lt;Image&gt;</span><br><span class="line"> &lt;MediaId&gt;&lt;![CDATA[gyci5oxxxxxxv3cOL]]&gt;&lt;/MediaId&gt;</span><br><span class="line"> &lt;/Image&gt;</span><br><span class="line">&lt;/xml&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这里填写的MediaId的内容，其实就是粉丝的发送图片的原MediaId，所以粉丝收到了一张一模一样的原图。 如果想回复粉丝其它图片怎么呢？</p>
+<p>1） 新增素材，请参考 新增临时素材 或者 新增永久素材</p>
+<p>2） 获取其MediaId，请参考 获取临时素材MediaID 或者 获取永久素材MediaID</p>
+<p>3.3 流程图</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/PiajxSqBRaEIQxibpLbyuSK9XkjDgZoL0xDdfzVUuLvr3iaR3BvJnkkL9kATK0TgmFXsF2tPHTlpulfJ6eU930a1Q/0?wx_fmt=png" alt="img"></p>
+<h3 id="3-语音消息"><a href="#3-语音消息" class="headerlink" title="3.语音消息"></a>3.语音消息</h3><h3 id="4-视频消息"><a href="#4-视频消息" class="headerlink" title="4.视频消息"></a>4.视频消息</h3><h3 id="5-小视频消息"><a href="#5-小视频消息" class="headerlink" title="5.小视频消息"></a>5.小视频消息</h3><h3 id="6-地理位置信息"><a href="#6-地理位置信息" class="headerlink" title="6.地理位置信息"></a>6.地理位置信息</h3><h3 id="7-链接消息"><a href="#7-链接消息" class="headerlink" title="7.链接消息"></a>7.链接消息</h3><h2 id="接收事件推送"><a href="#接收事件推送" class="headerlink" title="接收事件推送"></a>接收事件推送</h2><p>只有点击了微信的自定义菜单，才会被认定为是一个事件，向指定的url发送事件推送的xml</p>
+<h3 id="1-关注-取消关注事件"><a href="#1-关注-取消关注事件" class="headerlink" title="1 关注/取消关注事件"></a>1 关注/取消关注事件</h3><p>用户在关注与取消关注公众号时，微信会把这个事件推送到开发者填写的URL。方便开发者给用户下发欢迎消息或者做帐号的解绑。为保护用户数据隐私，开发者收到用户取消关注事件时需要删除该用户的所有信息</p>
+<h3 id="2-扫描带参数二维码事件"><a href="#2-扫描带参数二维码事件" class="headerlink" title="2 扫描带参数二维码事件"></a>2 扫描带参数二维码事件</h3><p>用户扫描带场景值二维码时，可能推送以下两种事件：</p>
+<ol>
+<li>如果用户还未关注公众号，则用户可以关注公众号，关注后微信会将带场景值关注事件推送给开发者。</li>
+<li>如果用户已经关注公众号，则微信会将带场景值扫描事件推送给开发者</li>
+</ol>
+<h3 id="3-上报地理位置事件"><a href="#3-上报地理位置事件" class="headerlink" title="3 上报地理位置事件"></a>3 上报地理位置事件</h3><p>用户同意上报地理位置后，每次进入公众号会话时，都会在进入时上报地理位置，或在进入会话后每5秒上报一次地理位置，公众号可以在公众平台网站中修改以上设置。上报地理位置时，微信会将上报地理位置事件推送到开发者填写的URL。</p>
+<h3 id="4-自定义菜单事件"><a href="#4-自定义菜单事件" class="headerlink" title="4 自定义菜单事件"></a>4 自定义菜单事件</h3><p>用户点击自定义菜单后，微信会把点击事件推送给开发者，请注意，点击菜单弹出子菜单，不会产生上报</p>
+<h3 id="5-点击菜单拉取消息时的事件推送"><a href="#5-点击菜单拉取消息时的事件推送" class="headerlink" title="5 点击菜单拉取消息时的事件推送"></a>5 点击菜单拉取消息时的事件推送</h3><h3 id="6-点击菜单跳转链接时的事件推送"><a href="#6-点击菜单跳转链接时的事件推送" class="headerlink" title="6 点击菜单跳转链接时的事件推送"></a>6 点击菜单跳转链接时的事件推送</h3><h2 id="被动回复用户消息"><a href="#被动回复用户消息" class="headerlink" title="被动回复用户消息"></a>被动回复用户消息</h2><p>当用户发送消息给公众号时（或某些特定的用户操作引发的事件推送时），会产生一个POST请求，开发者可以在响应包（Get）中返回特定XML结构，来对该消息进行响应（现支持回复文本、图片、图文、语音、视频、音乐）。</p>
+<p>严格来说，发送被动响应消息其实并不是一种接口，而是对微信服务器发过来消息的一次回复。</p>
+<p>1、直接回复success（推荐方式） 2、直接回复空串（指字节长度为0的空字符串，而不是XML结构体中content字段的内容为空）</p>
+<p>1、开发者在5秒内未回复任何内容 2、开发者回复了异常数据，比如JSON数据等</p>
+<p>就会出现<strong>“该公众号暂时无法提供服务，请稍后再试”</strong></p>
+<p>回复文本消息：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toXML</span><span class="params">(String toUserName,String fromUserName,String text)</span></span>&#123;</span><br><span class="line">    StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">    sb.append(<span class="string">&quot;&lt;xml&gt;&quot;</span>);</span><br><span class="line">    sb.append(<span class="string">&quot;&lt;ToUserName&gt;&lt;![CDATA[&quot;</span>+toUserName+<span class="string">&quot;]]&gt;&lt;/ToUserName&gt;&quot;</span>);</span><br><span class="line">    sb.append(<span class="string">&quot;&lt;FromUserName&gt;&lt;![CDATA[&quot;</span>+fromUserName+<span class="string">&quot;]]&gt;&lt;/FromUserName&gt;&quot;</span>);</span><br><span class="line">    sb.append(<span class="string">&quot;&lt;CreateTime&gt;&quot;</span>+System.currentTimeMillis()/<span class="number">1000</span>+<span class="string">&quot;&lt;/CreateTime&gt;&quot;</span>);</span><br><span class="line">    sb.append(<span class="string">&quot;&lt;MsgType&gt;&lt;![CDATA[text]]&gt;&lt;/MsgType&gt;&quot;</span>);</span><br><span class="line">    sb.append(<span class="string">&quot;&lt;Content&gt;&lt;![CDATA[&quot;</span>+text+<span class="string">&quot;]]&gt;&lt;/Content&gt;&quot;</span>);</span><br><span class="line">    sb.append(<span class="string">&quot;&lt;/xml&gt;&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> sb.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>回复图片消息</p>
+<p>这里的media_id需要先调用接口上传图片。图片格式为jpg才能成功。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toImageXML</span><span class="params">(String toUserName,String fromUserName,String media_id)</span></span>&#123;</span><br><span class="line">    StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">    sb.append(<span class="string">&quot;&lt;xml&gt;&quot;</span>);</span><br><span class="line">    sb.append(<span class="string">&quot;&lt;ToUserName&gt;&lt;![CDATA[&quot;</span>+toUserName+<span class="string">&quot;]]&gt;&lt;/ToUserName&gt;&quot;</span>);</span><br><span class="line">    sb.append(<span class="string">&quot;&lt;FromUserName&gt;&lt;![CDATA[&quot;</span>+fromUserName+<span class="string">&quot;]]&gt;&lt;/FromUserName&gt;&quot;</span>);</span><br><span class="line">    sb.append(<span class="string">&quot;&lt;CreateTime&gt;&quot;</span>+System.currentTimeMillis()/<span class="number">1000</span>+<span class="string">&quot;&lt;/CreateTime&gt;&quot;</span>);</span><br><span class="line">    sb.append(<span class="string">&quot;&lt;MsgType&gt;&lt;![CDATA[image]]&gt;&lt;/MsgType&gt;&quot;</span>);</span><br><span class="line">    sb.append(<span class="string">&quot;&lt;Image&gt;&quot;</span>);</span><br><span class="line">    sb.append(<span class="string">&quot;&lt;MediaId&gt;&lt;![CDATA[&quot;</span>+media_id+<span class="string">&quot;]]&gt;&lt;/MediaId&gt;&quot;</span>);</span><br><span class="line">    sb.append(<span class="string">&quot;&lt;/Image&gt;&quot;</span>);</span><br><span class="line">    sb.append(<span class="string">&quot;&lt;/xml&gt;&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> sb.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这些回复用户消息都是一般只能回复一条，如果两条的话，还需要调用客服回复消息接口。</p>
+<h2 id="自动回复规则"><a href="#自动回复规则" class="headerlink" title="自动回复规则"></a>自动回复规则</h2><p>开发者可以通过该接口，获取公众号当前使用的自动回复规则，包括关注后自动回复、消息自动回复（60分钟内触发一次）、关键词自动回复</p>
+<h2 id="模板消息"><a href="#模板消息" class="headerlink" title="模板消息"></a>模板消息</h2><ol>
+<li>模板消息调用时主要需要模板ID和模板中各参数的赋值内容</li>
+<li>模板中参数内容必须以”.DATA”结尾，否则视为保留字</li>
+<li>模板保留符号””</li>
+</ol>
+<p>在模版消息发送任务完成后，微信服务器会将是否送达成功作为通知，发送到开发者中心中填写的服务器配置地址中</p>
+<h2 id="微信网页开发"><a href="#微信网页开发" class="headerlink" title="微信网页开发"></a>微信网页开发</h2><h3 id="适配问题"><a href="#适配问题" class="headerlink" title="适配问题"></a>适配问题</h3><p>安卓版微信直接调用系统浏览器内核，它是用chrome改造做的一套WKwebView,概念上类似是一套组建, iOS则是调用safari，但</p>
+<p>微信<strong>iOS客户端</strong>于2017年3月1日前逐步升级为WKWebview内核。ios也可以自己切换为UIWebview。微信内任意入口进入任意网页，在网页加载成功后向下拉动页面（或点击网页右上角菜单按钮），使之显示出地址栏，当地址栏以 “此网页由” 开头即为当前使用WKWebview，若以“网页由”则是使用的UIWebview</p>
+<h3 id="网页授权"><a href="#网页授权" class="headerlink" title="网页授权"></a>网页授权</h3><p>如果用户在微信客户端中访问第三方网页，公众号可以通过微信网页授权机制，来获取用户基本信息，进而实现业务逻辑。</p>
+<p>OAuth2.0鉴权</p>
+<h4 id="1、引导用户进入授权页面同意授权，获取code"><a href="#1、引导用户进入授权页面同意授权，获取code" class="headerlink" title="1、引导用户进入授权页面同意授权，获取code"></a>1、引导用户进入授权页面同意授权，获取code</h4><p>在确保微信公众账号拥有授权作用域（scope参数）的权限的前提下（服务号获得高级接口后，默认拥有scope参数中的snsapi_base和snsapi_userinfo），引导关注者打开如下页面：<a target="_blank" rel="noopener" href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&amp;redirect_uri=REDIRECT_URI&amp;response_type=code&amp;scope=SCOPE&amp;state=STATE#wechat_redirect">https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&amp;redirect_uri=REDIRECT_URI&amp;response_type=code&amp;scope=SCOPE&amp;state=STATE#wechat_redirect</a> 若提示“该链接无法访问”，请检查参数是否填写错误，是否拥有scope参数对应的授权作用域权限。</p>
+<p>尤其注意：由于授权操作安全等级较高，所以在发起授权请求时，微信会对授权链接做正则强匹配校验，如果链接的参数顺序不对，授权页面将无法正常访问。</p>
+<p>如果用户同意授权，页面将跳转至 redirect_uri/?code=CODE&amp;state=STATE</p>
+<p>跳转回调redirect_uri，应当使用https链接来确保授权code的安全性。</p>
+<p>code说明 ： code作为换取access_token的票据，每次用户授权带上的code将不一样，code只能使用一次，5分钟未被使用自动过期</p>
+<p><strong>关于网页授权回调域名的说明</strong></p>
+<p>1、在微信公众号请求用户网页授权之前，开发者需要先到公众平台官网中的“开发 - 接口权限 - 网页服务 - 网页帐号 - 网页授权获取用户基本信息”的配置选项中，修改授权回调域名。请注意，这里填写的是域名（是一个字符串），而不是URL，因此请勿加 http:// 等协议头；</p>
+<p>2、授权回调域名配置规范为全域名，比如需要网页授权的域名为：<a target="_blank" rel="noopener" href="http://www.qq.com,配置以后此域名下面的页面http//www.qq.com/music.html">www.qq.com，配置以后此域名下面的页面http://www.qq.com/music.html</a> 、 <a target="_blank" rel="noopener" href="http://www.qq.com/login.html">http://www.qq.com/login.html</a> 都可以进行OAuth2.0鉴权。但<a target="_blank" rel="noopener" href="http://pay.qq.com/">http://pay.qq.com</a> 、 <a target="_blank" rel="noopener" href="http://music.qq.com/">http://music.qq.com</a> 、 <a target="_blank" rel="noopener" href="http://qq.com/">http://qq.com</a> 无法进行OAuth2.0鉴权</p>
+<p>3、如果公众号登录授权给了第三方开发者来进行管理，则不必做任何设置，由第三方代替公众号实现网页授权即可</p>
+<p><strong>关于网页授权的两种scope的区别说明</strong></p>
+<p>1、以snsapi_base为scope发起的网页授权，是用来获取进入页面的用户的openid的，并且是静默授权并自动跳转到回调页的。用户感知的就是直接进入了回调页（往往是业务页面）</p>
+<p>2、以snsapi_userinfo为scope发起的网页授权，是用来获取用户的基本信息的。但这种授权需要用户手动同意，并且由于用户同意过，所以无须关注，就可在授权后获取该用户的基本信息。</p>
+<p>3、用户管理类接口中的“获取用户基本信息接口”，是在用户和公众号产生消息交互或关注后事件推送后，才能根据用户OpenID来获取用户基本信息。这个接口，包括其他微信接口，都是需要该用户（即openid）关注了公众号后，才能调用成功的。</p>
+<h4 id="2、通过code换取网页授权access-token（与基础支持中的access-token不同）"><a href="#2、通过code换取网页授权access-token（与基础支持中的access-token不同）" class="headerlink" title="2、通过code换取网页授权access_token（与基础支持中的access_token不同）"></a>2、通过code换取网页授权access_token（与基础支持中的access_token不同）</h4><p>这里通过code换取的是一个特殊的网页授权access_token,与基础支持中的access_token（该access_token用于调用其他接口）不同。公众号可通过下述接口来获取网页授权access_token。如果网页授权的作用域为snsapi_base，则本步骤中获取到网页授权access_token的同时，也获取到了openid，snsapi_base式的网页授权流程即到此为止。</p>
+<p>尤其注意：由于公众号的secret和获取到的access_token安全级别都非常高，必须只保存在服务器，不允许传给客户端。后续刷新access_token、通过access_token获取用户信息等步骤，也必须从服务器发起</p>
+<p>获取code后，请求以下链接获取access_token： <a target="_blank" rel="noopener" href="https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&amp;secret=SECRET&amp;code=CODE&amp;grant_type=authorization_code">https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&amp;secret=SECRET&amp;code=CODE&amp;grant_type=authorization_code</a></p>
+<p><strong>关于网页授权access_token和普通access_token的区别</strong></p>
+<p>1、微信网页授权是通过OAuth2.0机制实现的，在用户授权给公众号后，公众号可以获取到一个网页授权特有的接口调用凭证（网页授权access_token），通过网页授权access_token可以进行授权后接口调用，如获取用户基本信息；</p>
+<p>2、其他微信接口，需要通过基础支持中的“获取access_token”接口来获取到的普通access_token调用。</p>
+<h4 id="3、如果需要，开发者可以刷新网页授权access-token，避免过期"><a href="#3、如果需要，开发者可以刷新网页授权access-token，避免过期" class="headerlink" title="3、如果需要，开发者可以刷新网页授权access_token，避免过期"></a>3、如果需要，开发者可以刷新网页授权access_token，避免过期</h4><p>由于access_token拥有较短的有效期，当access_token超时后，可以使用refresh_token进行刷新，refresh_token有效期为30天，当refresh_token失效之后，需要用户重新授权</p>
+<p>获取第二步的access_token后，请求以下链接获取refresh_token： <a target="_blank" rel="noopener" href="https://api.weixin.qq.com/sns/oauth2/refresh_token?appid=APPID&amp;grant_type=refresh_token&amp;refresh_token=REFRESH_TOKEN">https://api.weixin.qq.com/sns/oauth2/refresh_token?appid=APPID&amp;grant_type=refresh_token&amp;refresh_token=REFRESH_TOKEN</a></p>
+<h4 id="4、通过网页授权access-token和openid获取用户基本信息（支持UnionID机制）"><a href="#4、通过网页授权access-token和openid获取用户基本信息（支持UnionID机制）" class="headerlink" title="4、通过网页授权access_token和openid获取用户基本信息（支持UnionID机制）"></a>4、通过网页授权access_token和openid获取用户基本信息（支持UnionID机制）</h4><p>如果网页授权作用域为snsapi_userinfo，则此时开发者可以通过access_token和openid拉取用户信息了</p>
+<p>http：GET（请使用https协议） <a target="_blank" rel="noopener" href="https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&amp;openid=OPENID&amp;lang=zh_CN">https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&amp;openid=OPENID&amp;lang=zh_CN</a></p>
+<p><strong>关于UnionID机制</strong></p>
+<p>1、请注意，网页授权获取用户基本信息也遵循UnionID机制。即如果开发者有在多个公众号，或在公众号、移动应用之间统一用户帐号的需求，需要前往微信开放平台（open.weixin.qq.com）绑定公众号后，才可利用UnionID机制来满足上述需求。</p>
+<p>2、UnionID机制的作用说明：如果开发者拥有多个移动应用、网站应用和公众帐号，可通过获取用户基本信息中的unionid来区分用户的唯一性，因为同一用户，对同一个微信开放平台下的不同应用（移动应用、网站应用和公众帐号），unionid是相同的。</p>
+<p><strong>关于特殊场景下的静默授权</strong></p>
+<p>1、上面已经提到，对于以snsapi_base为scope的网页授权，就静默授权的，用户无感知；</p>
+<p>2、对于已关注公众号的用户，如果用户从公众号的会话或者自定义菜单进入本公众号的网页授权页，即使是scope为snsapi_userinfo，也是静默授权，用户无感知。</p>
+<p><strong>检验授权凭证（access_token）是否有效</strong></p>
+<p>http：GET（请使用https协议） <a target="_blank" rel="noopener" href="https://api.weixin.qq.com/sns/auth?access_token=ACCESS_TOKEN&amp;openid=OPENID">https://api.weixin.qq.com/sns/auth?access_token=ACCESS_TOKEN&amp;openid=OPENID</a></p>
+<p>返回0代表有效</p>
+<h3 id="网页开发样式库：WEBUI"><a href="#网页开发样式库：WEBUI" class="headerlink" title="网页开发样式库：WEBUI"></a>网页开发样式库：WEBUI</h3><h3 id="微信JS-SDK"><a href="#微信JS-SDK" class="headerlink" title="微信JS-SDK"></a>微信JS-SDK</h3><p>是<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/cgi-bin/loginpage?t=wxm2-login&lang=zh_CN">微信公众平台</a> 面向网页开发者提供的基于微信内的网页开发工具包</p>
+<p>通过使用微信JS-SDK，网页开发者可借助微信高效地使用拍照、选图、语音、位置等手机系统的能力，同时可以直接使用微信分享、扫一扫、卡券、支付等微信特有的能力，为微信用户提供更优质的网页体验</p>
+<h4 id="1-绑定域名"><a href="#1-绑定域名" class="headerlink" title="1.绑定域名"></a>1.<strong>绑定域名</strong></h4><p>先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。</p>
+<p>备注：登录后可在“开发者中心”查看对应的接口权限</p>
+<h4 id="2-引入JS文件"><a href="#2-引入JS文件" class="headerlink" title="2.引入JS文件"></a>2.<strong>引入JS文件</strong></h4><p>在需要调用JS接口的页面引入JS文件，（支持https）：<a target="_blank" rel="noopener" href="http://res.wx.qq.com/open/js/jweixin-1.6.0.js">http://res.wx.qq.com/open/js/jweixin-1.6.0.js</a></p>
+<p>如需进一步提升服务稳定性，当上述资源不可访问时，可改访问：<a target="_blank" rel="noopener" href="http://res2.wx.qq.com/open/js/jweixin-1.6.0.js">http://res2.wx.qq.com/open/js/jweixin-1.6.0.js</a> （支持https）。</p>
+<p>备注：支持使用 AMD/CMD 标准模块加载方法加载</p>
+<h4 id="3-通过config接口注入权限验证配置"><a href="#3-通过config接口注入权限验证配置" class="headerlink" title="3.通过config接口注入权限验证配置"></a>3.<strong>通过config接口注入权限验证配置</strong></h4><p>所有需要使用JS-SDK的页面必须先注入配置信息，否则将无法调用（同一个url仅需调用一次，对于变化url的SPA的web app可在每次url变化时进行调用,目前Android微信客户端不支持pushState的H5新特性，所以使用pushState来实现web app的页面会导致签名失败，此问题会在Android6.2中修复）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">wx.config(&#123;</span><br><span class="line">  debug: <span class="literal">true</span>, <span class="comment">// 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。</span></span><br><span class="line">  appId: <span class="string">&#x27;&#x27;</span>, <span class="comment">// 必填，公众号的唯一标识</span></span><br><span class="line">  timestamp: , <span class="comment">// 必填，生成签名的时间戳</span></span><br><span class="line">  nonceStr: <span class="string">&#x27;&#x27;</span>, <span class="comment">// 必填，生成签名的随机串</span></span><br><span class="line">  signature: <span class="string">&#x27;&#x27;</span>,<span class="comment">// 必填，签名</span></span><br><span class="line">  jsApiList: [] <span class="comment">// 必填，需要使用的JS接口列表</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="签名算法：JS-SDK使用权限签名算法"><a href="#签名算法：JS-SDK使用权限签名算法" class="headerlink" title="签名算法：JS-SDK使用权限签名算法"></a>签名算法：JS-SDK使用权限签名算法</h4><p><strong>jsapi_ticket</strong></p>
+<p>生成签名之前必须先了解一下jsapi_ticket，jsapi_ticket是公众号用于调用微信JS接口的临时票据。正常情况下，jsapi_ticket的有效期为7200秒，通过access_token来获取。由于获取jsapi_ticket的api调用次数非常有限，频繁刷新jsapi_ticket会导致api调用受限，影响自身业务，开发者必须在自己的服务全局缓存jsapi_ticket 。</p>
+<ol>
+<li>参考以下文档获取access_token（有效期7200秒，开发者必须在自己的服务全局缓存access_token）：<a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/doc/offiaccount/Basic_Information/Get_access_token.html">https://developers.weixin.qq.com/doc/offiaccount/Basic_Information/Get_access_token.html</a></li>
+<li>用第一步拿到的access_token 采用http GET方式请求获得jsapi_ticket（有效期7200秒，开发者必须在自己的服务全局缓存jsapi_ticket）：<a target="_blank" rel="noopener" href="https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&amp;type=jsapi">https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token=ACCESS_TOKEN&amp;type=jsapi</a></li>
+</ol>
+<p>成功返回如下JSON：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;errcode&quot;</span>:<span class="number">0</span>,</span><br><span class="line">  <span class="attr">&quot;errmsg&quot;</span>:<span class="string">&quot;ok&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;ticket&quot;</span>:<span class="string">&quot;bxLdikRXVbTPdHSM05e5u5sUoXNKd8-41ZO3MhKoyN5OfkWITDGgnr2fwJ0m9E8NYzWKVZvdVtaUgWvsdshFKA&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;expires_in&quot;</span>:<span class="number">7200</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>获得jsapi_ticket之后，就可以生成JS-SDK权限验证的签名了。</p>
+<p><strong>签名算法</strong></p>
+<p>签名生成规则如下：参与签名的字段包括noncestr（随机字符串）, 有效的jsapi_ticket, timestamp（时间戳）, url（当前网页的URL，不包含#及其后面部分） 。对所有待签名参数按照字段名的ASCII 码从小到大排序（字典序）后，使用URL键值对的格式（即key1=value1&amp;key2=value2…）拼接成字符串string1。这里需要注意的是所有参数名均为小写字符。对string1作sha1加密，字段名和字段值都采用原始值，不进行URL 转义。</p>
+<p>即signature=sha1(string1)。 示例：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">noncestr=Wm3WZYTPz0wzccnW</span><br><span class="line">jsapi_ticket=sM4AOVdWfPE4DxkXGEs8VMCPGGVi4C3VM0P37wVUCFvkVAy_90u5h9nbSlYy3-Sl-HhTdfl2fzFy1AOcHKP7qg</span><br><span class="line">timestamp=1414587457</span><br><span class="line">url=http://mp.weixin.qq.com?params=value</span><br></pre></td></tr></table></figure>
+
+<p>步骤1. 对所有待签名参数按照字段名的ASCII 码从小到大排序（字典序）后，使用URL键值对的格式（即key1=value1&amp;key2=value2…）拼接成字符串string1：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jsapi_ticket=sM4AOVdWfPE4DxkXGEs8VMCPGGVi4C3VM0P37wVUCFvkVAy_90u5h9nbSlYy3-Sl-HhTdfl2fzFy1AOcHKP7qg&amp;noncestr=Wm3WZYTPz0wzccnW&amp;timestamp=1414587457&amp;url=http://mp.weixin.qq.com?params=value</span><br></pre></td></tr></table></figure>
+
+<p>步骤2. 对string1进行sha1签名，得到signature：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0f9de62fce790f9a083d5c99e95740ceb90c27ed</span><br></pre></td></tr></table></figure>
+
+<p>注意事项</p>
+<ol>
+<li>签名用的noncestr和timestamp必须与wx.config中的nonceStr和timestamp相同。</li>
+<li>签名用的url必须是调用JS接口页面的完整URL。</li>
+<li>出于安全考虑，开发者必须在服务器端实现签名的逻辑。</li>
+</ol>
+<h4 id="4-通过ready接口处理成功验证"><a href="#4-通过ready接口处理成功验证" class="headerlink" title="4.通过ready接口处理成功验证"></a>4.<strong>通过ready接口处理成功验证</strong></h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wx.ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-通过error接口处理失败验证"><a href="#5-通过error接口处理失败验证" class="headerlink" title="5.通过error接口处理失败验证"></a>5.<strong>通过error接口处理失败验证</strong></h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wx.error(<span class="function"><span class="keyword">function</span>(<span class="params">res</span>)</span>&#123;</span><br><span class="line">  <span class="comment">// config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="接口调用说明"><a href="#接口调用说明" class="headerlink" title="接口调用说明"></a><strong>接口调用说明</strong></h4><p>所有接口通过wx对象(也可使用jWeixin对象)来调用，参数是一个对象，除了每个接口本身需要传的参数之外，还有以下通用参数：</p>
+<ol>
+<li>success：接口调用成功时执行的回调函数。</li>
+<li>fail：接口调用失败时执行的回调函数。</li>
+<li>complete：接口调用完成时执行的回调函数，无论成功或失败都会执行。</li>
+<li>cancel：用户点击取消时的回调函数，仅部分有用户取消操作的api才会用到。</li>
+<li>trigger: 监听Menu中的按钮点击时触发的方法，该方法仅支持Menu中的相关接口。</li>
+</ol>
+<p>备注：不要尝试在trigger中使用ajax异步请求修改本次分享的内容，因为客户端分享操作是一个同步操作，这时候使用ajax的回包会还没有返回。</p>
+<p>以上几个函数都带有一个参数，类型为对象，其中除了每个接口本身返回的数据之外，还有一个通用属性errMsg，其值格式如下：</p>
+<p>调用成功时：”xxx:ok” ，其中xxx为调用的接口名</p>
+<p>用户取消时：”xxx:cancel”，其中xxx为调用的接口名</p>
+<p>调用失败时：其值为具体错误信息</p>
+<h4 id="基础接口"><a href="#基础接口" class="headerlink" title="基础接口"></a><strong>基础接口</strong></h4><h5 id="判断当前客户端版本是否支持指定JS接口"><a href="#判断当前客户端版本是否支持指定JS接口" class="headerlink" title="判断当前客户端版本是否支持指定JS接口"></a><strong>判断当前客户端版本是否支持指定JS接口</strong></h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">wx.checkJsApi(&#123;</span><br><span class="line">  jsApiList: [<span class="string">&#x27;chooseImage&#x27;</span>], <span class="comment">// 需要检测的JS接口列表，所有JS接口列表见附录2,</span></span><br><span class="line">  success: <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 以键值对的形式返回，可用的api值true，不可用为false</span></span><br><span class="line">  <span class="comment">// 如：&#123;&quot;checkResult&quot;:&#123;&quot;chooseImage&quot;:true&#125;,&quot;errMsg&quot;:&quot;checkJsApi:ok&quot;&#125;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>备注：checkJsApi接口是客户端6.0.2新引入的一个预留接口，第一期开放的接口均可不使用checkJsApi来检测</p>
+<h3 id="WEB开发者工具"><a href="#WEB开发者工具" class="headerlink" title="WEB开发者工具"></a>WEB开发者工具</h3><p>调试工具</p>
+<h3 id="云开发"><a href="#云开发" class="headerlink" title="云开发"></a>云开发</h3><p>开发者可以使用云开发开发微信小程序、小游戏、公众号，无需搭建服务器，即可使用云端能力。</p>
+<p>云开发为开发者提供完整的原生云端支持和微信服务支持，弱化后端和运维概念，无需搭建服务器，使用平台提供的 API 进行核心业务开发，即可实现快速上线和迭代，同时这一能力，同开发者已经使用的云服务相互兼容，并不互斥。</p>
+<h2 id="Cookie和LocalStorage设置相关"><a href="#Cookie和LocalStorage设置相关" class="headerlink" title="Cookie和LocalStorage设置相关"></a>Cookie和LocalStorage设置相关</h2><p>一：退出微信账号后，将会清空所有Cookie和LocalStorage。</p>
+<p>二：页面功能依赖Cookie，或有涉及到Cookie的相关逻辑 WKWebview内部实现变更，会影响目前页面Cookie相关的逻辑。</p>
+<p>变化1：跨域存取Cookie 问题说明：在访问一个页面A时，如果页面A引用了另一个页面B的资源（页面A和B为不同的域名），这时页面B就被认为是第三方页面。若在页面B中设置Cookie，就会命中WKWebview下阻止第三方跨域设置Cookie的安全策略，导致问题出现。 适配建议： 在WKWebview中是默认阻止跨域的第三方设置Cookie。所有通过Cookie传递的信息，可通过业务后台存储需要传递的信息，然后给页面一个存储信息相对应的access_token加密码，再通过Url中加入自己业务的access_token进行页面间的信息传递。</p>
+<p>变化2：微信原生层面的网络请求读取不到WKWebview中设置的cookie，即使域名是相同的。 问题说明：如果页面的资源或图片存储的服务器依赖校验Cookie来返回数据的情况，在切换到WKWebview后，在微信内长按保存，或者点击预览大图时，原生层面发起的网络请求将不会完整地带上所设置的Cookie，会导致图片保存失败或预览失败。 适配建议： 建议静态资源cookie free。如果确实有信息需要传递，可通过业务后台存储需要传递的信息，然后给页面一个存储信息相对应的access_token加密码，再通过Url中加入自己业务的access_token进行页面间信息传递。</p>
+<p>除上述两种情况，开发者不用担心其他情况下Cookie丢失的问题，所有请求都会带上完整的Cookie</p>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><p>1.每个接口都有每日接口<strong>调用频次</strong>限制，可以在公众平台官网-开发者中心处查看具体频次。</p>
+<p>2.公众平台以<strong>access_token</strong>为接口调用凭据，来调用接口，所有接口的调用需要先获取access_token，access_token在2小时内有效，过期需要重新获取，但1天内获取次数有限，开发者需自行存储，详见获取接口调用凭据（access_token）文档</p>
+<p>3.公众平台接口调用仅支持<strong>80端口</strong></p>
+<p>微信公众号接口必须以http://或https://开头，分别支持80端口和443端口</p>
+<p>4.涉及<strong>用户数据</strong>：</p>
+<ul>
+<li>您的服务需要收集用户任何数据的，必须事先获得用户的明确同意，且仅应当收集为运营及功能实现目的而必要的用户数据， 同时应当告知用户相关数据收集的目的、范围及使用方式等，保障用户知情权。</li>
+<li>您收集用户的数据后，必须采取必要的保护措施，防止用户数据被盗、泄漏等。</li>
+<li>您在特定微信公众号中收集的用户数据仅可以在该特定微信公众号中使用，不得将其使用在该特定微信公众号之外或为其他任何目的进行使用，也不得以任何方式将其提供给他人。</li>
+<li>如果腾讯认为您收集、使用用户数据的方式，可能损害用户体验，腾讯有权要求您删除相关数据并不得再以该方式收集、使用用户数据。</li>
+<li>一旦您停止使用本服务，或腾讯基于任何原因终止您使用本服务，您必须立即删除全部因使用本服务而获得的数据（包括各种备份）， 且不得再以任何方式进行使用。</li>
+</ul>
+<p>其他规范：</p>
+<ul>
+<li>请勿为任何用户自动登录到微信公众平台提供代理身份验证凭据。</li>
+<li>请勿提供跟踪功能，包括但不限于识别其他用户在个人主页上查看、点击等操作行为。</li>
+<li>请勿自动将浏览器窗口定向到其他网页。</li>
+<li>请勿设置或发布任何违反相关法规、公序良俗、社会公德等的玩法、内容等。</li>
+<li>请勿公开表达或暗示，您与腾讯之间存在合作关系，包括但不限于相互持股、商业往来或合作关系等，或声称腾讯对您的认可。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/15/21.1.%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91/" data-id="ckpdvjpq4005jnswd2ubo1s3i" data-title="微信开发" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-22.1.计算机基础知识" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/04/15/22.1.%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="article-date">
@@ -226,7 +1254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/15/22.1.%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" data-id="ckno8ff4z0011swwd1ljm0a9v" data-title="计算机基础知识" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/15/22.1.%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" data-id="ckpdvjpom0014nswd4g503qx8" data-title="计算机基础知识" class="article-share-link">分享</a>
       
       
       
@@ -278,7 +1306,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8CSQL%E8%AF%AD%E5%8F%A5/" data-id="ckno8ff5y003rswwdb0wgeju4" data-title="数据库和SQL语句" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8CSQL%E8%AF%AD%E5%8F%A5/" data-id="ckpdvjppj003vnswd2hh1aafp" data-title="数据库和SQL语句" class="article-share-link">分享</a>
       
       
       
@@ -314,7 +1342,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>Redis是一个开源的使用ANSI <a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1219.htm">C语言</a>编写、支持网络、可基于内存亦可持久化的日志型、Key-Value<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1088.htm">数据库</a>，并提供多种语言的APIRedis是一个开源的使用ANSI <a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1219.htm">C语言</a>编写、支持网络、可基于内存亦可持久化的日志型、Key-Value<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1088.htm">数据库</a>，并提供多种语言的API</p>
+        <h1 id="Redis简介"><a href="#Redis简介" class="headerlink" title="Redis简介"></a>Redis简介</h1><p>Redis是一个开源的使用ANSI <a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1219.htm">C语言</a>编写、支持网络、可基于内存亦可持久化的日志型、Key-Value<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1088.htm">数据库</a>，并提供多种语言的APIRedis是一个开源的使用ANSI <a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1219.htm">C语言</a>编写、支持网络、可基于内存亦可持久化的日志型、Key-Value<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1088.htm">数据库</a>，并提供多种语言的API</p>
 <p>从2010年3月15日起，Redis的开发工作由VMware主持。从2013年5月开始，Redis的开发由Pivotal赞助</p>
 <p>Redis是 NoSQL（not only SQL）技术阵营中的一员，它通过多种键值数据类型来适应不同场景下的存储需求，借助一些高层级的接口使用其可以胜任，如缓存、队列系统的不同角色</p>
 <p>Redis可以保存在内存中（性能非常好），也可以持久化在文件中</p>
@@ -329,7 +1357,7 @@
 <p>2.丰富的数据类型 – Redis支持二进制案例的 Strings, Lists, Hashes, Sets 及 Ordered Sets 数据类型操作</p>
 <p>3.原子 – Redis的所有操作都是原子性的，同时Redis还支持对几个操作全并后的原子性执行</p>
 <p>4.丰富的特性 – Redis还支持 publish/subscribe, 通知, key 过期等等特性</p>
-<h1 id="Redis-下载及安装"><a href="#Redis-下载及安装" class="headerlink" title="*Redis*****下载及安装****"></a><em><strong>*Redis*</strong>***</em>*下载及安装****</h1><p>Redis版本说明</p>
+<h1 id="Redis下载及安装"><a href="#Redis下载及安装" class="headerlink" title="Redis下载及安装"></a>Redis下载及安装</h1><p>Redis版本说明</p>
 <p>Redis原生只支持linux系统。Redis官方是不支持windows平台，windows版本是微软自己建立的分支，基于官方的redis源码上进行编译、发布、维护的，所以window平台上的redis版本都略低于官方版本</p>
 <p>当前redis最新版本是6.0</p>
 <p>可以直接在windows上下载，通过上传工具上传到linux系统，也可以在linux下直接复制最新稳定版本下载链接的网址，然后wget+网址（这种方式必须要求可以上网）</p>
@@ -366,65 +1394,12 @@
 <p>可以通过redis-cli命令行客户端来测试redis是否启动成功</p>
 <p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml1960\wps8.jpg" alt="img"> </p>
 <p>其他ip地址不能连接是因为配置文件中只允许回环地址127.0.0.1连接</p>
-<h1 id="Redis-数据类型与常见操作"><a href="#Redis-数据类型与常见操作" class="headerlink" title="*Redis*****数据类型与常见操作****"></a><em><strong>*Redis*</strong>***</em>*数据类型与常见操作****</h1><p>redis是一个key-value<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/51839.htm">存储系统</a>。和Memcached类似，它支持存储的value类型相对更多，包括string(字符串)、list(<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/549479.htm">链表</a>)、set(集合)、zset(sorted set –有序集合)和hash（哈希类型）</p>
-<p>1.string类型常见操作</p>
-<p>字符串类型是Redis中最为基础的数据存储类型，它在Redis中是二进制安全的，这便意味着该类型可以接受任何格式的数据，如JPEG图像数据或Json对象描述信息等。在Redis中字符串类型的Value最多可以容纳的数据长度是512M</p>
+<h1 id="Redis数据类型与常见操作"><a href="#Redis数据类型与常见操作" class="headerlink" title="Redis数据类型与常见操作"></a>Redis数据类型与常见操作</h1><p>redis是一个key-value<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/51839.htm">存储系统</a>。和Memcached类似，它支持存储的value类型相对更多，包括string(字符串)、list(<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/549479.htm">链表</a>)、set(集合)、zset(sorted set –有序集合)和hash（哈希类型）</p>
+<h2 id="string类型常见操作"><a href="#string类型常见操作" class="headerlink" title="string类型常见操作"></a>string类型常见操作</h2><p>字符串类型是Redis中最为基础的数据存储类型，它在Redis中是二进制安全的，这便意味着该类型可以接受任何格式的数据，如JPEG图像数据或Json对象描述信息等。</p>
+<p>在Redis中字符串类型的Value最多可以容纳的数据长度是512M</p>
 <p>常见操作（小写也可）</p>
-<p>l SET key value      </p>
-<p>设定该Key持有指定的字符串Value，如果该Key已经存在，则覆盖其原有值。返回值：总是返回”OK”</p>
-<p>l GET key      </p>
-<p>获取指定Key的Value。如果与该Key关联的Value不是string类型，Redis将返回错误信息，因为GET命令只能用于获取string Value。</p>
-<p>返回值：与该Key相关的Value，如果该Key不存在，则返回nil。</p>
-<p>l MSET key value [key value …]      </p>
-<p>该命令原子性的完成参数中所有key/value的设置操作，其具体行为可以看成是多次迭代执行SET命令。 </p>
-<p>返回值：该命令不会失败，始终返回OK。 </p>
-<p>l MGET key [key …]  </p>
-<p>返回所有指定Keys的Values，如果其中某个Key不存在，或者其值不为string类型，该Key的Value将返回nil。    </p>
-<p>返回值：返回一组指定Keys的Values的列表。</p>
-<p>l SETNX key value  </p>
-<p>如果指定的Key不存在，则设定该Key持有指定字符串Value，此时其效果等价于SET命令。相反，如果该Key已经存在，该命令将不做任何操作并返回。</p>
-<p>返回值：1表示设置成功，否则0。（not exists）</p>
-<p>l MSETNX key value [key value …]      </p>
-<p>该命令原子性的完成参数中所有key/value的设置操作，其具体行为可以看成是多次迭代执行SETNX命令。然而这里需要明确说明的是，如果在这一批Keys中有任意一个Key已经存在了，那么该操作将全部回滚，即所有的修改都不会生效。</p>
-<p>返回值：1表示所有Keys都设置成功，0则表示没有任何Key被修改。</p>
-<p>ü APPEND key value  </p>
-<p>如果该Key已经存在，APPEND命令将参数Value的数据追加到已存在Value的末尾。如果该Key不存在，APPEND命令将会创建一个新的Key/Value。</p>
-<p>返回值：追加后Value的长度。</p>
-<p>ü DECR key     </p>
-<p>将指定Key的Value原子性的递减1。如果该Key不存在，其初始值为0，在decr之后其值为-1。如果Value的值不能转换为整型值，如Hello，该操作将执行失败并返回相应的错误信息。（error）</p>
-<p>返回值：递减后的Value值。</p>
-<p>l INCR key     </p>
-<p>将指定Key的Value原子性的递增1。如果该Key不存在，其初始值为0，在incr之后其值为1。如果Value的值不能转换为整型值，如Hello，该操作将执行失败并返回相应的错误信息。</p>
-<p>返回值：递增后的Value值。 </p>
-<p>l DECRBY key decrement  </p>
-<p>将指定Key的Value原子性的减少decrement。如果该Key不存在，其初始值为0，在decrby之后其值为-decrement。如果Value的值不能转换为整型值，如Hello，该操作将执行失败并返回相应的错误信息。注意：该操作的取值范围是64位有符号整型。</p>
-<p>返回值：减少后的Value值。</p>
-<p>l INCRBY key increment   </p>
-<p>将指定Key的Value原子性的增加increment。如果该Key不存在，其初始值为0，在incrby之后其值为increment。如果Value的值不能转换为整型值，如Hello，该操作将执行失败并返回相应的错误信息。注意：该操作的取值范围是64位有符号整型。</p>
-<p>返回值：增加后的Value值。</p>
-<p>l GETSET key value     </p>
-<p>原子性的设置该Key为指定的Value，同时返回该Key的原有值。和GET命令一样，该命令也只能处理string Value，否则Redis将给出相关的错误信息。</p>
-<p>返回值：返回该Key的原有值，如果该Key之前并不存在，则返回nil。</p>
-<p>l STRLEN key     </p>
-<p>返回指定Key的字符值长度，如果Value不是string类型，Redis将执行失败并给出相关的错误信息。</p>
-<p>返回值：指定Key的Value字符长度，如果该Key不存在，返回0。</p>
-<p>l SETEX key seconds value     </p>
-<p>原子性完成两个操作，一是设置该Key的值为指定字符串，同时设置该Key在Redis服务器中的存活时间(秒数)。该命令主要应用于Redis被当做Cache服务器使用时。     （expire，到期）</p>
-<p>l SETRANGE key offset value  </p>
-<p>替换指定Key的部分字符串值。从offset开始，替换的长度为该命令第三个参数value的字符串长度，其中如果offset的值大于该Key的原有值Value的字符串长度，Redis将会在Value的后面补齐(offset - strlen(value))数量的0x00，之后再追加新值。如果该键不存在，该命令会将其原值的长度假设为0，并在其后添补offset个0x00后再追加新值。鉴于字符串Value的最大长度为512M，因此offset的最大值为536870911。最后需要注意的是，如果该命令在执行时致使指定Key的原有值长度增加，这将会导致Redis重新分配足够的内存以容纳替换后的全部字符串，因此就会带来一定的性能折损。</p>
-<p>返回值：修改后的字符串Value长度。</p>
-<p>l GETRANGE key start end     </p>
-<p>截取字符串。该命令在截取子字符串时，将以闭区间的方式同时包含start(0表示第一个字符)和end所在的字符，如果end值超过Value的字符长度，该命令将只是截取从start开始之后所有的字符数据。当end为-1时表示是最后一位，-4 -1表示从后数4位</p>
-<p>返回值：子字符串；</p>
-<p>l SETBIT key offset value      </p>
-<p>设置在指定Offset上BIT的值，该值只能为1或0，在设定后该命令返回该Offset上原有的BIT值。如果指定Key不存在，该命令将创建一个新值，并在指定的Offset上设定参数中的BIT值。如果Offset大于Value的字符长度，Redis将拉长Value值并在指定Offset上设置参数中的BIT值，中间添加的BIT值为0。最后需要说明的是Offset值必须大于0。</p>
-<p>返回值：在指定Offset上的BIT原有值。</p>
-<p>l GETBIT key offset      </p>
-<p>返回在指定Offset上BIT的值，0或1。如果Offset超过string value的长度，该命令将返回0，所以对于空字符串始终返回0。</p>
-<p>返回值：在指定Offset上的BIT值。 </p>
-<p>(布隆过滤器)</p>
-<p>a  97  0110 0001    </p>
-<p>A  65  0100 0001  其实只用 setbit key 2 0  就将a改为了A（从0开始计数）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line">SET key value 	 </span><br><span class="line">设定该Key持有指定的字符串Value，如果该Key已经存在，则覆盖其原有值。返回值：总是返回&quot;OK&quot;</span><br><span class="line"></span><br><span class="line">GET key 	 </span><br><span class="line">获取指定Key的Value。如果与该Key关联的Value不是string类型，Redis将返回错误信息，因为GET命令只能用于获取string Value</span><br><span class="line">返回值：与该Key相关的Value，如果该Key不存在，则返回nil。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MSET key value [key value ...] 	 </span><br><span class="line">该命令原子性的完成参数中所有key&#x2F;value的设置操作，其具体行为可以看成是多次迭代执行SET命令。 </span><br><span class="line">返回值：该命令不会失败，始终返回OK。 </span><br><span class="line"></span><br><span class="line">MGET key [key ...]  </span><br><span class="line">返回所有指定Keys的Values，如果其中某个Key不存在，或者其值不为string类型，该Key的Value将返回nil。	</span><br><span class="line">返回值：返回一组指定Keys的Values的列表。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">SETNX key value  </span><br><span class="line">如果指定的Key不存在，则设定该Key持有指定字符串Value，此时其效果等价于SET命令。相反，如果该Key已经存在，该命令将不做任何操作并返回。</span><br><span class="line">返回值：1表示设置成功，否则0。（not exists）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">MSETNX key value [key value ...] 	 </span><br><span class="line">该命令原子性的完成参数中所有key&#x2F;value的设置操作，其具体行为可以看成是多次迭代执行SETNX命令。然而这里需要明确说明的是，如果在这一批Keys中有任意一个Key已经存在了，那么该操作将全部回滚，即所有的修改都不会生效。</span><br><span class="line">返回值：1表示所有Keys都设置成功，0则表示没有任何Key被修改。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">APPEND key value  </span><br><span class="line">如果该Key已经存在，APPEND命令将参数Value的数据追加到已存在Value的末尾。如果该Key不存在，APPEND命令将会创建一个新的Key&#x2F;Value。</span><br><span class="line">返回值：追加后Value的长度。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">DECR key	 </span><br><span class="line">将指定Key的Value原子性的递减1。如果该Key不存在，其初始值为0，在decr之后其值为-1。如果Value的值不能转换为整型值，如Hello，该操作将执行失败并返回相应的错误信息。（error）</span><br><span class="line">返回值：递减后的Value值。</span><br><span class="line"></span><br><span class="line">INCR key	 </span><br><span class="line">将指定Key的Value原子性的递增1。如果该Key不存在，其初始值为0，在incr之后其值为1。如果Value的值不能转换为整型值，如Hello，该操作将执行失败并返回相应的错误信息。</span><br><span class="line">返回值：递增后的Value值。 </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">DECRBY key decrement  </span><br><span class="line">将指定Key的Value原子性的减少decrement。如果该Key不存在，其初始值为0，在decrby之后其值为-decrement。如果Value的值不能转换为整型值，如Hello，该操作将执行失败并返回相应的错误信息。注意：该操作的取值范围是64位有符号整型。</span><br><span class="line">返回值：减少后的Value值。</span><br><span class="line"></span><br><span class="line">INCRBY key increment   </span><br><span class="line">将指定Key的Value原子性的增加increment。如果该Key不存在，其初始值为0，在incrby之后其值为increment。如果Value的值不能转换为整型值，如Hello，该操作将执行失败并返回相应的错误信息。注意：该操作的取值范围是64位有符号整型。</span><br><span class="line">返回值：增加后的Value值。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line">GETSET key value	 </span><br><span class="line">原子性的设置该Key为指定的Value，同时返回该Key的原有值。和GET命令一样，该命令也只能处理string Value，否则Redis将给出相关的错误信息。</span><br><span class="line">返回值：返回该Key的原有值，如果该Key之前并不存在，则返回nil。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">l STRLEN key	 </span><br><span class="line"></span><br><span class="line">返回指定Key的字符值长度，如果Value不是string类型，Redis将执行失败并给出相关的错误信息。</span><br><span class="line"></span><br><span class="line">返回值：指定Key的Value字符长度，如果该Key不存在，返回0。</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">l SETEX key seconds value	 </span><br><span class="line"></span><br><span class="line">原子性完成两个操作，一是设置该Key的值为指定字符串，同时设置该Key在Redis服务器中的存活时间(秒数)。该命令主要应用于Redis被当做Cache服务器使用时。	 （expire，到期）</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">l SETRANGE key offset value  </span><br><span class="line"></span><br><span class="line">替换指定Key的部分字符串值。从offset开始，替换的长度为该命令第三个参数value的字符串长度，其中如果offset的值大于该Key的原有值Value的字符串长度，Redis将会在Value的后面补齐(offset - strlen(value))数量的0x00，之后再追加新值。如果该键不存在，该命令会将其原值的长度假设为0，并在其后添补offset个0x00后再追加新值。鉴于字符串Value的最大长度为512M，因此offset的最大值为536870911。最后需要注意的是，如果该命令在执行时致使指定Key的原有值长度增加，这将会导致Redis重新分配足够的内存以容纳替换后的全部字符串，因此就会带来一定的性能折损。</span><br><span class="line"></span><br><span class="line">返回值：修改后的字符串Value长度。</span><br><span class="line"></span><br><span class="line">l GETRANGE key start end	 </span><br><span class="line"></span><br><span class="line">截取字符串。该命令在截取子字符串时，将以闭区间的方式同时包含start(0表示第一个字符)和end所在的字符，如果end值超过Value的字符长度，该命令将只是截取从start开始之后所有的字符数据。当end为-1时表示是最后一位，-4 -1表示从后数4位</span><br><span class="line"></span><br><span class="line">返回值：子字符串；</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"></span><br><span class="line">l SETBIT key offset value 	 </span><br><span class="line"></span><br><span class="line">设置在指定Offset上BIT的值，该值只能为1或0，在设定后该命令返回该Offset上原有的BIT值。如果指定Key不存在，该命令将创建一个新值，并在指定的Offset上设定参数中的BIT值。如果Offset大于Value的字符长度，Redis将拉长Value值并在指定Offset上设置参数中的BIT值，中间添加的BIT值为0。最后需要说明的是Offset值必须大于0。</span><br><span class="line"></span><br><span class="line">返回值：在指定Offset上的BIT原有值。</span><br><span class="line"></span><br><span class="line">l GETBIT key offset 	 </span><br><span class="line"></span><br><span class="line">返回在指定Offset上BIT的值，0或1。如果Offset超过string value的长度，该命令将返回0，所以对于空字符串始终返回0。</span><br><span class="line"></span><br><span class="line">返回值：在指定Offset上的BIT值。 </span><br><span class="line"></span><br><span class="line">(布隆过滤器)</span><br><span class="line"></span><br><span class="line">a  97  0110 0001	</span><br><span class="line"></span><br><span class="line">A  65  0100 0001  其实只用 setbit key 2 0  就将a改为了A（从0开始计数）</span><br></pre></td></tr></table></figure>
+
 <p>2.list类型常见操作</p>
 <p>在Redis中，List类型是按照插入顺序排序的字符串链表。和数据结构中的****普通链表****一样，我们可以在其头部(left)和尾部(right)添加新的元素。在插入时，如果该键并不存在，Redis将为该键创建一个新的链表。与此相反，如果链表中所有的元素均被移除，那么该键也将会被从数据库中删除。List中可以包含的最大元素数量是4294967295。</p>
 <p>从元素插入和删除的效率视角来看，如果我们是在链表的两头插入或删除元素，这将会是非常高效的操作，即使链表中已经存储了百万条记录，该操作也可以在常量时间内完成。然而需要说明的是，如果元素插入或删除操作是作用于链表中间，那将会是非常低效的。</p>
@@ -1037,7 +2012,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/15/15.1.Redis/" data-id="ckno8ff6e004vswwddvvk7n1m" data-title="Redis" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/15/15.1.Redis/" data-id="ckpdvjpq3005hnswdg85n2xpv" data-title="Redis" class="article-share-link">分享</a>
       
       
       
@@ -1116,7 +2091,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/15/4.7.%E5%86%85%E9%83%A8%E7%B1%BB/" data-id="ckno8ff5f002aswwdcttxf9tr" data-title="内部类" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/15/4.7.%E5%86%85%E9%83%A8%E7%B1%BB/" data-id="ckpdvjpoz002answde6b33qt9" data-title="内部类" class="article-share-link">分享</a>
       
       
       
@@ -1209,7 +2184,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/15/4.6.%E6%8E%A5%E5%8F%A3%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB/" data-id="ckno8ff5f0028swwd5088a1ee" data-title="接口和抽象类" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/15/4.6.%E6%8E%A5%E5%8F%A3%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB/" data-id="ckpdvjpoy0028nswd3o449r8d" data-title="接口和抽象类" class="article-share-link">分享</a>
       
       
       
@@ -1223,711 +2198,11 @@
 
 
   
-    <article id="post-4.8.程序控制流程if" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/15/4.8.%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8Bif/" class="article-date">
-  <time class="dt-published" datetime="2021-04-15T03:49:57.000Z" itemprop="datePublished">2021-04-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/15/4.8.%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8Bif/">程序控制流程if</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>想了想还是单独给程序控制流程部分开了一个文章。因为业务逻辑部分，最主要的用的还是if语句。通过对不同情形的判断，来进行情况分类，可以帮助我们实现功能，学会if是写逻辑层代码重要的一环。</p>
-<p>流程控制语句：可以控制程序的执行流程。</p>
-<h1 id="顺序结构"><a href="#顺序结构" class="headerlink" title="顺序结构"></a>顺序结构</h1><p>是程序中最简单最基本的流程控制，没有特定的语法结构，按照代码的先后顺序，依次执行，程序中大多数的代码都是这样执行的。</p>
-<p>从上往下，依次执行。</p>
-<h1 id="选择结构"><a href="#选择结构" class="headerlink" title="选择结构"></a>选择结构</h1><p>也被称为分支结构。有特定的语法规则，代码要执行具体的逻辑运算进行判断，逻辑运算的结果有两个，所以产生选择，按照不同的选择执行不同的代码。</p>
-<p>两种：</p>
-<p>if语句的使用场景：</p>
-<p>a.针对表达式是一个boolean类型的判断</p>
-<p>b.针对一个范围的判断</p>
-<p>c.针对几个常量值的判断</p>
-<p>switch语句使用场景：针对几个常量值的判断</p>
-<p>1.if语句</p>
-<p>if语句的使用格式：</p>
-<p>a. 适合做单个判断</p>
-<p> if(关系表达式){</p>
-<p>语句体</p>
-<p>}</p>
-<p>if语句控制的语句体如果是一条语句，大括号可以省略，如果是多条语句，就不能省略。建议永远不要省略。</p>
-<p>一般来说，有左大括号就没有分号，有分号就没有左大括号。if();或if(){}</p>
-<p>b.适合做两个判断</p>
-<p>if(关系表达式){</p>
-<p>语句体1；</p>
-<p>}else{</p>
-<p>语句体2；</p>
-<p>}</p>
-<p>else后面是没有表达式的，只有if后面有。</p>
-<p>三元运算符实现的都可以用if语句实现。反之不成立（因为当if语句控制的操作是一个输出语句时候就不能，三元运算符是一个运算符，操作完毕是会有一个结果而不是一个输出语句）</p>
-<p>c.适合做多个判断</p>
-<p>if(比较表达式1){</p>
-<p>语句体1；</p>
-<p>}else if(比较表达式2){</p>
-<p>语句体2；</p>
-<p>}else if(比较表达式3){</p>
-<p>语句体3；</p>
-<p>}</p>
-<p>…</p>
-<p>else{</p>
-<p>语句体n+1；</p>
-<p>}</p>
-<p>注意事项：比较表达式无论简单还是复杂，结果必须是boolean类型。</p>
-<p>if语句是可以任意嵌套使用的，把语句体n改为if语句即可实现（无论使用if三种格式那种都行）。</p>
-<p>\2. switch语句</p>
-<p>switch(表达式){</p>
-<p>case  值1:</p>
-<p>语句体1；</p>
-<p>break；</p>
-<p>case  值2:</p>
-<p>语句体2；</p>
-<p>break；</p>
-<p>…</p>
-<p>default：</p>
-<p>语句体n+1；</p>
-<p>break；</p>
-<p>}</p>
-<p>switch:表示这是switch选择结构。</p>
-<p>表达式：表达式取值有限定，byte，short，char，int。JDK5以后可以是枚举，JDK7以后可以是字符串。</p>
-<p>case后面跟的是要和表达式比较的值。</p>
-<p>语句体部分可以是一条或者多条语句</p>
-<p>break表示中断，结束的意思，可以结束switch语句。</p>
-<p>注意事项：</p>
-<p>\1. case后面只能是常量，不能是变量，而且多个case后面的值不能出现相同的。</p>
-<p>\2. default可以省略。一般不建议，除非判断的case值是固定的（可以穷举完）。他的作用是对不正确的情况给出提示。</p>
-<p>\3. break可以省略。一般不建议，会出现case穿透(可以利用case穿透来实现多个输出结果相同时整合到一起)。最后一个break可以省略。</p>
-<p>\4. default位置可以出现在switch语句的任意位置。建议在最后。</p>
-<p>\5. switch语句的结束条件：遇到break或者执行到程序的末尾。</p>
-<h1 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h1><p>循环语句的组成：</p>
-<p>初始化语句：一条或者多条语句，这些语句完成一些初始化操作</p>
-<p>判断条件语句：这是一个boolean表达式，这个表达式决定是否执行循环体</p>
-<p>循环体语句：要多次循环的语句</p>
-<p>控制条件语句：在一次循环结束后，下次循环判断条件执行前执行，通过用于控制循环条件中的变量，使得循环再合适的时候结束</p>
-<h2 id="for循环："><a href="#for循环：" class="headerlink" title="for循环："></a>for循环：</h2><p>for(初始化语句；判断条件语句；控制条件语句)｛</p>
-<p>循环体语句；</p>
-<p>｝</p>
-<p>注意事项：判断条件语句的结果是一个boolean类型</p>
-<p>循环语句如果是一条语句，大括号可以省略，如果是多条语句，大括号不能省略，建议永远不要省略。</p>
-<p>一般来说，有左大括号就没有分号，有分号就没有左大括号。</p>
-<p>for循环：求和思想：初始化值为0。</p>
-<p>求阶乘思想：初始化值为1。</p>
-<p>水仙花数：就是指一个三位数，其各位数字的立方和等于该数本身。eg：153</p>
-<h2 id="while循环："><a href="#while循环：" class="headerlink" title="while循环："></a>while循环：</h2><p>基本格式：</p>
-<p>while(判断条件语句){</p>
-<p>循环体语句；</p>
-<p>}</p>
-<p>扩展格式：</p>
-<p>初始化语句；</p>
-<p>while（判断条件语句）｛</p>
-<p>循环体语句；</p>
-<p>控制条件语句；</p>
-<p>｝</p>
-<p> for循环和while循环语句可以等价转换，但也存在区别：</p>
-<p>使用区别：控制条件语句所控制的那个变量，在for循环结束后，就不能在被访问到了，而while循环结束还可以继续使用。若不使用推荐使用for循环，因为这个变量会从内存中消失，能够提高内存的使用效率。</p>
-<p>场景区别：for循环适合针对一个范围判断进行操作，while循环适合判断次数不明确的操作。</p>
-<h2 id="do-…-while-循环语句："><a href="#do-…-while-循环语句：" class="headerlink" title="do … while 循环语句："></a>do … while 循环语句：</h2><p>至少执行一次</p>
-<p>基本格式：</p>
-<p>do{</p>
-<p>循环体语句；</p>
-<p>}while（判断条件语句）;</p>
-<p>扩展格式：</p>
-<p>初始化语句；</p>
-<p>do｛</p>
-<p>循环体语句；</p>
-<p>控制条件语句；</p>
-<p>｝while（判断条件语句）;</p>
-<p>优先考虑for循环，其次是while循环，最后考虑do… while循环。</p>
-<p>注意死循环：ctrl+c中断循环</p>
-<p>A：注意控制条件语句控制的那个变量的问题，不要丢了，否则会死循环。</p>
-<p>B：两种最简单的死循环格式</p>
-<p>while（true）｛</p>
-<p>｝</p>
-<p>for（；；）｛</p>
-<p>｝</p>
-<p>循环嵌套：循环语句的循环体本身是一个循环语句。</p>
-<p>外循环控制行数，内循环控制列数。</p>
-<h1 id="控制跳转语句"><a href="#控制跳转语句" class="headerlink" title="控制跳转语句"></a>控制跳转语句</h1><p>****break****：中断</p>
-<p>使用场景：离开下面2个场景使用，无意义。</p>
-<p>A：switch语句中</p>
-<p>B：循环语句中（加入了if判断的情况）</p>
-<p>使用：A：跳出单层循环</p>
-<p>B：跳出多层循环，必须借助标签。</p>
-<p>格式：</p>
-<p>标签名： 语句</p>
-<p>****continue****：继续</p>
-<p>使用场景：循环语句中。（离开此场景无意义）</p>
-<p>break和continue的区别：break是跳出单层循环。continue是跳出一次循环，进行下一次的判断执行。</p>
-<p>****return****：返回</p>
-<p>renturn关键字不是为了跳转出循环体，更常用的功能是结束一个方法，也就是推出一个方法，跳转到上层调用的方法。</p>
-<p>一旦遇到return，程序就不会在继续往后执行。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/15/4.8.%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8Bif/" data-id="ckno8ff5g002bswwd2tgi4jd5" data-title="程序控制流程if" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-1.5.编程规范" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/15/1.5.%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" class="article-date">
-  <time class="dt-published" datetime="2021-04-15T02:57:13.000Z" itemprop="datePublished">2021-04-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/15/1.5.%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/">编程规范</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>编写程序时注意：    </p>
-<p>遇到左大括号缩进一个tab的位置。</p>
-<p>关联不是很大的语句间空行。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/15/1.5.%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" data-id="ckno8ff4m0005swwd6anodvd8" data-title="编程规范" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%A7%84%E8%8C%83/" rel="tag">规范</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-5.3.MySQL踩坑" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/13/5.3.MySQL%E8%B8%A9%E5%9D%91/" class="article-date">
-  <time class="dt-published" datetime="2021-04-12T16:40:08.000Z" itemprop="datePublished">2021-04-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/13/5.3.MySQL%E8%B8%A9%E5%9D%91/">MySQL踩坑</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>关于数据库时区说明</p>
-<p>2016-12-07T03:13:25.808Z:T是代表后面跟着“时间”。Z代表0时区，<br>这是UTC统一时间</p>
-<p>时间的描述：</p>
-<p>mysql数据库拥有时区设置，默认使用系统时区</p>
-<p>可通过如下语句查询当前时区</p>
-<p><code>show variables like &#39;%time_zone%&#39;;</code></p>
-<p>数据库使用系统时间CST——China Standard Time UTC+8:00 中国沿海时间(北京时间)</p>
-<p>​     UTC:国际时间</p>
-<p>​    UTC-8:伦敦时间</p>
-<p>​    UTC+8就是国际时加八小时,是东八区时间,也就是北京时间</p>
-<p>GMT，即格林尼治标准时间，也就是世界时。GMT的正午是指当太阳横穿格林尼治子午线（本初子午线）时的时间。但由于地球自转不均匀不规则，导致GMT不精确，现在已经不再作为世界标准时间使用。</p>
-<p>UTC，即协调世界时。UTC是以原子时秒长为基础，在时刻上尽量接近于GMT的一种时间计量系统。为确保UTC与GMT相差不会超过0.9秒，在有需要的情况下会在UTC内加上正或负闰秒。UTC现在作为世界标准时间使用。</p>
-<p>所以，UTC与GMT基本上等同，误差不超过0.9秒</p>
-<p>RTC，硬件时间，主板上面bios的时间</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">String dateTime = <span class="string">&quot;2019-06-27T16:00:00.000Z&quot;</span>;</span><br><span class="line"></span><br><span class="line">dateTime = dateTime .replace(<span class="string">&quot;Z&quot;</span>, <span class="string">&quot; UTC&quot;</span>); <span class="comment">//2019-06-27T16:00:00.000 UTC</span></span><br><span class="line"></span><br><span class="line">SimpleDateFormat format1 = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd&#x27;T&#x27;HH:mm:ss.SSS Z&quot;</span>);<span class="comment">//转换时区格式</span></span><br><span class="line">SimpleDateFormat format2 = <span class="keyword">new</span> SimpleDateFormat(<span class="string">&quot;yyyy-MM-dd&quot;</span>);</span><br><span class="line"></span><br><span class="line">Date date = format1.parse(dateTime ) || <span class="keyword">long</span> ldate = format1.parse(dateTime ).getTime();<span class="comment">//将Z时间格式转换成Date类型格式或换成毫秒</span></span><br><span class="line">String time= format2.format(date);<span class="comment">//2019-06-28</span></span><br><span class="line"></span><br><span class="line">System.out.println(time);</span><br><span class="line"></span><br><span class="line">输出：<span class="number">2019</span>-<span class="number">06</span>-<span class="number">28</span></span><br></pre></td></tr></table></figure>
-
-<p>时间类型说明</p>
-<p>datetime</p>
-<p>实际格式储存（Just stores what you have stored and retrieves the same thing which you have stored.）</p>
-<p>与时区无关（It has nothing to deal with the TIMEZONE and Conversion.）</p>
-<p>timestamp</p>
-<p>值以UTC毫秒数保存（ it stores the number of milliseconds）</p>
-<p>存储及检索时根据当前时区设置，对时间数值做转换</p>
-<p>由于timestamp与时区相关，且线上数据库时区设置为北京时间（即UTC+8:00）。因此，当数据库中使用了timestamp列，若使用不当，统一UTC格式时间改造将很可能会引入错误！</p>
-<p>关于时间查询的sql语句</p>
-<p>在项目开发过程中，自己需要查询出一定时间段内的交易。故需要在sql查询语句中加入日期时间要素，sql语句如何实现?</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM lmapp.lm_bill where tx_time Between &#39;2015-12-20&#39; And &#39;2015-12-31&#39;;</span><br></pre></td></tr></table></figure>
-
-<p>查询每一天某个时间段的所有记录(例:9:00:00到21:00:00)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM 表名 </span><br><span class="line">WHERE DATE_FORMAT(create_time,&#39;%H:%i:%S&#39;)&gt;&#x3D;&#39;09:00:00&#39;</span><br><span class="line">and DATE_FORMAT(create_time,&#39;%H:%i:%S&#39;)&lt;&#x3D;&#39;21:00:00&#39; </span><br><span class="line">ORDER BY 排序字段 ASC;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>mysql 查询当天、最近一天、最近一周，本月，上一个月的数据</p>
-<p>今天<br><code>select * from 表名 where to_days(时间字段名) = to_days(now());</code></p>
-<p>昨天</p>
-<p><code>SELECT * FROM 表名 WHERE TO_DAYS( NOW( ) ) - TO_DAYS( 时间字段名) &lt;= 1</code><br>7天</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM 表名 where DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;&#x3D; date(时间字段名)</span><br></pre></td></tr></table></figure>
-
-<p>近30天</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM 表名 where DATE_SUB(CURDATE(), INTERVAL 30 DAY) &lt;&#x3D; date(时间字段名)</span><br></pre></td></tr></table></figure>
-
-<p>本月</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM 表名 WHERE DATE_FORMAT( 时间字段名, &#39;%Y%m&#39; ) &#x3D; DATE_FORMAT( CURDATE( ) , &#39;%Y%m&#39; )</span><br></pre></td></tr></table></figure>
-
-<p>上一月</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM 表名 WHERE PERIOD_DIFF( date_format( now( ) , &#39;%Y%m&#39; ) , date_format( 时间字段名, &#39;%Y%m&#39; ) ) &#x3D;1</span><br></pre></td></tr></table></figure>
-
-
-
-<p>SELECT id FROM m_question WHERE cratedate BETWEEN<br>‘2018-05-31 12:00:00’ and ‘2018-06-26 14:59:59’ ORDER BY id DESC<br>或者<br>SELECT id FROM m_question WHERE cratedate &gt;<br>‘2018-05-31 12:00:00’ and cratedate &lt; ‘2018-06-26 14:59:59’ ORDER BY id DESC<br>但是between and 包含时间界限，也相当于&gt;= &lt;=，而&gt; &lt;不包含</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Select  *  from mytable where  DateField1&lt;&#x3D;&#39;2010-1-31&#39;</span><br><span class="line"></span><br><span class="line">Select  *  from mytable where  DateField1&lt;&#x3D;&#39;2010-1-31 0:0:0&#39;</span><br><span class="line"></span><br><span class="line">Select  *  from mytable where  DateField1&lt; &#39;2010-2-1&#39;</span><br><span class="line"></span><br><span class="line">Select  *  from mytable where  DateField1&lt;&#39;2010-2-1 0:0:0&#39;</span><br></pre></td></tr></table></figure>
-
-<p>如果DateField1 里面有 值为 2010-1-31 ，我们不建议用 语句1 或者 语句 2，因为由于数据库的数据精度和编程语言的数据精度不一致，</p>
-<p>使用&lt;= 会导致无法取得 2010-1-31 的数据</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/13/5.3.MySQL%E8%B8%A9%E5%9D%91/" data-id="ckno8ff5h002fswwd165k49c8" data-title="MySQL踩坑" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-5.1.MySQL初级" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/13/5.1.MySQL%E5%88%9D%E7%BA%A7/" class="article-date">
-  <time class="dt-published" datetime="2021-04-12T16:39:03.000Z" itemprop="datePublished">2021-04-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/13/5.1.MySQL%E5%88%9D%E7%BA%A7/">MySQL初级</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>关系型数据库</p>
-<p>服务器：硬件：指的就是一台计算机</p>
-<p>软件：指的是需要在这台电脑上安装数据库服务器</p>
-<p>一台电脑如果安装了MySQL，这台电脑称为是MySQL数据库服务器</p>
-<p>MySQL数据库服务器存储的方式：</p>
-<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml5948\wps1.jpg" alt="img"> </p>
-<p>一台数据库服务器中会创建很多数据库（一个项目，会创建一个数据库）。在数据库中会创建很多张表（一个实体会创建一个表）。在表中会有很多记录（一个对象的实例会添加一条新的记录）。</p>
-<p>SQL：结构化查询语言(Structured Query Language)简称SQL，是一种特殊目的的编程语言，是一种<a target="_blank" rel="noopener" href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=51720422&ss_c=ssc.citiao.link">数据库查询和程序设计语言</a>，用于存取数据以及查询、更新和管理关系数据库系统；同时也是<a target="_blank" rel="noopener" href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=71639443&ss_c=ssc.citiao.link">数据库脚本文件</a>的<a target="_blank" rel="noopener" href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=190718&ss_c=ssc.citiao.link">扩展名</a>。</p>
-<p>分类：</p>
-<p>DDL：数据定义语言：create，drop，alter..</p>
-<p>DCL：数据控制语言：grant，if…</p>
-<p>DML：数据操纵语言：insert，update，delete…</p>
-<p>DQL：数据查询语言：select   （不区分大小写）</p>
-<h1 id="对数据库进行CRUD的操作"><a href="#对数据库进行CRUD的操作" class="headerlink" title="对数据库进行CRUD的操作"></a>对数据库进行CRUD的操作</h1><p>创建数据库：</p>
-<p>语法：create database 数据库名称 [character set 字符集 collate 字符集校对规则];   utf-8的字符集写的时候是utf8</p>
-<p>字符集校对规则可以在查询手册中查到，用来数据库排序展示</p>
-<p>查看数据库：</p>
-<p>语法：查看数据库服务器中所有的数据库：show databases;</p>
-<p>查看某个数据库的定义信息： show create database 数据库名称;</p>
-<p>修改数据库：</p>
-<p>语法：alter database 数据库名称 character set 字符集 collate 校对规则;</p>
-<p>删除数据库：</p>
-<p>语法:drop database 数据库名称;</p>
-<p>其他数据库操作：</p>
-<p>切换数据库：use 数据库名称;</p>
-<p>查看当前正在使用的数据库：select database();</p>
-<h1 id="对数据库表进行操作"><a href="#对数据库表进行操作" class="headerlink" title="对数据库表进行操作"></a>对数据库表进行操作</h1><p>创建表：</p>
-<p>语法：create table 表名称(字段名称 字段类型(长度) 约束,字段名称 字段类型(长度) 约束…);</p>
-<p>字段类型：一个实体对应一个表，一个实体属性对应表的一个字段。</p>
-<p>Java中的类型                        MySQL中的类型</p>
-<p>byte/short/int/long                     tinyint/smallint/int/bigint</p>
-<p>float                                float</p>
-<p>double                                double</p>
-<p>boolean                                bit</p>
-<p>char/String                            char和varchar类型</p>
-<p>Date                                date/time/datetime/timestamp</p>
-<p>File                                    BLOB/TEXT</p>
-<p>char和varchar的区别：</p>
-<p>char代表是固定长度的字符或字符串。定义类型char(8),向这个字段存入字符串hello，那么数据库使用三个空格将其补全。</p>
-<p>varchar代表的是可变长度的字符串。定义类型varchar(8), 向这个字段存入字符串hello,那么存入到数据库的就是hello。</p>
-<p>datetime和timestamp区别：</p>
-<p>datetime就是既有日期又有时间的日期类型，如果没有向这个字段中存值，数据库使用null存入到数据库中。</p>
-<p>timestamp也是既有日期又有时间的日期类型，如果没有向这个字段中存值，数据库使用当前的系统时间存入到数据库中。</p>
-<p>BLOB是二进制的文件，TEXT是文本类型的文件（都很少使用）</p>
-<p>约束：</p>
-<p>约束作用：保证数据的完整性</p>
-<p>单表约束分类：</p>
-<p>主键约束：primary key 主键约束默认就是唯一 非空的</p>
-<p>唯一约束：unique</p>
-<p>非空约束：not null</p>
-<p>例如：</p>
-<p>建表语句：</p>
-<p>create database web_test1;</p>
-<p>use web_test1;</p>
-<p>create table user(</p>
-<p>​    id int primary key auto_increment,</p>
-<p>​    username varchar(20) unique,</p>
-<p>​    password varchar(20) not null,</p>
-<p>​    age int,</p>
-<p>​    birthday date</p>
-<p>);</p>
-<p>查看表：</p>
-<p>查看某个数据库下的所有的表： （必须先切换到这个数据库）</p>
-<p>语法：show tables;</p>
-<p>查看某个表的结构信息：</p>
-<p>语法：desc 表名; （只是结构信息）</p>
-<p>删除表：</p>
-<p>语法：drop table 表名;</p>
-<p>修改表：</p>
-<p>添加列：alter table 表名 add 列名 类型(长度) 约束;</p>
-<p>修改列类型，长度和约束：alter table 表名 modify 列名 类型(长度) 约束;</p>
-<p>删除列：alter table 表名 drop 列名;</p>
-<p>修改列名称：alter table 表名 change 旧列名 新列名 类型(长度) 约束;</p>
-<p>修改表名：rename table 表名 to 新的表名;</p>
-<p>修改表的字符集：alter table 表名 character set 字符集;</p>
-<h1 id="对数据库表的记录进行操作"><a href="#对数据库表的记录进行操作" class="headerlink" title="对数据库表的记录进行操作"></a>对数据库表的记录进行操作</h1><p>添加表的记录：</p>
-<p>语法：向表中插入某些列：insert into 表名 (列名1,列名2,列名3…) values (值1,值2,值3…)</p>
-<p>向表中插入所有列：insert into 表名 values (值1,值2,值3…);</p>
-<p>//id一般是自动增长的，所以可以把值写为null</p>
-<p>注意事项</p>
-<p>1.值的类型与数据库中表列的类型一致。</p>
-<p>2.值的顺序与数据库中表列的顺序一致。</p>
-<p>3.值的最大长度不能超过列设置最大长度。</p>
-<p>4.值的类型是字符串或者是日期类型，使用单引号引起来。</p>
-<p>直接向数据库中插入中文记录会出现错误！ </p>
-<p>解决方法：</p>
-<p>​    show variables like ‘%character%’;  –查看数据库中与字符集相关参数（数据库中都是utf8，而命令行中的是gbk）所以需要将MySQL数据库服务器中的客户端部分的字符集改为gbk。MySQL数据库服务器中的服务端还是utf8，但是MySQL数据库服务器已经可以识别了。</p>
-<p>​    找到MySQL的安装路径：my.ini文件，修改文件中[client]下的字符集，重新启动MySQL数据库服务器（在搜索程序和文件中输入 services.msc 打开服务 界面，找到MySQL停止，再启动），再show variables like ‘%character%’;  就可以看到改成功了。</p>
-<p>修改表的记录：</p>
-<p>语法:update 表名 set 列名=值,列名=值 [where 条件];</p>
-<p>注意事项</p>
-<p>1.值的类型与列的类型一致。</p>
-<p>2.值的最大长度不能超过列设置的最大长度。</p>
-<p>3.字符串类型和日期类型添加单引号。</p>
-<p>删除表的记录：</p>
-<p>语法：delete from 表名 [where 条件];</p>
-<p>注意事项</p>
-<p>1.删除表的记录，指的是删除表中的一行记录。</p>
-<p>2.删除如果没有条件，默认是删除表中的所有记录。</p>
-<p>删除表中的记录有两种做法:</p>
-<p>delete from user;</p>
-<p>删除所有记录，属于DML语句，一条记录一条记录删除。事务可以作用在DML语句上的（可以回滚）</p>
-<p>truncate table user;</p>
-<p>删除所有记录，属于DDL语句，将表删除，然后重新创建一个结构一样的表。事务不能控制DDL的（真的删除掉了）</p>
-<p>查看表的记录：</p>
-<p>基本查询：</p>
-<p>语法:select  [distinct]  *|列名 from 表 [条件];</p>
-<p>[]代表可选，就是可加可不加。distinct表示不重复的</p>
-<p>*|列名 中的列名可以进行运算的。select name,english+chinese+math from exam;</p>
-<p>也可以取个别名进行查询：</p>
-<p>select name,english+chinese+math as sum from exam; （as有没有都可以）</p>
-<p>条件查询：使用where子句：</p>
-<p>&gt; , &lt; , &gt;= , &lt;= , &lt;&gt;（不等于） ,=</p>
-<p>like:模糊查询（like可以进行模糊查询,在like子句中可以使用_或者%作为占位符。_只能代表一个字符，而%可以代表任意个字符。）</p>
-<p>in:范围查询  （in后面跟的是范围）</p>
-<p>条件关联:and , or ,not  （多个条件时可以使用）</p>
-<p>排序查询：</p>
-<p>使用order by 字段名称 asc/desc;</p>
-<p>asc 升序   desc  降序  （不写的话，默认是asc升序）</p>
-<p>查询学生信息，先按照语文成绩进行倒序排序，如果成绩相同再按照英语成绩升序排序：select * from exam order by chinese desc,english asc;</p>
-<p>分组统计查询：</p>
-<p>聚合函数使用：（）括号中加对象</p>
-<p>sum();</p>
-<p>select sum(english)+sum(chinese)+sum(math) from exam;和select sum(english+chinese+math) from exam;的区别：第一个语句是按照列的方式统计，英语成绩总和+语文成绩总和+数学成绩总和。第二个语句先计算英语+数学+语文然后再求和。</p>
-<p>//如果其中有一个值为null时，select sum(english+chinese+math) from exam;语句不会把那一行数据加上（null加上任意数还是null），select sum(english)+sum(chinese)+sum(math) from exam;语句就会正确相加。如果某一列有null值，可以使用ifnull的函数：select sum(ifnull(english,0)+chinese+math) from exam;</p>
-<p>count();  统计个数 select count(*) from exam where name like ‘李%’;</p>
-<p>max();</p>
-<p>min();</p>
-<p>avg();</p>
-<p>分组查询：</p>
-<p>语法：使用group by 字段名称;</p>
-<p>where的子句后面不能跟着聚合函数。如果现在使用带有聚合函数的条件过滤（分组后条件过滤）需要使用一个关键字having</p>
-<p>select product,sum(price) from orderitem  group by product having sum(price) &gt; 5000;</p>
-<p>总结</p>
-<p>S(select)… F(from)…W(where)…G(group by)…H(having)…O(order by);</p>
-<p>顺序不能颠倒，可以省略</p>
-<h1 id="MySQL的密码重置-不成功"><a href="#MySQL的密码重置-不成功" class="headerlink" title="*MySQL的密码重置(不成功)*"></a><em><strong>*MySQL的密码重置(不成功)*</strong></em></h1><p>\1. 停止MySQL的服务：在搜索程序和文件中输入 services.msc 打开服务 界面，找到MySQL停止</p>
-<p>\2. 在cmd下启动服务：mysqld –skip-grant-tables</p>
-<p>\3. 重新开启cmd的命令行（前面那个不要关掉）：mysql -u root -p 直接登入，不需要密码</p>
-<p>\4. 修改root密码：use mysql；  update user set password = password (‘xinmima’) where user =’root’;update user set password =password(‘sunweixuan’) where user =’root’;</p>
-<p>\5. 结束mysqld的进程:在任务管理器中的进程结束mysqld.exe</p>
-<p>\6. 重新启动mysql的服务：在搜索程序和文件中输入 services.msc 打开服务 界面，找到MySQL启动</p>
-<h1 id="数据库的备份和还原"><a href="#数据库的备份和还原" class="headerlink" title="*数据库的备份和还原*"></a><em><strong>*数据库的备份和还原*</strong></em></h1><p>数据库的备份：1.打开cmd的命令行窗口（以管理员身份运行）</p>
-<p>2.输入mysqldump -u root -p web_test1 &gt;C:/web_test1.sql （这样c盘中就有了web_test1.sql ）  （&gt;和&lt;是数据流向）</p>
-<p>数据库的还原：</p>
-<p>第一种：1.在数据库服务器内部创建数据库：creat</p>
-<p>2.在命令行窗口输入：mysql -u root -p web_test1 &lt; C:/web_test1.sql</p>
-<p>第二种：1.在数据库服务器内部创建数据库：creat</p>
-<p>2.切换到该数据库：use</p>
-<p>3.使用source命令还原：source C:/web_test1.sql</p>
-<h1 id="可视化工具-SQLyog"><a href="#可视化工具-SQLyog" class="headerlink" title="*可视化工具*****SQLyog****"></a><em><strong>*可视化工具*</strong>***</em>*SQLyog****</h1><p>MySQL的可视化工具有很多，基本上功能和内容都一样。</p>
-<p>可以增删查改，可以执行SQL语句。</p>
-<h1 id="多表设计"><a href="#多表设计" class="headerlink" title="*多表设计*"></a><em><strong>*多表设计*</strong></em></h1><p>外键约束</p>
-<p>约束是用来保证数据的完整性。单表：主键约束、非空约束、唯一约束。</p>
-<p>多表：外键约束：用来保证数据完整性（多表之间）</p>
-<p>让两个表之间产生联系：</p>
-<p>在员工表上添加外键：alter table employee add foreign key (dno) references dept(did);  （添加外键dno指向dept表中的did列）</p>
-<p>对外键进行操作类似于对表进行修改：设置外键为非空：alter table employee modify dno int not null;</p>
-<p>表与表之间的关系：</p>
-<p>\1. 一对多的关系（员工和部门）：</p>
-<p>建表原则：在多的一方创建外键指向一的一方的主键</p>
-<p>\2. 多对多的关系（学生和课程）：</p>
-<p>建表原则：需要创建中间表，中间表中至少两个字段，分别作为外键指向多对多双方的主键</p>
-<p>\3. 一对一的关系（公司和注册地址）：（很少见）</p>
-<p>两种方式：</p>
-<p>（1）唯一外键对应：假设是一对多，在多的一方创建外键指向一的一方的主键，将外键设置为unique。</p>
-<p>（2）主键对应：将两个表的主键建立对应关系即可。</p>
-<p>多表设计：</p>
-<p>\1. 多表分析： 分析每个类之间的关系</p>
-<p>\2. 多表创建：创建各个表，添加外键使其建立关系，对于多对多的关系，需要再建立中间表。</p>
-<p>\3. 多表查询：2类</p>
-<p>（1）连接查询</p>
-<p>l 交叉连接（了解）：查询到的是两个表的笛卡尔积（表1*表2=总记录条数）</p>
-<p>语法：select * from 表1 <em><strong>*cross join*</strong></em> 表2;</p>
-<p>select * from 表1,表2;</p>
-<p>l 内连接：inner join （inner可以省略）</p>
-<p>显示内连接：<em><strong>*在SQL中显示的调用inner join关键字*</strong></em></p>
-<p>语法：select * from 表1 inner join 表2 on 关联条件;</p>
-<p>（select * from classes c inner join student s on c.cid = s.cno;）</p>
-<p>隐式内连接：<em><strong>*在SQL中没有调用inner join关键字*</strong></em></p>
-<p>语法：select * from 表1,表2 where 关联条件;</p>
-<p>（SELECT * FROM classes c,student s WHERE c.cid = s.cno;）</p>
-<p>l 外连接：outer join  （outer可以省略）</p>
-<p>左外连接：语法：select * from 表1 left outer join 表2 on 关联条件; </p>
-<p>左边表的全部和左右边共有的部分（左边表为基准）</p>
-<p>右外连接：语法：select * from 表1 right outer join 表2 on 关联条件;</p>
-<p>左边表的全部和左右边共有的部分（右边表为基准）</p>
-<p>（2）子查询：一个查询语句条件需要依赖另一个查询语句的结果。（查询可以嵌套）</p>
-<p>带in的子查询：select * from classes where cid in (SELECT cno FROM student WHERE birthday &gt; ‘1991-01-01’); （先查询出后面的范围，再在后面的范围中查找前面的信息并输出）</p>
-<p>带exists的子查询：select * from classes where exists (SELECT cno FROM student WHERE birthday &gt; ‘1991-01-01’); （先查询后面的范围，如果存在，就对前面的语句进行查询；如果不存在，不执行前面的查询语句）</p>
-<p>带any的子查询：SELECT * FROM classes WHERE cid &gt; ANY (SELECT cno FROM student )； （大于后面中最小值的）</p>
-<p>带all的子查询：SELECT * FROM classes WHERE cid &gt; ALL (SELECT cno FROM student)； （大于后面中最大值的）</p>
-<p>内连接与外连接的区别：左外连接和右外连接的交集就是内连接。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/13/5.1.MySQL%E5%88%9D%E7%BA%A7/" data-id="ckno8ff5g002dswwd8xjd9gzp" data-title="MySQL初级" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-19.2.Gitee" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/12/19.2.Gitee/" class="article-date">
-  <time class="dt-published" datetime="2021-04-12T02:59:11.000Z" itemprop="datePublished">2021-04-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/12/19.2.Gitee/">Gitee</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>一、fork源项目<br>首先码云是基于gitlab，操作方式与github类似。码云的协作是基于fork源项目的基础上，才能进行pull request。</p>
-<p>对要进行协作开发或者学习的项目，fork一份到自己的远程仓库。</p>
-<p>这样我们自己的远程仓库就会有一份源工程的副本。熟悉git版本工具开发的朋友，可以把一份fork下来的副本当成一个开发分支。</p>
-<p>只有fork下来的副本你才拥有修改的权限，等同于一个拥有开发权限的分支。在这个开发分支中，你可以进行代码学习或者开发，提交修改到远程仓库的副本工程。</p>
-<p>二、协同修改操作pull request</p>
-<p>这样可以将自己仓库的修改过的分支，提交合并请求到源项目，完成远程协作。</p>
-<p>三、拉取源项目最新内容<br>点击项目标题下源项目旁边的 刷新按钮，便可以拉取最新的源项目数据。</p>
-<p>便于及时获取原作者最新的项目更新。</p>
-<p>也可以通过给fork下来的副本添加上游仓库地址<br>使用git 命令更新</p>
-<p>git remote add upstream <a target="_blank" rel="noopener" href="https://gitee.com/xxxxxxxx.git">https://gitee.com/xxxxxxxx.git</a><br>git pull upstream develop</p>
-<p>注意： 更新上游仓库 会覆盖本地修改，所以请pr 接受之后 在更新</p>
-<p>gitee是开源中国（<a target="_blank" rel="noopener" href="https://www.oschina.net/%EF%BC%89%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%80%E6%AC%BE%E5%9F%BA%E4%BA%8Egit%E7%9A%84%E4%BB%A3%E7%A0%81%E6%89%98%E7%AE%A1%E5%B9%B3%E5%8F%B0%EF%BC%8C%E8%83%BD%E5%A4%9F%E7%94%A8%E7%A0%81%E4%BA%91%E5%AE%9E%E7%8E%B0%E4%BB%A3%E7%A0%81%E6%89%98%E7%AE%A1%E3%80%81%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E3%80%81%E5%8D%8F%E4%BD%9C%E5%BC%80%E5%8F%91%EF%BC%8C%E7%9B%AE%E5%89%8D%E6%98%AF%E5%9B%BD%E5%86%85%E6%9C%80%E5%A4%A7%E7%9A%84%E4%BB%A3%E7%A0%81%E7%B3%BB%E7%BB%9F%EF%BC%8Cgitee%E5%92%8Cgithub%E7%9A%84%E4%BD%9C%E7%94%A8%E5%92%8C%E6%80%A7%E8%B4%A8%E6%98%AF%E7%B1%BB%E4%BC%BC%E7%9A%84%EF%BC%8C%E4%BD%86%E6%98%AF%E7%9B%B8%E6%AF%94%E4%BA%8Egithub%E8%80%8C%E8%A8%80%EF%BC%8Cgitee%E6%9C%89%E4%B8%A4%E4%B8%AA%E6%98%BE%E8%91%97%E7%9A%84%E4%BC%98%E5%8A%BF%EF%BC%9A%E4%B8%80%E6%98%AF%E9%80%9F%E5%BA%A6%E5%BF%AB%EF%BC%8C%E4%BA%8C%E6%98%AF%E6%94%AF%E6%8C%81%E5%85%8D%E8%B4%B9%E7%9A%84%E7%A7%81%E5%AF%86%E9%A1%B9%E7%9B%AE">https://www.oschina.net/）开发的一款基于git的代码托管平台，能够用码云实现代码托管、项目管理、协作开发，目前是国内最大的代码系统，gitee和github的作用和性质是类似的，但是相比于github而言，gitee有两个显著的优势：一是速度快，二是支持免费的私密项目</a><br>下载git</p>
-<ol>
-<li>分支（git branch命令）</li>
-</ol>
-<p>git默认分支一般是master，当然，这是可以修改的，我们在master完成一次开发，生成了一个稳定版本，那么当需要添加新功能或者做修改时，只需要新建一个分支，然后在该分支上开发，完成后合并到主分支即可，分支功能解决了正在开发的版本与上线版本稳定性冲突的问题。</p>
-<ol start="2">
-<li>提交（git commit命令）</li>
-</ol>
-<p>git对于版本的管理其实是对提交的管理，git使用40个字节长度的16进制字符串来标识每一个提交，每一个提交具有唯一的标识，根据这个标识可以任意回退。</p>
-<ol start="3">
-<li>拉取（git pull命令）</li>
-</ol>
-<p>用于取回远程仓库某个分支的更新，再与本地仓库合并。</p>
-<ol start="4">
-<li>推送（git push命令）</li>
-</ol>
-<p>用于把本地的代码更新到远程仓库。</p>
-<p>创建本地代码仓库</p>
-<ol>
-<li><p>在本地一个盘下新建一个文件夹，当作本地代码仓库，也就是说希望之后这个文件夹里的文件的改动都能被git进行管理。<br>例如我在F盘内新建一个名为testGit的文件夹</p>
-</li>
-<li><p>在该文件内按住Shift键并点击鼠标右键，选择”在此处打开Powershell窗口“，bash，进入Linux环境（刚安装了Ubuntu，因为打算学点Linux命令，嘿嘿，如果没有安装Ubuntu，就不需要bash，直接执行git命令就行）执行代码：</p>
-</li>
-</ol>
-<p>git init</p>
-<p>这句话的意思是初始一个本地仓库，之后可以看到在该文件夹下多了一个.git文件夹，用于记录所有与管理本仓库相关的文件，<br>所以请小心改动。</p>
-<p>三、进行代码托管<br>本地代码仓库和远程代码仓库都创建好之后，需要把它们进行同步才能在gitee上进行代码托管。</p>
-<p>1.本地代码仓库与远程代码仓库进行同步，执行代码：</p>
-<p>git remote add origin <a target="_blank" rel="noopener" href="https://gitee.com/gxx_gitee/testGit.git">https://gitee.com/gxx_gitee/testGit.git</a><br>1<br>其中远程库的名字就是origin，这是git默认的叫法，也可以改成别的，但是origin这个名字一看就知道是远程库。</p>
-<p>我试验过origin可以改为项目名，或者和项目名不同也都是可以的，因为重要的是后面的url，每个远程代码库都有一个自己的url，<br>所以本地仓库本质上是和这个url所指代的远程仓库进行关联的。</p>
-<p>2.拉取远程代码库<br>由于在创建远程仓库时会初始化一个README.md文件，而本地仓库里没有，所以需要先执行pull操作将远程仓库拉取合并到本地仓库，否则会出错。执行代码：</p>
-<p>git pull origin master<br>1</p>
-<p>【注1：由于在本地创建了代码仓库，git默认关联的库在本地，所以直接执行git pull命令是无效的，需要执行git pull origin master命令才行，这句话的意思是推送到远程库master分支，此外，也可以根据提示执行一下git branch –set-upstream origin master命令，以后就可以直接使用git pull了】</p>
-<p>此时可以看到在本地代码仓库中多了一个README.md文件。</p>
-<p>【注2：如果遇到错误提示“fatal: refusing to merge unrelated histories”，出现这种错误是因为git会以为这两个仓库不同所以进行无法合并，在执行pull操作时添加–allow-unrelated-histories，即执行git pull origin master –allow-unrelated-histories就可以了】</p>
-<p>3.向远程代码仓库推送文件（例如在本地代码仓库中新建了test1.txt和test2.txt文件，现把它们同步到远程代码仓库），执行代码：</p>
-<p>git add .<br>git commit -m “对该操作的相关描述”<br>1<br>2</p>
-<p>可以看到，git追踪到了仓库中文件的变化，所以说git起到了作用。现在执行push操作将它推送到远程代码库：</p>
-<p>git push<br>git push –set-upstream origin master<br>1<br>2</p>
-<p>【注3：这里使用git push命令会和上面使用git pull时出现同样的问题，根据提示git push –set-upstream origin master，以后就可以直接使用git push命令了】<br>刷新远程代码仓库，可以看到文件被成功的同步到了远程仓库：</p>
-<p>当然，同步一个文件夹到远程仓库与同步单个文件相同，只不过无法同步空文件夹到远程仓库，因为git会认为没有改动</p>
-<p>一、创建远程代码仓库<br>同上。例如我在gitee上创建了项目testGit1，每个远程代码库都有一个自己的url：</p>
-<p>二、克隆项目到本地<br>在本地一个盘下按住Shift键并点击鼠标右键，选择”在此处打开Powershell窗口“，bash，进入Linux环境（如果没有安装Ubuntu，就不需要bash，直接执行git命令就行）执行代码：</p>
-<p>git clone 项目的url<br>1</p>
-<p>然后就会发现在该盘下面就有了一个同名文件夹，并且.git目录和README.md文件都有，这两个代码仓库都已经同步好了：</p>
-<p>三、进行代码托管<br>向远程代码仓库同步文件（例如在本地代码仓库中新建了test1.txt和test2.txt文件，现把它们同步到远程代码仓库），进入到该文件下，执行代码：</p>
-<p>git add .<br>git commit -m “对该操作的相关描述”<br>1<br>2</p>
-<p>可以看到，git追踪到了仓库中文件的变化，所以说git起到了作用。现在执行push操作将它推送到远程代码库：</p>
-<p>git push<br>1</p>
-<p>【注4：这里可以直接使用git push命令，因为远程创建了代码仓库，git默认关联的库在远程，git push是默认推送到远程库master分支】</p>
-<p>一、删除文件、文件夹</p>
-<p>1.删除文件，执行命令：</p>
-<p>git rm 想要删除的文件的名字及其后缀<br>1</p>
-<p>可以看到在本地代码仓库testGit1中有三个文件，README.md、test1.txt和test2.txt，删除文件test1.txt，<br>但是如果不加文件后缀的话，会发现提示匹配不到文件，所以必须给全名。<br>之后可以发现本地仓库已经没有这个文件了，但是刷新远程仓库会发现，这个文件依然存在，<br>这是因为在本地仓库改动过后，没有将现在的状态同步到远程仓库，所以需要执行一下commit和push命令：</p>
-<p>git commit -m “对本次提交的描述信息”<br>git push<br>1<br>2<br>现在刷新远程代码仓库，可以看到文件test1.txt被成功的删除了。</p>
-<p>2.删除文件夹，执行命令：</p>
-<p>git rm 想要删除的文件夹的名字 -r<br>1</p>
-<p>可以看到在本地代码仓库testGit1中有一个名为test的文件夹，直接使用删除文件的命令无法删除文件夹，<br>会提示错误“not removing ‘test’ recursively without -r”，可以先执行一下git rm -help命令查看rm命令的使用详情，<br>其中添加-r表示允许迭代移除，所以git rm test -r可以删除test文件夹，之后执行commit和push操作即可，同上。</p>
-<p>二、找回误删文件、文件夹</p>
-<p>git对于版本的管理本质是对提交的管理，所以在每个操作后最好提交一下，便于之后需要回退，例如要找回上面操作中误删的文件test1.txt。</p>
-<p>1.如果你现在正在进行某些更改，需要先推送远程仓库，否则回退之后，最新状态的内容就没有了。</p>
-<p>2.执行命令：</p>
-<p>git log<br>1<br>这个命令会显示出提交日志，可以看到有一个增加了2个文件（test1.txt和test2.txt）的提交和删除test1.txt的提交：</p>
-<p>每个提交都有自己的唯一标识，所以想要找回文件test1.txt，需要回退到提交删除操作的前一个状态，所以这里是回退到添加文件状态，执行命令：</p>
-<p>git reset –hard 需要回退到的状态的commit标识号<br>1</p>
-<p>该命令的原理：git有个指向当前版本的HEAD指针，执行回退操作本质上是git把HEAD指针从当前状态指向想要回退到的状态，<br>所以回退的速度很快，需要回退到哪里，就让HEAD指向哪里就行，<br>可以看到提示说HEAD已经处于添加文件的状态了，此时查看文件也可以看到test1.txt文件。</p>
-<p>3.如果在这个状态和最新状态之间又提交过很多文件，需要手动把这个找回的test1.txt文件拷贝出去一份，<br>再执行reset命令回到最新的状态：</p>
-<p>git reset –hard 最新状态的commit标识号<br>1<br>4.最新状态是没有刚刚找回的这个文件的，把test1.txt文件拷贝进本地仓库中，然后推送到远程仓库即可，执行命令：</p>
-<p>git add .<br>git commit -m “对本次提交的描述”<br>git push<br>1<br>2<br>3<br>这样就可以既找回了之前误删的文件，又没有丢掉中间状态的很多文件。<br>找回误删的文件夹和找回误删的文件操作完全相同，因为git不会识别你找回的是什么，只是回退到相应的状态而已。</p>
-<p>过程示意图：</p>
-<p>commit:1——&gt;commit:2——&gt;commit:3——&gt;commit:4——&gt;commit：5<br>                           误删                    最新状态<br>1<br>2<br>当你想要找回删除的文件的时候，先保存现在的状态即最新状态commit：5，然后回退到误删的前一个状态也就是commit：2，<br>这时候可以获取到已经删除的文件，把它拷贝出去保存一份，然后回到最新状态commit：5，<br>该状态下是没有已经删除的文件的，但是刚刚我们找到了它并拷贝了一份，现在把这个文件再拷贝进来到本地仓库中，<br>然后执行提交推送操作，会产生一个新的commit状态，这个就是在commit：5的基础上找回已删除文件后产生的最最新的状态。</p>
-<p>1、安装gitee插件<br>IDEA 码云插件已由 gitosc 更名为 gitee。<br>1<br>在码云平台帮助文档<a target="_blank" rel="noopener" href="http://git.mydoc.io/?t=153739%E4%B8%8A%E4%BB%8B%E7%BB%8D%E7%9A%84%E5%BE%88%E6%B8%85%E6%A5%9A%EF%BC%8C%E6%8E%A8%E8%8D%90%E5%89%8D%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95%EF%BC%8C">http://git.mydoc.io/?t=153739上介绍的很清楚，推荐前两种方法，</a><br>搜索码云插件的时候记得名字是gitee，gitosc已经搜不到了。</p>
-<p>2、使用码云托管项目<br>如果之前没有使用过代码托管平台，现在突然想用码云托管代码，操作如下：</p>
-<p>打开IDEA和这个项目，点击VCS（版本控制系统 Version Control System）：</p>
-<p>然后填写信息，可以设置为私密项目也可以不设置：</p>
-<p>点击Share，然后：</p>
-<p>所有的Commit Message必填，不然会出错的，点击OK，之后可以看到IDEA有如下提示：</p>
-<p>代码托管成功~~刷新远程代码仓库，也可以看到该项目：</p>
-<p>以后对项目有改动，就可以使用下面的推送方法进行同步了。</p>
-<p>3、拉取项目<br>在码云平台帮助文档<a target="_blank" rel="noopener" href="http://git.mydoc.io/?t=153739%E4%B8%8A%E4%B9%9F%E4%BB%8B%E7%BB%8D%E7%9A%84%E5%BE%88%E6%B8%85%E6%A5%9A%EF%BC%8C%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95%E9%83%BD%E5%8F%AF%EF%BC%8C%E8%BF%99%E9%87%8C%E6%88%91%E8%87%AA%E5%B7%B1%E6%BC%94%E7%BB%83%E4%B8%80%E9%81%8D%EF%BC%8C%E5%98%BF%E5%98%BF%E3%80%82">http://git.mydoc.io/?t=153739上也介绍的很清楚，两种方法都可，这里我自己演练一遍，嘿嘿。</a></p>
-<p>方法1：</p>
-<p>在IDEA主界面：</p>
-<p>点击Login之后，Token会自动填入。<br>然后可以测试一下连接状态，如果连接成功，可以选择需要克隆的代码仓库，然后克隆到本地盘中：</p>
-<p>之后根据提示创建相应的IDEA项目：</p>
-<p>嘿嘿，拉取成功~</p>
-<p>方法2：</p>
-<p>打开IDEA，选择File——&gt;Settings：</p>
-<p>然后：</p>
-<p>如果能够成功连接到远程仓库，点击VCS：</p>
-<p>之后的操作和出现的界面就和方法1完全一样，选择相应的项目进行克隆即可。</p>
-<p>4、推送项目<br>【注1：对于第一次从远程仓库拉取过来并在IDEA中创建的项目，最好还是先不要做任何修改，先推送一遍，因为IDEA会为项目创建配置文件.idea和项目名.iml。】<br>【注2：对于文件的修改，建议定期commit，就像定期保存一下一样，因为如果需要回退，可以很方便的根据commit的标识号进行回退】</p>
-<p>方法1：</p>
-<p>右键点击文件或文件夹，执行下面步骤即可：</p>
-<p>然后该填的都填上，对本地提交的描述必填，不然会报错，git命令里也是如此。<br>选择Commit and Push（或只是Commit也行，可以好几次Commit之后一下子Push）：</p>
-<p>然后：</p>
-<p>点击Push之后，刷新远程代码仓库，可以看到内容有更新。</p>
-<p>方法2：</p>
-<p>点击VCS，可以看到有相应的按钮可以执行commit、push操作，之后的界面与方法1相同。</p>
-<p>可以好几次Commit之后，点击执行Push，将其一起推送到远程代码仓库。</p>
-<p>目前用：</p>
-<p>通过git命令将代码推送到gitee的分支：<br>gitee是国内的代码托管平台，相比较于github他拉取仓库和推送的速度更快，在这里我主要讲述一下通过git bash将代码推送到gitee的某个branch的流程。</p>
-<p>推送流程简述：<br>推送的流程其实归纳起来可以总结出四步：</p>
-<ol>
-<li>将Gitee的仓库/某个具体的分支拉取到本地</li>
-<li>将自己写好的代码放到本地仓库中</li>
-<li>将代码提交到本地仓库</li>
-<li>将代码推送到Gitee远端仓库</li>
-</ol>
-<p>具体过程详解：<br>首先是将Gitee的仓库/分支拉取到本地：<br>在这里我们可以看一下我们的仓库目录，这里有一个master分支和六个子分支，这里我将展示从17301100这个分支拉取仓库。</p>
-<p>首先进入任意文件夹，选择git bash（在这里运行的前提是本地已经安装并配置好git，安装配置的过程在这里不多赘述），然后输入命令git clone -b【分支名】SSH（这里的ssh是码云仓库的SSH）</p>
-<p>这里我要强调一下，如果是要拉取master分支就可以直接使用git clone，如果要拉取子分支需要加 -b 【分支名】，否则默认拉取的是master分支！！！！！！！</p>
-<p>拉取成功之后会看到本地多了一个文件夹，我这里的文件夹叫做summer2020，这就是我们远端拉取到的git仓库啦</p>
-<p>将代码提交到本地git仓库<br>在成功拉取之后我们进入到拉取来的文件夹，可以看到里面的结构与我们码云上的结构是完全相同的</p>
-<p>然后直接从本地将我们的代码拷贝到该文件夹中，打开git bash，执行git add 【文件】的操作（！！这里要重点强调，一定要在远端仓库中打开git bash，会在路径中看到有我们的分支名称：我的分支是17301100）</p>
-<p>当 git add完成之后我们需要执行git commit 操作，来表明我们对这个事务进行提交（可以类比数据库的事务）<br>在这里我们使用了 -m 他的目的是对提交的项目进行描述（message）</p>
-<p>当commit成功后我们就成功将我们的项目添加到了本地的git仓库中</p>
-<p>把本地git仓库的代码推送到码云远端仓库中<br>到了这一步就非常简单了，直接推送就可以了<br>使用git push origin 【分支名】就可以成功推送了！！！</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/12/19.2.Gitee/" data-id="ckno8ff4w000wswwdg16n6wap" data-title="Gitee" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/5/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/">下一页 &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/5/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/7/">下一页 &raquo;</a>
   </nav>
 
 </section>
@@ -1941,7 +2216,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%A7%84%E8%8C%83/" rel="tag">规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">MySQL基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Portainer-io/" rel="tag">Portainer.io</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/" rel="tag">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/" rel="tag">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springfox/" rel="tag">springfox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swagger/" rel="tag">swagger</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6/" rel="tag">书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E8%97%8F/" rel="tag">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" rel="tag">编程规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" rel="tag">设计规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" rel="tag">软件说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag">面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
     </div>
   </div>
 
@@ -1951,7 +2226,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E8%A7%84%E8%8C%83/" style="font-size: 10px;">规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">MySQL基础概念</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Portainer-io/" style="font-size: 10px;">Portainer.io</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/WEB/" style="font-size: 10px;">WEB</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springfox/" style="font-size: 10px;">springfox</a> <a href="/tags/swagger/" style="font-size: 10px;">swagger</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%B9%A6/" style="font-size: 10px;">书</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%94%B6%E8%97%8F/" style="font-size: 10px;">收藏</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" style="font-size: 10px;">设计规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">软件说明</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">面向对象</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
     </div>
   </div>
 
@@ -1960,7 +2235,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
     </div>
   </div>
 
@@ -1973,23 +2248,23 @@
       <ul>
         
           <li>
-            <a href="/2021/04/19/19.4.SVN/">SVN</a>
+            <a href="/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/">推荐研读书籍</a>
           </li>
         
           <li>
-            <a href="/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/">WEB之上传和下载</a>
+            <a href="/2021/05/17/mqtt%E5%BC%80%E5%8F%91/">mqtt开发</a>
           </li>
         
           <li>
-            <a href="/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/">WEB之listener和filter</a>
+            <a href="/2021/04/30/16.2.Docker%E4%B9%8BPortainer-io/">Docker之Portainer.io</a>
           </li>
         
           <li>
-            <a href="/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/">WEB之cookie和session</a>
+            <a href="/2021/04/23/5.4.MySQL%E9%9D%A2%E8%AF%95/">MySQL面试</a>
           </li>
         
           <li>
-            <a href="/2021/04/19/9.6.WEB%E4%B9%8Bajax/">WEB之ajax</a>
+            <a href="/2021/04/22/12.5.Springfox/">Springfox</a>
           </li>
         
       </ul>
