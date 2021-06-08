@@ -77,6 +77,533 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-4.19.多线程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/4.19.%E5%A4%9A%E7%BA%BF%E7%A8%8B/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T03:35:24.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/4.19.%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>程序只有一个执行流程，所以这样的程序就是单线程程序。</p>
+<p>假如一个程序有多条执行流程，那么，该程序就是多线程程序。</p>
+<p>线程是依赖于进程而存在的</p>
+<p>进程：就是正在运行的程序。</p>
+<p>是系统进行资源分配和调用的独立单位，每一个进程都有它自己的内存空间和系统资源。</p>
+<p>单进程的计算机只能做一件事情，现在的计算机都是支持多进程的。可以在一个时间段内执行多个任务，并且可以提高CPU的使用率。</p>
+<p>单CPU在某个时间点只能做一件事情，CPU在做程序间的高效切换让我们觉得是同时进行的。</p>
+<p>线程：在同一个进程内又可以执行多个任务，而这每一个任务就可以看作是一个线程。是进程中的单个顺序控制流，是一条执行路径</p>
+<p>线程是程序的执行单元，执行路径。是程序使用CPU的最基本的单位。</p>
+<p>一个进程如果只有一条执行路径，则称为单线程程序。</p>
+<p>一个进程如果有多条执行路径，则称为多线程程序。</p>
+<p>多线程的存在不是提高程序的执行速度，其实是为了提高应用程序的使用率。</p>
+<p>程序的执行其实都是在抢CPU的资源，CPU的执行权，多个线程都在抢这个资源，而其中的某一个进程如果执行路径比较多，就会有更高的几率抢到CPU的执行权。我们不敢保证哪一个线程能够在哪个时刻抢到，所以线程的执行有随机性。</p>
+<p>并行：逻辑上同时发生，指在某一个时间内同时运行多个程序</p>
+<p>并发：物理上同时发生。指在某一个时间点同时运行多个程序</p>
+<p>java程序的运行原理：由java命令启动了JVM，JVM启动就相当于启动了一个进程。接着由该进程创建了一个主线程去调用main方法</p>
+<p>jvm虚拟机的启动是单线程的还是多线程的？</p>
+<p>多线程的。因为垃圾回收线程也要先启动，否则就会出现内存溢出。</p>
+<p>如何实现多线程的程序：</p>
+<p>A：继承Thread类</p>
+<p>步骤：1.自定义类继承Thread类</p>
+<p>\2. 在自定义类内重写run()方法</p>
+<p>\3. 创建该类的对象</p>
+<p>\4. 启动线程</p>
+<p>为什么要重写run()方法：不是类中的所有代码都需要被线程执行的。为了区分哪些代码能够被线程执行，java提供了Thread类中的run()方法用来包含那些被线程执行的代码</p>
+<p>//一般来说，被线程执行的代码肯定是比较耗时的。所以用循环改进</p>
+<p>run()和start()方法的区别：</p>
+<p>run()仅仅是封装被线程执行的代码，直接调用是普通方法</p>
+<p>start()首先启动了线程，然后由jvm去调用该线程的run()方法</p>
+<p>如何获取和设置线程名称</p>
+<p>public final String getName() 获取线程的名称</p>
+<p>public final void setName(String name) </p>
+<p>通过构造方法也可以给线程起名字，带参构造</p>
+<p>如何获取main方法所在的线程名称呢?</p>
+<p>public static Thread currentThread() 返回当前正在执行的线程对象</p>
+<p>Thread.currentThread().getName() 这样就可以获取任意方法所在的线程名称</p>
+<p>线程有两种调度模型：</p>
+<p>分时调度模型:所有线程轮流使用 CPU 的使用权，平均分配每个线程占用 CPU 的时间片</p>
+<p>抢占式调度模型:优先让优先级高的线程使用 CPU，如果线程的优先级相同，那么会随机选择一个，优先级高的线程获取的 CPU 时间片相对多一些。 </p>
+<p>Java使用的是抢占式调度模型。</p>
+<p>如何设置和获取线程优先级</p>
+<p>public final int getPriority() 返回线程对象的优先级 线程默认优先级是5</p>
+<p>public final void setPriority(int newPriority) 更改线程的优先级 线程优先级的范围是1-10</p>
+<p>线程优先级仅仅表示线程获取CPU时间片的几率高，但是要在次数比较多或者多次运行的时候才能看到比较好的效果</p>
+<p>线程控制</p>
+<p>线程休眠</p>
+<p>public static void sleep(long millis)</p>
+<p>线程加入</p>
+<p>public final void join() 等待该线程终止</p>
+<p>线程礼让</p>
+<p>public static void yield() 暂停当前正在执行的线程对象，并执行其他线程</p>
+<p>让多个线程的执行更和谐，但是不能靠它保证一人一次</p>
+<p>后台线程</p>
+<p>public final void setDaemon(boolean on) 将该线程标记为守护线程或用户线程</p>
+<p>当正在运行的线程都是守护线程时，java虚拟机退出，该方法必须在启动线程前调用</p>
+<p>中断线程</p>
+<p>public final void stop() 已过时。具有不安全性，不建议使用</p>
+<p>public void interrupt() 中断线程。把线程状态终止，并抛出一个InterruptedException</p>
+<p>线程的生命周期：</p>
+<p>新建：创建线程对象</p>
+<p>就绪：有执行资格，没有执行权</p>
+<p>运行：有执行资格，有执行权</p>
+<p>阻塞：由于一些操作让线程处于该状态，没有执行资格，没有执行权。而另一些操作却可以把它激活，激活后处于就绪状态</p>
+<p>死亡：线程对象变为垃圾，等待回收</p>
+<p>B：实现Runnable接口</p>
+<p>步骤：1.自定义类实现Runnable接口</p>
+<p>\2. 重写run()方法</p>
+<p>\3. 创建自定义类对象</p>
+<p>\4. 创建Thread类对象，并把3中的对象作为构造参数传递</p>
+<p>B方式的好处，实现接口方式的好处：</p>
+<p>可以避免由于Java单继承带来的局限性。</p>
+<p>适合多个相同程序的代码去处理同一个资源的情况，把线程同程序的代码，数据有效分离，较好的体现了面向对象的设计思想。</p>
+<p>电影院售票出现问题：</p>
+<p>1.相同的票出现多次：CPU的一次操作必须是原子性的</p>
+<p>2.还出现了负数的票：随机性和延迟导致的</p>
+<p>判断是否有多线程问题的标准：</p>
+<p>1.是否是多线程环境</p>
+<p>2.是否有共享数据</p>
+<p>3.是否有多条语句操作共享数据</p>
+<p>解决线程安全问题实现：</p>
+<p>1.同步代码块</p>
+<p>格式：</p>
+<p>​        synchronized(对象){需要同步的代码;}</p>
+<p>同步可以解决安全问题的根本原因就在那个对象上。该对象如同锁的功能。这个对象可以是任意对象。</p>
+<p>同步的前提：多个线程，多个线程使用的是同一个锁对象</p>
+<p>同步的好处：同步的出现解决了多线程的安全问题。</p>
+<p>同步的弊端：当线程相当多时，因为每个线程都会去判断同步上的锁，这是很耗费资源的，无形中会降低程序的运行效率。</p>
+<p>2.同步方法</p>
+<p>就是把同步关键字加到方法上（一般在权限修饰符后面）</p>
+<p>同步方法的锁对象是：this</p>
+<p>静态方法的同步方法的锁对象：是当前类的字节码文件对象。（反射）</p>
+<p>如果锁对象是this，就可以考虑使用同步方法。</p>
+<p>否则能使用同步代码块的尽量使用同步代码块。</p>
+<p>线程安全的类：</p>
+<p>StringBuffer  </p>
+<p>Vector&lt;&gt; 即使要安全，也不用。可以用Collections工具类中的静态方法synchronizedXxx方法</p>
+<p>Hashtable&lt;,&gt;</p>
+<p>JDK5以后提供了一个新的锁对象Lock</p>
+<p>Lock是一个接口</p>
+<p>void lock() 获取锁</p>
+<p>void unlock() 释放锁</p>
+<p>ReentrantLock Lock的实现类。这个类同时也实现了序列化Serializable接口</p>
+<p>可能加锁后的代码会出问题，导致无法释放锁。所以可以选择加try…finally语句</p>
+<p>同步弊端：效率低；如果出现了同步嵌套，就容易产生死锁问题</p>
+<p>死锁问题：是指两个或者两个以上的线程在执行的过程中，因争夺资源产生的一种互相等待现象</p>
+<p><em><strong>*public*</strong></em> <em><strong>*class*</strong></em> DieLock <em><strong>*extends*</strong></em> Thread {</p>
+<p>​    <em><strong>*private*</strong></em> <em><strong>*boolean*</strong></em> flag;</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*static*</strong></em> <em><strong>*void*</strong></em> main(String[] args) {</p>
+<p>​        DieLock l1 = <em><strong>*new*</strong></em> DieLock(<em><strong>*true*</strong></em>);</p>
+<p>​        DieLock l2 = <em><strong>*new*</strong></em> DieLock(<em><strong>*false*</strong></em>);</p>
+<p>​        l1.start();</p>
+<p>​        l2.start();</p>
+<p>​    }</p>
+<p>​    <em><strong>*public*</strong></em> DieLock(<em><strong>*boolean*</strong></em> flag) {</p>
+<p>​        <em><strong>*this*</strong></em>.flag = flag;</p>
+<p>​    }</p>
+<p>​    @Override</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> run() {</p>
+<p>​        <em><strong>*if*</strong></em> (flag) {</p>
+<p>​            <em><strong>*synchronized*</strong></em> (MyLock.****<em>objA*</em>***) {</p>
+<p>​                System.****<em>out*</em>***.println(“if的ogjA”);</p>
+<p>​                <em><strong>*synchronized*</strong></em> (MyLock.****<em>objB*</em>***) {</p>
+<p>​                    System.****<em>out*</em>***.println(“if的ogjB”);</p>
+<p>​                }</p>
+<p>​            }</p>
+<p>​        } <em><strong>*else*</strong></em> {</p>
+<p>​            <em><strong>*synchronized*</strong></em> (MyLock.****<em>objB*</em>***) {</p>
+<p>​                System.****<em>out*</em>***.println(“else的ogjB”);</p>
+<p>​                <em><strong>*synchronized*</strong></em> (MyLock.****<em>objA*</em>***) {</p>
+<p>​                    System.****<em>out*</em>***.println(“else的ogjA”);</p>
+<p>​                }</p>
+<p>​            }</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>}</p>
+<p>线程间通信问题：不同种类的线程间针对同一个资源的操作</p>
+<p>通过设置线程(生产者)和获取线程(消费者)针对同一个对象进行操作</p>
+<p>1.如何保证是同一个对象的操作：在外界把这个对象创建出来，然后通过构造方法传递给其他的类。</p>
+<p>2.CPU的时间片在很短的时间内可以执行很多条代码会产生相同的数据，线程抢占的随机性也会导致安全问题：所以要加锁。不同种类的线程都要加锁，而且这加的锁必须是同一把才能保证安全。（传的对象要是同一个）</p>
+<p>3.如果消费者先抢到执行权，就会先执行，但是会输出默认值，无意义。如果生产者先抢到先执行后再抢到会继续生产，不合常理。所以应该：生产者先看是否有数据，有就等待，没有就生产，生产完之后通知消费者来消费数据。消费者先看是否有数据，有就消费，没有就等待，通知生产者生产数据。</p>
+<p>所以java提供了一种机制：等待唤醒机制实现数据依次出现</p>
+<p>Object类中提供了三个方法：</p>
+<p>wait()  等待  会立即释放锁，当唤醒时从此处继续执行</p>
+<p>notify()  唤醒单个线程  唤醒并不代表立即执行，还需要抢夺执行权</p>
+<p>notifyAll()  唤醒所有线程</p>
+<p>为什么这些方法不定义在Thread类中：因为这些方法的调用必须通过锁对象调用，而我们使用的同步块锁对象是任意锁对象。所以这些方法必须定义在Object类中</p>
+<p>把同步代码块改进为同步方法实现，以后只需要调用方法即可</p>
+<p>ThreadGroup 线程组：把多个线程组合到一起。它可以对一批线程进行分类管理，Java允许程序直接对线程组进行控制</p>
+<p>线程类里面的方法：</p>
+<p>public final ThreadGroup getThreadGroup() </p>
+<p>线程组里面的方法：public final String getName()</p>
+<p>默认情况下，所有的线程都属于主线程组main</p>
+<p>也可以给线程设置分组:创建一个线程组；创建其他线程的时候，把其他线程的组指定为我们自己新建线程组</p>
+<p>Thread(ThreadGroup group, Runnable target, String name) </p>
+<p>线程组的意义：通过组名称调用方法，可以设置此线程组的各种优先级，状态等等。</p>
+<p>线程池</p>
+<p>程序启动一个新线程成本是比较高的，因为它涉及到要与操作系统进行交互。而使用线程池可以很好的提高性能，尤其是当程序中要创建大量生存期很短的线程时，更应该考虑使用线程池。</p>
+<p>好处：线程池里的每一个线程代码结束后，并不会死亡，而是再次回到线程池中成为空闲状态，等待下一个对象来使用。</p>
+<p>在JDK5之前，我们必须手动实现自己的线程池，从JDK5开始，Java内置支持线程池</p>
+<p>JDK5新增了一个Executors工厂类来产生线程池</p>
+<p>public static ExecutorService newCachedThreadPool() 创建一个新的缓存线程池</p>
+<p>public static ExecutorService newFixedThreadPool(int nThreads) 创建一个int值的线程池</p>
+<p>public static ExecutorService newSingleThreadExecutor() 创建一个线程池 相当于是int=1</p>
+<p>如何实现线程池的代码：</p>
+<p>\1. 创建一个线程池对象，控制要创建几个线程对象</p>
+<p>public static ExecutorService newFixedThreadPool(int nThreads) </p>
+<p>\2. 这种线程池的线程可以执行：</p>
+<p>Runnable对象或者Callable对象代表的线程</p>
+<p>做一个类实现Runnable接口</p>
+<p>\3. 线程池调用方法：</p>
+<p>Future&lt;?&gt; submit(Runnable task)</p>
+<p><T> Future<T> submit(Callable<T> task)</p>
+<p>4.线程池结束：shutdown()方法</p>
+<p>第三种实现线程的方式：实现Callable接口（是带泛型的接口）</p>
+<p>这里指定的泛型是call()方法的返回值类型（这里的call()方法相当于那两个方法的run()方法）</p>
+<p>好处：</p>
+<p>可以有返回值</p>
+<p>可以抛出异常</p>
+<p>弊端：</p>
+<p>代码比较复杂，必须依赖线程池，所以一般不用</p>
+<p>匿名内部类方式使用多线程</p>
+<p>继承Thread类来实现多线程：</p>
+<p>new Thread(){代码…}.start();</p>
+<p>实现Runnable接口来实现多线程：</p>
+<p>new Thread(new Runnable(){代码…}){}.start();</p>
+<p>(如果既继承了Thread类，又实现了Runnable接口，则输出是以继承的Thread类为主，但这是毫无意义的代码)</p>
+<p>定时器：可以让我们在指定的时间做某件事情，还可以重复的做某件事情</p>
+<p>定时器是一个应用十分广泛的线程工具，可用于调度多个定时任务以后台线程的方式执行。在Java中，可以通过Timer和TimerTask类来实现定义调度的功能</p>
+<p>Timer类：定时</p>
+<p>public Timer() 构造方法</p>
+<p>public void schedule(TimerTask task, long delay) delay毫秒后执行任务</p>
+<p>public void schedule(TimerTask task,long delay,long period) delay毫秒后执行任务，period毫秒后重复执行</p>
+<p>public void cancel()</p>
+<p>TimerTask类（抽象类）：任务</p>
+<p>public abstract void run()</p>
+<p>public boolean cancel()</p>
+<p>开发中（基本不用上两种方法，而是使用框架）</p>
+<p>Quartz是一个完全由java编写的开源调度框架</p>
+<p>sleep()和wait()的区别：</p>
+<p>sleep()：必须指时间；不释放锁</p>
+<p>wait():可以不指时间，也可以指时间；释放锁</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.19.%E5%A4%9A%E7%BA%BF%E7%A8%8B/" data-id="ckpdvjpot001wnswdbad7acyr" data-title="多线程" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-4.13.IO流" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/4.13.IO%E6%B5%81/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T03:35:16.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/4.13.IO%E6%B5%81/">IO流</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>上传操作：IO读取客户端数据写到服务器。</p>
+<p>IO也可以读取服务器数据显示到客户端。</p>
+<p>我们要实现IO的操作，就必须知道硬盘上文件的表现形式，所以java提供了File类</p>
+<p>File类：io包下，文件和目录路径名的抽象表示形式（未必真实存在）</p>
+<p>构造方法：（路径名中的\要用\表示）</p>
+<p>public File(String pathname) 根据一个路径得到File对象</p>
+<p>public File(String parent,String child) 根据一个目录和一个子文件/目录得到File对象</p>
+<p>public File(File parent,String child) 根据一个父File对象和一个子文件/目录得到File对象</p>
+<p>File类的成员方法：</p>
+<p>1.创建功能</p>
+<p>public boolean createNewFile()  创建文件  如果存在这样的文件，就不创建（这个方法有异常，错的话会抛出）</p>
+<p>public boolean mkdir()  创建文件夹  如果存在这样的文件夹，就不创建了（这个方法没有异常，错的话就是false）</p>
+<p>要想在某个目录下创建内容，该目录首先必须存在，所以有了这个方法：</p>
+<p>public boolean mkdirs()  创建文件夹 如果父文件夹不存在，会帮你创建出来（创建多级文件夹）</p>
+<p>注意：创建文件还是文件夹要搞清楚，方法不要调错了</p>
+<p>如果创建文件或者文件夹没有写盘符，那么默认在项目路径下。（项目中就能看到）</p>
+<p>2.删除功能</p>
+<p>public boolean delete()  </p>
+<p>java中的删除不走回收站</p>
+<p>要删除一个文件夹，注意该文件夹内不能包含文件或者文件夹</p>
+<p>3.重命名功能</p>
+<p>public boolean renameTo(File dest)</p>
+<p>如果路径名相同就是改名。如果路径名不同，就是改名并剪切</p>
+<p>路径以盘符开始：绝对路径  c:\a.txt</p>
+<p>路径不以盘符开始：相对路径  a.txt</p>
+<p>4.判断功能</p>
+<p>public boolean isDirectory()  判断是否是目录</p>
+<p>public boolean isFile()</p>
+<p>public boolean exists()</p>
+<p>public boolean canRead()</p>
+<p>public boolean canWrite()</p>
+<p>public boolean isHidden()</p>
+<p>5.基本获取功能</p>
+<p>public String getAbsolutePath() 获取绝对路径</p>
+<p>public String getPath()  获取相对路径</p>
+<p>public String getName()  获取名称</p>
+<p>public long length()  获取长度（字节数）</p>
+<p>public long lastModified()  获取最后一次的修改时间（毫秒值）</p>
+<p>6.高级获取功能</p>
+<p>public String[] list()  获取指定目录下的所有文件或者文件夹的名称数组</p>
+<p>public File[] listFiles()  获取指定目录下的所有文件或者文件夹的File数组</p>
+<p>1.判断E盘下是否有后缀名为.txt的文件，如果有，就输出此文件名称：</p>
+<p>A：先获取所有的E盘目录中的文件和文件夹，然后在遍历的时候判断是否是文件，是否是后缀为txt，满足条件就输出（用public File[] listFiles()方法）</p>
+<p>B：文件名称过滤器获取E盘目录下的所有数组名称，判断满足条件的元素并直接输出  （用public String[] list()方法）</p>
+<p>\2. 批量修改一系列文件的名字：</p>
+<p>封装目录；获取该目录下所有文件的File数组；遍历该数组得到每一个File对象；拼接一个新的名称；调用方法重命名即可。 </p>
+<p>7.文件名称过滤器：FilenameFilter是一个接口，可以写这个接口的匿名实现类</p>
+<p>public String[] list(FilenameFilter filter)</p>
+<p>public File[] listFiles(FilenameFilter filter)</p>
+<p>IO流用来处理设备之间的数据传输：上传文件和下载文件</p>
+<p>Java对数据的操作是通过流的方式</p>
+<p>Java用于操作流的对象都在IO包中</p>
+<p>IO流分类：</p>
+<p>1.按照数据流向：</p>
+<p>输入流    读入数据  从数据源</p>
+<p>输出流    写出数据  到目的地</p>
+<p>2.按照数据类型</p>
+<p>字节流</p>
+<p>字符流（为了方便操作文本数据）</p>
+<p>如果数据所在的文件通过windows自带的记事本打开并能读懂里面的内容，就用字符流。其他用字节流。如果你什么都不知道，就用字节流</p>
+<p>所以要学四个类：</p>
+<p>\1. 字节输入流  InputStream（抽象类）  Xxx InputStream（实现子类）</p>
+<p>\2. 字节输出流  OutputStream   Xxx OutputStream </p>
+<p>\3. 字符输入流  Reader    Xxx Reader</p>
+<p>\4. 字符输出流  Writer    Xxx Writer</p>
+<p>一般我们在探讨IO流的时候，如果没有明确说明按照哪种分类来说的，是按数据类型即字节流、字符流分的</p>
+<p>这四个类派生出来的子类名称都是以其父类名作为子类名的后缀。</p>
+<p>FileOutputStream的构造方法</p>
+<p>FileOutputStream(File file)</p>
+<p>FileOutputStream(String name)  （一般用这种）</p>
+<p>例子：FileOutputStream fos = new FileOutputStream(“fos.txt”);创建字节流对象坐的事情：A：调用系统功能去创建文件B：创建fos对象C：把fos对象指向这个文件  （会有编译异常，抛出即可）</p>
+<p>字节流写数据的方法：</p>
+<p>public void write(int b)  输出b对应的字符值</p>
+<p>public void write(byte[] b) 输出b[]对应的字符值</p>
+<p>public void write(byte[] b,int off,int len) 输出b[]对应的从off开始的len长度的字符值</p>
+<p>例子：fos.write(“sadfag”.getBytes());  （会有编译异常，抛出即可）</p>
+<p>最后要释放资源fos.close（）；方法：关闭此文件输出流并释放与此流有关的所有系统资源</p>
+<p>为什么一定要close()呢：A：让流对象变成垃圾，这样就可以垃圾回收器回收了B：通知系统去释放该文件相关的资源</p>
+<p>所以自己输出流操作步骤：1.创建字节输出流对象2.写数据3.释放资源</p>
+<p>fos.write(97);  会输出a：97–底层二进制数据–通过记事本打开–97对应的字符值–a</p>
+<p>如何实现数据的换行：写入换行符号的话，有的会显示有的不会显示（因为不同的系统针对不同的换行符号是不一样的:windows:\r\n  linux:\n  Mac:\r  一些常见的高级记事本软件可以识别任意换行符号）</p>
+<p>如何实现数据的追加写入（再一次运行就会追加写一次）：用构造方法第二个参数是true的情况</p>
+<p>public FileOutputStream(String name,boolean append) throws FileNotFoundException  当为true时，追加写入</p>
+<p>字节流写数据加入异常处理：throws方法</p>
+<p>try…catch…finally…方法：可以把finally中放入close语句（必须在外面初始化赋值null；也可能出现异常导致值为null无法调用close方法，所以加个！=null判断）</p>
+<p>字节流读取数据：把数据读取出来显示在控制台</p>
+<p>InputStream下的FileInputStream：</p>
+<p>FileInputStream的构造方法</p>
+<p>FileInputStream(File file)</p>
+<p>FileInputStream(String name)</p>
+<p>FileInputStream的成员方法</p>
+<p>public int read() 一次读取一个字节  如果没有了，返回-1</p>
+<p>中文会出问题，因为每次获取一个字节数据，就把该字节数据转换为了字符数据，然后输出到控制台，而汉字是两个字节数据，所以会出问题。</p>
+<p>复制文本文件： 数据源：从哪里来  目的地：到哪里去</p>
+<p>封装数据源，封装目的地，int by=0; while循环调用Input的read方法并判断不为-1的话，再调用Output的write方法，最后释放资源（谁先谁后都行，我一般先关输出流再关输入流。）</p>
+<p>这次汉字转化没有出问题：因为不涉及转换，读一个字节就写一个字节，最后输出的时候自己转换为汉字了。</p>
+<p>计算机是什么时候判断两个字节该转换为一个中文的呢：中文的存储分两个字节，第一个字节肯定是负数，第二个字节常见的是负数，也可能是正数，但是无影响。（因为碰到第一个负数就会把后面那个数字一起拼汉字）</p>
+<p>复制mp4的时候发现文件太大，复制很慢，所以可以考虑使用一次读取一个字节数组。</p>
+<p>public int read(byte[] b) 一次读取一个字节数组 每次可以读取多个数据，提高了操作效率</p>
+<p>返回值其实是实际读取的字节个数  </p>
+<p>数组的长度byte[]一般是1024或者它的倍数</p>
+<p>输出的值可以调用String的截取方法，长度为数组的长度</p>
+<p>方式一：一次读取一个字节</p>
+<p><em><strong>*public*</strong></em> <em><strong>*static*</strong></em> <em><strong>*void*</strong></em> main(String[] args) <em><strong>*throws*</strong></em> IOException {</p>
+<p>​        FileInputStream fr = <em><strong>*new*</strong></em> FileInputStream(“aaa.txt”);</p>
+<p>​        <em><strong>*int*</strong></em> by = 0;</p>
+<p>​        <em><strong>*while*</strong></em> ((by = fr.read()) != -1) {</p>
+<p>​            System.<em><strong>*<em>out*</em>***.print((</strong></em>*char****) by);</p>
+<p>​        }</p>
+<p>​        fr.close();</p>
+<p>​    }</p>
+<p>方式二：一次读取一个字节数组</p>
+<p><em><strong>*public*</strong></em> <em><strong>*static*</strong></em> <em><strong>*void*</strong></em> main(String[] args) <em><strong>*throws*</strong></em> IOException {</p>
+<p>​        FileInputStream fr = <em><strong>*new*</strong></em> FileInputStream(“aaa.txt”);</p>
+<p>​        <em><strong>*byte*</strong></em>[] bys = <em><strong>*new*</strong></em> <em><strong>*byte*</strong></em>[5];</p>
+<p>​        <em><strong>*int*</strong></em> len = 0;</p>
+<p>​        <em><strong>*while*</strong></em> ((len = fr.read(bys)) != -1) {</p>
+<p>​            System.<em><strong>*<em>out*</em>***.print(</strong></em>*new**** String(bys, 0, len));</p>
+<p>​        }</p>
+<p>​        fr.close();</p>
+<p>​    }</p>
+<p>字节流一次读写一个数组的速度明显比一次读写一个字节的速度快很多，这是加入了数组这样的缓冲区效果，java本身在设计的时候，也考虑到了这样的设计思想(装饰设计模式)，所以专门提供了带缓冲区的字节类，这种类称为缓冲区类（高效类）</p>
+<p>字节缓冲输出流 写数据</p>
+<p>BufferedOutputStream</p>
+<p>字节缓冲输入流 读数据</p>
+<p>BufferedInputStream</p>
+<p>构造方法可以指定缓冲区的大小，但是我们一般用不上，因为默认缓冲区大小就足够了。</p>
+<p>BufferedOutputStream bos =new BufferedOutputStream(new FileOutputStream (“aaa.txt”));</p>
+<p>BufferedInputStream bis =new BufferedInputStream(new FileInputStream (“aaa.txt”));</p>
+<p>由于字节流操作中文不是特别方便，所以，java就提供了转换流。（也可以用转换char数组来读取中文）</p>
+<p>字符流=字节流+编码表。</p>
+<p>编码表：由现实世界的字符及其对应的数值组成的一张表</p>
+<p>常见编码表</p>
+<p>ASCII：美国标准信息交换码  用一个字节的7位可以表示。最高位为符号位，其余为数值位</p>
+<p>ISO-8859-1：拉丁码表。欧洲码表  用一个字节的8位表示</p>
+<p>GB2312：中国的中文编码表</p>
+<p>GBK：中国的中文编码表升级，融合了更多的中文文字符号</p>
+<p>GB18030：GBK的取代版本</p>
+<p>BIG-5码：通行于台湾、香港地球的一个繁体字编码方案，俗称“大五码”</p>
+<p>Unicode 字符集：国际标准码，融合了多种文字。所有的文字都用两个字节来表示，java语言采用的就是unicode</p>
+<p>UTF-8：最多用三个字节来表示一个字符 能用一个的就用一个（ASCII兼容）一个表示不了的就用两个，实在不行的用三个字节。（国际化都用这个）</p>
+<p>String(byte[] bytes,String charsetName)  通过指定的字符集解码字节数组</p>
+<p>byte[] getBytes(String charsetName)  使用指定的字符集把字符串编码为字节数组</p>
+<p>编码：把看得懂的变成看不懂的  String – byte[]</p>
+<p>解码：把看不懂的变成看得懂的  byte[] –String</p>
+<p>只要编码解码格式一致就不会有任何问题，即使中间的文档一点看不懂。</p>
+<p>OutputStreamWriter 字符输出流（把字节流转换为字符流）</p>
+<p>public OutputStreamWriter(OutputStream out) 根据默认编码把字节流的数据转换为字符流</p>
+<p>public OutputStreamWriter(OutputStream out,String charsetName) 根据指定编码把字节流的数据转换为字符流</p>
+<p>InputStreamReader 字符输入流</p>
+<p>public InputStreamReader(InputStream in) 用默认的编码读取数据</p>
+<p>public InputStreamReader(InputStream in,String charsetName) 用制定的编码读取数据</p>
+<p>OutputStreamWriter写数据：父类是io.Writer</p>
+<p>方法：public void write(int c)  写一个字符</p>
+<p>public void write(char[] cbuf)  写一个字符数组</p>
+<p>public void write(char[] cbuf,int off,int len)  写一个字符数组的一部分</p>
+<p>public void write(String str)  写一个字符串</p>
+<p>public void write(String str,int off,int len)  写一个字符串的一部分</p>
+<p>字符流写数据，有可能不会出现，因为是字符，而文件中数据存储的基本单位是字节，所以需要刷新缓存区void flush（）方法（close方法也能刷新，刷新完并关闭）</p>
+<p>flush()和close()的区别：</p>
+<p>close（）关闭流对象，但是先刷新一次缓冲区，关闭后，该对象不可以继续在使用。</p>
+<p>flush（）仅仅刷新缓冲区，刷新后，流对象还可继续使用（仅在数据量巨大的时候调用此方法，一般使用close方法就够了，因为每调用一次这个方法就会在内存中多占一点位置）</p>
+<p>InputStreamReader读数据</p>
+<p>方法：public int read()  一次读取一个字符</p>
+<p>public int read(char[] cbuf)  一次读取一个字符数组</p>
+<p>转换流的名字比较长，而我们常见的操作都是按照本地默认编码实现的，所以，为了简化我们的书写，转换流提供了对应的子类。</p>
+<p>FileWriter 是 OutputStreamWriter的子类</p>
+<p>因为OutputStreamWriter= FileOutputStream +编码表（GBK）</p>
+<p>所以FileWriter=FileOutputStream +编码表（GBK）</p>
+<p>FileReader 是InputStreamReader的子类</p>
+<p>字符流为了高效读写，提供了字符缓冲流：</p>
+<p>BufferedWriter：字符缓存输出流</p>
+<p>BufferedReader：字符缓存输入流</p>
+<p>复制图片，视频时不能用字符流。</p>
+<p>字符缓存流的特殊方法：</p>
+<p>BufferedWriter：public void newLine() 根据系统来决定换行符</p>
+<p>BufferedReader：public String readLine() 一次读取一行数据  包含该行内容的字符串，不包含任何终止符，如果已达到流末尾，则返回null</p>
+<p>一般写数据，换行，刷新连写（第五种方法）。</p>
+<p>LineNumberReader 是BufferedReader的子类，他有2个特有的方法：</p>
+<p>public int getLineNumber()  获得当前行号</p>
+<p>public void setLineNumber(int lineNumber) 设置行号从这开始</p>
+<p>操作基本数据类型：可以读写基本数据类型的数据</p>
+<p>DataInputStream(OutputStream out) 数据输入流</p>
+<p>DataOutputStream(InputStream in)  数据输出流</p>
+<p>内存操作流:用于处理临时存储信息的，程序结束，数据就从内存中消失</p>
+<p>操作字节数组:无需关闭流（源码中close()方法中什么都没有是个空方法）</p>
+<p>ByteArrayInputStream</p>
+<p>ByteArrayOutputStream</p>
+<p>操作字符数组</p>
+<p>CharArrayReader</p>
+<p>CharArrayWrite</p>
+<p>操作字符串</p>
+<p>StringReader</p>
+<p>StringWriter</p>
+<p>打印流：</p>
+<p>字节打印流 PrintStream</p>
+<p>字符打印流  PrintWriter</p>
+<p>打印流特点:实现了Buffered的快速</p>
+<p>只有写数据的，没有读数据的。只能操作目的地，不能操作数据源。</p>
+<p>可以操作任意类型的数据。print  println方法</p>
+<p>如果启动了自动刷新，能够自动刷新。（构造方法（，true ）但是只要println可以自动刷新，print不能自动刷新。此时的println就相当于write();newLine();flush()）</p>
+<p>该流可以直接操作文本文件。看API，查看流对象的构造方法，如果同时有File类型和String类型的参数，一般来说就是可以直接操作文件的。</p>
+<p>流：基本流：就是能够直接读写文件的</p>
+<p>高级流：在基本流基础上提供了一些其他的功能</p>
+<p>标准输入输出流</p>
+<p>System类中的两个成员变量：</p>
+<p>public static final InputStream in: “标准”输入流  InputStream is=System.in</p>
+<p>public static final PrintStream out: “标准”输出流 PrintStream ps=System.out</p>
+<p>键盘录入数据：</p>
+<p>A：main方法的args接收参数</p>
+<p>java HelloWorld hell world java</p>
+<p>B：Scanner（JDK5以后的）</p>
+<p>Scanner sc=new Scanner(System.in);</p>
+<p>String s=sc.nextLine();</p>
+<p>int x=sc.nextInt();</p>
+<p>C：通过字符缓冲流包装标准输入流实现</p>
+<p>BufferedReader br=new BufferedReader(new InputStreamReader(System.in));</p>
+<p>随机访问流:RandomAccessFile类不属于流，是Object类的子类。但它融合了InputStream和OutputStream的功能。支持对随机访问文件的读取和写入。</p>
+<p>pubic RandomAccessFile(String name , String mode): 第一个参数是文件路径，第二个参数是操作文件的模式</p>
+<p>模式有4中，“r” 只读  “rw” 可读可写（常用） “rws” “rw”</p>
+<p>该文件指针可以通过getFilePointer方法读取，并通过seek方法设置</p>
+<p>合并流：SequenceInputStream类可以将多个输入流串流在一起，合并为一个输入流，因此，该流也被称为合并流</p>
+<p>构造方法：SequenceInputStream(InputStream s1, InputStream s2)  将2个文件合并</p>
+<p>SequenceInputStream(Enumeration&lt;? extends InputStream&gt; e) 多个文件的集合</p>
+<p>序列化流：把对象按照流一样的方式存入文本文件或者在网络中传输。对象–流数据</p>
+<p>ObjectOutputStream</p>
+<p>反序列化流：把文本文件中的流对象数据或者网络中的流对象还原成对象。流数据–对象</p>
+<p>ObjectInputStream</p>
+<p>类通过java.io.Serializable接口以启用其序列化功能。未实现此接口的类将无法使其任何状态序列化或反序列化。该接口没有任何方法。类似于这种没有方法的接口称为标记接口。</p>
+<p>当类实现了序列化接口的时候，这个类会产生一个序列化id值，当你在修改类的时候，这个值就会发生改变，而会产生与序列化时不匹配的错误，需要在运行重新序列化或者反序列化才能匹配。所以要想解决这个问题，就得在实现序列化接口的类上自动产生一个固定的序列化值，再生成这个值后，在对类进行任何改动，它读取以前的数据是没有问题的。</p>
+<p>使用transient关键字可以声明不需要序列化的成员变量，输出的是默认值</p>
+<p>Properties：属性集合类。是一个可以和IO流相结合使用的集合类</p>
+<p>Properties可保存在流中或者从流中加载。属性列表中每个键及其对应值都是一个字符串。</p>
+<p>是Hashtable的子类是一个Map集合。</p>
+<p>特殊功能</p>
+<p>public Object setProperty(String key,String value) 添加元素</p>
+<p>public String getProperty(String key) 根据键获取对应值</p>
+<p>public Set<String> stringPropertyNames() 获取所有的键的集合</p>
+<p>Properties和IO流的结合使用</p>
+<p>public void load(Reader reader) 把文件中的数据读取到集合中</p>
+<p>public void store(Writer writer,String comments) 把集合中的数据存储到文件</p>
+<p>这里的集合必须是Properties集合，数据必须是键值对形式</p>
+<p>可以利用这个方法进行单机游戏的存储和读取</p>
+<p>NIO其实就是新IO的意思，JDK4出现，提高了IO流的操作效率（在内存中）：Buffer（缓冲）和Channer（通道）</p>
+<p>JDK7的IO改进</p>
+<p>Path（接口）：与平台无关的路径</p>
+<p>Paths（类）：有一个静态方法返回一个路径</p>
+<p>Files：操作文件的工具类，提供了静态方法供我们使用</p>
+<p>public static long copy(Path source,OutputStream out):复制文件</p>
+<p>public static Path write(Path path,Iterable&lt;? extends CharSequence&gt; lines, Charset cs, OpenOption… options):  把集合的数据写到文件</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.13.IO%E6%B5%81/" data-id="ckpdvjppn0048nswdhrki22qw" data-title="IO流" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-4.12.集合" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/04/19/4.12.%E9%9B%86%E5%90%88/" class="article-date">
@@ -1009,494 +1536,6 @@
 
 
   
-    <article id="post-8.5.网页前端框架之bootstrap" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/17/8.5.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E4%B9%8Bbootstrap/" class="article-date">
-  <time class="dt-published" datetime="2021-04-17T09:50:10.000Z" itemprop="datePublished">2021-04-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/17/8.5.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E4%B9%8Bbootstrap/">网页前端框架之bootstrap</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>bootstrap是一个基于HTML、CSS、JavaScript的前端框架</p>
-<p>这个框架已经预定了一套CSS样式和与样式对应的JS代码（对应的样式有对应的特效）</p>
-<p>开发人员只需要编写HTML结构，添加bootstrap固定的class样式，就可以轻松完成指定效果的实现（使用现成的样式和特效）</p>
-<p>作用：bootstrap使得WEB开发更加快捷，高效</p>
-<p>bootstrap支持响应式开发，解决了移动互联网前端开发问题</p>
-<p>问题：不同分辨率需要不同的样式（移动手机，电脑，pad等屏幕大小都不一样）</p>
-<p>响应式布局：一个网站的展示能够兼容多个终端（手机、ipad、PC等，而不需要为每个终端单独做一个展示版本）  此概念为解决移动互联网浏览而诞生的。</p>
-<p>响应式布局能够使得网站仅适用一套样式，就可以在不同分辨率下展示出不同的舒适效果，大大降低了网站开发维护成本，并且能够给用户更好的体验性。</p>
-<h1 id="bootstrap环境搭建"><a href="#bootstrap环境搭建" class="headerlink" title="*bootstrap环境搭建*"></a><em><strong>*bootstrap环境搭建*</strong></em></h1><p>javaee关注的是dist文件。dist中有css、fonts、js需要我们复制到项目中（css中有个bootstrap.css和bootstrap.min.css，js中也有个bootstrap.js和bootstrap.min.js），jquery-1.11.3-min.js也需要复制到js文件下，这样就算环境搭建完成了。</p>
-<p>完整版bootstrap.css，bootstrap.js：完整版用于源码学习，但因为文件大小问题，不适合网络间传递。</p>
-<p>压缩版bootstrap.min.css，bootstrap.min.js：压缩版用于网络发布，相比于完整版就是把源码的空格和换行删除掉了，节约了大量空间，功能是完全相同的，适用于网络间的快速传递，但是不适合源码阅读。</p>
-<p>基本模版创建：可以从帮助文档中复制一个模版过来然后新建一个html文件放到其中，里面的bootstrap.min.css，bootstrap.min.js，jquery-1.11.3-min.js这三个东西要重新设置href和src</p>
-<!DOCTYPE html>
-
-<html lang="zh-CN">  <!--html页面使用的是中文简体-->
-
-<head>
-
-<meta charset="UTF-8">  <!--设置html页面的字符集是utf-8-->
-
-<meta http-equiv="X-UA-Compatible" content=”IE=edge”>  <!--使用IE最新的渲染模式 展示页面-->
-
-<meta name="viewport" content=”width=device-width,initial-scale=1”>  <!--上述3个meat变迁必须放在最前面，任何其他内容都必须跟随其后-->
-
-<!--viewport：视口 （浏览器上网页内容的可视区域）-->
-
-<title> Bootstrap 101 Template</title>
-
-<link href=”../css/bootstrap.min.css” rel=”stylesheet”>
-
-<script src=”../js/jquery-1.11.3-min.js”></script>
-
-<script src=”../js/bootstrap.min.js”></script>
-
-<!--这三个是bootstrap依赖的样式和脚本-->
-
-</head>
-
-<body>
-
-<h1>helloworld</h1>
-
-</body>
-
-</html>
-
-<p>这几个设置，仅在移动设备上生效：</p>
-<p>width=device-width  设置视口的宽度为设备的宽度（大多数手机浏览器视口的宽度是980）</p>
-<p>initial-scale=1  初始化缩放设置（1~5）1代表就是100%</p>
-<p>minimum-scale=1  移动设备上，页面可以最小缩放的级别</p>
-<p>maximum-scale=1  移动设备上，页面可以最大缩放的级别</p>
-<p>user-scalable=no  移动设备上，页面禁止缩放</p>
-<h1 id="布局容器"><a href="#布局容器" class="headerlink" title="*布局容器*"></a><em><strong>*布局容器*</strong></em></h1><p>bootstrap必须需要至少一个布局容器，才能为页面内容进行封装和方便的样式控制  相当于一个画板</p>
-<p>帮助手册位置：全局CSS样式–概览–布局容器</p>
-<p>任意元素使用了布局容器的样式都会成为一个布局容器，建议使用div作为布局容器。</p>
-<p>.container  ：类用于固定宽度并支持响应式布局的容器  特点：居中，两端留白</p>
-<div  class=”container”>...</div>
-
-<p>.container-fluid  :类用于100%宽度，占据全部视口的容器  特点：占据视口100%宽度</p>
-<div  class=”container-fluid”>...</div>
-
-<h1 id="栅格系统"><a href="#栅格系统" class="headerlink" title="*栅格系统*"></a><em><strong>*栅格系统*</strong></em></h1><p>为了方便在布局容器中进行网页的布局操作，bootstrap提供了一套专门用于响应式开发布局的栅格系统。</p>
-<p>栅格系统将一行分为12列，通过设定元素占用的列数来布局元素在页面上的展示位置。</p>
-<p>作用：可以让开发人员更加轻松进行网页布局，并且轻松进行响应式开发</p>
-<p>特点：行必须包含在container或container-fluid中；</p>
-<p>行使用的样式row，列使用样式col-*-*，元素内容应当放置于列内；</p>
-<p>基本的书写方式必须是：容器–行–列</p>
-<p>栅格参数：col-屏幕尺寸-占用列数  (屏幕尺寸现在都写成lg)</p>
-<p>为了方便显示元素大小，我们为展示元素都赋予了相同样式</p>
-<div  class=”container”>
-
-<div class=”row”>
-
-<div class=”col-lg-2” style=”border:1px solid:red;”>
-
-<p>11111</p>
-</div>
-
-<div class=”col-lg-4” style=”border:1px solid:red;”>
-
-<p>222222222</p>
-</div>
-
-</div>
-
-</div>
-
-<p>列元素的书写顺序，决定布局顺序，先写的列元素会先被布局到行上</p>
-<p>列元素的占用列数定义了列元素的大小。</p>
-<p>一个row下，如果列元素总和小于等于12，都在一行上。如果大于12，那么超出的元素会另起一行排列</p>
-<p>行和列可以无限嵌套，嵌套方式必须为列-行-列-行…（相当于是把当前的列当作行，这个行row又分为12列，可以继续设置）</p>
-<p>一个row元素下，都会有12列。</p>
-<p>屏幕尺寸设置：</p>
-<p>large：lg  大屏幕，一般pc尺寸</p>
-<p>medium：md  中等屏幕，小pc尺寸</p>
-<p>small：sm  小屏幕，ipad尺寸</p>
-<p>x small：  xs  超小屏幕，智能手机尺寸</p>
-<p>如果没有设置当前屏幕尺寸的样式，默认一个元素占一行。（比如你设置了lg尺寸，但是当你缩小为md尺寸的时候，就会变为一个元素占一行，因为你没有设置md的相应样式）</p>
-<p>多个屏幕尺寸共同设置：只需要在后面加即可</p>
-<div class=”col-lg-4 col-md-3 col-sm-2” style=”border:1px solid:red;”>
-
-<p>如果设置了一个屏幕尺寸，比这个尺寸大的屏幕，继承了当前的设置；比这个尺寸小的屏幕，默认一个元素占一行</p>
-<p>列偏移：将列元素向右侧进行推移</p>
-<p>col-屏幕尺寸-offset-*  在指定屏幕尺寸下，向右偏移*个列</p>
-<div class=”col-lg-4 col-lg-offset-3” style=”border:1px solid:red;”>
-
-<h1 id="响应式工具"><a href="#响应式工具" class="headerlink" title="*响应式工具*"></a><em><strong>*响应式工具*</strong></em></h1><p>为针对性地在移动页面上展示和隐藏不同的内容，bootstrap提供响应式工具</p>
-<p>可以让开发人员通过该工具决定，在何种屏幕尺寸下，隐藏或者显示某些元素</p>
-<p>visible-屏幕尺寸  可见</p>
-<p>hidden-屏幕尺寸  隐藏</p>
-<h1 id="列表"><a href="#列表" class="headerlink" title="*列表*"></a><em><strong>*列表*</strong></em></h1><p>bootstrap提供了实用的列表样式供开发人员使用</p>
-<p>帮助手册–全局CSS样式–排版–列表</p>
-<p>无序列表、有序列表、无样式列表、内联列表。</p>
-<p>内联列表：可以在标签内进行设置：class=“list-inline”就可以使列表变为在一行上。</p>
-<h1 id="按钮"><a href="#按钮" class="headerlink" title="*按钮*"></a><em><strong>*按钮*</strong></em></h1><p>任何HTML元素加上以下样式都会变成对应按钮：class属性设置为</p>
-<p>btn btn-default  默认按钮</p>
-<p>btn btn-primary  首选按钮</p>
-<p>btn btn-success  成功按钮</p>
-<p>btn btn-info  一般信息按钮</p>
-<p>btn btn-warning  警告按钮</p>
-<p>btn btn-danger  危险按钮</p>
-<p>btn btn-link  链接按钮</p>
-<p>尺寸：在按钮的属性后面添加即可</p>
-<p>btn-lg  大按钮</p>
-<p>btn-sm  小按钮</p>
-<p>btn-xs  超小按钮</p>
-<p>默认按钮不用写</p>
-<p>块级元素：btn-block  使按钮变为块级元素</p>
-<p>激活状态：active  直接在后面添加即可（不用写btn-）</p>
-<p>禁用状态：让鼠标无法点击的禁用状态：disabled 用法和active一样</p>
-<p>让鼠标指上去是个禁止的禁用状态：设置disabled=“disabled”</p>
-<h1 id="导航条"><a href="#导航条" class="headerlink" title="*导航条*"></a><em><strong>*导航条*</strong></em></h1><p>可以复制代码，然后修改我们需要的内容即可。nav标签</p>
-<p>汉堡按钮：缩小时，会将项目合并成一个图标</p>
-<p>sr-only  阅读器专用的样式（盲人设备，当鼠标指针放到这的时候，阅读器会读出相应设置的内容）</p>
-<h1 id="轮播图"><a href="#轮播图" class="headerlink" title="*轮播图*"></a><em><strong>*轮播图*</strong></em></h1><p>帮助手册位置–javascript插件–Carousel</p>
-<p>轮播图DIV的定时换图属性：data-interval=“毫秒值”  放在标签中</p>
-<p>注意：多个轮播图，必须修改轮播图的id，使id唯一，当改了id之后，后续的代码中的相应部分也要修改</p>
-<h1 id="排版方式"><a href="#排版方式" class="headerlink" title="*排版方式*"></a><em><strong>*排版方式*</strong></em></h1><p>class=“”</p>
-<p>将元素内所有的内容进行排版：</p>
-<p>text-left  使元素内容靠左显示</p>
-<p>text-center  使元素内容居中显示</p>
-<p>text-right  使元素内容靠右显示</p>
-<h1 id="表单元素"><a href="#表单元素" class="headerlink" title="*表单元素*"></a><em><strong>*表单元素*</strong></em></h1><p>复制相关代码，修改其中的一些部分，完成自己的需求。</p>
-<p>内联表单，水平排列的表单。</p>
-<p>校验状态：has-success  has-error  has-warning</p>
-<h1 id="分页条"><a href="#分页条" class="headerlink" title="*分页条*"></a><em><strong>*分页条*</strong></em></h1><p>默认分页  </p>
-<p>禁用和激活状态（可以显示当前在第几页，第一页的前一页不可用等情况）： disabled  active  即使设置了不可用，如果存在href标签的话，仍能点击跳转到相应地方，保险起见，建议删除href标签。</p>
-<p>翻页</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/17/8.5.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E4%B9%8Bbootstrap/" data-id="ckpdvjpp2002mnswde5mpanf7" data-title="网页前端框架之bootstrap" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-8.4.网页前端之JS" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/17/8.4.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BJS/" class="article-date">
-  <time class="dt-published" datetime="2021-04-17T05:24:00.000Z" itemprop="datePublished">2021-04-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/17/8.4.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BJS/">网页前端之JS</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>HTML是用来写网页的</p>
-<p>CSS是美化页面的</p>
-<p>JavaScript是WEB上强大的脚本语言</p>
-<p>JAVA编程语言：独立写程序，独立运行。编译–运行</p>
-<p>脚本语言：无法独立执行。必须嵌入到其他语言中结合使用。直接被浏览器解析执行</p>
-<p>作用：控制页面特效展示</p>
-<p>语言特征：JavaScript无需编译，直接被浏览器解释并执行</p>
-<p>JavaScript无法单独执行，必须嵌入到HTML代码中执行</p>
-<p>JavaScript的执行过程由上到下依次执行</p>
-<p>注意：JavaScript没有访问系统文件的权限</p>
-<p>JavaScript无需编译，由上到下依次解释执行，所以在保证可读性的情况下，允许使用链式编程</p>
-<p>JavaScript和java没有任何直接关系</p>
-<p>组成</p>
-<p>ECMAScript（核心）：规定了JS的语法和基本对象</p>
-<p>DOM 文档对象模型（标记型文档。HTML）：处理网页内容的方法和接口</p>
-<p>BOM  浏览器对象模型：与浏览器交互的方法和接口</p>
-<p>引入方式：</p>
-<p>\1. 内部脚本：在当前页面内部写script标签，script内部即可书写JavaScript代码。</p>
-<p>格式：</p>
-<script type=”text/javascript”>
-
-JavaScript的代码
-
-</sctipt>
-
-注意：script标签理论上可以书写在HTML文件的任意位置
-
-\2. 外部引入：在HTML文档中，通过<script src=””>标签引入.js文件
-
-格式：
-
-<script type=”text/javascript” src=”demo.js”></script>
-
-<p>注意：外部引用时，script标签内不能有script代码，即使写了也不会执行</p>
-<p>开发规范规定，script标签的放置位置为：在结束标签</body>前</p>
-<p>(在学习时，可以先放在head标签之中，最后在放到结束标签</body>前)</p>
-<p>优点：保证html展示内容优先加载，最后加载脚本，增强用户体验性</p>
-<p>JavaScript的语法及规则：alert相当于是System.out.println()</p>
-<p>\1. 注释：<br>单行注释： //  Hbuilder快捷键：ctrl+/</p>
-<p>多行注释：/**/  Hbuilder快捷键：ctrl+shift+/</p>
-<p>\2. 变量：标示内存中的一块空间，用于存储数据，且数据是可变的。<br>声明：var 变量名；  变量赋予默认值，默认值为undefined</p>
-<p>var 变量名=值；</p>
-<p>注意：必须以字母或下划线开头，中间可以使数字，字符或下划线。</p>
-<p>变量名不能包含空格等符号</p>
-<p>不能使用JavaScript的关键字作为变量名，如：function、this、class</p>
-<p>JavaScript严格区分大小写</p>
-<p>基本数据类型：5类</p>
-<p>string：字符串类型  “” ‘’ 都是字符串，JavaScript中没有单个字符</p>
-<p>boolean：布尔类型  固定值为false和true</p>
-<p>number：数字类型 任意数字</p>
-<p>null：空 一个占位符</p>
-<p>undefined：未定义类型  该类型只有一个固定值，即undefined，表示变量声明却未定义具体的值</p>
-<p>注意：因为undefined是从null中派生出来的，所以undefined==null</p>
-<p>JavaScript区别于java，是弱类型语言，变量的使用不用严格遵循规范，所以一个变量声明好之后，还可以赋予任意类型的值。</p>
-<p>typeof() 可以分辨变量值属于哪种基本数据类型：undefined、string、boolean、number。 如果一个变量是引用类型或者null类型的话，会返回object。</p>
-<p>ECMAScript实现之初的一个bug：null属于基本数据类型，然而typeof(null)返回的却是object</p>
-<p>引用数据类型:引用数据类型通常叫做类（class），但在JavaScript中，因为不存在编译过程，所以没有类的概念，所处理的引用数据类型都是对象。</p>
-<p>标准创建方式： var str= new String();  //和java相同</p>
-<p>var str= new String;  //js独有的方式</p>
-<p>\3. 运算符：与java基本一致<br>比较运算符：== 逻辑等。 仅仅对比值<br>                === 全等。对比值并且对比类型<br>逻辑运算符：没有&amp; |  只有三个</p>
-<p>&amp;&amp;：and</p>
-<p>||：  or</p>
-<p>!：  not</p>
-<p>\4. 正则对象<br>RegExp对象的创建方式：</p>
-<p>var reg= new RegExp(“表达式”);  （开发中基本不用）</p>
-<p>var reg=/^表达式$/；  直接量（开发中常用）</p>
-<p>直接量中存在边界，即^代表开始，$代表结束</p>
-<p>直接量方式的正则是对象，不是字符串，别用引号</p>
-<p>使用正则对象：方法：compile：编译正则表达式  （不咋用）</p>
-<p>exec：检索字符串中指定的值，返回找到的值，并确定其位置 （不咋用）</p>
-<p>test方法： 正则对象.test(string);  用来校验字符串是否匹配正则，全部字符匹配返回true，有一个字符不匹配返回false</p>
-<p>注意：/表达式/ 普通方式，只要有成立正则的字符存在，就返回true，除非全部字符不符合正则，返回false（检查不严格，适合字符串查找、替换）</p>
-<p>/^表达式$/ 直接量方式，只要有无法成立正则表达式的字符存在，就返回false（检查严格，适合表单校验）</p>
-<p>\5. JS数组对象<br>特性：JS数组可以看作java中的ArrayList集合。</p>
-<p>数组中的每一个成员都没有类型限制，即可以存放任意类型。</p>
-<p>数组的长度可以自动修改</p>
-<p>四种创建方式：</p>
-<p>（1）var arr=[1,2,3,”a”,true];  常用的js数组  （常用）</p>
-<p>（2）var arr=new Array();  创建一个数组对象，数组长度默认为0 （常用）</p>
-<p>（3）var arr= new Array(4);  数组长度是4，相当于开辟了长度为4的空间，每个元素是undefined。</p>
-<p>（4）var arr =new Array(“a”,1,true);创建了一个数组，长度为3，元素是“a”,1,true<br>常用属性：length  设置或返回数组中元素的数目</p>
-<p>常用方法： join（string）  把数组的所有元素放入一个字符串。元素通过指定的分隔符string进行分隔 （对原来的数组无影响）</p>
-<p>pop（） 删除并返回数组的最后一个元素（原先数组无了）</p>
-<p>push（新元素） 向数组的末尾添加一个或更多的元素，并返回新的长度（原先数组无了）</p>
-<p>reverse（） 颠倒数组中元素的顺序（物理翻转，就是把元素下标进行互换）该方法的返回值就是翻转成功的新数组。（会对当前的数组进行操作，原来的数组无了）</p>
-<p>\6. 全局函数(global)</p>
-<p>undefined属于全局函数的属性，但是我们在使用的时候不用加global.undefined<br>（1）执行： eval（string）  计算JavaScript字符串，并把它作为脚本代码来执行</p>
-<p>作用：增强程序的扩展性</p>
-<p>注意：只可以传递原始数据类型string，传递string对象无作用。</p>
-<p>（2）编码和解码</p>
-<p>URL/URI编码：中文和特殊符号  %十六进制</p>
-<p>作用：保证数据传递的完整性</p>
-<p>encodeURI（string）  把字符串进行URI编码，返回值就是编码后的结果</p>
-<p>decodeURI（string）  解码某个编码的URI</p>
-<p>（3）URI和URL的区别</p>
-<p>URI是统一资源标识符  标识资源详细名称  必须包含资源名</p>
-<p>URL是统一资源定位器  定位资源的网络位置  必须包含http：//</p>
-<p>资源：就是可以通过浏览器访问的信息统称为资源（图片、文本、HTML、CSS等等）</p>
-<p>（4）字符串转数字</p>
-<p>parseInt(string)  解析一个字符串并返回一个整数  小数点后面部分直接去掉</p>
-<p>parseFloat(string)  解析一个字符串并返回一个浮点数</p>
-<p>注意：如果字符串的某个字符从字面值上无法转为数字，那么从该字符开始停止转换，仅返回前面正确的转换值。</p>
-<p>如果字符串的第一个字符就无法从字面值上转为数字，那么停止转换，返回NaN（Not A Number，一个数字类型的标识，表示不是一个正确的数字）</p>
-<p>\7. 自定义函数/自定义方法</p>
-<p>函数：如果一段代码需要被重复编写使用，那么我们为了方便统一编写使用，可以将其封装进一个函数（方法）中</p>
-<p>作用：增强代码的复用性</p>
-<p>格式： function 方法名(参数列表){</p>
-<p>函数体</p>
-<p>}</p>
-<p>注意：JavaScript函数定义必须用小写的function</p>
-<p>无需定义返回值类型，在function后面直接写方法名</p>
-<p>参数的定义无需使用var关键字，否则会报错</p>
-<p>函数体中，return可以不写，也可以return具体值，也可以仅仅写return</p>
-<p>JavaScript函数调用执行完毕一定有返回值，值及类型根据return决定，如果未return具体值，则返回值为undefined</p>
-<p>函数如果同名，JavaScript中不存在方法重载，只有方法相互覆盖，所以最后定义的函数覆盖之前的定义。</p>
-<p>再调用时仅仅根据方法名来调用函数，即使实际参与函数与形参不匹配，也不会影响正常调用。</p>
-<p>如果实参未赋值，就使用默认值undefined</p>
-<p>\8. 自定义对象</p>
-<p>①function构造函数：JavaScript中的引用数据类型都是对象，而对象在JavaScript中可以用函数来表示。（相当于java中创建某个class类）</p>
-<p>无形参格式：function 对象名(){</p>
-<p>函数体</p>
-<p>}</p>
-<p>例如：</p>
-<p>声明一个Person对象：</p>
-<p>function Person(){</p>
-<p>this.name=”swx”;  // this 就是当前的Person对象</p>
-<p>this.age=”23”;   //name  age是对象的属性</p>
-<p>}</p>
-<p>var p=new Person();  //创建了一个Person对象</p>
-<p>alert(p.name);</p>
-<p>为属性赋值：</p>
-<p>（1）构造参数赋值：function Person(n,a){</p>
-<p>this.name=n;  </p>
-<p>this.age=a;  </p>
-<p>}</p>
-<p>var p=new Person(“swx”,”23”);</p>
-<p>（2）创建对象后，调用属性进行赋值</p>
-<p>p.name=”sss”;</p>
-<p>属性定义方式：</p>
-<p>（1）this关键字，在对象声明定义阶段，定义一个属性</p>
-<p>（2）创建对象后，使用对象.属性 方式来动态定义属性</p>
-<p>p.sex=”男”;  //为Person对象声明了一个新的属性sex并赋值为男</p>
-<p>应用场景：适用于对象构建及代码复用</p>
-<p>②对象直接量</p>
-<p>开发中可以用一种简单的方式直接创建自定义的JavaScript对象，这种方式称为“对象直接量”</p>
-<p>格式： var 对象名 = {属性名1：“属性值1”，属性名2：“属性值2”，属性名3：“属性值3”……};  //  不一定非要字符串了 可以直接数字18</p>
-<p>该方式直接创建出实例对象，无需构建函数，无需再new创建实例对象，直接使用即可。</p>
-<p>适用场景：适用于快速创建实例对象及数据封装</p>
-<p>BOM对象 </p>
-<p>BOM（Browser Object Model）浏览器对象模型</p>
-<p>浏览器：IE、火狐、谷歌、360等任意浏览器</p>
-<p>作用：用来执行浏览器的相关操作（例如：浏览器的地址，弹出消息等）</p>
-<p>一般情况下，window代表了BOM对象</p>
-<p>window对象是JavaScript的内置对象，使用window对象调用方法时可以省略window不写</p>
-<p>（1）消息框</p>
-<p>alert()  警告框，用来弹出警告消息 </p>
-<p>注意：不同浏览器显示的组件样式不同，我们无需关注</p>
-<p>confirm() 确认框 用于告知用户信息并收集用户的选择</p>
-<p>有一个返回值，boolean类型</p>
-<p>（2）定时器</p>
-<p>循环定时器：调用一次就会创建并循环执行一个定时器</p>
-<p>格式：setInterval(调用的方法名()，毫秒值);  </p>
-<p>会有一个返回值，返回值就是这个定时器的id</p>
-<p>取消：clearInterval(id);  取消id的定时器</p>
-<p>一次性定时器：调用一次就会创建并执行一个计时器一次</p>
-<p>格式：setTimeout(调用的方法名()，毫秒值);</p>
-<p>也会有一个返回值，返回值就是这个定时器的id</p>
-<p>取消：clearTimeout(定时器ID);  这个id在当前页面要求是唯一的。</p>
-<p>（3）location对象</p>
-<p>包含浏览器地址栏的信息</p>
-<p>常用属性：href  设置或返回完整的URL  （直接调用会返回当前页面的URL，设置href属性=””;浏览器就会跳转到对应的路径，这里可以是html页面，也可以是外网路径，但必须要加https：//）</p>
-<p>DOM对象</p>
-<p>DOM（Document Object Model）文档对象模型</p>
-<p>文档：标记型文档（HTML等）</p>
-<p>DOM是将标记型文档中所有内容（标签、文本、属性）都封装成对象</p>
-<p>通过操作对象的属性或者方法，来达到操作或者改变HTML展示效果的目的</p>
-<p>HTML文件会加载并解析到内存中，会生成一张DOM树</p>
-<p>DOM树：</p>
-<p>每个标签都会被加载成DOM树上的一个元素节点对象</p>
-<p>每个标签的属性会被加载成DOM树上的一个属性节点对象</p>
-<p>每个标签的内容体会被加载成DOM树上的一个文本节点对象</p>
-<p>整个DOM树，是一个文档节点对象，即DOM对象</p>
-<p><em><strong>*一个HTML文档加载到内存中就会形成一个DOM对象*</strong></em></p>
-<p>特点：必定会有一个根节点</p>
-<p>每个节点都是节点对象</p>
-<p>常见的节点关系：父子节点关系</p>
-<p>文本节点对象没有子节点（叶子节点）</p>
-<p>每个节点都有一个父节点，零到多个子节点</p>
-<p>只有根节点没有父节点</p>
-<p>获取元素对象的四种方式： document的相关方法，所以要用document调用</p>
-<p>getElementById();  通过元素id获取对应元素对象 （可以通过id获取对应的元素对象，如果找不到，返回null）</p>
-<p>getElementsByName();  通过元素的****name属性****获取符合要求的所有元素</p>
-<p>getElementsByTagName();  通过元素的****元素名属性（标签名）****获取符合要求的所有元素</p>
-<p>getElementsByClassName();  通过元素的****class属性****获取符合要求的所有元素</p>
-<p>注意事项：</p>
-<p>获取某个或某些元素节点对象，必须保证元素节点对象先被加载到内存中。（这就是为什么script标签为什么推荐放在</body>之前的原因，这就可以保证元素都被加载完了，再运行script标签时就能找到相应的标签）</p>
-<p>元素对象常见属性：</p>
-<p>value: 可以修改元素的值</p>
-<p>元素对象.value  获取元素对象的value属性值</p>
-<p>元素对象.value=属性值  设置元素对象的value属性值</p>
-<p>className： 可以修改元素的样式</p>
-<p> //本来是class，但是class是关键字，所以要用className</p>
-<p>元素对象.className  获取元素对象的class属性值</p>
-<p>元素对象.className=属性值  设置元素对象的class属性值</p>
-<p>checked：  可以修改单选/复选的选中与否</p>
-<p>元素对象.checked  获取元素对象的checked属性值</p>
-<p>元素对象.checked=属性值  设置元素对象的checked属性值</p>
-<p>HTML中checked=”checked”,JavaScript中返回true，false</p>
-<p>innerHTML：  可以操作元素的内容体</p>
-<p>元素对象.innerHTML  获取元素对象的内容体</p>
-<p>元素对象.innerHTML=值  设置元素对象的内容体</p>
-<p>追加内容体信息：  元素对象.innerHTML+=值</p>
-<p>JS事件</p>
-<p>通常鼠标或热键的动作称之为事件（Event）。</p>
-<p>作用：通过JS事件，我们可以完成页面的指定特效</p>
-<p>JS事件驱动机制：</p>
-<p>事件源：专门产生事件的组件 </p>
-<p>事件：由事件源所产生的动作或者事情 </p>
-<p>监听器：专门处理事件源所产生的事件</p>
-<p>注册/绑定监听器：让监听器时刻监听事件源是否有指定事件产生，如果事件源产生指定事件，则调用监听器处理</p>
-<p>JS常见事件：  一般都是放在标签中，事件=“方法()”</p>
-<p>\1. 点击事件（onclick）：由鼠标或热键点击元素组件时触发</p>
-<p>\2. 焦点事件</p>
-<p>焦点：即整个页面的注意力。  默认一个正常页面最多仅有一个焦点 （例如：文本框中闪烁的小竖线）</p>
-<p>通常焦点也能反映出用户目前的关注点，或者正在操作的组件。</p>
-<p>获取焦点事件（onfocus）：当元素组件获取焦点时触发</p>
-<p>失去焦点事件（onblur）：元素组件失去焦点时触发</p>
-<p>\3. 域内容改变事件（onchange）：元素组件的值发生改变时触发</p>
-<p>\4. 加载完毕事件（onload）：元素组件加载完毕时触发</p>
-<p>//以前有推荐script代码放在最后是因为要元素标签加载完在调取，现在有了这个方法，也可以让元素组件加载完再调取。</p>
-<p>\5. 表单提交事件（onsubmit）：表单的提交按钮被点击时触发</p>
-<p>注意：该事件需要返回boolean类型的值来执行  提交/阻止表单数据的操作</p>
-<p>事件得到true，提交表单数据</p>
-<p>事件得到false，阻止表单数据提交</p>
-<p>在form标签处写。</p>
-<p>用于表单的校验，也可以控制表单的提交  onsubmit=”return run1()” run1方法中必须要有返回值（可以进行表单校验，符合返回true，会提交表单；不符合返回false，表单提交会被阻止）</p>
-<p>\6. 键位弹起事件（onkeyup）：在组件中输入某些内容时，键盘键位弹起时触发该事件（可以进行校验）</p>
-<p>\7. 常用鼠标事件</p>
-<p>鼠标移入事件（onmouseover）：鼠标移入某个元素组件时触发</p>
-<p>鼠标移出事件（onmouseout）：鼠标移出某个元素组件时触发</p>
-<p>JS事件的两种绑定方式：</p>
-<p>\1. 元素事件句柄绑定：将事件以元素属性的方式写到标签内部，进而绑定对应函数</p>
-<p>//可以绑定一个或者多个 无参、带参函数，如果是带参的话，外面是“”里面是’’。多个函数时，函数之间用“ ， ”隔开，顺序就是执行顺序。</p>
-<p>优点：开发快捷；传参方便；可以绑定多个函数</p>
-<p>缺点：JS和HTML代码高度糅合在一起，不利于多部门的项目开发维护</p>
-<p>\2. DOM绑定方式：使用DOM的属性方式绑定事件</p>
-<p>两种：（1）对象.事件属性  一次只能绑定一个函数，不能传递参数</p>
-<p>window.onload=run1；</p>
-<p>（2）匿名函数  可以绑定多个函数，可以传递参数</p>
-<p>window.onload=function(){</p>
-<p>//这个方法是页面加载的方法，可以在这里调取此页面的所有元素，获得元素后就可以继续使用匿名函数调取方法</p>
-<p>run1();</p>
-<p>run2();</p>
-<p>}</p>
-<p>优点：使得HTML代码和JS代码完全分离</p>
-<p>缺点：不能传递参数；一个事件只能绑定一个函数。解决：匿名函数就可以，匿名函数内部就可以绑定多个函数</p>
-<h3 id="Window-setInterval-方法"><a href="#Window-setInterval-方法" class="headerlink" title="Window setInterval() 方法"></a>Window setInterval() 方法</h3><p>setInterval() 方法可按照指定的周期（以毫秒计）来调用函数或计算表达式。</p>
-<p>setInterval() 方法会不停地调用函数，直到 <a target="_blank" rel="noopener" href="https://www.runoob.com/jsref/met-win-clearinterval.html">clearInterval()</a> 被调用或窗口被关闭。由 setInterval() 返回的 ID 值可用作 clearInterval() 方法的参数</p>
-<p>如果你只想执行一次可以使用 <a target="_blank" rel="noopener" href="https://www.runoob.com/jsref/met-win-settimeout.html">setTimeout()</a> 方法</p>
-<h3 id="Window-clearInterval-方法"><a href="#Window-clearInterval-方法" class="headerlink" title="Window clearInterval() 方法"></a>Window clearInterval() 方法</h3><p>显示当前时间 ( setInterval() 函数会每秒执行一次函数，类似手表)。使用 clearInterval() 来停止执行:</p>
-<p>clearInterval() 方法可取消由 setInterval() 函数设定的定时执行操作。</p>
-<p>clearInterval() 方法的参数必须是由 setInterval() 返回的 ID 值。</p>
-<p><strong>注意:</strong> 要使用 clearInterval() 方法, 在创建执行定时操作时要使用全局变量：</p>
-<h3 id="if问题"><a href="#if问题" class="headerlink" title="if问题"></a>if问题</h3><p>在 JavaScript 里，不为空 “” 的字符串、不为 0 的数字、不为 null 的对象、不为 undefined 的对象属性、布尔型 true，单独作为判断式里的一个表达式时 JavaScript 通通认定为真（true），反之则为假（false）</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/17/8.4.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BJS/" data-id="ckpdvjppu004onswdbh4gf877" data-title="网页前端之JS" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -1515,7 +1554,7 @@ JavaScript的代码
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">MySQL基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Portainer-io/" rel="tag">Portainer.io</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/" rel="tag">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/" rel="tag">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springfox/" rel="tag">springfox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swagger/" rel="tag">swagger</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6/" rel="tag">书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E8%97%8F/" rel="tag">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" rel="tag">编程规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" rel="tag">设计规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" rel="tag">软件说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag">面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eclipse/" rel="tag">Eclipse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HATEOAS/" rel="tag">HATEOAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">MySQL基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PBOOTCMS/" rel="tag">PBOOTCMS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Portainer-io/" rel="tag">Portainer.io</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RESTful/" rel="tag">RESTful</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/" rel="tag">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/" rel="tag">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%A6%82%E8%BF%B0/" rel="tag">java概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springfox/" rel="tag">springfox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swagger/" rel="tag">swagger</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6/" rel="tag">书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/" rel="tag">历史版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E8%97%8F/" rel="tag">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" rel="tag">编程规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" rel="tag">设计规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" rel="tag">软件说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag">面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
     </div>
   </div>
 
@@ -1525,7 +1564,7 @@ JavaScript的代码
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">MySQL基础概念</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Portainer-io/" style="font-size: 10px;">Portainer.io</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/WEB/" style="font-size: 10px;">WEB</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springfox/" style="font-size: 10px;">springfox</a> <a href="/tags/swagger/" style="font-size: 10px;">swagger</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%B9%A6/" style="font-size: 10px;">书</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%94%B6%E8%97%8F/" style="font-size: 10px;">收藏</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" style="font-size: 10px;">设计规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">软件说明</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">面向对象</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HATEOAS/" style="font-size: 10px;">HATEOAS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">MySQL基础概念</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PBOOTCMS/" style="font-size: 10px;">PBOOTCMS</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Portainer-io/" style="font-size: 10px;">Portainer.io</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/WEB/" style="font-size: 10px;">WEB</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">java概述</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springfox/" style="font-size: 10px;">springfox</a> <a href="/tags/swagger/" style="font-size: 10px;">swagger</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%B9%A6/" style="font-size: 10px;">书</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/" style="font-size: 10px;">历史版本</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%94%B6%E8%97%8F/" style="font-size: 10px;">收藏</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" style="font-size: 10px;">设计规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">软件说明</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">面向对象</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
     </div>
   </div>
 
@@ -1534,7 +1573,7 @@ JavaScript的代码
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
     </div>
   </div>
 
@@ -1547,6 +1586,14 @@ JavaScript的代码
       <ul>
         
           <li>
+            <a href="/2021/06/08/%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/">搭建网站</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/03/%E6%94%BB%E7%A0%B4%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99/">攻破一个网站</a>
+          </li>
+        
+          <li>
             <a href="/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/">推荐研读书籍</a>
           </li>
         
@@ -1556,14 +1603,6 @@ JavaScript的代码
         
           <li>
             <a href="/2021/04/30/16.2.Docker%E4%B9%8BPortainer-io/">Docker之Portainer.io</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/23/5.4.MySQL%E9%9D%A2%E8%AF%95/">MySQL面试</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/22/12.5.Springfox/">Springfox</a>
           </li>
         
       </ul>

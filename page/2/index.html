@@ -77,6 +77,209 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-9.7.WEB之cookie和session" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:30:26.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/">WEB之cookie和session</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>用户打开一个浏览器，点击多个超链接访问服务器的web资源，然后关闭浏览器，整个过程称为是一次会话。</p>
+<p>会话技术：每个用户与服务器进行交互过程中，产生一些各自的数据，程序想要把这些数据进行保存，就需要使用会话技术。</p>
+<p>分类：</p>
+<p>1.Cookie技术：Cookie是客户端技术，程序把每个用户的数据以cookie的形式保存到各自浏览器中。当用户使用浏览器再次访问服务器中的web资源的时候，就会带着各自的数据过去。这样，web资源处理的就是用户各自的数据了。</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps1.jpg" alt="img"> </p>
+<p>2.Session技术：Session是服务器端技术，利用这个技术，服务器在运行时为每一个用户的浏览器创建一个****独享的session对象。****由于session为用户浏览器独享，所有用户在访问服务器的时候，可以把各自的数据放在各自的session中，当用户再次访问服务器中的web资源的时候，其他web资源再从用户各自的session中取出数据为用户服务。</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps2.jpg" alt="img"> </p>
+<p>Cookie的使用：</p>
+<p>获得从浏览器带过来的Cookie，通过HttpServletRequest对象中的方法：</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps3.jpg" alt="img"> </p>
+<p>向浏览器回写Cookie，通过HttpServletResponse对象中的方法：</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps4.jpg" alt="img"> </p>
+<p>cookie的构造方法：</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps5.jpg" alt="img"> </p>
+<p>其他方法：</p>
+<p>获得Cookie的名称的方法</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps6.jpg" alt="img"> </p>
+<p>获得Cookie的值的方法</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps7.jpg" alt="img"> </p>
+<p>设置Cookie的有效域名（设置了之后，它之下的域名访问时也会有cookie）</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps8.jpg" alt="img"> </p>
+<p>设置Cookie的有效路径（设置之后，它之下的路径也会有cookie，“/”是指整个项目）</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps9.jpg" alt="img"> </p>
+<p>设置Cookie的有效时长（0是指删除，以秒为单位）</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps10.jpg" alt="img"> </p>
+<p>Cookie的分类：</p>
+<p>1.默认级别的Cookie：指的是没有设置有效时间的Cookie，默认的情况下只要关闭了浏览器，Cookie也会被销毁。（Cookie存在于浏览器的内存中，当关闭了浏览器Cookie就销毁了）。</p>
+<p>2.持久级别的Cookie：指的是有有效时间的Cookie，这种Cookie的内容不是保存在浏览器的内存中，将Cookie的内容保存（持久化）到硬盘上。这个时候，关闭浏览器，再次打开浏览器就会加载硬盘上的文件，从而Cookie中的数据就不会丢失。</p>
+<p>Cookie的使用细节：</p>
+<p>一个Cookie只用标识一种信息，至少含有一个标识该信息的名称和值。</p>
+<p>一个web站点可以给一个浏览器发送多个Cookie。一个web浏览器可以存储多个web站点的Cookie。</p>
+<p>浏览器一般只允许存放300个Cookie，每个站点最多可以存放20个Cookie，每个Cookie的大小限制为4KB（老版本浏览器）。—–<em><strong>*浏览器存放的Cookie的大小和个数是有限制的。*</strong></em></p>
+<p>如果创建了一个Cookie，并发送到浏览器，默认情况下它是一个****会话级别的Cookie****。用户退出浏览器就被删除。如果希望将这个Cookie存到磁盘上，需要设置有效时长调用setMaxAge(int maxAge)方法，以秒为单位的。</p>
+<p>需要手动删除持久性Cookie，可以将Cookie的有效时长设置为0.必须注意：删除Cookie时候，path必须一致，否则无法删除。</p>
+<p>Session：Session称为是一次会话，Cookie将用户产生的私有的数据保存到浏览器端，Session将用户产生的私有的数据保存到服务器端。注意：****一个浏览器独占一个session对象****。因此，在需要保存用户数据时候，服务器程序可以将用户数据写到session对象中，当用户使用浏览器访问其他程序时，其他程序可以从用户的session中取出该用户的数据，为用户服务。</p>
+<p>为什么有Cookie还要有Session：</p>
+<p>Cookie局限性：Cookie保存的数据是有个数和大小的限制的。数据是保存客户端浏览器上（相对不是很安全）。</p>
+<p>Session：Session没有个数和大小限制。数据是保存在服务器上（相对比较安全）。</p>
+<p>Session对象由服务器创建，开发人员可以调用request对象的getSession方法得到Session对象。</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps11.jpg" alt="img"> </p>
+<p>Session的实现原理：</p>
+<p>****基于Cookie的****，响应头基于Cookie的set-cookie回写了一个Session的ID。</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps12.jpg" alt="img"> </p>
+<p>向session中存入数据：</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps13.jpg" alt="img"> </p>
+<p>从session域中获取数据：</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps14.jpg" alt="img"> </p>
+<p>从session域中移除数据：</p>
+<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps15.jpg" alt="img"> </p>
+<p>Session作为域对象，作用范围就是****一次会话****的范围。一次会话，指的是用户打开浏览器点击多个超链接，访问服务器资源，到最后关闭浏览器的过程。（一般保存私有信息，验证码）</p>
+<p>Servlet的域对象的总结：</p>
+<p>1.请求范围（ServletRequest）</p>
+<p>创建：当用户向服务器发送一次请求，服务器创建一个request对象。</p>
+<p>销毁：当服务器对这次请求作出了响应，服务器就会销毁这个request对象。</p>
+<p>存数据：void setAttribute(String name,Object value);</p>
+<p>取数据：Object getAttribute(String name);</p>
+<p>作用范围：一次请求。（转发就是一次请求）。</p>
+<p>2.会话范围（HttpSession）</p>
+<p>创建：服务器端****第一次调用getSession()****方法的时候。</p>
+<p>销毁：三种情况：</p>
+<p>Session过期，默认的过期时间30分钟(web.xml中配置)。</p>
+<p>非正常关闭服务器（直接点击控制台的Terminate就是非正常关闭服务器，点击Servers的stop就是正常关闭）。（正常关闭服务器—session会被序列化到Tomcat的work下的localhost的工程下找到）。</p>
+<p>手动调用session.invalidate();</p>
+<p>存数据：void setAttribute(String name,Object value);</p>
+<p>取数据：Object getAttribute(String name);</p>
+<p>作用范围：一次会话（多次请求）</p>
+<p>3.应用范围（ServletContext）</p>
+<p>创建：服务器启动的时候创建，为每个web项目创建一个单独ServletContext对象。</p>
+<p>销毁：服务器关闭的时候，或者项目从服务器中移除的时候。</p>
+<p>存数据：void setAttribute(String name,Object value);</p>
+<p>取数据：Object getAttribute(String name);</p>
+<p>作用范围：整个应用</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/" data-id="ckpdvjpp4002wnswd06ik74gd" data-title="WEB之cookie和session" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-9.6.WEB之ajax" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/9.6.WEB%E4%B9%8Bajax/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:30:09.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/9.6.WEB%E4%B9%8Bajax/">WEB之ajax</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>AJAX 是一种用于创建快速动态网页的技术。</p>
+<p>AJAX即“Asynchronous Javascript And XML”（异步JavaScript和XML），是指一种创建交互式<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/828.htm">网页</a>应用的网页开发技术。</p>
+<p>AJAX = 异步 <a target="_blank" rel="noopener" href="http://baike.baidu.com/view/16168.htm">JavaScript</a>和<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/63.htm">XML</a>（<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/5286041.htm">标准通用标记语言</a>的子集）。</p>
+<p>通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</p>
+<p>传统的网页（不使用 AJAX）如果需要更新内容，必须重载整个网页页面。</p>
+<p>AJAX 的核心是 JavaScript 对象 XMLHttpRequest。该对象在 Internet Explorer 5 中首次引入，它是一种支持异步请求的技术。简而言之，XMLHttpRequest使您可以使用 JavaScript 向服务器提出请求并处理响应，而不阻塞用户。</p>
+<p>AJAX不是一种新的编程语言，而是一种用于创建更好更快以及交互性更强的Web应用程序的技术</p>
+<p>ajax的优点：</p>
+<p>使用Javascript向服务器提出请求并处理响应而不阻塞用户！核心对象XMLHTTPRequest。通过这个对象，您的 JavaScript 可在不重载页面的情况与Web服务器交换数据，即在不需要刷新页面的情况下，就可以产生局部刷新的效果。</p>
+<p>AJAX 在浏览器与 Web 服务器之间使用异步数据传输（HTTP 请求），这样就可使网页从服务器请求少量的信息，而不是整个页面。</p>
+<p>AJAX 可使因特网应用程序更小、更快，更友好</p>
+<p>工作原理：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td><img src="/9.6.WEB%E4%B9%8Bajax/wps1.jpg" alt="img"></td>
+</tr>
+</tbody></table>
+<p>AJAX应用</p>
+<p>1.创建一个demo1.html</p>
+<p>2.发送一个ajax请求<img src="/9.6.WEB%E4%B9%8Bajax/wps2.jpg" alt="img">：</p>
+<p>2.1：获取一个XMLHttpRequest对象</p>
+<p>对于大部分浏览器可以直接通过 new XMLHttpRequest();</p>
+<p>对于IE5  IE6 new ActiveXObject(“Microsoft.XMLHTTP”)</p>
+<p><img src="/9.6.WEB%E4%B9%8Bajax/wps3.jpg" alt="img">2.2：设置一个回调函数</p>
+<p>回调函数它的作用就是用于处理服务器响应的数据</p>
+<p>通过XMLHttpRequest对象的onreadystatechange设置回调函数</p>
+<p>onreadystatechange 事件句柄，它是用于绑定回调函数，当服务器响应数据回来后，我们可以在指定的回调函数中进行数据处理</p>
+<p>readyState 它描述的http请求的状态</p>
+<p><img src="/9.6.WEB%E4%B9%8Bajax/wps4.jpg" alt="img"> </p>
+<p>status 它描述的http状态码  200 404  405 500…</p>
+<p>2.3：设置请求方式GET/POST及请求的URL等</p>
+<p>通过XMLHttpRequest对象的open方法</p>
+<p>open它是用于设置请求方式，url及是否异步，初始化HTTP请求参数，例如URL和HTTP方法，但是并不发送请求</p>
+<p>参数1：HTTP 请求方式  POST/GET。</p>
+<p>参数2:url路径</p>
+<p>参数3:true/false 代表是否异步 （一般不用写，只写前两个参数）</p>
+<p>2.4：真正向服务器发送请求</p>
+<p>通过XMLHttpRequest对象的send方法</p>
+<p>send它是真正向服务器发送请求</p>
+<p>如果请求方式是get，那么我们使用send(null) 原因:get请求方式是没有http请求体</p>
+<p>只有post请求方式时，才有请求体,所以send的参数只是在post请求时使用例如</p>
+<p>Xmlhttp.send(“username=xxx&amp;password=xxx”);</p>
+<p>setRequestHeader</p>
+<p><img src="/9.6.WEB%E4%B9%8Bajax/wps5.jpg" alt="img">注意：如果请求方式是POST,那么我们在使用时，必须设置一个请求头，就需要使用setRequestHeader方法来完成</p>
+<p>第二个参数是form表单标签的enctype的默认值</p>
+<p>2.5：在回调函数中获取服务器响应的数据</p>
+<p>通过XMLHttpRequest对象的responseText</p>
+<p>responesText或responseXML来获取服务器响应数据</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.6.WEB%E4%B9%8Bajax/" data-id="ckpdvjpp4002vnswd41fpbozv" data-title="WEB之ajax" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-9.5.WEB之JQuery" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/04/19/9.5.WEB%E4%B9%8BJQuery/" class="article-date">
@@ -1375,17 +1578,17 @@ alert(“hello jquery”);
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="集成开发环境IDE（Integrated-Development-Environment）"><a href="#集成开发环境IDE（Integrated-Development-Environment）" class="headerlink" title="集成开发环境IDE（Integrated Development Environment）"></a>集成开发环境IDE（Integrated Development Environment）</h1><h2 id="Eclipse"><a href="#Eclipse" class="headerlink" title="Eclipse"></a>Eclipse</h2><p>Eclipse是一种可扩展的开放源代码的IDE。</p>
+        <p>集成开发环境IDE（Integrated Development Environment）：把开发，运行，编译集成在一起</p>
+<h2 id="Eclipse"><a href="#Eclipse" class="headerlink" title="Eclipse"></a>Eclipse</h2><p>Eclipse是一种可扩展的开放源代码的IDE。</p>
 <p>特点：免费，纯JAVA语言编写，免安装，扩展性强。由OTI和IBM公司开发。</p>
 <p>（//CS版客户端服务器，BS版网络端服务器）</p>
-<p>Eclipse的使用：</p>
-<p>选择工作空间（其实就是源代码所在的目录）</p>
+<h3 id="Eclipse的使用："><a href="#Eclipse的使用：" class="headerlink" title="Eclipse的使用："></a>Eclipse的使用：</h3><p>选择工作空间（其实就是源代码所在的目录）</p>
 <p>代码以项目为单位，创建项目，创建包，创建类，编写代码。</p>
 <p>是自动编译，在保存的那一刻就会被编译。</p>
 <p>运行：1.点击bug图标后面的内在三角形按钮</p>
-<p>\2. 点击Run菜单下的run，或者快捷键CTRL+F11</p>
-<p>\3. 在要运行的文件或文件内容中右击选择Run as-Java Application</p>
-<p>当出现console控制台时，表示运行成功。</p>
+<p>​            2.点击Run菜单下的run，或者快捷键CTRL+F11</p>
+<p>​            3.在要运行的文件或文件内容中右击选择Run as-Java Application</p>
+<p>​            当出现console控制台时，表示运行成功。</p>
 <p>汉化：在dropins目录下解压插件即可。</p>
 <p>语法检查：红色波浪线：错误的源代码（必须解决）</p>
 <p>黄色波浪线：未使用的成员或有安全隐患的成员（可以不管）</p>
@@ -1396,41 +1599,40 @@ alert(“hello jquery”);
 <p>Problems：显示所有的语法及错误存在的位置</p>
 <p>Hierarchy：显示java继承层次结构，选中类后按F4</p>
 <p>视图：是由某些视窗组合而成的：Java视图，Debug视图</p>
-<p>程序的编译和运行的环境配置：（一般不会改）</p>
-<p>window–Preferences–Java</p>
+<p>程序的编译和运行的环境配置：（一般不会改）window–Preferences–Java</p>
 <p>编译环境：Compiles：默认选中的就是最高版本。</p>
 <p>运行环境：Installed JREs：默认会找到你安装的那个JDK。建议配置java的环境变量。</p>
 <p>低编译，高运行：可以。</p>
-<p>高编译，低运行：不可以。所以建议编译和运行的版本一致。</p>
-<p>去掉默认注释：widow–Prederences–Java–Code Style–Code Templates</p>
-<p>选择不想要的内容，通过右边Edit编辑。（只删除注释部分，不是注释部分的不要删除）</p>
+<p>高编译，低运行：不可以。所以建议编译和运行的版本一致（都选java8）。</p>
+<p>去掉默认注释：widow–Prederences–Java–Code Style–Code Templates    选择不想要的内容，通过右边Edit编辑。（只删除注释部分，不是注释部分的不要删除）</p>
 <p>行号的显示和隐藏：在代码区域的最左边的空白区域，右键–Show Line Numbers</p>
 <p>字体的大小和颜色：window–Preferences–General–Appearance–Colors And Fonts–</p>
 <p>窗体弄乱了：window–Reset Perspective</p>
 <p>控制台没了：window–show View-console</p>
-<p>快捷键：</p>
-<p>内容辅助建：</p>
-<p>Alt+/  起提示作用</p>
-<p>main+Alt+/</p>
+<h3 id="快捷键："><a href="#快捷键：" class="headerlink" title="快捷键："></a>快捷键：</h3><p>内容辅助建：</p>
+<p>​    Alt+/  起提示作用</p>
+<p>​    main+Alt+/</p>
 <p>常用快捷键：</p>
-<p>格式化（让格式看起来更标准规范）：  ctrl+shift+f  或者在代码区域内右键–source–Format</p>
-<p>导入包（当你用到其他包内东西时）：  ctrl+shift+o  </p>
-<p>注释ctrl+shift+c （选中后按，批量注释掉）  // ctrl+/  ，ctrl+shift+/</p>
-<p>代码上下移动  选中代码alt+上/下箭头</p>
+<p>​    格式化（让格式看起来更标准规范）：  ctrl+shift+f  或者在代码区域内右键–source–Format</p>
+<p>​    导入包（当你用到其他包内东西时）：  ctrl+shift+o  </p>
+<p>​    注释ctrl+shift+c （选中后按，批量注释掉）   ctrl+/  （单行注释掉）</p>
+<p>​    代码上下移动  选中代码alt+上/下箭头</p>
 <p>查看源码：选中类名（F3或者Ctrl+鼠标点击）</p>
-<p>如何提高开发效率：</p>
+<p><strong>如何提高开发效率：</strong></p>
 <p>自带生成构造方法：</p>
-<p>无参构造：在代码区域右键–source–Generate Constructors form Superclass</p>
-<p>alt+shift+s 再按c</p>
-<p>带参构造：在代码区域右键–source–Generate Constructors using fields..–finish</p>
-<p>alt+shift+s  再按o</p>
-<p>自动生成get/set方法：在代码区域右键–source–Generate Getters and Setters</p>
-<p>alt+shift+s  再按r 在全选 再回车    </p>
-<p>快捷键操作：alt+shift+s  再看那个词条下面有下划线对应的就是那个字母的快捷键。</p>
+<p>​    无参构造：在代码区域右键–source–Generate Constructors form Superclass      或者alt+shift+s 再按c</p>
+<p>​    带参构造：在代码区域右键–source–Generate Constructors using fields..–finish     或者alt+shift+s  再按o</p>
+<p>​    自动生成get/set方法：在代码区域右键–source–Generate Getters and Setters       或者alt+shift+s  再按r 在全选 再回车    </p>
+<p>​    快捷键操作：alt+shift+s  再看那个词条下面有下划线对应的就是那个字母的快捷键。</p>
 <p>在创建一个新类的时候 可以选择继承的父类和实现的接口名，选中后会直接生成。</p>
-<p>制作帮助文档：1.编写源程序</p>
-<p>\2. 针对源程序添加文档注释</p>
-<p>\3. 选中项目–右键–Export–java–javadoc（后缀一定要是\doc）–Finish</p>
+<p>制作帮助文档：</p>
+<p>​    1.编写源程序</p>
+<ol start="2">
+<li><p>针对源程序添加文档注释</p>
+</li>
+<li><p>选中项目–右键–Export–java–javadoc（后缀一定要是\doc）–Finish</p>
+</li>
+</ol>
 <p>Eclipse中打jar包并使用jar包：（当想用其他项目的class时，无法直接引用或者导包，就可以将其他项目的东西打包成jar包）</p>
 <p>jar是多个class文件的压缩包。是别人写好的东西。</p>
 <p>打jar包：选中项目–右键–Export–java–jar–自己指定一个路径和一个名称–Finish</p>
@@ -1439,13 +1641,13 @@ alert(“hello jquery”);
 <p>删除项目：选中项目–右键–删除（选中的话是从硬盘上删除，不选的话是只从项目区域中删除）</p>
 <p>导入项目：项目区域内右键–import–General展开找到Existing Projects into Workspace–点击next选择要导入的项目（整个项目即项目的名称）</p>
 <p>注意事项：</p>
-<p>查看项目所在路径：选中–右键–Properties–Resource–Location</p>
-<p>导入项目时，项目区域中不能出现同名的项目（新建或者导入），自己随意建立的文件夹是不能作为项目导入的（没有配置文件的）</p>
-<p>修改项目时，不要随意修改项目名称，非要修改时，不要忘记把项目中的配置文件.projcet中的   <name> 修改后的项目名称  </name></p>
+<p>​    查看项目所在路径：选中–右键–Properties–Resource–Location</p>
+<p>​    导入项目时，项目区域中不能出现同名的项目（新建或者导入），自己随意建立的文件夹是不能作为项目导入的（没有配置文件的）</p>
+<p>​    修改项目时，不要随意修改项目名称，非要修改时，不要忘记把项目中的配置文件.projcet中的   <name> 修改后的项目名称  </name></p>
 <p>Debug调试：</p>
 <p>作用：调试程序；查看程序的执行流程</p>
 <p>断点：就是一个标记，从哪里开始</p>
-<p>设置断点：想看哪个程序，就在那个有效程序的左边双击即可。（初学时先在每个方法的第一条语句加断点）</p>
+<p>设置断点：想看哪个程序，就在那个有效程序的左边双击即可。（<strong>初学时先在每个方法的第一条语句加断点</strong>）</p>
 <p>Debug视图：</p>
 <p>Debug：断点测试的地方。按F6或者按↓，跳到下一条语句（一次看一行）</p>
 <p>Variables：查看程序的变量变化</p>
@@ -1460,6 +1662,8 @@ alert(“hello jquery”);
       
       
       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Eclipse/" rel="tag">Eclipse</a></li></ul>
+
     </footer>
   </div>
   
@@ -1584,403 +1788,6 @@ alert(“hello jquery”);
 
 
   
-    <article id="post-4.1.面向对象" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/4.1.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T06:23:34.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/4.1.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><p>面向对象<strong>思想</strong>：面向对象是基于面向过程的编程思想。</p>
-<p>​    面向过程：强调的是每一个功能的步骤</p>
-<p>​    面向对象：强调的是对象，然后由对象去调用功能</p>
-<p>面向对象<strong>特点</strong>：是一种更符合我们思想习惯的思想；可以将复杂的事情简单化；将我们从执行者变为指挥者。</p>
-<p>面向对象<strong>开发</strong>：就是不断创建对象，使用对象，指挥对象做事情。</p>
-<p>面向对象<strong>设计</strong>：管理和维护对象之间的关系。</p>
-<p>面向对象<strong>特征</strong>：</p>
-<ol>
-<li><p>封装（encapsulation）</p>
-</li>
-<li><p>继承(inheritance)</p>
-</li>
-<li><p>多态(polymorphism)</p>
-</li>
-</ol>
-<p>完成某个需求时：</p>
-<ol>
-<li><p>分析有哪些类：UML（统一建模语言），名词提取法。</p>
-</li>
-<li><p>每个类都有哪些东西：属性，方法</p>
-</li>
-<li><p>类与类之间的关系是什么：耦合</p>
-</li>
-</ol>
-<h1 id="类与对象的关系"><a href="#类与对象的关系" class="headerlink" title="类与对象的关系"></a>类与对象的关系</h1><p>java中最基本的单位是类。</p>
-<p>类：一组相关的属性和行为的集合，是一个抽象的概念。</p>
-<p>事物就是通过类来体现出来。事物是由属性（该事务的描述信息）和行为（该事务能做什么）组成。</p>
-<p>对应类中为：成员变量和成员方法。</p>
-<p>对象：是该类事物的具体实现形式，具体存在的个体。</p>
-<p>​    成员变量：和以前变量的定义是一样的格式，但是位置不同，在类中方法外。</p>
-<p>​    成员方法：和以前的方法定义是一样的格式，但是把static去掉。</p>
-<p>如何使用类及类中的属性和行为呢：创建该类的一个对象使用。</p>
-<p>格式： <code>类名  对象名=new  类名（）;</code></p>
-<p>如何使用成员变量：  对象名.变量名</p>
-<p>如何使用成员方法：  对象名.方法名(参数…)</p>
-<p>匿名对象：就是没有名字的对象。</p>
-<p>应用场景：</p>
-<p>A：调用方法：仅仅只调用一次的时候（若多次调用，不适合）</p>
-<p>优点：匿名对象调用是在堆内存中，调用完毕就是垃圾，可以被垃圾回收器回收</p>
-<p>B：匿名对象可以作为实际参数传递。（当方法中的形式参数是一个引用类型比如类的时候，实际参数可以用匿名对象当作该类的一个对象）</p>
-<h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><p>通过对象给成员变量赋值，可以赋值一些非法的数据，这是不合理的。</p>
-<p>在赋值之前，应该先对数据进行判断。怎么进行判断呢？就是写一个方法对数据进行校验。但是不用方法就起不到作用了。所以要求必须使用方法，不能直接调用成员变量。</p>
-<p>封装：隐藏对象的属性和实现细节，仅对外提供公共访问方式。</p>
-<p>原则：将不需要对外提供的内容都隐藏起来。把属性隐藏，提供公共方法对其访问。</p>
-<p>优点：隐藏实现细节，提供公共的访问方式；提高了代码的复用性；提高安全性。</p>
-<p>private：私有的，是一个权限修饰符，可以修饰成员变量和成员方法。</p>
-<p>被private修饰的成员只能在本类中访问。</p>
-<p>最常见的应用：把成员变量用private修饰，提供对应的getXxx（）/setXxx（）方法以使外界可以访问</p>
-<p>this关键字：this代表所在当前类的一个对象引用。</p>
-<p>方法被哪个对象调用，this就代表那个对象。</p>
-<p>用this的场景：当局部变量隐藏成员变量时，成员变量可能被局部变量覆盖无意义，所以要用this。   super</p>
-<p><strong>构造方法</strong></p>
-<p>作用：给对象的数据进行初始化</p>
-<p>格式：方法名和类名相同。没有返回值，连void都没有。没有具体的返回值。</p>
-<p>注意事项：如果不提供构造方法，系统会给出默认的构造方法</p>
-<p>如果提供了构造方法，系统将不再提供默认的构造方法。如果还想使用无参构造方法，就必须自己给出，建议永远自己给出无参构造方法。</p>
-<p>构造方法也可以重载。</p>
-<p>给成员变量赋值有2种方法：</p>
-<p>A. 无参构造方法+setXxx();</p>
-<p>B. 带参构造方法</p>
-<p>类中包含有：成员变量、成员方法、构造方法。</p>
-<p><strong>成员方法</strong></p>
-<p>根据返回值可以分为：void类型和非void类型。</p>
-<p>根据形式参数：空参方法和非空参方法。</p>
-<p><code>Student s=new Student();</code>在内存中发生了什么？</p>
-<ol>
-<li><p>加载Student.class文件进内存</p>
-</li>
-<li><p>在栈内存为s开辟空间</p>
-</li>
-<li><p>在堆内存为学生对象开辟空间</p>
-</li>
-<li><p>对学生对象的成员变量进行默认初始化。null  0   0.0   \u0000</p>
-</li>
-<li><p>对学生对象的成员变量进行显式初始化</p>
-</li>
-<li><p>通过构造方法对学生对象的成员变量赋值</p>
-</li>
-<li><p>学生对象初始化完毕，把对象地址赋值给s变量。</p>
-</li>
-</ol>
-<p>当一个变量是用来描述类的信息时，这个变量就应该被定义为成员变量。（成员变量不要瞎定义）</p>
-<p>变量的范围是越小越好，因为能及时的被回收。</p>
-<p>当多个对象有共同的成员变量值的时候，java就提供了一个关键字来修饰：static。</p>
-<p>static可以修饰成员变量和成员方法。</p>
-<p>static关键字的特点：随着类的加载而加载；优先于对象存在；被类的所有对象共享（这也是我们判断是否使用静态关键字的条件）；可以通过类名调用（其实本身也可以通过对象名调用，推荐使用类名调用）静态修饰的内容我们一般称为与类相关的，类成员</p>
-<p>注意事项：在静态方法中是没有this关键字的（因为静态是随着类的加载而加载，而this是随着对象的创建而存在，静态比对象先存在）</p>
-<p>静态方法只能访问静态的成员变量和静态的成员方法。(main方法是静态方法，不能调用非静态方法，如果想调用的话，可以先在main方法中创建一个对象，通过这个对象来调用非静态方法)</p>
-<p>非静态方法可以访问静态的成员变量和成员方法，也可以访问非静态的成员变量和成员方法。</p>
-<p>静态变量和成员变量的区别：</p>
-<p>所属不同：静态变量属于类，也被称为类变量</p>
-<p>​                    成员变量属于对象，也被称为实例变量（对象变量）</p>
-<p>内存中的位置不同：静态变量存储于方法区的静态区</p>
-<p>​                    成员变量存储于堆内存中</p>
-<p>内存出现的时间不同：静态变量随着类的加载而加载，随着类的消失而消失</p>
-<p>​                    成员变量随着对象的创建而存在，随着对象的消失而消失</p>
-<p>调用不同：静态变量可以通过类名调用，也可以通过对象名调用</p>
-<p>​                    成员变量只能通过对象名调用</p>
-<p>main方法的格式讲解：</p>
-<p>public:公共的，访问权限是最大的。由于main方法是被jvm调用的，所以权限要够大。</p>
-<p>static:静态的，不需要创建对象，通过类名就可以调用，方便jvm的调用。</p>
-<p>void:方法的返回值是返回给调用者，而main方法是被jvm调用的，返回给jvm无意义。</p>
-<p>main：是一个常见的方法入口，所有语言都是以main方法为入口</p>
-<p>String[] args:这是一个字符串数组。这个东西早期是为了接收键盘录入的数据的。</p>
-<p>eg：java  类名  hello  world  java  遍历args就会发现是 hello  world  java</p>
-<p>后来用java.util.Scanner代替了</p>
-<p>测试类的作用：创建其他类的对象，调用其他类的功能。</p>
-<p>在同一个文件夹下，类定义在两个文件中和定义在一个文件中其实一样的。</p>
-<p>静态的一种用法：在工具类中，将构造方法私有化，这样外界无法创建该类的对象，然后将要调用的方法static静态化，这样main方法调用时候只能通过类名.方法名调用。</p>
-<p>项目提供的都是class文件，无从得知class文件内都有哪些方法哪些属性。所以需要加说明书。</p>
-<p>说明书的制作：</p>
-<p>A：写一个工具类</p>
-<p>B：对这个类加文档注释：</p>
-<p>/**</p>
-<p>*@author</p>
-<p>*@version</p>
-<p>*@param</p>
-<p>*return</p>
-<p>*/</p>
-<p>C:用工具解析文档注释：javadoc工具</p>
-<p>D：格式：</p>
-<p>javadoc  -d  (文件夹的路径)  -author  -version  (类名).java</p>
-<p>制作帮助文档出错：找不到可以文档化的公共或受保护的类。告诉我们类的权限不够。（若想权限够，在class前加public）</p>
-<p>所以以后开发可以利用工具类加说明书，对该类中实现的方法的static、返回值、方法名、参数注意然后就可以调用使用，对怎么实现的方法不用在意，这就是面向对象思想。</p>
-<p>.html转换为帮助文档就是.chm文档</p>
-<p>使用帮助文档API（Application Progaramming Interface,应用程序编程接口）：</p>
-<ol>
-<li><p>打开帮助文档</p>
-</li>
-<li><p>点击显示，找到索引，找到输入框</p>
-</li>
-<li><p>明确要找什么</p>
-</li>
-<li><p>在输入框内输入要查找的类，回车</p>
-</li>
-<li><p>看包，java.lang包下的类不需要导入，其他的都需要全部导入</p>
-</li>
-<li><p>再简单的看看类的解释和说明，类的版本信息</p>
-</li>
-<li><p>看类的结构</p>
-<p>成员变量：字段摘要</p>
-<p>构造方法：构造方法摘要</p>
-<p>成员方法：方法摘要</p>
-</li>
-<li><p>学习构造方法</p>
-<p>有构造方法：创建对象</p>
-<p>无构造方法：成员可能都是静态的</p>
-</li>
-<li><p>看成员方法：</p>
-<p>静态、返回值类型、方法名、参数列表。</p>
-</li>
-</ol>
-<p>代码块：在java中使用｛｝括起来的代码称为代码块，根据其声明和位置不同，可以分为局部代码块，构造代码块，静态代码块和同步代码块。</p>
-<p>局部代码块：局部位置，在方法中出现，限定变量生命周期，及早释放，提高内存利用率。</p>
-<p>构造代码块：在类中成员位置出现（直接｛｝括起来），每次调用构造方法都执行，并且在构造方法前执行。</p>
-<p>作用：可以把多个构造方法方法中相同的代码存放到一起。</p>
-<p>静态代码块：在类中成员位置出现（直接｛｝括起来），｛前面加了static修饰。在加载的时候就执行，且只执行一次。</p>
-<p>作用：用于给类进行初始化。</p>
-<p>一个类中的执行顺序：与书写顺序无关，执行时都是这个顺序</p>
-<p>静态代码块（只执行一次，加载类的时候就执行）–构造代码块（每次调用构造方法都执行）–构造方法</p>
-<p>Math类：是针对数学进行操作的类，没有构造方法，成员都是静态的。</p>
-<p>产生随机数：public static double random():  [0.0,1.0)</p>
-<p>产生1-100的随机数：int number=(new)(Math.random()*100)+1;</p>
-<h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><p>多个类的成员变量，成员方法等都是相同的。每一次定义的时候都需要重新定义一遍，所以要考虑改进，提高代码的复用性，用继承。</p>
-<p>多个类中存在相同的属性和行为时，将这些内容抽取到单独的一个类中，那么多个类无需在定义这些属性和行为，只要继承那个类即可。</p>
-<p>格式：</p>
-<p>class 子类名  extends  父类名{}</p>
-<p>单独的这个类称为父类，基类，超类。</p>
-<p>多个类称为子类，派生类。</p>
-<p>优点：提高了代码的复用性：多个类相同的成员可以放到同一个类中</p>
-<p>提高了代码的维护性：如果功能的代码需要修改，修改一处即可。</p>
-<p>让类与类之间产生了关系，是多态的前提。（也是继承的弊端：类的耦合性很强）</p>
-<p>开发的原则：低耦合，高内聚。</p>
-<p>耦合：类与类的关系</p>
-<p>内聚：自己完成某件事情的能力</p>
-<p>继承的特点：</p>
-<p>\1. java中只支持单继承，不支持多继承。（C++支持多继承，格式：extends 类1，类2…）</p>
-<p>\2. java支持多层继承（继承体系）</p>
-<p>继承的注意事项：</p>
-<p>\1. 子类只能继承父类所有非私有的成员（成员方法和成员变量），也体现了继承的一个弊端：打破了封装性</p>
-<p>\2. 子类不能继承父类的构造方法，但是可以通过super关键字来访问父类的构造方法</p>
-<p>\3. 不要为了部分功能而去继承（当类与类之间的关系是“is a”的关系时使用继承）子类is父类的a</p>
-<p>子类中的成员变量和父类中的成员变量如果一样的话，再调用时候遵循就近原则。</p>
-<p>在子类方法中访问一个变量的查找顺序：1.在子类方法的局部范围找，有就用</p>
-<p>2.在子类的成员范围找，有就用</p>
-<p>\3. 在父类的成员范围找（不可能在父类的方法局部范围找，因为方法不调用不执行，相当于没有）</p>
-<p>super关键字：super代表父类存储空间的标识（父类引用，可以操作父类的成员，但不是父类的一个对象，只是父类的一个存储空间）</p>
-<p>this代表本类对象的引用</p>
-<p>用法：</p>
-<p>A. 调用成员变量：</p>
-<p>this.成员变量：调用本类的成员变量</p>
-<p>super.成员变量：调用父类的成员变量</p>
-<p>B. 调用构造方法：</p>
-<p>this（…）：调用本类的构造方法</p>
-<p>super（…）：调用父类的构造方法</p>
-<p>C. 调用成员方法：</p>
-<p>this.成员方法：调用本类的成员方法</p>
-<p>super.成员方法：调用父类的成员方法</p>
-<p>继承中构造方法的关系：子类中所有的构造方法默认都会先访问父类中空参数的构造方法。</p>
-<p>因为子类会继承父类中的数据，可能还会使用父类的数据，所以，子类初始化之前，一定要先完成父类数据的初始化。每一个构造方法的第一条语句默认都是super（）;</p>
-<p>如果父类没有无参构造方法，那么子类的构造方法会出现报错。（这就是为什么建议构造方法永远手动给个无参的构造方法）</p>
-<p>解决方法：A.在父类中加一个无参构造方法</p>
-<p>B.子类通过super(…)去显示调用父类其他的带参的构造方法。</p>
-<p>C. 子类通过this去调用本类的其他构造方法,但是一定会有一个去访问了父类的构造方法。</p>
-<p>子类中一定要有一个去访问了父类的构造方法，否则父类的数据就没有初始化。</p>
-<p>注意事项：this（）或者super（）必须出现在第一条语句上。如果 不是放在第一条语句上，就可能会对父类数据进行了多次初始化。</p>
-<p>一个类的初始化过程：成员变量进行初始化（默认初始化，显示初始化），构造方法初始化</p>
-<p>子父类的初始化（分层初始化）先进行父类初始化，再进行子类初始化。虽然子类中构造方法默认有一个super() ，但是初始化的时候不是按照那个顺序的，而是按照分层初始化进行的。super()只是表示要先初始化父类数据在初始化子类数据。</p>
-<p>继承中成员方法的关系：通过子类对象去访问一个方法，首先在子类中找，然后在父类中找，如果没有就报错（不会去父类的父类中找）</p>
-<p>方法重写（方法覆盖，方法复写）：子类中出现了和父类中方法声明一模一样的方法。</p>
-<p>方法重载：本类中出现的方法名一样，参数列表不同的方法，与返回值无关。</p>
-<p>方法重写的应用：当子类需要父类的功能，而功能主体子类有自己特有的内容时，可以重写父类中的方法（重写是完全重写，如果还想用父类中的方法内容，可以用super调用），这样，既沿袭了父类的功能，又定义了子类特有的功能。</p>
-<p>注意事项：父类中私有方法不能被重写。（其实父类中私有方法子类根本就无法继承，更谈不上重写）</p>
-<p>子类重写父类方法时，访问权限不能更低。（最好就一致）</p>
-<p>父类是静态方法，子类也必须通过静态方法进行重写。（其实不算方法重写）</p>
-<p>父类不是静态，子类用static静态，会报错。</p>
-<p>所以，子类重写父类方法的时候，最好声明一模一样。</p>
-<p>由于继承中方法有一个方法重写，所以父类的功能会被子类覆盖，当不想让覆盖的时候，java提供了一个关键字：final</p>
-<p>final：最终的意思。可以修饰类、方法、变量。</p>
-<p>final可以修饰类：该类不能被继承</p>
-<p>final可以修饰方法：该方法不能被重写</p>
-<p>final可以修饰变量：该变量不能被重新赋值。这个变量其实是常量。</p>
-<p>final修饰局部变量（一般权限修饰符修饰局部变量无意义，但是final特殊）：在方法内部，该变量不能被改变。</p>
-<p>在方法声明上，基本类型是值不能被改变。引用类型是地址值不能被改变，但是该对象的堆内存的值还可以改变，注意区别。</p>
-<p>final修饰变量的初始化时机：</p>
-<p>1.被final修饰的变量只能赋值一次</p>
-<p>2.在初始化时就给值（建议）或者在构造方法完毕前给值（非静态的常量）。</p>
-<h1 id="多态"><a href="#多态" class="headerlink" title="*多态*"></a><em><strong>*多态*</strong></em></h1><p>多态：同一个对象，在不同时刻体现出不同的状态。</p>
-<p>判断多态可以从左往右念：子是父？是的话可以多态，不是的话不能。</p>
-<p>多态的前提：</p>
-<p>A. 要有继承或者实现关系。</p>
-<p>B. 要有方法重写。（如果没有方法重写也是可以的，但是就没有了意义）</p>
-<p>C. 要有父类或者父接口引用指向子类对象。</p>
-<p>父  f=new 子();</p>
-<p>多态中的成员访问特点：</p>
-<p>A. 成员变量：编译看左边（父类），运行看左边。</p>
-<p>B. 构造方法：创建子类对象的时候，访问父类的构造方法，并对父类的数据进行初始化。</p>
-<p>C. 成员方法：编译看左边（父类），运行看右边（方法重写相当于覆盖了）。</p>
-<p>D. 静态方法：编译看左边（父类），运行看左边。（所以说静态方法的重写根本不算是重写）</p>
-<p>由于成员方法存在方法重写，所以只有它运行的时候看右边。</p>
-<p>多态的好处：</p>
-<p>A. 提高了代码的维护性（继承保证）</p>
-<p>B. 提高了代码的扩展性（由多态保证，以后如果在添加父类的子类，可以使用父类的引用调用工具类，便于代码的扩展性）</p>
-<p>多态的弊端：不能使用子类的特有功能。</p>
-<p>如果非要调用子类的这些功能：</p>
-<p>A. 创建子类的对象调用方法。（可以，但是不合理，太占内存）</p>
-<p>B. 把父类的引用强制转换为子类的引用。（向下转型）</p>
-<p>Fu  f=new Zi();  (向上转型，从子到父，父类引用指向子类对象)</p>
-<p>Zi  z=(Zi)f;   （向下转型，从父到子，父类引用转为子类对象） 要求f必须是能够转换为Zi的。</p>
-<p>ClassCastException：类型转换异常，一般在多态的向下转型中容易出现。</p>
-<p>当一个类中的东西特别多时，我们可以把这个类分成几个小类：基本类、操作类等。</p>
-<p>分包：A.功能划分</p>
-<p>B.模块划分</p>
-<p>C.先按模块划分，再按功能划分</p>
-<p>集合实现，IO实现，GUI实现，数据库实现。</p>
-<p>如果一个方法传的参数是三个以上，建议传个对象。</p>
-<p>如果多个地方用到了某个变量，可以把这个变量定义为成员变量，定义在成员方法外。</p>
-<p>能小范围尽量不大范围，因为用完最好回收。</p>
-<p>让多个对象共享同一个成员变量，用static修饰。</p>
-<p>循环里面如果有switch，并且在其中有break，结束的不是循环，而是switch语句，如果想结束整体，可以用 System.exit(0);</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.1.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" data-id="ckpdvjppn0046nswdeugk5xiu" data-title="面向对象" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag">面向对象</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-4.22.关于null" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/4.22.%E5%85%B3%E4%BA%8Enull/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T06:18:39.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/4.22.%E5%85%B3%E4%BA%8Enull/">关于null</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>开发原则：只要是对象，我们就要判断对象是否为null。</p>
-<p>java空指针异常：java.lang.NullPointException</p>
-<p> 对于每一个java程序员来说，几乎都避免不了遇到空指针异常，特别是经验不足的初学者。而且由于它的调试和查找相对其它异常来说比较困难，常常需要花费很大的精力去解决它。</p>
-<p>  <strong>首先认识一下java中的null</strong></p>
-<p>  null是Java中一个很重要的概念。null设计初衷是为了表示一些缺失的东西，例如缺失的用户、资源或其他东西。但是，一年后，令人头疼的空指针异常给Java程序员带来不少的骚扰。</p>
-<p>  null是java中的关键字，因此，它不能写成NULL，Null，只能是null。</p>
-<p>  null是所有引用类型的默认值，如果没有让一个引用指向一个实际存在的对象，它的默认值就是null。null本质上是一个值，这跟int的默认值是0，boolean的默认值是false一样。现在，我们通常都使用像eclipse等的集成开发环境进行开发，一般在定义变量的时候都会进行初始化（这也是写代码的一个良好的习惯），如果没有进行初始化，系统会进行提示。</p>
-<p><strong>报空指针异常的原因有以下几种：</strong> </p>
-<p>1字符串变量未初始化；<br>2接口类型的对象没有用具体的类初始化，比如：<br>List it；会报错<br>List it = new ArrayList()；则不会报错了<br>3当一个对象的值为空时，你没有判断为空的情况。你可以试着把下面的代码前加一行代码：<br>if(rb!=null &amp;&amp; rb!=””)<br>改成：<br>if(rb == null);<br>if(rb!==null&amp;&amp;rb!=””) 或者if(“”).equals(rb))<br>空指针的解决办法：<br>    重点关注报错发生的所在行，通过空指针异常产生的两条主要原因诊断具体的错误。同时为了避免空指针的发生，最好在做判断处理时将“null”或者空值放于 设定的值之前。<br>常见空指针异常的简要分析：<br>（1）空指针错误<br>  Java中的8种基本数据类型，变量的值可以有其默认值，加入没有对其正常赋值，java虚拟机是不能 正确编译通过的，因此使用基本的Java数据类型一般是不会引起空指针异常的。实际开发中，大多数的空指针异常主要与对象的操作相关。<br>  下面列出可能发生空指针异常的几种情况及相应解决方案：<br>  代码段1：<br>　　out.println(request.getParameter(“username”));<br>　　分析：代码段1的功能十分简单，就是输出用户输入”username”的值。<br>    说明：看上去，上面的语句找不出什么语法错误，而且在大多数情况下也遇不到什么问题。但是，如果某个用户在输入数据时并没有提供表单 域”username” 的值，或通过某种途径绕过表单直接输入时，此request.getParameter(“username”)的值为空（注意不是空字符串，是空对象 null。），out对象的println方法是无法直接对空对象操作的，因此代码段1所在的JSP页面将会抛出 “Java.lang.NullPointerException”异常。而且即使对象可能为空时，也调用Java.lang.Object或 Object对象本身的一些方法如toString()， equal(Object obj)等操作。<br>  代码段2：<br>　　String userName = request.getParameter(“username”);<br>　　If (userName.equals(“root”))<br>　　{….}<br>　　分析：代码段2的功能是检测用户提供的用户名，如果是用户名称为”root”的用户时，就执行一些特别的操作。<br>   说明：在代码段2中，如果有用户没有提供表单域”username”的值时，字符串对象userName为null值，不能够将一个null的对象与另一 个对象直接比较，同样，代码段2所在的JSP页面就会抛空指针错误。<br>   一个小技巧：如果要把某个方法的返回值与常量做比较，把常量放在前面，可以避免调用null对象的equals方法。譬如：<br>  If (“root”.equals(userName))<br>　 {….}<br>  即使userName对象返回了null对象，这里也不会有空指针异常，可以照常运转。<br>  代码段3：<br>　　String userName = session.getAttribute(“session.username”).toString();<br>    分析：代码段3的功能是将session中session.username的值取出，并将该值赋给字符串对象userName。<br>    说明：在一般情况下，如果在用户已经进行某个会话，则不会出现什么问题；但是，如果此时应用服务器重新启动，而用户还没有重新登录，（也可能是用户关闭浏 览器，但是仍打开原来的页面。）那么，此时该session的值就会失效，同时导致session中的session.username的值为空。对一个 为 null的对象的直接执行toString()操作，就会导致系统抛出空指针异常。<br>  代码段4：<br>public static void main(String args[]){<br>    Person p=null;<br>    p.setName(“张三”)；<br>    System.out.println(p.getName());<br>}<br>分析：声明一个Person对象，并打印出该对象的中的Name名字。<br>说明：这个时候你的p就出现空指针异常，因为你只是声明了这个Person类型的对象并没有创建对象，所以它的堆里面没有地址引用，切忌你要用对 象掉用方法的时候一定要创建对象。</p>
-<p>为了避免空指针调用，我们经常会看到这样的语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">...if (someobject !&#x3D; null) &#123;</span><br><span class="line">    someobject.doCalc();&#125;...</span><br></pre></td></tr></table></figure>
-
-<p>最终，项目中会存在大量判空代码，多么丑陋繁冗！如何避免这种情况？我们是否滥用了判空呢？</p>
-<p>在方法中返回null，在调用这些方法时，也不得不去判空。另外，也许受此习惯影响，他们总潜意识地认为，所有的返回都是不可信任的，为了保护自己程序，就加了大量的判空</p>
-<p>进行判空前，请区分以下两种情况：</p>
-<p>1、null 是一个有效有意义的返回值(Where null is a valid response in terms of the contract; and)</p>
-<p>2、null是无效有误的(Where it isn’t a valid response.)</p>
-<p>你可能还不明白这两句话的意思，不急，继续往下看，接下来将详细讨论这两种情况</p>
-<p><strong>先说第2种情况</strong></p>
-<p>null就是一个不合理的参数，就应该明确地中断程序，往外抛错误。这种情况常见于api方法。例如你开发了一个接口，id是一个必选的参数，如果调用方没传这个参数给你，当然不行。你要感知到这个情况，告诉调用方“嘿，哥们，你传个null给我做甚”。</p>
-<p>相对于判空语句，更好的检查方式有两个</p>
-<p>(1)assert语句，你可以把错误原因放到assert的参数中，这样不仅能保护你的程序不往下走，而且还能把错误原因返回给调用方，岂不是一举两得。（原文介绍了assert的使用，这里省略）</p>
-<p>(2)也可以直接抛出空指针异常。上面说了，此时null是个不合理的参数，有问题就是有问题，就应该大大方方往外抛。</p>
-<p><strong>第1种情况会更复杂一些。</strong></p>
-<p>这种情况下，null是个”看上去“合理的值，例如，我查询数据库，某个查询条件下，就是没有对应值，此时null算是表达了“空”的概念。</p>
-<p>这里给一些实践建议：</p>
-<p><strong>1、假如方法的返回类型是collections，当返回结果是空时，你可以返回一个空的collections</strong>（empty list),而不要返回null，这样调用侧就能大胆地处理这个返回，例如调用侧拿到返回后，可以直接print list.size()，又无需担心空指针问题。（什么？想调用这个方法时，不记得之前实现该方法有没按照这个原则？所以说，代码习惯很重要！如果你养成习惯，都是这样写代码（<strong>返回空collections而不返回null</strong>)，你调用自己写的方法时，就能大胆地忽略判空）</p>
-<p><strong>2、返回类型不是collections，又怎么办呢？</strong></p>
-<p><strong>那就返回一个空对象（而非null对象）</strong>，下面举个“栗子”，假设有如下代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Action</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span></span>;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Parser</span> </span>&#123;</span><br><span class="line">  <span class="function">Action <span class="title">findAction</span><span class="params">(String userInput)</span></span>;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其中，Parse有一个接口FindAction，这个接口会依据用户的输入，找到并执行对应的动作。假如用户输入不对，可能就找不到对应的动作（Action），因此findAction就会返回null，接下来action调用doSomething方法时,就会出现空指针。</p>
-<p>解决这个问题的一个方式，就是使用Null Object pattern（空对象模式）</p>
-<p>我们来改造一下</p>
-<p>类定义如下，这样定义findAction方法后，确保无论用户输入什么，都不会返回null对象</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyParser</span> <span class="keyword">implements</span> <span class="title">Parser</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> Action DO_NOTHING = <span class="keyword">new</span> Action() &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span> </span>&#123; <span class="comment">/* do nothing */</span> &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Action <span class="title">findAction</span><span class="params">(String userInput)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">if</span> ( <span class="comment">/* we can&#x27;t find any actions */</span> ) &#123;</span><br><span class="line">      <span class="keyword">return</span> DO_NOTHING;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>对比下面两份调用实例</p>
-<p>1、冗余:每获取一个对象，就判一次空</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Parser parser = ParserFactory.getParser();</span><br><span class="line"><span class="keyword">if</span> (parser == <span class="keyword">null</span>) &#123;</span><br><span class="line">  <span class="comment">// now what?</span></span><br><span class="line">  <span class="comment">// this would be an example of where null isn&#x27;t (or shouldn&#x27;t be) a valid response</span></span><br><span class="line">&#125;</span><br><span class="line">Action action = parser.findAction(someInput);</span><br><span class="line"><span class="keyword">if</span> (action == <span class="keyword">null</span>) &#123;</span><br><span class="line">  <span class="comment">// do nothing</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  action.doSomething();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2、精简</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ParserFactory.getParser().findAction(someInput).doSomething();</span><br></pre></td></tr></table></figure>
-
-<p>因为无论什么情况，都不会返回空对象，因此通过findAction拿到action后，可以放心地调用action的方法。</p>
-<p><strong>其他回答精选：</strong></p>
-<p>1、如果要用equal方法，请用object&lt;不可能为空&gt;.equal(object&lt;可能为空&gt;))</p>
-<p>例如：</p>
-<p>使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;bar&quot;.equals(foo) </span><br></pre></td></tr></table></figure>
-
-<p>而不是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo.equals(&quot;bar&quot;) </span><br></pre></td></tr></table></figure>
-
-<p>2、Java8或者guava lib中，提供了Optional类，这是一个元素容器，通过它来封装对象，可以减少判空。不过代码量还是不少。不爽。</p>
-<p>3、如果你想返回null，请挺下来想一想，这个地方是否更应该抛出一个异常</p>
-<h3 id="null与””的区别"><a href="#null与””的区别" class="headerlink" title="null与””的区别"></a>null与””的区别</h3><p>null是没有地址<br>“”是有地址但是里面的内容是空的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br></pre></td><td class="code"><pre><span class="line">问题一：</span><br><span class="line">null和&quot;&quot;的区别</span><br><span class="line">String s&#x3D;null;</span><br><span class="line">string.trim()就会抛出为空的exception   </span><br><span class="line">String s&#x3D;&quot;&quot;;   </span><br><span class="line">string.trim()就不会抛,为什么? </span><br><span class="line">答：</span><br><span class="line">NULL代表声明了一个空对象，根本就不是一个字符串。   </span><br><span class="line">&quot;&quot;代表声明了一个对象实例，这个对象实例的值是一个长度为0的空字符串。</span><br><span class="line"></span><br><span class="line">NULL代表声明了一个空对象,对空对象做任何操作都不行的,除了&#x3D;和&#x3D;&#x3D;   </span><br><span class="line">&quot;&quot;是一个字符串了,只是这个字符串里面没有内容了</span><br><span class="line"></span><br><span class="line">String s&#x3D;null;只是定义了一个句柄，也就是说你有了个引用，但是这个引用未指向任何内存空间   </span><br><span class="line">String s&#x3D;&quot;&quot;;这个引用已经指向了一块是空字符串的内存空间，是一个实际的东东了，所以你可以对它操作，而不用担心什么了</span><br><span class="line"></span><br><span class="line">你说数字0和没有是不是一种概念啊？？道理一样的</span><br><span class="line"></span><br><span class="line">而且,null可以赋值给任何对象.&quot;&quot;就不行了.</span><br><span class="line"></span><br><span class="line">这里&quot;&quot;和NULL绝对是两个概念   </span><br><span class="line">&quot;&quot;代表一个字符串存在，它的值就是“”   </span><br><span class="line">NULL代表字符串根本没有实际的值，你并不知道它是什么。。。</span><br><span class="line"></span><br><span class="line">哦,我明白了,意思就是String   string   &#x3D;   null   跟String   string;是一回事儿</span><br><span class="line"></span><br><span class="line">null是空对象     &quot;&quot;是空字符串</span><br><span class="line">String s&#x3D;null;&#x2F;&#x2F;null是未分配堆内存空间   </span><br><span class="line">String   a;&#x2F;&#x2F;分配了一个内存空间,没存入任何对象   </span><br><span class="line">String   a&#x3D;&quot;&quot;;&#x2F;&#x2F;分配了一个内存空间,存了一个字符串对象</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">问题二：</span><br><span class="line">String s;和String s&#x3D;null;和String s&#x3D;&quot;a&quot;;有什么区别？   </span><br><span class="line">针对这三种情况，使用out.println(s);的时候，第一个会出现异常，第二个会输出null.第三个则会输出a.   </span><br><span class="line">这是为什么呢？这三句声明语句，各自作了什么呢？</span><br><span class="line"></span><br><span class="line">答：</span><br><span class="line">第一个只是定义了一个String类型变量s，并没有给它赋初值，在Java中，默认在使用一个变量的时候必须赋予它初值（降低风险）。 </span><br><span class="line">第二个和第三个都定义了String类型变量s，并赋予它初值，只不过第二个赋予的值为null（空）罢了</span><br><span class="line"></span><br><span class="line">主要要理解的是String s; s为一个引用～～它不是对象   </span><br><span class="line">第一个是没有初始化的引用；   </span><br><span class="line">第二个为空引用；</span><br><span class="line">第三个是在字符串池里写入一个字符&#39;a&#39;,然后用s指向它。</span><br><span class="line">另外，   </span><br><span class="line">String s&#x3D;&quot;a&quot;和String s&#x3D;new String(&quot;a&quot;);是有本质上的区别的   </span><br><span class="line">前者是在字符串池里写入一个字符&#39;a&#39;,然后用s指向它；</span><br><span class="line">后者是在堆上创建一个内容为&quot;a&quot;的字符串对象。</span><br><span class="line">String   str&#x3D;&quot;aaa&quot;;                    &#x2F;&#x2F;于栈上分配内存</span><br><span class="line">String   str&#x3D;new   String(&quot;aaa&quot;);      &#x2F;&#x2F;于堆上分配内存</span><br><span class="line"></span><br><span class="line">String s; 系统会自动赋值null</span><br><span class="line"></span><br><span class="line">String s;只是给s分配一个内存空间   </span><br><span class="line">String s&#x3D;null;是分配的空间中存储的值为空值   </span><br><span class="line">String s&#x3D;&quot;a&quot;;这句就不用我多说了分配的空间的值为字符a</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">问题三：</span><br><span class="line">声明了一个string a;变量    </span><br><span class="line">在以后的判断中，a&#x3D;&#x3D;&quot;&quot;和a&#x3D;&#x3D;null有何不同?   </span><br><span class="line"></span><br><span class="line">答：</span><br><span class="line">如果没有给a赋过值，a&#x3D;&#x3D;&quot;&quot;会导致异常。     </span><br><span class="line">在实际处理时，往往认为&quot;&quot;和null代表相同的含义，即都代表无值。   </span><br><span class="line">此时建议用如下语法：   </span><br><span class="line">if(a&#x3D;&#x3D;null   ||   a&#x3D;&#x3D;&quot;&quot;)   </span><br><span class="line">&#123;   </span><br><span class="line">&#125;   </span><br><span class="line">如果a为null，就不会执行后面的判断，直接返回true。   </span><br><span class="line"></span><br><span class="line">null是用来判断引用类型是否分配了存储空间   </span><br><span class="line">&quot;&quot;是针对字符串的；   </span><br><span class="line">string类型实际上是字符串指针，也即是一个引用类型   </span><br><span class="line">所以如果没有给a赋过值，a&#x3D;&#x3D;&quot;&quot;会导致异常   </span><br><span class="line">所以if(a&#x3D;&#x3D;null   ||   a&#x3D;&#x3D;&quot;&quot;)&#123;&#125;这种写法也是正确的</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">问题四：</span><br><span class="line">String abc&#x3D;null;String abc&#x3D;&quot;&quot;;String abc;三种写法有什么区别？ </span><br><span class="line"></span><br><span class="line">答：</span><br><span class="line">1：创建一个空字符串对象，   </span><br><span class="line">2：创建一个字符串为空的字符串对象。   </span><br><span class="line">3：声明一个字符串对象，但并没有分配内存，而1，2已经分配了内存   </span><br><span class="line">对于最后一种表示,你不能if(abc&#x3D;&#x3D;null),或者int   length   &#x3D;   abc.length();编译的时候会提示可能没有初始化.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">String   abc&#x3D;null;   </span><br><span class="line">String   abc&#x3D;&quot;&quot;;   </span><br><span class="line">一般推荐使用第二种   </span><br><span class="line">第一种abc指向null，很多时候要判断字符串是否为空时，容易漏掉这种情况，在调用String的相关方法的时候就会出错   </span><br><span class="line">第二种则相对简单，String的方法都可以用，判断的时候也不会出错</span><br><span class="line"></span><br><span class="line">1) String   abc&#x3D;null;   </span><br><span class="line">2) String   abc;    </span><br><span class="line">3）String   a&#x3D;&quot;&quot;;   </span><br><span class="line">4) String   b&#x3D;&quot;&quot;;   </span><br><span class="line">5) String   c&#x3D;new String(&quot;&quot;);   </span><br><span class="line">6) String   d&#x3D;new String(&quot;&quot;); </span><br><span class="line">&#x2F;&#x2F;1)等于2），和C语言不同，JAVA为安全原因不允许一个悬挂引用，没有赋值的引用地址一律自动赋值为NULL，以防止访问到任意内存   </span><br><span class="line">&#x2F;&#x2F;3)和4)中,变量a和b将会指向同一内存地址(&quot;&quot;的地址)   </span><br><span class="line">&#x2F;&#x2F;5)和6)中，变量c和d不会指向同一地址,而是两个&quot;&quot;内容的地址,并且和a,b不同,实际上,3)和4)相当于new String(&quot;&quot;).intern().   </span><br><span class="line">&#x2F;&#x2F;String类维护着一个字符串池,对于像3)和4)这样的赋值方法,String会在这个池中查找字符串是否已经在池中,如果在,就直接指向该地址,</span><br><span class="line"></span><br><span class="line">如果不在,生成一个实例放入池中再指向那个地址,可见对于同样内容的字符串多次引用时3)4)的方法要比5)6)的方法剩内存,之所以这样做,是</span><br><span class="line"></span><br><span class="line">因为String是一个内容不可变的量,运用的是设计模式GOF.FlyWeight   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">但有个关键的一点,没有人说到，这就是:   </span><br><span class="line">String s;在什么情况下可以等同于String s&#x3D;null;而在什么情况下又不等同？！</span><br><span class="line">考虑下面的代码:   </span><br><span class="line">&#x2F;&#x2F;StringTest.java   </span><br><span class="line">public   class   StringTest   &#123;      </span><br><span class="line">    static   String   s;     &#x2F;&#x2F;*   </span><br><span class="line">    public   static   void   main(String[]   args)   &#123;   </span><br><span class="line">        &#x2F;&#x2F;String   s;         &#x2F;&#x2F;**   </span><br><span class="line">        System.out.println(s);   </span><br><span class="line">    &#125;   </span><br><span class="line">&#125;     </span><br><span class="line">编译并运行上面的代码,将打印null。</span><br><span class="line">可见标有*号的行是自动初始化了的(s被自动初始化为null)。   </span><br><span class="line">而如果把标有**号的行取消注释,代码将不能通过编译,这是因为这行定义的是本地变量,而本地变量是不会自动初始化的。</span><br><span class="line">由此得出结论：</span><br><span class="line">在成员变量的定义中,String s;等同于String s&#x3D;null;</span><br><span class="line">而在本地变量(方法变量)的定义中,String s;不等同于String s&#x3D;null;,这时要使用s必须显式地赋值。</span><br><span class="line">这些虽然是小知识点,但在实际应用中很重要,也很容易被一些人忽视,特此提出。</span><br><span class="line">还有一点要说明的是：</span><br><span class="line">只要是在方法在中定义变量都要显示赋初值，main()方法也不例外，而在方法之外编译器回自动赋初值</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.22.%E5%85%B3%E4%BA%8Enull/" data-id="ckpdvjppp004dnswdflidhe1g" data-title="关于null" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -1999,7 +1806,7 @@ alert(“hello jquery”);
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">MySQL基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Portainer-io/" rel="tag">Portainer.io</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/" rel="tag">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/" rel="tag">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springfox/" rel="tag">springfox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swagger/" rel="tag">swagger</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6/" rel="tag">书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E8%97%8F/" rel="tag">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A6%82%E8%BF%B0/" rel="tag">概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%88%E6%9C%AC/" rel="tag">版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" rel="tag">编程规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" rel="tag">设计规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" rel="tag">软件说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag">面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eclipse/" rel="tag">Eclipse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HATEOAS/" rel="tag">HATEOAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">MySQL基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PBOOTCMS/" rel="tag">PBOOTCMS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Portainer-io/" rel="tag">Portainer.io</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RESTful/" rel="tag">RESTful</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/" rel="tag">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/" rel="tag">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%A6%82%E8%BF%B0/" rel="tag">java概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springfox/" rel="tag">springfox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swagger/" rel="tag">swagger</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6/" rel="tag">书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/" rel="tag">历史版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E8%97%8F/" rel="tag">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" rel="tag">编程规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" rel="tag">设计规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" rel="tag">软件说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag">面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
     </div>
   </div>
 
@@ -2009,7 +1816,7 @@ alert(“hello jquery”);
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">MySQL基础概念</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Portainer-io/" style="font-size: 10px;">Portainer.io</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/WEB/" style="font-size: 10px;">WEB</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java/" style="font-size: 10px;">java</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springfox/" style="font-size: 10px;">springfox</a> <a href="/tags/swagger/" style="font-size: 10px;">swagger</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%B9%A6/" style="font-size: 10px;">书</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%94%B6%E8%97%8F/" style="font-size: 10px;">收藏</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">概述</a> <a href="/tags/%E7%89%88%E6%9C%AC/" style="font-size: 10px;">版本</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" style="font-size: 10px;">设计规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">软件说明</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">面向对象</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HATEOAS/" style="font-size: 10px;">HATEOAS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">MySQL基础概念</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PBOOTCMS/" style="font-size: 10px;">PBOOTCMS</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Portainer-io/" style="font-size: 10px;">Portainer.io</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/WEB/" style="font-size: 10px;">WEB</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">java概述</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springfox/" style="font-size: 10px;">springfox</a> <a href="/tags/swagger/" style="font-size: 10px;">swagger</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%B9%A6/" style="font-size: 10px;">书</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/" style="font-size: 10px;">历史版本</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%94%B6%E8%97%8F/" style="font-size: 10px;">收藏</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" style="font-size: 10px;">设计规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">软件说明</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">面向对象</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
     </div>
   </div>
 
@@ -2018,7 +1825,7 @@ alert(“hello jquery”);
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
     </div>
   </div>
 
@@ -2031,6 +1838,14 @@ alert(“hello jquery”);
       <ul>
         
           <li>
+            <a href="/2021/06/08/%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/">搭建网站</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/03/%E6%94%BB%E7%A0%B4%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99/">攻破一个网站</a>
+          </li>
+        
+          <li>
             <a href="/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/">推荐研读书籍</a>
           </li>
         
@@ -2040,14 +1855,6 @@ alert(“hello jquery”);
         
           <li>
             <a href="/2021/04/30/16.2.Docker%E4%B9%8BPortainer-io/">Docker之Portainer.io</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/23/5.4.MySQL%E9%9D%A2%E8%AF%95/">MySQL面试</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/22/12.5.Springfox/">Springfox</a>
           </li>
         
       </ul>
