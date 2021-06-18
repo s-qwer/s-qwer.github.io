@@ -6,19 +6,21 @@
   
   <title>Springfox | swx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="Swagger是什么根据官网的介绍，Swagger是一系列用于Restful API开发的工具，开源的部分包括：  OpenAPI Specification：API规范，规定了如何描述一个系统的API Swagger Codegen：用于通过API规范生成服务端和客户端代码 Swagger Editor：用来编写API规范 Swagger UI：用于展示API规范  非开源的部分包括：  Swa">
+  <meta name="description" content="Swagger是什么根据官网的介绍，Swagger是一系列用于Restful API开发的工具，开源的部分包括：  OpenAPI Specification：API规范，规定了如何描述一个系统的API Swagger Codegen：用于通过API规范生成服务端和客户端代码。允许根据OpenAPI规范自动生成API客户端库（SDK生成），服务器存根和文档 Swagger Editor：用来编写A">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Springfox">
 <meta property="og:url" content="https://s-qwer.github.io/2021/04/22/12.5.Springfox/index.html">
 <meta property="og:site_name" content="swx">
-<meta property="og:description" content="Swagger是什么根据官网的介绍，Swagger是一系列用于Restful API开发的工具，开源的部分包括：  OpenAPI Specification：API规范，规定了如何描述一个系统的API Swagger Codegen：用于通过API规范生成服务端和客户端代码 Swagger Editor：用来编写API规范 Swagger UI：用于展示API规范  非开源的部分包括：  Swa">
+<meta property="og:description" content="Swagger是什么根据官网的介绍，Swagger是一系列用于Restful API开发的工具，开源的部分包括：  OpenAPI Specification：API规范，规定了如何描述一个系统的API Swagger Codegen：用于通过API规范生成服务端和客户端代码。允许根据OpenAPI规范自动生成API客户端库（SDK生成），服务器存根和文档 Swagger Editor：用来编写A">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s-qwer.github.io/12.5.Springfox/1705949-20200418122437694-633418451.png">
 <meta property="article:published_time" content="2021-04-22T01:50:05.000Z">
-<meta property="article:modified_time" content="2021-04-30T02:41:25.765Z">
+<meta property="article:modified_time" content="2021-06-16T08:25:58.099Z">
 <meta property="article:author" content="swx">
 <meta property="article:tag" content="swagger">
 <meta property="article:tag" content="springfox">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s-qwer.github.io/12.5.Springfox/1705949-20200418122437694-633418451.png">
   
     <link rel="alternate" href="/atom.xml" title="swx" type="application/atom+xml">
   
@@ -104,18 +106,23 @@
         <h2 id="Swagger是什么"><a href="#Swagger是什么" class="headerlink" title="Swagger是什么"></a>Swagger是什么</h2><p>根据官网的介绍，Swagger是一系列用于Restful API开发的工具，开源的部分包括：</p>
 <ul>
 <li>OpenAPI Specification：API规范，规定了如何描述一个系统的API</li>
-<li>Swagger Codegen：用于通过API规范生成服务端和客户端代码</li>
-<li>Swagger Editor：用来编写API规范</li>
-<li>Swagger UI：用于展示API规范</li>
+<li>Swagger Codegen：用于通过API规范生成服务端和客户端代码。允许根据OpenAPI规范自动生成API客户端库（SDK生成），服务器存根和文档</li>
+<li>Swagger Editor：用来编写API规范。浏览器中编辑YAML中的OpenAPI规范并实时预览文档</li>
+<li>Swagger UI：用于展示API规范。HTML，Javascript和CSS资产的集合，可以从符合OAS标准的API动态生成漂亮的文档</li>
 </ul>
 <p>非开源的部分包括：</p>
 <ul>
-<li>Swagger Hub：云服务，相当于Editor + Codegen + UI</li>
-<li>Swagger Inspector：手动测试API的工具</li>
+<li>Swagger Hub：云服务，相当于Editor + Codegen + UI。API设计和文档，为使用OpenAPI的团队构建</li>
+<li>Swagger Inspector：手动测试API的工具。API测试工具，可让您验证您的API并从现有API生成OpenAPI定义</li>
 <li>SoapUI Pro：功能测试和安全测试的自动化工具</li>
 <li>LoadUI Pro：压力测试和性能测试的自动化工具</li>
 </ul>
+<ul>
+<li><strong>Swagger Parser：</strong>用于解析来自Java的OpenAPI定义的独立库</li>
+<li><strong>Swagger Core：</strong>与Java相关的库，用于创建，使用和使用OpenAPI定义</li>
+</ul>
 <h2 id="Springfox是什么"><a href="#Springfox是什么" class="headerlink" title="Springfox是什么"></a>Springfox是什么</h2><p>在大量的中文教程中，Springfox以这样的方式出现</p>
+<p>一.添加依赖</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>第二个看起来应该是springfox封装/修改的Swagger UI，第一个应该就是Springfox本体了，但为什么artifact有个swagger2的后缀？</p>
@@ -126,13 +133,116 @@
 <li><code>Spring Data REST</code></li>
 <li><code>JSR 303</code>，这项标准的参考实现是<code>Hibernate Validator</code></li>
 </ul>
+<p>二.编写配置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableSwagger2</span> <span class="comment">// Swagger的开关，表示已经启用Swagger</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SwaggerConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">api</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Docket docket = <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                .host(<span class="string">&quot;localhost:8081&quot;</span>)<span class="comment">// 不配的话，默认当前项目端口</span></span><br><span class="line">                .apiInfo(apiInfo())</span><br><span class="line">                .pathMapping(<span class="string">&quot;/&quot;</span>)</span><br><span class="line">                .select() <span class="comment">// 选择哪些路径和api会生成document</span></span><br><span class="line">                .apis(RequestHandlerSelectors.any())<span class="comment">// 对所有api进行监控</span></span><br><span class="line"><span class="comment">//                .apis(RequestHandlerSelectors.basePackage(&quot;com.hanstrovsky.controller&quot;))// 选择监控的package</span></span><br><span class="line"><span class="comment">//                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))// 只监控有ApiOperation注解的接口</span></span><br><span class="line">                <span class="comment">//不显示错误的接口地址</span></span><br><span class="line">                .paths(Predicates.not(PathSelectors.regex(<span class="string">&quot;/error.*&quot;</span>)))<span class="comment">//错误路径不监控</span></span><br><span class="line">                .paths(PathSelectors.regex(<span class="string">&quot;/.*&quot;</span>))<span class="comment">// 对根下所有路径进行监控</span></span><br><span class="line">                .build();</span><br><span class="line">        <span class="keyword">return</span> docket;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> ApiInfo <span class="title">apiInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ApiInfoBuilder().title(<span class="string">&quot;XXXX项目接口文档&quot;</span>)</span><br><span class="line">                .contact(<span class="keyword">new</span> Contact(<span class="string">&quot;Hanstrovsky&quot;</span>, <span class="string">&quot;www.hanstrovsky.com&quot;</span>, <span class="string">&quot;Hanstrovsky@gmail.com&quot;</span>))</span><br><span class="line">                .description(<span class="string">&quot;这是用Swagger动态生成的接口文档&quot;</span>)</span><br><span class="line">                .termsOfServiceUrl(<span class="string">&quot;NO terms of service&quot;</span>)</span><br><span class="line">                .license(<span class="string">&quot;The Apache License, Version 2.0&quot;</span>)</span><br><span class="line">                .licenseUrl(<span class="string">&quot;http://www.apache.org/licenses/LICENSE-2.0.html&quot;</span>)</span><br><span class="line">                .version(<span class="string">&quot;1.0&quot;</span>)</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>三.启动测试</p>
+<p>启动服务，访问：<a target="_blank" rel="noopener" href="http://localhost:8081/swagger-ui.html">http://localhost:8081/swagger-ui.html</a></p>
+<h2 id="Swagger注解的使用"><a href="#Swagger注解的使用" class="headerlink" title="Swagger注解的使用"></a>Swagger注解的使用</h2><p>上面的是swagge-ui根据接口自动生成，不够详细。如果有需要，可以通过注解自定义接口声明。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> <span class="doctag">@Api</span>：修饰整个类，描述Controller的作用</span></span><br><span class="line"><span class="comment"> <span class="doctag">@ApiOperation</span>：描述一个类的一个方法，或者说一个接口</span></span><br><span class="line"><span class="comment"> <span class="doctag">@ApiParam</span>：单个参数描述</span></span><br><span class="line"><span class="comment"> <span class="doctag">@ApiModel</span>：用对象来接收参数</span></span><br><span class="line"><span class="comment"> <span class="doctag">@ApiProperty</span>：用对象接收参数时，描述对象的一个字段</span></span><br><span class="line"><span class="comment"> <span class="doctag">@ApiResponse</span>：HTTP响应其中1个描述</span></span><br><span class="line"><span class="comment"> <span class="doctag">@ApiResponses</span>：HTTP响应整体描述</span></span><br><span class="line"><span class="comment"> <span class="doctag">@ApiIgnore</span>：使用该注解忽略这个API</span></span><br><span class="line"><span class="comment"> <span class="doctag">@ApiError</span> ：发生错误返回的信息</span></span><br><span class="line"><span class="comment"> <span class="doctag">@ApiImplicitParam</span>：一个请求参数</span></span><br><span class="line"><span class="comment"> <span class="doctag">@ApiImplicitParams</span>：多个请求参数</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>注解名称</th>
+<th>注解含义</th>
+<th>注解使用地方</th>
+<th>注解参数</th>
+<th>参数含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@EnableSwagger2</td>
+<td>开启swagger注解</td>
+<td>配置类上</td>
+<td>无</td>
+<td>无</td>
+</tr>
+<tr>
+<td>@Api</td>
+<td>标识swagger识别的类</td>
+<td>Controller类上</td>
+<td>value<br />tags<br />description</td>
+<td>url的路径值<br />如果设置这个值、value的值会被覆盖<br />对api资源的描述</td>
+</tr>
+<tr>
+<td>@ApiIgore</td>
+<td>屏蔽显示某个Controller，开启后在swagger上不会显示</td>
+<td>COntroller类上</td>
+<td>value</td>
+<td>值</td>
+</tr>
+<tr>
+<td>@ApiOperation</td>
+<td>标识swagger识别的方法</td>
+<td>Controller类中的方法</td>
+<td>value<br />tags<br />description<br />basePath<br />position<br />produces<br />consumes<br />protocols<br />authorizations<br />hidden<br />response<br />responseContainer<br />httpMethod<br />code<br />extensions<br />notes</td>
+<td>url的路径值<br />如果设置这个值、value的值会被覆盖<br />对api资源的描述<br />基本路径可以不配置如果配置多个Api 想改变显示顺序位置<br />For example，”application/json，application/xml”<br />For example，”application/json，application/xml”<br />Possible values:http,https,ws,wss<br />高级特性认证时配置<br />配置为true将在文档中隐藏<br />返回的对象<br />这些对象是有效的“List”，“Set”or “Map”，其他无效<br />“GET”、“HEAD”、“POST”、“PUT”、“DELETE”、“OPTIONS”and “PATCh”<br />http的状态码 默认200<br />扩展属性<br />用于提示内容</td>
+</tr>
+<tr>
+<td>@ApiImpliciParam</td>
+<td>修饰方法中的参数</td>
+<td>用在@ApiImplicitParams注解中对，指定一个请求参数的各个方面</td>
+<td>param<br />Typename<br />value<br />dataType<br />required<br />defaultValue</td>
+<td>参数放在哪个地方<br />参数代表的含义<br />参数名称<br />参数类型，有String/int，无用<br />是否必要<br />参数的默认值</td>
+</tr>
+<tr>
+<td>@ApiImpliciParams</td>
+<td>修饰方法中的参数</td>
+<td>用在方法上包含一组参数说明</td>
+<td>@ApiImpliciParam</td>
+<td>ApiImpliciParam的数组集合</td>
+</tr>
+<tr>
+<td>@ApiResponse</td>
+<td>修饰方法的返回值</td>
+<td>方法上或方法的参数上</td>
+<td>code<br />message<br />class</td>
+<td>方法返回值状态码<br />方法返回值信息<br />方法返回class</td>
+</tr>
+<tr>
+<td>@ApiResponses</td>
+<td>响应集配置</td>
+<td>方法上或参数上</td>
+<td>@ApiResponse</td>
+<td>ApiResponse的数组集合</td>
+</tr>
+<tr>
+<td>@ApiParam</td>
+<td>映射方法上的参数</td>
+<td>方法的参数上</td>
+<td>name<br />value<br />defaultValue<br />allowableValues<br />required<br />access<br />allowMutiple<br />hidden<br />example</td>
+<td>属性名称<br />属性值<br />默认属性值<br />可以不配置<br />是否属性必填<br />不过多描述<br />默认为false<br />隐藏该属性<br />举例子</td>
+</tr>
+<tr>
+<td>@ApiModel</td>
+<td>用于类，表示对类进行说明，用于参数用实体类接受</td>
+<td>类上</td>
+<td>value<br />description</td>
+<td>类名（不能同名！）<br />描述</td>
+</tr>
+<tr>
+<td>@ApiModelProperty</td>
+<td>标识一个类的属性</td>
+<td>类的字段上</td>
+<td>value<br />name<br />dateType<br />required<br />example<br />hidden</td>
+<td>字段说明<br />重写属性名字<br />重写属性类型<br />是否必填<br />举例子<br />隐藏</td>
+</tr>
+</tbody></table>
+<p>例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/api&quot;)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@PostMapping(&quot;/people&quot;)</span></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;保存人员信息&quot;)</span></span><br><span class="line"><span class="meta">@ApiResponses(&#123;</span></span><br><span class="line"><span class="meta">       @ApiResponse(code = 0, message = &quot;保存成功&quot;),</span></span><br><span class="line"><span class="meta">       @ApiResponse(code = 1, message = &quot;保存失败&quot;)</span></span><br><span class="line"><span class="meta">&#125;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> FrontResult <span class="title">save</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">         <span class="meta">@ApiParam(value = &quot;保存参数&quot;, example = &quot;&quot;)</span></span></span></span><br><span class="line"><span class="function"><span class="params">         <span class="meta">@RequestBody</span> People people)</span> </span>&#123;</span><br><span class="line">     people.setBirthday(Timestamp.valueOf(LocalDateTime.now()));</span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">new</span> FrontResult(FrontResult.SUCCEED, <span class="string">&quot;保存成功&quot;</span>, peopleDao.save(people));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@ApiModel(description = &quot;人员信息保存请求对象&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">    <span class="meta">@ApiModelProperty(value = &quot;人员编号&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line">    <span class="meta">@ApiModelProperty(value = &quot;姓名&quot;, required = true,position = 1)</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="meta">@ApiModelProperty(value = &quot;性别&quot;, required = true,position = 2)</span></span><br><span class="line">    <span class="keyword">private</span> String sex;</span><br><span class="line">    <span class="meta">@ApiModelProperty(value = &quot;生日&quot;, required = true,position = 3)</span></span><br><span class="line">    <span class="meta">@JsonFormat(pattern = &quot;yyyy-MM-dd HH:mm:ss&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Timestamp birthday;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/12.5.Springfox/1705949-20200418122437694-633418451.png" alt="img"></p>
 <h2 id="Swagger注解的滥用"><a href="#Swagger注解的滥用" class="headerlink" title="Swagger注解的滥用"></a>Swagger注解的滥用</h2><p>在代码中的注解已经存储了大量的信息，如果再用<code>swagger-core</code>的注解将这些信息用另一种方式表达出来，很容易造成改了这里忘了改那里，即修改不同步。因此Springfox的开发者不推荐大家使用<code>swagger-core</code>的注解来描述API，认为<code>swagger-core</code>的注解只是补充，只能用于实现其他方法都不能实现的调整或者覆盖。例如，更应该使用<code>Jackson</code>的注解，而不是<code>@ApiModelProperty</code>；更应该使用<code>@NotNull</code>或者<code>@RequestParam#required</code>，而不是在文档里写一句<code>此字段必填</code>。</p>
 <p>但是，springfox的开发者忽略了一个事实，中文开发者用<code>swagger-core</code>的注解更多的是用来添加<code>中文描述</code>，所以，该用的时候还是用吧</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/22/12.5.Springfox/" data-id="ckpdvjpog000rnswd1xrehhze" data-title="Springfox" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/22/12.5.Springfox/" data-id="ckq1xbdrc000mpwwd6yhb4igk" data-title="Springfox" class="article-share-link">分享</a>
       
       
       
@@ -208,23 +318,23 @@
       <ul>
         
           <li>
+            <a href="/2021/06/18/WebRTC%E7%9A%84%E5%AD%A6%E4%B9%A0/">WebRTC的学习</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/18/%E6%B5%81%E5%AA%92%E4%BD%93%E5%8D%8F%E8%AE%AE/">流媒体协议</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/17/1.7.%E7%AE%80%E5%8E%86%E5%AE%8C%E5%96%84/">简历完善</a>
+          </li>
+        
+          <li>
             <a href="/2021/06/08/%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/">搭建网站</a>
           </li>
         
           <li>
             <a href="/2021/06/03/%E6%94%BB%E7%A0%B4%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99/">攻破一个网站</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/">推荐研读书籍</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/17/mqtt%E5%BC%80%E5%8F%91/">mqtt开发</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/30/16.2.Docker%E4%B9%8BPortainer-io/">Docker之Portainer.io</a>
           </li>
         
       </ul>

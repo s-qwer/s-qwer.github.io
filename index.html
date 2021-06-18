@@ -77,6 +77,155 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-WebRTC的学习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/06/18/WebRTC%E7%9A%84%E5%AD%A6%E4%B9%A0/" class="article-date">
+  <time class="dt-published" datetime="2021-06-18T06:00:15.000Z" itemprop="datePublished">2021-06-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/06/18/WebRTC%E7%9A%84%E5%AD%A6%E4%B9%A0/">WebRTC的学习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/06/18/WebRTC%E7%9A%84%E5%AD%A6%E4%B9%A0/" data-id="ckq1xbds30031pwwdbw1iavib" data-title="WebRTC的学习" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-流媒体协议" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/06/18/%E6%B5%81%E5%AA%92%E4%BD%93%E5%8D%8F%E8%AE%AE/" class="article-date">
+  <time class="dt-published" datetime="2021-06-18T05:22:34.000Z" itemprop="datePublished">2021-06-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/06/18/%E6%B5%81%E5%AA%92%E4%BD%93%E5%8D%8F%E8%AE%AE/">流媒体协议</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="RTP"><a href="#RTP" class="headerlink" title="RTP"></a>RTP</h3><p>​          参考文档  RFC3550/RFC3551<br>​         Real-time Transport Protocol是用于Internet上针对多媒体数据流的一种传输层协议。RTP协议详细说明了在互联网上传递音频和视频的标准数据包格式。RTP协议常用于流媒体系统（配合RTCP协议），视频会议和一键通（Push to Talk）系统（配合H.323或SIP），使它成为IP电话产业的技术基础。RTP协议和RTP控制协议RTCP一起使用，而且它是建立在UDP协议上的。 </p>
+<pre><code>RTP 本身并没有提供按时发送机制或其它服务质量（QoS）保证，它依赖于低层服务去实现这一过程。 RTP 并不保证传送或防止无序传送，也不确定底层网络的可靠性。 RTP 实行有序传送， RTP 中的序列号允许接收方重组发送方的包序列，同时序列号也能用于决定适当的包位置，例如：在视频解码中，就不需要顺序解码。
+RTP 由两个紧密链接部分组成： RTP ― 传送具有实时属性的数据；RTP 控制协议（RTCP） ― 监控服务质量并传送正在进行的会话参与者的相关信息。
+</code></pre>
+<h3 id="RTCP"><a href="#RTCP" class="headerlink" title="RTCP"></a>RTCP</h3><p>​        实时传输控制协议（Real-time Transport Control Protocol或RTP Control Protocol或简写RTCP）是实时传输协议（RTP）的一个姐妹协议。RTCP为RTP媒体流提供信道外（out-of-band）控制。RTCP本身并不传输数据，但和RTP一起协作将多媒体数据打包和发送。RTCP定期在流多媒体会话参加者之间传输控制数据。RTCP的主要功能是为RTP所提供的服务质量（Quality of Service）提供反馈。<br>​        RTCP收集相关媒体连接的统计信息，例如：传输字节数，传输分组数，丢失分组数，jitter，单向和双向网络延迟等等。网络应用程序可以利用RTCP所提供的信息试图提高服务质量，比如限制信息流量或改用压缩比较小的编解码器。RTCP本身不提供数据加密或身份认证。SRTCP可以用于此类用途。</p>
+<h3 id="SRTP-amp-SRTCP"><a href="#SRTP-amp-SRTCP" class="headerlink" title="SRTP &amp; SRTCP"></a>SRTP &amp; SRTCP</h3><p>​        参考文档 RFC3711<br>​        安全实时传输协议（Secure Real-time Transport Protocol或SRTP）是在实时传输协议（Real-time Transport Protocol或RTP）基础上所定义的一个协议，旨在为单播和多播应用程序中的实时传输协议的数据提供加密、消息认证、完整性保证和重放保护。它是由David Oran（思科）和Rolf Blom（爱立信）开发的，并最早由IETF于2004年3月作为RFC3711发布。<br>​        由于实时传输协议和可以被用来控制实时传输协议的会话的实时传输控制协议（RTP Control Protocol或RTCP）有着紧密的联系，安全实时传输协议同样也有一个伴生协议，它被称为安全实时传输控制协议（Secure RTCP或SRTCP）；安全实时传输控制协议为实时传输控制协议提供类似的与安全有关的特性，就像安全实时传输协议为实时传输协议提供的那些一样。<br>​        在使用实时传输协议或实时传输控制协议时，使不使用安全实时传输协议或安全实时传输控制协议是可选的；但即使使用了安全实时传输协议或安全实时传输控制协议，所有它们提供的特性（如加密和认证）也都是可选的，这些特性可以被独立地使用或禁用。唯一的例外是在使用安全实时传输控制协议时，必须要用到其消息认证特性。</p>
+<h3 id="RTSP"><a href="#RTSP" class="headerlink" title="RTSP"></a>RTSP</h3><p>​       参考文档 RFC2326</p>
+<pre><code>    是由Real Networks和Netscape共同提出的。该协议定义了一对多应用程序如何有效地通过IP网络传送多媒体数据。RTSP提供了一个可扩展框架，使实时数据，如音频与视频的受控、点播成为可能。数据源包括现场数据与存储在剪辑中的数据。该协议目的在于控制多个数据发送连接，为选择发送通道，如UDP、多播UDP与TCP提供途径，并为选择基于RTP上发送机制提供方法。
+    RTSP（Real Time Streaming Protocol）是用来控制声音或影像的多媒体串流协议，并允许同时多个串流需求控制，传输时所用的网络通讯协定并不在其定义的范围内，服务器端可以自行选择使用TCP或UDP来传送串流内容，它的语法和运作跟HTTP 1.1类似，但并不特别强调时间同步，所以比较能容忍网络延迟。而前面提到的允许同时多个串流需求控制（Multicast），除了可以降低服务器端的网络用量，更进而支持多方视讯会议（Video Conference）。 因为与HTTP1.1的运作方式相似，所以代理服务器《Proxy》的快取功能《Cache》也同样适用于RTSP，并因RTSP具有重新导向功能，可视实际负载情况来转换提供服务的服务器，以避免过大的负载集中于同一服务器而造成延迟。
+</code></pre>
+<h4 id="RTSP-和RTP的关系"><a href="#RTSP-和RTP的关系" class="headerlink" title="RTSP 和RTP的关系"></a>RTSP 和RTP的关系</h4><p>​       RTP不象http和ftp可完整的下载整个影视文件，它是以固定的数据率在网络上发送数据，客户端也是按照这种速度观看影视文件，当影视画面播放过后，就不可以再重复播放，除非重新向服务器端要求数据。</p>
+<pre><code>  RTSP与RTP最大的区别在于：RTSP是一种双向实时数据传输协议，它允许客户端向服务器端发送请求，如回放、快进、倒退等操作。当然，RTSP可基于RTP来传送数据，还可以选择TCP、UDP、组播UDP等通道来发送数据，具有很好的扩展性。它时一种类似与http协议的网络应用层协议。目前碰到的一个应用：服务器端实时采集、编码并发送两路视频，客户端接收并显示两路视频。由于客户端不必对视频数据做任何回放、倒退等操作，可直接采用UDP+RTP+组播实现。
+</code></pre>
+<p><img src="https://img-blog.csdn.net/20130925233633687?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHR0eWQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="img"><img src="https://img-blog.csdn.net/20130925235918343?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHR0eWQ=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="img"></p>
+<p>RTP：实时传输协议（Real-time Transport Protocol）<br>RTP/RTCP是实际传输数据的协议<br>RTP传输音频/视频数据，如果是PLAY，Server发送到Client端，如果是RECORD，可以由Client发送到Server<br>整个RTP协议由两个密切相关的部分组成：RTP数据协议和RTP控制协议（即RTCP）<br>RTSP：实时流协议（Real Time Streaming Protocol，RTSP）<br>RTSP的请求主要有DESCRIBE,SETUP,PLAY,PAUSE,TEARDOWN,OPTIONS等，顾名思义可以知道起对话和控制作用<br>RTSP的对话过程中SETUP可以确定RTP/RTCP使用的端口，PLAY/PAUSE/TEARDOWN可以开始或者停止RTP的发送，等等<br>RTCP：<br>RTP/RTCP是实际传输数据的协议<br>RTCP包括Sender Report和Receiver Report，用来进行音频/视频的同步以及其他用途，是一种控制协议</p>
+<h3 id="SDP"><a href="#SDP" class="headerlink" title="SDP"></a>SDP</h3><p>​        会话描述协议（SDP）为会话通知、会话邀请和其它形式的多媒体会话初始化等目的提供了多媒体会话描述。<br>​       会话目录用于协助多媒体会议的通告，并为会话参与者传送相关设置信息。SDP 即用于将这种信息传输到接收端。SDP 完全是一种会话描述格式 ― 它不属于传输协议 ― 它只使用不同的适当的传输协议，包括会话通知协议（SAP）、会话初始协议（SIP）、实时流协议（RTSP）、MIME 扩展协议的电子邮件以及超文本传输协议（HTTP）。</p>
+<pre><code>    SDP 的设计宗旨是通用性，它可以应用于大范围的网络环境和应用程序，而不仅仅局限于组播会话目录，但 SDP 不支持会话内容或媒体编码的协商。
+    在因特网组播骨干网（Mbone）中，会话目录工具被用于通告多媒体会议，并为参与者传送会议地址和参与者所需的会议特定工具信息，这由 SDP 完成。SDP 连接好会话后，传送足够的信息给会话参与者。SDP 信息发送利用了会话通知协议（SAP），它周期性地组播通知数据包到已知组播地址和端口处。这些信息是 UDP 数据包，其中包含 SAP 协议头和文本有效载荷（text payload）。这里文本有效载荷指的是 SDP 会话描述。此外信息也可以通过电子邮件或 WWW （World Wide Web） 进行发送。
+</code></pre>
+<p>SDP 文本信息包括：</p>
+<p>会话名称和意图；<br>会话持续时间；<br>构成会话的媒体；<br>有关接收媒体的信息（地址等）。<br>协议结构<br>SDP 信息是文本信息，采用 UTF-8 编 码中的 ISO 10646 字符集。SDP 会话描述如下：（标注 * 符号的表示可选字段）：<br>v = （协议版本）<br>o = （所有者/创建者和会话标识符）<br>s = （会话名称）<br>i = * （会话信息）<br>u = * （URI 描述）<br>e = * （Email 地址）<br>p = * （电话号码）<br>c = * （连接信息 ― 如果包含在所有媒体中，则不需要该字段）<br>b = * （带宽信息）</p>
+<p>一个或更多时间描述（如下所示）：<br>z = * （时间区域调整）<br>k = * （加密密钥）<br>a = * （0 个或多个会话属性行）<br>0个或多个媒体描述（如下所示）</p>
+<p>时间描述<br>t = （会话活动时间）<br>r = * （0或多次重复次数）</p>
+<p>媒体描述<br>m = （媒体名称和传输地址）<br>i = * （媒体标题）<br>c = * （连接信息 — 如果包含在会话层则该字段可选）<br>b = * （带宽信息）<br>k = * （加密密钥）<br>a = * （0 个或多个会话属性行）</p>
+<h3 id="RTMP-RTMPS"><a href="#RTMP-RTMPS" class="headerlink" title="RTMP/RTMPS"></a>RTMP/RTMPS</h3><p>RTMP(Real Time Messaging Protocol)实时消息传送协议是Adobe Systems公司为Flash播放器和服务器之间音频、视频和数据传输 开发的开放协议。<br>它有三种变种：<br>1)工作在TCP之上的明文协议，使用端口1935；</p>
+<p>2)RTMPT封装在HTTP请求之中，可穿越防火墙；</p>
+<p>3)RTMPS类似RTMPT，但使用的是HTTPS连接；</p>
+<pre><code>  RTMP协议(Real Time Messaging Protocol)是被Flash用于对象,视频,音频的传输.这个协议建立在TCP协议或者轮询HTTP协议之上.
+  RTMP协议就像一个用来装数据包的容器,这些数据既可以是AMF格式的数据,也可以是FLV中的视/音频数据.一个单一的连接可以通过不同的通道传输多路网络流.这些通道中的包都是按照固定大小的包传输的.
+</code></pre>
+<h3 id="mms"><a href="#mms" class="headerlink" title="mms"></a>mms</h3><p>​        MMS (Microsoft Media Server Protocol)，中文“微软媒体服务器协议”，用来访问并流式接收 Windows Media 服务器中 .asf 文件的一种协议。MMS 协议用于访问 Windows Media 发布点上的单播内容。MMS 是连接 Windows Media 单播服务的默认方法。若观众在 Windows Media Player 中键入一个 URL 以连接内容，而不是通过超级链接访问内容，则他们必须使用MMS 协议引用该流。MMS的预设埠（端口）是1755<br>​        当使用 MMS 协议连接到发布点时，使用协议翻转以获得最佳连接。“协议翻转”始于试图通过 MMSU 连接客户端。 MMSU 是 MMS 协议结合 UDP 数据传送。如果 MMSU 连接不成功，则服务器试图使用 MMST。MMST 是 MMS 协议结合 TCP 数据传送。<br>如果连接到编入索引的 .asf 文件，想要快进、后退、暂停、开始和停止流，则必须使用 MMS。不能用 UNC 路径快进或后退。若您从独立的 Windows Media Player 连接到发布点，则必须指定单播内容的 URL。若内容在主发布点点播发布，则 URL 由服务器名和 .asf 文件名组成。例如：mms://windows_media_server/sample.asf。其中 windows_media_server 是 Windows Media 服务器名，sample.asf 是您想要使之转化为流的 .asf 文件名。<br>若您有实时内容要通过广播单播发布，则该 URL 由服务器名和发布点别名组成。例如：mms://windows_media_server/LiveEvents。这里 windows_media_server 是 Windows Media 服务器名，而 LiveEvents 是发布点名</p>
+<h3 id="HLS"><a href="#HLS" class="headerlink" title="HLS"></a>HLS</h3><p>​      HTTP Live Streaming（HLS）是苹果公司(Apple Inc.)实现的基于HTTP的流媒体传输协议，可实现流媒体的直播和点播，主要应用在iOS系统，为iOS设备（如iPhone、iPad）提供音视频直播和点播方案。HLS点播，基本上就是常见的分段HTTP点播，不同在于，它的分段非常小。<br>​       相对于常见的流媒体直播协议，例如RTMP协议、RTSP协议、MMS协议等，HLS直播最大的不同在于，直播客户端获取到的，并不是一个完整的数据流。HLS协议在服务器端将直播数据流存储为连续的、很短时长的媒体文件（MPEG-TS格式），而客户端则不断的下载并播放这些小文件，因为服务器端总是会将最新的直播数据生成新的小文件，这样客户端只要不停的按顺序播放从服务器获取到的文件，就实现了直播。由此可见，基本上可以认为，HLS是以点播的技术方式来实现直播。由于数据通过HTTP协议传输，所以完全不用考虑防火墙或者代理的问题，而且分段文件的时长很短，客户端可以很快的选择和切换码率，以适应不同带宽条件下的播放。不过HLS的这种技术特点，决定了它的延迟一般总是会高于普通的流媒体直播协议。　</p>
+<p>根据以上的了解要实现HTTP Live Streaming直播，需要研究并实现以下技术关键点</p>
+<p>采集视频源和音频源的数据<br>对原始数据进行H264编码和AAC编码<br>视频和音频数据封装为MPEG-TS包<br>HLS分段生成策略及m3u8索引文件<br>HTTP传输协议</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/06/18/%E6%B5%81%E5%AA%92%E4%BD%93%E5%8D%8F%E8%AE%AE/" data-id="ckq1xbdsh003xpwwd4xdm0vsx" data-title="流媒体协议" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-1.7.简历完善" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/06/17/1.7.%E7%AE%80%E5%8E%86%E5%AE%8C%E5%96%84/" class="article-date">
+  <time class="dt-published" datetime="2021-06-17T06:30:03.000Z" itemprop="datePublished">2021-06-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/06/17/1.7.%E7%AE%80%E5%8E%86%E5%AE%8C%E5%96%84/">简历完善</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>更容易被大厂HR注意到的简历写法，是包含了情境（situation）、任务（task）、行动（action）、结果（result）4种要素的，这是制作简历的STAR法则。紧接着更具体的是，在简历中描述过往经历时，一定要写得「有互联网的感觉」，提供支持要写成「赋能」，获得热度要写成「发酵」。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/06/17/1.7.%E7%AE%80%E5%8E%86%E5%AE%8C%E5%96%84/" data-id="ckq1xbdr50007pwwd5tfddc6h" data-title="简历完善" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-搭建网站" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/06/08/%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/" class="article-date">
@@ -170,7 +319,7 @@
 
 <p>问题排查：</p>
 <p>1.如果可以ping通虚拟机的ip，但是无法访问到，应该是防火墙的问题，将虚拟机的防火墙关闭。</p>
-<p>2.如果提示需要安装php的一个英文文件，百度安装即可。</p>
+<p>2.如果提示需要安装php的mbstring，百度安装即可。</p>
 <p>3.如果提示 apache /var/www/html/子目录没权限访问 。是因为系统启动了SELINUX导致的。<code>setsebool -P httpd_read_user_content 1</code>成功。</p>
 <p>4.如果提示数据库有问题，检查/var/www/html/config/database.php文件内容。</p>
 <h2 id="云服务器搭建官网"><a href="#云服务器搭建官网" class="headerlink" title="云服务器搭建官网"></a>云服务器搭建官网</h2><p>参照文档。<a target="_blank" rel="noopener" href="https://www.pbootcms.com/environmenta-deployment/271.html">https://www.pbootcms.com/environmenta-deployment/271.html</a></p>
@@ -178,7 +327,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/06/08/%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/" data-id="ckpnvjm8n000g48wd3yore2yc" data-title="搭建网站" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/06/08/%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/" data-id="ckq1xbdsg003upwwd9b25178t" data-title="搭建网站" class="article-share-link">分享</a>
       
       
       
@@ -523,7 +672,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/06/03/%E6%94%BB%E7%A0%B4%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99/" data-id="ckpnvjm8r000r48wdct59d9ix" data-title="攻破一个网站" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/06/03/%E6%94%BB%E7%A0%B4%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99/" data-id="ckq1xbdt1005upwwd80pb2sgj" data-title="攻破一个网站" class="article-share-link">分享</a>
       
       
       
@@ -568,7 +717,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/" data-id="ckpdvjpo70005nswdh5eqb8g1" data-title="推荐研读书籍" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/" data-id="ckq1xbdr40005pwwd1mu0d9og" data-title="推荐研读书籍" class="article-share-link">分享</a>
       
       
       
@@ -753,7 +902,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/05/17/mqtt%E5%BC%80%E5%8F%91/" data-id="ckpdvjpq0005enswd09211mv9" data-title="mqtt开发" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/05/17/mqtt%E5%BC%80%E5%8F%91/" data-id="ckq1xbdsv004ypwwd6t547ngv" data-title="mqtt开发" class="article-share-link">分享</a>
       
       
       
@@ -832,27 +981,19 @@
 <li>在Container标签页使用container命令操作测试容器：<a target="_blank" rel="noopener" href="https://imgkr.cn-bj.ufileos.com/2cbfa789-ed9e-49ff-acbc-1bfdef695ac9.gif"><img src="https://imgkr.cn-bj.ufileos.com/2cbfa789-ed9e-49ff-acbc-1bfdef695ac9.gif" alt="img"></a></li>
 </ul>
 <blockquote>
-<p>“</p>
 <p>这个页面会显示所有的容器，包括Stopped，可使用docker system prune -a:Remove all unused images not just dangling ones</p>
 </blockquote>
 <p>   <a target="_blank" rel="noopener" href="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182521552-288701408.jpg"><img src="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182521552-288701408.jpg" alt="img"></a></p>
 <p>   点击每个容器，可进入查看容器的详细信息： Container status/Container health/Container details/Connected networks/Volumes</p>
 <ul>
-<li>Image标签页，这里显示所有Image,这类可以拉取、构建、导入导出镜像<a target="_blank" rel="noopener" href="https://imgkr.cn-bj.ufileos.com/3a1b0c25-600c-47dd-be88-1392d607833b.png"><img src="https://imgkr.cn-bj.ufileos.com/3a1b0c25-600c-47dd-be88-1392d607833b.png" alt="img"></a><ul>
-<li><ul>
-<li><a target="_blank" rel="noopener" href="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182551017-1223402107.jpg"><img src="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182551017-1223402107.jpg" alt="img"></a></li>
-</ul>
+<li><p>Image标签页，这里显示所有Image,这类可以拉取、构建、导入导出镜像<a target="_blank" rel="noopener" href="https://imgkr.cn-bj.ufileos.com/3a1b0c25-600c-47dd-be88-1392d607833b.png"><img src="https://imgkr.cn-bj.ufileos.com/3a1b0c25-600c-47dd-be88-1392d607833b.png" alt="img"></a></p>
+<p><a target="_blank" rel="noopener" href="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182551017-1223402107.jpg"><img src="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182551017-1223402107.jpg" alt="img"></a></p>
 </li>
-</ul>
+<li><p>根据模板快速创建服务堆栈 点击‘’App Template’， 进入容器构建页面。 选择WordPress模板，<a target="_blank" rel="noopener" href="https://imgkr.cn-bj.ufileos.com/41d3f021-cb1c-485d-aed3-6c787b063c22.png"><img src="https://imgkr.cn-bj.ufileos.com/41d3f021-cb1c-485d-aed3-6c787b063c22.png" alt="img"></a></p>
+<p><a target="_blank" rel="noopener" href="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182636232-329590926.jpg"><img src="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182636232-329590926.jpg" alt="img"></a></p>
 </li>
-<li>根据模板快速创建服务堆栈 点击‘’App Template’， 进入容器构建页面。 选择WordPress模板，<a target="_blank" rel="noopener" href="https://imgkr.cn-bj.ufileos.com/41d3f021-cb1c-485d-aed3-6c787b063c22.png"><img src="https://imgkr.cn-bj.ufileos.com/41d3f021-cb1c-485d-aed3-6c787b063c22.png" alt="img"></a><ul>
-<li><ul>
-<li><a target="_blank" rel="noopener" href="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182636232-329590926.jpg"><img src="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182636232-329590926.jpg" alt="img"></a></li>
-</ul>
+<li><p>操作之后，可生成新的服务堆栈：<a target="_blank" rel="noopener" href="https://imgkr.cn-bj.ufileos.com/522e395e-c6d3-4aae-8ce1-ae73ddac0149.png"><img src="https://imgkr.cn-bj.ufileos.com/522e395e-c6d3-4aae-8ce1-ae73ddac0149.png" alt="img"></a></p>
 </li>
-</ul>
-</li>
-<li>操作之后，可生成新的服务堆栈：<a target="_blank" rel="noopener" href="https://imgkr.cn-bj.ufileos.com/522e395e-c6d3-4aae-8ce1-ae73ddac0149.png"><img src="https://imgkr.cn-bj.ufileos.com/522e395e-c6d3-4aae-8ce1-ae73ddac0149.png" alt="img"></a></li>
 </ul>
 <p>​    <a target="_blank" rel="noopener" href="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182656862-701038819.jpg"><img src="https://img2020.cnblogs.com/blog/587720/202008/587720-20200804182656862-701038819.jpg" alt="img"></a></p>
 <blockquote>
@@ -865,7 +1006,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/30/16.2.Docker%E4%B9%8BPortainer-io/" data-id="ckpdvjpoh000wnswd3b8mb6n7" data-title="Docker之Portainer.io" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/30/16.2.Docker%E4%B9%8BPortainer-io/" data-id="ckq1xbdrd000ppwwd564h8bza" data-title="Docker之Portainer.io" class="article-share-link">分享</a>
       
       
       
@@ -1188,7 +1329,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/23/5.4.MySQL%E9%9D%A2%E8%AF%95/" data-id="ckpdvjppt004knswdhtjodnvg" data-title="MySQL面试" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/23/5.4.MySQL%E9%9D%A2%E8%AF%95/" data-id="ckq1xbdsq004opwwdbxjjfzec" data-title="MySQL面试" class="article-share-link">分享</a>
       
       
       
@@ -1225,18 +1366,23 @@
         <h2 id="Swagger是什么"><a href="#Swagger是什么" class="headerlink" title="Swagger是什么"></a>Swagger是什么</h2><p>根据官网的介绍，Swagger是一系列用于Restful API开发的工具，开源的部分包括：</p>
 <ul>
 <li>OpenAPI Specification：API规范，规定了如何描述一个系统的API</li>
-<li>Swagger Codegen：用于通过API规范生成服务端和客户端代码</li>
-<li>Swagger Editor：用来编写API规范</li>
-<li>Swagger UI：用于展示API规范</li>
+<li>Swagger Codegen：用于通过API规范生成服务端和客户端代码。允许根据OpenAPI规范自动生成API客户端库（SDK生成），服务器存根和文档</li>
+<li>Swagger Editor：用来编写API规范。浏览器中编辑YAML中的OpenAPI规范并实时预览文档</li>
+<li>Swagger UI：用于展示API规范。HTML，Javascript和CSS资产的集合，可以从符合OAS标准的API动态生成漂亮的文档</li>
 </ul>
 <p>非开源的部分包括：</p>
 <ul>
-<li>Swagger Hub：云服务，相当于Editor + Codegen + UI</li>
-<li>Swagger Inspector：手动测试API的工具</li>
+<li>Swagger Hub：云服务，相当于Editor + Codegen + UI。API设计和文档，为使用OpenAPI的团队构建</li>
+<li>Swagger Inspector：手动测试API的工具。API测试工具，可让您验证您的API并从现有API生成OpenAPI定义</li>
 <li>SoapUI Pro：功能测试和安全测试的自动化工具</li>
 <li>LoadUI Pro：压力测试和性能测试的自动化工具</li>
 </ul>
+<ul>
+<li><strong>Swagger Parser：</strong>用于解析来自Java的OpenAPI定义的独立库</li>
+<li><strong>Swagger Core：</strong>与Java相关的库，用于创建，使用和使用OpenAPI定义</li>
+</ul>
 <h2 id="Springfox是什么"><a href="#Springfox是什么" class="headerlink" title="Springfox是什么"></a>Springfox是什么</h2><p>在大量的中文教程中，Springfox以这样的方式出现</p>
+<p>一.添加依赖</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>第二个看起来应该是springfox封装/修改的Swagger UI，第一个应该就是Springfox本体了，但为什么artifact有个swagger2的后缀？</p>
@@ -1247,677 +1393,121 @@
 <li><code>Spring Data REST</code></li>
 <li><code>JSR 303</code>，这项标准的参考实现是<code>Hibernate Validator</code></li>
 </ul>
+<p>二.编写配置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableSwagger2</span> <span class="comment">// Swagger的开关，表示已经启用Swagger</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SwaggerConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">api</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Docket docket = <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                .host(<span class="string">&quot;localhost:8081&quot;</span>)<span class="comment">// 不配的话，默认当前项目端口</span></span><br><span class="line">                .apiInfo(apiInfo())</span><br><span class="line">                .pathMapping(<span class="string">&quot;/&quot;</span>)</span><br><span class="line">                .select() <span class="comment">// 选择哪些路径和api会生成document</span></span><br><span class="line">                .apis(RequestHandlerSelectors.any())<span class="comment">// 对所有api进行监控</span></span><br><span class="line"><span class="comment">//                .apis(RequestHandlerSelectors.basePackage(&quot;com.hanstrovsky.controller&quot;))// 选择监控的package</span></span><br><span class="line"><span class="comment">//                .apis(RequestHandlerSelectors.withMethodAnnotation(ApiOperation.class))// 只监控有ApiOperation注解的接口</span></span><br><span class="line">                <span class="comment">//不显示错误的接口地址</span></span><br><span class="line">                .paths(Predicates.not(PathSelectors.regex(<span class="string">&quot;/error.*&quot;</span>)))<span class="comment">//错误路径不监控</span></span><br><span class="line">                .paths(PathSelectors.regex(<span class="string">&quot;/.*&quot;</span>))<span class="comment">// 对根下所有路径进行监控</span></span><br><span class="line">                .build();</span><br><span class="line">        <span class="keyword">return</span> docket;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> ApiInfo <span class="title">apiInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ApiInfoBuilder().title(<span class="string">&quot;XXXX项目接口文档&quot;</span>)</span><br><span class="line">                .contact(<span class="keyword">new</span> Contact(<span class="string">&quot;Hanstrovsky&quot;</span>, <span class="string">&quot;www.hanstrovsky.com&quot;</span>, <span class="string">&quot;Hanstrovsky@gmail.com&quot;</span>))</span><br><span class="line">                .description(<span class="string">&quot;这是用Swagger动态生成的接口文档&quot;</span>)</span><br><span class="line">                .termsOfServiceUrl(<span class="string">&quot;NO terms of service&quot;</span>)</span><br><span class="line">                .license(<span class="string">&quot;The Apache License, Version 2.0&quot;</span>)</span><br><span class="line">                .licenseUrl(<span class="string">&quot;http://www.apache.org/licenses/LICENSE-2.0.html&quot;</span>)</span><br><span class="line">                .version(<span class="string">&quot;1.0&quot;</span>)</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>三.启动测试</p>
+<p>启动服务，访问：<a target="_blank" rel="noopener" href="http://localhost:8081/swagger-ui.html">http://localhost:8081/swagger-ui.html</a></p>
+<h2 id="Swagger注解的使用"><a href="#Swagger注解的使用" class="headerlink" title="Swagger注解的使用"></a>Swagger注解的使用</h2><p>上面的是swagge-ui根据接口自动生成，不够详细。如果有需要，可以通过注解自定义接口声明。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> <span class="doctag">@Api</span>：修饰整个类，描述Controller的作用</span></span><br><span class="line"><span class="comment"> <span class="doctag">@ApiOperation</span>：描述一个类的一个方法，或者说一个接口</span></span><br><span class="line"><span class="comment"> <span class="doctag">@ApiParam</span>：单个参数描述</span></span><br><span class="line"><span class="comment"> <span class="doctag">@ApiModel</span>：用对象来接收参数</span></span><br><span class="line"><span class="comment"> <span class="doctag">@ApiProperty</span>：用对象接收参数时，描述对象的一个字段</span></span><br><span class="line"><span class="comment"> <span class="doctag">@ApiResponse</span>：HTTP响应其中1个描述</span></span><br><span class="line"><span class="comment"> <span class="doctag">@ApiResponses</span>：HTTP响应整体描述</span></span><br><span class="line"><span class="comment"> <span class="doctag">@ApiIgnore</span>：使用该注解忽略这个API</span></span><br><span class="line"><span class="comment"> <span class="doctag">@ApiError</span> ：发生错误返回的信息</span></span><br><span class="line"><span class="comment"> <span class="doctag">@ApiImplicitParam</span>：一个请求参数</span></span><br><span class="line"><span class="comment"> <span class="doctag">@ApiImplicitParams</span>：多个请求参数</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>注解名称</th>
+<th>注解含义</th>
+<th>注解使用地方</th>
+<th>注解参数</th>
+<th>参数含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>@EnableSwagger2</td>
+<td>开启swagger注解</td>
+<td>配置类上</td>
+<td>无</td>
+<td>无</td>
+</tr>
+<tr>
+<td>@Api</td>
+<td>标识swagger识别的类</td>
+<td>Controller类上</td>
+<td>value<br />tags<br />description</td>
+<td>url的路径值<br />如果设置这个值、value的值会被覆盖<br />对api资源的描述</td>
+</tr>
+<tr>
+<td>@ApiIgore</td>
+<td>屏蔽显示某个Controller，开启后在swagger上不会显示</td>
+<td>COntroller类上</td>
+<td>value</td>
+<td>值</td>
+</tr>
+<tr>
+<td>@ApiOperation</td>
+<td>标识swagger识别的方法</td>
+<td>Controller类中的方法</td>
+<td>value<br />tags<br />description<br />basePath<br />position<br />produces<br />consumes<br />protocols<br />authorizations<br />hidden<br />response<br />responseContainer<br />httpMethod<br />code<br />extensions<br />notes</td>
+<td>url的路径值<br />如果设置这个值、value的值会被覆盖<br />对api资源的描述<br />基本路径可以不配置如果配置多个Api 想改变显示顺序位置<br />For example，”application/json，application/xml”<br />For example，”application/json，application/xml”<br />Possible values:http,https,ws,wss<br />高级特性认证时配置<br />配置为true将在文档中隐藏<br />返回的对象<br />这些对象是有效的“List”，“Set”or “Map”，其他无效<br />“GET”、“HEAD”、“POST”、“PUT”、“DELETE”、“OPTIONS”and “PATCh”<br />http的状态码 默认200<br />扩展属性<br />用于提示内容</td>
+</tr>
+<tr>
+<td>@ApiImpliciParam</td>
+<td>修饰方法中的参数</td>
+<td>用在@ApiImplicitParams注解中对，指定一个请求参数的各个方面</td>
+<td>param<br />Typename<br />value<br />dataType<br />required<br />defaultValue</td>
+<td>参数放在哪个地方<br />参数代表的含义<br />参数名称<br />参数类型，有String/int，无用<br />是否必要<br />参数的默认值</td>
+</tr>
+<tr>
+<td>@ApiImpliciParams</td>
+<td>修饰方法中的参数</td>
+<td>用在方法上包含一组参数说明</td>
+<td>@ApiImpliciParam</td>
+<td>ApiImpliciParam的数组集合</td>
+</tr>
+<tr>
+<td>@ApiResponse</td>
+<td>修饰方法的返回值</td>
+<td>方法上或方法的参数上</td>
+<td>code<br />message<br />class</td>
+<td>方法返回值状态码<br />方法返回值信息<br />方法返回class</td>
+</tr>
+<tr>
+<td>@ApiResponses</td>
+<td>响应集配置</td>
+<td>方法上或参数上</td>
+<td>@ApiResponse</td>
+<td>ApiResponse的数组集合</td>
+</tr>
+<tr>
+<td>@ApiParam</td>
+<td>映射方法上的参数</td>
+<td>方法的参数上</td>
+<td>name<br />value<br />defaultValue<br />allowableValues<br />required<br />access<br />allowMutiple<br />hidden<br />example</td>
+<td>属性名称<br />属性值<br />默认属性值<br />可以不配置<br />是否属性必填<br />不过多描述<br />默认为false<br />隐藏该属性<br />举例子</td>
+</tr>
+<tr>
+<td>@ApiModel</td>
+<td>用于类，表示对类进行说明，用于参数用实体类接受</td>
+<td>类上</td>
+<td>value<br />description</td>
+<td>类名（不能同名！）<br />描述</td>
+</tr>
+<tr>
+<td>@ApiModelProperty</td>
+<td>标识一个类的属性</td>
+<td>类的字段上</td>
+<td>value<br />name<br />dateType<br />required<br />example<br />hidden</td>
+<td>字段说明<br />重写属性名字<br />重写属性类型<br />是否必填<br />举例子<br />隐藏</td>
+</tr>
+</tbody></table>
+<p>例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(&quot;/api&quot;)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@PostMapping(&quot;/people&quot;)</span></span><br><span class="line"><span class="meta">@ApiOperation(value = &quot;保存人员信息&quot;)</span></span><br><span class="line"><span class="meta">@ApiResponses(&#123;</span></span><br><span class="line"><span class="meta">       @ApiResponse(code = 0, message = &quot;保存成功&quot;),</span></span><br><span class="line"><span class="meta">       @ApiResponse(code = 1, message = &quot;保存失败&quot;)</span></span><br><span class="line"><span class="meta">&#125;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> FrontResult <span class="title">save</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params">         <span class="meta">@ApiParam(value = &quot;保存参数&quot;, example = &quot;&quot;)</span></span></span></span><br><span class="line"><span class="function"><span class="params">         <span class="meta">@RequestBody</span> People people)</span> </span>&#123;</span><br><span class="line">     people.setBirthday(Timestamp.valueOf(LocalDateTime.now()));</span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">new</span> FrontResult(FrontResult.SUCCEED, <span class="string">&quot;保存成功&quot;</span>, peopleDao.save(people));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@ApiModel(description = &quot;人员信息保存请求对象&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;</span><br><span class="line">    <span class="meta">@ApiModelProperty(value = &quot;人员编号&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line">    <span class="meta">@ApiModelProperty(value = &quot;姓名&quot;, required = true,position = 1)</span></span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="meta">@ApiModelProperty(value = &quot;性别&quot;, required = true,position = 2)</span></span><br><span class="line">    <span class="keyword">private</span> String sex;</span><br><span class="line">    <span class="meta">@ApiModelProperty(value = &quot;生日&quot;, required = true,position = 3)</span></span><br><span class="line">    <span class="meta">@JsonFormat(pattern = &quot;yyyy-MM-dd HH:mm:ss&quot;)</span></span><br><span class="line">    <span class="keyword">private</span> Timestamp birthday;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/12.5.Springfox/1705949-20200418122437694-633418451.png" alt="img"></p>
 <h2 id="Swagger注解的滥用"><a href="#Swagger注解的滥用" class="headerlink" title="Swagger注解的滥用"></a>Swagger注解的滥用</h2><p>在代码中的注解已经存储了大量的信息，如果再用<code>swagger-core</code>的注解将这些信息用另一种方式表达出来，很容易造成改了这里忘了改那里，即修改不同步。因此Springfox的开发者不推荐大家使用<code>swagger-core</code>的注解来描述API，认为<code>swagger-core</code>的注解只是补充，只能用于实现其他方法都不能实现的调整或者覆盖。例如，更应该使用<code>Jackson</code>的注解，而不是<code>@ApiModelProperty</code>；更应该使用<code>@NotNull</code>或者<code>@RequestParam#required</code>，而不是在文档里写一句<code>此字段必填</code>。</p>
 <p>但是，springfox的开发者忽略了一个事实，中文开发者用<code>swagger-core</code>的注解更多的是用来添加<code>中文描述</code>，所以，该用的时候还是用吧</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/22/12.5.Springfox/" data-id="ckpdvjpog000rnswd1xrehhze" data-title="Springfox" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/22/12.5.Springfox/" data-id="ckq1xbdrc000mpwwd6yhb4igk" data-title="Springfox" class="article-share-link">分享</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/springfox/" rel="tag">springfox</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swagger/" rel="tag">swagger</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-19.4.SVN" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/19.4.SVN/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T06:40:24.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/19.4.SVN/">SVN</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="SVN-版本控制"><a href="#SVN-版本控制" class="headerlink" title="*SVN-版本控制*"></a><em><strong>*SVN-版本控制*</strong></em></h1><p>SVN是Subversion的简称，是一个自由开源的版本控制系统。</p>
-<p>Subversion将文件存放在中心版本库里，这个版本库很像一个普通的<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/566090.htm">文件服务器</a>，不同的是，它可以记录每一次文件和目录的修改情况，这样就可以借此将<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/185060.htm">数据恢复</a>到以前的版本，并可以查看数据的更改细节</p>
-<p>早期版本控制使用的是CVS,后来SVN替代了CVS,随着android兴起，出现Git版本控制工具</p>
-<p><img src="/19.4.SVN/wps1.jpg" alt="img"> </p>
-<p>问题: 怎样让系统允许用户共享信息，而不会让他们因意外而互相干扰？</p>
-<p><em><strong>*1.*</strong>***</em>*复制*<strong><strong><strong>*-*</strong></strong></strong>*修改*<strong><strong><strong>*-*</strong></strong></strong>*合并方案*<strong><strong><strong>*(Subversion*</strong></strong></strong>*默认的模式****<em><strong>*)*</strong></em></p>
-<p>在这种模型里，每一个客户读取项目配置库建立一个私有工作副本——版本库中文件和目录的本地映射。用户并行工作，修改各自的工作副本，最终，各个私有的复制合并在一起，成为最终的版本，这种系统通常可以辅助合并操作，但是最终要靠人工去确定正误。</p>
-<p><em><strong>*2.*</strong>***</em>*锁定*<strong><strong><strong>*-*</strong></strong></strong>*修改*<strong><strong><strong>*-*</strong></strong></strong>*解锁方案****</p>
-<p>在这样的模型里，在一个时间段里配置库的一个文件只允许被一个人修改。 此模式不适合软件开发这种工作。</p>
-<p>SVN架构</p>
-<p><img src="/19.4.SVN/wps2.jpg" alt="img"> </p>
-<p>Subversion支持<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1634.htm">Linux</a>和<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/4821.htm">Windows</a>，更多是安装在Linux下。</p>
-<p>svn服务器有2种运行方式：<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/2106199.htm">独立服务器</a>（source download，这种是个安装包，解压后就可以用）和借助<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/28283.htm">apache</a>（binary packages，这种是二进制的文件，针对不同的操作系统有不同的版本，下载安装就可以用，后面用的就是这个）运行。两种方式各有利弊，用户可以自行选择。</p>
-<p>svn存储版本数据也有2种方式：<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1303712.htm">BDB</a>(一种<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/121511.htm">事务</a>安全型表类型，需要数据库)和<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1633161.htm">FSFS</a>(一种不需要数据库的<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/51839.htm">存储系统</a>)。因为BDB方式在服务器中断时，有可能锁住数据，所以还是FSFS方式更安全一点，我们用的就是FSFS，类似于文件</p>
-<h1 id="SVN的使用"><a href="#SVN的使用" class="headerlink" title="*SVN的使用*"></a><em><strong>*SVN的使用*</strong></em></h1><p>SVN是一种集中式管理代码的版本控制系统，原理就是把代码都保存到一个固定的位置（仓库），每次从这个位置拷贝更新代码，进行编辑；再把修改后的代码提交到该目录中。多人协作开发也是如此。因此需要一个类似Oracle或者Mysql的服务器用于保存和管理库文件（要保存的代码等文件）的服务端——VisualSVN Server（windows上用）。还需要一个用户的操作端，用于提交更新检出代码，常用的有Eclipse的Svn插件，以及TortoiseSVN（小乌龟）。</p>
-<p>SubVersion 官网：<a target="_blank" rel="noopener" href="http://subversion.apache.org/">http://subversion.apache.org/</a></p>
-<p>服务器端-VisualSVN安装与配置</p>
-<p>1.VisualSVN下载：</p>
-<p><img src="/19.4.SVN/wps3.jpg" alt="img"> </p>
-<p>下载好后点击下一步，next进行安装</p>
-<p>2.VisualSVN安装与创建仓库</p>
-<p><img src="/19.4.SVN/wps4.jpg" alt="img"> </p>
-<p>标准版就行，企业版会收费</p>
-<p><img src="/19.4.SVN/wps5.jpg" alt="img"> </p>
-<p>在开始运行中录入 services.msc</p>
-<p><img src="/19.4.SVN/wps6.jpg" alt="img"> </p>
-<p>这个服务要开启</p>
-<p>然后在C盘中的program files下的VisualSVN Server下的bin下的visualSVN Server Manager文件</p>
-<p>也可以在开始运行中查找visualSVN Server Manager就可以打开图形化管理界面</p>
-<p><img src="/19.4.SVN/wps7.jpg" alt="img"> </p>
-<p>3.VisualSVN创建工程目录</p>
-<p><img src="/19.4.SVN/wps8.jpg" alt="img"> </p>
-<p>选择fsfs类型，名字，权限，下一步</p>
-<p>4.VisualSVN权限控制</p>
-<p>创建用户</p>
-<p><img src="/19.4.SVN/wps9.jpg" alt="img"> </p>
-<p><img src="/19.4.SVN/wps10.jpg" alt="img"> </p>
-<p>创建完成之后，可以点击工程名然后右击复制URL路径，浏览器访问就可以看到仓库。可以右击properties选择用户的权限。</p>
-<p>创建组：可能会有很多用户，不便于管理，所以创建了组</p>
-<p><img src="/19.4.SVN/wps11.jpg" alt="img"> </p>
-<p><img src="/19.4.SVN/wps12.jpg" alt="img"> </p>
-<p>分配权限</p>
-<p><img src="/19.4.SVN/wps13.jpg" alt="img"> </p>
-<p><img src="/19.4.SVN/wps14.jpg" alt="img"> </p>
-<p>客户端-TortoiseSVN安装与使用</p>
-<p>它是一个基于windows系统的svn图形化界面</p>
-<p>1.TortoiseSVN下载</p>
-<p>可以在<a target="_blank" rel="noopener" href="http://subversion.apache.org/%E4%B8%8B%E6%89%BE%E5%88%B0%E4%B8%8B%E8%BD%BD">http://subversion.apache.org/下找到下载</a></p>
-<p><img src="/19.4.SVN/wps15.jpg" alt="img"> </p>
-<p>2.TortoiseSVN安装</p>
-<p>安装后需要重启电脑</p>
-<p>检查是否安装成功</p>
-<p><img src="/19.4.SVN/wps16.jpg" alt="img"> </p>
-<p>3.Tortoise SVN常用操作</p>
-<p>浏览仓库</p>
-<p><img src="/19.4.SVN/wps17.jpg" alt="img"> </p>
-<p>这个URL是服务器端的copy的URL</p>
-<p><img src="/19.4.SVN/wps18.jpg" alt="img"> </p>
-<p>正常情况下，在浏览仓库时会要求录入username与password，第二次访问的时候不需要输入，已保存</p>
-<p>我们可以清空svn客户端的缓存：</p>
-<p>新建一个文件夹，右击选择</p>
-<p><img src="/19.4.SVN/wps19.jpg" alt="img"> </p>
-<p><img src="/19.4.SVN/wps20.jpg" alt="img"> </p>
-<p>这样再访问，checkout的时候就需要输入用户名和密码</p>
-<p><img src="/19.4.SVN/wps21.jpg" alt="img"> </p>
-<p>Checkout：检出svn服务器上的项目</p>
-<p>可以先创建一个自己的文件夹，在里面右击选择仓库</p>
-<p><img src="/19.4.SVN/wps22.jpg" alt="img"> </p>
-<p>在本地位置的后面加\bos</p>
-<p>注意：检出后会有一个.svn隐藏目录，这个目录不要随意修改，相当于是配置信息</p>
-<p><img src="/19.4.SVN/wps23.jpg" alt="img"> </p>
-<p>Add</p>
-<p>在这个文件夹中新建一个文件：</p>
-<p><img src="/19.4.SVN/wps24.jpg" alt="img"> </p>
-<p>这样图标的文件代表它没有由svn管理，可以右击选择</p>
-<p><img src="/19.4.SVN/wps25.jpg" alt="img"> </p>
-<p><img src="/19.4.SVN/wps26.jpg" alt="img"> </p>
-<p>这个代表的是它要添加到svn服务器（并没有传到服务器，必须要提交才可以）</p>
-<p>Commit</p>
-<p>上面那个文件右击后会有commit</p>
-<p><img src="/19.4.SVN/wps27.jpg" alt="img"> </p>
-<p><img src="/19.4.SVN/wps28.jpg" alt="img"> </p>
-<p><img src="/19.4.SVN/wps29.jpg" alt="img"> </p>
-<p><img src="/19.4.SVN/wps30.jpg" alt="img">代表添加成功</p>
-<p>Update</p>
-<p>Update，它是更新操作,可以将svn服务器上的内容更新到本地</p>
-<p><img src="/19.4.SVN/wps31.jpg" alt="img"> </p>
-<p>更新(还原)到历史版本</p>
-<p>查看当前日志</p>
-<p><img src="/19.4.SVN/wps32.jpg" alt="img"> </p>
-<p><img src="/19.4.SVN/wps33.jpg" alt="img"> </p>
-<p>也可以通过下面的方式来更新历史版本</p>
-<p><img src="/19.4.SVN/wps34.jpg" alt="img"> </p>
-<p><img src="/19.4.SVN/wps35.jpg" alt="img"> </p>
-<p>选择show log的版本，ok</p>
-<p>Delete</p>
-<p>标记删除操作，本地文件会删除，但是父目录会出现感叹号。我们需要在它的父目录进行提交，才能真正从服务器删除</p>
-<p><img src="/19.4.SVN/wps36.jpg" alt="img"> </p>
-<p>导入导出</p>
-<p><img src="/19.4.SVN/wps37.jpg" alt="img"> </p>
-<p>Import：将本地资源导入到svn服务器</p>
-<p>Export：导出项目，和checkout的区别,它不存在.svn隐藏文件（只是把其中的内容download下来）</p>
-<p>冲突问题与解决（重要）</p>
-<p>多个用户同时操作同一个文件时，就可能产生冲突情况。同时提交会出现</p>
-<p><img src="/19.4.SVN/wps38.jpg" alt="img"> </p>
-<p>然后文件夹会多出来几个文件：</p>
-<p><img src="/19.4.SVN/wps39.jpg" alt="img"> </p>
-<p>HelloWorld.java 它是服务器上的文件与本地文件合并</p>
-<p>HelloWorld.java.mine 本地修改后的文件</p>
-<p>HelloWorld.java.r4 修改前的文件</p>
-<p>HelloWorld.java.r5 对方修改后的文件</p>
-<p>这个冲突产生后如何解决，我们可以采用手动Merge：</p>
-<p>选择带感叹号的文件右击</p>
-<p><img src="/19.4.SVN/wps40.jpg" alt="img"> </p>
-<p>保存，标记已解决冲突。解决冲突后，重新commit.</p>
-<h1 id="客户端-Eclipse-SVN插件安装与使用-重要"><a href="#客户端-Eclipse-SVN插件安装与使用-重要" class="headerlink" title="*客户端-Eclipse SVN插件安装与使用(重要)*"></a><em><strong>*客户端-Eclipse SVN插件安装与使用(重要)*</strong></em></h1><p>下载与安装SVN插件</p>
-<p>在网页上搜索svn eclipse 官网下载一个svn插件,将它直接复制到eclipse安装目录下的dropins中</p>
-<p>我们怎样可以知道svn插件安装成功：</p>
-<p>在eclipse中的window下的preferences中搜索svn</p>
-<p><img src="/19.4.SVN/wps41.jpg" alt="img"> </p>
-<p>Eclipse SVN插件使用</p>
-<p>浏览仓库，将eclipse工程导入到svn服务器</p>
-<p><img src="/19.4.SVN/wps42.jpg" alt="img"> </p>
-<p>在svn资源库研究</p>
-<p><img src="/19.4.SVN/wps43.jpg" alt="img"> </p>
-<p>输入服务器工程的URL</p>
-<p>怎样将eclipse中的工程导入到svn仓库，可以在工程上右键</p>
-<p><img src="/19.4.SVN/wps44.jpg" alt="img"> </p>
-<p>选择服务器的URL。完成后，它其实没有真正的导入，需要我们右击在进行提交才真正导入到svn仓库</p>
-<p>Checkout 导出 导入</p>
-<p>选择SVN资源库研究，点击项目下的文件夹右击，可以进行检出，导出，导入等操作</p>
-<p><img src="/19.4.SVN/wps45.jpg" alt="img"> </p>
-<p>Add  commit  update 更新到历史版本</p>
-<p><img src="/19.4.SVN/wps46.jpg" alt="img"> </p>
-<p>Eclipse的svn插件解决冲突</p>
-<p><img src="/19.4.SVN/wps47.jpg" alt="img"> </p>
-<p>产生了冲突 </p>
-<p>我们在工程上执行更新操作，就可以查看到冲突的文件</p>
-<p><img src="/19.4.SVN/wps48.jpg" alt="img"> </p>
-<p>解决冲突</p>
-<p><img src="/19.4.SVN/wps49.jpg" alt="img"> </p>
-<p>选择编辑冲突，进行编辑时，左边是自己的，右边的东西可以选中，然后点击右上角的图标进行操作。</p>
-<p>编辑完成后进行保存，再标记为冲突解决</p>
-<p><img src="/19.4.SVN/wps50.jpg" alt="img"> </p>
-<p>然后在提交</p>
-<p>理论篇(了解)命令行的方式</p>
-<p>服务器-SubVersion安装与配置</p>
-<p>官网上的source download下载的安装包解压后的目录结构</p>
-<p><img src="/19.4.SVN/wps51.jpg" alt="img"> </p>
-<p>bin目录存放svn相关命令</p>
-<p>​    svnadmin:给服务器管理员使用，创建仓库，帐户等</p>
-<p>​    svnserve:启动svn服务器</p>
-<p>​    svn:客户端命令工具</p>
-<p>iconv目录存放svn依赖插件</p>
-<p>licenses 目录存放版权信息文件</p>
-<p>share存放国际化文件</p>
-<p>当安装完成后，默认情况下会将subversion安装目录bin加入到环境变量path中，如果没有，需要手动添加（这里有一个VisualSVN Server的bin目录，还有现在下载的subversion的bin目录）</p>
-<p><img src="/19.4.SVN/wps52.jpg" alt="img"> </p>
-<p>查看服务器版本号：svnserve –version （注意电脑上有一个VisualSVN Server，还有一个subversion）</p>
-<p><img src="/19.4.SVN/wps53.jpg" alt="img"> </p>
-<p>启动svn服务器</p>
-<p>\1. 在服务器指定目录建立仓库  d:/my-reps</p>
-<p>svnadmin create itcast</p>
-<p>查看仓库目录结构</p>
-<p><img src="/19.4.SVN/wps54.jpg" alt="img"> </p>
-<p>conf 存放当前仓库的配置文件</p>
-<p>db 存放仓库版本的控制文件</p>
-<p>hooks 仓库脚本</p>
-<p>locks 锁文件</p>
-<p>\2. 启动服务</p>
-<p>svnserve –d –r 路径</p>
-<p><img src="/19.4.SVN/wps55.jpg" alt="img"> </p>
-<p>\3. 测试客户端连接服务器，默认端口3690</p>
-<p>svn checkout svn://localhost/itcast</p>
-<p>客户端-命令行方式</p>
-<p>1.checkout</p>
-<p>svn checkout svn://localhost/itcast 默认端口3690</p>
-<p>2.add</p>
-<p><img src="/19.4.SVN/wps56.jpg" alt="img"> </p>
-<p>3.commit</p>
-<p><img src="/19.4.SVN/wps57.jpg" alt="img"> </p>
-<p>直接提交会出错的原因:1.没有日志信息</p>
-<p><img src="/19.4.SVN/wps58.jpg" alt="img"> </p>
-<p>-m添加日志信息，还会出错的原因:权限问题</p>
-<p>我们可以在D:\my-reps\itcast 查找到conf/ svnserve.conf文件，修改其中的权限write，再进行命令输入</p>
-<p><img src="/19.4.SVN/wps59.jpg" alt="img"> </p>
-<p>4.Update操作</p>
-<p><img src="/19.4.SVN/wps60.jpg" alt="img"> </p>
-<p>扩展篇（开发中的svn目录规范）</p>
-<p>svn目录规范</p>
-<p>在visualSVN中创建仓库时，可以选择svn目录结构</p>
-<p><img src="/19.4.SVN/wps61.jpg" alt="img"> </p>
-<p><img src="/19.4.SVN/wps62.jpg" alt="img"> </p>
-<p>Trunk 主干目录，此目录下的文件为基准文件</p>
-<p>Branches 用于开发的分支目录</p>
-<p>Tags 用于发布的版本目录（一般为只读）</p>
-<p>假设有一个项目OA,我们完成了1.0版本，这时就可以打一个tags</p>
-<p>后续我们在OA项目上添加一个新的模块(及时通讯),我们就可以开一个分支,又有一个公司需要在我们OA基础上添加财务管理模块，我们又可以打一个分支。这些分支都在Branches中</p>
-<p>我们后续针对OA的1.0版本在升级，我们不需要原来附加功能,就可以在原来的主干Trunk上继续开发，形成OA2.0版本，开发完成后就可以在打一个tags</p>
-<p>打一个分支或标记</p>
-<p><img src="/19.4.SVN/wps63.jpg" alt="img"> </p>
-<p><img src="/19.4.SVN/wps64.jpg" alt="img"> </p>
-<p>分支的定义规则:</p>
-<p>​    Project name+日期时间+功能点</p>
-<p>Tags的定义规则</p>
-<p>​    Project name+版本号</p>
-<p>​    版本号定义为三段数字编号</p>
-<p>​    xxx.xxx.xxx</p>
-<p>​    第一个:革命性的产品升级版</p>
-<p>​    第二个:新功能版</p>
-<p>​    第三个:修正bug</p>
-<p>切换主干，分支与标记</p>
-<p><img src="/19.4.SVN/wps65.jpg" alt="img"> </p>
-<p><img src="/19.4.SVN/wps66.jpg" alt="img"> </p>
-<p>Tags一般是只读，它代表的是发布的版本，所以我们不要进行改变。</p>
-<p>主干与分支的合并</p>
-<p>如果要将主干内容合并到分支上，我们需要在分支的工作副本上操作。</p>
-<p>如果要将分支的改变合并到主干上，我们需要在主干的工作副本上操作。</p>
-<p>我们的需要是将分支的改变合并到主干上：</p>
-<p><img src="/19.4.SVN/wps67.jpg" alt="img"> </p>
-<p><img src="/19.4.SVN/wps68.jpg" alt="img"> </p>
-<p>注意:在合并时要选择在相应的版本号，合并后，可能会出现冲突，将冲突解决，commit就可以。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/19.4.SVN/" data-id="ckpdvjpok0010nswdbkzzcen3" data-title="SVN" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-9.9.WEB之上传和下载" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T06:30:56.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/">WEB之上传和下载</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="文件上传"><a href="#文件上传" class="headerlink" title="*文件上传*"></a><em><strong>*文件上传*</strong></em></h1><p>文件上传：将本地的文件通过流写入到服务器的过程。</p>
-<p>文件上传的技术：</p>
-<p>JSPSmartUpload    ：应用在JSP上的文件上传和下载的组件。</p>
-<p>FileUpload：应用在Java环境上的文件上传的功能。</p>
-<p>Servlet3.0：提供文件上传的功能（前面我们选得都是2.5版本）</p>
-<p>Struts2：提供文件上传的功能</p>
-<p>文件上传的三个要素：</p>
-<p>表单的提交的方式需要是POST</p>
-<p>表单中需要有<input type=”file”>元素，需要有name属性和值。</p>
-<p>表单enctype=”multipart/form-data”</p>
-<p>写一个JSP，再写一个表单form，method为post提交，设置文件上传项，name属性和值，<em><strong>*Content-Type: application/x-www-form-urlencoded*</strong>***</em>*是默认的，改为****enctype=”multipart/form-data”，用HTTPWathch进行抓包分析：</p>
-<p>没有设置enctype属性</p>
-<p>POST /web06/jsp/upload.jsp HTTP/1.1</p>
-<p>Accept: text/html, application/xhtml+xml, <em>/</em></p>
-<p>X-HttpWatch-RID: 22006-10011</p>
-<p>Referer: <a target="_blank" rel="noopener" href="http://localhost:8080/web06/jsp/upload.jsp">http://localhost:8080/web06/jsp/upload.jsp</a></p>
-<p>Accept-Language: zh-CN</p>
-<p>User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko</p>
-<p><em><strong>*Content-Type: application/x-www-form-urlencoded*</strong></em></p>
-<p>Accept-Encoding: gzip, deflate</p>
-<p>Host: localhost:8080</p>
-<p>Content-Length: 53</p>
-<p>DNT: 1</p>
-<p>Connection: Keep-Alive</p>
-<p>Cache-Control: no-cache</p>
-<p>Cookie: JSESSIONID=D51DCB996556C94861B2C72C4D978010</p>
-<p>info=info&amp;upload=C%3A%5CUsers%5Cjt%5CDesktop%5Caa.txt</p>
-<p>没有文件上传中的文件的具体内容</p>
-<p>设置enctype属性：</p>
-<p>POST /web06/jsp/upload.jsp HTTP/1.1</p>
-<p>Accept: text/html, application/xhtml+xml, <em>/</em></p>
-<p>X-HttpWatch-RID: 22006-10026</p>
-<p>Referer: <a target="_blank" rel="noopener" href="http://localhost:8080/web06/jsp/upload.jsp">http://localhost:8080/web06/jsp/upload.jsp</a></p>
-<p>Accept-Language: zh-CN</p>
-<p>User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko</p>
-<p><em><strong>*Content-Type: multipart/form-data;*</strong></em> boundary=—————————7e139d10110a64</p>
-<p>Accept-Encoding: gzip, deflate</p>
-<p>Host: localhost:8080</p>
-<p>Content-Length: 322</p>
-<p>DNT: 1</p>
-<p>Connection: Keep-Alive</p>
-<p>Cache-Control: no-cache</p>
-<p>Cookie: JSESSIONID=D51DCB996556C94861B2C72C4D978010</p>
-<p>—————————–7e139d10110a64</p>
-<p>Content-Disposition: form-data; name=”info”</p>
-<p>aaa</p>
-<p>—————————–7e139d10110a64</p>
-<p>Content-Disposition: form-data; name=”upload”; filename=”C:\Users\jt\Desktop\aa.txt”</p>
-<p>Content-Type: text/plain</p>
-<p>hello world！！！</p>
-<p>—————————–7e139d10110a64–</p>
-<p>—————————–7e139d10110a64代表分割线，将内容分割（分为2块就是三个分割线），–代表结束</p>
-<p>文件上传的原理分析：</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps31.jpg" alt="img"> </p>
-<p>//普通项的aaa是jsp页面上写的名字。普通项就是表单中的其他内容，文件上传项是文件上传的相关内容。</p>
-<p>进行一个文件的上传：</p>
-<p>1.引入文件上传的相关的jar包</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps32.jpg" alt="img"> </p>
-<p>2.编写文件上传的JSP页面</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps33.jpg" alt="img"> </p>
-<p>3.编写文件上传的Servlet</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps34.jpg" alt="img"> </p>
-<p>上传的内容没有在工程里，而是直接在文件下。</p>
-<p>文件上传的API</p>
-<p>1.DiskFileItemFactory：磁盘文件项工厂</p>
-<p>构造方法：</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps35.jpg" alt="img"> </p>
-<p>DiskFileItemFactory()和DiskFileItemFactory(int sizeThreshold,File repostory)</p>
-<p>sizeThreshold:设置文件上传的缓冲区的大小，默认值为10kb。</p>
-<p>repository:设置文件上传过程中产生临时文件（如果超过了缓冲区的大小，就会产生临时文件）存放的路径。</p>
-<p>方法：</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps36.jpg" alt="img"> </p>
-<p>setSizeThreshold()：设置缓冲区的大小</p>
-<p>setRepository()：设置临时文件存放的路径</p>
-<p>举例代码：</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps37.jpg" alt="img"> </p>
-<p>上传的文件如果没有超过缓冲区的大小，会直接在上传的目标文件夹下上传成功；如果超过了缓冲区的大小，会在你设定的临时文件下有一个TMP文件，当上传成功时，目标文件夹下会有一个文件，这个TMP文件也不会消失，用来续传或者其他操作。</p>
-<p>2.ServletFileUpload：核心解析类</p>
-<p>构造方法：</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps38.jpg" alt="img"> </p>
-<p>方法：</p>
-<p>判断表单的enctype属性是否正确：</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps39.jpg" alt="img"> </p>
-<p>解析Request对象，返回一个List集合（每个部分的对象FileItem）：</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps40.jpg" alt="img"> </p>
-<p>设置单个文件的大小：</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps41.jpg" alt="img"> </p>
-<p>设置上传的文件的总大小：</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps42.jpg" alt="img"> </p>
-<p>设置中文文件名上传的乱码的问题（一般不会出现）：</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps43.jpg" alt="img"> </p>
-<p>设置监听文件上传的进度：</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps44.jpg" alt="img"> </p>
-<p>3.FileItem文件项</p>
-<p>方法：</p>
-<p>判断表单项是普通项还是文件上传项。如果为true代表是普通项：</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps45.jpg" alt="img"> </p>
-<p>普通项的方法：</p>
-<p>获得普通项的名称：</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps46.jpg" alt="img"> </p>
-<p>获得普通项的值：</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps47.jpg" alt="img"> </p>
-<p>文件上传项的方法：</p>
-<p>获得文件上传的文件名的方法：</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps48.jpg" alt="img"> </p>
-<p>获得文件上传的文件内容的方法：</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps49.jpg" alt="img"> </p>
-<p>获得文件上传的文件的大小：</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps50.jpg" alt="img"> </p>
-<p>删除文件上传过程中的临时文件：</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps51.jpg" alt="img"> </p>
-<p>JS控制多文件上传：</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps52.jpg" alt="img"> </p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps53.jpg" alt="img"> </p>
-<p>文件上传兼容浏览器问题：如果使用IE老版本的浏览器会出现一个文件名称获取错误问题。IE老版本获取文件名称的时候，会带有路径。</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps54.jpg" alt="img"> </p>
-<p>一般的浏览器获得的filename都是aa.txt，但是老版本的IE浏览器是会获得全路径的文件名，会造成报错。</p>
-<p>解决：</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps55.jpg" alt="img"> </p>
-<p>//检索\最后出现的坐标，当这个坐标存在的时候，截取这个左边开始到结束的内容</p>
-<p>文件上传同一个目录下文件同名问题：张三向服务器上传了一个文件aa.txt内容是hello world。李四向服务器上传了一个文件aa.txt内容hello Java。后上传的文件将先上传的文件覆盖了。</p>
-<p>使用唯一文件名进行解决：</p>
-<p>UUID的randomUUID方法toString后得到的是一个包含-的字符串（由数字，字母和-组成）</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps56.jpg" alt="img"> </p>
-<p>文件上传同一个目录下文件过多的问题：现在所有的用户都上传文件，如果网站访问量比较大，如果都上传到同一个目录下，在同一个目录下存放的文件太多了，也会对程序有影响（其实打开该目录的时候，都会很卡，更别说读写操作）。</p>
-<p>解决方法：</p>
-<p>进行目录分离：</p>
-<p>按时间分离        ：按月、周、天、小时。</p>
-<p>按用户分离        ：按张三、李四。</p>
-<p>按个数分离        ：一个目录下存放3000个文件。</p>
-<p><em><strong>*按目录分离算法*</strong>***</em>*分离****    <em><strong>*：按照某种特定算法进行分离。*</strong></em></p>
-<p><em><strong>*上传一个文件，得到一个唯一的文件名。*</strong></em></p>
-<p><em><strong>*唯一文件名获取其hashCode值。—–int类型的值（32位*</strong>***</em>*，*<strong><strong><strong>*无论正负*</strong></strong></strong>*）****</p>
-<p><em><strong>*让hashCode的值 &amp; 0xf;—–得出的这个值作为一级目录。*</strong></em></p>
-<p><em><strong>*让hashCode右移4位  &amp; 0xf;—-得出的这个值作为二级目录。*</strong></em></p>
-<p><em><strong>*以此类推。*</strong></em></p>
-<p><em><strong>*分析算法：*</strong></em></p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps57.jpg" alt="img"> </p>
-<p>每级目录下又可以划分为：0000-1111有16个子目录</p>
-<p>代码实现：</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps58.jpg" alt="img"> </p>
-<p>一般情况下，服务器是不会关闭的。因为服务器关闭后，会发现存放的上传文件都不见了，所以一般不关闭服务器，或者直接将上传的文件存入到本地磁盘中。</p>
-<h1 id="文件下载"><a href="#文件下载" class="headerlink" title="*文件下载*"></a><em><strong>*文件下载*</strong></em></h1><p>文件下载：将服务器上的一个文件，通过流写入到客户端上。</p>
-<p>文件下载的方式：</p>
-<p>1.使用超链接的方式实现文件的下载：</p>
-<p>在<a href=”文件的路径”>超链接</a></p>
-<p><em><strong>*注意：超链接的方式，如果浏览器不能识别这种格式的文件，*</strong>***</em>*就会*<strong><strong><strong>*提示下载，*</strong></strong></strong>*点击确定，就会下载。*<strong><strong><strong>*如果支持该格式的文件，*</strong></strong></strong>*就会****<em><strong>*直接打开。*</strong></em></p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps59.jpg" alt="img"> </p>
-<p><em><strong>*2.*</strong>***</em>*通过手动编写代码的方式实现文件的下载*<strong><strong><strong>*（*</strong></strong></strong>*无论浏览器支持不支持该格式的文件，都会询问是否下载，点击确定后就是下载****<em><strong>*）*</strong></em></p>
-<p><em><strong>*设置两个头和一个流*</strong>***</em>*：****</p>
-<p><em><strong>*Content-Type*</strong></em>            <em><strong>*:文件的MIME的类型*</strong>***</em>*（*<strong><strong><strong>*可以获取到*</strong></strong></strong>*）****</p>
-<p><em><strong>*Content-Disposition*</strong></em>    <em><strong>*:浏览器支持该格式的文件，提示下载*</strong>***</em>*（*<strong><strong><strong>*固定的格式*</strong></strong></strong>*）****</p>
-<p><em><strong>*设置代表该文件的输入流*</strong>***</em>*(输出流是固定*<strong><strong><strong>*的是**</strong> *<strong>*response.getOutputStream()*</strong></strong></strong>*)****</p>
-<p>文件下载的页面</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps60.jpg" alt="img"> </p>
-<p>文件下载的Servlet</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps61.jpg" alt="img"> </p>
-<p>中文文件的下载：（出现乱码问题）</p>
-<p>因为不同的浏览器对中文文件的下载的编码不一样的：</p>
-<p>IE浏览器采用的是URL编码</p>
-<p>Firefox浏览器采用的是Base64编码</p>
-<p>所以需要判断客户端使用的浏览器的类型：User-Agent请求头可以获得客户端浏览器信息。</p>
-<p>写一个工具类的base64编码方法，再调用这个方法进行转换，因为这个编码方法进行了加密。</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps62.jpg" alt="img"> </p>
-<p>案例：给定目录下的文件下载</p>
-<p>需求：给定一个目录（这个目录可以是任意盘符下的任意路径—这个路径下有多少级目录，每级目录中有多少个文件都是未知的）。将这个路径中的文件显示到页面上，在页面上给每个文件都提供相应的下载的链接，当点击这个链接的时候，对该文件进行下载。</p>
-<p>分析：</p>
-<p>树形结构的遍历，使用队列：根节点都入队然后出队，最后剩余的是叶节点：6 7 8 9 10</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps63.jpg" alt="img"> </p>
-<p>文件列表显示的代码实现：</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps64.jpg" alt="img"> </p>
-<p>下载代码的实现：</p>
-<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps65.jpg" alt="img"> </p>
-<p>中文名字的文件经过IE浏览器编码时，会将其中的空格转换为加号，所以在这里需要将其中的加号再转换为空格。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/" data-id="ckpdvjpp5002znswd97mtgilt" data-title="WEB之上传和下载" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-9.8.WEB之listener和filter" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T06:30:44.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/">WEB之listener和filter</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="监听器"><a href="#监听器" class="headerlink" title="*监听器*"></a><em><strong>*监听器*</strong></em></h1><p>监听器就是一个实现了特定接口的Java类，这个Java类用于监听另一个Java类的方法调用或者属性的改变。当被监听对象发生上述事件后，监听器某个方法将会立即被执行。</p>
-<p>用途：用来监听其他对象的变化的。主要应用在图形化界面开发上。Java中GUI，Android</p>
-<p>监听器的术语：</p>
-<p>事件源：指的是被监听对象（汽车）</p>
-<p>监听器：指的是监听的对象（报警器）</p>
-<p>事件源和监听器绑定：在汽车上安装报警器</p>
-<p>事件：指的是事件源对象的改变（踹了汽车一脚）—-主要功能获得事件源对象。</p>
-<p>例子：</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps1.jpg" alt="img"> </p>
-<p>执行过程：</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps2.jpg" alt="img"> </p>
-<p>（这里的WindowEvent e就是事件对象，e.getSource可以得到MyFrame的对象）</p>
-<p>Servlet中的监听器：</p>
-<p>在Servlet中定义了多种类型的监听器，它们用于监听的事件源分别是ServletContext、HttpSession和ServletRequest这三个域对象。</p>
-<p>分类：</p>
-<p>1.监听三个域对象的创建和销毁 的监听器（三个）</p>
-<p>2.监听三个域对象的属性变更（属性添加、移除、替换）的监听器（三个）</p>
-<p>3.监听HttpSession中JavaBean的状态改变（钝化、活化、绑定、解除绑定）的监听（两个）</p>
-<p>ServletContextListener监听器：用来监听ServletContext域对象的创建和销毁的监听器。</p>
-<p>ServletContext创建：在服务器启动的时候，为每个web应用创建单独的ServletContext对象。</p>
-<p>ServletContext销毁：在服务器关闭的时候，或者项目从web服务器中移除的时候。</p>
-<p>ServletContextListener监听器的方法：</p>
-<p>监听ServletContext对象的创建：</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps3.jpg" alt="img"> </p>
-<p>监听ServletContext对象的销毁：</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps4.jpg" alt="img"> </p>
-<p>编写一个监听器：</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps5.jpg" alt="img"> </p>
-<p>对监听器进行配置（在web.xml中添加，将这个类的全路径复制）：</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps6.jpg" alt="img"> </p>
-<p>ServletContextListener的企业用途：</p>
-<p>1.加载框架的配置文件：Spring框架提供了一个核心监听器ContextLoaderListener。（服务器启动时执行方法，这个方法里的内容就是加载配置文件）</p>
-<p>2.定时任务调度：（服务器启动后进行计时，到点后进行定时任务执行）</p>
-<p>HttpSessionListener监听器：用来监听HttpSession对象的创建和销毁。</p>
-<p>HttpSession的创建：服务器端第一次调用getSession()方法时候。</p>
-<p>HttpSession的销毁：1.非正常关闭服务器（正常关闭服务器session会被序列化，再次启动时会被反序列化，序列化文件可以在work下的localhost中找到）。</p>
-<p>2.Session过期（默认过期时间30分钟，不操作30分钟）。</p>
-<p>3.手动调用session.invalidate()方法。</p>
-<p>HttpSessionListener监听器的方法：</p>
-<p>监听HttpSession对象创建：</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps7.jpg" alt="img"> </p>
-<p>监听HttpSession对象销毁：</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps8.jpg" alt="img"> </p>
-<p>编写一个监听器：</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps9.jpg" alt="img"> </p>
-<p>监听器的配置：</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps10.jpg" alt="img"> </p>
-<p>注意：访问HTML是否会创建Session：不会</p>
-<p>访问JSP是否会创建Session：会（会被转化为servlet，默认调用了getSession方法）</p>
-<p>访问Servlet是否会创建Session    ：不会（默认没有调用getSession方法）</p>
-<p>ServletRequestListener监听器：用来监听ServletRequest对象的创建和销毁</p>
-<p>ServletRequest对象的创建：从客户端向服务器发送一次请求，服务器就会创建request对象。</p>
-<p>ServletRequest对象的销毁：服务器对这次请求作出了响应之后，request对象就销毁了。</p>
-<p>ServletRequestListener监听器的方法：</p>
-<p>监听ServletRequest对象的创建：</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps11.jpg" alt="img"> </p>
-<p>监听ServletRequest对象的销毁：</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps12.jpg" alt="img"> </p>
-<p>编写一个监听器：</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps13.jpg" alt="img"> </p>
-<p>监听器配置：</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps14.jpg" alt="img"> </p>
-<p>注意：</p>
-<p>访问HTML页面是否创建请求对象    ：会</p>
-<p>访问JSP页面是否创建请求对象：会</p>
-<p>访问Servlet是否创建请求对象：会</p>
-<p>实现一个统计当前在线人数的案例：可以用ServletContextListener记录一个count值，这个count值整个项目都能取到。用HttpSessionListene记录count值的变化，当创建一个session时+1，销毁时-1。配置监听器。最后通过${count}输出。</p>
-<p>监听三个域对象的属性变更的监听器：</p>
-<p>1.ServletContextAttributeListener监听ServletContext对象中的属性变更（属性添加，移除，替换）的监听器</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps15.jpg" alt="img"> </p>
-<p>2.HttpSessionAttributeListener监听HttpSession对象中的属性变更（属性添加，移除，替换）的监听器</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps16.jpg" alt="img"> </p>
-<p>3.ServletRequestAttributeListener监听ServletRequest对象中的属性变更（属性添加，移除，替换）的监听器</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps17.jpg" alt="img"> </p>
-<p>演示HttpSessionAttributeListener监听器：</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps18.jpg" alt="img"> </p>
-<p>配置监听器：</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps19.jpg" alt="img"> </p>
-<p>编写实例JSP：</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps20.jpg" alt="img"> </p>
-<p>监听HttpSession中Java类状态改变的监听器</p>
-<p>保存在Session域中的Java类可以有多种状态：绑定到session中；从session中解除绑定；随session对象持久化到一个存储设备中（钝化）；随session对象从一个存储设备中恢复（活化）。</p>
-<p>Servlet规范中定义了两个特殊的监听的接口****来帮助Java类了解自己在Session域中的状态****：</p>
-<p>HttpSessionBindingListener接口</p>
-<p>HttpSessionActivationListener接口</p>
-<p><em><strong>*实现这两个接口的类不需要在web.xml中进行配置。*</strong></em></p>
-<p>HttpSessionBindingListener监听器：监听Java类在HttpSession中的绑定和解除绑定的状态的监听器</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps21.jpg" alt="img"> </p>
-<p>先新建一个bean1类，这个类中有属性name，get和set方法。再让它实现HttpSessionBindingListener接口：</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps22.jpg" alt="img"> </p>
-<p>新建一个jsp页面，在里面新建一个bean1对象，set方法设置这个对象的名字，调用session的setAttribute方法进行绑定（java类写入session）。removeAttribute方法就可以解除绑定。</p>
-<p>HttpSessionActivationListener监听器：监听HttpSession中Java类的钝化和活化监听器。</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps23.jpg" alt="img"> </p>
-<p>（钝化相当于序列化，被写入硬盘）不仅要实现HttpSessionActivationListener接口，还要实现Serializable接口</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps24.jpg" alt="img"> </p>
-<p>应用：节省内存空间，如果有大量的session同时存在，会很耗费空间。可以将其中的一部分序列化保存在硬盘中，当需要用到的时候再反序列化从内存中取到。</p>
-<p>而在正常的开发中，服务器一般不关闭，所以需要手动将一部分的session进行序列化。（正常情况下，只有关闭了服务器，session才会被序列化）所以手动配置完成session的序列化和反序列化：</p>
-<p>配置代码是：</p>
-<Context>
-
-<Manager className="org.apache.catalina.session.PersistentManager" maxIdleSwap="1">
-
-<p>​    <Store className="org.apache.catalina.session.FileStore" directory="itheima"/></p>
-</Manager>
-
-</Context>
-
-<p>//  1分钟不操作，就会序列化到itheima中</p>
-<p>这个Context标签代码可以配置在：</p>
-<p><em><strong>*tomcat/conf/context.xml*</strong></em>    <em><strong>*:所有tomcat下虚拟主机和虚拟目录下的工程都会序列化session*</strong></em></p>
-<p><em><strong>*tomcat/conf/Catalina/localhost/context.xml:localhost虚拟主机下的所有项目会序列化session*</strong></em></p>
-<p><em><strong>*工程/META-INF/context.xml:当前工程才会序列化session。*</strong></em></p>
-<h1 id="过滤器"><a href="#过滤器" class="headerlink" title="*过滤器*"></a><em><strong>*过滤器*</strong></em></h1><p>Filter称为过滤器，它是Servlet技术中最实用的技术，web开发人员通过Filter技术，对web服务器所管理的资源（JSP，Servlet，静态图片或静态html文件）进行拦截，从而实现一些特殊的功能。</p>
-<p>Filter就是过滤从客户端向服务器发送的请求。</p>
-<p>可以进行敏感词汇的禁止，动态页面的缓存等</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps25.jpg" alt="img"> </p>
-<p>Filter将其中的敏感词汇改为**，再继续进行传输</p>
-<p>编写一个Filter：编写一个类实现Filter接口</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps26.jpg" alt="img"> </p>
-<p>对过滤器进行配置：</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps27.jpg" alt="img"> </p>
-<p>/*指全部请求都要执行FilterDemo1。chain.doFilter（request,response）；指放行（没有这个的话什么内容都不会在后面显示）</p>
-<p>FilterChain对象</p>
-<p>FilterChain过滤器链：在一个web应用中，可以开发编写多个Filter，这些Filter组合起来称为是一个过滤器链。</p>
-<p>Web服务器根据Filter在web.xml文件中的注册顺序（mapping的配置顺序）决定先调用那个Filter。依次调用后面的过滤器，如果没有下一个过滤器，调用目标资源</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps28.jpg" alt="img"> </p>
-<p>//假设Filter1，2，3中都有chain.doFilter（request,response）；方法，先执行Filter1，执行到chain.doFilter（request,response）；方法时在执行Filter2，执行到chain.doFilter（request,response）；方法时在执行Filter3，在执行web资源，然后再执行Filter3中chain.doFilter（request,response）；方法后的内容，在执行Filter2中chain.doFilter（request,response）；方法后的内容，Filter1，返回</p>
-<p>Filter的生命周期：Filter的创建和销毁是由web服务器负责。Web应用程序启动的时候，web服务器创建Filter的实例对象。并调用其init方法进行初始化（filter对象只会创建一次，init方法也只会执行一次）。</p>
-<p>每次filter进行拦截的时候，都会执行doFilter的方法。</p>
-<p>当服务器关闭的时候，应用从服务器中移除的时候，服务器会销毁Filter对象。</p>
-<p>FilterConfig对象：用来获得Filter的相关的配置的对象。</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps29.jpg" alt="img"> </p>
-<p>在配置文档中配置过滤器的初始化参数</p>
-<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps30.jpg" alt="img"> </p>
-<p>过滤器的相关配置,这些配置都是在maping中配置</p>
-<p><url-pattern>的配置</p>
-<p>完全路径匹配：以/开始  比如/aaa  /aaa/bbb</p>
-<p>目录匹配：以/开始 以<em>结束  比如/</em>  /aaa/*  /aaa/bbb/*</p>
-<p>扩展名匹配    ：不能以/开始 以<em>开始 比如</em>.jsp  *.do  *.action</p>
-<p><servlet-name>的配置</p>
-<p>专门以Servlet的配置的名称拦截Servlet。（不常用，因为如果需要拦截Servlet，可以在maping配置中写出这个Servlet的路径拦截）</p>
-<p><dispatcher>的配置</p>
-<p>默认的情况下过滤器会拦截请求。如果进行转发（需要拦截这次转发FORWARD）。</p>
-<p>dispatcher的取值</p>
-<p><em><strong>*REQUEST*</strong></em>    <em><strong>*:默认值。默认过滤器拦截的就是请求。*</strong></em></p>
-<p><em><strong>*FORWARD:转发。*</strong></em></p>
-<p>INCLUDE    :页面包含的时候进行拦截</p>
-<p>ERROR    :页面出现全局错误页面跳转的时候进行拦截</p>
-<p>如果想拦截多个，可以多配置几个</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/" data-id="ckpdvjpp5002xnswd9ka74t1i" data-title="WEB之listener和filter" class="article-share-link">分享</a>
-      
-      
-      
     </footer>
   </div>
   
@@ -1976,23 +1566,23 @@
       <ul>
         
           <li>
+            <a href="/2021/06/18/WebRTC%E7%9A%84%E5%AD%A6%E4%B9%A0/">WebRTC的学习</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/18/%E6%B5%81%E5%AA%92%E4%BD%93%E5%8D%8F%E8%AE%AE/">流媒体协议</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/17/1.7.%E7%AE%80%E5%8E%86%E5%AE%8C%E5%96%84/">简历完善</a>
+          </li>
+        
+          <li>
             <a href="/2021/06/08/%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/">搭建网站</a>
           </li>
         
           <li>
             <a href="/2021/06/03/%E6%94%BB%E7%A0%B4%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99/">攻破一个网站</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/">推荐研读书籍</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/17/mqtt%E5%BC%80%E5%8F%91/">mqtt开发</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/30/16.2.Docker%E4%B9%8BPortainer-io/">Docker之Portainer.io</a>
           </li>
         
       </ul>

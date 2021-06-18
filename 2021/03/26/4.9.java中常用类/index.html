@@ -14,7 +14,7 @@
 <meta property="og:description" content="API（Application Programming Interface）概述：就是java提供给我们使用的类，这些类将底层的实现封装了起来，我们不需要关心这些类是如何实现的，只需要学习这些类如何使用，我们可以通过查找帮助文档来了解java提供的API如何使用。 Object类JDK1.0 类层次结构的根类，每个类都直接或者间接继承自Object类。 所有对象（包括数组）都实现了这个类的方法。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-26T11:03:45.000Z">
-<meta property="article:modified_time" content="2021-04-15T03:39:53.731Z">
+<meta property="article:modified_time" content="2021-06-16T00:52:07.417Z">
 <meta property="article:author" content="swx">
 <meta name="twitter:card" content="summary">
   
@@ -483,25 +483,35 @@
 <p>组成规则：</p>
 <p>规则字符在java.util.regex  Pattern类中</p>
 <p>常见组成规则：</p>
-<p>\1. 字符：</p>
+<ol>
+<li>字符：</li>
+</ol>
 <p>x  字符x。举例：’a’ 表示字符a</p>
 <p>\  反斜线字符。因为一个\代表了转义。</p>
 <p>\n  新行（换行）符  （‘\uoooA’）</p>
 <p>\r   回车符  (‘\uoooD’)</p>
-<p>\2. 字符类</p>
+<ol start="2">
+<li>字符类</li>
+</ol>
 <p>[abc]  a、b或c(简单类)  abc中的任意一个，但只能是一个</p>
 <p>[^abc]  任何字符，除了a、b或c（否定）</p>
 <p>[a-zA-Z]  a到z或A到Z，两头的字母包括在内（范围）</p>
 <p>[0-9]  0到9的字符都包括</p>
-<p>\3. 预定义字符类</p>
+<ol start="3">
+<li>预定义字符类</li>
+</ol>
 <p>.  任何字符。如果就是.本身，应该写为. </p>
 <p>\d  数字：[0-9]  在写的时候都是\d表示 因为要先转义。</p>
 <p>\w  单词字符：[a-zA-Z_0-9]  在正则表达式里面组成单词的东西必须由这些东西组成（可以是A-Z,a-z，0-9都行）</p>
-<p>\4. 边界匹配器</p>
+<ol start="4">
+<li>边界匹配器</li>
+</ol>
 <p>^  行的开头</p>
 <p>$  行的结尾</p>
 <p>\b  单词边界  就是不是单词字符的地方。（单词间隔就用这个字符占）</p>
-<p>\5. 数量词</p>
+<ol start="5">
+<li>数量词</li>
+</ol>
 <p>X？  X，一次或一次也没有</p>
 <p>X*  X,零次或多次</p>
 <p>X+  X，一次或多次</p>
@@ -621,7 +631,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/26/4.9.java%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%B1%BB/" data-id="ckpdvjppr004hnswd9zx04xzd" data-title="java中常用类" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/03/26/4.9.java%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%B1%BB/" data-id="ckq1xbdsq004mpwwdcrkkcnmm" data-title="java中常用类" class="article-share-link">分享</a>
       
       
       
@@ -695,23 +705,23 @@
       <ul>
         
           <li>
+            <a href="/2021/06/18/WebRTC%E7%9A%84%E5%AD%A6%E4%B9%A0/">WebRTC的学习</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/18/%E6%B5%81%E5%AA%92%E4%BD%93%E5%8D%8F%E8%AE%AE/">流媒体协议</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/17/1.7.%E7%AE%80%E5%8E%86%E5%AE%8C%E5%96%84/">简历完善</a>
+          </li>
+        
+          <li>
             <a href="/2021/06/08/%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/">搭建网站</a>
           </li>
         
           <li>
             <a href="/2021/06/03/%E6%94%BB%E7%A0%B4%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99/">攻破一个网站</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/">推荐研读书籍</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/17/mqtt%E5%BC%80%E5%8F%91/">mqtt开发</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/30/16.2.Docker%E4%B9%8BPortainer-io/">Docker之Portainer.io</a>
           </li>
         
       </ul>

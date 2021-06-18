@@ -77,6 +77,665 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-19.4.SVN" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/19.4.SVN/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:40:24.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/19.4.SVN/">SVN</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="SVN-版本控制"><a href="#SVN-版本控制" class="headerlink" title="*SVN-版本控制*"></a><em><strong>*SVN-版本控制*</strong></em></h1><p>SVN是Subversion的简称，是一个自由开源的版本控制系统。</p>
+<p>Subversion将文件存放在中心版本库里，这个版本库很像一个普通的<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/566090.htm">文件服务器</a>，不同的是，它可以记录每一次文件和目录的修改情况，这样就可以借此将<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/185060.htm">数据恢复</a>到以前的版本，并可以查看数据的更改细节</p>
+<p>早期版本控制使用的是CVS,后来SVN替代了CVS,随着android兴起，出现Git版本控制工具</p>
+<p><img src="/19.4.SVN/wps1.jpg" alt="img"> </p>
+<p>问题: 怎样让系统允许用户共享信息，而不会让他们因意外而互相干扰？</p>
+<p><em><strong>*1.*</strong>***</em>*复制*<strong><strong><strong>*-*</strong></strong></strong>*修改*<strong><strong><strong>*-*</strong></strong></strong>*合并方案*<strong><strong><strong>*(Subversion*</strong></strong></strong>*默认的模式****<em><strong>*)*</strong></em></p>
+<p>在这种模型里，每一个客户读取项目配置库建立一个私有工作副本——版本库中文件和目录的本地映射。用户并行工作，修改各自的工作副本，最终，各个私有的复制合并在一起，成为最终的版本，这种系统通常可以辅助合并操作，但是最终要靠人工去确定正误。</p>
+<p><em><strong>*2.*</strong>***</em>*锁定*<strong><strong><strong>*-*</strong></strong></strong>*修改*<strong><strong><strong>*-*</strong></strong></strong>*解锁方案****</p>
+<p>在这样的模型里，在一个时间段里配置库的一个文件只允许被一个人修改。 此模式不适合软件开发这种工作。</p>
+<p>SVN架构</p>
+<p><img src="/19.4.SVN/wps2.jpg" alt="img"> </p>
+<p>Subversion支持<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1634.htm">Linux</a>和<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/4821.htm">Windows</a>，更多是安装在Linux下。</p>
+<p>svn服务器有2种运行方式：<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/2106199.htm">独立服务器</a>（source download，这种是个安装包，解压后就可以用）和借助<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/28283.htm">apache</a>（binary packages，这种是二进制的文件，针对不同的操作系统有不同的版本，下载安装就可以用，后面用的就是这个）运行。两种方式各有利弊，用户可以自行选择。</p>
+<p>svn存储版本数据也有2种方式：<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1303712.htm">BDB</a>(一种<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/121511.htm">事务</a>安全型表类型，需要数据库)和<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1633161.htm">FSFS</a>(一种不需要数据库的<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/51839.htm">存储系统</a>)。因为BDB方式在服务器中断时，有可能锁住数据，所以还是FSFS方式更安全一点，我们用的就是FSFS，类似于文件</p>
+<h1 id="SVN的使用"><a href="#SVN的使用" class="headerlink" title="*SVN的使用*"></a><em><strong>*SVN的使用*</strong></em></h1><p>SVN是一种集中式管理代码的版本控制系统，原理就是把代码都保存到一个固定的位置（仓库），每次从这个位置拷贝更新代码，进行编辑；再把修改后的代码提交到该目录中。多人协作开发也是如此。因此需要一个类似Oracle或者Mysql的服务器用于保存和管理库文件（要保存的代码等文件）的服务端——VisualSVN Server（windows上用）。还需要一个用户的操作端，用于提交更新检出代码，常用的有Eclipse的Svn插件，以及TortoiseSVN（小乌龟）。</p>
+<p>SubVersion 官网：<a target="_blank" rel="noopener" href="http://subversion.apache.org/">http://subversion.apache.org/</a></p>
+<p>服务器端-VisualSVN安装与配置</p>
+<p>1.VisualSVN下载：</p>
+<p><img src="/19.4.SVN/wps3.jpg" alt="img"> </p>
+<p>下载好后点击下一步，next进行安装</p>
+<p>2.VisualSVN安装与创建仓库</p>
+<p><img src="/19.4.SVN/wps4.jpg" alt="img"> </p>
+<p>标准版就行，企业版会收费</p>
+<p><img src="/19.4.SVN/wps5.jpg" alt="img"> </p>
+<p>在开始运行中录入 services.msc</p>
+<p><img src="/19.4.SVN/wps6.jpg" alt="img"> </p>
+<p>这个服务要开启</p>
+<p>然后在C盘中的program files下的VisualSVN Server下的bin下的visualSVN Server Manager文件</p>
+<p>也可以在开始运行中查找visualSVN Server Manager就可以打开图形化管理界面</p>
+<p><img src="/19.4.SVN/wps7.jpg" alt="img"> </p>
+<p>3.VisualSVN创建工程目录</p>
+<p><img src="/19.4.SVN/wps8.jpg" alt="img"> </p>
+<p>选择fsfs类型，名字，权限，下一步</p>
+<p>4.VisualSVN权限控制</p>
+<p>创建用户</p>
+<p><img src="/19.4.SVN/wps9.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps10.jpg" alt="img"> </p>
+<p>创建完成之后，可以点击工程名然后右击复制URL路径，浏览器访问就可以看到仓库。可以右击properties选择用户的权限。</p>
+<p>创建组：可能会有很多用户，不便于管理，所以创建了组</p>
+<p><img src="/19.4.SVN/wps11.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps12.jpg" alt="img"> </p>
+<p>分配权限</p>
+<p><img src="/19.4.SVN/wps13.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps14.jpg" alt="img"> </p>
+<p>客户端-TortoiseSVN安装与使用</p>
+<p>它是一个基于windows系统的svn图形化界面</p>
+<p>1.TortoiseSVN下载</p>
+<p>可以在<a target="_blank" rel="noopener" href="http://subversion.apache.org/%E4%B8%8B%E6%89%BE%E5%88%B0%E4%B8%8B%E8%BD%BD">http://subversion.apache.org/下找到下载</a></p>
+<p><img src="/19.4.SVN/wps15.jpg" alt="img"> </p>
+<p>2.TortoiseSVN安装</p>
+<p>安装后需要重启电脑</p>
+<p>检查是否安装成功</p>
+<p><img src="/19.4.SVN/wps16.jpg" alt="img"> </p>
+<p>3.Tortoise SVN常用操作</p>
+<p>浏览仓库</p>
+<p><img src="/19.4.SVN/wps17.jpg" alt="img"> </p>
+<p>这个URL是服务器端的copy的URL</p>
+<p><img src="/19.4.SVN/wps18.jpg" alt="img"> </p>
+<p>正常情况下，在浏览仓库时会要求录入username与password，第二次访问的时候不需要输入，已保存</p>
+<p>我们可以清空svn客户端的缓存：</p>
+<p>新建一个文件夹，右击选择</p>
+<p><img src="/19.4.SVN/wps19.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps20.jpg" alt="img"> </p>
+<p>这样再访问，checkout的时候就需要输入用户名和密码</p>
+<p><img src="/19.4.SVN/wps21.jpg" alt="img"> </p>
+<p>Checkout：检出svn服务器上的项目</p>
+<p>可以先创建一个自己的文件夹，在里面右击选择仓库</p>
+<p><img src="/19.4.SVN/wps22.jpg" alt="img"> </p>
+<p>在本地位置的后面加\bos</p>
+<p>注意：检出后会有一个.svn隐藏目录，这个目录不要随意修改，相当于是配置信息</p>
+<p><img src="/19.4.SVN/wps23.jpg" alt="img"> </p>
+<p>Add</p>
+<p>在这个文件夹中新建一个文件：</p>
+<p><img src="/19.4.SVN/wps24.jpg" alt="img"> </p>
+<p>这样图标的文件代表它没有由svn管理，可以右击选择</p>
+<p><img src="/19.4.SVN/wps25.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps26.jpg" alt="img"> </p>
+<p>这个代表的是它要添加到svn服务器（并没有传到服务器，必须要提交才可以）</p>
+<p>Commit</p>
+<p>上面那个文件右击后会有commit</p>
+<p><img src="/19.4.SVN/wps27.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps28.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps29.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps30.jpg" alt="img">代表添加成功</p>
+<p>Update</p>
+<p>Update，它是更新操作,可以将svn服务器上的内容更新到本地</p>
+<p><img src="/19.4.SVN/wps31.jpg" alt="img"> </p>
+<p>更新(还原)到历史版本</p>
+<p>查看当前日志</p>
+<p><img src="/19.4.SVN/wps32.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps33.jpg" alt="img"> </p>
+<p>也可以通过下面的方式来更新历史版本</p>
+<p><img src="/19.4.SVN/wps34.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps35.jpg" alt="img"> </p>
+<p>选择show log的版本，ok</p>
+<p>Delete</p>
+<p>标记删除操作，本地文件会删除，但是父目录会出现感叹号。我们需要在它的父目录进行提交，才能真正从服务器删除</p>
+<p><img src="/19.4.SVN/wps36.jpg" alt="img"> </p>
+<p>导入导出</p>
+<p><img src="/19.4.SVN/wps37.jpg" alt="img"> </p>
+<p>Import：将本地资源导入到svn服务器</p>
+<p>Export：导出项目，和checkout的区别,它不存在.svn隐藏文件（只是把其中的内容download下来）</p>
+<p>冲突问题与解决（重要）</p>
+<p>多个用户同时操作同一个文件时，就可能产生冲突情况。同时提交会出现</p>
+<p><img src="/19.4.SVN/wps38.jpg" alt="img"> </p>
+<p>然后文件夹会多出来几个文件：</p>
+<p><img src="/19.4.SVN/wps39.jpg" alt="img"> </p>
+<p>HelloWorld.java 它是服务器上的文件与本地文件合并</p>
+<p>HelloWorld.java.mine 本地修改后的文件</p>
+<p>HelloWorld.java.r4 修改前的文件</p>
+<p>HelloWorld.java.r5 对方修改后的文件</p>
+<p>这个冲突产生后如何解决，我们可以采用手动Merge：</p>
+<p>选择带感叹号的文件右击</p>
+<p><img src="/19.4.SVN/wps40.jpg" alt="img"> </p>
+<p>保存，标记已解决冲突。解决冲突后，重新commit.</p>
+<h1 id="客户端-Eclipse-SVN插件安装与使用-重要"><a href="#客户端-Eclipse-SVN插件安装与使用-重要" class="headerlink" title="*客户端-Eclipse SVN插件安装与使用(重要)*"></a><em><strong>*客户端-Eclipse SVN插件安装与使用(重要)*</strong></em></h1><p>下载与安装SVN插件</p>
+<p>在网页上搜索svn eclipse 官网下载一个svn插件,将它直接复制到eclipse安装目录下的dropins中</p>
+<p>我们怎样可以知道svn插件安装成功：</p>
+<p>在eclipse中的window下的preferences中搜索svn</p>
+<p><img src="/19.4.SVN/wps41.jpg" alt="img"> </p>
+<p>Eclipse SVN插件使用</p>
+<p>浏览仓库，将eclipse工程导入到svn服务器</p>
+<p><img src="/19.4.SVN/wps42.jpg" alt="img"> </p>
+<p>在svn资源库研究</p>
+<p><img src="/19.4.SVN/wps43.jpg" alt="img"> </p>
+<p>输入服务器工程的URL</p>
+<p>怎样将eclipse中的工程导入到svn仓库，可以在工程上右键</p>
+<p><img src="/19.4.SVN/wps44.jpg" alt="img"> </p>
+<p>选择服务器的URL。完成后，它其实没有真正的导入，需要我们右击在进行提交才真正导入到svn仓库</p>
+<p>Checkout 导出 导入</p>
+<p>选择SVN资源库研究，点击项目下的文件夹右击，可以进行检出，导出，导入等操作</p>
+<p><img src="/19.4.SVN/wps45.jpg" alt="img"> </p>
+<p>Add  commit  update 更新到历史版本</p>
+<p><img src="/19.4.SVN/wps46.jpg" alt="img"> </p>
+<p>Eclipse的svn插件解决冲突</p>
+<p><img src="/19.4.SVN/wps47.jpg" alt="img"> </p>
+<p>产生了冲突 </p>
+<p>我们在工程上执行更新操作，就可以查看到冲突的文件</p>
+<p><img src="/19.4.SVN/wps48.jpg" alt="img"> </p>
+<p>解决冲突</p>
+<p><img src="/19.4.SVN/wps49.jpg" alt="img"> </p>
+<p>选择编辑冲突，进行编辑时，左边是自己的，右边的东西可以选中，然后点击右上角的图标进行操作。</p>
+<p>编辑完成后进行保存，再标记为冲突解决</p>
+<p><img src="/19.4.SVN/wps50.jpg" alt="img"> </p>
+<p>然后在提交</p>
+<p>理论篇(了解)命令行的方式</p>
+<p>服务器-SubVersion安装与配置</p>
+<p>官网上的source download下载的安装包解压后的目录结构</p>
+<p><img src="/19.4.SVN/wps51.jpg" alt="img"> </p>
+<p>bin目录存放svn相关命令</p>
+<p>​    svnadmin:给服务器管理员使用，创建仓库，帐户等</p>
+<p>​    svnserve:启动svn服务器</p>
+<p>​    svn:客户端命令工具</p>
+<p>iconv目录存放svn依赖插件</p>
+<p>licenses 目录存放版权信息文件</p>
+<p>share存放国际化文件</p>
+<p>当安装完成后，默认情况下会将subversion安装目录bin加入到环境变量path中，如果没有，需要手动添加（这里有一个VisualSVN Server的bin目录，还有现在下载的subversion的bin目录）</p>
+<p><img src="/19.4.SVN/wps52.jpg" alt="img"> </p>
+<p>查看服务器版本号：svnserve –version （注意电脑上有一个VisualSVN Server，还有一个subversion）</p>
+<p><img src="/19.4.SVN/wps53.jpg" alt="img"> </p>
+<p>启动svn服务器</p>
+<p>\1. 在服务器指定目录建立仓库  d:/my-reps</p>
+<p>svnadmin create itcast</p>
+<p>查看仓库目录结构</p>
+<p><img src="/19.4.SVN/wps54.jpg" alt="img"> </p>
+<p>conf 存放当前仓库的配置文件</p>
+<p>db 存放仓库版本的控制文件</p>
+<p>hooks 仓库脚本</p>
+<p>locks 锁文件</p>
+<p>\2. 启动服务</p>
+<p>svnserve –d –r 路径</p>
+<p><img src="/19.4.SVN/wps55.jpg" alt="img"> </p>
+<p>\3. 测试客户端连接服务器，默认端口3690</p>
+<p>svn checkout svn://localhost/itcast</p>
+<p>客户端-命令行方式</p>
+<p>1.checkout</p>
+<p>svn checkout svn://localhost/itcast 默认端口3690</p>
+<p>2.add</p>
+<p><img src="/19.4.SVN/wps56.jpg" alt="img"> </p>
+<p>3.commit</p>
+<p><img src="/19.4.SVN/wps57.jpg" alt="img"> </p>
+<p>直接提交会出错的原因:1.没有日志信息</p>
+<p><img src="/19.4.SVN/wps58.jpg" alt="img"> </p>
+<p>-m添加日志信息，还会出错的原因:权限问题</p>
+<p>我们可以在D:\my-reps\itcast 查找到conf/ svnserve.conf文件，修改其中的权限write，再进行命令输入</p>
+<p><img src="/19.4.SVN/wps59.jpg" alt="img"> </p>
+<p>4.Update操作</p>
+<p><img src="/19.4.SVN/wps60.jpg" alt="img"> </p>
+<p>扩展篇（开发中的svn目录规范）</p>
+<p>svn目录规范</p>
+<p>在visualSVN中创建仓库时，可以选择svn目录结构</p>
+<p><img src="/19.4.SVN/wps61.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps62.jpg" alt="img"> </p>
+<p>Trunk 主干目录，此目录下的文件为基准文件</p>
+<p>Branches 用于开发的分支目录</p>
+<p>Tags 用于发布的版本目录（一般为只读）</p>
+<p>假设有一个项目OA,我们完成了1.0版本，这时就可以打一个tags</p>
+<p>后续我们在OA项目上添加一个新的模块(及时通讯),我们就可以开一个分支,又有一个公司需要在我们OA基础上添加财务管理模块，我们又可以打一个分支。这些分支都在Branches中</p>
+<p>我们后续针对OA的1.0版本在升级，我们不需要原来附加功能,就可以在原来的主干Trunk上继续开发，形成OA2.0版本，开发完成后就可以在打一个tags</p>
+<p>打一个分支或标记</p>
+<p><img src="/19.4.SVN/wps63.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps64.jpg" alt="img"> </p>
+<p>分支的定义规则:</p>
+<p>​    Project name+日期时间+功能点</p>
+<p>Tags的定义规则</p>
+<p>​    Project name+版本号</p>
+<p>​    版本号定义为三段数字编号</p>
+<p>​    xxx.xxx.xxx</p>
+<p>​    第一个:革命性的产品升级版</p>
+<p>​    第二个:新功能版</p>
+<p>​    第三个:修正bug</p>
+<p>切换主干，分支与标记</p>
+<p><img src="/19.4.SVN/wps65.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps66.jpg" alt="img"> </p>
+<p>Tags一般是只读，它代表的是发布的版本，所以我们不要进行改变。</p>
+<p>主干与分支的合并</p>
+<p>如果要将主干内容合并到分支上，我们需要在分支的工作副本上操作。</p>
+<p>如果要将分支的改变合并到主干上，我们需要在主干的工作副本上操作。</p>
+<p>我们的需要是将分支的改变合并到主干上：</p>
+<p><img src="/19.4.SVN/wps67.jpg" alt="img"> </p>
+<p><img src="/19.4.SVN/wps68.jpg" alt="img"> </p>
+<p>注意:在合并时要选择在相应的版本号，合并后，可能会出现冲突，将冲突解决，commit就可以。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/19.4.SVN/" data-id="ckq1xbdre000wpwwdezka156t" data-title="SVN" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-9.9.WEB之上传和下载" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:30:56.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/">WEB之上传和下载</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="文件上传"><a href="#文件上传" class="headerlink" title="*文件上传*"></a><em><strong>*文件上传*</strong></em></h1><p>文件上传：将本地的文件通过流写入到服务器的过程。</p>
+<p>文件上传的技术：</p>
+<p>JSPSmartUpload    ：应用在JSP上的文件上传和下载的组件。</p>
+<p>FileUpload：应用在Java环境上的文件上传的功能。</p>
+<p>Servlet3.0：提供文件上传的功能（前面我们选得都是2.5版本）</p>
+<p>Struts2：提供文件上传的功能</p>
+<p>文件上传的三个要素：</p>
+<p>表单的提交的方式需要是POST</p>
+<p>表单中需要有<input type=”file”>元素，需要有name属性和值。</p>
+<p>表单enctype=”multipart/form-data”</p>
+<p>写一个JSP，再写一个表单form，method为post提交，设置文件上传项，name属性和值，<em><strong>*Content-Type: application/x-www-form-urlencoded*</strong>***</em>*是默认的，改为****enctype=”multipart/form-data”，用HTTPWathch进行抓包分析：</p>
+<p>没有设置enctype属性</p>
+<p>POST /web06/jsp/upload.jsp HTTP/1.1</p>
+<p>Accept: text/html, application/xhtml+xml, <em>/</em></p>
+<p>X-HttpWatch-RID: 22006-10011</p>
+<p>Referer: <a target="_blank" rel="noopener" href="http://localhost:8080/web06/jsp/upload.jsp">http://localhost:8080/web06/jsp/upload.jsp</a></p>
+<p>Accept-Language: zh-CN</p>
+<p>User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko</p>
+<p><em><strong>*Content-Type: application/x-www-form-urlencoded*</strong></em></p>
+<p>Accept-Encoding: gzip, deflate</p>
+<p>Host: localhost:8080</p>
+<p>Content-Length: 53</p>
+<p>DNT: 1</p>
+<p>Connection: Keep-Alive</p>
+<p>Cache-Control: no-cache</p>
+<p>Cookie: JSESSIONID=D51DCB996556C94861B2C72C4D978010</p>
+<p>info=info&amp;upload=C%3A%5CUsers%5Cjt%5CDesktop%5Caa.txt</p>
+<p>没有文件上传中的文件的具体内容</p>
+<p>设置enctype属性：</p>
+<p>POST /web06/jsp/upload.jsp HTTP/1.1</p>
+<p>Accept: text/html, application/xhtml+xml, <em>/</em></p>
+<p>X-HttpWatch-RID: 22006-10026</p>
+<p>Referer: <a target="_blank" rel="noopener" href="http://localhost:8080/web06/jsp/upload.jsp">http://localhost:8080/web06/jsp/upload.jsp</a></p>
+<p>Accept-Language: zh-CN</p>
+<p>User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko</p>
+<p><em><strong>*Content-Type: multipart/form-data;*</strong></em> boundary=—————————7e139d10110a64</p>
+<p>Accept-Encoding: gzip, deflate</p>
+<p>Host: localhost:8080</p>
+<p>Content-Length: 322</p>
+<p>DNT: 1</p>
+<p>Connection: Keep-Alive</p>
+<p>Cache-Control: no-cache</p>
+<p>Cookie: JSESSIONID=D51DCB996556C94861B2C72C4D978010</p>
+<p>—————————–7e139d10110a64</p>
+<p>Content-Disposition: form-data; name=”info”</p>
+<p>aaa</p>
+<p>—————————–7e139d10110a64</p>
+<p>Content-Disposition: form-data; name=”upload”; filename=”C:\Users\jt\Desktop\aa.txt”</p>
+<p>Content-Type: text/plain</p>
+<p>hello world！！！</p>
+<p>—————————–7e139d10110a64–</p>
+<p>—————————–7e139d10110a64代表分割线，将内容分割（分为2块就是三个分割线），–代表结束</p>
+<p>文件上传的原理分析：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps31.jpg" alt="img"> </p>
+<p>//普通项的aaa是jsp页面上写的名字。普通项就是表单中的其他内容，文件上传项是文件上传的相关内容。</p>
+<p>进行一个文件的上传：</p>
+<p>1.引入文件上传的相关的jar包</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps32.jpg" alt="img"> </p>
+<p>2.编写文件上传的JSP页面</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps33.jpg" alt="img"> </p>
+<p>3.编写文件上传的Servlet</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps34.jpg" alt="img"> </p>
+<p>上传的内容没有在工程里，而是直接在文件下。</p>
+<p>文件上传的API</p>
+<p>1.DiskFileItemFactory：磁盘文件项工厂</p>
+<p>构造方法：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps35.jpg" alt="img"> </p>
+<p>DiskFileItemFactory()和DiskFileItemFactory(int sizeThreshold,File repostory)</p>
+<p>sizeThreshold:设置文件上传的缓冲区的大小，默认值为10kb。</p>
+<p>repository:设置文件上传过程中产生临时文件（如果超过了缓冲区的大小，就会产生临时文件）存放的路径。</p>
+<p>方法：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps36.jpg" alt="img"> </p>
+<p>setSizeThreshold()：设置缓冲区的大小</p>
+<p>setRepository()：设置临时文件存放的路径</p>
+<p>举例代码：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps37.jpg" alt="img"> </p>
+<p>上传的文件如果没有超过缓冲区的大小，会直接在上传的目标文件夹下上传成功；如果超过了缓冲区的大小，会在你设定的临时文件下有一个TMP文件，当上传成功时，目标文件夹下会有一个文件，这个TMP文件也不会消失，用来续传或者其他操作。</p>
+<p>2.ServletFileUpload：核心解析类</p>
+<p>构造方法：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps38.jpg" alt="img"> </p>
+<p>方法：</p>
+<p>判断表单的enctype属性是否正确：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps39.jpg" alt="img"> </p>
+<p>解析Request对象，返回一个List集合（每个部分的对象FileItem）：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps40.jpg" alt="img"> </p>
+<p>设置单个文件的大小：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps41.jpg" alt="img"> </p>
+<p>设置上传的文件的总大小：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps42.jpg" alt="img"> </p>
+<p>设置中文文件名上传的乱码的问题（一般不会出现）：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps43.jpg" alt="img"> </p>
+<p>设置监听文件上传的进度：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps44.jpg" alt="img"> </p>
+<p>3.FileItem文件项</p>
+<p>方法：</p>
+<p>判断表单项是普通项还是文件上传项。如果为true代表是普通项：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps45.jpg" alt="img"> </p>
+<p>普通项的方法：</p>
+<p>获得普通项的名称：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps46.jpg" alt="img"> </p>
+<p>获得普通项的值：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps47.jpg" alt="img"> </p>
+<p>文件上传项的方法：</p>
+<p>获得文件上传的文件名的方法：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps48.jpg" alt="img"> </p>
+<p>获得文件上传的文件内容的方法：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps49.jpg" alt="img"> </p>
+<p>获得文件上传的文件的大小：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps50.jpg" alt="img"> </p>
+<p>删除文件上传过程中的临时文件：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps51.jpg" alt="img"> </p>
+<p>JS控制多文件上传：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps52.jpg" alt="img"> </p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps53.jpg" alt="img"> </p>
+<p>文件上传兼容浏览器问题：如果使用IE老版本的浏览器会出现一个文件名称获取错误问题。IE老版本获取文件名称的时候，会带有路径。</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps54.jpg" alt="img"> </p>
+<p>一般的浏览器获得的filename都是aa.txt，但是老版本的IE浏览器是会获得全路径的文件名，会造成报错。</p>
+<p>解决：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps55.jpg" alt="img"> </p>
+<p>//检索\最后出现的坐标，当这个坐标存在的时候，截取这个左边开始到结束的内容</p>
+<p>文件上传同一个目录下文件同名问题：张三向服务器上传了一个文件aa.txt内容是hello world。李四向服务器上传了一个文件aa.txt内容hello Java。后上传的文件将先上传的文件覆盖了。</p>
+<p>使用唯一文件名进行解决：</p>
+<p>UUID的randomUUID方法toString后得到的是一个包含-的字符串（由数字，字母和-组成）</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps56.jpg" alt="img"> </p>
+<p>文件上传同一个目录下文件过多的问题：现在所有的用户都上传文件，如果网站访问量比较大，如果都上传到同一个目录下，在同一个目录下存放的文件太多了，也会对程序有影响（其实打开该目录的时候，都会很卡，更别说读写操作）。</p>
+<p>解决方法：</p>
+<p>进行目录分离：</p>
+<p>按时间分离        ：按月、周、天、小时。</p>
+<p>按用户分离        ：按张三、李四。</p>
+<p>按个数分离        ：一个目录下存放3000个文件。</p>
+<p><em><strong>*按目录分离算法*</strong>***</em>*分离****    <em><strong>*：按照某种特定算法进行分离。*</strong></em></p>
+<p><em><strong>*上传一个文件，得到一个唯一的文件名。*</strong></em></p>
+<p><em><strong>*唯一文件名获取其hashCode值。—–int类型的值（32位*</strong>***</em>*，*<strong><strong><strong>*无论正负*</strong></strong></strong>*）****</p>
+<p><em><strong>*让hashCode的值 &amp; 0xf;—–得出的这个值作为一级目录。*</strong></em></p>
+<p><em><strong>*让hashCode右移4位  &amp; 0xf;—-得出的这个值作为二级目录。*</strong></em></p>
+<p><em><strong>*以此类推。*</strong></em></p>
+<p><em><strong>*分析算法：*</strong></em></p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps57.jpg" alt="img"> </p>
+<p>每级目录下又可以划分为：0000-1111有16个子目录</p>
+<p>代码实现：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps58.jpg" alt="img"> </p>
+<p>一般情况下，服务器是不会关闭的。因为服务器关闭后，会发现存放的上传文件都不见了，所以一般不关闭服务器，或者直接将上传的文件存入到本地磁盘中。</p>
+<h1 id="文件下载"><a href="#文件下载" class="headerlink" title="*文件下载*"></a><em><strong>*文件下载*</strong></em></h1><p>文件下载：将服务器上的一个文件，通过流写入到客户端上。</p>
+<p>文件下载的方式：</p>
+<p>1.使用超链接的方式实现文件的下载：</p>
+<p>在<a href=”文件的路径”>超链接</a></p>
+<p><em><strong>*注意：超链接的方式，如果浏览器不能识别这种格式的文件，*</strong>***</em>*就会*<strong><strong><strong>*提示下载，*</strong></strong></strong>*点击确定，就会下载。*<strong><strong><strong>*如果支持该格式的文件，*</strong></strong></strong>*就会****<em><strong>*直接打开。*</strong></em></p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps59.jpg" alt="img"> </p>
+<p><em><strong>*2.*</strong>***</em>*通过手动编写代码的方式实现文件的下载*<strong><strong><strong>*（*</strong></strong></strong>*无论浏览器支持不支持该格式的文件，都会询问是否下载，点击确定后就是下载****<em><strong>*）*</strong></em></p>
+<p><em><strong>*设置两个头和一个流*</strong>***</em>*：****</p>
+<p><em><strong>*Content-Type*</strong></em>            <em><strong>*:文件的MIME的类型*</strong>***</em>*（*<strong><strong><strong>*可以获取到*</strong></strong></strong>*）****</p>
+<p><em><strong>*Content-Disposition*</strong></em>    <em><strong>*:浏览器支持该格式的文件，提示下载*</strong>***</em>*（*<strong><strong><strong>*固定的格式*</strong></strong></strong>*）****</p>
+<p><em><strong>*设置代表该文件的输入流*</strong>***</em>*(输出流是固定*<strong><strong><strong>*的是**</strong> *<strong>*response.getOutputStream()*</strong></strong></strong>*)****</p>
+<p>文件下载的页面</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps60.jpg" alt="img"> </p>
+<p>文件下载的Servlet</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps61.jpg" alt="img"> </p>
+<p>中文文件的下载：（出现乱码问题）</p>
+<p>因为不同的浏览器对中文文件的下载的编码不一样的：</p>
+<p>IE浏览器采用的是URL编码</p>
+<p>Firefox浏览器采用的是Base64编码</p>
+<p>所以需要判断客户端使用的浏览器的类型：User-Agent请求头可以获得客户端浏览器信息。</p>
+<p>写一个工具类的base64编码方法，再调用这个方法进行转换，因为这个编码方法进行了加密。</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps62.jpg" alt="img"> </p>
+<p>案例：给定目录下的文件下载</p>
+<p>需求：给定一个目录（这个目录可以是任意盘符下的任意路径—这个路径下有多少级目录，每级目录中有多少个文件都是未知的）。将这个路径中的文件显示到页面上，在页面上给每个文件都提供相应的下载的链接，当点击这个链接的时候，对该文件进行下载。</p>
+<p>分析：</p>
+<p>树形结构的遍历，使用队列：根节点都入队然后出队，最后剩余的是叶节点：6 7 8 9 10</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps63.jpg" alt="img"> </p>
+<p>文件列表显示的代码实现：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps64.jpg" alt="img"> </p>
+<p>下载代码的实现：</p>
+<p><img src="/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/wps65.jpg" alt="img"> </p>
+<p>中文名字的文件经过IE浏览器编码时，会将其中的空格转换为加号，所以在这里需要将其中的加号再转换为空格。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/" data-id="ckq1xbds2002ypwwd90o7ggws" data-title="WEB之上传和下载" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-9.8.WEB之listener和filter" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:30:44.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/">WEB之listener和filter</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="监听器"><a href="#监听器" class="headerlink" title="*监听器*"></a><em><strong>*监听器*</strong></em></h1><p>监听器就是一个实现了特定接口的Java类，这个Java类用于监听另一个Java类的方法调用或者属性的改变。当被监听对象发生上述事件后，监听器某个方法将会立即被执行。</p>
+<p>用途：用来监听其他对象的变化的。主要应用在图形化界面开发上。Java中GUI，Android</p>
+<p>监听器的术语：</p>
+<p>事件源：指的是被监听对象（汽车）</p>
+<p>监听器：指的是监听的对象（报警器）</p>
+<p>事件源和监听器绑定：在汽车上安装报警器</p>
+<p>事件：指的是事件源对象的改变（踹了汽车一脚）—-主要功能获得事件源对象。</p>
+<p>例子：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps1.jpg" alt="img"> </p>
+<p>执行过程：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps2.jpg" alt="img"> </p>
+<p>（这里的WindowEvent e就是事件对象，e.getSource可以得到MyFrame的对象）</p>
+<p>Servlet中的监听器：</p>
+<p>在Servlet中定义了多种类型的监听器，它们用于监听的事件源分别是ServletContext、HttpSession和ServletRequest这三个域对象。</p>
+<p>分类：</p>
+<p>1.监听三个域对象的创建和销毁 的监听器（三个）</p>
+<p>2.监听三个域对象的属性变更（属性添加、移除、替换）的监听器（三个）</p>
+<p>3.监听HttpSession中JavaBean的状态改变（钝化、活化、绑定、解除绑定）的监听（两个）</p>
+<p>ServletContextListener监听器：用来监听ServletContext域对象的创建和销毁的监听器。</p>
+<p>ServletContext创建：在服务器启动的时候，为每个web应用创建单独的ServletContext对象。</p>
+<p>ServletContext销毁：在服务器关闭的时候，或者项目从web服务器中移除的时候。</p>
+<p>ServletContextListener监听器的方法：</p>
+<p>监听ServletContext对象的创建：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps3.jpg" alt="img"> </p>
+<p>监听ServletContext对象的销毁：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps4.jpg" alt="img"> </p>
+<p>编写一个监听器：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps5.jpg" alt="img"> </p>
+<p>对监听器进行配置（在web.xml中添加，将这个类的全路径复制）：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps6.jpg" alt="img"> </p>
+<p>ServletContextListener的企业用途：</p>
+<p>1.加载框架的配置文件：Spring框架提供了一个核心监听器ContextLoaderListener。（服务器启动时执行方法，这个方法里的内容就是加载配置文件）</p>
+<p>2.定时任务调度：（服务器启动后进行计时，到点后进行定时任务执行）</p>
+<p>HttpSessionListener监听器：用来监听HttpSession对象的创建和销毁。</p>
+<p>HttpSession的创建：服务器端第一次调用getSession()方法时候。</p>
+<p>HttpSession的销毁：1.非正常关闭服务器（正常关闭服务器session会被序列化，再次启动时会被反序列化，序列化文件可以在work下的localhost中找到）。</p>
+<p>2.Session过期（默认过期时间30分钟，不操作30分钟）。</p>
+<p>3.手动调用session.invalidate()方法。</p>
+<p>HttpSessionListener监听器的方法：</p>
+<p>监听HttpSession对象创建：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps7.jpg" alt="img"> </p>
+<p>监听HttpSession对象销毁：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps8.jpg" alt="img"> </p>
+<p>编写一个监听器：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps9.jpg" alt="img"> </p>
+<p>监听器的配置：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps10.jpg" alt="img"> </p>
+<p>注意：访问HTML是否会创建Session：不会</p>
+<p>访问JSP是否会创建Session：会（会被转化为servlet，默认调用了getSession方法）</p>
+<p>访问Servlet是否会创建Session    ：不会（默认没有调用getSession方法）</p>
+<p>ServletRequestListener监听器：用来监听ServletRequest对象的创建和销毁</p>
+<p>ServletRequest对象的创建：从客户端向服务器发送一次请求，服务器就会创建request对象。</p>
+<p>ServletRequest对象的销毁：服务器对这次请求作出了响应之后，request对象就销毁了。</p>
+<p>ServletRequestListener监听器的方法：</p>
+<p>监听ServletRequest对象的创建：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps11.jpg" alt="img"> </p>
+<p>监听ServletRequest对象的销毁：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps12.jpg" alt="img"> </p>
+<p>编写一个监听器：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps13.jpg" alt="img"> </p>
+<p>监听器配置：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps14.jpg" alt="img"> </p>
+<p>注意：</p>
+<p>访问HTML页面是否创建请求对象    ：会</p>
+<p>访问JSP页面是否创建请求对象：会</p>
+<p>访问Servlet是否创建请求对象：会</p>
+<p>实现一个统计当前在线人数的案例：可以用ServletContextListener记录一个count值，这个count值整个项目都能取到。用HttpSessionListene记录count值的变化，当创建一个session时+1，销毁时-1。配置监听器。最后通过${count}输出。</p>
+<p>监听三个域对象的属性变更的监听器：</p>
+<p>1.ServletContextAttributeListener监听ServletContext对象中的属性变更（属性添加，移除，替换）的监听器</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps15.jpg" alt="img"> </p>
+<p>2.HttpSessionAttributeListener监听HttpSession对象中的属性变更（属性添加，移除，替换）的监听器</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps16.jpg" alt="img"> </p>
+<p>3.ServletRequestAttributeListener监听ServletRequest对象中的属性变更（属性添加，移除，替换）的监听器</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps17.jpg" alt="img"> </p>
+<p>演示HttpSessionAttributeListener监听器：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps18.jpg" alt="img"> </p>
+<p>配置监听器：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps19.jpg" alt="img"> </p>
+<p>编写实例JSP：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps20.jpg" alt="img"> </p>
+<p>监听HttpSession中Java类状态改变的监听器</p>
+<p>保存在Session域中的Java类可以有多种状态：绑定到session中；从session中解除绑定；随session对象持久化到一个存储设备中（钝化）；随session对象从一个存储设备中恢复（活化）。</p>
+<p>Servlet规范中定义了两个特殊的监听的接口****来帮助Java类了解自己在Session域中的状态****：</p>
+<p>HttpSessionBindingListener接口</p>
+<p>HttpSessionActivationListener接口</p>
+<p><em><strong>*实现这两个接口的类不需要在web.xml中进行配置。*</strong></em></p>
+<p>HttpSessionBindingListener监听器：监听Java类在HttpSession中的绑定和解除绑定的状态的监听器</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps21.jpg" alt="img"> </p>
+<p>先新建一个bean1类，这个类中有属性name，get和set方法。再让它实现HttpSessionBindingListener接口：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps22.jpg" alt="img"> </p>
+<p>新建一个jsp页面，在里面新建一个bean1对象，set方法设置这个对象的名字，调用session的setAttribute方法进行绑定（java类写入session）。removeAttribute方法就可以解除绑定。</p>
+<p>HttpSessionActivationListener监听器：监听HttpSession中Java类的钝化和活化监听器。</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps23.jpg" alt="img"> </p>
+<p>（钝化相当于序列化，被写入硬盘）不仅要实现HttpSessionActivationListener接口，还要实现Serializable接口</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps24.jpg" alt="img"> </p>
+<p>应用：节省内存空间，如果有大量的session同时存在，会很耗费空间。可以将其中的一部分序列化保存在硬盘中，当需要用到的时候再反序列化从内存中取到。</p>
+<p>而在正常的开发中，服务器一般不关闭，所以需要手动将一部分的session进行序列化。（正常情况下，只有关闭了服务器，session才会被序列化）所以手动配置完成session的序列化和反序列化：</p>
+<p>配置代码是：</p>
+<Context>
+
+<Manager className="org.apache.catalina.session.PersistentManager" maxIdleSwap="1">
+
+<p>​    <Store className="org.apache.catalina.session.FileStore" directory="itheima"/></p>
+</Manager>
+
+</Context>
+
+<p>//  1分钟不操作，就会序列化到itheima中</p>
+<p>这个Context标签代码可以配置在：</p>
+<p><em><strong>*tomcat/conf/context.xml*</strong></em>    <em><strong>*:所有tomcat下虚拟主机和虚拟目录下的工程都会序列化session*</strong></em></p>
+<p><em><strong>*tomcat/conf/Catalina/localhost/context.xml:localhost虚拟主机下的所有项目会序列化session*</strong></em></p>
+<p><em><strong>*工程/META-INF/context.xml:当前工程才会序列化session。*</strong></em></p>
+<h1 id="过滤器"><a href="#过滤器" class="headerlink" title="*过滤器*"></a><em><strong>*过滤器*</strong></em></h1><p>Filter称为过滤器，它是Servlet技术中最实用的技术，web开发人员通过Filter技术，对web服务器所管理的资源（JSP，Servlet，静态图片或静态html文件）进行拦截，从而实现一些特殊的功能。</p>
+<p>Filter就是过滤从客户端向服务器发送的请求。</p>
+<p>可以进行敏感词汇的禁止，动态页面的缓存等</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps25.jpg" alt="img"> </p>
+<p>Filter将其中的敏感词汇改为**，再继续进行传输</p>
+<p>编写一个Filter：编写一个类实现Filter接口</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps26.jpg" alt="img"> </p>
+<p>对过滤器进行配置：</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps27.jpg" alt="img"> </p>
+<p>/*指全部请求都要执行FilterDemo1。chain.doFilter（request,response）；指放行（没有这个的话什么内容都不会在后面显示）</p>
+<p>FilterChain对象</p>
+<p>FilterChain过滤器链：在一个web应用中，可以开发编写多个Filter，这些Filter组合起来称为是一个过滤器链。</p>
+<p>Web服务器根据Filter在web.xml文件中的注册顺序（mapping的配置顺序）决定先调用那个Filter。依次调用后面的过滤器，如果没有下一个过滤器，调用目标资源</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps28.jpg" alt="img"> </p>
+<p>//假设Filter1，2，3中都有chain.doFilter（request,response）；方法，先执行Filter1，执行到chain.doFilter（request,response）；方法时在执行Filter2，执行到chain.doFilter（request,response）；方法时在执行Filter3，在执行web资源，然后再执行Filter3中chain.doFilter（request,response）；方法后的内容，在执行Filter2中chain.doFilter（request,response）；方法后的内容，Filter1，返回</p>
+<p>Filter的生命周期：Filter的创建和销毁是由web服务器负责。Web应用程序启动的时候，web服务器创建Filter的实例对象。并调用其init方法进行初始化（filter对象只会创建一次，init方法也只会执行一次）。</p>
+<p>每次filter进行拦截的时候，都会执行doFilter的方法。</p>
+<p>当服务器关闭的时候，应用从服务器中移除的时候，服务器会销毁Filter对象。</p>
+<p>FilterConfig对象：用来获得Filter的相关的配置的对象。</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps29.jpg" alt="img"> </p>
+<p>在配置文档中配置过滤器的初始化参数</p>
+<p><img src="/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/wps30.jpg" alt="img"> </p>
+<p>过滤器的相关配置,这些配置都是在maping中配置</p>
+<p><url-pattern>的配置</p>
+<p>完全路径匹配：以/开始  比如/aaa  /aaa/bbb</p>
+<p>目录匹配：以/开始 以<em>结束  比如/</em>  /aaa/*  /aaa/bbb/*</p>
+<p>扩展名匹配    ：不能以/开始 以<em>开始 比如</em>.jsp  *.do  *.action</p>
+<p><servlet-name>的配置</p>
+<p>专门以Servlet的配置的名称拦截Servlet。（不常用，因为如果需要拦截Servlet，可以在maping配置中写出这个Servlet的路径拦截）</p>
+<p><dispatcher>的配置</p>
+<p>默认的情况下过滤器会拦截请求。如果进行转发（需要拦截这次转发FORWARD）。</p>
+<p>dispatcher的取值</p>
+<p><em><strong>*REQUEST*</strong></em>    <em><strong>*:默认值。默认过滤器拦截的就是请求。*</strong></em></p>
+<p><em><strong>*FORWARD:转发。*</strong></em></p>
+<p>INCLUDE    :页面包含的时候进行拦截</p>
+<p>ERROR    :页面出现全局错误页面跳转的时候进行拦截</p>
+<p>如果想拦截多个，可以多配置几个</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/" data-id="ckq1xbds2002wpwwd9xe3768x" data-title="WEB之listener和filter" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-9.7.WEB之cookie和session" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/" class="article-date">
@@ -175,7 +834,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/" data-id="ckpdvjpp4002wnswd06ik74gd" data-title="WEB之cookie和session" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/" data-id="ckq1xbds1002spwwd4tducn95" data-title="WEB之cookie和session" class="article-share-link">分享</a>
       
       
       
@@ -268,7 +927,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/9.6.WEB%E4%B9%8Bajax/" data-id="ckpdvjpp4002vnswd41fpbozv" data-title="WEB之ajax" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.6.WEB%E4%B9%8Bajax/" data-id="ckq1xbds0002ppwwddbjd8dsr" data-title="WEB之ajax" class="article-share-link">分享</a>
       
       
       
@@ -755,7 +1414,7 @@ alert(“hello jquery”);
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/9.5.WEB%E4%B9%8BJQuery/" data-id="ckpdvjppv004qnswd5e1r40rx" data-title="WEB之JQuery" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.5.WEB%E4%B9%8BJQuery/" data-id="ckq1xbdsu004vpwwd7xb7ht0s" data-title="WEB之JQuery" class="article-share-link">分享</a>
       
       
       
@@ -1014,7 +1673,7 @@ alert(“hello jquery”);
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/9.4.WEB%E4%B9%8BJSP/" data-id="ckpdvjpp4002tnswd90h14qre" data-title="WEB之JSP" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.4.WEB%E4%B9%8BJSP/" data-id="ckq1xbds1002upwwdcf0g0g6v" data-title="WEB之JSP" class="article-share-link">分享</a>
       
       
       
@@ -1276,7 +1935,7 @@ alert(“hello jquery”);
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/9.3.WEB%E4%B9%8Bservlet/" data-id="ckpdvjpp3002snswdb24ga6fx" data-title="WEB之servlet" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.3.WEB%E4%B9%8Bservlet/" data-id="ckq1xbds1002rpwwdd4qb4d0f" data-title="WEB之servlet" class="article-share-link">分享</a>
       
       
       
@@ -1400,7 +2059,7 @@ alert(“hello jquery”);
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/9.2.WEB%E4%B9%8Bhttp%E5%8D%8F%E8%AE%AE/" data-id="ckpdvjpp3002qnswdf1cm20r9" data-title="WEB之http协议" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.2.WEB%E4%B9%8Bhttp%E5%8D%8F%E8%AE%AE/" data-id="ckq1xbds0002opwwd6a3l550q" data-title="WEB之http协议" class="article-share-link">分享</a>
       
       
       
@@ -1462,324 +2121,12 @@ alert(“hello jquery”);
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/9.1.WEB%E4%B9%8B%E6%A6%82%E8%BF%B0/" data-id="ckpdvjpp2002onswd8lsocazx" data-title="WEB之概述" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.1.WEB%E4%B9%8B%E6%A6%82%E8%BF%B0/" data-id="ckq1xbdrz002mpwwdf1q48n2u" data-title="WEB之概述" class="article-share-link">分享</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WEB/" rel="tag">WEB</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-4.25.关于递归" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/4.25.%E5%85%B3%E4%BA%8E%E9%80%92%E5%BD%92/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T06:24:06.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/4.25.%E5%85%B3%E4%BA%8E%E9%80%92%E5%BD%92/">关于递归</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>能用循环尽量不用递归</p>
-<p>递归 ：方法定义中调用方法本身的现象。</p>
-<p>方法的嵌套使用，不是递归：Math.max(Math.max(a,b),c);</p>
-<p>这才是递归: public void show(){</p>
-<p>show();</p>
-<p>}</p>
-<p>注意事项：递归一定要有出口，否则就是死递归</p>
-<p>递归的次数不能太多，否则就内存溢出</p>
-<p>构造方法不能递归使用</p>
-<p>递归解决问题的思想：（找到出口和找到规律）</p>
-<p>分解法和合并法</p>
-<p>递归实现：做递归要写一个方法；出口条件；规律</p>
-<p>兔子问题(斐波那契数列)</p>
-<p>A：数组实现</p>
-<p>B：变量的变化实现</p>
-<p>C：递归实现</p>
-<p>回调</p>
-<p>模块间调用</p>
-<p>（1）同步调用：同步调用是最基本并且最简单的一种调用方式，类A的方法a()调用类B的方法b()，一直等待b()方法执行完毕，a()方法继续往下走。<strong>这种调用方式适用于方法b()执行时间不长的情况</strong>，因为b()方法执行时间一长或者直接阻塞的话，a()方法的余下代码是无法执行下去的，这样会造成整个流程的阻塞</p>
-<p>（2）异步调用：异步调用是为了解决同步调用可能出现阻塞，导致整个流程卡住而产生的一种调用方式。<strong>类A的方法方法a()通过新起线程的方式调用类B的方法b()，代码接着直接往下执行</strong>，这样无论方法b()执行时间多久，都不会阻塞住方法a()的执行。但是这种方式，由于方法a()不等待方法b()的执行完成，在方法a()需要方法b()执行结果的情况下（视具体业务而定，有些业务比如启异步线程发个微信通知、刷新一个缓存这种就没必要），必须通过一定的方式对方法b()的执行结果进行监听。在Java中，可以使用Future+Callable的方式做到这一点</p>
-<p>（3）回调：是一种<strong>双向</strong>的调用方式</p>
-<ul>
-<li><p><strong>类A的a()方法调用类B的b()方法</strong></p>
-</li>
-<li><p><strong>类B的b()方法执行完毕主动调用类A的callback()方法</strong></p>
-</li>
-</ul>
-<p>例子</p>
-<p>1.回调接口：public interface Callback {  public void tellAnswer(int answer); }</p>
-<p>2.定义一个老师对象，实现Callback接口：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Teacher</span> <span class="keyword">implements</span> <span class="title">Callback</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">      <span class="keyword">private</span> Student student;</span><br><span class="line">      </span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="title">Teacher</span><span class="params">(Student student)</span> </span>&#123;</span><br><span class="line">          <span class="keyword">this</span>.student = student;</span><br><span class="line">     &#125;</span><br><span class="line">     </span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askQuestion</span><span class="params">()</span> </span>&#123;<span class="comment">//问问题方法askQuestion()，即向学生问问题</span></span><br><span class="line">         student.resolveQuestion(<span class="keyword">this</span>);</span><br><span class="line">     &#125;</span><br><span class="line">     </span><br><span class="line">     <span class="meta">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">tellAnswer</span><span class="params">(<span class="keyword">int</span> answer)</span> </span>&#123;<span class="comment">//回调接口tellAnswer(int answer)，即学生回答完毕问题之后，老师要做的事情</span></span><br><span class="line">        System.out.println(<span class="string">&quot;知道了，你的答案是&quot;</span> + answer);</span><br><span class="line">     &#125;</span><br><span class="line">    </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<p>3.定义一个学生接口，学生当然是解决问题，但是接收一个Callback参数，这样学生就知道解决完毕问题向谁报告</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Student</span> </span>&#123;     </span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">resolveQuestion</span><span class="params">(Callback callback)</span></span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<p>4.定义一个学生的实现类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Ricky</span> <span class="keyword">implements</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">resolveQuestion</span><span class="params">(Callback callback)</span> </span>&#123;</span><br><span class="line">          <span class="comment">// 模拟解决问题</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">             Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">         &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">             </span><br><span class="line">         &#125;</span><br><span class="line">         </span><br><span class="line">         <span class="comment">// 回调，告诉老师作业写了多久</span></span><br><span class="line">         callback.tellAnswer(<span class="number">3</span>);</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>demo：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CallbackTest</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">     <span class="meta">@Test</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCallback</span><span class="params">()</span> </span>&#123;</span><br><span class="line">         Student student = <span class="keyword">new</span> Ricky();</span><br><span class="line">         Teacher teacher = <span class="keyword">new</span> Teacher(student);</span><br><span class="line">        </span><br><span class="line">        teacher.askQuestion();</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>回调的核心就是回调方将本身即this传递给调用方</strong></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.25.%E5%85%B3%E4%BA%8E%E9%80%92%E5%BD%92/" data-id="ckpdvjpox0025nswd2pdbcsei" data-title="关于递归" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-3.1.java开发工具之eclipse" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/3.1.java%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E4%B9%8Beclipse/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T06:23:57.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/3.1.java%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E4%B9%8Beclipse/">java开发工具</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>集成开发环境IDE（Integrated Development Environment）：把开发，运行，编译集成在一起</p>
-<h2 id="Eclipse"><a href="#Eclipse" class="headerlink" title="Eclipse"></a>Eclipse</h2><p>Eclipse是一种可扩展的开放源代码的IDE。</p>
-<p>特点：免费，纯JAVA语言编写，免安装，扩展性强。由OTI和IBM公司开发。</p>
-<p>（//CS版客户端服务器，BS版网络端服务器）</p>
-<h3 id="Eclipse的使用："><a href="#Eclipse的使用：" class="headerlink" title="Eclipse的使用："></a>Eclipse的使用：</h3><p>选择工作空间（其实就是源代码所在的目录）</p>
-<p>代码以项目为单位，创建项目，创建包，创建类，编写代码。</p>
-<p>是自动编译，在保存的那一刻就会被编译。</p>
-<p>运行：1.点击bug图标后面的内在三角形按钮</p>
-<p>​            2.点击Run菜单下的run，或者快捷键CTRL+F11</p>
-<p>​            3.在要运行的文件或文件内容中右击选择Run as-Java Application</p>
-<p>​            当出现console控制台时，表示运行成功。</p>
-<p>汉化：在dropins目录下解压插件即可。</p>
-<p>语法检查：红色波浪线：错误的源代码（必须解决）</p>
-<p>黄色波浪线：未使用的成员或有安全隐患的成员（可以不管）</p>
-<p>视窗：每一个基本的窗体被称为视窗</p>
-<p>PackageExplorer  显示项目的结构，包，类，及资源</p>
-<p>Outline：显示类的结构，方便查找，识别，修改</p>
-<p>Console：显示程序运行的结果</p>
-<p>Problems：显示所有的语法及错误存在的位置</p>
-<p>Hierarchy：显示java继承层次结构，选中类后按F4</p>
-<p>视图：是由某些视窗组合而成的：Java视图，Debug视图</p>
-<p>程序的编译和运行的环境配置：（一般不会改）window–Preferences–Java</p>
-<p>编译环境：Compiles：默认选中的就是最高版本。</p>
-<p>运行环境：Installed JREs：默认会找到你安装的那个JDK。建议配置java的环境变量。</p>
-<p>低编译，高运行：可以。</p>
-<p>高编译，低运行：不可以。所以建议编译和运行的版本一致（都选java8）。</p>
-<p>去掉默认注释：widow–Prederences–Java–Code Style–Code Templates    选择不想要的内容，通过右边Edit编辑。（只删除注释部分，不是注释部分的不要删除）</p>
-<p>行号的显示和隐藏：在代码区域的最左边的空白区域，右键–Show Line Numbers</p>
-<p>字体的大小和颜色：window–Preferences–General–Appearance–Colors And Fonts–</p>
-<p>窗体弄乱了：window–Reset Perspective</p>
-<p>控制台没了：window–show View-console</p>
-<h3 id="快捷键："><a href="#快捷键：" class="headerlink" title="快捷键："></a>快捷键：</h3><p>内容辅助建：</p>
-<p>​    Alt+/  起提示作用</p>
-<p>​    main+Alt+/</p>
-<p>常用快捷键：</p>
-<p>​    格式化（让格式看起来更标准规范）：  ctrl+shift+f  或者在代码区域内右键–source–Format</p>
-<p>​    导入包（当你用到其他包内东西时）：  ctrl+shift+o  </p>
-<p>​    注释ctrl+shift+c （选中后按，批量注释掉）   ctrl+/  （单行注释掉）</p>
-<p>​    代码上下移动  选中代码alt+上/下箭头</p>
-<p>查看源码：选中类名（F3或者Ctrl+鼠标点击）</p>
-<p><strong>如何提高开发效率：</strong></p>
-<p>自带生成构造方法：</p>
-<p>​    无参构造：在代码区域右键–source–Generate Constructors form Superclass      或者alt+shift+s 再按c</p>
-<p>​    带参构造：在代码区域右键–source–Generate Constructors using fields..–finish     或者alt+shift+s  再按o</p>
-<p>​    自动生成get/set方法：在代码区域右键–source–Generate Getters and Setters       或者alt+shift+s  再按r 在全选 再回车    </p>
-<p>​    快捷键操作：alt+shift+s  再看那个词条下面有下划线对应的就是那个字母的快捷键。</p>
-<p>在创建一个新类的时候 可以选择继承的父类和实现的接口名，选中后会直接生成。</p>
-<p>制作帮助文档：</p>
-<p>​    1.编写源程序</p>
-<ol start="2">
-<li><p>针对源程序添加文档注释</p>
-</li>
-<li><p>选中项目–右键–Export–java–javadoc（后缀一定要是\doc）–Finish</p>
-</li>
-</ol>
-<p>Eclipse中打jar包并使用jar包：（当想用其他项目的class时，无法直接引用或者导包，就可以将其他项目的东西打包成jar包）</p>
-<p>jar是多个class文件的压缩包。是别人写好的东西。</p>
-<p>打jar包：选中项目–右键–Export–java–jar–自己指定一个路径和一个名称–Finish</p>
-<p>使用jar包：复制到项目路径下（ctrl+c，ctrl+v），添加至构建路径（右键–build path–add to build path）。</p>
-<p>一般来说，jar包和doc是配套使用的。</p>
-<p>删除项目：选中项目–右键–删除（选中的话是从硬盘上删除，不选的话是只从项目区域中删除）</p>
-<p>导入项目：项目区域内右键–import–General展开找到Existing Projects into Workspace–点击next选择要导入的项目（整个项目即项目的名称）</p>
-<p>注意事项：</p>
-<p>​    查看项目所在路径：选中–右键–Properties–Resource–Location</p>
-<p>​    导入项目时，项目区域中不能出现同名的项目（新建或者导入），自己随意建立的文件夹是不能作为项目导入的（没有配置文件的）</p>
-<p>​    修改项目时，不要随意修改项目名称，非要修改时，不要忘记把项目中的配置文件.projcet中的   <name> 修改后的项目名称  </name></p>
-<p>Debug调试：</p>
-<p>作用：调试程序；查看程序的执行流程</p>
-<p>断点：就是一个标记，从哪里开始</p>
-<p>设置断点：想看哪个程序，就在那个有效程序的左边双击即可。（<strong>初学时先在每个方法的第一条语句加断点</strong>）</p>
-<p>Debug视图：</p>
-<p>Debug：断点测试的地方。按F6或者按↓，跳到下一条语句（一次看一行）</p>
-<p>Variables：查看程序的变量变化</p>
-<p>xxx.java：被查看的源文件</p>
-<p>Console：控制台</p>
-<p>去除断点：再次双击即可；多个断点时进入debug视图中的variables界面中的Breakpoints点击，看到所有的断点，点击双×。（单x就是删除一个断点）</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/3.1.java%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E4%B9%8Beclipse/" data-id="ckpdvjpop001hnswd7b8ffw5n" data-title="java开发工具" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Eclipse/" rel="tag">Eclipse</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-25.设计模式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/25.%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T06:23:42.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/25.%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>设计原则：都是为了提高代码的维护性，扩展性，复用性</p>
-<p>1.单一职责原则：高内聚，低耦合  </p>
-<p>每个类只有一个职责，对外只能提供一种功能，而引起类变化的原因只有一个  </p>
-<p>所有的设计模式都遵循这一原则</p>
-<p>2.开闭原则：一个对象对扩展开放，对修改关闭</p>
-<p>对类的改动是通过增加代码进行的，而不是修改现有代码 </p>
-<p>借助于抽象和多态，把可能变化的内容抽象出来，从而使抽象的部分相对稳定，而具体的实现是可以改变和扩展的。</p>
-<p>\3. 里氏替换原则：在任何父类出现的地方都可以用它的子类来替代</p>
-<p>同一个继承体系中的对象应该有共同的行为特征</p>
-<p>4.依赖注入原则：要依赖于抽象，不要依赖于具体实现<br>在应用程序中，所有的类如果使用或依赖于其他类，则应依赖于这些其他类的抽象类，而不是具体类。这就要求我们在编程的时候针对抽象类或接口编程，而不是针对具体实现编程</p>
-<p>5.接口分离原则：不应该强迫程序依赖它们不需要使用的方法<br>一个接口不需要提供太多的行为，一个接口应该只提供一种对外的功能，不应该把所有的操作都封装到一个接口中。</p>
-<p>6.迪米特原则：一个对象应当对其他对象尽可能少的了解<br>降低各个对象之间的耦合，提高系统的可维护性。在模块之间应该只通过接口编程，而不理会模块的内部工作原理，它可以使各个模块耦合度降到最低，促进软件的复用</p>
-<p>设计模式</p>
-<p>设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计<em><strong>*经验的总结*</strong></em></p>
-<p>设计模式不是一种方法和技术，而是一种思想。设计模式和具体的语言无关，学习设计模式就是要建立面向对象的思想，尽可能的面向接口编程，低耦合，高内聚，使设计的程序可复用</p>
-<p>要素：</p>
-<p>名字：必须有一个简单，有意义的名字</p>
-<p>问题：描述在何时使用模式</p>
-<p>解决方案：描述设计的组成部分以及如何解决问题</p>
-<p>效果：描述模式的效果以及优缺点</p>
-<p>分类：</p>
-<p>1.创建型模式：对象的创建 6个</p>
-<p>简单工厂模式，工厂方法模式，抽象工厂模式，建造者模式，原型模式，单例模式</p>
-<p>2.结构型模式：对象的组成(结构) 7个<br>    外观模式，适配器模式，代理模式，装饰模式，桥接模式，组合模式，享元模式</p>
-<p>3.行为型模式：对象的行为 10个</p>
-<p>模版方法模式，观察者模式，状态模式，职责链模式，命令模式，访问者模式，策略模式，备忘录模式，迭代器模式，解释器模式</p>
-<p>几种设计模式：</p>
-<p>1.简单工厂模式（静态工厂方法模式） （接口）</p>
-<p>它定义一个具体的工厂类负责创建一些类的实例<br>优点：客户端不需要在负责对象的创建，从而明确了各个类的职责</p>
-<p>缺点：这个静态工厂类负责所有对象的创建，如果有新的对象增加，或者某些对象的创建方式不同，就需要不断的修改工厂类，不利于后期的维护</p>
-<p>\2. 工厂方法模式 （接口）<br>工厂方法模式中抽象工厂类负责定义创建对象的接口，具体对象的创建工作由继承抽象工厂的具体类实现。</p>
-<p>优点：客户端不需要在负责对象的创建，从而明确了各个类的职责，如果有新的对象增加，只需要增加一个具体的类和具体的工厂类即可，不影响已有的代码，后期维护容易，增强了系统的扩展性</p>
-<p>缺点：需要额外的编写代码，增加了工作量</p>
-<p>\3. 单例设计模式 （多线程）<br>单例模式就是要确保类在内存中只有一个对象，该实例必须自动创建，并且对外提供。</p>
-<p>如何实现类在内存中只有一个对象：把构造方法私有；在成员位置自己创建一个对象；通过一个公共的方法让外界访问（为了保证外界能够直接使用该方法，加静态（静态方法只能调静态变量，所以造的变量要用static修饰，为了不让外界直接访问修改这个变量，所以还要加private修饰））</p>
-<p>优点：在系统内存中只存在一个对象，因此可以节约系统资源，对于一些需要频繁创建和销毁的对象单例模式无疑可以提高系统的性能。</p>
-<p>缺点：没有抽象层，因此扩展很难；职责过重，在一定程序上违背了单一职责</p>
-<p>单例设计模式分类：</p>
-<p>饿汉式：类一加载就创建对象（开发用，因为是一种不会出问题的单例模式）</p>
-<p>代码：</p>
-<p><em><strong>*public*</strong></em> <em><strong>*class*</strong></em> SingleDemo {</p>
-<p>​    <em><strong>*private*</strong></em> SingleDemo() {</p>
-<p>​    }</p>
-<p>​    <em><strong>*private*</strong></em> <em><strong>*static*</strong></em> SingleDemo <strong>s</strong> = <em><strong>*new*</strong></em> SingleDemo();</p>
-<p>​    <em><strong>*public*</strong></em> <em><strong>*static*</strong></em> SingleDemo getSingleDemo() {</p>
-<p>​        <em><strong>*return*</strong></em> <strong>s</strong>;</p>
-<p>​    }</p>
-<p>}</p>
-<p>懒汉式：用的时候，才去创建（面试用，因为可能会出问题）</p>
-<p>懒加载思想(延迟加载)</p>
-<p>线程安全问题 需要在方法上加synchronized</p>
-<p>代码：</p>
-<p><em><strong>*public*</strong></em> <em><strong>*class*</strong></em> SingleDemo2 {</p>
-<p>​    <em><strong>*private*</strong></em> SingleDemo2() {</p>
-<p>​    }</p>
-<p>​    <em><strong>*private*</strong></em> <em><strong>*static*</strong></em> SingleDemo2 <strong>s</strong> = <em><strong>*null*</strong></em>;</p>
-<p>​    <em><strong>*public*</strong></em> <em><strong>*synchronized*</strong></em> <em><strong>*static*</strong></em> SingleDemo2 getSingleDemo2() {</p>
-<p>​        <em><strong>*if*</strong></em> (<strong>s</strong> == <em><strong>*null*</strong></em>) {</p>
-<p>​            <strong>s</strong> = <em><strong>*new*</strong></em> SingleDemo2();</p>
-<p>​        }</p>
-<p>​        <em><strong>*return*</strong></em> <strong>s</strong>;</p>
-<p>​    }</p>
-<p>}</p>
-<p>Runtime类就是饿汉式</p>
-<p>每个 Java 应用程序都有一个 Runtime 类实例，使应用程序能够与其运行的环境相连接</p>
-<p>应用程序不能创建自己的 Runtime 类实例</p>
-<p>方法：</p>
-<p>public Process exec(String command)  调用dos命名比如：”notepad”</p>
-<p>\4. 模版设计模式（抽象类）<br>模版方法模式就是定义一个算法的骨架，而将具体的算法延迟到子类中来实现</p>
-<p>优点：使用模版方法模式，在定义算法骨架的同时，可以很灵活的实现具体的算法，满足用户灵活多变的需求</p>
-<p>缺点：如果算法骨架有修改的话，则需要修改抽象类</p>
-<p>\5. 装饰设计模式（IO流）<br>装饰模式就是使用被装饰类的一个子类的实例，在客户端将这个子类的实例交给装饰类。是继承的替代方案</p>
-<p>优点：使用装饰模式，可以提供比继承更灵活的扩展对象的功能，它可以动态的添加对象的功能，并且可以随意的组合这些功能</p>
-<p>缺点：正因为可以随意组合，所以就可能出现一些不合理的逻辑</p>
-<p>\6. 适配器设计模式（GUI）<br>将一个类的接口转换成另外一个客户希望的接口。从而使原来不能直接调用的接口变的可以调用。</p>
-<p>接口（方法比较多）–适配器类（实现接口，仅仅空实现）–实现类（用哪个重写哪个）</p>
-<p>优点：让本来不适合使用的接口变得适合使用</p>
-<p>缺点：一次只能适配一个类，使用有一定的局限性</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/25.%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" data-id="ckpdvjpoo001enswd7c2m8pef" data-title="设计模式" class="article-share-link">分享</a>
-      
-      
-      
     </footer>
   </div>
   
@@ -1838,23 +2185,23 @@ alert(“hello jquery”);
       <ul>
         
           <li>
+            <a href="/2021/06/18/WebRTC%E7%9A%84%E5%AD%A6%E4%B9%A0/">WebRTC的学习</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/18/%E6%B5%81%E5%AA%92%E4%BD%93%E5%8D%8F%E8%AE%AE/">流媒体协议</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/17/1.7.%E7%AE%80%E5%8E%86%E5%AE%8C%E5%96%84/">简历完善</a>
+          </li>
+        
+          <li>
             <a href="/2021/06/08/%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/">搭建网站</a>
           </li>
         
           <li>
             <a href="/2021/06/03/%E6%94%BB%E7%A0%B4%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99/">攻破一个网站</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/">推荐研读书籍</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/17/mqtt%E5%BC%80%E5%8F%91/">mqtt开发</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/30/16.2.Docker%E4%B9%8BPortainer-io/">Docker之Portainer.io</a>
           </li>
         
       </ul>

@@ -77,6 +77,318 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-4.25.关于递归" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/4.25.%E5%85%B3%E4%BA%8E%E9%80%92%E5%BD%92/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:24:06.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/4.25.%E5%85%B3%E4%BA%8E%E9%80%92%E5%BD%92/">关于递归</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>能用循环尽量不用递归</p>
+<p>递归 ：方法定义中调用方法本身的现象。</p>
+<p>方法的嵌套使用，不是递归：Math.max(Math.max(a,b),c);</p>
+<p>这才是递归: public void show(){</p>
+<p>show();</p>
+<p>}</p>
+<p>注意事项：递归一定要有出口，否则就是死递归</p>
+<p>递归的次数不能太多，否则就内存溢出</p>
+<p>构造方法不能递归使用</p>
+<p>递归解决问题的思想：（找到出口和找到规律）</p>
+<p>分解法和合并法</p>
+<p>递归实现：做递归要写一个方法；出口条件；规律</p>
+<p>兔子问题(斐波那契数列)</p>
+<p>A：数组实现</p>
+<p>B：变量的变化实现</p>
+<p>C：递归实现</p>
+<p>回调</p>
+<p>模块间调用</p>
+<p>（1）同步调用：同步调用是最基本并且最简单的一种调用方式，类A的方法a()调用类B的方法b()，一直等待b()方法执行完毕，a()方法继续往下走。<strong>这种调用方式适用于方法b()执行时间不长的情况</strong>，因为b()方法执行时间一长或者直接阻塞的话，a()方法的余下代码是无法执行下去的，这样会造成整个流程的阻塞</p>
+<p>（2）异步调用：异步调用是为了解决同步调用可能出现阻塞，导致整个流程卡住而产生的一种调用方式。<strong>类A的方法方法a()通过新起线程的方式调用类B的方法b()，代码接着直接往下执行</strong>，这样无论方法b()执行时间多久，都不会阻塞住方法a()的执行。但是这种方式，由于方法a()不等待方法b()的执行完成，在方法a()需要方法b()执行结果的情况下（视具体业务而定，有些业务比如启异步线程发个微信通知、刷新一个缓存这种就没必要），必须通过一定的方式对方法b()的执行结果进行监听。在Java中，可以使用Future+Callable的方式做到这一点</p>
+<p>（3）回调：是一种<strong>双向</strong>的调用方式</p>
+<ul>
+<li><p><strong>类A的a()方法调用类B的b()方法</strong></p>
+</li>
+<li><p><strong>类B的b()方法执行完毕主动调用类A的callback()方法</strong></p>
+</li>
+</ul>
+<p>例子</p>
+<p>1.回调接口：public interface Callback {  public void tellAnswer(int answer); }</p>
+<p>2.定义一个老师对象，实现Callback接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Teacher</span> <span class="keyword">implements</span> <span class="title">Callback</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">      <span class="keyword">private</span> Student student;</span><br><span class="line">      </span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="title">Teacher</span><span class="params">(Student student)</span> </span>&#123;</span><br><span class="line">          <span class="keyword">this</span>.student = student;</span><br><span class="line">     &#125;</span><br><span class="line">     </span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">askQuestion</span><span class="params">()</span> </span>&#123;<span class="comment">//问问题方法askQuestion()，即向学生问问题</span></span><br><span class="line">         student.resolveQuestion(<span class="keyword">this</span>);</span><br><span class="line">     &#125;</span><br><span class="line">     </span><br><span class="line">     <span class="meta">@Override</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">tellAnswer</span><span class="params">(<span class="keyword">int</span> answer)</span> </span>&#123;<span class="comment">//回调接口tellAnswer(int answer)，即学生回答完毕问题之后，老师要做的事情</span></span><br><span class="line">        System.out.println(<span class="string">&quot;知道了，你的答案是&quot;</span> + answer);</span><br><span class="line">     &#125;</span><br><span class="line">    </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.定义一个学生接口，学生当然是解决问题，但是接收一个Callback参数，这样学生就知道解决完毕问题向谁报告</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Student</span> </span>&#123;     </span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">resolveQuestion</span><span class="params">(Callback callback)</span></span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>4.定义一个学生的实现类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Ricky</span> <span class="keyword">implements</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">resolveQuestion</span><span class="params">(Callback callback)</span> </span>&#123;</span><br><span class="line">          <span class="comment">// 模拟解决问题</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">             Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">         &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">             </span><br><span class="line">         &#125;</span><br><span class="line">         </span><br><span class="line">         <span class="comment">// 回调，告诉老师作业写了多久</span></span><br><span class="line">         callback.tellAnswer(<span class="number">3</span>);</span><br><span class="line">     &#125;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>demo：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CallbackTest</span> </span>&#123;</span><br><span class="line"> </span><br><span class="line">     <span class="meta">@Test</span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCallback</span><span class="params">()</span> </span>&#123;</span><br><span class="line">         Student student = <span class="keyword">new</span> Ricky();</span><br><span class="line">         Teacher teacher = <span class="keyword">new</span> Teacher(student);</span><br><span class="line">        </span><br><span class="line">        teacher.askQuestion();</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>回调的核心就是回调方将本身即this传递给调用方</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.25.%E5%85%B3%E4%BA%8E%E9%80%92%E5%BD%92/" data-id="ckq1xbdrr0024pwwdeoup8kxe" data-title="关于递归" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-3.1.java开发工具之eclipse" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/3.1.java%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E4%B9%8Beclipse/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:23:57.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/3.1.java%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E4%B9%8Beclipse/">java开发工具</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>集成开发环境IDE（Integrated Development Environment）：把开发，运行，编译集成在一起</p>
+<h2 id="Eclipse"><a href="#Eclipse" class="headerlink" title="Eclipse"></a>Eclipse</h2><p>Eclipse是一种可扩展的开放源代码的IDE。</p>
+<p>特点：免费，纯JAVA语言编写，免安装，扩展性强。由OTI和IBM公司开发。</p>
+<p>（//CS版客户端服务器，BS版网络端服务器）</p>
+<h3 id="Eclipse的使用："><a href="#Eclipse的使用：" class="headerlink" title="Eclipse的使用："></a>Eclipse的使用：</h3><p>选择工作空间（其实就是源代码所在的目录）</p>
+<p>代码以项目为单位，创建项目，创建包，创建类，编写代码。</p>
+<p>是自动编译，在保存的那一刻就会被编译。</p>
+<p>运行：1.点击bug图标后面的内在三角形按钮</p>
+<p>​            2.点击Run菜单下的run，或者快捷键CTRL+F11</p>
+<p>​            3.在要运行的文件或文件内容中右击选择Run as-Java Application</p>
+<p>​            当出现console控制台时，表示运行成功。</p>
+<p>汉化：在dropins目录下解压插件即可。</p>
+<p>语法检查：红色波浪线：错误的源代码（必须解决）</p>
+<p>黄色波浪线：未使用的成员或有安全隐患的成员（可以不管）</p>
+<p>视窗：每一个基本的窗体被称为视窗</p>
+<p>PackageExplorer  显示项目的结构，包，类，及资源</p>
+<p>Outline：显示类的结构，方便查找，识别，修改</p>
+<p>Console：显示程序运行的结果</p>
+<p>Problems：显示所有的语法及错误存在的位置</p>
+<p>Hierarchy：显示java继承层次结构，选中类后按F4</p>
+<p>视图：是由某些视窗组合而成的：Java视图，Debug视图</p>
+<p>程序的编译和运行的环境配置：（一般不会改）window–Preferences–Java</p>
+<p>编译环境：Compiles：默认选中的就是最高版本。</p>
+<p>运行环境：Installed JREs：默认会找到你安装的那个JDK。建议配置java的环境变量。</p>
+<p>低编译，高运行：可以。</p>
+<p>高编译，低运行：不可以。所以建议编译和运行的版本一致（都选java8）。</p>
+<p>去掉默认注释：widow–Prederences–Java–Code Style–Code Templates    选择不想要的内容，通过右边Edit编辑。（只删除注释部分，不是注释部分的不要删除）</p>
+<p>行号的显示和隐藏：在代码区域的最左边的空白区域，右键–Show Line Numbers</p>
+<p>字体的大小和颜色：window–Preferences–General–Appearance–Colors And Fonts–</p>
+<p>窗体弄乱了：window–Reset Perspective</p>
+<p>控制台没了：window–show View-console</p>
+<h3 id="快捷键："><a href="#快捷键：" class="headerlink" title="快捷键："></a>快捷键：</h3><p>内容辅助建：</p>
+<p>​    Alt+/  起提示作用</p>
+<p>​    main+Alt+/</p>
+<p>常用快捷键：</p>
+<p>​    格式化（让格式看起来更标准规范）：  ctrl+shift+f  或者在代码区域内右键–source–Format</p>
+<p>​    导入包（当你用到其他包内东西时）：  ctrl+shift+o  </p>
+<p>​    注释ctrl+shift+c （选中后按，批量注释掉）   ctrl+/  （单行注释掉）</p>
+<p>​    代码上下移动  选中代码alt+上/下箭头</p>
+<p>查看源码：选中类名（F3或者Ctrl+鼠标点击）</p>
+<p><strong>如何提高开发效率：</strong></p>
+<p>自带生成构造方法：</p>
+<p>​    无参构造：在代码区域右键–source–Generate Constructors form Superclass      或者alt+shift+s 再按c</p>
+<p>​    带参构造：在代码区域右键–source–Generate Constructors using fields..–finish     或者alt+shift+s  再按o</p>
+<p>​    自动生成get/set方法：在代码区域右键–source–Generate Getters and Setters       或者alt+shift+s  再按r 在全选 再回车    </p>
+<p>​    快捷键操作：alt+shift+s  再看那个词条下面有下划线对应的就是那个字母的快捷键。</p>
+<p>在创建一个新类的时候 可以选择继承的父类和实现的接口名，选中后会直接生成。</p>
+<p>制作帮助文档：</p>
+<p>​    1.编写源程序</p>
+<ol start="2">
+<li><p>针对源程序添加文档注释</p>
+</li>
+<li><p>选中项目–右键–Export–java–javadoc（后缀一定要是\doc）–Finish</p>
+</li>
+</ol>
+<p>Eclipse中打jar包并使用jar包：（当想用其他项目的class时，无法直接引用或者导包，就可以将其他项目的东西打包成jar包）</p>
+<p>jar是多个class文件的压缩包。是别人写好的东西。</p>
+<p>打jar包：选中项目–右键–Export–java–jar–自己指定一个路径和一个名称–Finish</p>
+<p>使用jar包：复制到项目路径下（ctrl+c，ctrl+v），添加至构建路径（右键–build path–add to build path）。</p>
+<p>一般来说，jar包和doc是配套使用的。</p>
+<p>删除项目：选中项目–右键–删除（选中的话是从硬盘上删除，不选的话是只从项目区域中删除）</p>
+<p>导入项目：项目区域内右键–import–General展开找到Existing Projects into Workspace–点击next选择要导入的项目（整个项目即项目的名称）</p>
+<p>注意事项：</p>
+<p>​    查看项目所在路径：选中–右键–Properties–Resource–Location</p>
+<p>​    导入项目时，项目区域中不能出现同名的项目（新建或者导入），自己随意建立的文件夹是不能作为项目导入的（没有配置文件的）</p>
+<p>​    修改项目时，不要随意修改项目名称，非要修改时，不要忘记把项目中的配置文件.projcet中的   <name> 修改后的项目名称  </name></p>
+<p>Debug调试：</p>
+<p>作用：调试程序；查看程序的执行流程</p>
+<p>断点：就是一个标记，从哪里开始</p>
+<p>设置断点：想看哪个程序，就在那个有效程序的左边双击即可。（<strong>初学时先在每个方法的第一条语句加断点</strong>）</p>
+<p>Debug视图：</p>
+<p>Debug：断点测试的地方。按F6或者按↓，跳到下一条语句（一次看一行）</p>
+<p>Variables：查看程序的变量变化</p>
+<p>xxx.java：被查看的源文件</p>
+<p>Console：控制台</p>
+<p>去除断点：再次双击即可；多个断点时进入debug视图中的variables界面中的Breakpoints点击，看到所有的断点，点击双×。（单x就是删除一个断点）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/3.1.java%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E4%B9%8Beclipse/" data-id="ckq1xbdrl001dpwwd1ius6ias" data-title="java开发工具" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Eclipse/" rel="tag">Eclipse</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-25.设计模式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/25.%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:23:42.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/25.%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>设计原则：都是为了提高代码的维护性，扩展性，复用性</p>
+<p>1.单一职责原则：高内聚，低耦合  </p>
+<p>每个类只有一个职责，对外只能提供一种功能，而引起类变化的原因只有一个  </p>
+<p>所有的设计模式都遵循这一原则</p>
+<p>2.开闭原则：一个对象对扩展开放，对修改关闭</p>
+<p>对类的改动是通过增加代码进行的，而不是修改现有代码 </p>
+<p>借助于抽象和多态，把可能变化的内容抽象出来，从而使抽象的部分相对稳定，而具体的实现是可以改变和扩展的。</p>
+<p>\3. 里氏替换原则：在任何父类出现的地方都可以用它的子类来替代</p>
+<p>同一个继承体系中的对象应该有共同的行为特征</p>
+<p>4.依赖注入原则：要依赖于抽象，不要依赖于具体实现<br>在应用程序中，所有的类如果使用或依赖于其他类，则应依赖于这些其他类的抽象类，而不是具体类。这就要求我们在编程的时候针对抽象类或接口编程，而不是针对具体实现编程</p>
+<p>5.接口分离原则：不应该强迫程序依赖它们不需要使用的方法<br>一个接口不需要提供太多的行为，一个接口应该只提供一种对外的功能，不应该把所有的操作都封装到一个接口中。</p>
+<p>6.迪米特原则：一个对象应当对其他对象尽可能少的了解<br>降低各个对象之间的耦合，提高系统的可维护性。在模块之间应该只通过接口编程，而不理会模块的内部工作原理，它可以使各个模块耦合度降到最低，促进软件的复用</p>
+<p>设计模式</p>
+<p>设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计<em><strong>*经验的总结*</strong></em></p>
+<p>设计模式不是一种方法和技术，而是一种思想。设计模式和具体的语言无关，学习设计模式就是要建立面向对象的思想，尽可能的面向接口编程，低耦合，高内聚，使设计的程序可复用</p>
+<p>要素：</p>
+<p>名字：必须有一个简单，有意义的名字</p>
+<p>问题：描述在何时使用模式</p>
+<p>解决方案：描述设计的组成部分以及如何解决问题</p>
+<p>效果：描述模式的效果以及优缺点</p>
+<p>分类：</p>
+<p>1.创建型模式：对象的创建 6个</p>
+<p>简单工厂模式，工厂方法模式，抽象工厂模式，建造者模式，原型模式，单例模式</p>
+<p>2.结构型模式：对象的组成(结构) 7个<br>    外观模式，适配器模式，代理模式，装饰模式，桥接模式，组合模式，享元模式</p>
+<p>3.行为型模式：对象的行为 10个</p>
+<p>模版方法模式，观察者模式，状态模式，职责链模式，命令模式，访问者模式，策略模式，备忘录模式，迭代器模式，解释器模式</p>
+<p>几种设计模式：</p>
+<p>1.简单工厂模式（静态工厂方法模式） （接口）</p>
+<p>它定义一个具体的工厂类负责创建一些类的实例<br>优点：客户端不需要在负责对象的创建，从而明确了各个类的职责</p>
+<p>缺点：这个静态工厂类负责所有对象的创建，如果有新的对象增加，或者某些对象的创建方式不同，就需要不断的修改工厂类，不利于后期的维护</p>
+<p>\2. 工厂方法模式 （接口）<br>工厂方法模式中抽象工厂类负责定义创建对象的接口，具体对象的创建工作由继承抽象工厂的具体类实现。</p>
+<p>优点：客户端不需要在负责对象的创建，从而明确了各个类的职责，如果有新的对象增加，只需要增加一个具体的类和具体的工厂类即可，不影响已有的代码，后期维护容易，增强了系统的扩展性</p>
+<p>缺点：需要额外的编写代码，增加了工作量</p>
+<p>\3. 单例设计模式 （多线程）<br>单例模式就是要确保类在内存中只有一个对象，该实例必须自动创建，并且对外提供。</p>
+<p>如何实现类在内存中只有一个对象：把构造方法私有；在成员位置自己创建一个对象；通过一个公共的方法让外界访问（为了保证外界能够直接使用该方法，加静态（静态方法只能调静态变量，所以造的变量要用static修饰，为了不让外界直接访问修改这个变量，所以还要加private修饰））</p>
+<p>优点：在系统内存中只存在一个对象，因此可以节约系统资源，对于一些需要频繁创建和销毁的对象单例模式无疑可以提高系统的性能。</p>
+<p>缺点：没有抽象层，因此扩展很难；职责过重，在一定程序上违背了单一职责</p>
+<p>单例设计模式分类：</p>
+<p>饿汉式：类一加载就创建对象（开发用，因为是一种不会出问题的单例模式）</p>
+<p>代码：</p>
+<p><em><strong>*public*</strong></em> <em><strong>*class*</strong></em> SingleDemo {</p>
+<p>​    <em><strong>*private*</strong></em> SingleDemo() {</p>
+<p>​    }</p>
+<p>​    <em><strong>*private*</strong></em> <em><strong>*static*</strong></em> SingleDemo <strong>s</strong> = <em><strong>*new*</strong></em> SingleDemo();</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*static*</strong></em> SingleDemo getSingleDemo() {</p>
+<p>​        <em><strong>*return*</strong></em> <strong>s</strong>;</p>
+<p>​    }</p>
+<p>}</p>
+<p>懒汉式：用的时候，才去创建（面试用，因为可能会出问题）</p>
+<p>懒加载思想(延迟加载)</p>
+<p>线程安全问题 需要在方法上加synchronized</p>
+<p>代码：</p>
+<p><em><strong>*public*</strong></em> <em><strong>*class*</strong></em> SingleDemo2 {</p>
+<p>​    <em><strong>*private*</strong></em> SingleDemo2() {</p>
+<p>​    }</p>
+<p>​    <em><strong>*private*</strong></em> <em><strong>*static*</strong></em> SingleDemo2 <strong>s</strong> = <em><strong>*null*</strong></em>;</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*synchronized*</strong></em> <em><strong>*static*</strong></em> SingleDemo2 getSingleDemo2() {</p>
+<p>​        <em><strong>*if*</strong></em> (<strong>s</strong> == <em><strong>*null*</strong></em>) {</p>
+<p>​            <strong>s</strong> = <em><strong>*new*</strong></em> SingleDemo2();</p>
+<p>​        }</p>
+<p>​        <em><strong>*return*</strong></em> <strong>s</strong>;</p>
+<p>​    }</p>
+<p>}</p>
+<p>Runtime类就是饿汉式</p>
+<p>每个 Java 应用程序都有一个 Runtime 类实例，使应用程序能够与其运行的环境相连接</p>
+<p>应用程序不能创建自己的 Runtime 类实例</p>
+<p>方法：</p>
+<p>public Process exec(String command)  调用dos命名比如：”notepad”</p>
+<p>\4. 模版设计模式（抽象类）<br>模版方法模式就是定义一个算法的骨架，而将具体的算法延迟到子类中来实现</p>
+<p>优点：使用模版方法模式，在定义算法骨架的同时，可以很灵活的实现具体的算法，满足用户灵活多变的需求</p>
+<p>缺点：如果算法骨架有修改的话，则需要修改抽象类</p>
+<p>\5. 装饰设计模式（IO流）<br>装饰模式就是使用被装饰类的一个子类的实例，在客户端将这个子类的实例交给装饰类。是继承的替代方案</p>
+<p>优点：使用装饰模式，可以提供比继承更灵活的扩展对象的功能，它可以动态的添加对象的功能，并且可以随意的组合这些功能</p>
+<p>缺点：正因为可以随意组合，所以就可能出现一些不合理的逻辑</p>
+<p>\6. 适配器设计模式（GUI）<br>将一个类的接口转换成另外一个客户希望的接口。从而使原来不能直接调用的接口变的可以调用。</p>
+<p>接口（方法比较多）–适配器类（实现接口，仅仅空实现）–实现类（用哪个重写哪个）</p>
+<p>优点：让本来不适合使用的接口变得适合使用</p>
+<p>缺点：一次只能适配一个类，使用有一定的局限性</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/25.%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" data-id="ckq1xbdrk001bpwwdgc1e8kwu" data-title="设计模式" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-4.5.面向对象" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/04/19/4.5.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="article-date">
@@ -363,7 +675,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.5.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" data-id="ckpnvjm8q000l48wd581v9xym" data-title="面向对象" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.5.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" data-id="ckq1xbdsp004ipwwdfxyc2la3" data-title="面向对象" class="article-share-link">分享</a>
       
       
       
@@ -462,7 +774,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.22.%E5%85%B3%E4%BA%8Enull/" data-id="ckpdvjppp004dnswdflidhe1g" data-title="关于null" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.22.%E5%85%B3%E4%BA%8Enull/" data-id="ckq1xbdso004fpwwd7k4i71hk" data-title="关于null" class="article-share-link">分享</a>
       
       
       
@@ -1210,7 +1522,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.20.JDBC/" data-id="ckpdvjpq4005mnswd7jmr7244" data-title="JDBC" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.20.JDBC/" data-id="ckq1xbdt40063pwwd0nkefh2n" data-title="JDBC" class="article-share-link">分享</a>
       
       
       
@@ -1276,7 +1588,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.16.%E6%B3%9B%E5%9E%8B/" data-id="ckpdvjpos001snswd1357a60r" data-title="泛型" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.16.%E6%B3%9B%E5%9E%8B/" data-id="ckq1xbdro001spwwdd7dt8no1" data-title="泛型" class="article-share-link">分享</a>
       
       
       
@@ -1336,7 +1648,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.15.%E6%9E%9A%E4%B8%BE/" data-id="ckpdvjpor001qnswd8cdrfhzo" data-title="枚举" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.15.%E6%9E%9A%E4%B8%BE/" data-id="ckq1xbdro001qpwwddd3l5llx" data-title="枚举" class="article-share-link">分享</a>
       
       
       
@@ -1395,7 +1707,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.23JVM/" data-id="ckpdvjpov0020nswdglqv6wxx" data-title="JVM" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.23JVM/" data-id="ckq1xbdrq001zpwwd3bep9w28" data-title="JVM" class="article-share-link">分享</a>
       
       
       
@@ -1433,575 +1745,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.24.JUC%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" data-id="ckpdvjpow0023nswd9cab7xgs" data-title="JUC并发编程" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-4.17.反射和注解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T03:35:57.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/">反射和注解</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>类的加载</p>
-<p>当程序要使用某个类时，如果该类还未被加载到内存中，则系统会通过加载，连接，初始化三步来实现对这个类进行初始化。</p>
-<p>加载 </p>
-<p>就是指将class文件读入内存，并为之创建一个Class对象。</p>
-<p>任何类被使用时系统都会建立一个Class对象。</p>
-<p>连接</p>
-<p>验证 是否有正确的内部结构，并和其他类协调一致</p>
-<p>准备 负责为类的静态成员分配内存，并设置默认初始化值</p>
-<p>解析 将类的二进制数据中的符号引用替换为直接引用</p>
-<p>初始化 </p>
-<p>就是我们以前讲过的初始化步骤</p>
-<p>类初始化时机：</p>
-<p>1.创建类的实例</p>
-<p>2.访问类的静态变量，或者为静态变量赋值</p>
-<p>3.调用类的静态方法</p>
-<p>4.使用反射方式来强制创建某个类或接口对应的java.lang.Class对象</p>
-<p>5.初始化某个类的子类</p>
-<p>6.直接使用java.exe命令来运行某个主类</p>
-<p>类加载器</p>
-<p>负责将.class文件加载到内在中，并为之生成对应的Class对象。</p>
-<p>虽然我们不需要关心类加载机制，但是了解这个机制我们就能更好的理解程序的运行</p>
-<p>类加载器的组成</p>
-<p>Bootstrap ClassLoader 根类加载器 </p>
-<p>也被称为引导类加载器，负责Java核心类的加载。比如System,String等。在JDK中JRE的lib目录下rt.jar文件中</p>
-<p>Extension ClassLoader 扩展类加载器</p>
-<p>负责JRE的扩展目录中jar包的加载。在JDK中JRE的lib目录下ext目录</p>
-<p>Sysetm ClassLoader 系统类加载器</p>
-<p>负责在JVM启动时加载来自java命令的class文件，以及classpath环境变量所指定的jar包和类路径</p>
-<p>反射，一种计算机处理方式。是程序可以访问、检测和修改它本身状态或行为的一种能力。</p>
-<p>反射：就是通过class文件对象，去使用该文件中的成员变量，构造方法，成员方法</p>
-<p>JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种****动态获取****的信息以及动态调用对象的方法的功能称为java语言的反射机制</p>
-<p>//要想解剖一个类,必须先要获取到该类的字节码文件对象。而解剖使用的就是Class类中的方法.所以先要获取到每一个字节码文件对应的Class类型的对象</p>
-<p>对于我们学习反射，我们在操作中一般会获取类的成员 Constructor  Field  Method。但是要想获取这些对象，必须首先得到其Class,通过Class再来获得其它对象</p>
-<p>Java反射常用API</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps1.jpg" alt="img"> </p>
-<p>Java中的Class可以代表任意的类或接口类型</p>
-<p>在java.lang.reflect包下有三个类</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps2.jpg" alt="img"> </p>
-<p>三种获取Class对象的方式</p>
-<p>1:如果持有一个对象，可以直接从Object类继承的getClass()方法获取</p>
-<p>Person p = new Person();</p>
-<p> Class c = p.getClass();</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps3.jpg" alt="img"> </p>
-<p>2:可以直接通过类包(接口)直接调用其静态属性.class获取</p>
-<p>Class c2 = Person.class;</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps4.jpg" alt="img"> </p>
-<p> 任意数据类型都具备一个class静态属性,看上去要比第一种方式简单.</p>
-<p>3:可以通过Class类中提供的forName方法获取（将类名作为字符串传递给Class类中的静态方法forName即可）：</p>
-<p>public static Class forName(String className)  这个类名必须是全路径：包名.类名（可以在外面写，会提示是否出错，没错的话沾过去；也可以点击类名下的类名右击copy Qualified name ）</p>
-<p> Class c3 = Class.forName(“Person”);</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps5.jpg" alt="img"> </p>
-<p>第三种和前两种的区别    ：前两种你必须明确Person类型；后面是一个字符串就行，而不需要是一个具体的类名.这种扩展更强.我不需要知道你的类.我只提供字符串,将这样的字符串配置到配置文件中，按照配置文件加载就可以了</p>
-<p>所以开发中一般用第三种方法</p>
-<p>Class类：</p>
-<p>成员变量            Field</p>
-<p>构造方法            Constructor</p>
-<p>成员方法            Method</p>
-<p>通过反射获取构造方法并使用：</p>
-<p>获取构造方法：</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps6.jpg" alt="img"> </p>
-<p>getConstructor它获取的是类的public构造</p>
-<p>getConstructors它获取的是类的所有的public构造</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps7.jpg" alt="img"> </p>
-<p>这两个方法不仅可以获取public，也可以获取其它权限的</p>
-<p>获取单个构造方法</p>
-<p>public Constructor<T> getConstructor(Class&lt;?&gt;… parameterTypes)  参数表示的是你要获取的构造方法的构造参数个数及数据类型的****class字节码****文件对象。…表示可以是0个（无参）一个（一个参数）多个（多个参数）</p>
-<p>/*获取的单个构造方法实际上是一个对象，通过这个对象可以创建该构造方法的声明类的新实例，并用指定的初始化参数初始化该实例</p>
-<p>public T newInstance(Object… initargs)</p>
-<p>反射可以获取私有的构造方法，成员方法，成员变量：</p>
-<p>获取的如果是私有的构造方法，要用public Constructor<T> getDeclaredConstructor(Class&lt;?&gt;… parameterTypes),但是会显示非法的访问异常。所以还要用暴力访问：.setAccessible(true); 值为true指示反射的对象在使用时应该取消java语言访问检查  （XJAD软件就用到了反射）*/</p>
-<p>我们得到构造器，就可以实例化对象</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps8.jpg" alt="img"> </p>
-<p>如果不是public，那么我们需要构造器对象的实例调用AccessibleObject中的</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps9.jpg" alt="img"> </p>
-<p>来取消语言检查</p>
-<p>Reflect类继承于AccessibleObject类继承于Object类</p>
-<p>通过反射获取成员变量并使用：Java.lang.reflect.Field它描述的属性对象</p>
-<p>1.获取一个Field</p>
-<p>获取所有成员</p>
-<p>getFields  公共的</p>
-<p>getDeclaredFields 所有的</p>
-<p>获取单个成员</p>
-<p>getField</p>
-<p>getDeclaredField</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps10.jpg" alt="img"> </p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps11.jpg" alt="img"> </p>
-<p>2.Field的操作</p>
-<p>（1）对Field进行赋值</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps12.jpg" alt="img"> </p>
-<p>赋值或修改成员的值</p>
-<p>set(Object obj,Object value)<br>  将指定对象变量上此 Field 对象表示的字段设置为指定的新值。此处的obj需要通过构造方法创建一个obj对象，也可以直接通过Class的实例的newInstance方法直接获得obj对象（这个方法的底层就是使用了Class类额无参构造来实例化）</p>
-<p>（2）对Field进行取值</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps13.jpg" alt="img"> </p>
-<p>通过反射获取成员方法并使用：Java.lang.reflect.Method它描述的是类或接口中的方法</p>
-<p>获取所有方法</p>
-<p>​        getMethods 获取自己的包括父亲的公共方法</p>
-<p>​        getDeclaredMethods 获取自己的所有方法</p>
-<p>获取单个方法</p>
-<p>​        getMethod（String name，Class&lt;?&gt;… parameterTypes）</p>
-<p>​        getDeclaredMethod（String name，Class&lt;?&gt;… parameterTypes）</p>
-<p>第一个参数是方法的名称，第二个参数是一个可变参数Class[]，它描述的是方法的参数Class</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps14.jpg" alt="img"> </p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps15.jpg" alt="img"> </p>
-<p>Method的使用：public Object invoke (Object obj , Object… args)  返回值是Object接收，第一个参数表示对象是谁，第二个参数表示调用该方法的实际参数</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps16.jpg" alt="img"> </p>
-<p>Method的invoke使用时注意事项?</p>
-<p>\1. 如果方法是static，我们怎样调用？</p>
-<p>如果方法是静态的，在通过invoke调用时不需要传递对象，传递null</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps17.jpg" alt="img"> </p>
-<p>\2. 如果方法的参数是一个数组类型，怎样处理?</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps18.jpg" alt="img"> </p>
-<p>为什么不能直接传args：因为数组也是object类型。在传递时，底层的invoke方法认为要调用的参数有四个。</p>
-<p>为什么int[]直接传递args不报错，而Integer[]会报错：因为int[]数组中的每一个元素不是Object，只是基本数据类型，int[]被认为是一个对象。而Integer[]数组中的每一个元素都是Object</p>
-<p>/*反射的调用和正常类的调用是恰好相反的。</p>
-<p>正常类：p.show()    p.show(参数)</p>
-<p>反射：show.invoke(p)   show.invoke(p，参数)</p>
-<p>*/</p>
-<p>案例：（这个案例可以帮助我们把集合中的值通过反射赋到一个类中）</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps19.jpg" alt="img"> </p>
-<p>并提供get/set方法</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps20.jpg" alt="img"> </p>
-<p>使用java中的反射技术将类中的属性与map中的key相同名称的，使用反射技术将key对应的value值赋值给属性.</p>
-<p>采用两种方式完成操作：</p>
-<p>1.直接操作属性 Field来完成操作（不常用）</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps21.jpg" alt="img"> </p>
-<p>2.通过属性对应的setXxx方法来完成操作</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps22.jpg" alt="img"> </p>
-<p>优点：</p>
-<p>1、反射提高了程序的灵活性和扩展性。</p>
-<p>2、降低耦合性，提高自适应能力。</p>
-<p>3、它允许程序创建和控制任何类的对象，无需提前硬编码目标类。<br>缺点：<br>    1、性能问题：使用反射基本上是一种解释操作，用于字段和方法接入时要远慢于直接代码。因此反射机制主要应用在对灵活性和拓展性要求很高的系统框架上，普通程序不建议使用。</p>
-<p>2、使用反射会模糊程序内部逻辑；程序员希望在源代码中看到程序的逻辑，反射却绕过了源代码的技术，因而会带来维护的问题，反射代码比相应的直接代码更复杂。</p>
-<p>反射：需要配置文件配合使用。 </p>
-<p>配置文件是键值对。必须要有键，代码获取键；然后可以自己通过改变值，来使代码中的对象改变，从而获得不同的运行效果。</p>
-<p>反射可以越过泛型检查。</p>
-<p>真实的需求应该是在你调用方法后，每次操作前，都需要进行权限校验，在进行操作后，必须留下日志记录。</p>
-<p>代理即Proxy Pattern，23种常用的面向对象软件的设计模式之一</p>
-<p>代理模式的定义：为其他对象提供一种<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/24001.htm">代理</a>以控制对这个对象的访问。在某些情况下，一个对象不适合或者不能直接引用另一个对象，而代理对象可以在客户端和目标对象之间起到中介的作用。</p>
-<p>组成：</p>
-<p>抽象角色：通过接口或抽象类声明真实角色实现的业务方法。</p>
-<p>代理角色：实现抽象角色，是真实角色的代理，通过真实角色的业务逻辑方法来实现抽象方法，并可以附加自己的操作。</p>
-<p>真实角色(目标对象)：实现抽象角色，定义真实角色所要实现的业务逻辑，供代理角色调用。</p>
-<p>分类：</p>
-<p>静态代理：是由程序员创建或工具生成代理类的源码，再编译代理类。所谓静态也就是在程序运行前就已经存在代理类的字节码文件，代理类和委托类的关系在运行前就确定了。</p>
-<p>动态代理：是在实现阶段不用关心代理类，而在运行阶段才指定哪一个对象。</p>
-<p>优点：</p>
-<p>(1).职责清晰，真实的角色就是实现实际的<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1642754.htm">业务逻辑</a>，不用关心其他非本职责的事务，通过后期的代理完成一件完成事务，附带的结果就是编程简洁清晰。</p>
-<p>(2).代理对象可以在客户端和目标对象之间起到中介的作用，这样起到了中介的作用和保护了目标对象的作用。</p>
-<p>(3).高扩展性</p>
-<p>动态代理</p>
-<p>代理：本来应该自己做的事情，却请了别人来做，被请的人就是代理对象。</p>
-<p>动态代理：在程序运行过程中产生的这个对象</p>
-<p>而程序运行过程中产生对象其实就是我们刚才反射讲解的内容，所以，动态代理其实就是通过反射来生成一个代理</p>
-<p>在Java中java.lang.reflect包下提供了一个Proxy类和一个InvocationHandler接口，通过使用这个类和接口就可以生成动态代理对象。JDK提供的代理只能针对接口做代理。我们有更强大的代理cglib（框架中学到，这个代理不仅仅是针对接口）</p>
-<p>注意：在java中使用Proxy来完成动态代理对象的创建，只能为目标实现了接口的类创建代理对象。</p>
-<p>Proxy类中的方法创建动态代理类对象：</p>
-<p>public static Object newProxyInstance(ClassLoader loader,Class&lt;?&gt;[] interfaces,InvocationHandler h) </p>
-<p>ClassLoader loader 是对象的字节码文件的类加载器：.getClass().getClassLoader()</p>
-<p>Class&lt;?&gt;[] interfaces是对象的字节码文件的接口：.getClass().getInterfaces()</p>
-<p>动态代理是在内存中直接生成代理对象。</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps23.jpg" alt="img"> </p>
-<p>通过这个方法可以直接创建一个代理对象。</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps24.jpg" alt="img"> </p>
-<p>//InvocationHandler应用了观察者模式，因为代理类没有实例，所以需要监听代理对象调用时，其底层实现的是目标行为</p>
-<p>InvocationHandler h是一个接口，这里需要的是这个接口的实现类对象，所以需要创建一个类实现InvocationHandler接口。这个类中再重写InvocationHandler方法：public Object invoke(Object proxy,Method method,Object[] args)</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps25.jpg" alt="img"> </p>
-<p>Invoke方法，它是在代理对象调用行为时，会执行的方法，而invoke方法上有三个参数：</p>
-<p>proxy:代表动态代理对象</p>
-<p>method:要访问的目标行为，代表要调用的方法对象</p>
-<p>args:目标行为，代表调用目标方法时传入的实参</p>
-<p>这个方法的主要作用是：当我们通过代理对象调用行为时，来控制目标行为是否可以被调用（可以自己写代码控制，return null 不让调，return method.invoke(target,args)控制目标对象的方法执行）。</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps26.jpg" alt="img"> </p>
-<p>Proxy.newProxyInstance</p>
-<p>创建的代理对象是在jvm运行时动态生成的一个对象，它并不是我们的InvocationHandler类型，也不是我们定义的那组接口的类型，而是在运行是动态生成的一个对象，并且命名方式都是这样的形式，以$开头，proxy为中，最后一个数字表示对象的标号。</p>
-<p>System.out.println(u.getClass().getName());</p>
-<p>案例:测试addUser方法的运行时间</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps27.jpg" alt="img"> </p>
-<p>在开发中，在代理中通过目标来调用真实行为，我们使用动态代理可以完成性能监控（如上，进行时间的记录来监控性能），权限控制（在调用目标行为之前先判断是否有权限），日志记录（在调用方法之前，进行日志记录一些信息）等操作</p>
-<p>注释（先写注释在写程序）</p>
-<p>作用：用于解释说明程序的文字，提高程序的阅读性；可以帮助我们调试程序。</p>
-<p>注释分类格式：</p>
-<p>单行注释//  可以嵌套</p>
-<p>多行注释/*   */  不能嵌套</p>
-<p>文档注释/**   */</p>
-<p>对于单行和多行注释，被注释的文字是不会被JVM解释执行</p>
-<p>对于文档注释 是java特有的注释，其中的注释内容可以被JDK提供的工具javadoc所解析，生成一套以网页文件形式体现的该程序的说明文档。</p>
-<p>/*</p>
-<p>需求：</p>
-<p>分析：</p>
-<p>实现：</p>
-<p>*/</p>
-<p>注解（Annotation），也叫元数据。一种代码级别的说明。它是JDK1.5及以后版本引入的一个特性，与类、接口、枚举是在同一个层次。它可以用于创建文档，跟踪代码中的依赖性，甚至执行基本编译时检查。注解是以‘@注解名’在代码中存在的</p>
-<p>它可以声明在包、类、字段、方法、局部变量、方法参数等的前面，用来对这些元素进行说明，注释。你可以在编译时选择代码里的注解是否只存在于源代码级，或者它也能在class文件、或者运行时中出现（SOURCE/CLASS/RUNTIME）。</p>
-<p>作用：如果要对于元数据的作用进行分类，还没有明确的定义，不过我们可以根据它所起的作用，大致可分为三类：</p>
-<p>编写文档：通过代码里标识的元数据生成文档。</p>
-<p>代码分析：通过代码里标识的元数据对代码进行分析。</p>
-<p>编译检查：通过代码里标识的元数据让<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/487018.htm">编译器</a>能实现基本的编译检查</p>
-<p>在现在开发中使用注解，一般是用于将注解替换配置文件。（xml配置文件）</p>
-<p>Java中基本内置注解:</p>
-<p>1.@Override</p>
-<p>它的作用是对覆盖超类中方法的方法进行标记，如果被标记的方法并没有实际覆盖超类中的方法，则编译器会发出错误警告。</p>
-<p>注意事项:</p>
-<p>​    对于接口中的方法重写，<a href="mailto:在jdk1.5时@Override">在jdk1.5时@Override</a>它是会报错.</p>
-<p>​    在jdk1.6后的版本就可以描述接口与类之间的重写</p>
-<p>2.@Deprecated</p>
-<p>它的作用是对不应该再使用的方法添加注解，当编程人员使用这些方法时，将会在编译时显示提示信息</p>
-<p>问题:什么时候方法是过时的?</p>
-<p>当前版本中这个方法存在隐患，在后续版本中对其进行了补充，这时前一个版本中的方法就会标注成过时的。</p>
-<p>3.@SuppressWarnings</p>
-<p>它的作用是去掉程序中的警告.</p>
-<p>其参数有：</p>
-<p>deprecation，使用了过时的类或方法时的警告</p>
-<p>unchecked，执行了未检查的转换时的警告</p>
-<p>fallthrough，当 switch 程序块直接通往下一种情况而没有 break 时的警告</p>
-<p>path，在类路径、源文件路径等中有不存在的路径时的警告</p>
-<p>serial，当在可序列化的类上缺少serialVersionUID 定义时的警告</p>
-<p>finally ，任何 finally 子句不能正常完成时的警告</p>
-<p>all，关于以上所有情况的警告</p>
-<p>可以在方法之前加@SuppressWarnings（“rawtype”）</p>
-<p>当一个类中出现了很多，可以在类上加@SuppressWarnings（“all”），一劳永逸</p>
-<p>自定义注解</p>
-<p>1.注解声明：声明一个注解格式：  修饰符 @interface 注解名{}</p>
-<p>2.注解本质分析</p>
-<p>分析一下注解的本质:将其.class文件找到，反编译.  (可以使用javap命令或反编译工具)</p>
-<p>@interface MyAnnoation{}</p>
-<p>反编译后的结果</p>
-<p>interface MyAnnotation    extends Annotation</p>
-<p>{</p>
-<p>}</p>
-<p>结论:注解本质上就是一个接口。它扩展了java.lang.annotation.Annotation接口;</p>
-<p>在java中所有注解都是Annotation接口的子接口。</p>
-<p>3.注解成员</p>
-<p>注解本质上就是一个接口，那么它也可以有属性和方法。</p>
-<p>但是接口中的属性是 public static final的，在注解中注解没有什么意义。</p>
-<p>在开发中注解中经常存在的是方法（这个方法的返回值类型有要求）。而在注解中接口的方法叫做注解的属性.</p>
-<p>4.自定义注解-属性操作</p>
-<p>注解属性类型：</p>
-<p>1.基本类型  byte short int long float double char boolean</p>
-<p>​    2.String</p>
-<p>​    3.枚举类型：可以自己创建一个枚举类，然后类名 方法名();</p>
-<p>​    4.注解类型</p>
-<p>​    5.Class类型</p>
-<p>​    6.以上类型的一维数组类型</p>
-<p>注解属性的使用</p>
-<p>1.如果一个注解有属性，那么在使用注解时，要对属性进行赋值操作.</p>
-<p>​    例如:@MyAnnotation(st = “aaa”)</p>
-<p>2.如果一个注解的属性有多个，都需要赋值，使用”,”分开属性.</p>
-<p>​    @MyAnnotation(st = “aaa”,i=10)</p>
-<p>3.也可以给属性赋默认值</p>
-<p>​    double d() <em><strong>*default 1.23*</strong></em>;</p>
-<p>​    如果属性有默认值，在使用注解时，就可以不用为属性赋值。    </p>
-<p>4.如果属性是数组类型</p>
-<p>​        1.可以直接使用  属性名={值1,值2,。。。}方式,例如</p>
-<p>​            @MyAnnotation(st = “aaa”,i=10,sts={“a”,”b”})</p>
-<p>​        2.如果数组的值只有一个也可以写成下面方式</p>
-<p>​            @MyAnnotation(st = “aaa”,i=10,sts=”a”)</p>
-<p>​            注意sts属性它是数组类型，也就是说，只有一个值时，可以省略”{}”</p>
-<p>​        </p>
-<p>5.对于属性名称 value的操作.</p>
-<p>​            1.如果属性名称叫value,那么在使用时，可以省略属性名称</p>
-<p>​                @MyAnnotation(“hello”)</p>
-<p>​            2.如果有多个属性，都需要赋值，其中一个叫value,这时，必须写属性名称</p>
-<p>​                @MyAnnotation(value=”hello”,i=10)</p>
-<p>​        </p>
-<p>​            3.如果属性名称叫value,它的类型是数组类型.</p>
-<p>​                1.只有这个value属性</p>
-<p>​                可以直接赋值，不能写属性名称,但是，如果只有一个值</p>
-<p>​                    @MyAnnotation({“abc”})或  @MyAnnotation(“abc”)</p>
-<p>​                但是如果有多个值</p>
-<p>​                    @MyAnnotation({“abc”,”def”})                        </p>
-<p>​                2.如果有多个属性，属性名称叫value</p>
-<p>​                    所有属性都需要赋值，那么必须写属性名称.</p>
-<p>5.自定义注解-元注解</p>
-<p>元注解及其作用：用于修饰注解的注解，可以描述注解在什么范围及在什么阶段使用等</p>
-<p>四个元注解介绍：</p>
-<p>@Retention</p>
-<p>指定注解信息在哪个阶段存在 Source Class Runtime</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps1-1618812955705.jpg" alt="img"> </p>
-<p>SOURCE它对应着编译阶段，可以帮助我们进行检查。</p>
-<p>CLASS 它对应解析执行阶段</p>
-<p>RUNTIME 它对应着在JVM中,在运行时结合反射技术，可以使注解具有一些功能</p>
-<p>@Target</p>
-<p>指定注解修饰目标对象的类型  </p>
-<p>TYPE 类、接口   FIELD 成员变量   METHOD 方法</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps2-1618812955706.jpg" alt="img"> </p>
-<p><a href="mailto:在接口的定义中前面进行元注解@Target(ElementType.TYPE)标注">在接口的定义中前面进行元注解@Target(ElementType.TYPE)标注</a>后，这个自定义注解只能用在TYPE即类、接口上，不能用于方法上。</p>
-<p><a href="mailto:如果要求自定义的注解需要用在多个地方。可以@Target({ElementType.TYPE,ElementType.METHOD})">如果要求自定义的注解需要用在多个地方。可以@Target({ElementType.TYPE,ElementType.METHOD})</a></p>
-<p>@Documented</p>
-<p>使用该元注解修饰，该注解的信息可以生成到javadoc 文档中</p>
-<p>@Inherited</p>
-<p>如果一个注解使用该元注解修饰，应用注解目标类的子类会自动继承该注解 </p>
-<p>@Retention @Target 是自定义注解必须使用两个元注解，并且，@Retention它的值应该是RUNTIME,因为我们会结合反射技术来使用。 @Target我们一般使用TYPE或METHOD</p>
-<p>案例-获取Connection连接数据库</p>
-<p>目的：让注解具有功能，必须结合反射技术来应用。</p>
-<p>注解它可以替换配置文件。</p>
-<p>第一步:创建注解</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps3-1618812955706.jpg" alt="img"> </p>
-<p>第二步:使用注解</p>
-<p>在方法上进行注解标注：</p>
-<p>@JdbcProperty（driverClass=””,url=””,user=””,password=””）</p>
-<p>我们可以通过getAnnotation()方法（这个方法在Class，Method。Field中都有）来获取注解对象</p>
-<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps4-1618812955706.jpg" alt="img"> </p>
-<p>通过jp.driverClass  jp.url 等就可以得到注解的值，然后在数据库连接中使用，进行数据库连接</p>
-<p>这里的操作实际上相当于是以前在配置文件中写这些属性值，在代码中从配置文件中取。</p>
-<p>问题:使用注解可以替换配置文件，为什么要替换?</p>
-<p>​    配置文件中的信息，它会随着程序的变大，配置信息越来越多，不利于开发。而将配置信息通过注解来替换，便于开发与阅读。</p>
-<p>缺点：如果需要更改，需要在源代码上修改注解。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/" data-id="ckpdvjppo004bnswdgecn0usj" data-title="反射和注解" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-4.21.GUI编程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/4.21.GUI%E7%BC%96%E7%A8%8B/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T03:35:41.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/4.21.GUI%E7%BC%96%E7%A8%8B/">GUI编程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>GUI(图形用户界面)</p>
-<p>Java为GUI提供的对象都存在java.Awt和javax.Swing两个包中</p>
-<p>GUI：Graphical User Interface(图形用户接口)。</p>
-<p>用图形的方式，来显示计算机操作的界面，这样更方便更直观。</p>
-<p>CLI：Command line User Interface (命令行用户接口）</p>
-<p>就是常见的Dos命令行操作。</p>
-<p>需要记忆一些常用的命令，操作不直观。</p>
-<p>java.awt：Abstract Window ToolKit (抽象窗口工具包)，需要调用本地系统方法实现功能。属重量级控件。</p>
-<p>javax.swing：在AWT的基础上，建立的一套图形界面系统，其中提供了更多的组件，而且完全由Java实现。增强了移植性，属轻量级控件。</p>
-<p>javax是java扩展包</p>
-<p>和本地系统相关的，就是重量级控件，因为移植性很差。完全由java实现的，移植性就很好，属于轻量级控件。（这里的轻重是与操作系统的关系）</p>
-<p><img src="/4.21.GUI%E7%BC%96%E7%A8%8B/wps1.jpg" alt="img"> </p>
-<p>Component（组件）</p>
-<p>Container：为容器，是一个特殊的组件，该组件中可以通过add方法添加其他组件进来。</p>
-<p>Window：窗体  没有边界和标题</p>
-<p>Panel：面板</p>
-<p>Frame：框架  有边界和标题</p>
-<p>Dialog：对话框</p>
-<p>FileDialog：文件对话框</p>
-<p>Button：按钮</p>
-<p>Label：标签</p>
-<p>Checkbox：复选框</p>
-<p>TextComponent：文本组件</p>
-<p>TextArea：文本域  多行多列</p>
-<p>TextField：文本框  单行多列</p>
-<p>Frame  f = new Frame(“my window”);//构造方法命名 setTile是方法命名</p>
-<p>f.setLayout(new FlowLayout());//设置为流式布局</p>
-<p>f.setSize(300,400);//设置窗体大小 Dimension</p>
-<p>f.setLocation(300,200);//设置窗体出现在屏幕的位置 Point</p>
-<p>f.setVisible(true);//设置窗体是否可见</p>
-<p>一个方法：setBounds（int x,int y,int width,int height）</p>
-<p>前后是有顺序关系的，如果f.setVisible(true);在前面就会先显示再加载到指定位置。一般是这个步骤：创建窗体对象；设置窗体属性；设置窗体可见</p>
-<p>事件监听机制</p>
-<p>事件源：事件发生的地方</p>
-<p>事件：要发生的事情</p>
-<p>事件处理：针对发生的事情做出的处理方案</p>
-<p>事件监听器：就是把事件源和事件关联起来</p>
-<p>窗体布局：窗体中组件的排列方式</p>
-<p>流式布局FlowLayout：从上到下，从左到右。</p>
-<p>边界布局BorderLayout：东西南北中</p>
-<p>网格布局GridLayout：网格状，标准n行n列</p>
-<p>网格包布局GridBagLayout：可以将任意个相连的网格状连在一起当一个</p>
-<p>卡片布局CardLayout：类似于卡片，点一个卡片会在主界面加载一个</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.21.GUI%E7%BC%96%E7%A8%8B/" data-id="ckpdvjpov001znswd0knw6jk9" data-title="GUI编程" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-4.18.网络编程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/4.18.%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T03:35:31.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/4.18.%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">网络编程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>计算机网络：是指将地理位置不同的具有独立功能的多台计算机及其外部设备，通过通信线路连接起来，在网络操作系统，网络管理软件及网络通信协议的管理和协调下，实现资源共享和信息传递的计算机系统。</p>
-<p>网络编程：就是用来实现网络互连的不同计算机上运行的程序间可以进行数据交换。</p>
-<p>网络模型：</p>
-<p>OSI（Open System Interconnection开放系统互连）参考模型</p>
-<p>TCP/IP参考模型</p>
-<p><img src="/4.18.%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/wps1.png" alt="img"> </p>
-<p>网络模型7层概述：</p>
-<p>1.物理层：主要定义物理设备标准，如网线的接口类型、光纤的接口类型、各种传输介质的传输速率等。它的主要作用是传输比特流（就是由1、0转化为电流强弱来进行传输,到达目的地后在转化为1、0，也就是我们常说的数模转换与模数转换）。这一层的数据叫做比特。 </p>
-<p>\2. 数据链路层：主要将从物理层接收的数据进行MAC地址（网卡的地址）的封装与解封装。常把这一层的数据叫做帧。在这一层工作的设备是交换机，数据通过交换机来传输。 </p>
-<p>\3. 网络层：主要将从下层接收到的数据进行IP地址（例192.168.0.1)的封装与解封装。在这一层工作的设备是路由器，常把这一层的数据叫做数据包。 </p>
-<p>\4. 传输层：定义了一些传输数据的协议和端口号（WWW端口80等），如：TCP（传输控制协议，传输效率低，可靠性强，用于传输可靠性要求高，数据量大的数据），UDP（用户数据报协议，与TCP特性恰恰相反，用于传输可靠性要求不高，数据量小的数据，如QQ聊天数据就是通过这种方式传输的）。 主要是将从下层接收的数据进行分段和传输，到达目的地址后再进行重组。常常把这一层数据叫做段。 </p>
-<p>5.会话层：通过传输层（端口号：传输端口与接收端口）建立数据传输的通路。主要在你的系统之间发起会话或者接受会话请求（设备之间需要互相认识可以是IP也可以是MAC或者是主机名） </p>
-<p>6.表示层：主要是进行对接收的数据进行解释、加密与解密、压缩与解压缩等（也就是把计算机能够识别的东西转换成人能够能识别的东西（如图片、声音等）。 </p>
-<p>7.应用层： 主要是一些终端的应用，比如说FTP（各种文件下载），WEB（IE浏览），QQ之类的（可以把它理解成我们在电脑屏幕上可以看到的东西．就是终端应用）。</p>
-<p>网络应用程序：网络编程、IO流、多线程组成。集合</p>
-<p>网络通信三要素：</p>
-<p>1.IP地址:InetAddress（找到电脑）</p>
-<p>​    网络中设备的标识，不易记忆，可用主机名</p>
-<p>2.端口号：（区分电脑的程序）</p>
-<p>​    用于标识进程的逻辑地址，不同进程的标识</p>
-<p>3.传输协议：（怎么交流传输）</p>
-<p>​    通讯的规则，常见协议：TCP，UDP</p>
-<p>IP地址</p>
-<p>要想让网络中的计算机能够互相通信，必须为每台计算机指定一个标识号，通过这个标识号来指定要接受数据的计算机和识别发送的计算机，在TCP/IP协议中，这个标识号就是IP地址</p>
-<p>所谓IP地址就是给每个连接在Internet上的主机分配的一个32bit地址。按照TCP/IP规定，IP地址用二进制来表示，每个IP地址长32bit，比特换算成字节，就是4个字节。例如一个采用二进制形式的IP地址是“00001010000000000000000000000001”，这么长的地址，人们处理起来也太费劲了。为了方便人们的使用，IP地址经常被写成十进制的形式，中间使用符号“.”分开不同的字节。于是，上面的IP地址可以表示为“10.0.0.1”。IP地址的这种把IP地址的每一个字节的数据换算成十进制，然后用.分开来表示的方法叫做“点分十进制表示法”，这显然比1和0容易记忆得多。</p>
-<p>IP地址的组成：IP地址 = 网络号码+主机地址</p>
-<p>A类    1.0.0.1—127.255.255.254</p>
-<p>(1)10.X.X.X是私有地址(私有地址就是在互联网上不使用，而被用在局域网络中的地址)        </p>
-<p>(2)127.X.X.X是保留地址，用做循环测试用的。</p>
-<p>B类    128.0.0.1—191.255.255.254    </p>
-<p>172.16.0.0—172.31.255.255是私有地址。</p>
-<p>169.254.X.X是保留地址。</p>
-<p>C类    192.0.0.1—223.255.255.254    192.168.X.X是私有地址</p>
-<p>D类    224.0.0.1—239.255.255.254     </p>
-<p>E类    240.0.0.1—247.255.255.254    </p>
-<p>DOS命令 ipconfig:查看本机IP地址</p>
-<p>ping+IP地址：测试本机与指定的ip地址间的通信是否有问题</p>
-<p>127.0.0.1 回环地址,可用于测试本机的网络是否有问题. ping 127.0.0.1  </p>
-<p>xxx.xxx.xxx.0 网络地址</p>
-<p>xxx.xxx.xxx.255 广播地址</p>
-<p>A类IP地址:第一段号码为网络号码，剩下的三段号码为本地计算机的号码</p>
-<p>B类IP地址:前二段号码为网络号码，剩下的二段号码为本地计算机的号码</p>
-<p>C类IP地址:前三段号码为网络号码，剩下的一段号码为本地计算机的号码</p>
-<p>//A类大部分在美国，中国可能有几个。B类一般是校园网之类的。C类是平常我们用的。DE类是保留地址，不用。</p>
-<p>为了方便我们对IP地址的获取和操作，java提供了一个类InetAddress 供我们使用。但是这个类没有构造方法</p>
-<p>如果一个类没有构造方法：</p>
-<p>A：成员全部是静态的（Math，Arrays，Collections）</p>
-<p>B：单例设计模式（Runtime）</p>
-<p>C：类中有静态方法返回该类的对象（InetAddress）</p>
-<p>class Demo{</p>
-<p>private Demo(){}</p>
-<p>public static Demo getXxx(){</p>
-<p>return new Demo();</p>
-<p>}</p>
-<p>}</p>
-<p>成员方法：</p>
-<p>public static InetAdress getByName(String host):根据主机名或者ip地址的字符串表示得到IP地址对象</p>
-<p>主机名：getHostName</p>
-<p>主机Ip地址：getHostAddress</p>
-<p>端口号：正在运行的程序的标识</p>
-<p>物理端口 网卡口</p>
-<p>逻辑端口 我们指的就是逻辑端口</p>
-<p>​    A:每个网络程序都会至少有一个逻辑端口</p>
-<p>​    B:用于标识进程的逻辑地址，不同进程的标识</p>
-<p>​    C:有效端口：0<del>65535，其中0</del>1024系统使用或保留端口。</p>
-<p>​    通过一些应用程序就可以查看端口号</p>
-<p>协议</p>
-<p>UDP：将数据源和目的封装成数据包中，不需要建立连接；每个数据报的大小在限制在64k；因无连接，是不可靠协议；不需要建立连接，速度快</p>
-<p>TCP：建立连接，形成传输数据的通道；在连接中进行大数据量传输；通过三次握手完成连接，是可靠协议；必须建立连接，效率会稍低</p>
-<p>Socket套接字</p>
-<p>网络上具有唯一标识的IP地址和端口号组合在一起才能构成唯一能识别的标识符套接字。</p>
-<p>Socket原理机制：</p>
-<p>通信的两端都有Socket。</p>
-<p>网络通信其实就是Socket间的通信。</p>
-<p>数据在两个Socket间通过IO传输。</p>
-<p>原则上是先存在接收端。</p>
-<p>UDP协议发送数据：</p>
-<p>A：创建发送端Socket对象</p>
-<p>B：创建数据，并把数据打包</p>
-<p>C：调用Socket对象的发送方法发送数据包</p>
-<p>D：释放资源</p>
-<p>UDP协议接收数据：</p>
-<p>A：创建接收端Socket对象</p>
-<p>B：创建一个数据包（接收容器）</p>
-<p>C：调用Socket对象的接收方法接收数据  阻塞式方法</p>
-<p>D：解析数据包，并显示在控制台</p>
-<p>E：释放资源</p>
-<p>运行的时候先运行接收端，在运行发送端。第二次运行接收端会报错：该端口已经被占用</p>
-<p>TCP协议发送数据：</p>
-<p>A：创建发送端的Socket对象</p>
-<p>B：获取输出流，写数据</p>
-<p>C：释放资源</p>
-<p>运行的话会出现连接被拒绝的错误。所以TCP协议一定要先开服务器</p>
-<p>TCP协议发送数据：</p>
-<p>A：创建接收端的Socket对象  ServerSocket</p>
-<p>B：监听客户端连接，返回一个对应的Socket对象  阻塞式方法</p>
-<p>C：获取输入流，读取数据显示在控制台</p>
-<p>D：释放资源</p>
-<p>TCP传输容易出现的问题：</p>
-<p>客户端连接上服务端，两端都在等待，没有任何数据传输：</p>
-<p>因为read方法或者readLine方法是阻塞式。</p>
-<p>解决办法：A：再多写一条数据告诉服务器，读到这条就结束（不推荐）</p>
-<p>B：Socket提供了一个终止功能：public void shutdownOutput()</p>
-<p>shutdownInput（）方法</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.18.%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" data-id="ckpdvjpot001unswd0mtz8ksz" data-title="网络编程" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.24.JUC%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" data-id="ckq1xbdrr0021pwwdc6qjg7vk" data-title="JUC并发编程" class="article-share-link">分享</a>
       
       
       
@@ -2063,23 +1807,23 @@
       <ul>
         
           <li>
+            <a href="/2021/06/18/WebRTC%E7%9A%84%E5%AD%A6%E4%B9%A0/">WebRTC的学习</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/18/%E6%B5%81%E5%AA%92%E4%BD%93%E5%8D%8F%E8%AE%AE/">流媒体协议</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/17/1.7.%E7%AE%80%E5%8E%86%E5%AE%8C%E5%96%84/">简历完善</a>
+          </li>
+        
+          <li>
             <a href="/2021/06/08/%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/">搭建网站</a>
           </li>
         
           <li>
             <a href="/2021/06/03/%E6%94%BB%E7%A0%B4%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99/">攻破一个网站</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/">推荐研读书籍</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/17/mqtt%E5%BC%80%E5%8F%91/">mqtt开发</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/30/16.2.Docker%E4%B9%8BPortainer-io/">Docker之Portainer.io</a>
           </li>
         
       </ul>

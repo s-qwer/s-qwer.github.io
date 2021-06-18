@@ -77,6 +77,1210 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-5.2.MySQL进阶" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/06/5.2.MySQL%E8%BF%9B%E9%98%B6/" class="article-date">
+  <time class="dt-published" datetime="2021-04-06T11:43:51.000Z" itemprop="datePublished">2021-04-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/06/5.2.MySQL%E8%BF%9B%E9%98%B6/">MySQL</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1><p>索引，类似书籍的目录，可以根据目录的某个页码立即找到对应的内容。</p>
+<p>索引的优点：1. 天生排序。2. 快速查找。<br>索引的缺点：1. 占用空间。2. 降低更新表的速度。</p>
+<p>注意点：小表使用全表扫描更快，中大表才使用索引。超级大表索引基本无效。</p>
+<p>索引从实现上说，分成 2 种：聚集索引和辅助索引（也叫二级索引或者非聚集索引）</p>
+<p>从功能上说，分为 6 种：普通索引，唯一索引，主键索引，复合索引，外键索引，全文索引。</p>
+<p>详细说说 6 种索引：</p>
+<p>1、普通索引：最基本的索引，没有任何约束。<br>2、唯一索引：与普通索引类似，但具有唯一性约束。<br>3、主键索引：<strong>特殊的唯一索引，不允许有空值</strong>。<br>4、复合索引：将多个列组合在一起创建索引，可以覆盖多个列。<br>5、外键索引：只有InnoDB类型的表才可以使用外键索引，保证数据的一致性、完整性和实现级联操作。<br>6、全文索引：MySQL 自带的全文索引只能用于 InnoDB、MyISAM ，并且只能对英文进行全文检索，一般使用全文索引引擎（ES，Solr）。</p>
+<ul>
+<li><code>注意：主键就是唯一索引，但是唯一索引不一定是主键，唯一索引可以为空，但是空值只能有一个，主键不能为空。</code></li>
+</ul>
+<p>另外，InnoDB 通过主键聚簇数据，如果没有定义主键且没有定义聚集索引， MySql 会选择一个唯一的非空索引代替，如果没有这样的索引，会隐式定义个 6 字节的主键作为聚簇索引，用户不能查看或访问。</p>
+<p>简单点说：</p>
+<ol>
+<li>设置主键时，会自动生成一个唯一索引，如果<strong>之前</strong>没有聚集索引，那么主键就是聚集索引。</li>
+<li>没有设置主键时，会选择一个不为空的唯一索引作为聚集索引，如果还没有，那就生成一个隐式的 6 字节的索引。</li>
+</ol>
+<p>MySql 将数据按照页来存储，默认一页为 16kb，当你在查询时，不会只加载某一条数据，而是将这个数据所在的页都加载到 pageCache 中，这个其实和 OS 的就近访问原理类似。</p>
+<p>MySql 的索引使用 B+ 树结构。在说 B+ 树之前，先说说 B 树，B 树是一个多路平衡查找树，相较于普通的二叉树，不会发生极度不平衡的状况，同时也是多路的。</p>
+<p>B 树的特点是：他会将数据也保存在非页子节点。</p>
+<p>看图可知：</p>
+<p><img src="https://pic1.zhimg.com/80/v2-05f597852f53aef1e74cc2f5b5ba4d10_720w.png" alt="img"></p>
+<p>而这个特点会导致非页子节点不能存储大量的索引。</p>
+<p>而 B+ Tree 就是针对这个对 B tree 做了优化。如下图所示：</p>
+<p><img src="https://pic2.zhimg.com/80/v2-b5a1c7f34e65044a08cdb213f55295fd_720w.png" alt="img"></p>
+<p>我们看到，B+ Tree 将所有的 data 数据都保存到了叶子节点中，非也子节点只保存索引和指针。</p>
+<p>我们假设一个非页子节点是 16kb，每个索引，即主键是 bigint，即 8b，指针为 8b。那么每页能存储大约 1000 个索引（16kb/ 8b + 8b）.</p>
+<p>而一颗 3 层的 B+树能够存储多少索引呢？如下图：</p>
+<p><img src="https://pic3.zhimg.com/80/v2-38209d49a486354414b2358f2e88558a_720w.png" alt="img"></p>
+<p>大约能够存储 10 亿个索引。通常 B+ 树的高度在 2-4 层，由于 MySql 在运行时，根节点是常驻内存的，因此每次查找只需要大约 2 -3 次 IO。可以说，B+ 树的设计，就是根据机械磁盘的特性来进行设计的。</p>
+<p>知道了索引的设计，我们能够知道另外一些信息：</p>
+<ol>
+<li>MySql 的主键不能太大，如果使用 UUID 这种，将会浪费 B+ 树的非叶子节点。</li>
+<li>MySql 的主键最好是自增的，如果使用 UUID 这种，每次插入都会调整 B+树，从而导致页分裂，严重影响性能。</li>
+</ol>
+<p>那么，如果项目中使用了分库分表，我们通常都会需要一个主键进行 sharding，那怎么办呢？在实现上，我们可以保留自增主键，而逻辑主键用来作为唯一索引即可。</p>
+<h1 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h1><h3 id="2-锁机制"><a href="#2-锁机制" class="headerlink" title="2. 锁机制"></a>2. 锁机制</h3><p>关于 Mysql 的锁，各种概念就会喷涌而出，事实上，锁有好几种维度，我们来解释一下。</p>
+<h3 id="1-类型维度"><a href="#1-类型维度" class="headerlink" title="1. 类型维度"></a>1. 类型维度</h3><ul>
+<li><p>共享锁（读锁 / S 锁）</p>
+</li>
+<li><p>排它锁（写锁 / X 锁）<br>类型细分：</p>
+</li>
+<li><ul>
+<li>意向共享锁</li>
+<li>意向排他（互斥）锁</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>悲观锁（使用锁，即 for update）</li>
+<li>乐观锁（使用版本号字段，类似 CAS 机制，即用户自己控制。缺点：并发很高的时候，多了很多无用的重试）</li>
+</ul>
+<h3 id="2-锁的粒度（粒度维度）"><a href="#2-锁的粒度（粒度维度）" class="headerlink" title="2. 锁的粒度（粒度维度）"></a>2. 锁的粒度（粒度维度）</h3><ul>
+<li>表锁</li>
+<li>页锁（Mysql BerkeleyDB 引擎）</li>
+<li>行锁（InnoDB）</li>
+</ul>
+<h3 id="3-锁的算法（算法维度）"><a href="#3-锁的算法（算法维度）" class="headerlink" title="3. 锁的算法（算法维度）"></a>3. 锁的算法（算法维度）</h3><ul>
+<li>Record Lock（单行记录）</li>
+<li>Gap Lock（间隙锁，锁定一个范围，但不包含锁定记录）</li>
+<li>Next-Key Lock（Record Lock + Gap Lock，锁定一个范围，并且锁定记录本身， MySql 防止幻读，就是使用此锁实现）</li>
+</ul>
+<h3 id="4-默认的读操作，上锁吗？"><a href="#4-默认的读操作，上锁吗？" class="headerlink" title="4. 默认的读操作，上锁吗？"></a>4. 默认的读操作，上锁吗？</h3><ul>
+<li>默认是 MVCC 机制（“一致性非锁定读”）保证 RR 级别的隔离正确性，是不上锁的。</li>
+</ul>
+<p>可以选择手动上锁：select xxxx for update (排他锁); select xxxx lock in share mode(共享锁)，称之为“一致性锁定读”。</p>
+<p>使用锁之后，就能在 RR 级别下，避免幻读。当然，默认的 MVCC 读，也能避免幻读。</p>
+<p>既然 RR 能够防止幻读，那么，SERIALIZABLE 有啥用呢？</p>
+<p>防止丢失更新。例如下图：</p>
+<p><img src="https://pic1.zhimg.com/80/v2-1917d61efc5d3ab35029004d3eae7dc8_720w.png" alt="img"></p>
+<p>这个时候，我们必须使用 SERIALIZABLE 级别进行串行读取。</p>
+<p>最后，行锁的实现原理就是锁住聚集索引，如果你查询的时候，没有正确地击中索引，MySql 优化器将会抛弃行锁，使用表锁。</p>
+<h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><p>事务是数据库永恒不变的话题， ACID：原子性，一致性，隔离性，持久性。</p>
+<p>四个特性，最重要的就是一致性。而<strong>一致性</strong>由原子性，隔离性，持久性来保证。</p>
+<ul>
+<li>原子性由 Undo log 保证。Undo Log 会保存每次变更之前的记录，从而在发生错误时进行回滚。</li>
+<li>隔离性由 MVCC 和 Lock 保证。这个后面说。</li>
+<li>持久性由 Redo Log 保证。每次真正修改数据之前，都会将记录写到 Redo Log 中，只有 Redo Log 写入成功，才会真正的写入到 B+ 树中，如果提交之前断电，就可以通过 Redo Log 恢复记录。</li>
+</ul>
+<p>然后再说隔离性。</p>
+<p>隔离级别：</p>
+<ol>
+<li>未提交读（RU）</li>
+<li>已提交读（RC）</li>
+<li>可重复读（RR）</li>
+<li>串行化（serializable）</li>
+</ol>
+<p>每个级别都会解决不同的问题，通常是3 个问题：脏读，不可重复读，幻读。一张经典的图：</p>
+<p><img src="https://pic2.zhimg.com/80/v2-e4a89f7012dd6511edd7d970ffd0f659_720w.png" alt="img"></p>
+<p>这里有个注意点，关于幻读，在数据库规范里，RR 级别会导致幻读，但是，由于 Mysql 的优化，MySql 的 RR 级别不会导致幻读：在使用默认的 select 时，MySql 使用 MVCC 机制保证不会幻读；你也可以使用锁，在使用锁时，例如 for update（X 锁），lock in share mode（S 锁），MySql 会使用 Next-Key Lock 来保证不会发生幻读。前者称为快照读，后者称为当前读。</p>
+<p>原理剖析：</p>
+<ul>
+<li>RU 发生脏读的原因：RU 原理是对每个更新语句的行记录进行加锁，而不是对整个事务进行加锁，所以会发生脏读。而 RC 和 RR 会对整个事务加锁。</li>
+<li>RC 不能重复读的原因：RC 每次执行 SQL 语句都会生成一个新的 Read View，每次读到的都是不同的。而 RR 的事务从始至终都是使用同一个 Read View。</li>
+<li>RR 不会发生幻读的原因： 上面说过了。</li>
+</ul>
+<p>那 RR 和 Serializble 有什么区别呢？答：丢失更新。本文关于锁的部分已经提到。</p>
+<p>MVCC 介绍：全称多版本并发控制。</p>
+<p>innoDB 每个聚集索引都有 4 个隐藏字段，分别是主键（RowID），最近更改的事务 ID（MVCC 核心），Undo Log 的指针（隔离核心），索引删除标记（当删除时，不会立即删除，而是打标记，然后异步删除）；</p>
+<p>本质上，MVCC 就是用 Undo Log 链表实现。</p>
+<p>MVCC 的实现方式：事务以排它锁的方式修改原始数据，把修改前的数据存放于 Undo Log，通过回滚指针与数据关联，如果修改成功，什么都不做，如果修改失败，则恢复 Undo Log 中的数据。</p>
+<p>多说一句，通常我们认为 MVCC 是类似乐观锁的方式，即使用版本号，而实际上，innoDB 不是这么实现的。当然，这不影响我们使用 MySql。</p>
+<h1 id="事务-1"><a href="#事务-1" class="headerlink" title="*事务*"></a><em><strong>*事务*</strong></em></h1><p>事务：指的是逻辑上的一组操作，组成这组操作的各个逻辑单元，要么全都成功，要么全都失败。</p>
+<p>开启事务：start transaction;</p>
+<p>提交事务：commit;</p>
+<p>回滚事务：rollback; //恢复到事务开启之前的状态（也相当于提交了事务）</p>
+<p>事务的特性：</p>
+<p>原子性：事务的不可分割，组成事务的各个逻辑单元不可分割。</p>
+<p>一致性：事务执行的前后，数据完整性保持一致。（总和前后相等）</p>
+<p>隔离性：事务执行不应该受到其他事务的干扰。</p>
+<p>持久性：事务一旦结束，数据就持久化到数据库中。</p>
+<p>如果不考虑隔离性（一个事务执行受到其他的事务的干扰），引发一些安全问题，主要体现在读取数据上：</p>
+<p>l 脏读：一个事务读到了另一个事务未提交的数据，导致查询结果不一致</p>
+<p>l 不可重复读：一个事务读到了另一个事务已经提交的update的数据，导致多次查询结果不一致。</p>
+<p>l 虚读/幻读：一个事务读到了另一个事务已经提交的insert的数据，导致多次查询结果不一致。</p>
+<p>设置事务的隔离级别：安全性越高的效率越低，一般使用中间两种</p>
+<p>read uncommitted（未提交读）：脏读，不可重复读，虚读都有可能发生</p>
+<p>read committed（已提交读）：避免脏读。但是不可重复读和虚读是有可能发生</p>
+<p>repeatable read（重复读，默认）：避免脏读和不可重复读，但是虚读有可能发生。</p>
+<p>serializable（串行化读（一个事务得接着另一个事务执行，禁止并发存在））：避免脏读，不可重复读，虚读。</p>
+<p>设置事务的隔离级别： set session transaction isolation level 隔离级别</p>
+<p>查看当前的隔离级别：  select @@tx_isolation;</p>
+<p>演示脏读：</p>
+<p>\1. 开启两个窗口A,B</p>
+<p>\2. 设置A窗口的隔离级别为read uncommitted;</p>
+<p>\3. 在A，B两个窗口中开启事务</p>
+<p>\4. 在B窗口中完成转账的功能，但是不提交事务</p>
+<p>\5. 在A窗口中进行查询：查询到已经转账成功了。（这就发生了脏读）</p>
+<p>演示不可重复读：</p>
+<p>\1. 开启两个窗口A,B</p>
+<p>\2. 设置A窗口的隔离级别为read committed;</p>
+<p>\3. 分别在两个窗口中开启事务</p>
+<p>\4. 在B窗口中完成转账，不提交事务</p>
+<p>\5. 在A窗口中进行查询：仍然是未到账（这就避免了脏读）</p>
+<p><strong>6.</strong> <em><strong>*在B窗口中提交事务*</strong></em></p>
+<p>\7. 在A窗口查询：发现到账了（两次A窗口的查询结果不同，这就是不可重复读）</p>
+<p>避免不可重复读：将2中的隔离级别设置为repeatable read；（一个事务中的多次查询结果一致，跳出这个事务才能出现改变后的结果）</p>
+<p>（虚读只是概率发生，无法演示）</p>
+<p>演示串行化：</p>
+<p>\1. 开启两个窗口A,B</p>
+<p>\2. 设置A窗口的隔离级别：serializable</p>
+<p>\3. 分别在两个窗口中开启事务</p>
+<p>\4. 在B窗口中插入一条记录</p>
+<p>\5. 在A窗口中进行查询：发现无反应，但是当B窗口提交事务的时候，A窗口会立马输出结果。（说明事务不允许吹袭案并发，A窗口需要等B窗口事务执行完成以后，才会执行A窗口的事务）</p>
+<h1 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h1><h1 id="解释器explain"><a href="#解释器explain" class="headerlink" title="解释器explain"></a>解释器explain</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">+----+-------------+-------+------------+------+---------------+-----+---------+------+------+----------+-------+</span><br><span class="line">| id | select_type | table | partitions | type | possible_keys | key | key_len | ref  | rows | filtered | Extra |</span><br><span class="line">+----+-------------+-------+------------+------+---------------+-----+---------+------+------+----------+-------+</span><br></pre></td></tr></table></figure>
+
+<h3 id="id"><a href="#id" class="headerlink" title="id"></a>id</h3><p>select 查询的序列号，包含一组可以重复的数字，表示查询中执行sql语句的顺序。一般有三种情况：  第一种：id全部相同，sql的执行顺序是由上至下；  第二种：id全部不同，sql的执行顺序是根据id大的优先执行；  第三种：id既存在相同，又存在不同的。先根据id大的优先执行，再根据相同id从上至下的执行。</p>
+<h3 id="select-type"><a href="#select-type" class="headerlink" title="select_type"></a>select_type</h3><p>select 查询的类型，主要是用于区别普通查询，联合查询，嵌套的复杂查询  </p>
+<p>simple：简单的select 查询，查询中不包含子查询或者union  </p>
+<p>primary：查询中若包含任何复杂的子查询，最外层查询则被标记为primary  </p>
+<p>subquery：在select或where 列表中包含了子查询  </p>
+<p>derived：在from列表中包含的子查询被标记为derived（衍生）MySQL会递归执行这些子查询，把结果放在临时表里。 </p>
+<p>union：若第二个select出现在union之后，则被标记为union，若union包含在from子句的子查询中，外层select将被标记为：derived  union </p>
+<p>result：从union表获取结果的select</p>
+<h3 id="table"><a href="#table" class="headerlink" title="table"></a>table</h3><p>显示这一行的数据是关于哪张表的</p>
+<h3 id="partitions"><a href="#partitions" class="headerlink" title="partitions"></a>partitions</h3><p>表所使用的分区，如果要统计十年公司订单的金额，可以把数据分为十个区，每一年代表一个区。这样可以大大的提高查询效率。</p>
+<h3 id="type"><a href="#type" class="headerlink" title="type"></a>type</h3><p>这是一个非常重要的参数，连接类型，常见的有：all , index , range , ref , eq_ref , const , system , null 八个级别。  </p>
+<p>性能从最优到最差的排序：system &gt; const &gt; eq_ref &gt; ref &gt; range &gt; index &gt; all  </p>
+<p>对java程序员来说，若保证查询至少达到range级别或者最好能达到ref则算是一个优秀而又负责的程序员。 </p>
+<p>all：（full table scan）全表扫描无疑是最差，若是百万千万级数据量，全表扫描会非常慢。  </p>
+<p>index：（full index scan）全索引文件扫描比all好很多，毕竟从索引树中找数据，比从全表中找数据要快。  </p>
+<p>range：只检索给定范围的行，使用索引来匹配行。范围缩小了，当然比全表扫描和全索引文件扫描要快。sql语句中一般会有between，in，&gt;，&lt; 等查询。  </p>
+<p>ref：非唯一性索引扫描，本质上也是一种索引访问，返回所有匹配某个单独值的行。比如查询公司所有属于研发团队的同事，匹配的结果是多个并非唯一值。  eq_ref：唯一性索引扫描，对于每个索引键，表中有一条记录与之匹配。比如查询公司的CEO，匹配的结果只可能是一条记录，  </p>
+<p>const：表示通过索引一次就可以找到，const用于比较primary key 或者unique索引。因为只匹配一行数据，所以很快，若将主键至于where列表中，MySQL就能将该查询转换为一个常量。  </p>
+<p>system：表只有一条记录（等于系统表），这是const类型的特列，平时不会出现，了解即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">type中包含的值：</span><br><span class="line">system、const： 可以将查询的变量转为常量. 如id&#x3D;1; id为 主键或唯一键.</span><br><span class="line">eq_ref： 访问索引,返回某单一行的数据.(通常在联接时出现，查询使用的索引为主键或惟一键)</span><br><span class="line">ref： 访问索引,返回某个值的数据.(可以返回多行) 通常使用&#x3D;时发生 </span><br><span class="line">range： 这个连接类型使用索引返回一个范围中的行，比如使用&gt;或&lt;查找东西，并且该字段上建有索引时发生的情况(注:不一定好于index) </span><br><span class="line">index： 以索引的顺序进行全表扫描，优点是不用排序,缺点是还要全表扫描 </span><br><span class="line">ALL： 全表扫描，应该尽量避免</span><br></pre></td></tr></table></figure>
+
+<h3 id="possible-keys"><a href="#possible-keys" class="headerlink" title="possible_keys"></a>possible_keys</h3><p>显示查询语句可能用到的索引(一个或多个或为null)，不一定被查询实际使用。仅供参考使用。如果为空，表示没有可能应用的索引</p>
+<h3 id="key"><a href="#key" class="headerlink" title="key"></a>key</h3><p>显示查询语句实际使用的索引。若为null，则表示没有使用索引。</p>
+<p>MySQL很少会选择优化不足的索引，此时可以在SELECT语句中使用FORCE INDEX（index_name）来强制使用一个索引或者用IGNORE INDEX（index_name）来强制忽略索引</p>
+<h3 id="key-len"><a href="#key-len" class="headerlink" title="key_len"></a>key_len</h3><p>显示索引中使用的字节数，可通过key_len计算查询中使用的索引长度。在不损失精确性的情况下索引长度越短越好。</p>
+<p>key_len 显示的值为索引字段的最可能长度，并非实际使用长度，即key_len是根据表定义计算而得，并不是通过表内检索出的。</p>
+<h3 id="ref"><a href="#ref" class="headerlink" title="ref"></a>ref</h3><p>显示索引的哪一列或常量被用于查找索引列上的值。</p>
+<h3 id="rows"><a href="#rows" class="headerlink" title="rows"></a>rows</h3><p>根据表统计信息及索引选用情况，大致估算出找到所需的记录所需要读取的行数，值越大越不好。</p>
+<h3 id="extra"><a href="#extra" class="headerlink" title="extra"></a>extra</h3><p>关于MySQL如何解析查询的额外信息</p>
+<p>Using filesort： 说明MySQL会对数据使用一个外部的索引排序，而不是按照表内的索引顺序进行读取。MySQL中无法利用索引完成的排序操作称为“文件排序” 。出现这个就要立刻优化sql。  </p>
+<p>Using temporary： 使用了临时表保存中间结果，MySQL在对查询结果排序时使用临时表。常见于排序 order by 和 分组查询 group by。 出现这个更要立刻优化sql。  </p>
+<p>Using index： 表示相应的select 操作中使用了覆盖索引（Covering index），避免访问了表的数据行，效果不错！如果同时出现Using where，表明索引被用来执行索引键值的查找。如果没有同时出现Using where，表示索引用来读取数据而非执行查找动作。  </p>
+<p>覆盖索引（Covering Index） ：也叫索引覆盖，就是select 的数据列只用从索引中就能够取得，不必读取数据行，MySQL可以利用索引返回select 列表中的字段，而不必根据索引再次读取数据文件。  </p>
+<p>Using index condition： 在5.6版本后加入的新特性，优化器会在索引存在的情况下，通过符合RANGE范围的条数 和 总数的比例来选择是使用索引还是进行全表遍历。  </p>
+<p>Using where： 表明使用了where 过滤  </p>
+<p>Using join buffer： 表明使用了连接缓存  </p>
+<p>impossible where： where 语句的值总是false，不可用，不能用来获取任何元素  </p>
+<p>distinct： 优化distinct操作，在找到第一匹配的元组后即停止找同样值的动作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Extra中包含的值：using index： 只用到索引,可以避免访问表，性能很高。 </span><br><span class="line">using where： 使用到where来过滤数据， 不是所有的where clause都要显示using where. 如以&#x3D;方式访问索引。</span><br><span class="line">using tmporary： 用到临时表去处理当前的查询。</span><br><span class="line">using filesort： 用到额外的排序，此时mysql会根据联接类型浏览所有符合条件的记录，并保存排序关键字和行指针，然后排序关键字并按顺序检索行。(当使用order by v1,而没用到索引时,就会使用额外的排序)。</span><br><span class="line">range checked for eache record(index map:N)： 没有好的索引可以使用。Using index for group-by：表明可以在索引中找到分组所需的所有数据，不需要查询实际的表。explain select user_id from t_order group by user_id;</span><br></pre></td></tr></table></figure>
+
+<h3 id="filtered"><a href="#filtered" class="headerlink" title="filtered"></a>filtered</h3><p>一个百分比的值，和rows 列的值一起使用，可以估计出查询执行计划(QEP)中的前一个表的结果集，从而确定join操作的循环次数。小表驱动大表，减轻连接的次数</p>
+<p>见到Using temporary和Using filesort，就意味着MySQL根本不能使用索引，结果是检索会很慢，需要优化sql了。</p>
+<p>MySQL本身的功能架构分为三个部分，分别是 应用层、逻辑层、物理层，不只是MySQL ，其他大多数数据库产品都是按这种架构来进行划分的。</p>
+<ul>
+<li>应用层，主要负责与客户端进行交互，建立链接，记住链接状态，返回数据，响应请求，这一层是和客户端打交道的。</li>
+<li>逻辑层，主要负责查询处理、事务管理等其他数据库功能处理，以查询为例。</li>
+</ul>
+<p>​    </p>
+<p>首先接收到查询SQL之后，数据库会立即分配一个线程对其进行处理，第一步查询处理器会对SQL查询进行优化，优化后会生成执行计划，然后交由计划执行器来执行。</p>
+<p>​    </p>
+<p>计划执行器需要访问更底层的事务管理器，存储管理器来操作数据，他们各自的分工各有不同，最终通过调用物理层的文件获取到查询结构信息，将最终结果响应给应用层。</p>
+<ul>
+<li>物理层，实际物理磁盘上存储的文件，主要有分文数据文件，日志文件。</li>
+</ul>
+<p>通过上面的描述，生成执行计划是执行一条SQL必不可少的步骤，一条SQL性能的好坏，可以通过查看执行计划很直观的看出来，执行计划提供了各种查询类型与级别，方便我们进行查看以及为作为性能分析的依据。</p>
+<p>MySQL为我们提供了 explain 关键字来直观的查看一条SQL的执行计划。</p>
+<p>explain显示了MySQL如何使用索引来处理select语句以及连接表，可以帮助选择更好的索引和写出更优化的查询语句。</p>
+<p>下面我们使用 explain 做一个查询，如下：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/DmibiaFiaAI4B2X3HLg3LCH4kOawemn0jK92f2UQNa6MzDzMSHF0kiaG8icDGUwjkyq4oZzflDzjhDqiaZXe9CXdhVfA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>查询结构中有12列，理解每一列的含义，对理解执行计划至关重要，下面进行说明。</p>
+<p><strong>id</strong></p>
+<p>SELECT识别符，这是SELECT的查询序列号。</p>
+<p><strong>select_type</strong></p>
+<p>SELECT类型,可以为以下任何一种:</p>
+<ul>
+<li>SIMPLE:简单SELECT(不使用UNION或子查询)</li>
+<li>PRIMARY:最外面的SELECT</li>
+<li>UNION:UNION中的第二个或后面的SELECT语句</li>
+<li>DEPENDENT UNION:UNION中的第二个或后面的SELECT语句,取决于外面的查询</li>
+<li>UNION RESULT:UNION 的结果</li>
+<li>SUBQUERY:子查询中的第一个SELECT</li>
+<li>DEPENDENT SUBQUERY:子查询中的第一个SELECT,取决于外面的查询</li>
+<li>DERIVED:导出表的SELECT(FROM子句的子查询)</li>
+</ul>
+<p><strong>table</strong></p>
+<p>输出的行所引用的表</p>
+<p><strong>partitions</strong></p>
+<p>如果查询是基于分区表的话，显示查询将访问的分区。</p>
+<p><strong>type</strong></p>
+<p>联接类型。下面给出各种联接类型,按照从最佳类型到最坏类型进行排序:</p>
+<ul>
+<li>system:表仅有一行(=系统表)。这是const联接类型的一个特例。</li>
+<li>const:表最多有一个匹配行,它将在查询开始时被读取。因为仅有一行,在这行的列值可被优化器剩余部分认为是常数。const表很快,因为它们只读取一次!</li>
+<li>eq_ref:对于每个来自于前面的表的行组合,从该表中读取一行。这可能是最好的联接类型,除了const类型。</li>
+<li>ref:对于每个来自于前面的表的行组合,所有有匹配索引值的行将从这张表中读取。</li>
+<li>ref_or_:该联接类型如同ref,但是添加了MySQL可以专门搜索包含NULL值的行。</li>
+<li>index_merge:该联接类型表示使用了索引合并优化方法。</li>
+<li>unique_subquery:该类型替换了下面形式的IN子查询的ref: value IN (SELECT primary_key FROM single_table WHERE some_expr) unique_subquery是一个索引查找函数,可以完全替换子查询,效率更高。</li>
+<li>index_subquery:该联接类型类似于unique_subquery。可以替换IN子查询,但只适合下列形式的子查询中的非唯一索引: value IN (SELECT key_column FROM single_table WHERE some_expr)</li>
+<li>range:只检索给定范围的行,使用一个索引来选择行。</li>
+<li>index:该联接类型与ALL相同,除了只有索引树被扫描。这通常比ALL快,因为索引文件通常比数据文件小。</li>
+<li>ALL:对于每个来自于先前的表的行组合,进行完整的表扫描，说明查询就需要优化了。</li>
+</ul>
+<p>一般来说，得保证查询至少达到range级别，最好能达到ref。</p>
+<p><strong>possible_keys</strong></p>
+<p>指出MySQL能使用哪个索引在该表中找到行</p>
+<p><strong>key</strong></p>
+<p>显示MySQL实际决定使用的键(索引)。如果没有选择索引,键是NULL。</p>
+<p><strong>key_len</strong></p>
+<p>显示MySQL决定使用的键长度。如果键是NULL,则长度为NULL。在不损失精确性的情况下，长度越短越好</p>
+<p><strong>ref</strong></p>
+<p>显示使用哪个列或常数与key一起从表中选择行。</p>
+<p><strong>rows</strong></p>
+<p>显示MySQL认为它执行查询时必须检查的行数。多行之间的数据相乘可以估算要处理的行数。</p>
+<p><strong>filtered</strong></p>
+<p>显示了通过条件过滤出的行数的百分比估计值。</p>
+<p><strong>Extra</strong></p>
+<p>该列包含MySQL解决查询的详细信息</p>
+<ul>
+<li>Distinct:MySQL发现第1个匹配行后,停止为当前的行组合搜索更多的行。</li>
+<li>Select tables optimized away MySQL根本没有遍历表或索引就返回数据了，表示已经优化到不能再优化了</li>
+<li>Not exists:MySQL能够对查询进行LEFT JOIN优化,发现1个匹配LEFT JOIN标准的行后,不再为前面的的行组合在该表内检查更多的行。</li>
+<li>range checked for each record (index map: #):MySQL没有发现好的可以使用的索引,但发现如果来自前面的表的列值已知,可能部分索引可以使用。</li>
+<li>Using filesort:MySQL需要额外的一次传递,以找出如何按排序顺序检索行，说明查询就需要优化了。</li>
+<li>Using index:从只使用索引树中的信息而不需要进一步搜索读取实际的行来检索表中的列信息。</li>
+<li>Using temporary:为了解决查询,MySQL需要创建一个临时表来容纳结果，说明查询就需要优化了。</li>
+<li>Using where:WHERE 子句用于限制哪一个行匹配下一个表或发送到客户。</li>
+<li>Using sort_union(…), Using union(…), Using intersect(…):这些函数说明如何为index_merge联接类型合并索引扫描。</li>
+<li>Using index for group-by:类似于访问表的Using index方式,Using index for group-by表示MySQL发现了一个索引,可以用来查 询GROUP BY或DISTINCT查询的所有列,而不要额外搜索硬盘访问实际的表。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/06/5.2.MySQL%E8%BF%9B%E9%98%B6/" data-id="ckq1xbdsp004kpwwdf88c7fq8" data-title="MySQL" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-8.1.前端概述" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/05/8.1.%E5%89%8D%E7%AB%AF%E6%A6%82%E8%BF%B0/" class="article-date">
+  <time class="dt-published" datetime="2021-04-05T07:42:57.000Z" itemprop="datePublished">2021-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/05/8.1.%E5%89%8D%E7%AB%AF%E6%A6%82%E8%BF%B0/">前端概述</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>网页主要是做前端样式，而现在的前端的框架越来越多：bootstrap，layui，基于Vue的elementui、iview。以前开发网页需要写html代码，css样式和js方法。现在用了框架之后，我们只需要将其中的示例改为自己的信息，将相应的css和js放在对应的路径下即可。</p>
+<p>前端适配的问题：在css的样式下</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/05/8.1.%E5%89%8D%E7%AB%AF%E6%A6%82%E8%BF%B0/" data-id="ckq1xbdrv002ipwwd0gfebys6" data-title="前端概述" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-8.3.网页前端之CSS" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/05/8.3.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BCSS/" class="article-date">
+  <time class="dt-published" datetime="2021-04-05T05:37:52.000Z" itemprop="datePublished">2021-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/05/8.3.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BCSS/">网页前端之CSS</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>HTML是页面的结构，CSS是美化页面</p>
+<p>CSS（Cascading Style Sheets）：层叠样式表  </p>
+<p>样式表：存储样式的地方，多个样式</p>
+<p>CSS通常称为CSS样式或层叠样式表，主要用于设置HTML页面中的文本内容（字体、大小、对齐方式等），图片的外形（高宽、边框样式、边距等）以及版面的布局等外观显示样式。</p>
+<p>作用：修饰HTML页面，更丰富多彩的展示超文本信息</p>
+<p>因为HTML在单独使用设置属性会有一定的局限性，所以用CSS样式。</p>
+<h1 id="样式类型"><a href="#样式类型" class="headerlink" title="样式类型"></a>样式类型</h1><p>1.行内样式表（内联样式）:<code>&lt;div style=&quot;width:400px;height:200px;background-color:#FFF&quot;&gt;&lt;/div&gt;</code></p>
+<p>一般写在标签头部</p>
+<p>放置规范：在<code>&lt;style&gt;</code>标签内容体中书写css样式代码<code>&lt;/style&gt;</code>      <code>&lt;style&gt;</code>标签放置在<code>&lt;head&gt;</code>标签之中</p>
+<p>格式规范：选择器名称｛属性名1：属性值1； 属性名2：属性值2；……｝</p>
+<p>代码规范：属性名和属性值之间是键值对关系    <code>：</code>连接   <code>；</code>结尾  </p>
+<p>如果一个属性名有多个值，多个值之间用空格隔开：border:1px solid red;</p>
+<p>CSS注释：<code>/*注释内容*/ </code> 等同于java的多行注释</p>
+<p>缺点:样式只能操作某一个标签 优点:十分灵活，可以进行细节的调节,更加针对性修改某个标签的样式</p>
+<p>2.嵌入式样式表（嵌入样式）:<code>&lt;style type=&quot;text/css&quot;&gt;&lt;/style&gt;</code></p>
+<p>一般写在<code>&lt;head&gt;&lt;/head&gt;</code>标签内。可以通过一条语句操作多个标签或类，但是仅限本页面内</p>
+<p>3.引用式样式表（外联样式）:<code>&lt;link href=&quot;css文件路径&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; /&gt;</code></p>
+<p>​    rel=”stylesheet” 固定值，表示样式表</p>
+<p>​    type=”text/css” 固定值，表示css类型</p>
+<p>​    href表示css文件位置</p>
+<p>(能用引用式样式表的地方就尽量用引用式)<br>一般写在<code>&lt;head&gt;&lt;/head&gt;</code>标签内。(多个HTML文件可以引用一个CSS样式表文件) </p>
+<p>优点:占用空间资源少，修改方便，只要修改CSS文件就可以修改多个HTML页面的属性，适合不同页面进行样式复用</p>
+<p>CSS注释写法:<code>/* */</code>   HTML注释写法:<code>&lt;!--  --&gt;</code></p>
+<p>当三种样式表操作同一元素时，优先级依次为:行内样式表，嵌入式样式表，引用式样式表。 即后出现的先应用。引用式样式表一般放在嵌入式样式表的前面</p>
+<h1 id="书写规则"><a href="#书写规则" class="headerlink" title="书写规则"></a>书写规则</h1><p>不要忘记每条属性的“;”结尾<br>如果缺少符号或者书写错误则样式表失效<br>需要单位的值要加上单位，例如:px(像素单位)</p>
+<h1 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h1><p>选择器：指定CSS样式作用在哪些HTML标签上</p>
+<p>基本选择器：</p>
+<p>1.元素选择器：HTML标签又名html元素，就是以HTML标签名作为选择器名称。</p>
+<p>作用：选择CSS样式代码，对应标签名的标签上。</p>
+<p>格式：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">标签名｛</span><br><span class="line"></span><br><span class="line"><span class="comment">/*CSS样式代码*/</span></span><br><span class="line"></span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+
+<p>适用范围：适用于将相同样式，作用在多个同名标签上</p>
+<p>2.类选择器：以HTML的类名（class属性值）作为选择器名称</p>
+<p>每个HTML标签都有一个class属性，class属性即为类名。</p>
+<p>作用：选择CSS样式代码作用于对应类名的HTML标签上。</p>
+<p>格式：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> .类名｛</span><br><span class="line"></span><br><span class="line"><span class="comment">/*CSS样式代码*/</span></span><br><span class="line"></span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+
+<p>使用范围：适用于将样式一次作用在相同类名的标签上（即使标签名不同）。</p>
+<p>3.id选择器：以HTML的id（id属性值）作为选择器名称</p>
+<p>每个HTML标签都有一个id属性，这个id属性值必须在本页面是唯一的</p>
+<p>作用：选择CSS样式代码作用于某个规定id值的html标签上</p>
+<p>格式：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="selector-id">#id</span>值｛</span><br><span class="line"></span><br><span class="line"><span class="comment">/*CSS样式代码*/</span></span><br><span class="line"></span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+
+<p>适用范围：适用于将样式作用某个标签上（更有针对性）</p>
+<p>基本选择器的组合方式:</p>
+<p>层级关系：标签和标签之间有层级关系</p>
+<p>我们可以对基本选择器进行组合，表现出层级关系，从而更针对性地把样式作用于某些标签上（相当于是有相同的标签，更针对性的指定是哪个）</p>
+<p>格式：  </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">选择器<span class="number">1</span> 选择器<span class="number">2</span> ...｛</span><br><span class="line"></span><br><span class="line"><span class="comment">/*CSS样式代码*/</span></span><br><span class="line"></span><br><span class="line">｝</span><br><span class="line"></span><br><span class="line">选择器<span class="number">1</span>下的选择器<span class="number">2</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="CSS样式"><a href="#CSS样式" class="headerlink" title="CSS样式"></a>CSS样式</h1><h2 id="字体属性：-font"><a href="#字体属性：-font" class="headerlink" title="字体属性：(font)"></a>字体属性：(font)</h2><p>样式：</p>
+<p>​    color : #999999;   文字颜色</p>
+<p>​    font-family : sans-serif;   字体类型  “Courier New”, Courier, monospace, “Times New Roman”, Times, serif, Arial, Helvetica, sans-serif, Verdana</p>
+<p>​    font-size:  字体大小 inherit| medium| large| larger| x-large| xx-large| small| smaller| x-small| xx-small |数值  单位：pt，px</p>
+<p>​    font-weight:  字体粗细 bold,bolder; (文字粗体）   lighter;(细体) normal;(正常)  100-900</p>
+<p>​    font-style:  字体风格  itelic; (文字斜体）  normal;(正常) oblique;(偏斜体)   inherit(继承)</p>
+<p>​    letter-spacing :  字间距离  数值|inherit|normal</p>
+<p>​    word-spacing: 单词间距  数值|inherit|normal</p>
+<p>​    line-height :  设置行高   normal;(正常)   inherit(继承)  数值 单位：PX、PD、EM  </p>
+<p>​    text-shadow: 阴影颜色 {16位色值}</p>
+<p>​    font-variant: 字体变形  {inherit|normal|small-cps（小字体，小型大写字母） }</p>
+<p>​    font-size-adjust:字体变形 {inherit|none}</p>
+<p>​    font-stretch:字体 {condensed|expanded|extra-condensed|extra-expanded|inherit|narrower|normal| semi-condensed|semi-expanded|ultra-condensed|ultra-expanded|wider}</p>
+<p>修饰：inherit|none|underline|overline|line-through|blink</p>
+<p>​    text-decoration:line-through; 加删除线</p>
+<p>​    text-decoration: overline; 加顶线（上划线）</p>
+<p>​    text-decoration:underline; 加下划线</p>
+<p>​    text-decoration:none; 删除链接下划线</p>
+<p>​    text-decoration:blink; 闪烁</p>
+<p>大小写：</p>
+<p>text-transform:inherit|none|capitalize|uppercase|lowercase</p>
+<p>​    text-transform : capitalize; 首字大写</p>
+<p>​    text-transform : uppercase; 英文大写</p>
+<p>​    text-transform : lowercase; 英文小写</p>
+<h2 id="背景属性：-background"><a href="#背景属性：-background" class="headerlink" title="背景属性： (background)"></a>背景属性： (background)</h2><p>色彩：</p>
+<p>​    background-color:#F5E2EC; 背景颜色  </p>
+<p>两种方式：</p>
+<p>​    ①英文单词</p>
+<p>​    ②颜色代码  格式：#红绿蓝，每一个颜色用两个16进制位数表示  例如：#ff1100 红色ff 绿色11 蓝色00 红色颜色最重，绿色其次，没有蓝色  （数值代表每个颜色的色重）</p>
+<p>​    background:transparent; 透视背景</p>
+<p>图片：</p>
+<p>​    background-image : url(/image/bg.gif); 背景图片  url(URL)|none</p>
+<p>重复： inherit|no-repeat|repeat|repeat-x|repeat-y</p>
+<p>​    background-repeat : repeat; 重复排列-网页默认</p>
+<p>​    background-repeat : no-repeat; 不重复排列</p>
+<p>​    background-repeat : repeat-x; 在x轴重复排列</p>
+<p>​    background-repeat : repeat-y; 在y轴重复排列</p>
+<p>滚动：</p>
+<p>​    background-attachment : fixed; 浮水印固定背景   scroll;(滚动)</p>
+<p>位置：</p>
+<p>​    background-position : 90% 90%; 背景图片x与y轴的位置</p>
+<p>​    background-position : top; 向上对齐</p>
+<p>​    background-position : buttom; 向下对齐</p>
+<p>​    background-position : left; 向左对齐</p>
+<p>​    background-position : right; 向右对齐</p>
+<p>​    background-position : center; 居中对齐</p>
+<p>简写：  背影样式 {background:背景颜色|背景图象|背景重复|背景附件|背景位置}</p>
+<p>例： {background:#000 url(..) repeat fixed left top;}</p>
+<h2 id="区块属性：-Block"><a href="#区块属性：-Block" class="headerlink" title="区块属性： (Block)"></a>区块属性： (Block)</h2><p>排列方式：</p>
+<p>​    text-align:right; 文字右对齐</p>
+<p>​    text-align:left; 文字左对齐</p>
+<p>​    text-align:center; 文字居中对齐</p>
+<p>​    text-align:justify; 文字分散对齐（两端对齐）</p>
+<p>​    vertical-align:baseline; 基线</p>
+<p>​    vertical-align:top; 垂直向上对齐</p>
+<p>​    vertical-align:bottom; 垂直向下对齐</p>
+<p>​    vertical-align:middle; 垂直居中对齐</p>
+<p>​    vertical-align:text-top; 文字垂直向上对齐</p>
+<p>​    vertical-align:text-bottom; 文字垂直向下对齐</p>
+<p>​    vertical-align:sub; 下标字</p>
+<p>​    vertical-align:super; 上标字</p>
+<h2 id="显示属性：（display）"><a href="#显示属性：（display）" class="headerlink" title="显示属性：（display）"></a>显示属性：（display）</h2><p>display属性可以使得元素在行内元素和块元素之间相互转换</p>
+<p>格式：  选择器{display:属性值 }</p>
+<p>属性值：block：此元素显示为块元素（块元素默认的display属性值）</p>
+<p>​    inline：此元素显示为行内元素（行内元素默认的display属性值）</p>
+<p>​    none：此元素将被隐藏，不显示，也不占用页面空间</p>
+<p>display: 显示  {block;}(块) inline;(内嵌) list-item;(列表项) run-in;(追加部分) compact;(紧凑) marker;(标记) table; inline-table; table-raw-group; table-header-group; table-footer-group; table-raw; table-column-group; table-column; table-cell; table-caption;(表格标题)</p>
+<p>​    text-indent: 缩进，段首空格 { 数值px; inherit}</p>
+<p>​    white-space: 空格；控制空白  pre;(保留) nowrap;(不换行) normal</p>
+<p>​    writing-mode: 书写方式 {lr-tb（从左到右，从上到下）|tb-rl（从上到下，从右到左）}</p>
+<p>​    visibility: 是否可见 inherit; visible; hidden;collapse</p>
+<p>即使不可见的元素也会占据页面上的空间。使用 “display” 属性来创建不占据页面空间的不可见元素</p>
+<p>​    overflow:  当内容溢出元素框时发生的事情</p>
+<pre><code>     visible:默认值。内容不会被修剪，会呈现在元素框之外。
+</code></pre>
+<p>​         hidden:内容会被修剪，并且其余内容是不可见的。</p>
+<p>​         scroll:内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。</p>
+<p>​        auto:如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容</p>
+<p>​    clip:  (裁切)剪裁绝对定位元素:这个属性用于定义一个剪裁矩形。对于一个绝对定义元素，在这个矩形内的内容才可见。出了这个剪裁区域的内容会根据 overflow 的值来处理。剪裁区域可能比元素的内容区大，也可能比内容区小</p>
+<p>​        rect (<em>top</em>, <em>right</em>, <em>bottom</em>, <em>left</em>)</p>
+<p>​        auto:默认值。不应用任何剪裁</p>
+<h2 id="方框属性：-Box"><a href="#方框属性：-Box" class="headerlink" title="方框属性： (Box)"></a>方框属性： (Box)</h2><p>CSS盒子模型：所有的HTML元素，都可以看作一个四边形，即一个盒子。</p>
+<p>用CSS来设置元素盒子的内边距（padding）、边框(border)和外边距(margin)的样式的方式相当于设置盒子的样式，我们称之为盒子模型。</p>
+<p>边框：（HTML元素盒子的框体）简写：<code>border:1px solid red;</code></p>
+<p>宽度：宽度值： thin|medium|thick|数值  </p>
+<p>​    width:长度|百分比| auto</p>
+<p>​    border-top-width </p>
+<p>​    border-right-width </p>
+<p>​    border-bottom-width </p>
+<p>​    border-left-width</p>
+<p>高度：</p>
+<p>​    height:数值|auto</p>
+<p>颜色：</p>
+<p>​    border-color:数值 数值 数值 数值；　数值：分别代表top、right、bottom、left颜色值</p>
+<p>风格： </p>
+<p>​    border-style:none|hidden|inherit|dashed|solid|double|inset|outset|ridge|groove</p>
+<p>漂浮：</p>
+<p>​    float:left|right|none</p>
+<p>​    通常默认的排版方式，将页面的元素从上到下一一罗列，而实际开发中，需要左右方式进行排版，所以需要使用到浮动属性：float</p>
+<p>格式： 选择器{float：属性值；}</p>
+<p>常用属性值：none：元素不浮动（默认值）</p>
+<p>​    left：元素向左浮动</p>
+<p>​    right：元素向右浮动</p>
+<p>因为元素设置浮动属性后，会脱离原有文档流（会脱离原有的板式），从而会影响其他元素的样式，所以设置浮动以后，页面样式需要重新调整。</p>
+<p>清除：规定元素的哪一侧不允许其他浮动元素</p>
+<p>​    clear:none|left|right|both</p>
+<p>注：这个规则只能影响使用清除的元素本身，不能影响其他元素。这个元素与float对应</p>
+<p>外边距，边界留白：HTML元素边框到其他元素边框的距离</p>
+<p>​    margin-top:10px; 上边界</p>
+<p>​    margin-right:10px; 右边界值</p>
+<p>​    margin-bottom:10px; 下边界值</p>
+<p>​    margin-left:10px; 左边界值</p>
+<p>通用性设置：margin: 10px;</p>
+<p>内边距，补白：HTML元素里的内容体到HTML元素边框的距离</p>
+<p>​    padding-top:10px; 上边框留空白</p>
+<p>​    padding-right:10px; 右边框留空白</p>
+<p>​    padding-bottom:10px; 下边框留空白</p>
+<p>​    padding-left:10px; 左边框留空白</p>
+<p>通用性设置：padding: 10px;</p>
+<h2 id="边框属性：-Border"><a href="#边框属性：-Border" class="headerlink" title="边框属性： (Border)"></a>边框属性： (Border)</h2><p>所有的HTML标签都有边框，默认边框不可见</p>
+<p>简写：    格式：宽度 样式 颜色</p>
+<p>​    border：width style color; </p>
+<p>​    border-top : 1px solid #6699cc; 上框线</p>
+<p>​    border-bottom : 1px solid #6699cc; 下框线</p>
+<p>​    border-left : 1px solid #6699cc; 左框线</p>
+<p>​    border-right : 1px solid #6699cc; 右框线</p>
+<p>也可以使用常规的方式 如下:</p>
+<p>​    border-top-color : #369 设置上框线top颜色</p>
+<p>​    border-top-width :1px设置上框线top宽度</p>
+<p>​    border-top-style : solid设置上框线top样式</p>
+<p>其他框线样式：</p>
+<p>​    solid 实线框</p>
+<p>​    dotted 虚线框（点线）</p>
+<p>​    double 双线框</p>
+<p>​    groove 立体内凸框 (槽线)</p>
+<p>​    ridge 立体浮雕框 (脊状)</p>
+<p>​    inset 凹框</p>
+<p>​    outset 凸框</p>
+<p>width：边框的宽度</p>
+<p>height：边框的高度（只是边框，不是字体）</p>
+<h2 id="列表属性：-List-style"><a href="#列表属性：-List-style" class="headerlink" title="列表属性： (List-style)"></a>列表属性： (List-style)</h2><p>符号列表： disc|circle|square|decimal|lower-roman|upper-roman|lower-alpha|upper-alpha|none</p>
+<p>​    list-style-type:none; 不编号</p>
+<p>​    list-style-type:decimal; 阿拉伯数字</p>
+<p>​    list-style-type:lower-roman; 小写罗马数字</p>
+<p>​    list-style-type:upper-roman; 大写罗马数字</p>
+<p>​    list-style-type:lower-alpha; 小写英文字母</p>
+<p>​    list-style-type:upper-alpha; 大写英文字母</p>
+<p>​    list-style-type:disc; 实心圆形符号</p>
+<p>​    list-style-type:circle; 空心圆形符号</p>
+<p>​    list-style-type:square; 实心方形符</p>
+<p>图像：</p>
+<p>​    list-style-image:url(/dot.gif); 图片式符号</p>
+<p>位置：</p>
+<p>​    list-style-position: outside; 凸排</p>
+<p>​    list-style-position:inside; 缩进</p>
+<h2 id="定位属性：-Position"><a href="#定位属性：-Position" class="headerlink" title="定位属性： (Position)"></a>定位属性： (Position)</h2><p>这个属性定义建立元素布局所用的定位机制。任何元素都可以定位，不过绝对或固定元素会生成一个块级框，而不论该元素本身是什么类型。相对定位元素会相对于它在正常流中的默认位置偏移。</p>
+<p>​    position: absolute;   生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。</p>
+<p>​    position: fixed;  生成绝对定位的元素，相对于浏览器窗口进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定</p>
+<p>​    position:relative; 生成相对定位的元素，相对于其正常位置进行定位。因此，”left:20” 会向元素的 LEFT 位置添加 20 像素</p>
+<p>​    position:static; 默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）</p>
+<p>​    position:inherit;规定应该从父元素继承 position 属性的值</p>
+<p>​        Z-index仅能在定位元素上奏效，可被用于将在一个元素放置于另一元素之后,拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。</p>
+<h2 id="连接属性：（a）"><a href="#连接属性：（a）" class="headerlink" title="连接属性：（a）"></a>连接属性：（a）</h2><p>a /<em>所有超链接</em>/</p>
+<p>​    a:link 超链接文字格式</p>
+<p>​    a:visited 浏览过的链接文字格式</p>
+<p>​    a:active 按下链接的格式</p>
+<p>​    a:hover 鼠标转到链接</p>
+<p>鼠标光标样式： hand|crosshair|text|wait|move|help|e-resize|nw-resize|w-resize|s-resize|se-resize|sw-resize</p>
+<p>​    链接手指 cursor: hand</p>
+<p>​    十字体 cursor:crosshair</p>
+<p>​    箭头朝下 cursor:s-resize</p>
+<p>​    十字箭头 cursor:move</p>
+<p>​    箭头朝右 cursor:move</p>
+<p>​    加一问号 cursor:help</p>
+<p>​    箭头朝左 cursor:w-resize</p>
+<p>​    箭头朝上 cursor:n-resize</p>
+<p>​    箭头朝右上 cursor:ne-resize</p>
+<p>​    箭头朝左上 cursor:nw-resize</p>
+<p>​    文字I型 cursor:text</p>
+<p>​    箭头斜右下 cursor:se-resize</p>
+<p>​    箭头斜左下 cursor:sw-resize</p>
+<p>​    漏斗 cursor:wait</p>
+<p>​    光标图案(IE6) p {cursor:url(“光标文件名.cur”),text;}</p>
+<h2 id="表单属性"><a href="#表单属性" class="headerlink" title="表单属性"></a>表单属性</h2><p>文字方块</p>
+<p>按钮</p>
+<p>复选框</p>
+<p>选择钮</p>
+<p>多行文字方块</p>
+<p>下拉式菜单 选项1选项2</p>
+<h2 id="伪元素-after和-before"><a href="#伪元素-after和-before" class="headerlink" title="伪元素::after和::before"></a>伪元素::after和::before</h2><p>::before和::after匹配一个虚拟元素，主要被用于为当前元素增加装饰性内容的。它显示的内容是其自身的“<code>content</code>”属性，默认是内联元素。</p>
+<h2 id="兼容问题"><a href="#兼容问题" class="headerlink" title="兼容问题"></a>兼容问题</h2><p>!important：</p>
+<p>​    CSS中的!important一般都是用于对低版本的除了iE 6 ，用来做hack的，后面缀上了!important的css语句，让浏览器首选执行这个语句，因为css有继承的样式，加上!importanrt可以覆盖父级的样式。 IE6不认识它的，IE7和别的浏览器中可以用，用来处理浏览器的兼容性。</p>
+<h2 id="vue的一些样式"><a href="#vue的一些样式" class="headerlink" title="vue的一些样式"></a>vue的一些样式</h2><h3 id="lt-style-scoped-gt"><a href="#lt-style-scoped-gt" class="headerlink" title="&lt;style scoped&gt;"></a><code>&lt;style scoped&gt;</code></h3><p>在vue中，我们为了避免父组件的样式影响到子组件的样式，会在style中加<code>&lt;style scoped&gt;</code>，这样父组件中如果有跟子组件相同的class名称或者使用选择器的时候，就不会影响到子组件的样式。</p>
+<h3 id="deep-gt-gt-gt"><a href="#deep-gt-gt-gt" class="headerlink" title="/deep/    &gt;&gt;&gt;"></a>/deep/    &gt;&gt;&gt;</h3><p>vue组件中，在style设置为scoped的时候，里面在写样式对子组件是不生效的，如果想让某些样式对所有子组件都生效，可以使用 /deep/ 深度选择器</p>
+<p>把 /deep/ 换成 &gt;&gt;&gt;，也可以达到同样的效果</p>
+<p>一、IE边框若显若无，须注意，定是高度设置已忘记；<br>二、浮动产生有缘故，若要父层包含住，紧跟浮动要清除，容器自然显其中；<br>三、三像素文本慢移不必慌，高度设置帮你忙；<br>四、兼容各个浏览须注意，默认设置行高可能是隐患；<br>五、独立清除浮动须铭记，行高设无，高设零，设计效果兼浏览；<br>六、学布局须思路，路随布局原理自然直，轻松驾驭html，流水布局少hack，代码清爽，兼容好，友好引擎喜欢迎。<br>七、所有标签皆有源，只是默认各不同，span是无极，无极生两仪—内联和块级，img较特殊，但也遵法理，其他只是改造各不同，一个*号全归原，层叠样式理须多练习，万物皆规律。<br>八、图片链接排版须小心，图片链接文字链接若对齐，padding和vertical-align:middle要设定，虽差微细倒无妨。<br>九、IE浮动双边距，请用display：inline拘。</p>
+<p>css三大特性</p>
+<p>层叠性：css样式冲突采取的原则(后者覆盖前者)</p>
+<p>继承性：对于部分属性样式会有天生的继承</p>
+<p>优先级：选择器优先级算法</p>
+<p>选择器</p>
+<p>在讲这三个特性之前我们需要来全面了解下选择器。</p>
+<p>种类</p>
+<p>下面我将选择进行划分为三大部分，对于基本选择器我就不说了，主要讲下伪类选择器，组合选择器及它们各自的使用场景。</p>
+<p>基本选择器</p>
+<p>类名：.box</p>
+<p>标签: div</p>
+<p>属性: input[type=“eamil”] | a[href*=“<a href="http://www.beige.world”]">http://www.beige.world”]</a></p>
+<p>ID: #box</p>
+<p>伪类选择器</p>
+<p>结构伪类: :nth-child(n) | :nth-of-type(n) | :hover</p>
+<p>伪元素: ::before | ::after</p>
+<p>组合选择器</p>
+<p>相邻兄弟 A + B</p>
+<p>普通兄弟 A ~ B</p>
+<p>子选择器 A &gt; B</p>
+<p>后代选择器 A B</p>
+<p>基本选择器</p>
+<p>算了还是讲下属性选择器吧🤔，这个选择器我在项目开发中还是用到过的</p>
+<p>直接看例子：</p>
+<p>/* 匹配包含title属性的a标签 =&gt; */</p>
+<p>a[title] {color: purple;}</p>
+<p>/* 存在href属性并且属性值为”<a target="_blank" rel="noopener" href="http://beige.world&quot;的标签*/">http://beige.world&quot;的标签*/</a></p>
+<p>/* */</p>
+<p>a[href=“<a href="http://beige.world”]">http://beige.world”]</a> {color: green;}</p>
+<p>/* 存在href属性并且属性值包含”baidu”的标签*/</p>
+<p>/*</p>
+<p>*/</p>
+<p>a[href*=“baidu”] {font-size: 20px;}</p>
+<p>/* 存在id属性并且属性值结尾是”-wrapper”的</p>
+<p>标签 */</p>
+<p>/*</p>
+<p>*/</p>
+<p>div[id$=”-wrapper”] {display: flex;}</p>
+<p>/* 存在class属性并且属性值包含以空格分隔的”logo”的</p>
+<p>元素 */</p>
+<p>/*</p>
+<p>*/</p>
+<p>div[class~=“logo”] { padding: 2px; }</p>
+<p>复制代码</p>
+<p>伪类选择器</p>
+<p>结构伪类</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>先讲这两比较作用类似的：nth-child(n) | nth-of-type(n)</p>
+<p>结构</p>
+<p>1</p>
+<p>a1</p>
+<p>b1</p>
+<p>a2</p>
+<p>b2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>复制代码</p>
+<p>CSS</p>
+<p>// 第一个li =&gt;</p>
+<p>1</p>
+<p>ul li:first-child { background-color: lightseagreen;}</p>
+<p>// 最后一个li =&gt;</p>
+<p>5</p>
+<p>ul li:last-child { background-color: lightcoral;}</p>
+<p>// 第三个li =&gt;</p>
+<p>3</p>
+<p>ul li:nth-child(3) { background-color: aqua; }</p>
+<p>// 第二个li下的第一个div(不是div标签的都不算) =&gt;</p>
+<p>b1</p>
+<p>ul li:nth-child(2) &gt; div:nth-of-type(1) {background-color: red}</p>
+<p>复制代码</p>
+<p>它俩的区别</p>
+<p>nth-child 选择父元素里面的第几个子元素，不管是第几个类型</p>
+<p>nth-of-type 选择指定类型的元素</p>
+<p>下面讲讲nth-child()括号中的公式，这个算是这个选择器的亮点了。</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>注意⚠：本质上就是选中第几个子元素</p>
+<p>n 可以是数字、关键字、公式</p>
+<p>n 如果是数字，就是选中第几个</p>
+<p>常见的关键字有 even 偶数、odd 奇数</p>
+<p>常见的公式如下(如果 n 是公式，则从 0 开始计算)</p>
+<p>但是第 0 个元素或者超出了元素的个数会被忽略</p>
+<p>对于这里面的公式平常也用不到太复杂的，我说下我的技巧：nth-child(3n + 3); 这里的n可以看做几个为一组，3可以看做选这组的第几个。</p>
+<p>例： nth-child(5n + 3) ：5个为一组，选一组中的第三个。 对于”-“号就表示选择的是前面的。</p>
+<p>组合选择器</p>
+<p>组合选择器本质上就是通过连接符来对两个选择器进行组合</p>
+<p>子选择器 A &gt; B</p>
+<p>后代选择器 A B</p>
+<p>上面这两我就不说了，相信大家都用烂了。主要说说下面这两个。</p>
+<p>相邻兄弟 A + B</p>
+<p>普通兄弟 A ~ B</p>
+<p>结构</p>
+<p>One</p>
+<p>Two!</p>
+<p>Three</p>
+<p>pppp</p>
+<p>One2</p>
+<p>pppp1</p>
+<p>Two2!</p>
+<p>pppp2</p>
+<p>复制代码</p>
+<p>选择器解析</p>
+<p>复制代码</p>
+<p>好了，在讲完这些选择器之后我们来看看它们的使用场景。</p>
+<p>组合选择器可以用于：hover伪类操纵自己包含的子元素及以外的元素。举个例子</p>
+<p>元素1</p>
+<p>元素2</p>
+<p>元素3</p>
+<p>元素2</p>
+<p>同级元素1</p>
+<p>同级元素2</p>
+<p>同级元素3</p>
+<p>复制代码</p>
+<p>#a:hover &gt; #b{…}</p>
+<p>#a:hover ~ div{…} // 鼠标停留在a元素的时候让所有同层级元素有某某样式</p>
+<p>// 防止选择器层级替换了下面的样式</p>
+<p>#a:hover + #c{…} // 鼠标停留在a元素的时候让同层级中的c元素有某某样式</p>
+<p>#a:hover + #c &gt; #b{…} // 鼠标停留在a元素的时候让同层级中的c元素下的b元素有某某样式</p>
+<p>复制代码</p>
+<p>上面这两选择器在做一些特效页的时候应该是会用到的。</p>
+<p>综合例子</p>
+<p>效果</p>
+<p>结构</p>
+<p>标题名称</p>
+<p>Bei Ge</p>
+<p>这里放内容简介，内容简介,这里放内容简介，内容简介,这里放内容简介，内容简介</p>
+<p>…</p>
+<p>2</p>
+<p>3</p>
+<p>4</p>
+<p>5</p>
+<p>复制代码</p>
+<p>样式</p>
+<p>布局样式</p>
+<p>复制代码</p>
+<p>定义了一个animation动画</p>
+<p>@keyframes textAnimation {<br>/* 0% {<br>transform: translateX(150%);</p>
+<p>} */</p>
+<p>100% {<br>transform: translateX(0);</p>
+<p>}</p>
+<p>}</p>
+<p>复制代码</p>
+<p>悬浮在盒子设置样式</p>
+<p>.img-box:hover {<br>transform: scale(1.1);</p>
+<p>box-shadow: 2px 2px 13px 3px #ccc;</p>
+<p>}</p>
+<p>.img-box:hover img {<br>opacity: .5;</p>
+<p>}</p>
+<p>.img-box:hover .cover h3 {<br>opacity: 1;</p>
+<p>}</p>
+<p>.img-box:hover p {<br>animation: textAnimation .6s ease-out forwards;</p>
+<p>/* forwards让动画停留在最后一帧 */</p>
+<p>}</p>
+<p>.img-box:hover .cover .handle {<br>bottom: 5px;</p>
+<p>}</p>
+<p>.enter-box:hover ~ .img-box {<br>background-color: transparent;</p>
+<p>color: wheat;</p>
+<p>}</p>
+<p>.enter-box:hover + .img-box {<br>color: red;</p>
+<p>}</p>
+<p>复制代码</p>
+<p>上面这个例子有些还没有讲，但是相信大家之前也都学过，后文中也会说。主要会说些细节方面的东西。</p>
+<p>flex(弹性布局)</p>
+<p>transform: translate3D rodate3D</p>
+<p>animation(设定动画)</p>
+<p>3D or 透视(perspective)</p>
+<p>这里需要注意在使用伪类Hover的注意点，在使用他影响子级元素的时候尽量将选择器写全。例：</p>
+<p>先看下效果😗</p>
+<p>上面的效果相信大家都能写出来，所以我要讲的肯定不是怎么去实现这个效果，我要说下使用Hover时的一些细节。</p>
+<p>结构比较简单</p>
+<p>flex类名用于布局实现重置和水平居中，box: 绿色盒子;center: 紫色盒子 inner: 橙黄色盒子</p>
+<p>复制代码</p>
+<p>我们用了一个:hover让鼠标虚浮的时候让盒子变红</p>
+<p>.box:hover div {<br>background-color: red;</p>
+<p>}</p>
+<p>复制代码</p>
+<p>这里有一个问题不知道大家想过没有，为什么我这段代码只让center盒子变红了，inner为什么没有变红呢???</p>
+<p>展开查看</p>
+<p>因为CSS选择器的优先级!复制代码</p>
+<p>我们在实现的时候一般都会像下面这样写吧，这个时候使用伪类选择器改变元素样式的时候就要注意选择器优先级的问题了。</p>
+<p>.box .center {<br>width: 150px;</p>
+<p>height: 150px;</p>
+<p>background-color: blueviolet;</p>
+<p>}</p>
+<p>.box .center .inner {<br>width: 100px;</p>
+<p>height: 100px;</p>
+<p>background-color: coral;</p>
+<p>}</p>
+<p>复制代码</p>
+<p>这段代码的优先级比 .box .center高，所以他也就只能覆盖它了。</p>
+<p>.box:hover div {<br>background-color: red;</p>
+<p>}</p>
+<p>复制代码</p>
+<p>相信我们很多人如果在写鼠标悬浮大盒子让最里面的inner盒子变色的时候，都会这么写吧：</p>
+<p>.box:hover .inner {<br>background-color: red;</p>
+<p>}</p>
+<p>复制代码</p>
+<p>有用吗?没用!</p>
+<p>注意⚠: 优先级还是没有.box .center .inner高。</p>
+<p>层叠性</p>
+<p>所谓层叠性是指多种CSS样式的叠加。是浏览器处理冲突的一个能力,如果一个属性通过两个相同选择器设置到同一个元素上，那么这个时候一个属性就会将另一个属性层叠掉</p>
+<p>原则：</p>
+<p>样式冲突，遵循的原则是就近原则。 那个样式离着结构近，就执行那个样式。</p>
+<p>样式不冲突，不会层叠</p>
+<p>CSS层叠性最后的执行口诀： 长江后浪推前浪，前浪死在沙滩上。</p>
+<p>复制代码</p>
+<p>继承性</p>
+<p>：子标签会继承父标签的某些样式，如文本颜色和字号。 想要设置一个可继承的属性，只需将它应用于父元素即可。简单的理解就是： 子承父业</p>
+<p>CSS继承性口诀： 龙生龙，凤生凤，老鼠生的孩子会打洞</p>
+<p>复制代码</p>
+<p>我们恰当地使用继承可以简化代码，降低CSS样式的复杂性。比如有很多后代元素都需要某个样式，可以给父级指定一个，这些孩子继承过来就好了。</p>
+<p>注意点：在CSS的继承中不仅仅是儿子可以继承, 只要是后代都可以继承</p>
+<p>可继承的属性</p>
+<p>控制继承</p>
+<p>注意点: 对于天生自带的继承属性我们可以控制它是否需要继承</p>
+<p>四个属性</p>
+<p>inherit: 被应用属性继承父级的该属性(默认就是该值)</p>
+<p>initial初始化，把应用属性初始为它默认的样式，并且排除继承的干扰(默认会继承的属性也不在默认继承，而是表现出没有任何设置时候的默认样式)</p>
+<p>unset：意思是恢复其原本的继承方式。对color属性而言，就相当于inherit;而对于诸如border这样默认不继承的属性，就相当于initial。</p>
+<p>revert: 效果等同于unset且浏览器支持有限，这里不做演示</p>
+<p>效果图</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>演示</p>
+<p>Default link color</p>
+<p>Inherit the link color</p>
+<p>Reset the link color</p>
+<p>Unset the link color</p>
+<p>复制代码</p>
+<p>default中的a标签没有写默认为inherit属性，但是使用了浏览器预设样式表：可以理解为浏览器帮我们为写了个style，其优先级自然就高于其父元素了。</p>
+<p>inherit中的a标签在行内写了inherit，于是使用其父(或祖父，etc)元素的颜色值，在这里是绿色;</p>
+<p>initial中的a标签使用color属性初始值(黑色), 注意不要混淆属性初始值和浏览器样式表指定值，样式预设表是浏览器事先写好的样式，但是我color默认值就是黑色啊。</p>
+<p>unset，意思是恢复其原本的继承方式。对color属性而言，就相当于inherit;而对于诸如border这样默认不继承的属性，就相当于initial。</p>
+<p>如果我们需要控制元素所有属性的继承使用all属性</p>
+<p>.inherit a {<br>all: initial;</p>
+<p>/* 将所有的属性都恢复成默认值(天生继承也不再继承) */</p>
+<p>/* 行内设置过的除外：你的层级干不过人家 */</p>
+<p>}</p>
+<p>复制代码</p>
+<p>继承的权重是0</p>
+<p>这个不难，但是忽略很容易绕晕。其实，我们修改样式，一定要看该标签有没有被选中。</p>
+<p>(1) 如果选中了，那么以上面的公式来计权重。谁大听谁的。(2) 如果没有选中，那么权重是0，因为继承的权重为0.</p>
+<p>控制继承在我们封装自己的组件的时候是会用到的，我们在封装组件需要沿用样式，有些默认情况下不可继承父元素的属性：box-sizing，这个其实用的就很多。</p>
+<p>优先级</p>
+<p>要想了解优先级，肯定得了解选择器;但是选择器非常多的，前面列举的是日常开发用的比较多，其他的你可能一辈子都用不到，这里贴出C1~C4的选择器，感兴趣的同学可以看看。</p>
+<p>定义CSS样式时，经常出现两个或更多选择器应用在同一元素上，此时，</p>
+<p>选择器相同，则执行层叠性(后者覆盖前者)</p>
+<p>选择器不同，就会出现优先级的问题。</p>
+<p>权重计算公式</p>
+<p>关于CSS权重，我们需要一套计算公式来去计算，这个就是 CSS Specificity(特殊性)</p>
+<p>标签选择器计算权重公式</p>
+<p>继承或者 *0,0,0,0</p>
+<p>每个元素(标签选择器)0,0,0,1</p>
+<p>每个类，结构伪类(如:hover),属性选择器[type=“number”]0,0,1,0</p>
+<p>每个ID0,1,0,0</p>
+<p>每个行内样式 style=””1,0,0,0</p>
+<p>h1 + p::first-line0,0,0,3</p>
+<p>li &gt; a[href*=“beige.world”] &gt; .inline-warning0,0,2,2</p>
+<p>每个!important 重要的∞ 无穷大</p>
+<p>值从左到右，左面的最大，一级大于一级，数位之间没有进制，级别之间不可超越。</p>
+<p>常用的选择器记法：</p>
+<p>行内: 1,0,0,0</p>
+<p>#id: 0,1,0,0</p>
+<p>.class | :hover | :nth-child(): 0,0,1,0 (:hover这种一个冒号叫结构伪类)</p>
+<p>::after | ::before | ::first-line: 0,0,0,1 (这种两冒号的叫伪元素，在书写的时候虽然你可以写一个冒号但是浏览器还是给你补上去了，本质上就是两冒号)</p>
+<p>权重叠加</p>
+<p>我们经常用组合选择器，是有多个基础选择器组合而成，那么此时，就会出现权重叠加。</p>
+<p>就是一个简单的加法计算</p>
+<p>div ul li ——&gt; 0,0,0,3</p>
+<p>.nav ul li ——&gt; 0,0,1,2</p>
+<p>a:hover —–—&gt; 0,0,1,1</p>
+<p>.nav a ——&gt; 0,0,1,1</p>
+<p>注意⚠: 数位之间没有进制 比如说： 0,0,0,5 + 0,0,0,5 = 0,0,0,10 而不是 0,0, 1, 0， 所以不会存在10个div能赶上一个类选择器的情况。</p>
+<p>important适用优先级💡</p>
+<p>#id .box div {<br>color: red !important;</p>
+<p>}</p>
+<p>#id div.box div {<br>color: green !important; // 使用这个选择器中的颜色</p>
+<p>}</p>
+<p>复制代码</p>
+<p>通关答题</p>
+<p>下面来几道题，全对才算通过了噢😗</p>
+<p>文字</p>
+<p>复制代码</p>
+<p>什么颜色??</p>
+<p>展开查看答案</p>
+<p>yellow 上面两选择器的层级都是一样的, 后者覆盖前者 复制代码</p>
+<p>试问这行字体是什么颜色的?</p>
+<p>复制代码</p>
+<p>展开查看答案</p>
+<p>blue 复制代码</p>
+<p>123</p>
+<p>复制代码</p>
+<p>展开查看答案</p>
+<p>字体：80，有文字阴影，真实内容的宽：290px 高190px复制代码</p>
+<p>讲下这最后一题</p>
+<p>文字阴影有：因为从父元素中继承到了,字体: 80px;</p>
+<p>真实内容宽290px, 高190px</p>
+<p>常问的属性flex(弹性布局)</p>
+<p>transform: translate3D rodate3D</p>
+<p>animation(设定动画)</p>
+<p>3D or 透视(perspective)</p>
+<p>flex</p>
+<p>flex布局相信大家也都用烂了，用来让盒子垂直和水平居中好用的一批</p>
+<p>父项常用属性</p>
+<p>flex-direction：设置主轴的方向</p>
+<p>justify-content：设置主轴上的子元素排列方式</p>
+<p>flex-wrap：设置子元素是否换行</p>
+<p>align-content：设置侧轴上的子元素的排列方式(多行)</p>
+<p>align-items：设置侧轴上的子元素排列方式(单行)</p>
+<p>flex-flow：复合属性，相当于同时设置了 flex-direction 和 flex-wrap</p>
+<p>flex-direction</p>
+<p>在 flex 布局中，是分为主轴和侧轴两个方向，同样的叫法有 ： 行和列、x 轴和y 轴</p>
+<p>默认主轴方向就是 x 轴方向，水平向右</p>
+<p>默认侧轴方向就是 y 轴方向，水平向下</p>
+<p>&lt;img src=</p>
+<p>“ width=“185” height=“30” align=””&gt;</p>
+<p>： 主轴和侧轴是会变化的，就看 flex-direction 设置谁为主轴，剩下的就是侧轴。而我们的子元素是跟着主轴来排列的</p>
+<p>flex-wrap设置是否换行</p>
+<p>默认情况下，项目都排在一条线(又称”轴线”)上。flex-wrap属性定义，flex布局中默认是不换行的。</p>
+<p>nowrap 不换行</p>
+<p>wrap 换行</p>
+<p>justify-content 设置主轴上的子元素排列方式</p>
+<p>&lt;img src=</p>
+<p>“ width=“185” height=“30” align=””&gt;</p>
+<p>效果图</p>
+<p>： 这里讲下space-around和space-evenly</p>
+<p>space-around：项目之间的间距为左右两侧项目到容器间距的2倍。</p>
+<p>space-evenly：项目两侧之间的间距与项目与容器两侧的间距相等，相当于除去项目宽度和容器和项目的两侧间距，剩下的平均分配了剩余宽度作为项目左右margin。</p>
+<p>**设置侧轴上的子元素排列方式：align-items(单行)/align-content(多行) **</p>
+<p>上图写能设置多行只能用于子项出现 换行 的情况(多行)，在单行下是没有效果的。</p>
+<p>效果跟上面是一样的只不过是方向换了，上面是元素在主轴上排列，这个是在侧抽上，至于侧轴是不是Y轴就看你的flex-direciton怎么设置的了</p>
+<p>子项常见属性</p>
+<p>flex(复合属性): 默认: flex: 0 1 auto;</p>
+<p>flex-grow</p>
+<p>flex-shrink</p>
+<p>flex-basis</p>
+<p>align-self：控制子项自己在侧轴的排列方式</p>
+<p>order：定义子项的排列顺序(前后顺序), 0是第一个</p>
+<p>flex-grow</p>
+<p>默认0，用于决定项目在有剩余空间的情况下是否放大，默认不放大;注意，即便设置了固定宽度，也会放大。</p>
+<p>假设第一个项目默认为0，第二个项目为flex-grow:2，最后一个项目为1，则第二个项目在放大时所占空间是最后项目的两倍。</p>
+<p>可以这么理解:</p>
+<p>flex: 1 =&gt; 在剩余的空间里我就占一份</p>
+<p>flex: 2 =&gt; 在剩余的空间里我就占两份</p>
+<p>flex: 3 =&gt; 在剩余的空间里我就占三份</p>
+<p>假设三个盒子分别都设置了上面的属性: 那就将剩余空间分成6份, 各占自己的份数</p>
+<p>假设前两个没有设置, 就最后一个设置了flex: 3 === flex: 1, 那就将剩余空间都给它</p>
+<p>复制代码</p>
+<p>flex-shrink</p>
+<p>默认1，用于决定项目在空间不足时是否缩小，默认项目都是1，即空间不足时大家一起等比缩小;注意，即便设置了固定宽度，也会缩小。但如果某个项目flex-shrink设置为0，则即便空间不够，自身也不缩小。</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>上图中第二个项目flex-shrink为0，所以自身不会缩小。</p>
+<p>flex-basis</p>
+<p>默认auto，用于设置项目宽度，默认auto时，项目会保持默认宽度，或者以width为自身的宽度，但如果设置了flex-basis，权重会width属性高，因此会覆盖widtn属性。</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>上图中先设置了flex-basis属性，后设置了width属性，但宽度依旧以flex-basis属性为准。</p>
+<p>注意⚠: 如果当容器中有多个盒子并且还宽度100%, flex-basis会被影响, 如下图</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>解决办法就是在我们设置flex-basis宽度时, 最好给他设置flex-shrink为0不缩放</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>transform</p>
+<p>2D的属性相信大家都会用了, 本文主要深究transform的3D属性</p>
+<p>透视：perspctive</p>
+<p>3D呈现：transfrom-style</p>
+<p>3D 位移：translate3d(x, y, z)</p>
+<p>3D旋转：rotate3d(x, y, z)</p>
+<p>透视(perspective)</p>
+<p>在讲3D之间先来了解一下透视(视距)，只有了解了透视我们才能理解3D的物体投影在2D平面上</p>
+<p>透视也称为视距，所谓的视距就是人的眼睛到屏幕的距离</p>
+<p>实际上模仿人类的视觉位置，可视为安排一直眼睛去看</p>
+<p>距离透视点越近的在电脑平面成像越大，越远成像越小</p>
+<p>透视的单位是像素</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>注意: 透视需要写在被视察元素的父盒子上面</p>
+<p>拿图说话👇</p>
+<p>d：就是视距，视距就是指人的眼睛到屏幕的距离</p>
+<p>z：就是 z 轴，z 轴越大(正值)，我们看到的物体就越大</p>
+<p>来个栗子🌰</p>
+<p>给实例的父元素设置: perspective: 200px;</p>
+<p>复制代码</p>
+<p>上面我们在div的父盒子上设置了perspective，也就是说从3D成像的角度来讲我们人眼距离屏幕div是200的视距，translate3D设置Z轴让div往前挪了100，视距变小距离我们人眼距离也就越小，所以看到的div也就变大了。 (可以想像成在500米远看见的人， 和5米看见的人。)</p>
+<p>translate3d(x, y, z)</p>
+<p>3D的特点</p>
+<p>近大远小</p>
+<p>物体和面遮挡不可见</p>
+<p>三维坐标系</p>
+<p>x 轴：水平向右 – 注意：x 轴右边是正值，左边是负值</p>
+<p>y 轴：垂直向下 – 注意：y 轴下面是正值，上面是负值</p>
+<p>z 轴：垂直屏幕 – 注意：往外边的是正值，往里面的是负值</p>
+<p>“ alt=” “ width=“35” height=“30” align=””&gt;</p>
+<p>3D 呈现 transform-style</p>
+<p>transform-style：控制子元素是否开启三维立体环境，代码写给父级，但是影响的是子盒子</p>
+<p>transform-style: flat 代表子元素不开启 3D 立体空间，默认的</p>
+<p>transform-style: preserve-3d 子元素开启立体空间</p>
+<p>效果图</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>body {<br>perspective: 500px;</p>
+<p>}</p>
+<p>.box {<br>position: relative;</p>
+<p>width: 200px;</p>
+<p>height: 200px;</p>
+<p>margin: 100px auto;</p>
+<p>transition: all 2s;</p>
+<p>/* 让子元素保持3d立体空间环境 */</p>
+<p>transform-style: preserve-3d;</p>
+<p>}</p>
+<p>.box:hover {<br>transform: rotateY(60deg);</p>
+<p>}</p>
+<p>.box div {<br>position: absolute;</p>
+<p>top: 0;</p>
+<p>left: 0;</p>
+<p>width: 100%;</p>
+<p>height: 100%;</p>
+<p>background-color: pink;</p>
+<p>}</p>
+<p>.box div:last-child {<br>background-color: purple;</p>
+<p>transform: rotateX(60deg);</p>
+<p>}</p>
+<p>复制代码</p>
+<p>rotate3d(x, y, z)</p>
+<p>3D 旋转指可以让元素在三维平面内沿着 x 轴、y 轴、z 轴 或者自定义轴进行旋转</p>
+<p>transform: rotate3d(x, y, z, 45deg)` – 沿着自定义轴旋转 45 deg 为角度</p>
+<p>例子：</p>
+<p>公众号:</p>
+<p>前端自学驿站</p>
+<p>复制代码</p>
+<p>ul li {<br>float: left;</p>
+<p>margin: 0 5px;</p>
+<p>width: 120px;</p>
+<p>height: 35px;</p>
+<p>list-style: none;</p>
+<p>/* 一会我们需要给box 旋转 也需要透视 干脆给li加 里面的子盒子都有透视效果 */</p>
+<p>perspective: 500px;</p>
+<p>}</p>
+<p>.box {<br>position: relative;</p>
+<p>width: 100%;</p>
+<p>height: 100%;</p>
+<p>transform-style: preserve-3d;</p>
+<p>transition: all .4s;</p>
+<p>}</p>
+<p>.box:hover {<br>transform: rotateX(90deg);</p>
+<p>}</p>
+<p>.front,</p>
+<p>.bottom {<br>position: absolute;</p>
+<p>left: 0;</p>
+<p>top: 0;</p>
+<p>width: 100%;</p>
+<p>height: 100%;</p>
+<p>}</p>
+<p>.front {<br>background-color: pink;</p>
+<p>z-index: 1;</p>
+<p>transform: translateZ(17.5px);</p>
+<p>}</p>
+<p>.bottom {<br>background-color: purple;</p>
+<p>/* 这个x轴一定是负值 */</p>
+<p>/* 我们如果有移动 或者其他样式，必须先写我们的移动 */</p>
+<p>transform: translateY(17.5px) rotateX(-90deg);</p>
+<p>}</p>
+<p>复制代码</p>
+<p>animation</p>
+<p>动画(animation)是 CSS3 中最具颠覆性的特征之一，可通过设置多个节点来精确的控制一个或者一组动画，从而实现复杂的动画效果, 先定义动画在调用定义好的动画</p>
+<p>动画序列</p>
+<p>0% 是动画的开始，100 % 是动画的完成，这样的规则就是动画序列</p>
+<p>在 @keyframs 中规定某项 CSS 样式，就由创建当前样式逐渐改为新样式的动画效果</p>
+<p>动画是使元素从一个样式逐渐变化为另一个样式的效果，可以改变任意多的样式任意多的次数</p>
+<p>用百分比来规定变化发生的时间，或用 from 和 to，等同于 0% 和 100%</p>
+<p>@keyframes move{<br>0% {<br>transform: translate(0px)</p>
+<p>}</p>
+<p>form {<br>transform: translate(0px)</p>
+<p>}</p>
+<p>100% {<br>transform: translate(500px, 0)</p>
+<p>}</p>
+<p>to {<br>transform: translate(500px, 0)</p>
+<p>}</p>
+<p>}</p>
+<p>复制代码</p>
+<p>动画常见属性</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>动画简写方式</p>
+<p>/* animation: 动画名称 持续时间 运动曲线 何时开始 播放次数 是否反方向 起始与结束状态 */</p>
+<p>animation: name duration timing-function delay iteration-count direction fill-mode</p>
+<p>复制代码</p>
+<p>除了名字，持续时间，何时开始有严格顺序要求其它随意</p>
+<p>CSS实现扫描二维码</p>
+<p>效果</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>代码篇幅过长我放到gitHub仓库了，大家可以pull下来自行研究。</p>
+<p>地址：<a target="_blank" rel="noopener" href="https://github.com/it-beige/blog">https://github.com/it-beige/blog</a></p>
+<p>面试常问题BFC相关</p>
+<p>BFC(Block formatting context)直译为”块级格式化上下文”。</p>
+<p>在讲BFC之前得先说下display的属性值，只有它符合成为条件才资格触发BFC机制</p>
+<p>“ alt=“display属性值” width=“113” height=“30” align=””&gt;</p>
+<p>那些属性值会具有BFC的条件</p>
+<p>不是所有的元素模式都能产生BFC，w3c 规范： display 属性为 block, list-item, table 的元素，会产生BFC.</p>
+<p>大家有没有发现这个三个都是用来布局最为合理的元素，因为他们就是用来可视化布局。注意其他的，display属性，比如 line 等等，他们创建的是 IFC ，我们下面研究。</p>
+<p>这个BFC 有着具体的布局特性：</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>有宽度和高度，有 外边距margin 有内边距padding 有边框 border。就好比，你有了练习武术的体格了。 有潜力，有资质。</p>
+<p>什么情况下可以让元素产生BFC</p>
+<p>以上盒子具有BFC条件了，就是说有资质了，但是怎样触发才会产生BFC，从而创造这个封闭的环境呢?</p>
+<p>就好比，你光有资质还不行，你需要一定额外效果才能出发的武学潜力，要么你掉到悬崖下面，捡到了一本九阴真经，要么你学习葵花宝典，欲练此功必先…</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>同样，要给这些元素添加如下属性就可以触发BFC。</p>
+<p>float属性不为none</p>
+<p>position为absolute或fixed</p>
+<p>display为inline-block, table-cell, table-caption, flex, inline-flex</p>
+<p>overflow不为visible。</p>
+<p>BFC元素所具有的特性</p>
+<p>BFC布局规则特性：</p>
+<p>在BFC中，盒子从顶端开始垂直地一个接一个地排列</p>
+<p>盒子垂直方向的距离由margin决定。属于同一个BFC的两个相邻盒子的margin会发生重叠</p>
+<p>在BFC中，每一个盒子的左外边缘(margin-left)会触碰到容器的左边缘(border-left)(对于从右到左的格式来说，则触碰到右边缘)。</p>
+<p>BFC的区域不会与浮动盒子产生交集，而是紧贴浮动边缘。</p>
+<p>计算BFC的高度时，自然也会检测浮动或者定位的盒子高度</p>
+<p>它是一个独立的渲染区域，只有Block-level box参与， 它规定了内部的Block-level Box如何布局，并且与这个区域外部毫不相干。</p>
+<p>白话文： 孩子在家里愿意怎么折腾都行，但是出了家门口，你就的乖乖的，不能影响外面的任何人。</p>
+<p>复制代码</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>BFC的主要用途</p>
+<p>(1) 清除元素内部浮动</p>
+<p>只要把父元素设为BFC就可以清理子元素的浮动了，最常见的用法就是在父元素上设置overflow: hidden样式</p>
+<p>主要用到</p>
+<p>计算BFC的高度时，自然也会检测浮动或者定位的盒子高度。</p>
+<p>复制代码</p>
+<p>(2) 解决外边距合并(塌陷)问题</p>
+<p>主要用到</p>
+<p>盒子垂直方向的距离由margin决定。属于同一个BFC的两个相邻盒子的margin会发生重叠</p>
+<p>复制代码</p>
+<p>属于同一个sBFC的两个相邻盒子的margin会发生重叠，那么我们创建不属于同一个BFC，就不会发生margin重叠了。</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>(3) 制作右侧自适应的盒子问题</p>
+<p>主要用到</p>
+<p>普通流体元素BFC后，为了和浮动元素不产生任何交集，顺着浮动边缘形成自己的封闭上下文</p>
+<p>复制代码</p>
+<p>“ alt=”” width=“28” height=“30” align=””&gt;</p>
+<p>BFC 总结</p>
+<p>BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。包括浮动，和外边距合并等等，因此，有了这个特性，我们布局的时候就不会出现意外情况了。</p>
+<p>IFC相关</p>
+<p>IFC(inline Formatting Context)叫做“行级格式化上下”相对BFC比较简单且问的也不是很多，这里大该做个了解</p>
+<p>布局规则如下：</p>
+<p>内部的盒子会在水平方向，一个个地放置(默认就是IFC);</p>
+<p>IFC的高度，由里面最高盒子的高度决定(里面的内容会撑开父盒子);</p>
+<p>当一行不够放置的时候会自动切换到下一行;</p>
+<p>哪些属性开启了性能加速</p>
+<p>何为硬件加速：就是将浏览器的渲染过程交给GPU(Graphics Processing Unit)处理，而不是使用自带的比较慢的渲染器。这样就可以使得animation与transition更加顺畅</p>
+<p>我们可以在浏览器中用CSS开启硬件加速，使GPU发挥功能，从而提升性能</p>
+<p>所谓GPU，就是图形处理器的缩写，相当于PC中的显卡。手机中的GPU也是为了对图形、图像处理而存在的，所谓强制渲染，就是hwa(hardware acceleration硬件加载)的一种，其存在的意义就是为了分担cpu的负担，其原理是通过GPU对软件图形的处理来减轻CPU的负担。从而使应用软件能够以更快的速度被处理，以达到提速的目的。</p>
+<p>硬件加速的原理</p>
+<p>浏览器接收到页面文档后，会将文档中的标记语言解析为DOM树。DOM树和CSS结合后形成浏览器构建页面的渲染树。渲染树中包含大量的渲染元素，每个渲染元素会被分到一个图层中，每个图层又会被加载到GPU形成渲染纹理，而图层在GPU中transform是不会触发repaint的，最终这些使用transform的图层都会由独立的合成器进程进行处理, CSS transform会创建了一个新的复合图层，可以被GPU直接用来执行transform操作。</p>
+<p>浏览器什么时候会创建一个独立的复合图层呢?事实上一般是在以下几种情况下：</p>
+<p>3D或者CSS transform</p>
+<p>和标签</p>
+<p>css filters(滤镜效果)</p>
+<p>元素覆盖时，比如使用了z-index属性</p>
+<p>为什么硬件加速会使页面流畅</p>
+<p>因为transform属性不会触发浏览器的repaint(重绘)，而绝对定位absolute中的left和top则会一直触发repaint(重绘)。</p>
+<p>为什么transform没有触发repaint呢?</p>
+<p>简而言之，transform动画由GPU控制，支持硬件加载，并不需要软件方面的渲染。并不是所有的CSS属性都能触发GPU的硬件加载，事实上只有少数的属性可以，比如transform、opacity、filter</p>
+<p>如何用CSS开启硬件加速</p>
+<p>CSS animation、transform以及transition不会自动开启GPU加速，而是由浏览器的缓慢的软件渲染引擎来执行，那我们怎样才可以切换到GPU模式呢，很多浏览器提供了某些触发的CSS规则。</p>
+<p>当浏览器检测到页面中某个DOM元素应用了某些CSS规则时就会开启，最显著的特征的元素是3D变化。</p>
+<p>.cube{<br>translate3d(250px,250px,250px);</p>
+<p>rotate3d(250px,250px,250px,-120deg)</p>
+<p>scale3d(0.5,0.5,0.5);</p>
+<p>}</p>
+<p>复制代码</p>
+<p>可能在一些情况下，我们并不需要对元素应用3D变幻的效果，那怎么办呢?这时候我们可以使用“欺骗”浏览器来开启硬件加速。虽然我们可能不想对元素应用3D变幻，可我们一样可以开启3D引擎。例如我们可以用transform:translateZ(0);来开启硬件加速</p>
+<p>.cube{<br>transform: translateZ(0);</p>
+<p>}</p>
+<p>复制代码</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/05/8.3.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BCSS/" data-id="ckq1xbdt40064pwwd23dye15g" data-title="网页前端之CSS" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-8.2.网页前端之HTML" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/04/03/8.2.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BHTML/" class="article-date">
@@ -352,7 +1556,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/03/8.2.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BHTML/" data-id="ckpdvjppu004nnswd4985f3s2" data-title="网页前端之HTML" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/03/8.2.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BHTML/" data-id="ckq1xbdss004spwwdbrpld67n" data-title="网页前端之HTML" class="article-share-link">分享</a>
       
       
       
@@ -1356,7 +2560,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/30/6.1.nginx%E9%85%8D%E7%BD%AE/" data-id="ckpdvjpt50066nswdamfd0ehe" data-title="nginx配置" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/03/30/6.1.nginx%E9%85%8D%E7%BD%AE/" data-id="ckq1xbdw8006opwwd9bud4hyk" data-title="nginx配置" class="article-share-link">分享</a>
       
       
       
@@ -1756,7 +2960,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/29/4.2.java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" data-id="ckpnvjm8p000j48wd1vma927t" data-title="java基础知识" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/03/29/4.2.java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" data-id="ckq1xbdso004epwwd2nfhb6mt" data-title="java基础知识" class="article-share-link">分享</a>
       
       
       
@@ -2176,25 +3380,35 @@
 <p>组成规则：</p>
 <p>规则字符在java.util.regex  Pattern类中</p>
 <p>常见组成规则：</p>
-<p>\1. 字符：</p>
+<ol>
+<li>字符：</li>
+</ol>
 <p>x  字符x。举例：’a’ 表示字符a</p>
 <p>\  反斜线字符。因为一个\代表了转义。</p>
 <p>\n  新行（换行）符  （‘\uoooA’）</p>
 <p>\r   回车符  (‘\uoooD’)</p>
-<p>\2. 字符类</p>
+<ol start="2">
+<li>字符类</li>
+</ol>
 <p>[abc]  a、b或c(简单类)  abc中的任意一个，但只能是一个</p>
 <p>[^abc]  任何字符，除了a、b或c（否定）</p>
 <p>[a-zA-Z]  a到z或A到Z，两头的字母包括在内（范围）</p>
 <p>[0-9]  0到9的字符都包括</p>
-<p>\3. 预定义字符类</p>
+<ol start="3">
+<li>预定义字符类</li>
+</ol>
 <p>.  任何字符。如果就是.本身，应该写为. </p>
 <p>\d  数字：[0-9]  在写的时候都是\d表示 因为要先转义。</p>
 <p>\w  单词字符：[a-zA-Z_0-9]  在正则表达式里面组成单词的东西必须由这些东西组成（可以是A-Z,a-z，0-9都行）</p>
-<p>\4. 边界匹配器</p>
+<ol start="4">
+<li>边界匹配器</li>
+</ol>
 <p>^  行的开头</p>
 <p>$  行的结尾</p>
 <p>\b  单词边界  就是不是单词字符的地方。（单词间隔就用这个字符占）</p>
-<p>\5. 数量词</p>
+<ol start="5">
+<li>数量词</li>
+</ol>
 <p>X？  X，一次或一次也没有</p>
 <p>X*  X,零次或多次</p>
 <p>X+  X，一次或多次</p>
@@ -2314,7 +3528,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/26/4.9.java%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%B1%BB/" data-id="ckpdvjppr004hnswd9zx04xzd" data-title="java中常用类" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/03/26/4.9.java%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%B1%BB/" data-id="ckq1xbdsq004mpwwdcrkkcnmm" data-title="java中常用类" class="article-share-link">分享</a>
       
       
       
@@ -2384,7 +3598,7 @@
 
 
 
-<p>11.文件名字变蓝是因为文件里的内容被修改过，没有提交到版本库</p>
+<p>11.idea里的文件名字变蓝是因为文件里的内容被修改过，没有提交到版本库。变红是新增的文件。</p>
 <p>12.微信回复消息的时候，<code>&lt;Content&gt;&lt;![CDATA[&quot;+text+&quot;]]&gt;&lt;/Content&gt;</code>中的text文本乱码成？？？？？</p>
 <p>是由于spring mvc的@ResponseBody注解返回字符串时默认返回的是“ISO-8859-1”而不是utf-8。</p>
 <p>  虽然大家的项目里面可能都有字符编码过滤器，但是有一个问题在这里，我们设置response.setContentType(“text/html; charset=utf-8”);时都是在chain.doFilter(request, response);之前设置的，也就是过滤器前处理是设置的响应编码格式，之所以不在后处理时设置是因为后处理时响应内容已经生成此时设置是无效的，必须在响应内容生成之前设置响应编码格式。</p>
@@ -2438,11 +3652,14 @@
 <p>20.前端页面动态赋值时不起作用，在属性前面加<code>:</code>绑定后生效。</p>
 <p>21.前端页面的css样式复用问题：原页面a.vue用的v-router去跳转到b.vue，然后退回来时a.vue的样式全乱了，我在b.vue中导入了一个css文件，然后页面调试是看到退回后styles是不变的，也就是说a.vue用的不是原来的样式而是b.vue中导入的样式，刷新一下的话就又可以了。</p>
 <p>怎么让vue不去使用上个页面的样式，或者说让当前vue只用自己写的当前样式：两个名字不要起一样的，就是两个css样式了。</p>
+<p>22.导航下拉菜单被遮住或显示不全：</p>
+<p>原因：层叠关系错误</p>
+<p>解决：设置z-index，最上面的层级值越大。但是必须有两个前提条件：1.必须是同级。2.二者分别设定了position:relative 或 absolute 或 fixed；</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/26/10.4.%E9%A1%B9%E7%9B%AE%E8%B8%A9%E5%9D%91/" data-id="ckpdvjpoc000fnswdghztbw8i" data-title="项目踩坑" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/03/26/10.4.%E9%A1%B9%E7%9B%AE%E8%B8%A9%E5%9D%91/" data-id="ckq1xbdr7000cpwwd164mafjs" data-title="项目踩坑" class="article-share-link">分享</a>
       
       
       
@@ -2562,7 +3779,49 @@
 <p>​    把需要关闭资源的部分都定义在（）中就ok了</p>
 <p>这个接口的子类主要是流体系的对象(JDK7的API中AutoCloseable的子类)</p>
 <h3 id="Java8"><a href="#Java8" class="headerlink" title="Java8"></a>Java8</h3><p>2014年3月18日，普遍使用的版本，是java5以来最具革命性的版本。支持32位</p>
-<h4 id="1-允许接口中有默认方法，静态方法实现"><a href="#1-允许接口中有默认方法，静态方法实现" class="headerlink" title="1.允许接口中有默认方法，静态方法实现"></a>1.允许接口中有默认方法，静态方法实现</h4><h4 id="2-Lambda表达式"><a href="#2-Lambda表达式" class="headerlink" title="2.Lambda表达式"></a>2.Lambda表达式</h4><h4 id="3-函数式接口"><a href="#3-函数式接口" class="headerlink" title="3.函数式接口"></a>3.函数式接口</h4><h4 id="4-内置函数式接口"><a href="#4-内置函数式接口" class="headerlink" title="4.内置函数式接口"></a>4.内置函数式接口</h4><h4 id="5-Streams"><a href="#5-Streams" class="headerlink" title="5.Streams"></a>5.Streams</h4><h4 id="6-Map"><a href="#6-Map" class="headerlink" title="6.Map"></a>6.Map</h4><h4 id="7-时间日期API"><a href="#7-时间日期API" class="headerlink" title="7. 时间日期API"></a>7. 时间日期API</h4><h4 id="8-Annotations"><a href="#8-Annotations" class="headerlink" title="8.Annotations"></a>8.Annotations</h4><h3 id="Java11"><a href="#Java11" class="headerlink" title="Java11"></a>Java11</h3><p>2018年9月26日</p>
+<h4 id="1-允许接口中有默认方法，静态方法实现"><a href="#1-允许接口中有默认方法，静态方法实现" class="headerlink" title="1.允许接口中有默认方法，静态方法实现"></a>1.允许接口中有默认方法，静态方法实现</h4><h4 id="2-Lambda表达式"><a href="#2-Lambda表达式" class="headerlink" title="2.Lambda表达式"></a>2.Lambda表达式</h4><h4 id="3-函数式接口"><a href="#3-函数式接口" class="headerlink" title="3.函数式接口"></a>3.函数式接口</h4><h4 id="4-内置函数式接口"><a href="#4-内置函数式接口" class="headerlink" title="4.内置函数式接口"></a>4.内置函数式接口</h4><h4 id="5-Streams"><a href="#5-Streams" class="headerlink" title="5.Streams"></a>5.Streams</h4><p>得益于Lambda所带来的函数式编程，引入了一个全新的Stream概念，用于解决已有集合类库既有的弊端</p>
+<p>传统集合在于使用循环遍历。for循环的语法就是“怎么做”，for循环的循环体才是“做什么”。</p>
+<p>Java 8的Lambda让我们可以更加专注于做什么(What)，而不是怎么做(How)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line"> </span><br><span class="line">&#x2F;**</span><br><span class="line"> * @author tanglei</span><br><span class="line"> * @date 2020&#x2F;6&#x2F;10 10:28 下午</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class StreamFilter &#123;</span><br><span class="line"> public static void main(String[] args) &#123;</span><br><span class="line">  List&lt;String&gt; list &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">  list.add(&quot;张无忌&quot;);</span><br><span class="line">  list.add(&quot;周芷若&quot;);</span><br><span class="line">  list.add(&quot;赵敏&quot;);</span><br><span class="line">  list.add(&quot;张强&quot;);</span><br><span class="line">  list.add(&quot;张三丰&quot;);</span><br><span class="line"> </span><br><span class="line">  list.stream()</span><br><span class="line">    .filter(s -&gt; s.startsWith(&quot;张&quot;))</span><br><span class="line">    .filter(s -&gt; s.length() &#x3D;&#x3D; 3)</span><br><span class="line">    .forEach(System.out::println);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>“Stream流”其实是一个集合元素的函数模型，它并不是集合，也不是数据结构，其本身并不存储任何 元素(或其地址值</p>
+<p>获取流：</p>
+<p>所有的 Collection 集合都可以通过 stream 默认方法获取流;</p>
+<p>Stream 接口的静态方法 of 可以获取数组对应的流</p>
+<p>根据Collection获取流：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    List&lt;String&gt; list &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line">    Stream&lt;String&gt; stream1 &#x3D; list.stream();</span><br><span class="line">    Set&lt;String&gt; set &#x3D; new HashSet&lt;&gt;();</span><br><span class="line">    Stream&lt;String&gt; stream2 &#x3D; set.stream();</span><br><span class="line">    Vector&lt;String&gt; vector &#x3D; new Vector&lt;&gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>根据Map获取流</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    Map&lt;String, String&gt; map &#x3D; new HashMap&lt;&gt;();</span><br><span class="line">    Stream&lt;String&gt; keyStream &#x3D; map.keySet().stream();</span><br><span class="line">    Stream&lt;String&gt; valueStream &#x3D; map.values().stream();   </span><br><span class="line">    Stream&lt;Map.Entry&lt;String, String&gt;&gt; entryStream &#x3D; map.entrySet().stream();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>根据数组获取流</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    String[] array &#x3D; &#123; &quot;张无忌&quot;, &quot;张翠山&quot;, &quot;张三丰&quot;, &quot;张一元&quot; &#125;;</span><br><span class="line">    Stream&lt;String&gt; stream &#x3D; Stream.of(array); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>常用方法</p>
+<p>逐一处理:forEach     会将每一个流元素交给该函数进行处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    Stream&lt;String&gt; stream &#x3D; Stream.of(&quot;张无忌&quot;, &quot;张三丰&quot;, &quot;周芷若&quot;);</span><br><span class="line">    stream.forEach(name‐&gt; System.out.println(name)); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>过滤:filter     可以通过 filter 方法将一个流转换成另一个子集流</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    Stream&lt;String&gt; original &#x3D; Stream.of(&quot;张无忌&quot;, &quot;张三丰&quot;, &quot;周芷若&quot;);</span><br><span class="line">    Stream&lt;String&gt; result &#x3D; original.filter(s ‐&gt;   s.startsWith(&quot;张&quot;)); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>映射:map    如果需要将流中的元素映射到另一个流中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    Stream&lt;String&gt; original &#x3D; Stream.of(&quot;10&quot;, &quot;12&quot;, &quot;18&quot;);</span><br><span class="line">    Stream&lt;Integer&gt; result &#x3D; original.map(str‐&gt;Integer.parseInt(str)); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>统计个数:count    数一数其中的元素个数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    Stream&lt;String&gt; original &#x3D; Stream.of(&quot;张无忌&quot;, &quot;张三丰&quot;, &quot;周芷若&quot;); </span><br><span class="line"> Stream&lt;String&gt; result &#x3D; original.filter(s ‐&gt; s.startsWith(&quot;张&quot;));</span><br><span class="line"> System.out.println(result.count()); &#x2F;&#x2F; 2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>取用前几个:limit    可以对流进行截取，只取用前n个</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    Stream&lt;String&gt; original &#x3D; Stream.of(&quot;张无忌&quot;, &quot;张三丰&quot;, &quot;周芷若&quot;); </span><br><span class="line"> Stream&lt;String&gt; result &#x3D; original.limit(2);   </span><br><span class="line"> System.out.println(result.count()); &#x2F;&#x2F; 2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>跳过前几个:skip   如果希望跳过前几个元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    Stream&lt;String&gt; original &#x3D; Stream.of(&quot;张无忌&quot;, &quot;张三丰&quot;, &quot;周芷若&quot;); </span><br><span class="line"> Stream&lt;String&gt; result &#x3D; original.skip(2); </span><br><span class="line"> System.out.println(result.count()); &#x2F;&#x2F; 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>组合:concat    如果有两个流，希望合并成为一个流</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    Stream&lt;String&gt; streamA &#x3D; Stream.of(&quot;张无忌&quot;);    </span><br><span class="line"> Stream&lt;String&gt; streamB &#x3D; Stream.of(&quot;张翠山&quot;); </span><br><span class="line"> Stream&lt;String&gt; result &#x3D; Stream.concat(streamA, streamB);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="6-Map"><a href="#6-Map" class="headerlink" title="6.Map"></a>6.Map</h4><h4 id="7-时间日期API"><a href="#7-时间日期API" class="headerlink" title="7. 时间日期API"></a>7. 时间日期API</h4><h4 id="8-Annotations"><a href="#8-Annotations" class="headerlink" title="8.Annotations"></a>8.Annotations</h4><h3 id="Java11"><a href="#Java11" class="headerlink" title="Java11"></a>Java11</h3><p>2018年9月26日</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="明确概念"><a href="#明确概念" class="headerlink" title="明确概念"></a>明确概念</h3><p>1.JDK（java development kit）：java开发工具包JRE+tools</p>
 <p>​    是提供给java开发人员使用的，其中包含了java的开发工具，也包括了JRE</p>
 <p>​    Java的开发工具：编译工具（javac.exe）和打包工具（jar.exe）</p>
@@ -2596,7 +3855,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/26/4.1.%E5%88%9D%E8%AF%86java%EF%BC%9A%E7%89%B9%E6%80%A7%E3%80%81%E7%89%88%E6%9C%AC%E3%80%81%E5%AE%89%E8%A3%85/" data-id="ckpnvjm8j000648wd7f4wbdie" data-title="初识java" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/03/26/4.1.%E5%88%9D%E8%AF%86java%EF%BC%9A%E7%89%B9%E6%80%A7%E3%80%81%E7%89%88%E6%9C%AC%E3%80%81%E5%AE%89%E8%A3%85/" data-id="ckq1xbdsl0048pwwdeyjb2a4t" data-title="初识java" class="article-share-link">分享</a>
       
       
       
@@ -4034,1107 +5293,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/25/3.2.java%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E4%B9%8BIDEA/" data-id="ckpdvjprz005wnswd1o8r73fu" data-title="java开发工具之IDEA" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/03/25/3.2.java%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E4%B9%8BIDEA/" data-id="ckq1xbdv1006epwwd2sn869lv" data-title="java开发工具之IDEA" class="article-share-link">分享</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-3.开发常用软件汇总" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/24/3.%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E6%B1%87%E6%80%BB/" class="article-date">
-  <time class="dt-published" datetime="2021-03-24T10:07:14.000Z" itemprop="datePublished">2021-03-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/24/3.%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E6%B1%87%E6%80%BB/">开发常用软件</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="开发中常接触的软件"><a href="#开发中常接触的软件" class="headerlink" title="开发中常接触的软件"></a>开发中常接触的软件</h1><h2 id="编辑工具"><a href="#编辑工具" class="headerlink" title="编辑工具"></a>编辑工具</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong><code>notepad++</code></strong></td>
-<td>看配置文件</td>
-</tr>
-<tr>
-<td><strong><code>typora</code></strong></td>
-<td>编辑文档</td>
-</tr>
-<tr>
-<td><code>xmind</code></td>
-<td>画思维导图，屡关系，发散思维</td>
-</tr>
-<tr>
-<td><code>ProcessOn</code></td>
-<td>免费在线作图工具,画原型图、思维导图、UML图</td>
-</tr>
-<tr>
-<td><code>Sublime Text</code></td>
-<td>代码草稿本。对python友好</td>
-</tr>
-<tr>
-<td><code>Microsoft To Do</code></td>
-<td>待办事项</td>
-</tr>
-</tbody></table>
-<h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong><code>谷歌浏览器</code></strong></td>
-<td>chrome，插件好用一些</td>
-</tr>
-<tr>
-<td><code>火狐浏览器</code></td>
-<td>F12开发者模式是中文，易懂一些。可以手动设定localStorge的值</td>
-</tr>
-<tr>
-<td><code>Microsoft Edge</code></td>
-<td>微软自带的win 10浏览器</td>
-</tr>
-</tbody></table>
-<h2 id="解压工具"><a href="#解压工具" class="headerlink" title="解压工具"></a>解压工具</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>7-zip</code></td>
-<td>推荐使用，免费，无广告</td>
-</tr>
-<tr>
-<td><code>winrar</code></td>
-<td>广告多</td>
-</tr>
-<tr>
-<td><code>2345</code></td>
-<td>不推荐，会安装流氓软件</td>
-</tr>
-</tbody></table>
-<h2 id="JAVA后端"><a href="#JAVA后端" class="headerlink" title="JAVA后端"></a>JAVA后端</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong><code>jdk</code></strong></td>
-<td>java版本，常用为1.8</td>
-</tr>
-<tr>
-<td><code>NetBeans</code></td>
-<td>java开发工具，可以用于Java、C/C++，PHP等语言的开发</td>
-</tr>
-<tr>
-<td><code>eclipse</code></td>
-<td>java开发工具，最早接触，前期常用</td>
-</tr>
-<tr>
-<td><code>MyEclipse</code></td>
-<td>在Eclipse基础上追加的功能性插件，对插件收费。在WEB开发中提供强大的系统架构平台</td>
-</tr>
-<tr>
-<td><strong><code>idea</code></strong></td>
-<td>java开发工具，目前常用</td>
-</tr>
-<tr>
-<td><code>XJad</code></td>
-<td>反编译java的class文件为java文件</td>
-</tr>
-<tr>
-<td><strong><code>spring</code></strong></td>
-<td>java框架，核心是IOC和AOP</td>
-</tr>
-<tr>
-<td><code>spring MVC</code></td>
-<td></td>
-</tr>
-<tr>
-<td><strong><code>mybatis</code></strong></td>
-<td></td>
-</tr>
-<tr>
-<td><strong><code>spring boot</code></strong></td>
-<td></td>
-</tr>
-<tr>
-<td><strong><code>mybatis plus</code></strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>spring cloud</code></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="一些插件"><a href="#一些插件" class="headerlink" title="一些插件"></a>一些插件</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>IDE Eval Reset</code></td>
-<td>idea重置插件。（需添加第三方插件仓库<a target="_blank" rel="noopener" href="https://plugins.zhile.io)/">https://plugins.zhile.io）</a></td>
-</tr>
-<tr>
-<td><code>Gitee</code></td>
-<td>idea集合的码云</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>lombok</code></td>
-<td>自动生成get/set等方法</td>
-</tr>
-<tr>
-<td><code>swagger</code></td>
-<td>自动生成api文档</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><table>
-<thead>
-<tr>
-<th>种类</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong><code>mysql</code></strong></td>
-<td>5.7</td>
-</tr>
-<tr>
-<td><strong><code>redis</code></strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>Minio</code></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="数据库工具"><a href="#数据库工具" class="headerlink" title="数据库工具"></a>数据库工具</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>SQLyog</code></td>
-<td></td>
-</tr>
-<tr>
-<td><strong><code>navicat</code></strong></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="搜索引擎"><a href="#搜索引擎" class="headerlink" title="搜索引擎"></a>搜索引擎</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>ElasticSearch</code></td>
-<td></td>
-</tr>
-<tr>
-<td>``</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="项目管理工具"><a href="#项目管理工具" class="headerlink" title="项目管理工具"></a>项目管理工具</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong><code>maven</code></strong></td>
-<td>3.6.1，pom.xml文件中放依赖</td>
-</tr>
-<tr>
-<td><code>gradle</code></td>
-<td>安卓的依赖</td>
-</tr>
-</tbody></table>
-<h2 id="代码管理工具"><a href="#代码管理工具" class="headerlink" title="代码管理工具"></a>代码管理工具</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>svn</code></td>
-<td></td>
-</tr>
-<tr>
-<td><strong><code>git</code></strong></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="代码托管平台"><a href="#代码托管平台" class="headerlink" title="代码托管平台"></a>代码托管平台</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong><code>gitee</code></strong></td>
-<td>码云，国内常用</td>
-</tr>
-<tr>
-<td><strong><code>git hub</code></strong></td>
-<td>国外全英文，最火最棒；速度慢，经常打不开</td>
-</tr>
-</tbody></table>
-<h2 id="原型图"><a href="#原型图" class="headerlink" title="原型图"></a>原型图</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>Axure RP</code></td>
-<td>快速创建应用软件或Web网站的线框图、流程图、原型和规格说明文档</td>
-</tr>
-<tr>
-<td><code>墨刀</code></td>
-<td>移动端原型工具</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>HBuilder</code></td>
-<td>HTML开发的工具。快、绿柔护眼、国产</td>
-</tr>
-<tr>
-<td><code>node.js</code></td>
-<td></td>
-</tr>
-<tr>
-<td><strong><code>Vue</code></strong></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><strong><code>webstorm</code></strong></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="前端样式框架"><a href="#前端样式框架" class="headerlink" title="前端样式框架"></a>前端样式框架</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>bootstrap</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>layui</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>element ui</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>iview</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>vant</code></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="linux系统"><a href="#linux系统" class="headerlink" title="linux系统"></a>linux系统</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>VMware</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>Ubuntn</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>Centos</code></td>
-<td>7版本常见，服务器用的多</td>
-</tr>
-<tr>
-<td><code>XenServer</code></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong><code>Tomcat</code></strong></td>
-<td></td>
-</tr>
-<tr>
-<td><strong><code>Ngnix</code></strong></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="windows和linux的交互"><a href="#windows和linux的交互" class="headerlink" title="windows和linux的交互"></a>windows和linux的交互</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>Xftp</code></td>
-<td>windows上将linux服务器内文件可视化界面</td>
-</tr>
-<tr>
-<td><code>WinSCP</code></td>
-<td>windows上访问linux，配合putty可以打开命令行</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>MobaXterm_Personal</code></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="部署项目"><a href="#部署项目" class="headerlink" title="部署项目"></a>部署项目</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong><code>Docker</code></strong></td>
-<td></td>
-</tr>
-<tr>
-<td><code>portainer.io</code></td>
-<td>可视化的docker容器，支持中文</td>
-</tr>
-<tr>
-<td>``</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="抓包工具"><a href="#抓包工具" class="headerlink" title="抓包工具"></a>抓包工具</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>wireshark</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>postman</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>apipost</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>jmeter</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>微信开发者工具</code></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="分布式"><a href="#分布式" class="headerlink" title="分布式"></a>分布式</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>RabbitMQ</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>Zookeeper</code></td>
-<td></td>
-</tr>
-<tr>
-<td>``</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="远程连接服务器"><a href="#远程连接服务器" class="headerlink" title="远程连接服务器"></a>远程连接服务器</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>XShell</code></td>
-<td>命令行访问</td>
-</tr>
-<tr>
-<td><code>PuTTY</code></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><code>FileZilla</code></td>
-<td>FTP客户端工具，可以共享文件</td>
-</tr>
-</tbody></table>
-<h2 id="远程办公"><a href="#远程办公" class="headerlink" title="远程办公"></a>远程办公</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>VNC</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>向日葵</code></td>
-<td></td>
-</tr>
-<tr>
-<td>``</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>Python</code></td>
-<td></td>
-</tr>
-<tr>
-<td><code>VS code</code></td>
-<td></td>
-</tr>
-<tr>
-<td><strong><code>pycharm</code></strong></td>
-<td></td>
-</tr>
-<tr>
-<td>``</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="爬虫"><a href="#爬虫" class="headerlink" title="爬虫"></a>爬虫</h2><table>
-<thead>
-<tr>
-<th>工具</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Selenium</td>
-<td>自动化测试工具</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>​    <code>工欲善其事必先利其器</code>，开发中，工具是必不可少的东西，它能帮助我们减轻很多的工作量，让开发变得更容易。工具没有好坏之分，只有适合自己与不适合。以上就是总结的目前所接触过的工具，随着时代的不断发展，工具层出不穷，有新的就会有淘汰旧的，正如逆水行舟，不进则退,只有不断完善自己，开发新功能，才不至于被淘汰。人也是如此，只有不断学习，不断充实自己，才不至于被社会淘汰。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/24/3.%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E6%B1%87%E6%80%BB/" data-id="ckpdvkzje0000p0wd2nsua5o7" data-title="开发常用软件" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" rel="tag">软件说明</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-4.3.java基础知识附录" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/23/4.3.java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E9%99%84%E5%BD%95/" class="article-date">
-  <time class="dt-published" datetime="2021-03-23T07:48:20.000Z" itemprop="datePublished">2021-03-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/23/4.3.java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E9%99%84%E5%BD%95/">java基础知识附录</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="原码、反码和补码"><a href="#原码、反码和补码" class="headerlink" title="原码、反码和补码"></a>原码、反码和补码</h1><p>在计算机内，有符号数有三种表示法：原码，反码，补码。计算机中，所有数据的运算都是采用补码进行的。</p>
-<p>原码：二进制定点表示法，即最高位为符号位。0表示正，1表示负，其余位表示数值的大小。</p>
-<p>反码：正数的反码与其原码相同。负数的反码是对其原码逐位取反，但符号位除外。</p>
-<p>补码：正数的反码与其原码相同。负数的补码是在其反码的末位+1。</p>
-<h1 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h1><p>浮点数：浮点数是属于有理数中某特定子集的数的数字表示，在计算机中用以近似表示任意某个实数。具体的说，这个实数由一个整数或定点数（即尾数）乘以某个基数（计算机中通常是2）的整数次幂得到，这种表示方法类似于基数为10的科学计数法。</p>
-<p>一个浮点数a由两个数m和e来表示：a = m × b^e^。（计算机中b一般为2） 尾数就是小数 二进制的小数点和十进制的小数点是不同的。二进制小数点后是2的负幂，十进制是10的负幂。</p>
-<p>float类型数字在计算机中用4个字节存储。遵循IEEE-754格式标准：一个浮点数有2部分组成：底数m和指数e</p>
-<p>底数部分m: 使用二进制数来表示此浮点数的实际值</p>
-<p>指数部分e: 占用8bit的二进制数，可表示数值范围为0-255</p>
-<p>​    但是指数可正可负，所以，IEEE规定，此处算出的次方必须减去127才是真正的指数。所以，float类型的指数可从-126到128</p>
-<p>​    底数部分实际是占用24bit的一个值，但是最高位始终为1，所以，最高位省去不存储，在存储中占23bit</p>
-<p>格式：</p>
-<p>SEEE EEEE EMMM MMMM MMMM MMMM MMMM MMMM</p>
-<p>S表示浮点数正负   </p>
-<p>E指数加上127后的值得二进制数据，指数位决定了大小范围</p>
-<p>M底数，尾数位决定了计算精度</p>
-<p>举例：</p>
-<p>17.625在内存中的存储</p>
-<p>首先要把17.625换算成二进制：10001.101</p>
-<p>​    整数部分，除以2，直到商为0，余数反转。</p>
-<p>​    小数部分，乘以2，直到乘位0，进位顺序取。</p>
-<p>在将10001.101右移，直到小数点前只剩1位：    1.0001101 * 2^4 因为右移动了四位</p>
-<p>这个时候，我们的底数和指数就出来了</p>
-<p>底数：因为小数点前必为1，所以IEEE规定只记录小数点后的就好。所以，此处的底数为：0001101</p>
-<p>指数：实际为4，必须加上127(转出的时候，减去127)，所以为131。也就是10000011</p>
-<p>符号部分是正数，所以是0</p>
-<p>综上所述，17.625在内存中的存储格式是：</p>
-<p>01000001 10001101 00000000 00000000    </p>
-<p>float  符号位1bit  指数位e 8bit  尾数位m 23bit  </p>
-<p>double 符号位1bit  指数位e 11bit  尾数位m 52bit </p>
-<h1 id="boolean占几个字节"><a href="#boolean占几个字节" class="headerlink" title="boolean占几个字节"></a>boolean占几个字节</h1><p>虽然boolean表现出非0即1的“位”特性，但是存储空间的基本计量单位是字节，不是位。所以boolean至少占一个字节。<br>JVM规范中，boolean变量作为int处理，也就是4字节；boolean数组当做byte数组处理</p>
-<h1 id="运算符的优先级"><a href="#运算符的优先级" class="headerlink" title="运算符的优先级"></a>运算符的优先级</h1><table>
-<thead>
-<tr>
-<th>优先级</th>
-<th>描述</th>
-<th>运算符</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>括号</td>
-<td>()、[]</td>
-</tr>
-<tr>
-<td>2</td>
-<td>正负号</td>
-<td>+、-</td>
-</tr>
-<tr>
-<td>3</td>
-<td>自增自减，非</td>
-<td>++、–、!</td>
-</tr>
-<tr>
-<td>4</td>
-<td>乘除，取余</td>
-<td>*、/、%</td>
-</tr>
-<tr>
-<td>5</td>
-<td>加减</td>
-<td>+、-</td>
-</tr>
-<tr>
-<td>6</td>
-<td>移位运算</td>
-<td>&lt;&lt;、&gt;&gt;、&gt;&gt;&gt;</td>
-</tr>
-<tr>
-<td>7</td>
-<td>大小关系</td>
-<td>&gt;、&gt;=、&lt;、&lt;=</td>
-</tr>
-<tr>
-<td>8</td>
-<td>相等关系</td>
-<td>==、!=</td>
-</tr>
-<tr>
-<td>9</td>
-<td>按位与</td>
-<td>&amp;</td>
-</tr>
-<tr>
-<td>10</td>
-<td>按位异或</td>
-<td>^</td>
-</tr>
-<tr>
-<td>11</td>
-<td>按位或</td>
-<td>|</td>
-</tr>
-<tr>
-<td>12</td>
-<td>逻辑与</td>
-<td>&amp;&amp;</td>
-</tr>
-<tr>
-<td>13</td>
-<td>逻辑或</td>
-<td>||</td>
-</tr>
-<tr>
-<td>14</td>
-<td>条件运算</td>
-<td>?:</td>
-</tr>
-<tr>
-<td>15</td>
-<td>赋值运算</td>
-<td>=、+=、-=、*=、/=、%=</td>
-</tr>
-<tr>
-<td>16</td>
-<td>位赋值运算</td>
-<td>&amp;=、|=、&lt;&lt;=、&gt;&gt;=、&gt;&gt;&gt;=</td>
-</tr>
-</tbody></table>
-<p>如果在程序中，要改变运算顺序，可以使用()括起来</p>
-<h1 id="编码问题"><a href="#编码问题" class="headerlink" title="编码问题"></a>编码问题</h1><p>java语言使用的是Unicode编码。</p>
-<p>一般软件中的ANSI指的是对应当前系统 locale 的遗留（legacy）编码。</p>
-<p>建议用 Notepad++ 等正常的专业文本编辑器保存为不带 BOM 的 UTF-8。另外，如果文本中所有字符都在 ASCII 范围内，那么其实，记事本保存的所谓的「ANSI」文件，和 ASCII 或无 BOM 的 UTF-8 是一样的。</p>
-<p>ASCII码表</p>
-<p><img src="file://C:\Users\swx\AppData\Roaming\Typora\typora-user-images\image-20210323162019525.png?lastModify=1618245408" alt="image-20210323162019525"></p>
-<p>ASCII码规定最高位必须为0，因此只能有128个，即0~127。</p>
-<p>于是需要Unicode（统一码，万国码，单一码）这个东西，就是要把地球上所有的语言的符号，都用<strong>统一的字符集</strong>来表示，一个编码真正做到了唯一，在表示Unicode字符时，通常会用“U+”然后紧跟着一组十六进制的数字来表示。</p>
-<p>UTF-8是针对Unicode的一种可变长度字符编码，可以用来表示Unicode标准中的任何字符，而且编码中的第一个字节与ASCII相容。UTF-8使用一至四个字节为每个字符进行编码，汉字一般采用3个字节。</p>
-<p>中文网站不需要其他国家的文字出现，用UTF-8进行编码，大多数占用3个字节甚至更多，会造成存储浪费，所以采用一套GB系列的编码，最常用的是GBK。GBK编码英文采用单字节编码，完全兼容ASCII码表，汉字采用2个字节进行编码，范围为0x8140到0xFEFE（剔除xx7F，因为对应的ASCII码表是DEL，意味着要向后删除一个字符）</p>
-<p>Unicode定义一个特殊字符�，对应编码为0xFFFD。假如A支持一个特殊字符，但B不支持，在B中就会用�代替。这个字符用UTF-8编码后，十六进制表示为0xEF  0XBF  0XBD，如果连续出现两个符号，即为0xEF  0XBF  0XBD  0xEF  0XBF  0XBD，再转换成GBK码（2个字节一个字符）就成了锟（0xEFBF），斤（0xBDEF），拷（0xBFBD）。出现锟斤拷的原因就是UTF-8转码GBK时出现了问题，至少需要两个字符出现乱码才会出现锟斤拷。</p>
-<p>Unicode编码：指的是带有 BOM 的小端序 UTF-16（BOM（byte order mark）也是Unicode标准的一部分，有它特定的适用范围。通常BOM是用来标示Unicode纯文本字节流的，用来提供一种方便的方法让文本处理程序识别读入的.txt文件是哪个Unicode编码（UTF-8，UTF-16BE，UTF-16LE），Linux系统不会识别BOM，直接读取；而windows会先识别，从而会使一些代码加载出问题）</p>
-<p>UTF-8编码：指的是带 BOM 的 UTF-8。（对于微软而言）linux系统的UTF-8是不带BOM的，因为他要运行老版本。而windows系统之前是不带BOM的，但是为了考虑兼容性问题，所以以后的UTF-8编码都是带BOM的。（这里推荐使用不带的）</p>
-<h1 id="java中的参数传递问题"><a href="#java中的参数传递问题" class="headerlink" title="java中的参数传递问题"></a>java中的参数传递问题</h1><p>基本类型：形式参数的改变对实际参数没有影响。（值传递）</p>
-<p>引用类型：形式参数的改变直接影响实际参数。（地址值传递）</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/23/4.3.java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E9%99%84%E5%BD%95/" data-id="ckpnvjm8k000848wdgjfd2o6t" data-title="java基础知识附录" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-2.2.hexo搭建博客" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/23/2.2.hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="article-date">
-  <time class="dt-published" datetime="2021-03-23T06:44:44.000Z" itemprop="datePublished">2021-03-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/23/2.2.hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">hexo搭建博客</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="用hexo来搭建一个自己的博客"><a href="#用hexo来搭建一个自己的博客" class="headerlink" title="用hexo来搭建一个自己的博客"></a>用hexo来搭建一个自己的博客</h1><p>Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Coding上，是搭建博客的首选框架。</p>
-<p>​    个人理解：GitHub上自己申请一个公共的仓库，这个仓库的地址对应的是你的博客地址。通过hexo这个工具将你本地的一些md文档上传到你的github仓库里，这样别人访问你的网站时，相当于是访问了你的仓库，在你的仓库里get到了你写的这些md文档并可以阅读。</p>
-<h2 id="hexo的搭建"><a href="#hexo的搭建" class="headerlink" title="hexo的搭建"></a>hexo的搭建</h2><h3 id="1-安装Git"><a href="#1-安装Git" class="headerlink" title="1.安装Git"></a>1.安装Git</h3><p>​    git属于版本管理工具的一种，是一种分布式的系统，功能确实很强大，在协作开发中会经常性用到，所以很有必要了解。</p>
-<p>windows：到git官网上下载,<a target="_blank" rel="noopener" href="https://gitforwindows.org/">Download git</a>，按照安装步骤安装到本地。下载后会有一个Git Bash的命令行工具，以后就用这个工具来使用git。</p>
-<p>linux：最早的git就是在linux上编写的，只需要一行代码：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
-
-<p>安装好后，用<code>git --version</code> 来查看一下版本<br><img src="/image-20210319151950597.png" alt="image-20210319151950597"></p>
-<h3 id="2-安装Node-js"><a href="#2-安装Node-js" class="headerlink" title="2.安装Node.js"></a>2.安装Node.js</h3><p>​    Hexo是基于node.JS编写的，所以需要安装一下node.Js和里面的npm工具。这个属于前端一个常用工具，也有必要了解。</p>
-<p>windows：<a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">nodejs</a>选择LTS版本就行了</p>
-<p>linux：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nodejs</span><br><span class="line">sudo apt-get install npm</span><br></pre></td></tr></table></figure>
-
-<p>安装完后，打开命令行查看版本</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure>
-
-
-
-<p>windows在安装完git后，可以使用git bash命令来代替cmd。</p>
-<p><img src="/image-20210319152742280.png" alt="image-20210319152742280"></p>
-<h3 id="3-安装Hexo"><a href="#3-安装Hexo" class="headerlink" title="3.安装Hexo"></a>3.安装Hexo</h3><p>​    安装完git和node后就可以继续安装hexo。hexo就是我们用来管理博客的工具，之后博客的相关命令都是与hexo相关的。</p>
-<p>先创建一个文件夹blog，然后<code>cd</code>到这个文件夹下（或者在这个文件夹下直接右键git bash打开），输入命令（cli是命令行界面）：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-<p>用<code>hexo -v</code>查看一下版本</p>
-<p><img src="/image-20210319153759391.png" alt="image-20210319153759391"></p>
-<p>至此安装完成：git，node，hexo。</p>
-<p>接下来初始化一下hexo</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init myblog#这个myblog可以自己取什么名字都行，然后</span><br><span class="line">cd myblog #进入这个myblog文件夹</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
-
-
-<p>新建完成后，指定文件夹目录下有：</p>
-<p>node_modules: 依赖包<br>public：存放生成的页面<br>scaffolds：生成文章的一些模板<br>source：用来存放你的文章<br>themes：主题<br> _config.yml: 博客的配置文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-
-
-<p>打开hexo的服务，在浏览器输入localhost:4000就可以看到我们博客的预览图</p>
-<p>按CTRL+C就可以把这个server关闭</p>
-<h3 id="4-GitHub创建个人仓库"><a href="#4-GitHub创建个人仓库" class="headerlink" title="4.GitHub创建个人仓库"></a>4.GitHub创建个人仓库</h3><p>​    github是一个将来很常用的网站，虽然全是英文，但是不影响会有很多优秀的项目，软件需要从GitHub上下载和借鉴，所以掌握并熟用是必须的。注册一个属于自己的GitHub账号是很必需的。</p>
-<p>登录GitHub账户后点击你的头像下有一个Your repositories，点击后可以看到你的所有仓库，点击new创建一个和你用户名相同的仓库，后面加.github.io（这里必须要和你用户名相同，只有这样，将来要部署到GitHub page的时候，才会被识别，这是一个大坑）也就是xxxx.github.io，其中xxx就是你注册GitHub的用户名。</p>
-<h3 id="5-生成SSH添加到GitHub"><a href="#5-生成SSH添加到GitHub" class="headerlink" title="5.生成SSH添加到GitHub"></a>5.生成SSH添加到GitHub</h3><p>​    SSH是一种安全协议，我记得好像在https，服务器连接好多地方看到过。有用户名/密码，也有密钥。</p>
-<p>在git bash中：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;yourname&quot;    #yourname输入你的GitHub用户名</span><br><span class="line">git config --global user.email &quot;youremail&quot;  #youremail输入你GitHub的邮箱</span><br></pre></td></tr></table></figure>
-
-<p>这样GitHub才能知道你是不是对应它的账户。可以在检查一下有没有输对：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git config user.name</span><br><span class="line">git config user.email</span><br><span class="line"><span class="meta">#</span><span class="bash">创建ssh</span></span><br><span class="line">ssh-keygen -t rsa -C &quot;youremail&quot;</span><br><span class="line"><span class="meta">#</span><span class="bash">一路回车，最后提示生成了.ssh的文件夹</span></span><br></pre></td></tr></table></figure>
-
-<p>在电脑中找到.ssh的文件夹：</p>
-<p><code>id_rsa</code>是你这台电脑的私人秘钥，不能给别人看的</p>
-<p><code>id_rsa.pub</code>是公共秘钥，可以随便给别人看。把这个公钥放在GitHub上，这样当你链接GitHub自己的账户时，它就会根据公钥匹配你的私钥，当能够相互匹配时，才能够顺利的通过git上传你的文件到GitHub上。</p>
-<p><code>known_hosts</code>是记录你连接过的ip文件</p>
-<p>将公钥部署到你的仓库里：在GitHub的头像下点击setting，找到SSH keys的设置选项，点击<code>New SSH key</code><br>把你的<code>id_rsa.pub</code>里面的信息复制进去</p>
-<p>在git bash中输入：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="6-将hexo部署到GitHub"><a href="#6-将hexo部署到GitHub" class="headerlink" title="6.将hexo部署到GitHub"></a>6.将hexo部署到GitHub</h3><p>​    将hexo和github关联起来主要是修改 _config.yml这个文件的相关内容。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">swx</span>                <span class="comment">#网站的标题名</span></span><br><span class="line"><span class="attr">subtitle:</span> <span class="string">&#x27;blog&#x27;</span>          <span class="comment">#网站的副标题</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">&#x27;我的博客&#x27;</span>     <span class="comment">#网站描述。主要用于SEO，告诉搜索引擎一个关于站点的简单描述，通常建议在其中包含网站的关键词。</span></span><br><span class="line"><span class="attr">keywords:</span>                 </span><br><span class="line"><span class="attr">author:</span> <span class="string">swx</span>               <span class="comment">#你的名字。用于主题显示文章的作者</span></span><br><span class="line"><span class="attr">language:</span> <span class="string">zh-CN</span>           <span class="comment">#网站使用的语言</span></span><br><span class="line"><span class="attr">timezone:</span> <span class="string">&#x27;&#x27;</span>              <span class="comment">#网站的时区。Hexo 默认使用自己电脑的时区、时区列表。比如说：America/New_York, Japan, 和 UTC 。</span></span><br><span class="line"> </span><br><span class="line"><span class="attr">url:</span> <span class="string">https://s-qwer.github.io/</span>         <span class="comment">#你的网站域名</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:day/:title/</span>   <span class="comment">#文章的永久链接格式。生成某个文章时的那个链接格式：比如我新建一个文章叫temp.md，那么这个时候他自动生成的地址就是https://s-qwer.github.io/2021/03/18/hexo/</span></span><br><span class="line"><span class="attr">permalink_defaults:</span>                    <span class="comment">#永久链接中各部分的默认值</span></span><br><span class="line"></span><br><span class="line"><span class="attr">theme:</span> <span class="string">landscape</span>          <span class="comment">#设置主题在这里，默认的是landscape。当你需要更换主题时，在官网上下载，把主题的文件放在theme文件夹下，再修改这个参数为theme文件夹下的文件名就可以</span></span><br><span class="line"></span><br><span class="line"><span class="attr">deploy:</span> <span class="comment">#这个在后面进行双平台部署的时候会再次用到deploy</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/YourgithubName/YourgithubName.github.io.git</span>   <span class="comment">#YourgithubName就是你的GitHub账户</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span>                   <span class="comment">#分支</span></span><br></pre></td></tr></table></figure>
-
-<p>接下来需要先安装<code>deploy-git</code> ，也就是部署的命令,这样你才能用命令部署到GitHub</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br><span class="line"></span><br><span class="line">hexo clean      #清除了之前生成的东西，也可以不加,相当于把public这个文件夹删除了</span><br><span class="line">hexo generate   #生成静态文章，可以用 hexo g缩写</span><br><span class="line">hexo deploy     #部署文章，可以用hexo d缩写 </span><br><span class="line"><span class="meta">#</span><span class="bash">注意deploy时可能要你输入username和password，这是一个很痛苦的过程，每次都需要输入用户名/密码，可以在网上找解决方式。最后我找了一种用git而不是https的方式。repo：git@github.com:s-qwer/s-qwer.github.io.git</span></span><br></pre></td></tr></table></figure>
-
-<p>现在就可以在<code>http://yourname.github.io</code> 这个网站看到自己的博客</p>
-<h3 id="7-设置个人域名"><a href="#7-设置个人域名" class="headerlink" title="7.设置个人域名"></a>7.设置个人域名</h3><p>​    域名这个东西相当于是一个网址的后缀名。域名是从后往前算的，依次是一级二级。。。常见的一级域名有.com,.cn,.org你可以在域名查询系统里查询这个域名是否可用，像一些比较火的域名，可能被人先注册的，你如果需要使用就需要花钱。也可以在网上找一些免费的域名。这个东西也只是作为一个标识，本质上还是指向了你的GitHub的仓库里的那个项目的文件。</p>
-<p>现在你的个人网站的地址是 yourname.github.io，如果觉得这个网址不太彳亍，就需要你设置个人域名了。</p>
-<p>在你的域名控制台中点解析，添加解析。192.30.252.153 和 192.30.252.154 是GitHub的服务器地址。注意，解析线路选择默认。</p>
-<p>登录GitHub，进入之前创建的仓库，点击settings，设置Custom domain，输入你的域名</p>
-<p>然后在你的博客文件source中创建一个名为CNAME文件，不要后缀。写上你的域名。</p>
-<p>最后，在git bash中，输入</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d    #后两个命令也可以合并为 hexo d -g    hexo g -d  效果是一样的</span><br></pre></td></tr></table></figure>
-
-<h3 id="8-发布文章"><a href="#8-发布文章" class="headerlink" title="8.发布文章"></a>8.发布文章</h3><p>接下来就可以正式开始写文章并发布。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hexo new newpapername      #这里的newpapername就是你要写的文章的标题名，可以是中文，英文</span><br><span class="line"><span class="meta">#</span><span class="bash">然后在<span class="built_in">source</span>/_post中就会生成一个md文件 打开这个markdown文件，就可以开始编辑写自己的文章了。当你写完的时候，再</span></span><br><span class="line">hexo clean</span><br><span class="line">hexo g</span><br><span class="line">hexo d</span><br><span class="line"><span class="meta">#</span><span class="bash">接下来就可以在你设置好的域名访问到你的博客了</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="9-Front-matter"><a href="#9-Front-matter" class="headerlink" title="9.Front-matter"></a>9.Front-matter</h3><p>Front-matter 是文件最上方以 <code>---</code> 分隔的区域，用于指定个别文件的变量：</p>
-<table>
-<thead>
-<tr>
-<th>参数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>layout</code></td>
-<td>布局</td>
-</tr>
-<tr>
-<td><code>title</code></td>
-<td>标题</td>
-</tr>
-<tr>
-<td><code>date</code></td>
-<td>建立日期</td>
-</tr>
-<tr>
-<td><code>updated</code></td>
-<td>更新日期</td>
-</tr>
-<tr>
-<td><code>comments</code></td>
-<td>开启文章的评论功能</td>
-</tr>
-<tr>
-<td><code>tags</code></td>
-<td>标签（不适用于分页）</td>
-</tr>
-<tr>
-<td><code>categories</code></td>
-<td>分类（不适用于分页）</td>
-</tr>
-<tr>
-<td><code>permalink</code></td>
-<td>覆盖文章网址</td>
-</tr>
-</tbody></table>
-<p>分类和标签需要区别一下，分类具有顺序性和层次性，也就是说 <code>Foo, Bar</code> 不等于 <code>Bar, Foo</code>；而标签没有顺序和层次。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">categories:</span><br><span class="line">- Diary</span><br><span class="line">tags:</span><br><span class="line">- PS3</span><br><span class="line">- Games</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="layout"><a href="#layout" class="headerlink" title="layout"></a>layout</h5><p>当你每一次使用代码  <code>hexo new paper</code>  它其实默认使用的是post这个布局，也就是在source文件夹下的_post里面。</p>
-<p>Hexo 有三种默认布局：post、page 和 draft，它们分别对应不同的路径。而自定义的其他布局和 post 相同，都将储存到 source/_posts 文件夹。</p>
-<table>
-<thead>
-<tr>
-<th>布局</th>
-<th>路径</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>post</code></td>
-<td><code>source/_posts</code></td>
-</tr>
-<tr>
-<td><code>page</code></td>
-<td><code>source</code></td>
-</tr>
-<tr>
-<td><code>draft</code></td>
-<td><code>source/_drafts</code></td>
-</tr>
-</tbody></table>
-<p>而new这个命令其实是：<code>hexo new [layout] &lt;title&gt;</code>  只不过这个layout默认是post罢了。</p>
-<p>page<br>如果你想另起一页，那么可以使用<code>hexo new page board</code>  系统会自动给你在source文件夹下创建一个board文件夹，以及board文件夹中的index.md，这样你访问的board对应的链接就是<a target="_blank" rel="noopener" href="http://xxx.xxx/board">http://xxx.xxx/board</a></p>
-<p>draft<br>draft是草稿的意思，也就是你如果想写文章，又不希望被看到，那么可以<code>hexo new draft newpage</code>  这样会在source/_draft中新建一个newpage.md文件，如果你的草稿文件写的过程中，想要预览一下，那么可以使用<code>hexo server --draft</code>  在本地端口中开启服务预览。</p>
-<p>如果你的草稿文件写完了，想要发表到post中，<code>hexo publish draft newpage</code>  就会自动把newpage.md发送到post中。</p>
-<h3 id="10-更换主题"><a href="#10-更换主题" class="headerlink" title="10.更换主题"></a>10.更换主题</h3><p>可以在<a target="_blank" rel="noopener" href="https://hexo.io/themes/">主题网站</a>上探索你喜欢的主题，然后点击主题的名字，会直接跳转到GitHub上，直接下载下来，然后放到theme文件夹下就行了，（也可以使用git bash命令： <code>git clone 跳转的网址地址</code>，这样会在theme文件夹下自动生成相应的文件夹）然后再在刚才说的配置文件中把theme换成那个主题文件夹的名字，它就会自动在theme文件夹中搜索你配置的主题。</p>
-<p>而后进入你下载好的主题文件夹，可以看到里面也有一个配置文件config.xml，貌似它默认是config.xml.example，把它复制一份，重命名为_config.xml就可以了。这个配置文件是修改你整个主题的配置文件。</p>
-<h3 id="11-遇到的坑"><a href="#11-遇到的坑" class="headerlink" title="11.遇到的坑"></a>11.遇到的坑</h3><p>​    严格按照步骤进行的操作，可以直接访问到了自己的博客网址。记录下自己遇到的坑：</p>
-<p>​    1.因为没有按照说明输入自己的用户名作为博客的网址，从而一直报错，所以按照教程步骤一步一步来复现还是很有必要的。    </p>
-<p>​    2.上传的第一篇文章的标题格式没有搞对，于是删除了本地的文件，重新加了title：+文章名字 之后上传就开始一直报错，这期间我不断进行：hexo clean 、hexo d -g的循环操作，而且需要一直输入用户名密码，被折磨了很多次之后，查了相关教程，发现hexo s可以本地预生成，访问localhost：4000可以访问，然后继续进行clean和g -d的循环操作，还是一直出错。最后看了一篇关于简化不用输入那么多次密码的方法教学，把rep里的https改为了git@之后，提交，部署一气呵成。nice！所以有的教程里面推荐rep写https也有的是直接写git格式，原理都是一样的，用的协议不一样，个人感觉git格式更方便一些，同样也是可以连接到仓库的地址。<code>repo：git@github.com:s-qwer/s-qwer.github.io.git</code>   <code>repo: git@github.com:s-qwer/s-qwer.github.io.git</code></p>
-<p>​    3.因为修改时，有些配置没有起作用，这里还有个坑，就是相关的配置<code>：</code>后面必须有一个空格！</p>
-<p>​    4. <code>数据类型[][]  数组名=new  数据类型[][]&#123;&#123; 元素1，元素2，.... &#125;, &#123; 元素1，元素2，.... &#125;, &#123; 元素1，元素2，.... &#125;&#125;;</code> 这个字段hexo d -g 的时候一直报错：expected name as lookup value, got .   </p>
-<p>改为：<code>数据类型[][]  数组名=new  数据类型[][]&#123;&#123; 元素1,元素2... &#125;, &#123; 元素1,元素2... &#125;, &#123; 元素1,元素2... &#125;&#125;;</code> 仍然报错： expected variable end  （应为变量结尾）</p>
-<p>改为：<code>数据类型[] []  数组名=new  数据类型[] []&#123;&#123; 元素1,元素2...元素n &#125;, &#123; 元素1,元素2... 元素n&#125;, &#123; 元素1,元素2...元素n &#125; &#125; ;</code></p>
-<p>放弃了，加了个引用就不报错了。</p>
-<p>​    5.卸载了node，重新安装npm之后，hexo命令找不到。重新安装了一下hexo，可以正常提交了。</p>
-<p>​    6.提交报错：</p>
-<p><img src="/2.hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/image-20210601181054370.png" alt="image-20210601181054370"></p>
-<p>错误说明：YAMLException: unidentified alias “<em>title</em>*:”</p>
-<p>解决方法：将*去掉不再报错</p>
-<p>​    7.提交报错：</p>
-<p><img src="/2.hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/image-20210601181222745.png" alt="image-20210601181222745"></p>
-<p>错误说明：Error [Nunjucks Error]: _posts/8.6.VUE.md [Line 520, Column 159] expected name as lookup value, got .</p>
-<p>原因猜测：是正文里面出现了多次<code>&#123;% %&#125;</code>这样的语句，网上解释说是Nunjucks引擎会把它解释为其它意思</p>
-<p>解决方法：在大括号前加上\转义字符即可。我的解决方法是将内容变为代码块。</p>
-<h2 id="hexo的完善"><a href="#hexo的完善" class="headerlink" title="hexo的完善"></a>hexo的完善</h2><h3 id="图片显示问题"><a href="#图片显示问题" class="headerlink" title="图片显示问题"></a>图片显示问题</h3><p>​    将文章<code>hexo d -g</code>之后去网站上查看，发现图片都无法显示。</p>
-<p>在md文件中插入图片的语法为<code>![]()</code>。</p>
-<p>其中<strong>方括号</strong>是图片描述，<strong>圆括号</strong>是图片路径。</p>
-<p>一般来说有三种图片路径，分别是<strong>相对路径，绝对路径和网络路径</strong>。</p>
-<p>网络路径就是直接引用网上的图片，直接复制图片地址，放在圆括号中就完事了。</p>
-<p>这种方式十分的方便，但是也存在一定的问题：</p>
-<ul>
-<li>图片失效导致无法加载；</li>
-<li>打开网页后要再请求加载图片；</li>
-<li>原网站限制，如微信公众号的图片会变得不可见等。</li>
-</ul>
-<p>这种方式算是有利有弊。</p>
-<p>绝对路径是图片在计算机中的绝对位置，相对路径是相对于当前文件的路径。</p>
-<p>由于我们的博客是要部署在网站上，部署后会生成新的文件目录，所以我们选择使用相对路径的方式。</p>
-<p>在hexo中使用<strong>文章资源文件夹</strong>需要在<code>config.yaml</code>文件中更改一下配置：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>当该配置被应用后，使用<code>hexo new</code>命令创建新文章时，会生成相同名字的文件夹，也就是文章资源文件夹。</p>
-<p>由于项目会生成新的文件目录，同时会解析Markdown中的图片路径，会导致一个问题。<br>如在一个文件目录下，博客名为<code>1.md</code>，相应的存在一个<code>1</code>文件夹存放图片<code>image.jpg</code>。<br>在Typora编辑器中，普通的md文件使用<code>![](1/image.jpg)</code>能在编辑器中正常显示图片。<br>在hexo中，按理说应该是使用<code>![](image.jpg)</code>，但网页中却无法正常显示。<br>此时应该使用这样的方式来引入图片：<code>&#123;% asset_img image.jpg 这是一张图片 %&#125;</code></p>
-<p>虽然可以正常引用图片了，但是这种引用图片的方式只有一句话能形容，wtf。</p>
-<h4 id="图片插件"><a href="#图片插件" class="headerlink" title="图片插件"></a><strong>图片插件</strong></h4><p>插件<a href="https://link.zhihu.com/?target=https://github.com/hexojs/hexo-renderer-marked">hexo-renderer-marked</a>解决了这个问题。可以只用<code>npm install hexo-renderer-marked</code>命令直接安装，之后在<code>config.yaml</code>中更改配置如下：</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">marked:</span></span><br><span class="line">  <span class="attr">prependRoot:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">postAsset:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-<p>之后就可以在使用<code>![](image.jpg)</code>的方式愉快的插入图片了。</p>
-<p>我们做了这么多都是为了方便，那么为什么不再方便一点呢。</p>
-<h4 id="hexo与Typora的完美结合"><a href="#hexo与Typora的完美结合" class="headerlink" title="hexo与Typora的完美结合"></a><strong>hexo与Typora的完美结合</strong></h4><p>上述是从文章资源文件夹中引用图片，前提是<strong>先将图片放入到文章资源文件夹</strong>，如果图片数量众多的话，一张一张的放很影响效率。但是不用怕，我们有很方便的解决方法。</p>
-<p><strong>Typora</strong>是我非常喜欢的Markdown文本编辑器，在之前的文章中也介绍过一点。</p>
-<p>Typora对于插入图片的支持做得非常好，在<code>文件-&gt;偏好设置</code>或者直接<code>&lt;C-,&gt;</code>进入设置。</p>
-<p><img src="/v2-52220b2dba6901ee2181b72951d25a7b_720w.jpg" alt="img"></p>
-<p>使用该配置后，可以直接复制网页中的图片地址，粘贴到Typora中后，会直接复制该图片到文章资源文件夹，同时自动更改路径。</p>
-<p>如复制网络路径的图片<code>https://...../image.jpg</code>粘贴到Typora中叫<code>文章名</code>的文章后，图片会自动变为<code>![](文章名/image.jpg)</code>。</p>
-<p>但我们知道部署后，文件路径是不同的，所以当我们插入完所有的图片后，我们还需要删除每个图片路径中的<code>文件名/</code>。不慌，也很简单。</p>
-<p>在Typora编辑器中，使用<code>&lt;C-f&gt;</code>快捷键，将所有的<code>文章名/</code>替换为空即可删除。</p>
-<p><img src="/v2-9202796d27f4659d96ff13b11e6808c1_720w.png" alt="img"></p>
-<p>然后再将博客上传，图片就会随着文章一起打包。在网页中就可以看到正常显示的图片，大功告成</p>
-<h3 id="多台电脑使用"><a href="#多台电脑使用" class="headerlink" title="多台电脑使用"></a>多台电脑使用</h3><p>使用场景：希望公司、家里电脑都能正常使用，电脑升级更新环境</p>
-<ul>
-<li>使用网盘或其他方式同步hexo源文件； — git很容易搞定</li>
-<li>创建两个repo分别管理站点和源文件；— 没有必要，可以利用git分支</li>
-</ul>
-<p>这里使用git分支来管理站点、源文件的方式</p>
-<p>Hexo生产的静态博客的特点，首先它是一个静态博客生成工具，可以根据你的配置和md文件生成一系列的html、css、js等文件，组成一个站点，部署到github pages，这样网站就可以访问了。</p>
-<p>完成hexo的部署命令，其实hexo帮助我们做的事情就是：</p>
-<ol>
-<li>生成站点有关文件到 <code>.deploy_git</code></li>
-<li>把它初始化为git目录，并根据你的配置指定remote和branch(一般是master)</li>
-<li>进行<code>git commit</code>，并把修改push到指定的remote branch</li>
-<li>命令执行完成后，到github仓库，发现master分支上的内容其实就和’.deploy_git’中一样</li>
-</ol>
-<p>按照教程建站完成部署后，你的本地源文件其实都没有同步到github，所以只需要想办法把源文件同步即可。最简单的方式就是在你的xx.github.io repo中创建一个source分支，管理源文件，对源文件的修改注意commit/push即可</p>
-<p>步骤如下：</p>
-<ol>
-<li><p>给源文件目录初始化git，并增加remote</p>
-<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="keyword">init</span></span><br><span class="line">git remote <span class="keyword">add</span> origin https:<span class="comment">//github.com/xx/xx.github.io // 填入你的repo地址</span></span><br></pre></td></tr></table></figure></li>
-<li><p>创建分支<code>source</code>，commit/push</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b <span class="built_in">source</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&#x27;add source&#x27;</span></span><br><span class="line">git push origin <span class="built_in">source</span></span><br></pre></td></tr></table></figure></li>
-<li><p>ok，可以在github上把<code>source</code>设置为主分支。其他电脑上只需clone你的.io repo，切换到<code>source</code>分支操作即可。</p>
-</li>
-<li><p>初次clone需要切换到<code>source</code>分支，并执行<code>npm install</code>，初始化hexo有关的依赖。</p>
-</li>
-</ol>
-<h3 id="换电脑-重装系统"><a href="#换电脑-重装系统" class="headerlink" title="换电脑/重装系统"></a>换电脑/重装系统</h3><p>​    如果准备换电脑或者重装系统，那么我们的md文件和相关配置怎么保存或者重新设置呢。</p>
-<p>​    以上，就是搭建的全过程了，借鉴了很多文章，很多内容都是复制粘贴下来的，为了给自己以后再次搭建时一个步骤说明。这些只是一些基础的功能，保证了自己写的文章可以被保存在服务器上。hexo还有很多功能我目前没有用到，包括一些互动功能，git分支，国内外分流，SEO等。以后用到了再去查查相关资料完善吧。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/23/2.2.hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" data-id="ckpnvjm8p000i48wd0gdzedb0" data-title="hexo搭建博客" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li></ul>
 
     </footer>
   </div>
@@ -5194,23 +5357,23 @@
       <ul>
         
           <li>
+            <a href="/2021/06/18/WebRTC%E7%9A%84%E5%AD%A6%E4%B9%A0/">WebRTC的学习</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/18/%E6%B5%81%E5%AA%92%E4%BD%93%E5%8D%8F%E8%AE%AE/">流媒体协议</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/17/1.7.%E7%AE%80%E5%8E%86%E5%AE%8C%E5%96%84/">简历完善</a>
+          </li>
+        
+          <li>
             <a href="/2021/06/08/%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/">搭建网站</a>
           </li>
         
           <li>
             <a href="/2021/06/03/%E6%94%BB%E7%A0%B4%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99/">攻破一个网站</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/">推荐研读书籍</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/17/mqtt%E5%BC%80%E5%8F%91/">mqtt开发</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/30/16.2.Docker%E4%B9%8BPortainer-io/">Docker之Portainer.io</a>
           </li>
         
       </ul>

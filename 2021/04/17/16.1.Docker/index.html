@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/oTKHc6F8tsiaicIibGNyuxJNbNay2XqjcyND9aeaeciacdebb7mWbrm4lGHHju8zVianusKOBbbJic3vcY3o7nLbV8tQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/oTKHc6F8tsiaicIibGNyuxJNbNay2XqjcyNQAAEboIdByNZWVv08D9ibvalrm9vefENnpY5lCWhEYQWS7oMK7cJx4A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="article:published_time" content="2021-04-17T05:01:17.000Z">
-<meta property="article:modified_time" content="2021-04-30T00:52:54.527Z">
+<meta property="article:modified_time" content="2021-06-18T00:55:25.728Z">
 <meta property="article:author" content="swx">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_png/oTKHc6F8tsiaicIibGNyuxJNbNay2XqjcyNJHb3Q3iaoePFedxGK0NdPncQfl6aotsbonTG2FicsX4Bziaw97H4FgQUw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
@@ -128,11 +128,11 @@
 <p>容器可以确保您的应用拥有必需的配置和文件，使得这些应用能够在从开发到测试、再到生产的整个流程中顺利运行，而不出现任何不良问题。这样可以避免危机，做到皆大欢喜。</p>
 <p>虽然这只是简化的示例，但在需要很高的可移植性、可配置性和隔离的情况下，我们可以利用 Linux 容器通过很多方式解决难题。</p>
 <p>无论基础架构是在企业内部还是在云端，或者混合使用两者，容器都能满足您的需求。</p>
-<h3 id="容器不就是虚拟化吗"><a href="#容器不就是虚拟化吗" class="headerlink" title="容器不就是虚拟化吗"></a><strong>容器不就是虚拟化吗</strong></h3><p>是，但也不竟然。我们用一种简单方式来思考一下：</p>
+<h3 id="容器和虚拟化"><a href="#容器和虚拟化" class="headerlink" title="容器和虚拟化"></a><strong>容器和虚拟化</strong></h3><p>容器和虚拟化不是等同的。</p>
 <p>虚拟化使得许多操作系统可同时在单个系统上运行。</p>
 <p>容器则可共享同一个操作系统内核，将应用进程与系统其他部分隔离开。</p>
 <p><img src="https://mmbiz.qpic.cn/mmbiz_png/oTKHc6F8tsiaicIibGNyuxJNbNay2XqjcyNttwRxBsGRT1zsefq4qcWZO9lPmsSpiaS9VIMRSF7a20APn22Vn4lNqQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>图 - 普通虚拟化技术和Docker的对比</p>
+<p>​                                                                                                图 - 普通虚拟化技术和Docker的对比</p>
 <p>这意味着什么？首先，让多个操作系统在单个虚拟机监控程序上运行以实现虚拟化，并不能达成和使用容器同等的轻量级效果。</p>
 <p>事实上，在仅拥有容量有限的有限资源时，您需要能够可以进行密集部署的轻量级应用。</p>
 <p>Linux 容器可从单个操作系统运行，在所有容器中共享该操作系统，因此应用和服务能够保持轻量级，并行快速运行。</p>
@@ -159,15 +159,15 @@
 <p><strong>就轻量级 虚拟化 这一功能来看，LXC 非常有用</strong>，但它无法提供出色的开发人员或用户体验。除了运行容器之外，Docker 技术还具备其他多项功能，包括简化用于构建容器、传输镜像以及控制镜像版本的流程。</p>
 <p><img src="https://mmbiz.qpic.cn/mmbiz_png/oTKHc6F8tsiaicIibGNyuxJNbNay2XqjcyNSTduDPY6VjYcM953tjoDMvSQ7NQRIB4iadxRetGb582Fz7t2wBkJIyw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
 <p>传统的 Linux 容器使用 init 系统来管理多种进程。这意味着，所有应用程序都作为一个整体运行。与此相反，Docker 技术鼓励应用程序各自独立运行其进程，并提供相应工具以实现这一功能。这种精细化运作模式自有其优势。</p>
-<h3 id="docker的目标"><a href="#docker的目标" class="headerlink" title="docker的目标"></a><strong>docker的目标</strong></h3><p>docker的主要目标是”Build,Ship and Run any App,Angwhere”,构建，运输，处处运行</p>
+<h3 id="docker的目标"><a href="#docker的目标" class="headerlink" title="docker的目标"></a><strong>docker的目标</strong></h3><p>docker的主要目标是”Build,Ship and Run any App,Anywhere”,构建，运输，处处运行</p>
 <ul>
 <li><strong>构建：</strong>做一个docker镜像</li>
 <li><strong>运输：</strong>docker pull</li>
 <li><strong>运行：</strong>启动一个容器</li>
 </ul>
-<p>每一个容器，他都有自己的文件系统rootfs.</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a><strong>安装Docker</strong></h2><p>环境说明</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 需要两台几点进行安装</span><br><span class="line">[root@docker01 ~]# cat &#x2F;etc&#x2F;redhat-release </span><br><span class="line">CentOS Linux release 7.2.1511 (Core) </span><br><span class="line">[root@docker01 ~]# uname  -r </span><br><span class="line">3.10.0-327.el7.x86_64</span><br><span class="line">[root@docker01 ~]# hostname -I</span><br><span class="line">10.0.0.100 172.16.1.100 </span><br><span class="line">[root@docker02 ~]# hostname -I</span><br><span class="line">10.0.0.101 172.16.1.101</span><br></pre></td></tr></table></figure>
+<p>每一个容器，他都有自己的文件系统rootfs</p>
+<h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a><strong>安装Docker</strong></h2><p>环境说明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 需要两台节点进行安装</span><br><span class="line">[root@docker01 ~]# cat &#x2F;etc&#x2F;redhat-release </span><br><span class="line">CentOS Linux release 7.2.1511 (Core) </span><br><span class="line">[root@docker01 ~]# uname  -r </span><br><span class="line">3.10.0-327.el7.x86_64</span><br><span class="line">[root@docker01 ~]# hostname -I</span><br><span class="line">10.0.0.100 172.16.1.100 </span><br><span class="line">[root@docker02 ~]# hostname -I</span><br><span class="line">10.0.0.101 172.16.1.101</span><br></pre></td></tr></table></figure>
 
 
 
@@ -184,7 +184,7 @@
 <p>在docker02测试</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@docker02 ~]# docker -H 10.0.0.100 info</span><br><span class="line">Containers: 0</span><br><span class="line"> Running: 0</span><br><span class="line"> Paused: 0</span><br><span class="line"> Stopped: 0</span><br><span class="line">Images: 0</span><br><span class="line">Server Version: 17.12.0-ce</span><br><span class="line">Storage Driver: devicemapper</span><br><span class="line">···</span><br></pre></td></tr></table></figure>
 
-<h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3><h3 id="Docker基础命令操作"><a href="#Docker基础命令操作" class="headerlink" title="Docker基础命令操作"></a><strong>Docker基础命令操作</strong></h3><p>查看docker相关信息</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="Docker基础命令操作"><a href="#Docker基础命令操作" class="headerlink" title="Docker基础命令操作"></a><strong>Docker基础命令操作</strong></h3><p>查看docker相关信息</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[root@docker01 ~]#  docker version  </span><br><span class="line">Client:</span><br><span class="line"> Version:    17.12.0-ce</span><br><span class="line"> API version:    1.35</span><br><span class="line"> Go version:    go1.9.2</span><br><span class="line"> Git commit:    c97c6d6</span><br><span class="line"> Built:    Wed Dec 27 20:10:14 2017</span><br><span class="line"> OS&#x2F;Arch:    linux&#x2F;amd64</span><br><span class="line">Server:</span><br><span class="line"> Engine:</span><br><span class="line">  Version:    17.12.0-ce</span><br><span class="line">  API version:    1.35 (minimum version 1.12)</span><br><span class="line">  Go version:    go1.9.2</span><br><span class="line">  Git commit:    c97c6d6</span><br><span class="line">  Built:    Wed Dec 27 20:12:46 2017</span><br><span class="line">  OS&#x2F;Arch:    linux&#x2F;amd64</span><br><span class="line">  Experimental:    false</span><br></pre></td></tr></table></figure>
 
 
@@ -192,7 +192,7 @@
 <p>配置docker镜像加速</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi &#x2F;etc&#x2F;docker&#x2F;daemon.json</span><br><span class="line">&#123;</span><br><span class="line">  &quot;registry-mirrors&quot;: [&quot;https:&#x2F;&#x2F;registry.docker-cn.com&quot;]</span><br><span class="line">&#125;   </span><br></pre></td></tr></table></figure>
 
-<h3 id="-2"><a href="#-2" class="headerlink" title=""></a></h3><h3 id="启动第一个容器"><a href="#启动第一个容器" class="headerlink" title="启动第一个容器"></a><strong>启动第一个容器</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@docker01 ~]# docker run -d -p 80:80 nginx</span><br><span class="line">Unable to find image &#39;nginx:latest&#39; locally</span><br><span class="line">latest: Pulling from library&#x2F;nginx</span><br><span class="line">e7bb522d92ff: Pull complete </span><br><span class="line">6edc05228666: Pull complete </span><br><span class="line">cd866a17e81f: Pull complete </span><br><span class="line">Digest: sha256:285b49d42c703fdf257d1e2422765c4ba9d3e37768d6ea83d7fe2043dad6e63d</span><br><span class="line">Status: Downloaded newer image for nginx:latest</span><br><span class="line">8d8f81da12b5c10af6ba1a5d07f4abc041cb95b01f3d632c3d638922800b0b4d</span><br><span class="line"># 容器启动后，在浏览器进行访问测试 </span><br></pre></td></tr></table></figure>
+<h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3><h3 id="启动第一个容器"><a href="#启动第一个容器" class="headerlink" title="启动第一个容器"></a><strong>启动第一个容器</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[root@docker01 ~]# docker run -d -p 80:80 nginx</span><br><span class="line">Unable to find image &#39;nginx:latest&#39; locally</span><br><span class="line">latest: Pulling from library&#x2F;nginx</span><br><span class="line">e7bb522d92ff: Pull complete </span><br><span class="line">6edc05228666: Pull complete </span><br><span class="line">cd866a17e81f: Pull complete </span><br><span class="line">Digest: sha256:285b49d42c703fdf257d1e2422765c4ba9d3e37768d6ea83d7fe2043dad6e63d</span><br><span class="line">Status: Downloaded newer image for nginx:latest</span><br><span class="line">8d8f81da12b5c10af6ba1a5d07f4abc041cb95b01f3d632c3d638922800b0b4d</span><br><span class="line"># 容器启动后，在浏览器进行访问测试 </span><br></pre></td></tr></table></figure>
 
 
 
@@ -218,7 +218,7 @@
 <p>拉第三方镜像方法</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull index.tenxcloud.com&#x2F;tenxcloud&#x2F;httpd</span><br></pre></td></tr></table></figure>
 
-<h3 id="-3"><a href="#-3" class="headerlink" title=""></a></h3><h3 id="导出镜像"><a href="#导出镜像" class="headerlink" title="导出镜像"></a><strong>导出镜像</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@docker01 ~]# docker image list </span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">centos              latest              ff426288ea90        3 weeks ago         207MB</span><br><span class="line">nginx               latest              3f8a4339aadd        5 weeks ago         108MB</span><br><span class="line"># 导出</span><br><span class="line">[root@docker01 ~]# docker image save centos &gt; docker-centos.tar.gz</span><br></pre></td></tr></table></figure>
+<h3 id="-2"><a href="#-2" class="headerlink" title=""></a></h3><h3 id="导出镜像"><a href="#导出镜像" class="headerlink" title="导出镜像"></a><strong>导出镜像</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@docker01 ~]# docker image list </span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">centos              latest              ff426288ea90        3 weeks ago         207MB</span><br><span class="line">nginx               latest              3f8a4339aadd        5 weeks ago         108MB</span><br><span class="line"># 导出</span><br><span class="line">[root@docker01 ~]# docker image save centos &gt; docker-centos.tar.gz</span><br></pre></td></tr></table></figure>
 
 
 
@@ -232,7 +232,9 @@
 
 <h3 id="查看镜像的详细信息"><a href="#查看镜像的详细信息" class="headerlink" title="查看镜像的详细信息"></a><strong>查看镜像的详细信息</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@docker01 ~]# docker image inspect centos</span><br></pre></td></tr></table></figure>
 
-<h2 id="-4"><a href="#-4" class="headerlink" title=""></a></h2><h2 id="容器的日常管理"><a href="#容器的日常管理" class="headerlink" title="容器的日常管理"></a><strong>容器的日常管理</strong></h2><h3 id="容器的起-停"><a href="#容器的起-停" class="headerlink" title="容器的起/停"></a><strong>容器的起/停</strong></h3><p>最简单的运行一个容器</p>
+
+
+<h2 id="容器的日常管理"><a href="#容器的日常管理" class="headerlink" title="容器的日常管理"></a><strong>容器的日常管理</strong></h2><h3 id="容器的起-停"><a href="#容器的起-停" class="headerlink" title="容器的起/停"></a><strong>容器的起/停</strong></h3><p>最简单的运行一个容器</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@docker01 ~]# docker run nginx</span><br></pre></td></tr></table></figure>
 
 
@@ -253,12 +255,8 @@
 
 
 
-
-
 <p>查看你容器详细信息/ip</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@docker01 ~]# docker container  inspect  容器名称&#x2F;id</span><br></pre></td></tr></table></figure>
-
-
 
 
 
@@ -508,7 +506,7 @@
 
 
 
-<h2 id="-5"><a href="#-5" class="headerlink" title=""></a></h2><h2 id="docker-仓库（registry）"><a href="#docker-仓库（registry）" class="headerlink" title="docker 仓库（registry）"></a><strong>docker 仓库（registry）</strong></h2><h3 id="创建一个普通仓库"><a href="#创建一个普通仓库" class="headerlink" title="创建一个普通仓库"></a><strong>创建一个普通仓库</strong></h3><p>1、创建仓库</p>
+<h2 id="docker-仓库（registry）"><a href="#docker-仓库（registry）" class="headerlink" title="docker 仓库（registry）"></a><strong>docker 仓库（registry）</strong></h2><h3 id="创建一个普通仓库"><a href="#创建一个普通仓库" class="headerlink" title="创建一个普通仓库"></a><strong>创建一个普通仓库</strong></h3><p>1、创建仓库</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 5000:5000 --restart&#x3D;always --name registry -v &#x2F;opt&#x2F;myregistry:&#x2F;var&#x2F;lib&#x2F;registry  registry </span><br></pre></td></tr></table></figure>
 
 
@@ -524,8 +522,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@docker01 ~]# systemctl restart  docker.service</span><br></pre></td></tr></table></figure>
 
 
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>3、修改镜像标签</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@docker01 ~]# docker tag  busybox:latest  10.0.0.100:5000&#x2F;clsn&#x2F;busybox:1.0</span><br><span class="line">[root@docker01 ~]# docker images</span><br><span class="line">REPOSITORY                      TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">centos6-ssh                     latest              3c2b1e57a0f5        18 hours ago        393MB</span><br><span class="line">httpd                           2.4                 2e202f453940        6 days ago          179MB</span><br><span class="line">10.0.0.100:5000&#x2F;clsn&#x2F;busybox    1.0                 5b0d59026729        8 days ago          1.15MB</span><br></pre></td></tr></table></figure>
@@ -554,8 +550,6 @@
 
 <p>4、使用验证用户测试</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"># 登陆用户</span><br><span class="line">[root@docker01 ~]# docker login 10.0.0.100:5000 </span><br><span class="line">Username: clsn  </span><br><span class="line">Password: 123456</span><br><span class="line">Login Succeeded</span><br><span class="line"># 推送镜像到仓库</span><br><span class="line">[root@docker01 ~]# docker push 10.0.0.100:5000&#x2F;clsn&#x2F;busybox </span><br><span class="line">The push refers to repository [10.0.0.100:5000&#x2F;clsn&#x2F;busybox]</span><br><span class="line">4febd3792a1f: Pushed </span><br><span class="line">1.0: digest: sha256:4cee1979ba0bf7db9fc5d28fb7b798ca69ae95a47c5fecf46327720df4ff352d size: 527</span><br><span class="line">#认证文件的保存位置</span><br><span class="line">[root@docker01 ~]# cat .docker&#x2F;config.json </span><br><span class="line">&#123;</span><br><span class="line">    &quot;auths&quot;: &#123;</span><br><span class="line">        &quot;10.0.0.100:5000&quot;: &#123;</span><br><span class="line">            &quot;auth&quot;: &quot;Y2xzbjoxMjM0NTY&#x3D;&quot;</span><br><span class="line">        &#125;,</span><br><span class="line">        &quot;https:&#x2F;&#x2F;index.docker.io&#x2F;v1&#x2F;&quot;: &#123;</span><br><span class="line">            &quot;auth&quot;: &quot;Y2xzbjpIenNAMTk5Ng&#x3D;&#x3D;&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;HttpHeaders&quot;: &#123;</span><br><span class="line">        &quot;User-Agent&quot;: &quot;Docker-Client&#x2F;17.12.0-ce (linux)&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
 
 <p>至此，一个简单的docker镜像仓库搭建完成</p>
 <h2 id="docker-compose编排工具"><a href="#docker-compose编排工具" class="headerlink" title="docker-compose编排工具"></a><strong>docker-compose编排工具</strong></h2><h3 id="安装docker-compose"><a href="#安装docker-compose" class="headerlink" title="安装docker-compose"></a><strong>安装docker-compose</strong></h3><p>安装docker-compose</p>
@@ -667,10 +661,8 @@
 <h2 id="Docker网络类型"><a href="#Docker网络类型" class="headerlink" title="Docker网络类型"></a><strong>Docker网络类型</strong></h2><p><img src="https://mmbiz.qpic.cn/mmbiz_png/oTKHc6F8tsiaicIibGNyuxJNbNay2XqjcyN3O8G4N3W0f7o9MMbdtXhrkok419zbBSNicK98KFOeuibry2onlibKMxAw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
 <h3 id="docker的网络类型"><a href="#docker的网络类型" class="headerlink" title="docker的网络类型"></a><strong>docker的网络类型</strong></h3><p><img src="https://mmbiz.qpic.cn/mmbiz_png/oTKHc6F8tsiaicIibGNyuxJNbNay2XqjcyNecj4bBrkKJa3jfnpKxpicTtyPGbqbbLBZ2Pp3Bp3BCC0xCT2QIRVPTw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
 <p>Bridge默认docker网络隔离基于网络命名空间，在物理机上创建docker容器时会为每一个docker容器分配网络命名空间，并且把容器IP桥接到物理机的虚拟网桥上。</p>
-<h3 id="不为容器配置网络功能"><a href="#不为容器配置网络功能" class="headerlink" title="不为容器配置网络功能"></a><strong>不为容器配置网络功能</strong></h3><p>此模式下创建容器是不会为容器配置任何网络参数的，如：容器网卡、IP、通信路由等，全部需要自己去配置。</p>
+<h3 id="不为容器配置网络功能-none"><a href="#不为容器配置网络功能-none" class="headerlink" title="不为容器配置网络功能(none)"></a><strong>不为容器配置网络功能(none)</strong></h3><p>此模式下创建容器是不会为容器配置任何网络参数的，如：容器网卡、IP、通信路由等，全部需要自己去配置。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@docker01 ~]# docker run  -it --network none busybox:latest  &#x2F;bin&#x2F;sh </span><br><span class="line">&#x2F; # ip a</span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue </span><br><span class="line">    link&#x2F;loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1&#x2F;8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
-
-
 
 
 
@@ -679,16 +671,12 @@
 
 
 
-
-
-<h3 id="使用宿主机网络"><a href="#使用宿主机网络" class="headerlink" title="使用宿主机网络"></a><strong>使用宿主机网络</strong></h3><p>此模式创建的容器没有自己独立的网络命名空间，是和物理机共享一个Network Namespace，并且共享物理机的所有端口与IP，并且这个模式认为是不安全的。</p>
+<h3 id="使用宿主机网络-host"><a href="#使用宿主机网络-host" class="headerlink" title="使用宿主机网络(host)"></a><strong>使用宿主机网络(host)</strong></h3><p>此模式创建的容器没有自己独立的网络命名空间，是和物理机共享一个Network Namespace，并且共享物理机的所有端口与IP，并且这个模式认为是不安全的。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@docker01 ~]# docker run  -it --network host  busybox:latest  &#x2F;bin&#x2F;sh</span><br></pre></td></tr></table></figure>
 
 
 
 <h3 id="查看网络列表"><a href="#查看网络列表" class="headerlink" title="查看网络列表"></a><strong>查看网络列表</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@docker01 ~]# docker network list </span><br><span class="line">NETWORK ID          NAME                  DRIVER              SCOPE</span><br><span class="line">b15e8a720d3b        bridge                bridge              local</span><br><span class="line">345d65b4c2a0        host                  host                local</span><br><span class="line">bc5e2a32bb55        mywordpress_default   bridge              local</span><br><span class="line">ebf76eea91bb        none                  null                local</span><br></pre></td></tr></table></figure>
-
-
 
 
 
@@ -801,15 +789,26 @@
 
 <p>6、在web界面里查看</p>
 <p><img src="https://mmbiz.qpic.cn/mmbiz_png/oTKHc6F8tsiaicIibGNyuxJNbNay2XqjcyNQAAEboIdByNZWVv08D9ibvalrm9vefENnpY5lCWhEYQWS7oMK7cJx4A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"> </p>
-<h3 id="使用容器的建议"><a href="#使用容器的建议" class="headerlink" title="使用容器的建议"></a><strong>使用容器的建议</strong></h3><p>\1. 不要以拆分方式进行应用程序发布</p>
-<p>\2. 不要创建大型镜像</p>
-<p>\3. 不要在单个容器中运行多个进程</p>
-<p>\4. 不要再镜像内保存凭证，不要依赖IP地址</p>
-<p>\5. 以非root用户运行进程</p>
-<p>\6. 不要使用“最新”标签</p>
-<p>\7. 不要利用运行中的容器创建镜像</p>
-<p>\8. 不要使用单层镜像</p>
-<p>\9. 不要将数据存放在容器内</p>
+<h3 id="使用容器的建议"><a href="#使用容器的建议" class="headerlink" title="使用容器的建议"></a><strong>使用容器的建议</strong></h3><ol>
+<li><p>不要以拆分方式进行应用程序发布</p>
+</li>
+<li><p>不要创建大型镜像</p>
+</li>
+<li><p>不要在单个容器中运行多个进程</p>
+</li>
+<li><p>不要再镜像内保存凭证，不要依赖IP地址</p>
+</li>
+<li><p>以非root用户运行进程</p>
+</li>
+<li><p>不要使用“最新”标签</p>
+</li>
+<li><p>不要利用运行中的容器创建镜像</p>
+</li>
+<li><p>不要使用单层镜像</p>
+</li>
+<li><p>不要将数据存放在容器内</p>
+</li>
+</ol>
 <h3 id="关于Docker容器的监控"><a href="#关于Docker容器的监控" class="headerlink" title="关于Docker容器的监控"></a><strong>关于Docker容器的监控</strong></h3><p><strong>容器的基本信息</strong></p>
 <ul>
 <li>包括容器的数量、ID、名称、镜像、启动命令、端口等信息</li>
@@ -826,7 +825,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/17/16.1.Docker/" data-id="ckpdvjpq3005inswd5dns46ui" data-title="Docker" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/17/16.1.Docker/" data-id="ckq1xbdt2005zpwwd7x9i3i7x" data-title="Docker" class="article-share-link">分享</a>
       
       
       
@@ -900,23 +899,23 @@
       <ul>
         
           <li>
+            <a href="/2021/06/18/WebRTC%E7%9A%84%E5%AD%A6%E4%B9%A0/">WebRTC的学习</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/18/%E6%B5%81%E5%AA%92%E4%BD%93%E5%8D%8F%E8%AE%AE/">流媒体协议</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/17/1.7.%E7%AE%80%E5%8E%86%E5%AE%8C%E5%96%84/">简历完善</a>
+          </li>
+        
+          <li>
             <a href="/2021/06/08/%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/">搭建网站</a>
           </li>
         
           <li>
             <a href="/2021/06/03/%E6%94%BB%E7%A0%B4%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99/">攻破一个网站</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/">推荐研读书籍</a>
-          </li>
-        
-          <li>
-            <a href="/2021/05/17/mqtt%E5%BC%80%E5%8F%91/">mqtt开发</a>
-          </li>
-        
-          <li>
-            <a href="/2021/04/30/16.2.Docker%E4%B9%8BPortainer-io/">Docker之Portainer.io</a>
           </li>
         
       </ul>
