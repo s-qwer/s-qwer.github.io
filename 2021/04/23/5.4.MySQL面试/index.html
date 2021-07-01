@@ -18,8 +18,17 @@
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/BktAsjcTbXibO8fSmnSmyBZMyXpt8qodO3EP98tOmFJLiaB6hOYtRMQQlGDGlmTHhniarrbWjUe7tuM8Oial10r0MA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/BktAsjcTbXibO8fSmnSmyBZMyXpt8qodOmntibFjPnl30vZlMTicCQEGyvUwcJqAqEfLfQMUxiatdopLIGJxWOxEVg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/BktAsjcTbXibO8fSmnSmyBZMyXpt8qodOEcNGkUZIhb3zWsic1ibS0GBiaj3N0rHNibbPCnYX5GlqLLaMs0RNmLNpEw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:image" content="https://segmentfault.com/img/remote/1460000013517919?w=1304&h=720">
+<meta property="og:image" content="https://segmentfault.com/img/remote/1460000013517920?w=1304&h=720">
+<meta property="og:image" content="https://segmentfault.com/img/remote/1460000013517921?w=1304&h=720">
+<meta property="og:image" content="https://segmentfault.com/img/remote/1460000013517922?w=686&h=367">
+<meta property="og:image" content="https://segmentfault.com/img/remote/1460000013517923?w=818&h=567">
+<meta property="og:image" content="https://segmentfault.com/img/remote/1460000013517924?w=1328&h=242">
+<meta property="og:image" content="https://segmentfault.com/img/remote/1460000013517925?w=548&h=348">
+<meta property="og:image" content="https://segmentfault.com/img/remote/1460000013517926?w=710&h=386">
+<meta property="og:image" content="https://segmentfault.com/img/remote/1460000013517927?w=1119&h=750">
 <meta property="article:published_time" content="2021-04-23T05:38:52.000Z">
-<meta property="article:modified_time" content="2021-05-17T09:13:16.168Z">
+<meta property="article:modified_time" content="2021-06-30T06:27:16.416Z">
 <meta property="article:author" content="swx">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://mmbiz.qpic.cn/mmbiz_png/BktAsjcTbXibO8fSmnSmyBZMyXpt8qodOSD7I7hsC1RRwlM66kxQ3AicCDSfdyriaCM2sOppbdIzkY0V11fOm8Igw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
@@ -388,6 +397,389 @@
 <p><strong>主键为候选键的子集，候选键为超键的子集，而外键的确定是相对于主键的。</strong></p>
 <p>not in 和not exists的区别</p>
 <p>not in 是不能命中索引的</p>
+<h2 id="什么是存储过程？有哪些优缺点？"><a href="#什么是存储过程？有哪些优缺点？" class="headerlink" title="什么是存储过程？有哪些优缺点？"></a>什么是存储过程？有哪些优缺点？</h2><blockquote>
+<p>什么是存储过程？有哪些优缺点？</p>
+</blockquote>
+<p>**存储过程就像我们编程语言中的函数一样，封装了我们的代码(PLSQL、T-SQL)**。</p>
+<p>存储过程的优点：</p>
+<ul>
+<li><strong>能够将代码封装起来</strong></li>
+<li><strong>保存在数据库之中</strong></li>
+<li><strong>让编程语言进行调用</strong></li>
+<li><strong>存储过程是一个预编译的代码块，执行效率比较高</strong></li>
+<li><strong>一个存储过程替代大量T_SQL语句 ，可以降低网络通信量，提高通信速率</strong></li>
+</ul>
+<p>存储过程的缺点：</p>
+<ul>
+<li><strong>每个数据库的存储过程语法几乎都不一样，十分难以维护（不通用）</strong></li>
+<li><strong>业务逻辑放在数据库上，难以迭代</strong></li>
+</ul>
+<h2 id="三个范式是什么"><a href="#三个范式是什么" class="headerlink" title="三个范式是什么"></a>三个范式是什么</h2><blockquote>
+<p>三个范式是什么</p>
+</blockquote>
+<blockquote>
+<p>第一范式（1NF）：数据库表中的字段都是单一属性的，不可再分。这个单一属性由基本类型构成，包括整型、实数、字符型、逻辑型、日期型等。<br>第二范式（2NF）：数据库表中不存在非关键字段对任一候选关键字段的部分函数依赖（部分函数依赖指的是存在组合关键字中的某些字段决定非关键字段的情况），也即所有非关键字段都完全依赖于任意一组候选关键字。<br>第三范式（3NF）：在第二范式的基础上，数据表中如果不存在非关键字段对任一候选关键字段的传递函数依赖则符合第三范式。所谓传递函数依赖，指的是如果存在”A → B → C”的决定关系，则C传递函数依赖于A。因此，满足第三范式的数据库表应该不存在如下依赖关系： 关键字段 → 非关键字段x → 非关键字段y</p>
+</blockquote>
+<p>上面的文字我们肯定是看不懂的，也不愿意看下去的。接下来我就总结一下：</p>
+<ul>
+<li>首先要明确的是：<strong>满足着第三范式，那么就一定满足第二范式、满足着第二范式就一定满足第一范式</strong></li>
+<li>第一范式：<strong>字段是最小的的单元不可再分</strong><ul>
+<li>学生信息组成学生信息表，有年龄、性别、学号等信息组成。这些字段都不可再分，所以它是满足第一范式的</li>
+</ul>
+</li>
+<li>第二范式：满足第一范式,<strong>表中的字段必须完全依赖于全部主键而非部分主键。</strong><ul>
+<li><strong>其他字段组成的这行记录和主键表示的是同一个东西，而主键是唯一的，它们只需要依赖于主键，也就成了唯一的</strong></li>
+<li>学号为1024的同学，姓名为Java3y，年龄是22岁。姓名和年龄字段都依赖着学号主键。</li>
+</ul>
+</li>
+<li>第三范式：满足第二范式，<strong>非主键外的所有字段必须互不依赖</strong><ul>
+<li><strong>就是数据只在一个地方存储，不重复出现在多张表中，可以认为就是消除传递依赖</strong></li>
+<li>比如，我们大学分了很多系（中文系、英语系、计算机系……），这个系别管理表信息有以下字段组成：系编号，系主任，系简介，系架构。那我们能不能在学生信息表添加系编号，系主任，系简介，系架构字段呢？不行的，因为这样就冗余了，非主键外的字段形成了依赖关系(依赖到学生信息表了)！正确的做法是：学生表就只能增加一个系编号字段。</li>
+</ul>
+</li>
+</ul>
+<p>参考链接：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/24696366">https://www.zhihu.com/question/24696366</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.cnblogs.com/CareySon/archive/2010/02/16/1668803.html">http://www.cnblogs.com/CareySon/archive/2010/02/16/1668803.html</a></li>
+</ul>
+<h2 id="什么是视图？以及视图的使用场景有哪些？"><a href="#什么是视图？以及视图的使用场景有哪些？" class="headerlink" title="什么是视图？以及视图的使用场景有哪些？"></a>什么是视图？以及视图的使用场景有哪些？</h2><blockquote>
+<p>什么是视图？以及视图的使用场景有哪些？</p>
+</blockquote>
+<p>视图是一种基于数据表的一种<strong>虚表</strong></p>
+<ul>
+<li>（1）视图是一种虚表</li>
+<li>（2）视图建立在已有表的基础上, 视图赖以建立的这些表称为基表</li>
+<li>（3）<strong>向视图提供数据内容的语句为 SELECT 语句,可以将视图理解为存储起来的 SELECT 语句</strong></li>
+<li>（4）视图向用户提供基表数据的另一种表现形式</li>
+<li>（5）视图没有存储真正的数据，真正的数据还是存储在基表中</li>
+<li>（6）程序员虽然操作的是视图，但最终视图还会转成操作基表</li>
+<li>（7）一个基表可以有0个或多个视图</li>
+</ul>
+<p>有的时候，我们可能只关系一张数据表中的某些字段，而另外的一些人只关系同一张数据表的某些字段…</p>
+<p>那么把全部的字段都都显示给他们看，这是不合理的。</p>
+<p>我们应该做到：<strong>他们想看到什么样的数据，我们就给他们什么样的数据…一方面就能够让他们只关注自己的数据，另一方面，我们也保证数据表一些保密的数据不会泄露出来…</strong></p>
+<p><img src="https://segmentfault.com/img/remote/1460000013517919?w=1304&h=720" alt="img"></p>
+<p>我们在查询数据的时候，常常需要编写非常长的SQL语句，几乎每次都要写很长很长….上面已经说了，<strong>视图就是基于查询的一种虚表，也就是说，视图可以将查询出来的数据进行封装。。。那么我们在使用的时候就会变得非常方便</strong>…</p>
+<p>值得注意的是：<strong>使用视图可以让我们专注与逻辑，但不提高查询效率</strong></p>
+<h2 id="drop、delete与truncate分别在什么场景之下使用？"><a href="#drop、delete与truncate分别在什么场景之下使用？" class="headerlink" title="drop、delete与truncate分别在什么场景之下使用？"></a>drop、delete与truncate分别在什么场景之下使用？</h2><blockquote>
+<p>drop、delete与truncate分别在什么场景之下使用？</p>
+</blockquote>
+<p>我们来对比一下他们的区别：</p>
+<p>drop table</p>
+<ul>
+<li>1)属于DDL</li>
+<li>2)不可回滚</li>
+<li>3)不可带where</li>
+<li>4)表内容和结构删除</li>
+<li>5)删除速度快</li>
+</ul>
+<p>truncate table</p>
+<ul>
+<li>1)属于DDL</li>
+<li>2)不可回滚</li>
+<li>3)不可带where</li>
+<li>4)表内容删除</li>
+<li>5)删除速度快</li>
+</ul>
+<p>delete from</p>
+<ul>
+<li>1)属于DML</li>
+<li>2)可回滚</li>
+<li>3)可带where</li>
+<li>4)表结构在，表内容要看where执行的情况</li>
+<li>5)删除速度慢,需要逐行删除</li>
+<li><strong>不再需要一张表的时候，用drop</strong></li>
+<li><strong>想删除部分数据行时候，用delete，并且带上where子句</strong></li>
+<li><strong>保留表而删除所有数据的时候用truncate</strong></li>
+</ul>
+<h2 id="索引是什么？有什么作用以及优缺点？"><a href="#索引是什么？有什么作用以及优缺点？" class="headerlink" title="索引是什么？有什么作用以及优缺点？"></a>索引是什么？有什么作用以及优缺点？</h2><blockquote>
+<p>索引是什么？有什么作用以及优缺点？</p>
+</blockquote>
+<p>什么是索引【Index】</p>
+<ul>
+<li>（1）<strong>是一种快速查询表中内容的机制，类似于新华字典的目录</strong></li>
+<li>（2）<strong>运用在表中某个些字段上，但存储时，独立于表之外</strong></li>
+</ul>
+<p>索引表把数据变成是有序的….<br><img src="https://segmentfault.com/img/remote/1460000013517920?w=1304&h=720" alt="这里写图片描述"></p>
+<p>快速定位到硬盘中的数据文件…</p>
+<p><img src="https://segmentfault.com/img/remote/1460000013517921?w=1304&h=720" alt="这里写图片描述"></p>
+<hr>
+<h3 id="rowid特点"><a href="#rowid特点" class="headerlink" title="rowid特点"></a>rowid特点</h3><p>rowid的特点</p>
+<ul>
+<li>（1）位于每个表中，但表面上看不见，例如：desc emp是看不见的</li>
+<li>（2）只有在select中，显示写出rowid，方可看见</li>
+<li>（3）它与每个表绑定在一起，表亡，该表的rowid亡，二张表rownum可以相同，但rowid必须是唯一的</li>
+<li>（4）rowid是18位大小写加数字混杂体，唯一表代该条记录在DBF文件中的位置</li>
+<li>（5）rowid可以参与=/like比较时，用’’单引号将rowid的值包起来，且区分大小写</li>
+<li>（6）rowid是联系表与DBF文件的桥梁</li>
+</ul>
+<h3 id="索引特点"><a href="#索引特点" class="headerlink" title="索引特点"></a>索引特点</h3><p>索引的特点</p>
+<ul>
+<li>（1）索引一旦建立, <strong>Oracle管理系统会对其进行自动维护</strong>, 而且由Oracle管理系统决定何时使用索引</li>
+<li>（2）用户不用在查询语句中指定使用哪个索引</li>
+<li>（3）<strong>在定义primary key或unique约束后系统自动在相应的列上创建索引</strong></li>
+<li>（4）用户也能按自己的需求，对指定单个字段或多个字段，添加索引</li>
+</ul>
+<p>需要注意的是：<strong>Oracle是自动帮我们管理索引的，并且如果我们指定了primary key或者unique约束，系统会自动在对应的列上创建索引</strong>..</p>
+<p><strong>什么时候【要】创建索引</strong></p>
+<ul>
+<li>（1）表经常进行 SELECT 操作</li>
+<li>（2）表很大(记录超多)，记录内容分布范围很广</li>
+<li>（3）列名经常在 WHERE 子句或连接条件中出现</li>
+</ul>
+<p><strong>什么时候【不要】创建索引</strong></p>
+<ul>
+<li>（1）表经常进行 INSERT/UPDATE/DELETE 操作</li>
+<li>（2）表很小(记录超少)</li>
+<li>（3）列名不经常作为连接条件或出现在 WHERE 子句中</li>
+</ul>
+<p><strong>索引优缺点：</strong></p>
+<ul>
+<li>索引加快数据库的检索速度</li>
+<li>索引降低了插入、删除、修改等维护任务的速度(虽然索引可以提高查询速度，但是它们也会导致数据库系统更新数据的性能下降，<strong>因为大部分数据更新需要同时更新索引</strong>)</li>
+<li>唯一索引可以确保每一行数据的唯一性，通过使用索引，可以在查询的过程中使用优化隐藏器，提高系统的性能</li>
+<li>索引需要占物理和数据空间</li>
+</ul>
+<p>索引分类：</p>
+<ul>
+<li><strong>唯一索引</strong>：唯一索引不允许两行具有相同的索引值</li>
+<li><strong>主键索引</strong>：为表定义一个主键将自动创建主键索引，主键索引是唯一索引的特殊类型。主键索引要求主键中的每个值是唯一的，并且不能为空</li>
+<li><strong>聚集索引</strong>(Clustered)：表中各行的物理顺序与键值的逻辑（索引）顺序相同，每个表只能有一个</li>
+<li><strong>非聚集索引</strong>(Non-clustered)：非聚集索引指定表的逻辑顺序。数据存储在一个位置，索引存储在另一个位置，索引中包含指向数据存储位置的指针。可以有多个，小于249个</li>
+</ul>
+<p>深入理解索引可参考：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://kb.cnblogs.com/page/45712/">https://kb.cnblogs.com/page/45712/</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/drizzlewithwind/p/5707058.html">https://www.cnblogs.com/drizzlewithwind/p/5707058.html</a></li>
+</ul>
+<h2 id="什么是事务？"><a href="#什么是事务？" class="headerlink" title="什么是事务？"></a>什么是事务？</h2><blockquote>
+<p>什么是事务？</p>
+</blockquote>
+<p>事务简单来说：<strong>一个Session中所进行所有的操作，要么同时成功，要么同时失败</strong></p>
+<p><strong>ACID — 数据库事务正确执行的四个基本要素</strong></p>
+<ul>
+<li>包含：原子性（Atomicity）、一致性（Consistency）、隔离性（Isolation）、持久性（Durability）。</li>
+</ul>
+<p><strong>一个支持事务（Transaction）中的数据库系统，必需要具有这四种特性，否则在事务过程（Transaction processing）当中无法保证数据的正确性，交易过程极可能达不到交易。</strong></p>
+<p>举个例子:<strong>A向B转账，转账这个流程中如果出现问题，事务可以让数据恢复成原来一样【A账户的钱没变，B账户的钱也没变】。</strong></p>
+<p><strong>事例说明：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;*</span><br><span class="line">* 我们来模拟A向B账号转账的场景</span><br><span class="line">*   A和B账户都有1000块，现在我让A账户向B账号转500块钱</span><br><span class="line">*</span><br><span class="line">* *&#x2F;</span><br><span class="line">    &#x2F;&#x2F;JDBC默认的情况下是关闭事务的，下面我们看看关闭事务去操作转账操作有什么问题</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;A账户减去500块</span><br><span class="line">    String sql &#x3D; &quot;UPDATE a SET money&#x3D;money-500 &quot;;</span><br><span class="line">    preparedStatement &#x3D; connection.prepareStatement(sql);</span><br><span class="line">    preparedStatement.executeUpdate();</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;B账户多了500块</span><br><span class="line">    String sql2 &#x3D; &quot;UPDATE b SET money&#x3D;money+500&quot;;</span><br><span class="line">    preparedStatement &#x3D; connection.prepareStatement(sql2);</span><br><span class="line">    preparedStatement.executeUpdate();</span><br></pre></td></tr></table></figure>
+
+<p>从上面看，我们的确可以发现A向B转账，成功了。可是<strong>如果A向B转账的过程中出现了问题呢？</strong>下面模拟一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;A账户减去500块</span><br><span class="line">String sql &#x3D; &quot;UPDATE a SET money&#x3D;money-500 &quot;;</span><br><span class="line">preparedStatement &#x3D; connection.prepareStatement(sql);</span><br><span class="line">preparedStatement.executeUpdate();</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;这里模拟出现问题</span><br><span class="line">int a &#x3D; 3 &#x2F; 0;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">String sql2 &#x3D; &quot;UPDATE b SET money&#x3D;money+500&quot;;</span><br><span class="line">preparedStatement &#x3D; connection.prepareStatement(sql2);</span><br><span class="line">preparedStatement.executeUpdate();</span><br></pre></td></tr></table></figure>
+
+<p>显然，上面<strong>代码是会抛出异常的</strong>，我们再来查询一下数据。<strong>A账户少了500块钱，B账户的钱没有增加</strong>。<strong>这明显是不合理的</strong>。</p>
+<hr>
+<p>我们可以通过事务来解决上面出现的问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">    &#x2F;&#x2F;开启事务,对数据的操作就不会立即生效。</span><br><span class="line">    connection.setAutoCommit(false);</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;A账户减去500块</span><br><span class="line">    String sql &#x3D; &quot;UPDATE a SET money&#x3D;money-500 &quot;;</span><br><span class="line">    preparedStatement &#x3D; connection.prepareStatement(sql);</span><br><span class="line">    preparedStatement.executeUpdate();</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;在转账过程中出现问题</span><br><span class="line">    int a &#x3D; 3 &#x2F; 0;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;B账户多500块</span><br><span class="line">    String sql2 &#x3D; &quot;UPDATE b SET money&#x3D;money+500&quot;;</span><br><span class="line">    preparedStatement &#x3D; connection.prepareStatement(sql2);</span><br><span class="line">    preparedStatement.executeUpdate();</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;如果程序能执行到这里，没有抛出异常，我们就提交数据</span><br><span class="line">    connection.commit();</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;关闭事务【自动提交】</span><br><span class="line">    connection.setAutoCommit(true);</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">&#125; catch (SQLException e) &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        &#x2F;&#x2F;如果出现了异常，就会进到这里来，我们就把事务回滚【将数据变成原来那样】</span><br><span class="line">        connection.rollback();</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F;关闭事务【自动提交】</span><br><span class="line">        connection.setAutoCommit(true);</span><br><span class="line">    &#125; catch (SQLException e1) &#123;</span><br><span class="line">        e1.printStackTrace();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的程序也一样抛出了异常，A账户钱没有减少，B账户的钱也没有增加。</p>
+<p>注意：当Connection遇到一个未处理的SQLException时，系统会非正常退出，事务也会自动回滚，但<strong>如果程序捕获到了异常，是需要在catch中显式回滚事务的。</strong></p>
+<h3 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h3><p>数据库定义了4个隔离级别：</p>
+<ol>
+<li>Serializable【可避免脏读，不可重复读，虚读】</li>
+<li>Repeatable read【可避免脏读，不可重复读】</li>
+<li>Read committed【可避免脏读】</li>
+<li>Read uncommitted【级别最低，什么都避免不了】</li>
+</ol>
+<p>分别对应Connection类中的4个常量</p>
+<ol>
+<li><strong>TRANSACTION_READ_UNCOMMITTED</strong></li>
+<li><strong>TRANSACTION_READ_COMMITTED</strong></li>
+<li><strong>TRANSACTION_REPEATABLE_READ</strong></li>
+<li><strong>TRANSACTION_SERIALIZABLE</strong></li>
+</ol>
+<hr>
+<p>脏读：<strong>一个事务读取到另外一个事务未提交的数据</strong></p>
+<p>例子：A向B转账，<strong>A执行了转账语句，但A还没有提交事务，B读取数据，发现自己账户钱变多了</strong>！B跟A说，我已经收到钱了。A回滚事务【rollback】，等B再查看账户的钱时，发现钱并没有多。</p>
+<hr>
+<p>不可重复读：<strong>一个事务读取到另外一个事务已经提交的数据，也就是说一个事务可以看到其他事务所做的修改</strong></p>
+<p>注：<strong>A查询数据库得到数据，B去修改数据库的数据，导致A多次查询数据库的结果都不一样【危害：A每次查询的结果都是受B的影响的，那么A查询出来的信息就没有意思了】</strong></p>
+<hr>
+<p>虚读(幻读)：<strong>是指在一个事务内读取到了别的事务插入的数据，导致前后读取不一致。</strong></p>
+<p>注：<strong>和不可重复读类似，但虚读(幻读)会读到其他事务的插入的数据，导致前后读取不一致</strong></p>
+<hr>
+<p>简单总结：<strong>脏读是不可容忍的，不可重复读和虚读在一定的情况下是可以的【做统计的肯定就不行】</strong>。</p>
+<h2 id="数据库的乐观锁和悲观锁是什么？"><a href="#数据库的乐观锁和悲观锁是什么？" class="headerlink" title="数据库的乐观锁和悲观锁是什么？"></a>数据库的乐观锁和悲观锁是什么？</h2><blockquote>
+<p>数据库的乐观锁和悲观锁是什么？</p>
+</blockquote>
+<p>确保在多个事务同时存取数据库中同一数据时不破坏事务的隔离性和统一性以及数据库的统一性，<strong>乐观锁和悲观锁是并发控制主要采用的技术手段。</strong></p>
+<ul>
+<li>悲观锁：假定会发生并发冲突，屏蔽一切可能违反数据完整性的操作<ul>
+<li><strong>在查询完数据的时候就把事务锁起来，直到提交事务</strong></li>
+<li>实现方式：使用数据库中的锁机制</li>
+</ul>
+</li>
+<li>乐观锁：假设不会发生并发冲突，只在提交操作时检查是否违反数据完整性。<ul>
+<li><strong>在修改数据的时候把事务锁起来，通过version的方式来进行锁定</strong></li>
+<li>实现方式：使用version版本或者时间戳</li>
+</ul>
+</li>
+</ul>
+<p>悲观锁：</p>
+<p><img src="https://segmentfault.com/img/remote/1460000013517922?w=686&h=367" alt="img"></p>
+<p>乐观锁：</p>
+<p><img src="https://segmentfault.com/img/remote/1460000013517923?w=818&h=567" alt="img"></p>
+<p>参考资料：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.open-open.com/lib/view/open1452046967245.html">http://www.open-open.com/lib/view/open1452046967245.html</a></li>
+</ul>
+<h2 id="超键、候选键、主键、外键分别是什么？"><a href="#超键、候选键、主键、外键分别是什么？" class="headerlink" title="超键、候选键、主键、外键分别是什么？"></a>超键、候选键、主键、外键分别是什么？</h2><blockquote>
+<p>超键、候选键、主键、外键分别是什么？</p>
+</blockquote>
+<ul>
+<li>超键：<strong>在关系中能唯一标识元组的属性集称为关系模式的超键</strong>。一个属性可以为作为一个超键，多个属性组合在一起也可以作为一个超键。<strong>超键包含候选键和主键</strong>。</li>
+<li><strong>候选键(候选码)：是最小超键，即没有冗余元素的超键</strong>。</li>
+<li><strong>主键(主码)：数据库表中对储存数据对象予以唯一和完整标识的数据列或属性的组合</strong>。一个数据列只能有一个主键，且主键的取值不能缺失，即不能为空值（Null）。</li>
+<li><strong>外键：在一个表中存在的另一个表的主键称此表的外键</strong>。</li>
+</ul>
+<p><strong>候选码和主码：</strong></p>
+<p>例子：邮寄地址（城市名，街道名，邮政编码，单位名，收件人）</p>
+<ul>
+<li><strong>它有两个候选键:{城市名，街道名} 和 {街道名，邮政编码}</strong></li>
+<li><strong>如果我选取{城市名，街道名}作为唯一标识实体的属性，那么{城市名，街道名} 就是主码(主键)</strong></li>
+</ul>
+<h2 id="SQL-约束有哪几种？"><a href="#SQL-约束有哪几种？" class="headerlink" title="SQL 约束有哪几种？"></a>SQL 约束有哪几种？</h2><blockquote>
+<p>SQL 约束有哪几种？</p>
+</blockquote>
+<ul>
+<li>NOT NULL: 用于控制字段的内容一定不能为空（NULL）。</li>
+<li>UNIQUE: 控件字段内容不能重复，一个表允许有多个 Unique 约束。</li>
+<li>PRIMARY KEY: 也是用于控件字段内容不能重复，但它在一个表只允许出现一个。</li>
+<li>FOREIGN KEY: 用于预防破坏表之间连接的动作，也能防止非法数据插入外键列，因为它必须是它指向的那个表中的值之一。</li>
+<li>CHECK: 用于控制字段的值范围。</li>
+</ul>
+<h2 id="数据库运行于哪种状态下可以防止数据的丢失？"><a href="#数据库运行于哪种状态下可以防止数据的丢失？" class="headerlink" title="数据库运行于哪种状态下可以防止数据的丢失？"></a>数据库运行于哪种状态下可以防止数据的丢失？</h2><blockquote>
+<p>数据库运行于哪种状态下可以防止数据的丢失？</p>
+</blockquote>
+<p><strong>在archivelog mode(归档模式)只要其归档日志文件不丢失，就可以有效地防止数据丢失。</strong></p>
+<h2 id="Mysql存储引擎"><a href="#Mysql存储引擎" class="headerlink" title="Mysql存储引擎"></a>Mysql存储引擎</h2><p>Mysql的存储引擎有以下几种：</p>
+<p><img src="https://segmentfault.com/img/remote/1460000013517924?w=1328&h=242" alt="img"></p>
+<p><strong>我的是5.7.15版本，默认使用的是Innodb版本！</strong></p>
+<p>常用的存储引擎有以下：</p>
+<ul>
+<li><strong>Innodb引擎</strong>，Innodb引擎提供了对数据库ACID事务的支持。并且还提供了行级锁和外键的约束。它的设计的目标就是处理大数据容量的数据库系统。</li>
+<li><strong>MyIASM引擎</strong>(原本Mysql的默认引擎),不提供事务的支持，也不支持行级锁和外键。</li>
+<li><strong>MEMORY引擎</strong>：所有的数据都在内存中，数据的处理速度快，但是安全性不高。</li>
+</ul>
+<p><img src="https://segmentfault.com/img/remote/1460000013517925?w=548&h=348" alt="img"></p>
+<p>同一个数据库也可以使用多种存储引擎的表。<strong>如果一个表修改要求比较高的事务处理，可以选择InnoDB。这个数据库中可以将查询要求比较高的表选择MyISAM存储。如果该数据库需要一个用于查询的临时表，可以选择MEMORY存储引擎</strong>。</p>
+<p>参考资料：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaohaillong/p/6079551.html">https://www.cnblogs.com/xiaohaillong/p/6079551.html</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/ls5718/article/details/52248040">http://blog.csdn.net/ls5718/article/details/52248040</a></li>
+<li><a target="_blank" rel="noopener" href="http://blog.csdn.net/t146lla128xx0x/article/details/78737290">http://blog.csdn.net/t146lla128xx0x/article/details/78737290</a></li>
+</ul>
+<h2 id="MyIASM和Innodb两种引擎所使用的索引的数据结构是什么？"><a href="#MyIASM和Innodb两种引擎所使用的索引的数据结构是什么？" class="headerlink" title="MyIASM和Innodb两种引擎所使用的索引的数据结构是什么？"></a>MyIASM和Innodb两种引擎所使用的索引的数据结构是什么？</h2><blockquote>
+<p>MyIASM和Innodb两种引擎所使用的索引的数据结构是什么？</p>
+</blockquote>
+<p>答案:都是B+树!</p>
+<p>MyIASM引擎，B+树的数据结构中存储的内容实际上是实际数据的地址值。也就是说它的索引和实际数据是分开的，<strong>只不过使用索引指向了实际数据。这种索引的模式被称为非聚集索引。</strong></p>
+<p>Innodb引擎的索引的数据结构也是B+树，<strong>只不过数据结构中存储的都是实际的数据，这种索引有被称为聚集索引</strong>。</p>
+<h2 id="varchar和char的区别"><a href="#varchar和char的区别" class="headerlink" title="varchar和char的区别"></a>varchar和char的区别</h2><blockquote>
+<p>varchar和char的区别</p>
+</blockquote>
+<p><strong>Char是一种固定长度的类型，varchar是一种可变长度的类型</strong></p>
+<h2 id="mysql有关权限的表都有哪几个"><a href="#mysql有关权限的表都有哪几个" class="headerlink" title="mysql有关权限的表都有哪几个"></a>mysql有关权限的表都有哪几个</h2><blockquote>
+<p>mysql有关权限的表都有哪几个</p>
+</blockquote>
+<p>MySQL服务器通过权限表来控制用户对数据库的访问，权限表存放在mysql数据库里，由mysql_install_db脚本初始化。这些权限表分别user，db，table_priv，columns_priv和host。下面分别介绍一下这些表的结构和内容：</p>
+<ul>
+<li>user权限表：记录允许连接到服务器的用户帐号信息，里面的权限是全局级的。</li>
+<li>db权限表：记录各个帐号在各个数据库上的操作权限。</li>
+<li>table_priv权限表：记录数据表级的操作权限。</li>
+<li>columns_priv权限表：记录数据列级的操作权限。</li>
+<li>host权限表：配合db权限表对给定主机上数据库级操作权限作更细致的控制。这个权限表不受GRANT和REVOKE语句的影响。</li>
+</ul>
+<h2 id="数据表损坏的修复方式有哪些？"><a href="#数据表损坏的修复方式有哪些？" class="headerlink" title="数据表损坏的修复方式有哪些？"></a>数据表损坏的修复方式有哪些？</h2><blockquote>
+<p>数据表损坏的修复方式有哪些？</p>
+</blockquote>
+<p>使用 myisamchk 来修复，具体步骤：</p>
+<ul>
+<li>1）修复前将mysql服务停止。</li>
+<li>2）打开命令行方式，然后进入到mysql的/bin目录。</li>
+<li>3）执行myisamchk –recover 数据库所在路径/*.MYI</li>
+</ul>
+<p>使用repair table 或者 OPTIMIZE table命令来修复，REPAIR TABLE table_name 修复表 OPTIMIZE TABLE table_name 优化表 REPAIR TABLE 用于修复被破坏的表。<br>OPTIMIZE TABLE 用于回收闲置的数据库空间，当表上的数据行被删除时，所占据的磁盘空间并没有立即被回收，使用了OPTIMIZE TABLE命令后这些空间将被回收，并且对磁盘上的数据行进行重排（注意：是磁盘上，而非数据库）</p>
+<h2 id="MySQL中InnoDB引擎的行锁是通过加在什么上完成"><a href="#MySQL中InnoDB引擎的行锁是通过加在什么上完成" class="headerlink" title="MySQL中InnoDB引擎的行锁是通过加在什么上完成"></a>MySQL中InnoDB引擎的行锁是通过加在什么上完成</h2><blockquote>
+<p>MySQL中InnoDB引擎的行锁是通过加在什么上完成</p>
+</blockquote>
+<p><strong>InnoDB是基于索引来完成行锁</strong></p>
+<p>例: <code>select * from tab_with_index where id = 1 for update</code>;</p>
+<p><code>for update</code> 可以根据条件来完成行锁锁定,<strong>并且 id 是有索引键的列,</strong></p>
+<p><strong>如果 id 不是索引键那么InnoDB将完成表锁,,并发将无从谈起</strong></p>
+<h2 id="数据库优化的思路"><a href="#数据库优化的思路" class="headerlink" title="数据库优化的思路"></a>数据库优化的思路</h2><h3 id="SQL优化"><a href="#SQL优化" class="headerlink" title="SQL优化"></a>SQL优化</h3><p><strong>在我们书写SQL语句的时候，其实书写的顺序、策略会影响到SQL的性能，虽然实现的功能是一样的，但是它们的性能会有些许差别。</strong></p>
+<p>因此，下面就讲解在书写SQL的时候，怎么写比较好。</p>
+<h4 id="①选择最有效率的表名顺序"><a href="#①选择最有效率的表名顺序" class="headerlink" title="①选择最有效率的表名顺序"></a>①选择最有效率的表名顺序</h4><p>数据库的解析器按照<strong>从右到左的顺序处理FROM子句中的表名，FROM子句中写在最后的表将被最先处理</strong></p>
+<p>在FROM子句中包含多个表的情况下：</p>
+<ul>
+<li><strong>如果三个表是完全无关系的话，将记录和列名最少的表，写在最后，然后依次类推</strong></li>
+<li><strong>也就是说：选择记录条数最少的表放在最后</strong></li>
+</ul>
+<p>如果有3个以上的表连接查询：</p>
+<ul>
+<li><strong>如果三个表是有关系的话，将引用最多的表，放在最后，然后依次类推</strong>。</li>
+<li><strong>也就是说：被其他表所引用的表放在最后</strong></li>
+</ul>
+<p>例如：查询员工的编号，姓名，工资，工资等级，部门名</p>
+<p><strong>emp表被引用得最多，记录数也是最多，因此放在form字句的最后面</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select emp.empno,emp.ename,emp.sal,salgrade.grade,dept.dname</span><br><span class="line">from salgrade,dept,emp</span><br><span class="line">where (emp.deptno &#x3D; dept.deptno) and (emp.sal between salgrade.losal and salgrade.hisal)          </span><br></pre></td></tr></table></figure>
+
+<h4 id="②WHERE子句中的连接顺序"><a href="#②WHERE子句中的连接顺序" class="headerlink" title="②WHERE子句中的连接顺序"></a>②WHERE子句中的连接顺序</h4><p>数据库采用自<strong>右而左的顺序解析WHERE子句</strong>,根据这个原理,<strong>表之间的连接必须写在其他WHERE条件之左</strong>,那些<strong>可以过滤掉最大数量记录的条件必须写在WHERE子句的之右</strong>。</p>
+<p><strong>emp.sal可以过滤多条记录，写在WHERE字句的最右边</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select emp.empno,emp.ename,emp.sal,dept.dname</span><br><span class="line">from dept,emp</span><br><span class="line">where (emp.deptno &#x3D; dept.deptno) and (emp.sal &gt; 1500) </span><br></pre></td></tr></table></figure>
+
+<h4 id="③SELECT子句中避免使用-号"><a href="#③SELECT子句中避免使用-号" class="headerlink" title="③SELECT子句中避免使用*号"></a>③SELECT子句中避免使用*号</h4><p>我们当时学习的时候，“*”号是可以获取表中全部的字段数据的。</p>
+<ul>
+<li><strong>但是它要通过查询数据字典完成的，这意味着将耗费更多的时间</strong></li>
+<li>使用*号写出来的SQL语句也不够直观。</li>
+</ul>
+<hr>
+<h4 id="④用TRUNCATE替代DELETE"><a href="#④用TRUNCATE替代DELETE" class="headerlink" title="④用TRUNCATE替代DELETE"></a>④用TRUNCATE替代DELETE</h4><p>这里仅仅是：<strong>删除表的全部记录，除了表结构才这样做</strong>。</p>
+<p><strong>DELETE是一条一条记录的删除，而Truncate是将整个表删除，保留表结构，这样比DELETE快</strong></p>
+<h4 id="⑤多使用内部函数提高SQL效率"><a href="#⑤多使用内部函数提高SQL效率" class="headerlink" title="⑤多使用内部函数提高SQL效率"></a>⑤多使用内部函数提高SQL效率</h4><p><strong>例如使用mysql的concat()函数会比使用||来进行拼接快，因为concat()函数已经被mysql优化过了。</strong></p>
+<h4 id="⑥使用表或列的别名"><a href="#⑥使用表或列的别名" class="headerlink" title="⑥使用表或列的别名"></a>⑥使用表或列的别名</h4><p><strong>如果表或列的名称太长了，使用一些简短的别名也能稍微提高一些SQL的性能。毕竟要扫描的字符长度就变少了。。。</strong></p>
+<h4 id="⑦多使用commit"><a href="#⑦多使用commit" class="headerlink" title="⑦多使用commit"></a>⑦多使用commit</h4><p>comiit会释放回滚点…</p>
+<h4 id="⑧善用索引"><a href="#⑧善用索引" class="headerlink" title="⑧善用索引"></a>⑧善用索引</h4><p>索引就是为了提高我们的查询数据的，当表的记录量非常大的时候，我们就可以使用索引了。</p>
+<h4 id="⑨SQL写大写"><a href="#⑨SQL写大写" class="headerlink" title="⑨SQL写大写"></a>⑨SQL写大写</h4><p>我们在编写SQL 的时候，官方推荐的是使用大写来写关键字，<strong>因为Oracle服务器总是先将小写字母转成大写后，才执行</strong></p>
+<h4 id="⑩避免在索引列上使用NOT"><a href="#⑩避免在索引列上使用NOT" class="headerlink" title="⑩避免在索引列上使用NOT"></a>⑩避免在索引列上使用NOT</h4><p>因为Oracle服务器遇到NOT后，他就会停止目前的工作，转而执行全表扫描</p>
+<h4 id="①①避免在索引列上使用计算"><a href="#①①避免在索引列上使用计算" class="headerlink" title="①①避免在索引列上使用计算"></a>①①避免在索引列上使用计算</h4><p>WHERE子句中，<strong>如果索引列是函数的一部分，优化器将不使用索引而使用全表扫描，这样会变得变慢</strong></p>
+<h4 id="①②用-gt-替代-gt"><a href="#①②用-gt-替代-gt" class="headerlink" title="①②用 &gt;= 替代 &gt;"></a>①②用 <code>&gt;=</code> 替代 <code>&gt;</code></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">低效：</span><br><span class="line">SELECT * FROM EMP WHERE DEPTNO &gt; 3   </span><br><span class="line">首先定位到DEPTNO&#x3D;3的记录并且扫描到第一个DEPT大于3的记录</span><br><span class="line">高效：</span><br><span class="line">SELECT * FROM EMP WHERE DEPTNO &gt;&#x3D; 4  </span><br><span class="line">直接跳到第一个DEPT等于4的记录</span><br></pre></td></tr></table></figure>
+
+<h4 id="①③用IN替代OR"><a href="#①③用IN替代OR" class="headerlink" title="①③用IN替代OR"></a>①③用IN替代OR</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from emp where sal &#x3D; 1500 or sal &#x3D; 3000 or sal &#x3D; 800;</span><br><span class="line">select * from emp where sal in (1500,3000,800);</span><br></pre></td></tr></table></figure>
+
+<h4 id="①④总是使用索引的第一个列"><a href="#①④总是使用索引的第一个列" class="headerlink" title="①④总是使用索引的第一个列"></a>①④总是使用索引的第一个列</h4><p>如果索引是建立在多个列上，只有在它的第一个列被WHERE子句引用时，优化器才会选择使用该索引。 当只引用索引的第二个列时，不引用索引的第一个列时，优化器使用了全表扫描而忽略了索引</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">create index emp_sal_job_idex</span><br><span class="line">on emp(sal,job);</span><br><span class="line">----------------------------------</span><br><span class="line">select *</span><br><span class="line">from emp  </span><br><span class="line">where job !&#x3D; &#39;SALES&#39;;    </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">上边就不使用索引了。</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据库结构优化"><a href="#数据库结构优化" class="headerlink" title="数据库结构优化"></a>数据库结构优化</h3><ul>
+<li>1）范式优化： 比如消除冗余（节省空间。。）</li>
+<li>2）反范式优化：比如适当加冗余等（减少join）</li>
+<li>3）拆分表： 垂直拆分和水平拆分</li>
+</ul>
+<h3 id="服务器硬件优化"><a href="#服务器硬件优化" class="headerlink" title="服务器硬件优化"></a>服务器硬件优化</h3><p>这个么多花钱咯！</p>
+<h2 id="SQL练习题"><a href="#SQL练习题" class="headerlink" title="SQL练习题"></a>SQL练习题</h2><p>下列练习题参考自公众号Java知音：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzI4Njc5NjM1NQ==&amp;mid=2247483693&amp;idx=1&amp;sn=9fa301b0076778cd854a924e96cc356e&amp;chksm=ebd63e01dca1b71745dca1f7e1c2aa2b7c80a393185db690b4fdfba22bb10ca87ea2cd6fa774&amp;scene=21#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MzI4Njc5NjM1NQ==&amp;mid=2247483693&amp;idx=1&amp;sn=9fa301b0076778cd854a924e96cc356e&amp;chksm=ebd63e01dca1b71745dca1f7e1c2aa2b7c80a393185db690b4fdfba22bb10ca87ea2cd6fa774&amp;scene=21#wechat_redirect</a></li>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=MzI4Njc5NjM1NQ==&amp;mid=2247483696&amp;idx=1&amp;sn=5f472ce7720aede89e2e15ea64bed1bc&amp;chksm=ebd63e1cdca1b70ad18dec268c9903b2cbe11f9ce7b0633980c78a28bd5b1b57c4efbe7a3411&amp;scene=21#wechat_redirect">https://mp.weixin.qq.com/s?__biz=MzI4Njc5NjM1NQ==&amp;mid=2247483696&amp;idx=1&amp;sn=5f472ce7720aede89e2e15ea64bed1bc&amp;chksm=ebd63e1cdca1b70ad18dec268c9903b2cbe11f9ce7b0633980c78a28bd5b1b57c4efbe7a3411&amp;scene=21#wechat_redirect</a></li>
+</ul>
+<p>基本表结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">student(sno,sname,sage,ssex)学生表</span><br><span class="line">course(cno,cname,tno) 课程表</span><br><span class="line">sc(sno,cno,score) 成绩表</span><br><span class="line"></span><br><span class="line">teacher(tno,tname) 教师表</span><br></pre></td></tr></table></figure>
+
+<p>题目：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br></pre></td><td class="code"><pre><span class="line">101，查询课程1的成绩比课程2的成绩高的所有学生的学号</span><br><span class="line">select a.sno from</span><br><span class="line">(select sno,score from sc where cno&#x3D;1) a,</span><br><span class="line">(select sno,score from sc where cno&#x3D;2) b</span><br><span class="line">where a.score&gt;b.score and a.sno&#x3D;b.sno</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">102，查询平均成绩大于60分的同学的学号和平均成绩</span><br><span class="line">select a.sno as &quot;学号&quot;, avg(a.score) as &quot;平均成绩&quot; </span><br><span class="line">from</span><br><span class="line">(select sno,score from sc) a </span><br><span class="line">group by sno having avg(a.score)&gt;60</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">103，查询所有同学的学号、姓名、选课数、总成绩</span><br><span class="line">select a.sno as 学号, b.sname as 姓名,</span><br><span class="line">count(a.cno) as 选课数, sum(a.score) as 总成绩</span><br><span class="line">from sc a, student b</span><br><span class="line">where a.sno &#x3D; b.sno</span><br><span class="line">group by a.sno, b.sname</span><br><span class="line"></span><br><span class="line">或者：</span><br><span class="line"></span><br><span class="line">selectstudent.sno as 学号, student.sname as 姓名,</span><br><span class="line"> count(sc.cno) as 选课数, sum(score) as 总成绩</span><br><span class="line">from student left Outer join sc on student.sno &#x3D; sc.sno</span><br><span class="line">group by student.sno, sname</span><br><span class="line"></span><br><span class="line">104，查询姓“张”的老师的个数</span><br><span class="line"></span><br><span class="line">selectcount(distinct(tname)) from teacher where tname like &#39;张%‘</span><br><span class="line">或者：</span><br><span class="line">select tname as &quot;姓名&quot;, count(distinct(tname)) as &quot;人数&quot; </span><br><span class="line">from teacher </span><br><span class="line">where tname like&#39;张%&#39;</span><br><span class="line">group by tname</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">105，查询没学过“张三”老师课的同学的学号、姓名</span><br><span class="line">select student.sno,student.sname from student</span><br><span class="line">where sno not in (select distinct(sc.sno) from sc,course,teacher</span><br><span class="line">where sc.cno&#x3D;course.cno and teacher.tno&#x3D;course.tno and teacher.tname&#x3D;&#39;张三&#39;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">106，查询同时学过课程1和课程2的同学的学号、姓名</span><br><span class="line">select sno, sname from student</span><br><span class="line">where sno in (select sno from sc where sc.cno &#x3D; 1)</span><br><span class="line">and sno in (select sno from sc where sc.cno &#x3D; 2)</span><br><span class="line">或者：</span><br><span class="line"></span><br><span class="line">selectc.sno, c.sname from</span><br><span class="line">(select sno from sc where sc.cno &#x3D; 1) a,</span><br><span class="line">(select sno from sc where sc.cno &#x3D; 2) b,</span><br><span class="line">student c</span><br><span class="line">where a.sno &#x3D; b.sno and a.sno &#x3D; c.sno</span><br><span class="line">或者：</span><br><span class="line"></span><br><span class="line">select student.sno,student.sname from student,sc where student.sno&#x3D;sc.sno and sc.cno&#x3D;1</span><br><span class="line">and exists( select * from sc as sc_2 where sc_2.sno&#x3D;sc.sno and sc_2.cno&#x3D;2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">107，查询学过“李四”老师所教所有课程的所有同学的学号、姓名</span><br><span class="line">select a.sno, a.sname from student a, sc b</span><br><span class="line">where a.sno &#x3D; b.sno and b.cno in</span><br><span class="line">(select c.cno from course c, teacher d where c.tno &#x3D; d.tno and d.tname &#x3D; &#39;李四&#39;)</span><br><span class="line"></span><br><span class="line">或者：</span><br><span class="line"></span><br><span class="line">select a.sno, a.sname from student a, sc b,</span><br><span class="line">(select c.cno from course c, teacher d where c.tno &#x3D; d.tno and d.tname &#x3D; &#39;李四&#39;) e</span><br><span class="line">where a.sno &#x3D; b.sno and b.cno &#x3D; e.cno</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">108，查询课程编号1的成绩比课程编号2的成绩高的所有同学的学号、姓名</span><br><span class="line">select a.sno, a.sname from student a,</span><br><span class="line">(select sno, score from sc where cno &#x3D; 1) b,</span><br><span class="line">(select sno, score from sc where cno &#x3D; 2) c</span><br><span class="line">where b.score &gt; c.score and b.sno &#x3D; c.sno and a.sno &#x3D; b.sno</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">109，查询所有课程成绩小于60分的同学的学号、姓名</span><br><span class="line">select sno,sname from student</span><br><span class="line">where sno not in (select distinct sno from sc where score &gt; 60)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">110，查询至少有一门课程与学号为1的同学所学课程相同的同学的学号和姓名</span><br><span class="line">select distinct a.sno, a.sname</span><br><span class="line">from student a, sc b</span><br><span class="line">where a.sno &lt;&gt; 1 and a.sno&#x3D;b.sno and</span><br><span class="line">b.cno in (select cno from sc where sno &#x3D; 1)</span><br><span class="line"></span><br><span class="line">或者：</span><br><span class="line"></span><br><span class="line">select s.sno,s.sname </span><br><span class="line">from student s,</span><br><span class="line">(select sc.sno </span><br><span class="line">from sc</span><br><span class="line">where sc.cno in (select sc1.cno from sc sc1 where sc1.sno&#x3D;1)and sc.sno&lt;&gt;1</span><br><span class="line">group by sc.sno)r1</span><br><span class="line">where r1.sno&#x3D;s.sno</span><br><span class="line"></span><br><span class="line">111、把“sc”表中“王五”所教课的成绩都更改为此课程的平均成绩</span><br><span class="line">update sc set score &#x3D; (select avg(sc_2.score) from sc sc_2 wheresc_2.cno&#x3D;sc.cno)</span><br><span class="line">from course,teacher where course.cno&#x3D;sc.cno and course.tno&#x3D;teacher.tno andteacher.tname&#x3D;&#39;王五&#39;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">112、查询和编号为2的同学学习的课程完全相同的其他同学学号和姓名</span><br><span class="line">这一题分两步查：</span><br><span class="line"></span><br><span class="line">1，</span><br><span class="line"></span><br><span class="line">select sno</span><br><span class="line">from sc</span><br><span class="line">where sno &lt;&gt; 2</span><br><span class="line">group by sno</span><br><span class="line">having sum(cno) &#x3D; (select sum(cno) from sc where sno &#x3D; 2)</span><br><span class="line"></span><br><span class="line">2，</span><br><span class="line">select b.sno, b.sname</span><br><span class="line">from sc a, student b</span><br><span class="line">where b.sno &lt;&gt; 2 and a.sno &#x3D; b.sno</span><br><span class="line">group by b.sno, b.sname</span><br><span class="line">having sum(cno) &#x3D; (select sum(cno) from sc where sno &#x3D; 2)</span><br><span class="line"></span><br><span class="line">113、删除学习“王五”老师课的sc表记录</span><br><span class="line">delete sc from course, teacher</span><br><span class="line">where course.cno &#x3D; sc.cno and course.tno &#x3D; teacher.tno and tname &#x3D; &#39;王五&#39;</span><br><span class="line"></span><br><span class="line">114、向sc表中插入一些记录，这些记录要求符合以下条件：</span><br><span class="line">将没有课程3成绩同学的该成绩补齐, 其成绩取所有学生的课程2的平均成绩</span><br><span class="line">insert sc select sno, 3, (select avg(score) from sc where cno &#x3D; 2)</span><br><span class="line">from student</span><br><span class="line">where sno not in (select sno from sc where cno &#x3D; 3)</span><br><span class="line"></span><br><span class="line">115、按平平均分从高到低显示所有学生的如下统计报表：</span><br><span class="line">-- 学号,企业管理,马克思,UML,数据库,物理,课程数,平均分</span><br><span class="line">select sno as 学号</span><br><span class="line">,max(case when cno &#x3D; 1 then score end) AS 企业管理</span><br><span class="line">,max(case when cno &#x3D; 2 then score end) AS 马克思</span><br><span class="line">,max(case when cno &#x3D; 3 then score end) AS UML</span><br><span class="line">,max(case when cno &#x3D; 4 then score end) AS 数据库</span><br><span class="line">,max(case when cno &#x3D; 5 then score end) AS 物理</span><br><span class="line">,count(cno) AS 课程数</span><br><span class="line">,avg(score) AS 平均分</span><br><span class="line">FROM sc</span><br><span class="line">GROUP by sno</span><br><span class="line">ORDER by avg(score) DESC</span><br><span class="line"></span><br><span class="line">116、查询各科成绩最高分和最低分：</span><br><span class="line"></span><br><span class="line">以如下形式显示：课程号，最高分，最低分</span><br><span class="line">select cno as 课程号, max(score) as 最高分, min(score) 最低分</span><br><span class="line">from sc group by cno</span><br><span class="line"></span><br><span class="line">select  course.cno as &#39;课程号&#39;</span><br><span class="line">,MAX(score) as &#39;最高分&#39;</span><br><span class="line">,MIN(score) as &#39;最低分&#39;</span><br><span class="line">from sc,course</span><br><span class="line">where sc.cno&#x3D;course.cno</span><br><span class="line">group by course.cno</span><br><span class="line"></span><br><span class="line">117、按各科平均成绩从低到高和及格率的百分数从高到低顺序</span><br><span class="line">SELECT t.cno AS 课程号,</span><br><span class="line">max(course.cname)AS 课程名,</span><br><span class="line">isnull(AVG(score),0) AS 平均成绩,</span><br><span class="line">100 * SUM(CASE WHEN isnull(score,0)&gt;&#x3D;60 THEN 1 ELSE 0 END)&#x2F;count(1) AS 及格率</span><br><span class="line">FROM sc t, course</span><br><span class="line">where t.cno &#x3D; course.cno</span><br><span class="line">GROUP BY t.cno</span><br><span class="line">ORDER BY 及格率 desc</span><br><span class="line"></span><br><span class="line">118、查询如下课程平均成绩和及格率的百分数(用&quot;1行&quot;显示): </span><br><span class="line"></span><br><span class="line">企业管理（001），马克思（002），UML （003），数据库（004） </span><br><span class="line">select </span><br><span class="line">avg(case when cno &#x3D; 1 then score end) as 平均分1,</span><br><span class="line">avg(case when cno &#x3D; 2 then score end) as 平均分2,</span><br><span class="line">avg(case when cno &#x3D; 3 then score end) as 平均分3,</span><br><span class="line">avg(case when cno &#x3D; 4 then score end) as 平均分4,</span><br><span class="line">100 * sum(case when cno &#x3D; 1 and score &gt; 60 then 1 else 0 end) &#x2F; sum(casewhen cno &#x3D; 1 then 1 else 0 end) as 及格率1,</span><br><span class="line">100 * sum(case when cno &#x3D; 2 and score &gt; 60 then 1 else 0 end) &#x2F; sum(casewhen cno &#x3D; 2 then 1 else 0 end) as 及格率2,</span><br><span class="line">100 * sum(case when cno &#x3D; 3 and score &gt; 60 then 1 else 0 end) &#x2F; sum(casewhen cno &#x3D; 3 then 1 else 0 end) as 及格率3,</span><br><span class="line">100 * sum(case when cno &#x3D; 4 and score &gt; 60 then 1 else 0 end) &#x2F; sum(casewhen cno &#x3D; 4 then 1 else 0 end) as 及格率4</span><br><span class="line">from sc</span><br><span class="line"></span><br><span class="line">119、查询不同老师所教不同课程平均分, 从高到低显示</span><br><span class="line">select max(c.tname) as 教师, max(b.cname) 课程, avg(a.score) 平均分</span><br><span class="line">from sc a, course b, teacher c</span><br><span class="line">where a.cno &#x3D; b.cno and b.tno &#x3D; c.tno</span><br><span class="line">group by a.cno</span><br><span class="line">order by 平均分 desc</span><br><span class="line">或者：</span><br><span class="line">select r.tname as &#39;教师&#39;,r.rname as &#39;课程&#39; , AVG(score) as &#39;平均分&#39;</span><br><span class="line">from sc,</span><br><span class="line">(select  t.tname,c.cno as rcso,c.cname as rname</span><br><span class="line">from teacher t ,course c</span><br><span class="line">where t.tno&#x3D;c.tno)r</span><br><span class="line">where sc.cno&#x3D;r.rcso</span><br><span class="line">group by sc.cno,r.tname,r.rname </span><br><span class="line">order by AVG(score) desc</span><br><span class="line"></span><br><span class="line">120、查询如下课程成绩均在第3名到第6名之间的学生的成绩：</span><br><span class="line">-- [学生ID],[学生姓名],企业管理,马克思,UML,数据库,平均成绩</span><br><span class="line">select top 6 max(a.sno) 学号, max(b.sname) 姓名,</span><br><span class="line">max(case when cno &#x3D; 1 then score end) as 企业管理,</span><br><span class="line">max(case when cno &#x3D; 2 then score end) as 马克思,</span><br><span class="line">max(case when cno &#x3D; 3 then score end) as UML,</span><br><span class="line">max(case when cno &#x3D; 4 then score end) as 数据库,</span><br><span class="line">avg(score) as 平均分</span><br><span class="line">from sc a, student b</span><br><span class="line">where a.sno not in </span><br><span class="line"></span><br><span class="line">(select top 2 sno from sc where cno &#x3D; 1 order by score desc)</span><br><span class="line">  and a.sno not in (select top 2 sno from sc where cno &#x3D; 2 order by scoredesc)</span><br><span class="line">  and a.sno not in (select top 2 sno from sc where cno &#x3D; 3 order by scoredesc)</span><br><span class="line">  and a.sno not in (select top 2 sno from sc where cno &#x3D; 4 order by scoredesc)</span><br><span class="line">  and a.sno &#x3D; b.sno</span><br><span class="line">group by a.sno</span><br></pre></td></tr></table></figure>
+
+<h2 id="Oracle和Mysql的区别"><a href="#Oracle和Mysql的区别" class="headerlink" title="Oracle和Mysql的区别"></a>Oracle和Mysql的区别</h2><p>在Mysql中，<strong>一个用户下可以创建多个库</strong>：</p>
+<p><img src="https://segmentfault.com/img/remote/1460000013517926?w=710&h=386" alt="这里写图片描述"></p>
+<p>而在Oracle中，Oracle服务器是由两部分组成</p>
+<ul>
+<li>数据库实例【理解为对象，看不见的】</li>
+<li>数据库【理解为类，看得见的】</li>
+</ul>
+<p><strong>一个数据库实例可拥有多个用户，一个用户默认拥有一个表空间。</strong></p>
+<p><strong>表空间是存储我们数据库表的地方，表空间内可以有多个文件。</strong></p>
+<p><img src="https://segmentfault.com/img/remote/1460000013517927?w=1119&h=750" alt="这里写图片描述"></p>
+<p>当我们使用Oracle作为我们数据库时，<strong>我们需要指定用户、表空间来存储我们所需要的数据</strong>！</p>
 
       
     </div>
@@ -434,7 +826,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eclipse/" rel="tag">Eclipse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HATEOAS/" rel="tag">HATEOAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">MySQL基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PBOOTCMS/" rel="tag">PBOOTCMS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Portainer-io/" rel="tag">Portainer.io</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RESTful/" rel="tag">RESTful</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/" rel="tag">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/" rel="tag">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%A6%82%E8%BF%B0/" rel="tag">java概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springfox/" rel="tag">springfox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swagger/" rel="tag">swagger</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6/" rel="tag">书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/" rel="tag">历史版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E8%97%8F/" rel="tag">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" rel="tag">编程规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" rel="tag">设计规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" rel="tag">软件说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag">面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eclipse/" rel="tag">Eclipse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HATEOAS/" rel="tag">HATEOAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">MySQL基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PBOOTCMS/" rel="tag">PBOOTCMS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Portainer-io/" rel="tag">Portainer.io</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RESTful/" rel="tag">RESTful</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/" rel="tag">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebRTC/" rel="tag">WebRTC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/" rel="tag">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%A6%82%E8%BF%B0/" rel="tag">java概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springfox/" rel="tag">springfox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swagger/" rel="tag">swagger</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6/" rel="tag">书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/" rel="tag">历史版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E8%97%8F/" rel="tag">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" rel="tag">编程规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" rel="tag">设计规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" rel="tag">软件说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag">面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
     </div>
   </div>
 
@@ -444,7 +836,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HATEOAS/" style="font-size: 10px;">HATEOAS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">MySQL基础概念</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PBOOTCMS/" style="font-size: 10px;">PBOOTCMS</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Portainer-io/" style="font-size: 10px;">Portainer.io</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/WEB/" style="font-size: 10px;">WEB</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">java概述</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springfox/" style="font-size: 10px;">springfox</a> <a href="/tags/swagger/" style="font-size: 10px;">swagger</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%B9%A6/" style="font-size: 10px;">书</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/" style="font-size: 10px;">历史版本</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%94%B6%E8%97%8F/" style="font-size: 10px;">收藏</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" style="font-size: 10px;">设计规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">软件说明</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">面向对象</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HATEOAS/" style="font-size: 10px;">HATEOAS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">MySQL基础概念</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PBOOTCMS/" style="font-size: 10px;">PBOOTCMS</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Portainer-io/" style="font-size: 10px;">Portainer.io</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/WEB/" style="font-size: 10px;">WEB</a> <a href="/tags/WebRTC/" style="font-size: 10px;">WebRTC</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">java概述</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springfox/" style="font-size: 10px;">springfox</a> <a href="/tags/swagger/" style="font-size: 10px;">swagger</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%B9%A6/" style="font-size: 10px;">书</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/" style="font-size: 10px;">历史版本</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%94%B6%E8%97%8F/" style="font-size: 10px;">收藏</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" style="font-size: 10px;">设计规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">软件说明</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">面向对象</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
     </div>
   </div>
 
@@ -466,23 +858,23 @@
       <ul>
         
           <li>
-            <a href="/2021/06/18/WebRTC%E7%9A%84%E5%AD%A6%E4%B9%A0/">WebRTC的学习</a>
+            <a href="/2021/06/30/4.27.%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">序列化与反序列化</a>
           </li>
         
           <li>
-            <a href="/2021/06/18/%E6%B5%81%E5%AA%92%E4%BD%93%E5%8D%8F%E8%AE%AE/">流媒体协议</a>
+            <a href="/2021/06/28/%E7%94%B5%E5%95%86%E9%A1%B9%E7%9B%AE/">电商项目</a>
           </li>
         
           <li>
-            <a href="/2021/06/17/1.7.%E7%AE%80%E5%8E%86%E5%AE%8C%E5%96%84/">简历完善</a>
+            <a href="/2021/06/24/4.26.JSR/">JSR</a>
           </li>
         
           <li>
-            <a href="/2021/06/08/%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/">搭建网站</a>
+            <a href="/2021/06/24/31.3.%E8%85%BE%E8%AE%AF%E4%BA%91%E9%9F%B3%E8%A7%86%E9%A2%91%E7%9A%84%E5%BC%80%E5%8F%91/">腾讯云音视频的开发</a>
           </li>
         
           <li>
-            <a href="/2021/06/03/%E6%94%BB%E7%A0%B4%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99/">攻破一个网站</a>
+            <a href="/2021/06/23/%E7%94%B3%E8%AF%B7%E8%BD%AF%E8%91%97/">申请软著</a>
           </li>
         
       </ul>

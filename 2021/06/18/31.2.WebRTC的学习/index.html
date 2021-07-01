@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>WebRTC的学习 | swx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="一、简介 webrtc 是为浏览器之间提供实时数据传输(Web Real-Time Communication)的javascript API 支持 peer-to-peer 音频、视频、数据流传输能力  兼容性  主要的API getUserMedia : 获取音视频MediaRecorder: 录制音视频RTCPeerConnection: 浏览器之间音视频流连接对象RTCDataChanne">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WebRTC的学习">
+<meta property="og:url" content="https://s-qwer.github.io/2021/06/18/31.2.WebRTC%E7%9A%84%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="swx">
+<meta property="og:description" content="一、简介 webrtc 是为浏览器之间提供实时数据传输(Web Real-Time Communication)的javascript API 支持 peer-to-peer 音频、视频、数据流传输能力  兼容性  主要的API getUserMedia : 获取音视频MediaRecorder: 录制音视频RTCPeerConnection: 浏览器之间音视频流连接对象RTCDataChanne">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://imweb-io-1251594266.file.myqcloud.com/FvWmSBshB-Yiqz49exbNpINLjlyU">
+<meta property="og:image" content="http://imweb-io-1251594266.file.myqcloud.com/Fvwp7xl6295rN50EpdPyhVcyiF_4">
+<meta property="og:image" content="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9mbHllci1ibG9nLm9zcy1jbi1zaGVuemhlbi5hbGl5dW5jcy5jb20vd2VicnRjLnBuZw?x-oss-process=image/format,png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200513095504706.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NoaWNoYW9n,size_16,color_FFFFFF,t_70">
+<meta property="article:published_time" content="2021-06-18T06:00:15.000Z">
+<meta property="article:modified_time" content="2021-06-18T08:23:41.892Z">
+<meta property="article:author" content="swx">
+<meta property="article:tag" content="WebRTC">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://imweb-io-1251594266.file.myqcloud.com/FvWmSBshB-Yiqz49exbNpINLjlyU">
+  
+    <link rel="alternate" href="/atom.xml" title="swx" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swx</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://s-qwer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-31.2.WebRTC的学习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/06/18/31.2.WebRTC%E7%9A%84%E5%AD%A6%E4%B9%A0/" class="article-date">
+  <time class="dt-published" datetime="2021-06-18T06:00:15.000Z" itemprop="datePublished">2021-06-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      WebRTC的学习
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h2><ul>
+<li>webrtc 是为浏览器之间提供实时数据传输(Web Real-Time Communication)的javascript API</li>
+<li>支持 peer-to-peer 音频、视频、数据流传输能力</li>
+</ul>
+<p>兼容性</p>
+<p><img src="http://imweb-io-1251594266.file.myqcloud.com/FvWmSBshB-Yiqz49exbNpINLjlyU" alt="img"></p>
+<p>主要的API</p>
+<p>getUserMedia : 获取音视频<br>MediaRecorder: 录制音视频<br>RTCPeerConnection: 浏览器之间音视频流连接对象<br>RTCDataChannel: 浏览器数据流连接对象</p>
+<h2 id="二、优点"><a href="#二、优点" class="headerlink" title="二、优点"></a>二、优点</h2><p>是基于 UDP 的方式，</p>
+<p><strong>传输方式</strong>：RTC 是半可靠传输，特定情境下可对音视频有损传输，可有效降低延迟</p>
+<p><strong>复杂度</strong>：RTC方案的复杂很高，涉及一整套的协议设计和QOS保障机制</p>
+<p><strong>音视频友好性</strong>：RTC 对音视频更友好，可针对音视频做定制化优化</p>
+<p><strong>方案完备性</strong>：WebRTC 可提供端对端优化方案</p>
+<p><strong>理论延迟</strong>：WebRTC 方案的延迟可以达到 1 秒以内</p>
+<p>支持的编解码有H264、VP8，VP9，AV1、H265</p>
+<h2 id="三、应用"><a href="#三、应用" class="headerlink" title="三、应用"></a>三、应用</h2><p>淘宝直播就是基于 WebRTC 实现的一秒内的低延迟直播</p>
+<h2 id="四、架构图"><a href="#四、架构图" class="headerlink" title="四、架构图"></a>四、架构图</h2><p><img src="http://imweb-io-1251594266.file.myqcloud.com/Fvwp7xl6295rN50EpdPyhVcyiF_4" alt="img"></p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9mbHllci1ibG9nLm9zcy1jbi1zaGVuemhlbi5hbGl5dW5jcy5jb20vd2VicnRjLnBuZw?x-oss-process=image/format,png" alt="WebRTC架构图"></p>
+<p>总体上分为了三层：</p>
+<h3 id="一。Your-web-app层"><a href="#一。Your-web-app层" class="headerlink" title="一。Your web app层"></a>一。Your web app层</h3><p>最上层的带箭头的浅紫色部分是指开发者的应用层，就是指开发者基于webRTC技术规范所开发的应用程序。严格来说这并不属于WebRTC的架构内容。</p>
+<h3 id="二。Web-API层"><a href="#二。Web-API层" class="headerlink" title="二。Web API层"></a>二。Web API层</h3><p>深紫色的中间层Web API (Edited by W3C WG)部分表示的是WebRTC开放给应用层开发人员调用的API(主要是JavaScript API 供web端使用),<br>在这层中开发者无需关心复杂的底层技术，只需了解webRTC的大致流程原理，调其API即可利用WebRTC实现点对点的通讯功能。</p>
+<h3 id="三。WebRTC的核心功能层"><a href="#三。WebRTC的核心功能层" class="headerlink" title="三。WebRTC的核心功能层"></a>三。WebRTC的核心功能层</h3><h4 id="1-C-API层"><a href="#1-C-API层" class="headerlink" title="1.C++API层"></a>1.C++API层</h4><p>绿色部分包裹的浅紫色WebRTC C++ API (PeerConnection)部分，这部分主要是一些C++的接口层，这一层提供了一些 C++ API，主要是供浏览器支持WebRTC规范而调用的API，又比如需要Android上实现webRTC功能就需要编写JNI函数调用这一层API。<br>这一层的主要作用就是把WebRTC的核心功能暴露出来，如设备管理，音视频流数据采集等，方便各个软件厂商集成到自家应用中，比如浏览器厂商等。</p>
+<p>其中 PeerConnection是该层最核心的一个模块，即对等连接模块；该模块中实现了很多功能，如P2P穿墙打洞、通信链路的建立和优选、流数据传输、非音视频数据传输、传输质量报告和统计等等。</p>
+<h4 id="2-会话管理层（Session-management层）"><a href="#2-会话管理层（Session-management层）" class="headerlink" title="2.会话管理层（Session management层）"></a>2.会话管理层（Session management层）</h4><p>绿色部分被Session management / Abstract signaling (Session)标注的一层就是会话管理层。<br>这一层提供了会话功能管理功能，可进行创建会话、管理会话、管理上下文环境等。而这一层又会涉及到各种协议，比如说信令服务器的SDP协议等，主要用于进行信令交互和管理 RTCPeerConnection的连接状态。</p>
+<h4 id="3-引擎层"><a href="#3-引擎层" class="headerlink" title="3.引擎层"></a>3.引擎层</h4><p>这一层为WebRTC核心层中最重、最复杂的一层。而这一层又分为三个小模块，分别是：Voice Engine（音频引擎）、Video Engine（视频引擎）以及Transport（传输模块）。</p>
+<p>第一个模块 Voice Engine(音频引擎)， Voice Engine是一个包含了系列音频处理功能的框架，如音频采集、音频编解码、音频优化（包括降噪、回声消除等）等一系列的音频功能。</p>
+<ul>
+<li><p>iSAC / iLBC Codec</p>
+<p>iSAC和iLBC是WebRTC内置的音频编码器。</p>
+<p>其中iSAC是针对VoIP（Voice over Internet Protocol，即基于IP的语音传输）和音频流在宽带和超宽带环境中进行音频传输的编解码器，是WebRTC音频引擎的默认的编解码器，技术成熟，且被广泛应用在各种实时通信软件中；</p>
+<p>而iLBC则是VoIP在窄带环境中的语音编解码器，在网络丢包较为严重的情况下仍能保持较好通话质量。</p>
+</li>
+<li><p>NetEQ for voice</p>
+<p>NetEQ是网络语音信号处理的组件，这个算法能自适应网络环境的变化，有效的处理因网络抖动而导致数据丢包所造成的音频质量问题，这一技术可谓是当年WebRTC的前身GIPS的看家本领。</p>
+</li>
+<li><p>Echo Canceler/Noise Reduction</p>
+<p>Echo Canceler是处理回声消除模块，能有效的消除采集音频带来的回声影响，比如说在实时音视频通话的过程中，打开手机扬声器的话，<br>本来的需求是录制本人的声音实时发送给对方的，但是由于存在回声，也会把对方说话的声音也录制进去。目前笔者测试发现市场上的一些手机录音的时候<br>本身是自带了回音消除功能，而且Android也提供有相关的API，但是好像大多数情况下，这个API都没起作用，可能是由于厂商兼容性问题，甚至有可能是直接阉割掉这个功能了。<br>因此想要做到录音是全平台适配回声消除功能的话就可以使用WebRTC的这个功能。而iOS平台上的录音是带有回声消除功能的。</p>
+<p>而Noise Reduction则是抑制噪音模块（也就是降噪），如有效的抑制多种噪音（如嘶嘶声，风扇噪音等）。</p>
+</li>
+</ul>
+<p>第二个模块Video Engine(视频引擎），Video Engine是一个包含了系列视频处理功能的框架，如视频采集、视频编解码、根据网络抖动动态修改视频传输质量、图像处理等。</p>
+<ul>
+<li><p>VP8 Codec</p>
+<p>VP8是第八代的On2视频，能以更少的数据提供更高质量的视频，而且只需较小的处理能力即可播放视频，为致力于实现产品及服务差异化的网络电视、IPTV和视频会议公司提供理想的解决方案。其数据压缩率和性能方面比市场上其他编解码器高，其功能特点非常适合实时通信，是WebRTC中默认的视频编解码器。</p>
+<p>VP9是Google提供的开源的免费视频codec，是VP8的后续版本，初始开发时命名为下一代开源视频或者VP-NEXT。</p>
+<p>VP9的开发始于2011年Q3，试图降低VP8的50%的码率而保持相同的质量，另外希望VP9比H.265（ High Efficiency Video Coding）有更好的编码效率。</p>
+</li>
+<li><p>Video Jitter Buffer</p>
+<p>Video Jitter Buffer——视频抖动缓冲器，实时视频通信难免会因为网络的原因导致视频的抖动或者视频数据的丢失，<br>视频抖动缓冲器依靠独特的算法，有效的解决这类情况对直播会议质量造成较大的影响。</p>
+</li>
+<li><p>Image enhancements</p>
+<p>Image enhancements——图像质量增强模块，这个模块是用来做图像处理以提升视频画面质量的，如图像明暗度检测、颜色增强、降噪处理等</p>
+</li>
+</ul>
+<p>第三个模块Transport(传输模块)，在WebRTC中，数据传输除了音视频等流媒体数据之外，还可以传输文件、文本、图片等其他二进制数据，这些功能就是这个模块所提供的。</p>
+<ul>
+<li><p>SRTP</p>
+<p>SRTP属于传输模块中的内容，在了解SRTP之前我们先来了解一下RTP。</p>
+<p>RTP 是(Real Time Protocol)提供了具有实时特征的、端到端的数据传送服务协议。而我们通常所说的RTCP等则是对RTP的控制协议。</p>
+<p>RTP不像http和ftp等可完整的下载整个影视文件，它是以固定的数据格式在网络上发送数据，如果RTP的头部几个字节表示什么，音频数据或者视频数据包含在RTP中那几个字节中等等。</p>
+<p>在RTP中，并未考虑到数据传输的安全性，比如没有加密功能，所以不符合安全性要求较高的应用需求，因此为了解决此问题，SRTP应运而生。<br>SRTP(SecureReal-time Transport Protocol)是在RTP的基础上加入了安全机制的传输协议，SRTP为数据提供了加密、消息认证、完整性保证和重放保护等功能，最大程度保障了数据传输的安全性。<br>所以RTP与SRTP的关系大概就是http与https的关系。</p>
+</li>
+<li><p>Multiplexing</p>
+<p>Multiple exing，通道复用，即多个流数据传输共用一个通道， 以此提高传输效率。</p>
+</li>
+<li><p>P2P STUN+TURN+ICE</p>
+<p>前面已经说过WebRTC是一种基于P2P的通信技术。而STUN、TURN、ICE这些则是实现P2P的一些关键技术。</p>
+<p>STUN、TURN、ICE又成为NAT穿透，在现实生活中不同局域网中的内外ip是无法直接通信的，比如说局域网A中192.168.2.1与局域网B中192.168.2.2是无法互相直接发送消息的，<br>那么如果要在两个不同的局域网中建立起可以直接通信的通道就得依靠STUN+TURN+ICE这些技术。而STUN、TURN和ICE又是使用不同方案进行穿透的</p>
+<p>WebRTC的信令传输可以慢些但需要可靠，而流媒体则实时性优，可以存在丢包、错包；这就意味着需要两套网络传输协议，一套是基于TCP的可靠传输协议用于信令等传输，一套是基于UDP的TRP协议用于实时多媒体数据的传输。其协议栈如下图所示：</p>
+<p><img src="https://img-blog.csdnimg.cn/20200513095504706.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NoaWNoYW9n,size_16,color_FFFFFF,t_70" alt="img"></p>
+<p>ICE（Interactive Connectivity Establishment）协议(RFC 5245)</p>
+<p>STUN（Session Traversal Utilities for NAT）(RFC5389)</p>
+<p>TURN（Traversal Using Relays around NAT）(RFC 5766)</p>
+<p>这三个协议是基于UDP协议建立和维持P2P连接的必要网络组件；</p>
+<p>DTLS（Datagram Transport Protocol）用于P2P双方数据安全传输。</p>
+</li>
+</ul>
+<h4 id="4-驱动层"><a href="#4-驱动层" class="headerlink" title="4.驱动层"></a>4.驱动层</h4><p>浅蓝色虚线部分，这部分有Audio Capture/Render（音频的采集和渲染模块）、Video Capture（视频采集模块）和Network I/O（网络IO模块）组成。</p>
+<p>而这些音视频的采集和渲染，网络IO的传输功能，我们都是直接调用各平台提供的相关API即可实现</p>
+<h2 id="五、运行流程"><a href="#五、运行流程" class="headerlink" title="五、运行流程"></a>五、运行流程</h2><p>标准WebRTC接入的流程：</p>
+<p>1.播放端端发送接入请求：通过 HTTP 发送 AccessRequest ，携带播放 URL 和 offer SDP；</p>
+<p>2.RTS 收到播放的接入请求后，记录 offerSDP 和 URL ，然后创建 answerSDP，生成一次会话 token 并设置到 SDP 的 ufrag 字段，通过 http 响应发送给客户端。</p>
+<p>3.客户端设置 answerSDP，发送 Binding Request 请求，请求中 USERNAME 字段携带 answerSDP 中的 ufrag（即 RTS 下发的 token ）。</p>
+<p>4.RTS 收到 Binding Request，根据 USERNAME 中的 token，找到之前 HTTP 请求相关信息，记录用户 IP 和端口。 （借助 Binding Request 的 USERNAME 传递 token 是由于 RTS 是单端口方案，需要根据 UDP 请求中的 token 信息确定是哪个用户的请求。传统的 WebRTC 是根据端口区分用户，RTS 为每个用户设置端口会带来巨大的运维成本）</p>
+<p>5.进行标准的DTLS握手，交换SRTP密钥，开始媒体数据传输</p>
+<p>相关限制：</p>
+<ul>
+<li>它不支持直播中常用音频 AAC 编码和 44.1k 采样率。</li>
+<li>其它不支持视频 B 帧编码特性，多 slice 编码在弱网下也会花屏。</li>
+<li>WebRTC 建联过程耗时过长，会影响秒开体验。</li>
+</ul>
+<h2 id="六、demo"><a href="#六、demo" class="headerlink" title="六、demo"></a>六、demo</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/06/18/31.2.WebRTC%E7%9A%84%E5%AD%A6%E4%B9%A0/" data-id="ckqk8ibx30004n8wd32t75z6d" data-title="WebRTC的学习" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WebRTC/" rel="tag">WebRTC</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/06/21/30.1.AndroidStudio%E7%9A%84%E5%AD%A6%E4%B9%A0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          AndroidStudio的学习
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/06/18/31.1.%E6%B5%81%E5%AA%92%E4%BD%93%E5%8D%8F%E8%AE%AE/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">流媒体协议</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eclipse/" rel="tag">Eclipse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HATEOAS/" rel="tag">HATEOAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">MySQL基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PBOOTCMS/" rel="tag">PBOOTCMS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Portainer-io/" rel="tag">Portainer.io</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RESTful/" rel="tag">RESTful</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/" rel="tag">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebRTC/" rel="tag">WebRTC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/" rel="tag">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%A6%82%E8%BF%B0/" rel="tag">java概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springfox/" rel="tag">springfox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swagger/" rel="tag">swagger</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6/" rel="tag">书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/" rel="tag">历史版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E8%97%8F/" rel="tag">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" rel="tag">编程规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" rel="tag">设计规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" rel="tag">软件说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag">面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HATEOAS/" style="font-size: 10px;">HATEOAS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">MySQL基础概念</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PBOOTCMS/" style="font-size: 10px;">PBOOTCMS</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Portainer-io/" style="font-size: 10px;">Portainer.io</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/WEB/" style="font-size: 10px;">WEB</a> <a href="/tags/WebRTC/" style="font-size: 10px;">WebRTC</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">java概述</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springfox/" style="font-size: 10px;">springfox</a> <a href="/tags/swagger/" style="font-size: 10px;">swagger</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%B9%A6/" style="font-size: 10px;">书</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/" style="font-size: 10px;">历史版本</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%94%B6%E8%97%8F/" style="font-size: 10px;">收藏</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" style="font-size: 10px;">设计规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">软件说明</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">面向对象</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/06/30/4.27.%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">序列化与反序列化</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/28/%E7%94%B5%E5%95%86%E9%A1%B9%E7%9B%AE/">电商项目</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/24/4.26.JSR/">JSR</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/24/31.3.%E8%85%BE%E8%AE%AF%E4%BA%91%E9%9F%B3%E8%A7%86%E9%A2%91%E7%9A%84%E5%BC%80%E5%8F%91/">腾讯云音视频的开发</a>
+          </li>
+        
+          <li>
+            <a href="/2021/06/23/%E7%94%B3%E8%AF%B7%E8%BD%AF%E8%91%97/">申请软著</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 swx<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

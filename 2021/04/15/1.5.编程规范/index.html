@@ -6,15 +6,15 @@
   
   <title>编程规范 | swx</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="编程规范遇到左大括号缩进一个tab的位置。 关联不是很大的语句间空行。 很多细节规范参考《阿里开发手册华山版》 设计规范前后端接口规范：解耦接口，尽量不要用大接口。可以用公共的接口，但是尽量是前端需要什么信息，传递什么信息，不要查到所有信息再返回给前端。因为尽量避免暴露数据库表结构，避免传递不必要的信息。 RESTful 架构RESTful 只是一种指导风格，就像我们 Java 要用驼峰命名法。">
+  <meta name="description" content="编程规范遇到左大括号缩进一个tab的位置。 关联不是很大的语句间空行。 命名命名风格1.不能以下划线或美元符号开始，也不能以下划线或美元符号结束。 2.严禁使用拼音与英文混合的方式，更不允许直接使用中文的方式。（有些国际通用的可以用拼音：renminbi，taobao） 3.驼峰命名。 4.杜绝完全不规范的缩写，避免望文不知义 5.为了达到代码自解释的目标，任何自定义编程元素在命名时，使用尽量完整">
 <meta property="og:type" content="article">
 <meta property="og:title" content="编程规范">
 <meta property="og:url" content="https://s-qwer.github.io/2021/04/15/1.5.%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/index.html">
 <meta property="og:site_name" content="swx">
-<meta property="og:description" content="编程规范遇到左大括号缩进一个tab的位置。 关联不是很大的语句间空行。 很多细节规范参考《阿里开发手册华山版》 设计规范前后端接口规范：解耦接口，尽量不要用大接口。可以用公共的接口，但是尽量是前端需要什么信息，传递什么信息，不要查到所有信息再返回给前端。因为尽量避免暴露数据库表结构，避免传递不必要的信息。 RESTful 架构RESTful 只是一种指导风格，就像我们 Java 要用驼峰命名法。">
+<meta property="og:description" content="编程规范遇到左大括号缩进一个tab的位置。 关联不是很大的语句间空行。 命名命名风格1.不能以下划线或美元符号开始，也不能以下划线或美元符号结束。 2.严禁使用拼音与英文混合的方式，更不允许直接使用中文的方式。（有些国际通用的可以用拼音：renminbi，taobao） 3.驼峰命名。 4.杜绝完全不规范的缩写，避免望文不知义 5.为了达到代码自解释的目标，任何自定义编程元素在命名时，使用尽量完整">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-15T02:57:13.000Z">
-<meta property="article:modified_time" content="2021-06-17T07:01:25.307Z">
+<meta property="article:modified_time" content="2021-07-01T01:14:05.989Z">
 <meta property="article:author" content="swx">
 <meta property="article:tag" content="设计规范">
 <meta property="article:tag" content="编程规范">
@@ -103,10 +103,188 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="编程规范"><a href="#编程规范" class="headerlink" title="编程规范"></a>编程规范</h1><p>遇到左大括号缩进一个tab的位置。</p>
+        <h2 id="编程规范"><a href="#编程规范" class="headerlink" title="编程规范"></a>编程规范</h2><p>遇到左大括号缩进一个tab的位置。</p>
 <p>关联不是很大的语句间空行。</p>
-<p>很多细节规范参考《阿里开发手册华山版》</p>
-<h1 id="设计规范"><a href="#设计规范" class="headerlink" title="设计规范"></a>设计规范</h1><p>前后端接口规范：解耦接口，尽量不要用大接口。可以用公共的接口，但是尽量是前端需要什么信息，传递什么信息，不要查到所有信息再返回给前端。因为尽量避免暴露数据库表结构，避免传递不必要的信息。</p>
+<h2 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h2><h3 id="命名风格"><a href="#命名风格" class="headerlink" title="命名风格"></a>命名风格</h3><p>1.不能以下划线或美元符号开始，也不能以下划线或美元符号结束。</p>
+<p>2.严禁使用拼音与英文混合的方式，更不允许直接使用中文的方式。（有些国际通用的可以用拼音：renminbi，taobao）</p>
+<p>3.驼峰命名。</p>
+<p>4.杜绝完全不规范的缩写，避免望文不知义</p>
+<p>5.为了达到代码自解释的目标，任何自定义编程元素在命名时，使用尽量完整的单词组合来表达其意。</p>
+<p>6.如果模块、接口、类、方法使用了设计模式，在命名时需体现出具体模式。</p>
+<h3 id="类名命名"><a href="#类名命名" class="headerlink" title="类名命名"></a>类名命名</h3><p>1.大写开头（DO / BO / DTO / VO / AO/ PO / UID除外 ）</p>
+<p>2.抽象类命名使用 Abstract 或 Base 开头；异常类命名使用 Exception 结尾；测试类命名以它要测试的类的名称开始，以 Test 结尾</p>
+<p>3.POJO 类中布尔类型变量都不要加 is 前缀，否则部分框架解析会引起序列化错误。</p>
+<p>4.包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词。<strong>包名统一使用单数形式</strong>，但是类名如果有复数含义，类名可以使用复数形式。</p>
+<p>5.避免在子父类的成员变量之间、或者不同代码块的局部变量之间采用完全相同的命名，使可读性降低</p>
+<p>6.接口类中的方法和属性不要加任何修饰符号（public 也不要加），保持代码的简洁性，并加上有效的 Javadoc 注释。尽量不要在接口里定义变量，如果一定要定义变量，肯定是与接口方法相关，并且是整个应用的基础常量。JDK8 中接口允许有默认实现，那么这个 default 方法，是对所有实现类都有价值的默认实现。</p>
+<p>7.接口和实现类的命名：</p>
+<ul>
+<li><p>对于 Service 和 DAO 类，基于 SOA 的理念，暴露出来的服务一定是接口，内部的实现类用Impl 的后缀与接口区别。CacheServiceImpl 实现 CacheService 接口。</p>
+</li>
+<li><p>如果是形容能力的接口名称，取对应的形容词为接口名（通常是–able 的形容词）AbstractTranslator 实现 Translatable 接口</p>
+</li>
+</ul>
+<p>8.<strong>枚举类</strong>名带上 Enum 后缀，枚举成员名称需要全大写，单词间用下划线隔开。枚举其实就是特殊的类，域成员均为常量，且构造方法被默认强制是私有。</p>
+<ol start="9">
+<li>Service/DAO 层方法命名规约</li>
+</ol>
+<p>1） 获取单个对象的方法用 get 做前缀。</p>
+<p>2） 获取多个对象的方法用 list 做前缀，复数形式结尾如：listObjects。 </p>
+<p>3） 获取统计值的方法用 count 做前缀。 </p>
+<p>4） 插入的方法用 save/insert 做前缀。</p>
+<p>5） 删除的方法用 remove/delete 做前缀。</p>
+<p>6） 修改的方法用 update 做前缀。</p>
+<p>10.领域模型命名规约</p>
+<p>1） 数据对象：xxxDO，xxx 即为数据表名。</p>
+<p>2） 数据传输对象：xxxDTO，xxx 为业务领域相关的名称。</p>
+<p>3） 展示对象：xxxVO，xxx 一般为网页名称。</p>
+<p>4） POJO 是 DO/DTO/BO/VO 的统称，禁止命名成 xxxPOJO</p>
+<h3 id="方法名，参数名，变量名"><a href="#方法名，参数名，变量名" class="headerlink" title="方法名，参数名，变量名"></a>方法名，参数名，变量名</h3><p>1.小写开头。</p>
+<p>2.类型与中括号紧挨相连来表示数组</p>
+<p>3.在常量与变量的命名时，表示类型的名词放在词尾，以提升辨识度（startTime / workQueue / nameList / TERMINATED_THREAD_COUNT）</p>
+<h3 id="常量命名"><a href="#常量命名" class="headerlink" title="常量命名"></a>常量命名</h3><p>1.常量命名全部大写，单词间用下划线隔开，不要嫌弃太长，一定见名知意。</p>
+<p>2.不允许任何魔法值（即未经预先定义的常量）直接出现在代码中。</p>
+<p>3.在 long 或者 Long 赋值时，数值后使用大写的 L，不能是小写的 l，小写容易跟数字 1 混淆，造成误解</p>
+<p>4.不要使用一个常量类维护所有常量，要按常量功能进行归类，分开维护。（缓存相关常量放在类 CacheConsts 下；系统配置相关常量放在类 ConfigConsts 下。）</p>
+<p>5.常量的复用层次有五层：跨应用共享常量、应用内共享常量、子工程内共享常量、包内共享常量、类内共享常量。</p>
+<p>1） 跨应用共享常量：放置在二方库中，通常是 client.jar 中的 constant 目录下。</p>
+<p>2） 应用内共享常量：放置在一方库中，通常是子模块中的 constant 目录下。</p>
+<p>3） 子工程内部共享常量：即在当前子工程的 constant 目录下。</p>
+<p>4） 包内共享常量：即在当前包下单独的 constant 目录下。</p>
+<p>5） 类内共享常量：直接在类内部 private static final 定义。</p>
+<p>6.如果变量值仅在一个固定范围内变化用 enum 类型来定义。</p>
+<p>7.常量类</p>
+<p>static final修饰的字段在javac编译时生成constantValue属性，在类加载的准备阶段直接把constantValue的值赋给该字段。可以理解为在编译期即把结果放入了常量池中。即在类未被加载时static final字段就有了值，这个值不需要对类进行初始化就可以读取，不像static变量，需要类加载后才会有值(类未加载进内存时值为默认值0或null)。</p>
+<p>注：1.ConstantValue修饰的字段<strong>只限于基本类型和string</strong>。</p>
+<p>   2.ConstantValue修饰的字段若为String类型，必须要是编译期可以进行优化得到的即编译期常量才能满足不需要对类进行初始化就可以读取(例如：String s = “a”+“bc”；)，否则这个值需要对类进行初始化才可以读取(例如：String s = new String(“abc”)；)。</p>
+<p>   3.对于满足上两个条件的constantValue变量，在访问该变量时，无需初始化类即可访问(即访问时在常量池中寻找，不会执行类的静态成员和静态代码块)。</p>
+<h2 id="代码格式"><a href="#代码格式" class="headerlink" title="代码格式"></a>代码格式</h2><p>1.如果是大括号内为空，则简洁地写成{}即可，大括号中间无需换行和空格；如果是非空代码块则： </p>
+<p>1） 左大括号前不换行。<br>2） 左大括号后换行。<br>3） 右大括号前换行。<br>4） 右大括号后还有 else 等代码则不换行；表示终止的右大括号后必须换行</p>
+<p>2.左小括号和字符之间不出现空格；同样，右小括号和字符之间也不出现空格；而左大括号前需要空格。</p>
+<p>3.if/for/while/switch/do 等保留字与括号之间都必须加空格。</p>
+<p>4.任何二目、三目运算符的左右两边都需要加一个空格。</p>
+<p>5.采用 4 个空格缩进，禁止使用 tab 字符</p>
+<p>例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123; </span><br><span class="line">    <span class="comment">// 缩进 4 个空格 </span></span><br><span class="line">    String say = <span class="string">&quot;hello&quot;</span>; </span><br><span class="line">    <span class="comment">// 运算符的左右必须有一个空格 </span></span><br><span class="line">    <span class="keyword">int</span> flag = <span class="number">0</span>; </span><br><span class="line">    <span class="comment">// 关键词 if 与括号之间必须有一个空格，括号内的 f 与左括号，0 与右括号不需要空格 </span></span><br><span class="line">    <span class="keyword">if</span> (flag == <span class="number">0</span>) &#123; </span><br><span class="line">        System.out.println(say); </span><br><span class="line">    &#125; </span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 左大括号前加空格且不换行；左大括号后换行 </span></span><br><span class="line">    <span class="keyword">if</span> (flag == <span class="number">1</span>) &#123; </span><br><span class="line">    System.out.println(<span class="string">&quot;world&quot;</span>); </span><br><span class="line">    <span class="comment">// 右大括号前换行，右大括号后有 else，不用换行 </span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123; </span><br><span class="line">    System.out.println(<span class="string">&quot;ok&quot;</span>); </span><br><span class="line">    <span class="comment">// 在右大括号后直接结束，则必须换行 </span></span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>6.注释的双斜线与注释内容之间有且仅有一个空格</p>
+<p>7.在进行类型强制转换时，右括号与强制转换值之间不需要任何空格隔开。</p>
+<p>8.单行字符数限制不超过 120 个，超出需要换行，换行时遵循如下原则：<br>1）第二行相对第一行缩进 4 个空格，从第三行开始，不再继续缩进。<br>2）运算符与下文一起换行。<br>3）方法调用的点符号与下文一起换行。<br>4）方法调用中的多个参数需要换行时，在逗号后进行。 </p>
+<p>5）在括号前不要换行，在逗号前不要换行</p>
+<p>例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder sb = <span class="keyword">new</span> StringBuilder(); </span><br><span class="line"><span class="comment">// 超过 120 个字符的情况下，换行缩进 4 个空格，点号和方法名称一起换行</span></span><br><span class="line">sb.append(<span class="string">&quot;Jack&quot;</span>).append(<span class="string">&quot;Ma&quot;</span>)... </span><br><span class="line">.append(<span class="string">&quot;alibaba&quot;</span>)... </span><br><span class="line">.append(<span class="string">&quot;alibaba&quot;</span>)... </span><br><span class="line">.append(<span class="string">&quot;alibaba&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>9.方法参数在定义和传入时，多个参数逗号后边必须加空格</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">method(args1, args2, args3);</span><br></pre></td></tr></table></figure>
+
+<p>10.IDE 的 text file encoding 设置为 UTF-8; IDE 中文件的换行符使用 Unix 格式，不要使用 Windows 格式。</p>
+<p>11.单个方法的总行数不超过 80 行（除注释之外的所有行数）</p>
+<p>代码逻辑分清红花和绿叶，个性和共性，绿叶逻辑单独出来成为额外方法，使主干代码更加清晰；共性逻辑抽取成为共性方法，便于复用和维护</p>
+<p>12.没有必要增加若干空格来使变量的赋值等号与上一行对应位置的等号对齐</p>
+<p>13.不同逻辑、不同语义、不同业务的代码之间插入一个空行分隔开来以提升可读性（任何情形，没有必要插入多个空行进行隔开）</p>
+<h2 id="OOP-规约"><a href="#OOP-规约" class="headerlink" title="OOP 规约"></a>OOP 规约</h2><p>1.避免通过一个类的对象引用访问此类的静态变量或静态方法，无谓增加编译器解析成本，直接用类名来访问即可</p>
+<p>2.所有的覆写方法，必须加@Override 注解</p>
+<p>3.相同参数类型，相同业务含义，才可以使用 Java 的可变参数，避免使用 Object。（提倡同学们尽量不用可变参数编程）</p>
+<p>4.外部正在调用或者二方库依赖的接口，不允许修改方法签名，避免对接口调用方产生影响。接口过时必须加@Deprecated 注解，并清晰地说明采用的新接口或者新服务是什么。</p>
+<p>5.不能使用过时的类或方法（接口提供方既然明确是过时接口，那么有义务同时提供新的接口；作为调用方来说，有义务去考证过时方法的新实现是什么）</p>
+<p>6.Object 的 equals 方法容易抛空指针异常，应使用常量或确定有值的对象来调用equals。推荐使用 java.util.Objects#equals（JDK7 引入的工具类）。</p>
+<p>7.所有整型包装类对象之间值的比较，全部使用 equals 方法比较</p>
+<p>对于 Integer var = ? 在-128 至 127 范围内的赋值，Integer 对象是在 IntegerCache.cache 产生，会复用已有对象，这个区间内的 Integer 值可以直接使用==进行判断，但是这个区间之外的所有数据，都会在堆上产生，并不会复用已有对象，这是一个大坑，推荐使用 equals 方法进行判断。</p>
+<p>8.浮点数之间的等值判断，基本数据类型不能用==来比较，包装数据类型不能用equals 来判断。</p>
+<p>浮点数采用“尾数+阶码”的编码方式，类似于科学计数法的“有效数字+指数”的表示方式。二进制无法精确表示大部分的十进制小数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">反例：</span><br><span class="line"> <span class="keyword">float</span> a = <span class="number">1.0f</span> - <span class="number">0.9f</span>;</span><br><span class="line"> <span class="keyword">float</span> b = <span class="number">0.9f</span> - <span class="number">0.8f</span>;</span><br><span class="line"> <span class="keyword">if</span> (a == b) &#123;</span><br><span class="line"> <span class="comment">// 预期进入此代码快，执行其它业务逻辑</span></span><br><span class="line"> <span class="comment">// 但事实上 a==b 的结果为 false</span></span><br><span class="line"> &#125;</span><br><span class="line"> Float x = Float.valueOf(a);</span><br><span class="line"> Float y = Float.valueOf(b);</span><br><span class="line"> <span class="keyword">if</span> (x.equals(y)) &#123;</span><br><span class="line"> <span class="comment">// 预期进入此代码快，执行其它业务逻辑</span></span><br><span class="line"> <span class="comment">// 但事实上 equals 的结果为 false</span></span><br><span class="line"> &#125; </span><br><span class="line">正例：</span><br><span class="line">(<span class="number">1</span>) 指定一个误差范围，两个浮点数的差值在此范围之内，则认为是相等的。</span><br><span class="line"> <span class="keyword">float</span> a = <span class="number">1.0f</span> - <span class="number">0.9f</span>;</span><br><span class="line"> <span class="keyword">float</span> b = <span class="number">0.9f</span> - <span class="number">0.8f</span>;</span><br><span class="line"> <span class="keyword">float</span> diff = <span class="number">1e-6f</span>;</span><br><span class="line"> <span class="keyword">if</span> (Math.abs(a - b) &lt; diff) &#123;</span><br><span class="line"> System.out.println(<span class="string">&quot;true&quot;</span>);</span><br><span class="line"> &#125;</span><br><span class="line">(<span class="number">2</span>) 使用 BigDecimal 来定义值，再进行浮点数的运算操作。</span><br><span class="line"> BigDecimal a = <span class="keyword">new</span> BigDecimal(<span class="string">&quot;1.0&quot;</span>);</span><br><span class="line"> BigDecimal b = <span class="keyword">new</span> BigDecimal(<span class="string">&quot;0.9&quot;</span>);</span><br><span class="line"> BigDecimal c = <span class="keyword">new</span> BigDecimal(<span class="string">&quot;0.8&quot;</span>);</span><br><span class="line"> BigDecimal x = a.subtract(b);</span><br><span class="line"> BigDecimal y = b.subtract(c);</span><br><span class="line"> <span class="keyword">if</span> (x.equals(y)) &#123;</span><br><span class="line"> System.out.println(<span class="string">&quot;true&quot;</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>9.定义数据对象 DO 类时，属性类型要与数据库字段类型相匹配。</p>
+<p>数据库字段的 bigint 必须与类属性的 Long 类型相对应。</p>
+<p>10.为了防止精度损失，禁止使用构造方法 BigDecimal(double)的方式把 double 值转化为 BigDecimal 对象。BigDecimal(double)存在精度损失风险，在精确计算或值比较的场景中可能会导致业务逻辑异常</p>
+<p>如：BigDecimal g = new BigDecimal(0.1f); 实际的存储值为：0.10000000149  </p>
+<p>需使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BigDecimal recommend1 = <span class="keyword">new</span> BigDecimal(<span class="string">&quot;0.1&quot;</span>);</span><br><span class="line">BigDecimal recommend2 = BigDecimal.valueOf(<span class="number">0.1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>11.关于基本数据类型与包装数据类型的使用标准：</p>
+<ul>
+<li><p>所有的 POJO 类属性必须使用包装数据类型。</p>
+</li>
+<li><p>RPC 方法的返回值和参数必须使用包装数据类型。</p>
+</li>
+<li><p>所有的局部变量使用基本数据类型。</p>
+</li>
+</ul>
+<p>POJO 类属性没有初值是提醒使用者在需要使用时，必须自己显式地进行赋值，任何 NPE 问题，或者入库检查，都由使用者来保证。</p>
+<h2 id="MySQL-数据库-规范"><a href="#MySQL-数据库-规范" class="headerlink" title="MySQL 数据库 规范"></a>MySQL 数据库 规范</h2><h3 id="建表规约"><a href="#建表规约" class="headerlink" title="建表规约"></a>建表规约</h3><p>1.表达是与否概念的字段，必须使用 is_xxx 的方式命名，数据类型是 unsigned tinyint（1 表示是，0 表示否）。任何字段如果为非负数，必须是 unsigned。</p>
+<p>POJO 类中的任何布尔类型的变量，都不要加 is 前缀。</p>
+<p>2.表名、字段名必须使用小写字母或数字，禁止出现数字开头，禁止两个下划线中间只出现数字。数据库字段名的修改代价很大，因为无法进行预发布，所以字段名称需要慎重考虑。不允许出现任何大写字母（因为MySQL 在 Windows 下不区分大小写，但在 Linux 下默认是区分大小写）</p>
+<p>3.表名不使用复数名词。DO 类名也是单数形式</p>
+<p>4.禁用保留字，如 desc、range、match、delayed 等</p>
+<p>5.主键索引名（primary key）为 <code>pk_字段名</code>；唯一索引名（unique key）为 <code>uk_字段名</code>；普通索引名（ index）则为 <code>idx_字段名</code></p>
+<p>6.小数类型为 decimal，禁止使用 float 和 double（在存储的时候，float 和 double 都存在精度损失的问题）。存储的数据范围超过 decimal 的范围，建议将数据拆成整数和小数并分开存储</p>
+<p>7.如果存储的字符串长度几乎相等，使用 char 定长字符串类型。</p>
+<p>8.varchar 是可变长字符串，不预先分配存储空间，长度不要超过 5000，如果存储长度大于此值，定义字段类型为 text，独立出来一张表，用主键来对应，避免影响其它字段索引效率。</p>
+<p>9.表必备三字段：id（必为主键，类型为 bigint unsigned、单表时自增、步长为 1）, create_time, update_time（类型均为 datetime 类型）。</p>
+<p>10.表的命名最好是遵循“业务名称_表的作用”</p>
+<p>11.库名与应用名称尽量一致</p>
+<p>12.如果修改字段含义或对字段表示的状态追加时，需要及时更新字段注释</p>
+<p>13.字段允许适当冗余，以提高查询性能，但必须考虑数据一致。冗余字段应遵循：</p>
+<p>1） 不是频繁修改的字段。</p>
+<p>2） 不是 varchar 超长字段，更不能是 text 字段。</p>
+<p> 3） 不是唯一索引的字段。</p>
+<p>14.单表行数超过 500 万行或者单表容量超过 2GB，才推荐进行分库分表（预计三年后的数据量根本达不到这个级别，请不要在创建表时就分库分表）</p>
+<p>15.合适的字符存储长度，不但节约数据库表空间、节约索引存储，更重要的是提升检索速度。无符号值（unsigned）可以避免误存负数，且扩大了表示范围。</p>
+<p>对象 年龄区间 类型 字节 表示范围</p>
+<p>人 150 岁之内 tinyint unsigned 1 无符号值：0 到 255</p>
+<p>龟 数百岁 smallint unsigned 2 无符号值：0 到 65535</p>
+<p>恐龙化石 数千万年 int unsigned 4 无符号值：0 到约 42.9 亿</p>
+<p>太阳 约 50 亿年 bigint unsigned 8 无符号值：0 到约 10 的 19 次方</p>
+<p>16.尽量避免NULL：应该指定列为NOT NULL，除非你想存储NULL。在MySQL中，含有空值的列很难进行查询优化。因为它们使得索引、索引的统计信息以及比较运算更加复杂。你应该用0、一个特殊的值或者一个空串代替空值。在设置默认值的时候，尽量不要用Null来当默认值，如果字段是int类型，默认为0，如果是varchar类型，默认值用空字符串（’’）会更好一些</p>
+<p>17.习惯是任何数据表的任何列都是非空（NOT NULL），在此基础上将数字默认设为0，文本默认设为’’（在PHPMyAdmin中留空）</p>
+<h3 id="索引规约"><a href="#索引规约" class="headerlink" title="索引规约"></a>索引规约</h3><p>1.业务上具有唯一特性的字段，即使是多个字段的组合，也必须建成唯一索引。（唯一索引影响 insert 速度，这个速度损耗可以忽略，但提高查找速度是明显的。没有唯一索引的话，必然有脏数据产生）</p>
+<p>2.超过三个表禁止 join。需要 join 的字段，数据类型必须绝对一致；多表关联查询时，保证被关联的字段需要有索引（双表join时也要注意表索引、SQL性能）</p>
+<p>3.在 varchar 字段上建立索引时，必须指定索引长度，没必要对全字段建立索引，根据实际文本区分度决定索引长度即可。索引的长度与区分度是一对矛盾体，一般对字符串类型数据，长度为 20 的索引，区分度会高达90%以上，可以使用 count(distinct left(列名, 索引长度))/count(*)的区分度来确定</p>
+<p>4.页面搜索严禁左模糊或者全模糊，如果需要请走搜索引擎来解决（索引文件具有 B-Tree 的最左前缀匹配特性，如果左边的值未确定，那么无法使用此索引。）</p>
+<p>5.order by：注意利用索引的有序性（order by 最后的字段是组合索引的一部分，并且放在索引组合顺序的最后，避免出现 file_sort 的情况，影响查询性能）</p>
+<p>6.利用覆盖索引来进行查询操作，避免回表（覆盖索引只是一种查询的一种效果，用 explain 的结果，extra 列会出现：using index）</p>
+<p>7.利用延迟关联或者子查询优化超多分页场景</p>
+<p>8.SQL 性能优化的目标：至少要达到 range 级别，要求是 ref 级别，如果可以是consts 最好。</p>
+<p>1） consts 单表中最多只有一个匹配行（主键或者唯一索引），在优化阶段即可读取到数据。</p>
+<p>2） ref 指的是使用普通的索引（normal index）。 </p>
+<p>3） range 对索引进行范围检索。</p>
+<p>type=index,索引物理文件全扫描，速度非常慢，这个 index 级别比较 range还低，与全表扫描是小巫见大巫</p>
+<p>9.建组合索引的时候，区分度最高的在最左边</p>
+<p>10.防止因字段类型不同造成的隐式转换，导致索引失效</p>
+<p>11.创建索引时,注意避免:</p>
+<p>1） 宁滥勿缺。认为一个查询就需要建一个索引。</p>
+<p>2） 宁缺勿滥。认为索引会消耗空间、严重拖慢记录的更新以及行的新增速度。</p>
+<p>3） 抵制惟一索引。认为业务的惟一性一律需要在应用层通过“先查后插”方式解决。</p>
+<h3 id="SQL-语句"><a href="#SQL-语句" class="headerlink" title="SQL 语句"></a>SQL 语句</h3><p>1.不要使用 count(列名)或 count(常量)来替代 <code>count(*)</code>，<code>count(*)</code>是 SQL92 定义的标准统计行数的语法，跟数据库无关，跟 NULL 和非 NULL 无关。count(*)会统计值为 NULL 的行，而 count(列名)不会统计此列为 NULL 值的行。</p>
+<p>2.count(distinct col) 计算该列除 NULL 之外的不重复行数，注意 count(distinct col1, col2) 如果其中一列全为 NULL，那么即使另一列有不同的值，也返回为 0。</p>
+<p>3.当某一列的值全是 NULL 时，count(col)的返回结果为 0，但 sum(col)的返回结果为 NULL，因此使用 sum()时需注意 NPE 问题。</p>
+<p>使用如下方式来避免 sum 的 NPE 问题：SELECT IFNULL(SUM(column), 0) FROM table;</p>
+<p>4.使用 ISNULL()来判断是否为 NULL 值。NULL 与任何值的直接比较都为 NULL</p>
+<p>5.代码中写分页查询逻辑时，若 count 为 0 应直接返回，避免执行后面的分页语句。</p>
+<p>6.不得使用外键与级联，一切外键概念必须在应用层解决</p>
+<p>7.禁止使用存储过程，存储过程难以调试和扩展，更没有移植性。</p>
+<p>8.数据订正（特别是删除、修改记录操作）时，要先 select，避免出现误删除，确认无误才能执行更新语句。</p>
+<p>9.in 操作能避免则避免，若实在避免不了，需要仔细评估 in 后边的集合元素数量，控制在 1000 个之内。</p>
+<p>10.所有的字符存储与表示，均以 utf-8 编码，注意字符统计函数的区别。当需要存储表情，那么选择 utf8mb4 来进行存储，注意它与 utf-8 编码的区别</p>
+<p>11.TRUNCATE TABLE 比 DELETE 速度快，且使用的系统和事务日志资源少，但TRUNCATE 无事务且不触发 trigger，有可能造成事故，故不建议在开发代码中使用此语句。</p>
+<p>说明：TRUNCATE TABLE 在功能上与不带 WHERE 子句的 DELETE 语句相同。</p>
+<h3 id="ORM-映射"><a href="#ORM-映射" class="headerlink" title="ORM 映射"></a>ORM 映射</h3><p>1.在表查询中，一律不要使用 * 作为查询的字段列表，需要哪些字段必须明确写明</p>
+<p>1）增加查询分析器解析成本。</p>
+<p>2）增减字段容易与 resultMap 配置不一致。</p>
+<p>3）无用字段增加网络消耗，尤其是 text 类型的字段。</p>
+<p>2.POJO 类的布尔属性不能加 is，而数据库字段必须加 is_，要求在 resultMap 中进行字段与属性之间的映射。</p>
+<p>3.不要用 resultClass 当返回参数，即使所有类属性名与数据库字段一一对应，也需要定义；反过来，每一个表也必然有一个 POJO 类与之对应。</p>
+<p>配置映射关系，使字段与 DO 类解耦，方便维护。</p>
+<p>4.sql.xml 配置参数使用：#{}，#param# 不要使用${} 此种方式容易出现 SQL 注入</p>
+<p>5.iBATIS 自带的 queryForList(String statementName,int start,int size)不推荐使用。（因为它的实现方式是在数据库取到 statementName 对应的 SQL 语句的所有记录，再通过 subList 取start,size 的子集合）</p>
+<p>6.不允许直接拿 HashMap 与 Hashtable 作为查询结果集的输出。</p>
+<p>resultClass=”Hashtable”，会置入字段名和属性值，但是值的类型不可控</p>
+<p>7.更新数据表记录时，必须同时更新记录对应的 gmt_modified 字段值为当前时间。</p>
+<p>8.不要写一个大而全的数据更新接口。传入为 POJO 类，不管是不是自己的目标更新字段，都进行 update table set c1=value1,c2=value2,c3=value3; 这是不对的。执行 SQL时，不要更新无改动的字段，一是易出错；二是效率低；三是增加 binlog 存储。</p>
+<p>9.@Transactional 事务不要滥用。事务会影响数据库的 QPS，另外使用事务的地方需要考虑各方面的回滚方案，包括缓存回滚、搜索引擎回滚、消息补偿、统计修正等。</p>
+<p>10.<code>&lt;isEqual&gt;</code>中的 compareValue 是与属性值对比的常量，一般是数字，表示相等时带上此条件；&lt;isNotEmpty&gt;表示不为空且不为 null 时执行；<code>&lt;isNotNull&gt;</code>表示不为 null 值时执行。 </p>
+<h2 id="设计规范"><a href="#设计规范" class="headerlink" title="设计规范"></a>设计规范</h2><p>前后端接口规范：解耦接口，尽量不要用大接口。可以用公共的接口，但是尽量是前端需要什么信息，传递什么信息，不要查到所有信息再返回给前端。因为尽量避免暴露数据库表结构，避免传递不必要的信息。</p>
+<p>前端传过来的数据也要做数据校验（即使前端已经做过校验），因为可能是通过接口发送的参数，绕过了前端页面</p>
 <h2 id="RESTful-架构"><a href="#RESTful-架构" class="headerlink" title="RESTful 架构"></a>RESTful 架构</h2><p>RESTful 只是一种指导风格，就像我们 Java 要用驼峰命名法。</p>
 <p>REST 不是一个单词，是 Representational State Transfer 的缩写。直译过来就是表述性状态转移。其实它还有个主语 Resource ，所以是资源的表述性状态转移。</p>
 <p><strong>核心</strong>就是资源，用 URL 定位资源，用 HTTP 动词来描述所要做的操作。</p>
@@ -210,7 +388,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eclipse/" rel="tag">Eclipse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HATEOAS/" rel="tag">HATEOAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">MySQL基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PBOOTCMS/" rel="tag">PBOOTCMS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Portainer-io/" rel="tag">Portainer.io</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RESTful/" rel="tag">RESTful</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/" rel="tag">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/" rel="tag">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%A6%82%E8%BF%B0/" rel="tag">java概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springfox/" rel="tag">springfox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swagger/" rel="tag">swagger</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6/" rel="tag">书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/" rel="tag">历史版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E8%97%8F/" rel="tag">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" rel="tag">编程规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" rel="tag">设计规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" rel="tag">软件说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag">面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eclipse/" rel="tag">Eclipse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HATEOAS/" rel="tag">HATEOAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">MySQL基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PBOOTCMS/" rel="tag">PBOOTCMS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Portainer-io/" rel="tag">Portainer.io</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RESTful/" rel="tag">RESTful</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/" rel="tag">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebRTC/" rel="tag">WebRTC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/" rel="tag">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%A6%82%E8%BF%B0/" rel="tag">java概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springfox/" rel="tag">springfox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swagger/" rel="tag">swagger</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6/" rel="tag">书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/" rel="tag">历史版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E8%97%8F/" rel="tag">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" rel="tag">编程规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" rel="tag">设计规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" rel="tag">软件说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag">面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
     </div>
   </div>
 
@@ -220,7 +398,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HATEOAS/" style="font-size: 10px;">HATEOAS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">MySQL基础概念</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PBOOTCMS/" style="font-size: 10px;">PBOOTCMS</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Portainer-io/" style="font-size: 10px;">Portainer.io</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/WEB/" style="font-size: 10px;">WEB</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">java概述</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springfox/" style="font-size: 10px;">springfox</a> <a href="/tags/swagger/" style="font-size: 10px;">swagger</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%B9%A6/" style="font-size: 10px;">书</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/" style="font-size: 10px;">历史版本</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%94%B6%E8%97%8F/" style="font-size: 10px;">收藏</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" style="font-size: 10px;">设计规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">软件说明</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">面向对象</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HATEOAS/" style="font-size: 10px;">HATEOAS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">MySQL基础概念</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PBOOTCMS/" style="font-size: 10px;">PBOOTCMS</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Portainer-io/" style="font-size: 10px;">Portainer.io</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/WEB/" style="font-size: 10px;">WEB</a> <a href="/tags/WebRTC/" style="font-size: 10px;">WebRTC</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">java概述</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springfox/" style="font-size: 10px;">springfox</a> <a href="/tags/swagger/" style="font-size: 10px;">swagger</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%B9%A6/" style="font-size: 10px;">书</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/" style="font-size: 10px;">历史版本</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%94%B6%E8%97%8F/" style="font-size: 10px;">收藏</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" style="font-size: 10px;">设计规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">软件说明</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">面向对象</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
     </div>
   </div>
 
@@ -242,23 +420,23 @@
       <ul>
         
           <li>
-            <a href="/2021/06/18/WebRTC%E7%9A%84%E5%AD%A6%E4%B9%A0/">WebRTC的学习</a>
+            <a href="/2021/06/30/4.27.%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">序列化与反序列化</a>
           </li>
         
           <li>
-            <a href="/2021/06/18/%E6%B5%81%E5%AA%92%E4%BD%93%E5%8D%8F%E8%AE%AE/">流媒体协议</a>
+            <a href="/2021/06/28/%E7%94%B5%E5%95%86%E9%A1%B9%E7%9B%AE/">电商项目</a>
           </li>
         
           <li>
-            <a href="/2021/06/17/1.7.%E7%AE%80%E5%8E%86%E5%AE%8C%E5%96%84/">简历完善</a>
+            <a href="/2021/06/24/4.26.JSR/">JSR</a>
           </li>
         
           <li>
-            <a href="/2021/06/08/%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/">搭建网站</a>
+            <a href="/2021/06/24/31.3.%E8%85%BE%E8%AE%AF%E4%BA%91%E9%9F%B3%E8%A7%86%E9%A2%91%E7%9A%84%E5%BC%80%E5%8F%91/">腾讯云音视频的开发</a>
           </li>
         
           <li>
-            <a href="/2021/06/03/%E6%94%BB%E7%A0%B4%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99/">攻破一个网站</a>
+            <a href="/2021/06/23/%E7%94%B3%E8%AF%B7%E8%BD%AF%E8%91%97/">申请软著</a>
           </li>
         
       </ul>

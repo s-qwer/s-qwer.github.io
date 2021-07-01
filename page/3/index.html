@@ -77,6 +77,1295 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-9.6.WEB之ajax" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/9.6.WEB%E4%B9%8Bajax/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:30:09.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/9.6.WEB%E4%B9%8Bajax/">WEB之ajax</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>AJAX 是一种用于创建快速动态网页的技术。</p>
+<p>AJAX即“Asynchronous Javascript And XML”（异步JavaScript和XML），是指一种创建交互式<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/828.htm">网页</a>应用的网页开发技术。</p>
+<p>AJAX = 异步 <a target="_blank" rel="noopener" href="http://baike.baidu.com/view/16168.htm">JavaScript</a>和<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/63.htm">XML</a>（<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/5286041.htm">标准通用标记语言</a>的子集）。</p>
+<p>通过在后台与服务器进行少量数据交换，AJAX 可以使网页实现异步更新。这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。</p>
+<p>传统的网页（不使用 AJAX）如果需要更新内容，必须重载整个网页页面。</p>
+<p>AJAX 的核心是 JavaScript 对象 XMLHttpRequest。该对象在 Internet Explorer 5 中首次引入，它是一种支持异步请求的技术。简而言之，XMLHttpRequest使您可以使用 JavaScript 向服务器提出请求并处理响应，而不阻塞用户。</p>
+<p>AJAX不是一种新的编程语言，而是一种用于创建更好更快以及交互性更强的Web应用程序的技术</p>
+<p>ajax的优点：</p>
+<p>使用Javascript向服务器提出请求并处理响应而不阻塞用户！核心对象XMLHTTPRequest。通过这个对象，您的 JavaScript 可在不重载页面的情况与Web服务器交换数据，即在不需要刷新页面的情况下，就可以产生局部刷新的效果。</p>
+<p>AJAX 在浏览器与 Web 服务器之间使用异步数据传输（HTTP 请求），这样就可使网页从服务器请求少量的信息，而不是整个页面。</p>
+<p>AJAX 可使因特网应用程序更小、更快，更友好</p>
+<p>工作原理：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td></td>
+<td><img src="/9.6.WEB%E4%B9%8Bajax/wps1.jpg" alt="img"></td>
+</tr>
+</tbody></table>
+<p>AJAX应用</p>
+<p>1.创建一个demo1.html</p>
+<p>2.发送一个ajax请求<img src="/9.6.WEB%E4%B9%8Bajax/wps2.jpg" alt="img">：</p>
+<p>2.1：获取一个XMLHttpRequest对象</p>
+<p>对于大部分浏览器可以直接通过 new XMLHttpRequest();</p>
+<p>对于IE5  IE6 new ActiveXObject(“Microsoft.XMLHTTP”)</p>
+<p><img src="/9.6.WEB%E4%B9%8Bajax/wps3.jpg" alt="img">2.2：设置一个回调函数</p>
+<p>回调函数它的作用就是用于处理服务器响应的数据</p>
+<p>通过XMLHttpRequest对象的onreadystatechange设置回调函数</p>
+<p>onreadystatechange 事件句柄，它是用于绑定回调函数，当服务器响应数据回来后，我们可以在指定的回调函数中进行数据处理</p>
+<p>readyState 它描述的http请求的状态</p>
+<p><img src="/9.6.WEB%E4%B9%8Bajax/wps4.jpg" alt="img"> </p>
+<p>status 它描述的http状态码  200 404  405 500…</p>
+<p>2.3：设置请求方式GET/POST及请求的URL等</p>
+<p>通过XMLHttpRequest对象的open方法</p>
+<p>open它是用于设置请求方式，url及是否异步，初始化HTTP请求参数，例如URL和HTTP方法，但是并不发送请求</p>
+<p>参数1：HTTP 请求方式  POST/GET。</p>
+<p>参数2:url路径</p>
+<p>参数3:true/false 代表是否异步 （一般不用写，只写前两个参数）</p>
+<p>2.4：真正向服务器发送请求</p>
+<p>通过XMLHttpRequest对象的send方法</p>
+<p>send它是真正向服务器发送请求</p>
+<p>如果请求方式是get，那么我们使用send(null) 原因:get请求方式是没有http请求体</p>
+<p>只有post请求方式时，才有请求体,所以send的参数只是在post请求时使用例如</p>
+<p>Xmlhttp.send(“username=xxx&amp;password=xxx”);</p>
+<p>setRequestHeader</p>
+<p><img src="/9.6.WEB%E4%B9%8Bajax/wps5.jpg" alt="img">注意：如果请求方式是POST,那么我们在使用时，必须设置一个请求头，就需要使用setRequestHeader方法来完成</p>
+<p>第二个参数是form表单标签的enctype的默认值</p>
+<p>2.5：在回调函数中获取服务器响应的数据</p>
+<p>通过XMLHttpRequest对象的responseText</p>
+<p>responesText或responseXML来获取服务器响应数据</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.6.WEB%E4%B9%8Bajax/" data-id="ckq1xbds0002ppwwddbjd8dsr" data-title="WEB之ajax" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-9.5.WEB之JQuery" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/9.5.WEB%E4%B9%8BJQuery/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:29:56.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/9.5.WEB%E4%B9%8BJQuery/">WEB之JQuery</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>jQuery是一个快速、简洁的<strong>JavaScript框架</strong>，是继Prototype之后又一个优秀的JavaScript代码库（<strong>或JavaScript框架</strong>）。jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情。它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化HTML文档操作、事件处理、动画设计和Ajax交互。</p>
+<p>使用jquery可以更好完成以下操作：</p>
+<p>\1. html文档操作，对于dom相关操作优化</p>
+<p>\2. jquery提供更加方便与丰富事件处理</p>
+<p>\3. jquery提供简单动画特效</p>
+<p>\4. jquery提供ajax交互</p>
+<p>要使用任何一个js框架，都是需要导入相关的js文件。</p>
+<p>jquery的插件机制特别丰富,在开发中可以选择非常多的相关插件，例如，表单校验插件，树型结构等</p>
+<p>其它常用js框架:</p>
+<p>1.dojo 面向对象的js框架</p>
+<p>2.extjs 学习成本比较高 它提供大量的丰富组件，它的效果展示（动画）非常好</p>
+<p>3.prototype 早期比较流行js框架</p>
+<p>4.angularJS 它是一个mvc js框架，它提供双向数据绑定</p>
+<p><a target="_blank" rel="noopener" href="http://jquery.com/">http://jquery.com/</a> jquery官网</p>
+<p>jquery最新版本3.5.1 现在学习的版本1.8.3</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps1.jpg" alt="img"> </p>
+<p>因为jquery从jquery2.x以后对浏览器支持不是特别好，在pc端开发使用比较主流的是1.x版本</p>
+<p>对于开发中， 我们需要导入的是min.js文件，在学习阶段我们导入 jquery-1.8.3.js</p>
+<p>完成操作:页面加载完成后，弹出一个框显示hello jquery</p>
+<p>第一步:新建一个web工程，2.5版本。将jquery复制到项目的webcontent中</p>
+<p>导入js文件</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps2.jpg" alt="img"> </p>
+<p>第二步：完成操作</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps3.jpg" alt="img"> </p>
+<p>注意:源生的js绑定，它只能绑定一次（第二次绑定时会将第一次的覆盖掉），而jquery允许绑定多次（都可以显示出来）</p>
+<p>源生的js绑定：</p>
+<script type=”text/javascript”>
+
+window.onload=function(){
+
+alert(“hello jquery”);
+
+}
+
+</script>
+
+<p>jQuery的核心函数</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps4.jpg" alt="img"> </p>
+<p>jQuery.holdReady（hold）暂时不讲</p>
+<p>1.jQuery(callback)</p>
+<p>jQuery(callback)是$(document).ready()的简写</p>
+<p>$(document).ready(function(){});页面加载完成后，指定的函数执行</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps5.jpg" alt="img"> </p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps6.jpg" alt="img"> </p>
+<p>2.jQuery(html,<strong>[ownerDocument]</strong>)</p>
+<p>jQuery(html代码)它的作用是将一个dom对象包装成jquery对象</p>
+<p>jquery对象：jquery中定义的方法与属性，只有jquery对象可以调用</p>
+<p>这个核心函数的作用是将一个dom对象包装成了jquery对象，它的第一个参数是html代码，第二个参数是可选，它用于设置dom的相关属性</p>
+<p>3.jQuery([selector,[context]])</p>
+<p>这个核心函数的主要作用是用于在页面上查找，根据css选择器。参数1就是css选择器  jquery中提供了九种选择器；参数2 context 就是指定要查找的dom集</p>
+<p>4.关于jquery对象与dom对象转换</p>
+<p>dom对象—–àjquery对象  $(dom)</p>
+<p>jquery对象—-àdom对象   jquery对象[0] 或  jquery对象.get(0)</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps7.jpg" alt="img"> </p>
+<h1 id="jQuery选择器-（-重要-）"><a href="#jQuery选择器-（-重要-）" class="headerlink" title="*jQuery选择器*****（**重要**）****"></a><em><strong>*jQuery选择器*</strong>***</em>*（*<strong><strong><strong>*重要*</strong></strong></strong>*）****</h1><p>一、基本选择器</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps8.jpg" alt="img"> </p>
+<p>#id 根据 id属性查找一个元素</p>
+<p>element 根据元素的标签名称查找元素</p>
+<p>.class 根据元素的class属性查找元素</p>
+<p>*匹配所有元素（通配符）</p>
+<p>selector1,selector2…将每一个选择器匹配到元素合并后一起返回</p>
+<p>举例：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps9.jpg" alt="img"> </p>
+<p>1.得到id=d1的元素中的内容显示出：</p>
+<p>var html =$(“#d1”).html();  //获取所有html</p>
+<p>alert(html);</p>
+<p>var html =$(“#d1”).text();  //获取所有文本</p>
+<p>alert(text);</p>
+<p>2.将class=d元素中的内容后面添加XXX：</p>
+<p>$(“.d”).each(function(i){</p>
+<p>$(this).html($(this).html()+”XXX”);</p>
+<p>}</p>
+<p>3.得到id=d1这个div在整个页面上的div是第几个.：</p>
+<p>var index =$(“this”).index($(“#d1”));  //序号是从0开始</p>
+<p>alert(index);</p>
+<p>4.得到class=d的元素有几个：</p>
+<p>var size =$(.d).size();</p>
+<p>alert(size);</p>
+<p>5.将所有的class=d或id=d1元素中的内容设置为java:</p>
+<p>$(“.d,#d1”).html(“java”);</p>
+<p>$(“.d,#d1”).text(“java”);</p>
+<p>方法总结：</p>
+<p>1.html ()方法，无参数代表获取元素中的<strong>html代码</strong>，如果有参数代表设置元素的html信息</p>
+<p>2.text()方法，无参数代表获取元素中的<strong>文本信息</strong>，如果有参数代表设置元素的文本信息</p>
+<p>3.each()方法，它的使用可以帮助我们遍历元素，可以传递一个函数 each(function(n)),n就代表的是每一个元素的序号，在函数中可以通过this来获取其dom对象（注意dom对象和jQuery对象的转换）</p>
+<p>4.index()方法，它可以判断元素的序号</p>
+<p>二、层级选择器</p>
+<p>层级选择器是根据元素的关系来获取。关系是指父子关系，兄弟关系(可以看tab键的位置确定，同级的关系，父子的关系)</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps10.jpg" alt="img"> </p>
+<p>1.空格 得到元素下的所有子元素(包含直接子元素与间接子元素（子元素的子元素）)</p>
+<p>2.大于号&gt;  只获取直接的子元素</p>
+<p>3.加号+  只获取直接的下一个兄弟元素</p>
+<p>4.波浪线~ 所有的后边的兄弟元素</p>
+<p>举例：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps11.jpg" alt="img"> </p>
+<p>\1. 获取id=d的所有<a>子元素：$(“#d a”)  //3个</p>
+<p>\2. 获取id=d 的直接<a>子元素:$(“#d&gt;a”)  //2个</p>
+<p>\3. 获取id=d第一个<p>兄弟元素:$(“#d+p”)  //1个</p>
+<p>\4. 获取id=d的所有<p>兄弟元素:$(“#d~p”)  //2个</p>
+<p>5.将id=d下的所有子元素<a>的文字颜色设置成红色</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps12.jpg" alt="img"> </p>
+<p>方法总结：</p>
+<p>css()方法，它可以设置元素的样式,如果只有一个值  css(name,value),如果有多个值,css({name:value,name:value})</p>
+<p>三、过滤器</p>
+<p>过滤器它是在基本选择器与层次选择器获取到一批元素后，在进行过滤操作，使用过滤选择器基本都是”:”开头，除了属性过滤选择器[]</p>
+<p>1.基本过滤选择器</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps13.jpg" alt="img"> </p>
+<p>odd是奇数，even是偶数</p>
+<p>可以查文档使用</p>
+<p>举例：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps14.jpg" alt="img"> </p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps15.jpg" alt="img"> </p>
+<p>2.内容过滤选择器</p>
+<p>内容过滤选择器它是根据元素内部文本内容进行选中</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps16.jpg" alt="img"> </p>
+<p>举例：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps17.jpg" alt="img"> </p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps18.jpg" alt="img"> </p>
+<p>可以先创建一个css样式的divColor，然后这里可以用addClass()方法调取。</p>
+<p>3.可见性过滤选择器</p>
+<p>可见性过滤选择器它匹配display:none或表单中input hidden这样的元素</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps19.jpg" alt="img"> </p>
+<p>举例：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps20.jpg" alt="img"> </p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps21.jpg" alt="img"> </p>
+<p>方法总结：</p>
+<p>1.val() 获取元素当前的值  就是value值</p>
+<p>2.show() 让元素显示出来</p>
+<p>3.hide() 让元素隐藏起来</p>
+<p>4.属性过滤选择器：根据元素的属性来过滤</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps22.jpg" alt="img"> </p>
+<p>^=匹配开始</p>
+<p>$=匹配结尾</p>
+<p>*=匹配包含</p>
+<p>举例：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps23.jpg" alt="img"> </p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps24.jpg" alt="img"> </p>
+<p>方法总结：</p>
+<p>attr()设置或返回被选元素的属性值</p>
+<p>5.子元素过滤选择器</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps25.jpg" alt="img"> </p>
+<p>根据子元素顺序来获取。</p>
+<p>nth-child根据序号来选择，<em><strong>*序号是从1开始*</strong></em> <em><strong>*（2）*</strong></em>  也可以设置odd even 根据奇偶来设置（odd）（even） 也可以通过倍数来设置（3n）</p>
+<p>first-child 获取第一个</p>
+<p>last-child 获取最后一个</p>
+<p>only-child 获取只有一个子元素</p>
+<p>举例：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps26.jpg" alt="img"> </p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps27.jpg" alt="img"> </p>
+<p>6.表单过滤选择器：表单过滤选择器是用于选取表单中的元素</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps28.jpg" alt="img"> </p>
+<p>举例：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps29.jpg" alt="img"> </p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps30.jpg" alt="img"> </p>
+<p>方法总结：</p>
+<p>1.trim()它是去掉字符串左右空格 $.trim(value)</p>
+<p>常用事件处理：</p>
+<p>2.失去焦点事件 blur(function(){})</p>
+<p>3.click(function(){}) 点击事件</p>
+<p>4.submit() 表单提交</p>
+<p>7.表单对象属性过滤选择器</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps31.jpg" alt="img"> </p>
+<p>checked是用于radio,checkbox 判断选中</p>
+<p>selected是用于select下拉框选中</p>
+<p>举例：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps32.jpg" alt="img"> </p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps33.jpg" alt="img"> </p>
+<p>在开发中，使用比较多的选择器有:</p>
+<p>\1. 基本选择器  class id  element</p>
+<p>\2. 层次选择器  父子关系  兄弟关系</p>
+<p>3.过滤选择器  属性过滤   基本过滤  内容过滤  关于表单过滤</p>
+<h1 id="jQuery-DOM操作"><a href="#jQuery-DOM操作" class="headerlink" title="*jQuery DOM操作*"></a><em><strong>*jQuery DOM操作*</strong></em></h1><p>一、文档处理</p>
+<p>1.插入操作</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps34.jpg" alt="img"> </p>
+<p>内部插入是在该标签的内部的最开始（prepend）和最后（append）插入</p>
+<p>外部插入是在该标签某一项的前面（before）或者后面（after）插入</p>
+<p>举例：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps35.jpg" alt="img"> </p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps36.jpg" alt="img"> </p>
+<p>2.删除</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps37.jpg" alt="img"> </p>
+<p>举例：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps38.jpg" alt="img"> </p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps39.jpg" alt="img"> </p>
+<p>3.替换与克隆</p>
+<p>替换：<img src="/9.5.WEB%E4%B9%8BJQuery/wps40.jpg" alt="img"></p>
+<p>克隆：<img src="/9.5.WEB%E4%B9%8BJQuery/wps41.jpg" alt="img"></p>
+<p>第二个参数生效的情况下，第一个参数必须为true</p>
+<p>举例：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps42.jpg" alt="img"> </p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps43.jpg" alt="img"> </p>
+<p>综合练习：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps44.jpg" alt="img"> </p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps45.jpg" alt="img"> </p>
+<p>二、筛选</p>
+<p>1.过滤</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps46.jpg" alt="img"> </p>
+<p>过滤操作它相当于是我们在jquery中使用的过滤选择器，</p>
+<p>例如 eq可以根据序号来获取元素（从0开始计数） first与last来获取第一个元素与最后一个元素</p>
+<p>2.查找</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps47.jpg" alt="img"> </p>
+<p>是通过当前元素，获取祖先元素，父元素子元素等。</p>
+<p>find方法，它可以直接来查找指定的元素.</p>
+<h1 id="jQuery事件机制"><a href="#jQuery事件机制" class="headerlink" title="*jQuery事件机制*"></a><em><strong>*jQuery事件机制*</strong></em></h1><p>一、jQuery事件介绍</p>
+<p>Jquery中的事件与传统的javascript中事件区别:Jquery中事件允许绑定多个函数，而javascript中一个事件只能绑定一个函数.</p>
+<p>事件中的方法：javascript是onblur，而jquery中是blur</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps48.jpg" alt="img"> </p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps49.jpg" alt="img"> </p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps50.jpg" alt="img"> </p>
+<p>二、事件绑定</p>
+<p>1.传统的javascript中事件绑定操作</p>
+<p>写法1：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps51.jpg" alt="img"> </p>
+<p>写法2：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps52.jpg" alt="img"> </p>
+<p>2.Jquery事件绑定操作</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps53.jpg" alt="img"> </p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps54.jpg" alt="img"> </p>
+<p>bind与live它们的区别：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps55.jpg" alt="img"> </p>
+<p>三、一次性事件和自动触发</p>
+<p>1.一次性事件</p>
+<p>one()为每一个匹配元素的特定事件（像click）绑定一个一次性的事件处理函数</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps56.jpg" alt="img"> </p>
+<p>2.事件触发</p>
+<p>trigger()在每一个匹配的元素上触发某类事件</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps57.jpg" alt="img"> </p>
+<p>四、事件切换</p>
+<p>1.hover：这个操作它可以绑定两个函数，当触发mouseover时第一个函数执行，当触发mouseout时第二个函数执行</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps58.jpg" alt="img"> </p>
+<p>2000是一个时间，2000ms</p>
+<p>2.toggle：用于绑定两个或多个事件处理器函数，以响应被选元素的轮流的 click 事件</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps59.jpg" alt="img"> </p>
+<h1 id="jQueryAjax编程"><a href="#jQueryAjax编程" class="headerlink" title="*jQueryAjax编程*"></a><em><strong>*jQueryAjax编程*</strong></em></h1><p>一、jquery ajax开发介绍</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps60.jpg" alt="img"> </p>
+<p>1.$.ajax()它是jquery提供的最基本的ajax编程方式。它的功能比较强大，但是使用比较麻烦，一般不使用，它是将远程数据加载到XMLHttpRequest对象中。</p>
+<p>2.load  get  post 它们简化了$.ajax操作，get post针对get与post请求的，它们是开发中使用的比较多。</p>
+<p>3.getScript  getJSON 它们是用于解决ajax跨域问题的</p>
+<p>二、load（仅了解，用的不多）</p>
+<p>载入远程 HTML 文件代码并插入至 DOM 中</p>
+<p>load(url,参数，回调函数)</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps61.jpg" alt="img"> </p>
+<p>服务器端的load对应的servlet下的get方法下的代码：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps62.jpg" alt="img"> </p>
+<p>load方法是将服务器响应的数据直接插入到指定的dom元素中。jquery中的load方法如果有参数请求方式是post，如果没有参数请求方式是get</p>
+<p>三、$.ajax（了解）</p>
+<p>$.ajax它是jquery中最基本的ajax操作，load  get  post都简化了$.ajax操作</p>
+<p>上述的代码不使用load操作，使用原始的$.ajax操作</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps63.jpg" alt="img"> </p>
+<p>四、$.post与$.get（重要）</p>
+<p>$.get与$.post它们针对于get与post请求</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps64.jpg" alt="img"> </p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps65.jpg" alt="img"> </p>
+<p>五、$.getJSON和$.getScript</p>
+<p>jQuery ajax开发基于json（重点）</p>
+<p>json介绍：</p>
+<p><a target="_blank" rel="noopener" href="http://baike.baidu.com/view/136475.htm">JSON</a>(<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/16168.htm">JavaScript</a> Object Notation) 是一种轻量级的数据交换格式，是javascript的一个子集.</p>
+<p>json简单说就是javascript中的对象和数组.</p>
+<p>对象: {key：value,key：value,…}</p>
+<p>数组: [“java”,”javascript”,”vb”,…]</p>
+<p>注意:在json中它的两种结构可以互相嵌套</p>
+<p>{key:[value1,value2],key:value}</p>
+<p>[{name:xxx},{key:value},{key:value}]</p>
+<p>Fastjson介绍：</p>
+<p>将java的对象转换成json数据,也可以将一个json转换成java对象(不常用)</p>
+<p>Fastjson是阿里提供的一个开源json插件（工具）</p>
+<p>对于json处理的插件有很多：  fastjson  jsonlib  flexjson  Jackson</p>
+<p>Fastjson的使用介绍：</p>
+<p>\1. 导入相应的jar包</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps66.jpg" alt="img"> </p>
+<p>\2. 演示fastjson将java对象转换成json数据：</p>
+<p>String  json=JSONObject.toJsonString(java对象);</p>
+<p>问题1:将java对象转换成json时，名称是否可以自己来指定?</p>
+<p>用注解@JSONField(name=”xxx”)，下面那个属性的名字就会变成xxx</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps67.jpg" alt="img"> </p>
+<p>问题2:如果java对象中存在日期类型属性java.util.Date,是否可以用指定的格式来转换成json</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps68.jpg" alt="img"> </p>
+<p>问题3:如果java类中的某些属性不想生成json中</p>
+<p>String  json=JSONObject.toJsonString(java对象，fiter); 添加一个过滤器</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps69.jpg" alt="img"> </p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps70.jpg" alt="img"> </p>
+<p>问题4:关于fastjson将java对象转换成json时的循环引用问题</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps71.jpg" alt="img"> </p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps72.jpg" alt="img"> </p>
+<p>这里的后面重复元素会显示为引用，但我们不想这样，所以可以通过以下设置可以取消循环引用</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps73.jpg" alt="img"> </p>
+<p>jQuery ajax开发基于xml(了解)</p>
+<p>XStream介绍：可以使用XStream工具来完成xml与java对象之间的转换。它也可以完成java对象与json之间的转换</p>
+<p>XStream使用时需要导入的jar包：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps74.jpg" alt="img"> </p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps75.jpg" alt="img"> </p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps76.jpg" alt="img"> </p>
+<p>XStream怎样将java对象转换成xml：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps77.jpg" alt="img"> </p>
+<p>XStream相关的常用方法</p>
+<p>1.设置别名（在转换前设置，在new后设置）</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps78.jpg" alt="img"> </p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps79.jpg" alt="img"> </p>
+<p>2.忽略属性（在转换前设置，在new后设置）</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps80.jpg" alt="img"> </p>
+<p>3.将类的属性设置成xml中字段的属性</p>
+<p>​    <img src="/9.5.WEB%E4%B9%8BJQuery/wps81.jpg" alt="img"></p>
+<p>上述的操作都可以用注解使用</p>
+<p>要想使用XStream的注解，必须开启注解扫描.（在转换前设置，在new后设置）</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps82.jpg" alt="img"> </p>
+<p>在java类中的上面加注解</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps83.jpg" alt="img"> </p>
+<h1 id="Ajax跨域问题"><a href="#Ajax跨域问题" class="headerlink" title="*Ajax跨域问题*"></a><em><strong>*Ajax跨域问题*</strong></em></h1><p>跨域它是不同的域名(服务器)之间的相互的资源的访问</p>
+<p>当协议，域名，端口号任意一个不相同，它们就是不同的域。</p>
+<p>正常情况下，因为浏览器安全问题，不同域的资源是不可以访问的</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps84.jpg" alt="img"> </p>
+<p>跨域解决方案</p>
+<p>什么情况下会使用到跨域？</p>
+<p>一般情况是在自己的内部的工程中会出现跨域情况。</p>
+<p>有三种解决方案:</p>
+<p>1.代理方案 前端页面访问本地的服务器，本地服务器访问其它域的资源，它是服务器端的跨域问题解决。<br>2.jsonp JSONP(JSON with Padding)是<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/136475.htm">JSON</a>的一种“使用模式”，可用于解决主流浏览器的跨域数据访问的问题。由于同源策略，一般来说位于 server1.example.com 的网页无法与不是 server2.example.com的服务器沟通，而 HTML 的<script> 元素是一个例外。利用 <script> 元素的这个开放策略，网页可以得到从其他来源动态产生的 JSON 资料，而这种使用模式就是所谓的 JSONP。用 JSONP 抓到的资料并不是 JSON，而是任意的JavaScript，用 JavaScript 直译器执行而不是用 JSON 解析器解析。（其实就是利用script标签可以跨域的特性）</p>
+<p>3.XHR2全称XMLHttpRequest Level2它是HTML5提供的方法，一般是在移动开发中使用</p>
+<p>jQuery解决跨域操作</p>
+<p>在jquery中我们可以使用$.ajax,$.getJSON,$.getScript来解跨域问题</p>
+<p>1.$.ajax解决跨域问题</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps85.jpg" alt="img"> </p>
+<p>关于json与jsonp格式的区别</p>
+<p>Json格式 :[value1,value],{name:value}</p>
+<p>Jsonp格式: callback(json)</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps86.jpg" alt="img"> </p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps87.jpg" alt="img"> </p>
+<p>2.Jquery中如何使用jsonp完成跨域问题</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps88.jpg" alt="img"> </p>
+<p>3.$.getJSON解决跨域问题</p>
+<p>$.getJSON它就是$.ajax解决跨域问题的简化操作</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps89.jpg" alt="img"> </p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps90.jpg" alt="img"> </p>
+<h1 id="jQuery-的分页操作"><a href="#jQuery-的分页操作" class="headerlink" title="*jQuery*****的分页操作****"></a><em><strong>*jQuery*</strong>***</em>*的分页操作****</h1><p>1.前端使用bootstrap的分页组件来完成数据分页显示。</p>
+<p>2.服务器端使用javaee经典三层架构</p>
+<p>3.使用c3p0连接池，dbutils来完成数据库操作。</p>
+<p>分页的意义：因为数据量比较大，为了用户有更好的体验。一般情况下，数据在展示时都会进行分页操作</p>
+<p>分页的种类：</p>
+<p>1.物理分页 :使用数据库本身提供的分页操作来完成数据查询，查询到的就是当前页的信息。例如mysql可以使用limit  oracle数据库可以使用rownum来完成。这种方案的优点是性能比较好，但是它存在不通用问题。</p>
+<p>2.逻辑分页 ：它是利用数据库的游标（absolute光标）来操作 （将数据库所有数据都查询出来，存储在内存中），性能比较低，但是它通用。</p>
+<p>​    现在开发中一般使用的比较多的是物理分页</p>
+<p>分页基本原理：分页实现可以使用ajax分页，也可以使用服务器端分页，它们原理是一样的，现在主要用ajax分页</p>
+<p>Mysql中的limit如何完成分页数据查询操作：</p>
+<p>Select * from 表名  limit num1,num2;</p>
+<p>Num1代表的是从第几行开始查询，起始值是0</p>
+<p>Num2代表的是要查询几条记录</p>
+<p>例如查询第二页数据(每页显示5条)</p>
+<p>Select * from product limit (页码-1)*每页条数,(每页条数);</p>
+<p>完成分页操作必备条件:</p>
+<p>\1. 页码pageNo  默认是1 会根据上一页，下一页，首页尾页选择变化，我们通过js来控制。</p>
+<p>\2. 每页显示条数pageSize 人为设置。</p>
+<p>\3. 总条数</p>
+<p>\4. 总页数=总条数/每页显示条数 (在js中要取整)</p>
+<p>5.封装的当前页的数据</p>
+<p>JAVAEE三层架构</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps91.jpg" alt="img"> </p>
+<p>采用三层架构优点:利于开发与复用 结构清晰，利用标准化</p>
+<p>三层:</p>
+<p>Web层：它主要包含的关于javaweb相关操作，例如request,response,session对象操作，它调用业务层来实现具体的功能。</p>
+<p>业务层(service层):它主要是业务逻辑操作，它不包含web常用对象，它只是java代码。</p>
+<p>数据访问层(dao层):它主要是与数据库进行交互，完成crud操作。</p>
+<p>缺点:开发难度加大，性能得到一定的消耗（调用时候）</p>
+<p>Bootstrap分布组件使用介绍</p>
+<p>注意：在使用bootstrap的分页组件时，需要导入相关的css文件与js文件，并且bootstrap它依赖于jquery,在导入bootstrap的js文件前要导入jquery的js文件，并且它的版本要求必须是1.9.1以上版本</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps92.jpg" alt="img"> </p>
+<p>（css、jQuery、js文件）</p>
+<p>查bootstrap的相关代码复制修改一些参数就可以实现效果</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps93.jpg" alt="img"> </p>
+<p>代码实现：</p>
+<p>创建工程</p>
+<p>1.完成前期准备工作：</p>
+<p>相关的jar包的导入：C3p0连接池jar 、Dbutils、json处理的相关jar包、mysql的驱动jar</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps94.jpg" alt="img"> </p>
+<p>创建服务器端的结构：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps95.jpg" alt="img"> </p>
+<p>创建实体类Product在domain包下：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps96.jpg" alt="img">get、set方法</p>
+<p>需要c3p0连接池：在src下配置C3p0的配置文件.properties。我们创建一个JdbcUtils 工具类在util包下，在使用dbutils的QueryRunner时需要Connection对象或DataSource对象</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps97.jpg" alt="img"> </p>
+<p>2.完成所有产品的查询操作</p>
+<p>创建产品页面，向服务器发送请求（获取所有产品信息）</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps98.jpg" alt="img"> </p>
+<p>在web层下创建一个ProductServlet来接收请求，获取所有的产品信息。配置信息的名字为/product</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps99.jpg" alt="img"> </p>
+<p>在Service（业务）层下创建业务层ProductService（实际开发中代码很繁杂）</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps100.jpg" alt="img"> </p>
+<p>创建DAO持久化层ProductDAO</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps101.jpg" alt="img"> </p>
+<p>3.完成产品的分页显示</p>
+<p>在浏览器端提供pageNo与pageSize,将它们作为参数传递到服务器</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps102.jpg" alt="img"> </p>
+<p>服务器来处理分页</p>
+<p>Web：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps103.jpg" alt="img"> </p>
+<p>Service：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps104.jpg" alt="img"> </p>
+<p>Dao：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps105.jpg" alt="img"> </p>
+<p>怎样在浏览器端展示分页条：在分页条中需要总页数据，也就是说，总页数我们需要在服务器端查询获得到，需要服务器端返回它。我们可以定义一个PageBean这样一个对象，在这个PageBean中我们封装分页需要的数据，将它在服务器端生成，服务器端就不需要直接返回List<Product>,.面是返回一个PageBean的json数据</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps106.jpg" alt="img">get、set方法</p>
+<p>我们可以在service中来对PageBean进行数据封装，servlet最终是将PageBean转换成json响应到浏览器</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps107.jpg" alt="img"> </p>
+<p>响应到浏览器的json数据</p>
+<p>{“content”:[{“count”:100,”id”:1,”name”:”电视机”,”price”:2000},{“count”:200,”id”:2,”name”:”洗衣机”,”price”:1000},{“count”:300,”id”:3,”name”:”空调”,”price”:3000},{“count”:50,”id”:4,”name”:”投影仪”,”price”:2000},{“count”:100,”id”:5,”name”:”HP电脑”,”price”:4000}],”pageNo”:1,”pageSize”:5,”totalCount”:11,”totalPage”:3}</p>
+<p>在浏览器端展示分页信息：</p>
+<p>关于数据展示：</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps108.jpg" alt="img"> </p>
+<p>pageNo=json.pageNo；</p>
+<p>pageSize=json.pageSize；</p>
+<p>totalCount=json.totalCount；</p>
+<p>totalPage=json.totalPage；</p>
+<p>也可以设置一个css的style样式</p>
+<p>关于分页条码：</p>
+<p>它是一个动态生成的数据，我们需要拼接html代码来完成</p>
+<p>a.处理当前页高亮显示</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps109.jpg" alt="img"> </p>
+<p>b.点击页码，可以跳转到指定的页</p>
+<p>将跳转的页码代码进行抽取成一个带页码参数的方法，然后$(function(){这个方法})；</p>
+<p>会出现问题，进行修复操作:</p>
+<p>​    1.在真正生成数据与分页条前将数据清空并恢复成原始状态</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps110.jpg" alt="img"> </p>
+<p>2.处理参数pageNum，将pageNo，pageSize，totalCount，totalPage设置为全局变量</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps111.jpg" alt="img"> </p>
+<p>c.处理上一页操作</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps112.jpg" alt="img"> </p>
+<p>d.处理下一页操作</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps113.jpg" alt="img"> </p>
+<h1 id="jQuery扩展-了解"><a href="#jQuery扩展-了解" class="headerlink" title="*jQuery扩展(了解)*"></a><em><strong>*jQuery扩展(了解)*</strong></em></h1><p>1.serialize与serializeArray</p>
+<p>serialize:它的作用是将表单的数据序列化（用的比较多）</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps114.jpg" alt="img"> </p>
+<p>serializeArray:将表单序列化，返回的是json数据格式（需要进行处理才能得到我们想要的格式）</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps115.jpg" alt="img"> </p>
+<p>2.插件机制与自定义插件</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps116.jpg" alt="img"> </p>
+<p>在开发中使用jquery,除了它本身提供的API,我们更多的还会使用jquery的插件。例如jquery easyui….</p>
+<p>2.1 jQuery.extend();</p>
+<p>上面这个是扩展jquery全局对象本身  $.post  $.ajax  $.get</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps117.jpg" alt="img"> </p>
+<p>2.2 jQuery.fn.extend();</p>
+<p>这个是扩展jquery元素集（对象）  $(“#f”).find()  $(“abc”).val()</p>
+<p>通过创建一个插件完成表单数据转换成json操作</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps118.jpg" alt="img"> </p>
+<p>如果表单中出现一个名称对应多个值的元素，会出现后面的会把前面的覆盖掉，怎样处理?</p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps119.jpg" alt="img"> </p>
+<p><img src="/9.5.WEB%E4%B9%8BJQuery/wps120.jpg" alt="img"> </p>
+<p>在js逻辑运算中，0、”“、null、false、undefined、NaN都会判为false，其他都为true</p>
+<p>只要“||”前面为false,不管“||”后面是true还是false，都返回“||”后面的值。</p>
+<p>只要“||”前面为true,不管“||”后面是true还是false，都返回“||”前面的值。</p>
+<p>只要“&amp;&amp;”前面是false，无论“&amp;&amp;”后面是true还是false，结果都将返“&amp;&amp;”前面的值</p>
+<p>只要“&amp;&amp;”前面是true，无论“&amp;&amp;”后面是true还是false，结果都将返“&amp;&amp;”后面的值</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.5.WEB%E4%B9%8BJQuery/" data-id="ckq1xbdsu004vpwwd7xb7ht0s" data-title="WEB之JQuery" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-9.4.WEB之JSP" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/9.4.WEB%E4%B9%8BJSP/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:29:46.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/9.4.WEB%E4%B9%8BJSP/">WEB之JSP</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>JSP：Java Server Pages (Java服务器端页面)，其实就是在HTML中嵌入Java代码。</p>
+<p>JSP将Java代码和特定变动内容嵌入到静态的页面中，实现以静态页面为模板，动态生成其中的部分内容。</p>
+<p>JSP引入了被称为“JSP动作”的XML标签，用来调用内建功能。另外，可以创建JSP标签库，然后像使用标准HTML或XML标签一样使用它们。标签库能增强功能和服务器性能，而且不受<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%B7%A8%E5%B9%B3%E5%8F%B0">跨平台</a>问题的限制。</p>
+<p>JSP文件在运行时会被其编译器转换成更原始的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Servlet">Servlet</a>代码。JSP编译器可以把JSP文件编译成用Java代码写的Servlet，然后再由Java编译器来编译成能快速执行的二进制<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9C%BA%E5%99%A8%E7%A0%81">机器码</a>，也可以直接编译成二进制码。</p>
+<p>SUN公司提供了动态网页开发技术：Servlet。Servlet技术生成动态网页的时候很麻烦，需要通过response获得输出流，调用print方法进行打印的。这种编程方式很麻烦，而且美工也不容易处理，SUN公司发现了这些问题，推出了一个新的动态网页开发技术JSP。</p>
+<p>缺点：Servlet需要进行配置，不方便维护；Servlet很难向网页中输出HTML页面内容</p>
+<p>JSP的简单使用：</p>
+<p>创建一个web项目，2.5版本，finish。在WebContent下新建一个包，新建一个JSPfile。将其中的编码改为UTF-8</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps1.jpg" alt="img"> </p>
+<p>JSP需要发布到服务器中才可以运行：</p>
+<p>在services中添加这个web项目，finish。启动服务器。浏览器输入访问。</p>
+<p>运行原理：JSP文件翻译成Java文件，将这个Java文件编译生成class文件，运行class文件。JSP在执行时，会被服务器翻译为Servlet编译执行，JSP就是一个Servlet。</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps2.jpg" alt="img"> </p>
+<p>JSP = HTML + Java代码 + JSP自身东西</p>
+<p>JSP的脚本元素就是在JSP中嵌入Java代码。</p>
+<p>分类：</p>
+<p>1.声明标签：写在这个脚本中的代码，翻译成Servlet内部的成员变量或成员方法（JSP声明 翻译成 Servlet成员部分的内容。声明变量，方法，内部类）</p>
+<p>语法：&lt;%! 变量或方法声明 %&gt;</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps3.jpg" alt="img"> </p>
+<p>2.表达式标签：写在这个脚本中的代码，翻译成方法内部的out.print();当中的内容（翻译out.print(),在service方法内部。用于生成HTML页面源码）</p>
+<p>语法：&lt;%= 表达式 %&gt;</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps4.jpg" alt="img"> </p>
+<p>3.程序代码标签：写在这个脚本中的代码，翻译成方法内部的局部变量或方法内部代码片段（嵌入Java代码 翻译成service方法内部的代码块。声明变量，内部类）</p>
+<p>语法：&lt;% 程序代码 %&gt;</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps5.jpg" alt="img"> </p>
+<p>因为Servlet被认为是线程不安全的，所以用声明标签来定义局部变量不合适，一般都会用程序代码标签来定义变量。</p>
+<p>JSP的开发模式：</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps6.jpg" alt="img"> </p>
+<p>以后开发一般都用MVC开发模式</p>
+<p>开发中的路径问题：</p>
+<p>提供一些页面，在页面中会提供链接或者表单，当点击链接或者表单的时候需要进行提交，提交到Servlet中。从页面向Servlet发送请求的地址（路径）应该如何编写。</p>
+<p>路径的分类：</p>
+<p>1.相对路径：相对路径不是以 / 开头的</p>
+<p>比如：</p>
+<p>在根路径下的页面访问Servlet：</p>
+<p>假如demo2.jsp的访问路径：<a target="_blank" rel="noopener" href="http://localhost:8080/web02/demo2.jsp">http://localhost:8080/web02/demo2.jsp</a></p>
+<p>ServletDemo1的访问路径：<a target="_blank" rel="noopener" href="http://localhost:8080/web02/ServletDemo1">http://localhost:8080/web02/ServletDemo1</a></p>
+<p>则：<img src="/9.4.WEB%E4%B9%8BJSP/wps7.jpg" alt="img"></p>
+<p>加不加./都可以</p>
+<p>在某个目录下的页面访问Servlet：</p>
+<p>假如demo2.jsp的访问路径：<a target="_blank" rel="noopener" href="http://localhost:8080/web02/demo2/demo2.jsp">http://localhost:8080/web02/demo2/demo2.jsp</a></p>
+<p>ServletDemo1的访问路径：<a target="_blank" rel="noopener" href="http://localhost:8080/web02/ServletDemo1">http://localhost:8080/web02/ServletDemo1</a></p>
+<p>则：<img src="/9.4.WEB%E4%B9%8BJSP/wps8.jpg" alt="img"></p>
+<p>需要先返回上一级再去访问</p>
+<p>2.绝对路径（通常用这个）：通常以 / 开始的路径</p>
+<p><em><strong>*使用绝对路径，不需要关心当前文件和要请求的文件的相对位置的关系*</strong></em></p>
+<p><em><strong>*绝对路径分成服务器端路径和客户端路径*</strong>***</em>*：****</p>
+<p><em><strong>*客户端路径  需要带工程名*</strong></em></p>
+<p><em><strong>*服务器端路径 不需要带工程名*</strong></em></p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps9.jpg" alt="img"> </p>
+<p>这个例子的工程名是web02</p>
+<p>JSP的模板修改JSP的字符集编码：在window下的Preferences中找到jsp</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps10.jpg" alt="img"> </p>
+<p>JSP的注释：</p>
+<p>1.HTML的注释：</p>
+<p>写法：<!--HTML的注释 --></p>
+<p>存在时机：存在JSP的源码中，翻译成Servlet后这个注释也存在，在生成HTML响应到页面的时候这个注释也会存在。</p>
+<p>2.JAVA代码的注释：</p>
+<p>写法：&lt;% // 单行注释 </p>
+<p>/* 多行注释 */ </p>
+<p>/*<em>文档注释</em>/</p>
+<p> %&gt;</p>
+<p>存在时机：存在JSP的源码中，翻译成Servlet后Java代码的注释也会存在，但是生成HTML响应到页面后，这种注释就消失了。</p>
+<p>3.JSP自身的注释：</p>
+<p>写法：&lt;%– JSP的注释 –%&gt;</p>
+<p>存在时机：存在JSP的源码中，翻译Servlet后注释就没有了。</p>
+<p>注意：HTML的注释只能注释一些元素，不能注释java代码</p>
+<h1 id="JSP的指令元素"><a href="#JSP的指令元素" class="headerlink" title="JSP的指令元素"></a>JSP的指令元素</h1><p>作用：用于指示JSP执行的某些步骤；用于指示JSP变现特定行为</p>
+<p>语法：&lt;%@ 指令名称 属性名称=属性的值 属性名称=属性的值 %&gt;</p>
+<p>分类：</p>
+<p>page指令：指示JSP的页面设置属性和行为</p>
+<p>include指令：指示JSP包含哪些其他页面</p>
+<p>taglib指令：指示JSP页面包含哪些标签库</p>
+<p>page指令：</p>
+<p>写法：&lt;%@ page 属性名=属性值 属性名=属性值 属性名=属性值 %&gt;</p>
+<p>Page指令用来定义JSP文件的全局属性。</p>
+<p>这些属性可以单独使用，也可以几个或多个同时使用。</p>
+<p>在JSP页面中，只有import属性可以出现多次，其他属性都只能出现一次。</p>
+<p>language属性：声明使用脚本的语言。只能是java。</p>
+<p>extends属性：标明JSP编译成Servlet的时候继承的类。默认值：HttpJspBase。</p>
+<p>session属性：标明JSP中是否可以直接使用session对象。默认值是true。</p>
+<p>buffer属性：标明JSP对客户端输出缓冲区大小。默认值8kb。</p>
+<p>autoFlush属性：如果缓冲区大小溢出，是否自动刷出。默认true。</p>
+<p><em><strong>*import属性：用于导入Java包或类。*</strong>***</em>*（*<strong><strong><strong>*写完java代码后alt+/自动导入*</strong></strong></strong>*）****</p>
+<p><em><strong>*contentType属性：标明JSP被浏览器解析和打开的时候采用的默认的字符集。*</strong></em></p>
+<p><em><strong>*pageEncoding属性：JSP文件及JSP翻译后的Servlet保存到硬盘上采用字符集。*</strong></em></p>
+<p>isErrorPage属性：处理JSP页面异常。默认为false，改为true后，可以&lt;%= exception.getMessage&gt;就可以输出异常信息</p>
+<p>errorPage属性：处理JSP页面异常。(后面可以跟一个jsp的页面地址，当出现异常时，就可以跳转到)</p>
+<p>isELIgnored属性：通知JSP是否忽略EL表达式。默认是false。改为true后，EL内的信息会直接输出，EL写进标签就会报错。</p>
+<p>include指令：</p>
+<p>写法：&lt;%@ include 属性名=属性值%&gt;</p>
+<p>作用：在JSP页面中****静态包含****一个文件，同时由该JSP解析包含的文件内容。</p>
+<p>file属性：指示JSP页面包含页面路径。</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps11.jpg" alt="img"> </p>
+<p>注意：应该将被包含的页面的结构去掉（会有重复的HTML标签，被包含的去掉）。在被包含的页面中定义变量，在包含的页面中还可以使用。</p>
+<p>taglib指令:</p>
+<p>写法：&lt;%@ taglib 属性名=属性值%&gt;</p>
+<p>作用：用于在JSP页面中引入标签库。</p>
+<p>uri属性：引入的标签库的路径</p>
+<p>prefix属性：引入标签库的别名（前缀）</p>
+<p>JSP的内置对象：指的是可以直接在JSP页面中使用的对象。</p>
+<p>JSP当中有9大内置对象（具体类型）：</p>
+<p>l request（HttpServletRequest）：从客户端向服务器发送的请求对象</p>
+<p>l response    （HttpServletResponse）：从服务器端向客户端作出响应对象</p>
+<p>l session    （HttpSession）：服务器为客户端创建会话对象</p>
+<p>l application（ServletContext）：代表应用。获得的ServletContext对象。</p>
+<p>l out    （JspWriter）：向输出流写入内容的对象。</p>
+<p>l page（Object）：当前的JSP翻译成Servlet后的对象的引用。</p>
+<p>l pageContext    （PageContext）：本JSP的页面的上下文对象。</p>
+<p>l config（ServletConfig）：本JSP的ServletConfig对象。</p>
+<p>l exception（Throwable）：表示JSP页面运行时产生的异常对象。</p>
+<p>pageContext对象：pageContext对象直接翻译为“页面上下文”对象，代表的是当前页面运行的一些属性。</p>
+<p>它是javax.servlet.jsp.PageContext类的实例对象。</p>
+<p>1.提供了page范围的数据存取的方法：</p>
+<p>向page范围中存入数据：</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps12.jpg" alt="img"> </p>
+<p>从page范围获取数据</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps13.jpg" alt="img"> </p>
+<p>从page范围移除数据</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps14.jpg" alt="img"> </p>
+<p>查找属性的方法：</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps15.jpg" alt="img"> </p>
+<p>2.通过这个对象获得其他的8个内置对象：</p>
+<p>获得其他8个内置对象的方法</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps16.jpg" alt="img"> </p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps17.jpg" alt="img"> </p>
+<p>JSP的四个作用范围</p>
+<p>PageScope：页面范围。</p>
+<p>页面范围指的是在当前的页面内有效，出了这个页面，用pageContext保存的数据就无效了。</p>
+<p>RequestScope：请求范围。</p>
+<p>从客户端向服务器发送一次请求，服务器对这次请求作出了响应之后，用request保存的数据就无效了。</p>
+<p>SessionScope：会话范围。</p>
+<p>每个浏览器向服务器发送请求（多次请求）。将该会话结束，用session保存的数据就无效了。</p>
+<p>ApplicationScope：应用范围。</p>
+<p>在整个应用中任意的地方都可以获取。用application保存。</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps18.jpg" alt="img"> </p>
+<p>调取的时候使用重载方法：</p>
+<p>pageContext.getAttribute(“name”,PageContext.SESSION_SCOPE)</p>
+<p>findAttribute方法：查找属性方法，先根据小范围的名称进行查找，如果找到了就返回，如果没有找到就会去比其大一个域的范围进行查找。（page–request–session–application）</p>
+<p>JSP的动作标签：用于在JSP页面中提供业务逻辑功能，避免在JSP页面中直接编写Java代码（会有大量的&lt;%  &gt;），造成jsp页面难以维护。</p>
+<p>常用的动作标签：</p>
+<p><em><strong>*&lt;jsp:forward**** ****page=“”********&gt;*</strong></em> <em><strong>*&lt;********/********jsp:forward********&gt;*</strong></em>    <em><strong>*：请求转发。*</strong></em></p>
+<p><em><strong>*&lt;jsp:include**** ****page=********””********&gt;*</strong></em> <em><strong>*&lt;/********jsp:include********&gt;*</strong>***</em>*：包含（*<strong><strong><strong>*是一种*</strong></strong></strong>*动态包含）。****</p>
+<p>&lt;jsp:param value=“” name=“” /&gt;：传递参数。（很少使用，因为可以用set/getAttribute来设置获取参数）</p>
+<p>动态包含的原理：</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps19.jpg" alt="img"> </p>
+<p>查看Tomcat的work下的localhost下的项目下会找到被包含的jsp都被编译成了java和clss文件。</p>
+<h1 id="EL"><a href="#EL" class="headerlink" title="EL"></a>EL</h1><p>EL（Expression Language） 是为了使JSP写起来更加简单。表达式语言的灵感来自于 ECMAScript 和 XPath 表达式语言，它提供了在 JSP 中简化表达式的方法，让Jsp的代码更加简化。</p>
+<p>EL：Expression Language表达式语言。</p>
+<p>EL和JSTL一起使用取代JSP页面中嵌入Java代码写法。（去掉&lt;&gt;和%）</p>
+<p>EL的语法：${ EL表达式 }</p>
+<p>EL的功能：</p>
+<p>1.EL获取数据（域对象中）</p>
+<p>EL表达式语句在执行的时候，会调用pageContext.findAttribute()方法。分别从page、request、session、application范围查找相应对象，找到就会返回相应对象，找不到返回””(不是null，是空的字符串)。EL所获取的数据需要在四个作用范围中。</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps20.jpg" alt="img"> </p>
+<p>这两种方式的区别：如果没有存入数据，前者获取输出的是null，后者输出的是“”。直接写${name}会先从最小范围查找，找不到的话会向上一级域查找（其实相当于调用了pageContext.findAttribute()方法）。</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps21.jpg" alt="img"> </p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps22.jpg" alt="img"> </p>
+<p>（需要引包：alt+/）</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps23.jpg" alt="img"> </p>
+<p>如果map的key中包含了特殊字符，不能使用.必须使用[]。</p>
+<p>因为：  .用来获取对象的属性的  []用来获得下标</p>
+<p>例如，包含特殊字符.</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps24.jpg" alt="img"> </p>
+<p><em><strong>*2.*</strong>***</em>*EL执行运算****</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps25.jpg" alt="img"> </p>
+<p>会自动类型转换，即使是字符串，也会转换成算数运算</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps26.jpg" alt="img"> </p>
+<p>lt：less than   gt：great than   ne：not equal</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps27.jpg" alt="img"> </p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps28.jpg" alt="img"> </p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps29.jpg" alt="img"> </p>
+<p>判断一个对象是否为空 也可以${not empty user}</p>
+<p>不支持位运算</p>
+<p><em><strong>*3.*</strong>***</em>*EL获取web开发常用的对象****</p>
+<p>EL表达式定义了11个web开发常用对象。使用这些对象可以很方便获取web开发中的一些常见对象，并可以读取这些对象中的数据。</p>
+<p><em><strong>*pageContext*</strong></em>    ：相当于JSP内置对象中pageContext（可以通过这个获取其他八个对象）</p>
+<p>pageScope：获取指定域下的名称的数据</p>
+<p>requestScope：获取指定域下的名称的数据</p>
+<p>sessionScope：获取指定域下的名称的数据</p>
+<p>applicationScope    ：获取指定域下的名称的数据</p>
+<p>param：在页面中接收请求参数（接收一个名称对应一个值参数）。相当于requset.getParam</p>
+<p>paramValues    ：在页面中接收请求参数（接收一个名称对应多个值参数）。</p>
+<p>header：在页面上获取请求头（获取一个key对应一个value 头）</p>
+<p>headerValues：在页面上获取请求头（获取一个key对应多个value 头）</p>
+<p>cookie：访问cookie的名称和值（${cookie.key.name} ${cookie.key.value}）</p>
+<p>initParam：获取全局初始化参数的值</p>
+<p>4.EL调用Java方法（基本不用）</p>
+<h1 id="JSTL"><a href="#JSTL" class="headerlink" title="JSTL"></a>JSTL</h1><p>JSTL（Java server pages standarded tag library，即JSP标准标签库）是由<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/JCP/2679009">JCP</a>（Java community Proces）所制定的标准规范，它主要提供给Java Web开发人员一个标准通用的标签库，并由Apache的Jakarta小组来维护。开发人员可以利用这些标签取代JSP页面上的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Java/85979">Java</a>代码，从而提高程序的可读性，降低程序的维护难度。</p>
+<p>JSTL：JSP的标准标签库。</p>
+<p>JSTL主要是和EL来取代传统页面上直接嵌入Java代码写法。提升程序可读性、维护性和方便性。</p>
+<p>版本：JSTL1.0、JSTL1.1和JSTL1.2版本</p>
+<p>1.0版本不支持EL表达式。<em><strong>*1.1和1.2支持了EL表达式。*</strong></em></p>
+<p>标签库：</p>
+<p><em><strong>*c标签（core标签库*</strong>***</em>*，*<strong><strong><strong>*核心标签库*</strong></strong></strong>*）****</p>
+<p>fmt标签（国际化标签库）</p>
+<p>xml标签（后台编写，前台标签不怎么用）</p>
+<p>sql标签（后台编写，前台标签不怎么用）</p>
+<p><em><strong>*jstl函数库（EL函数）*</strong></em></p>
+<p>使用：先导入JSTL的jar包到lib中</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps30.jpg" alt="img"> </p>
+<p>新建一个jsp页面：</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps31.jpg" alt="img"> </p>
+<p>在上面导入标签库：</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps32.jpg" alt="img"> </p>
+<p>可以直接使用：</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps33.jpg" alt="img"> </p>
+<p>value相当于是值，var相当于是name，scope是域对象的范围</p>
+<p>JSTL有很多标签，可以查看文档使用，用的较多的是：</p>
+<p>JSTL的if标签使用：只有if没有else</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps34.jpg" alt="img"> </p>
+<p>test属性：条件</p>
+<p>var属性：将test中的条件的值赋给一个变量，在var中定义变量</p>
+<p>scope属性：作用范围</p>
+<p>&lt;c:if  var=”flag” test=”${ i&lt;10 }” scope =”page”&gt;  </c:if > </p>
+<p>后面可以直接使用flag  </p>
+<p>&lt;c:if  test=”${flag }” &gt;  </c:if ></p>
+<p>JSTL的forEach标签使用：</p>
+<p><img src="/9.4.WEB%E4%B9%8BJSP/wps35.jpg" alt="img"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.4.WEB%E4%B9%8BJSP/" data-id="ckq1xbds1002upwwdcf0g0g6v" data-title="WEB之JSP" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-9.3.WEB之servlet" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/9.3.WEB%E4%B9%8Bservlet/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:29:35.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/9.3.WEB%E4%B9%8Bservlet/">WEB之servlet</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>动态网页的开发：Servlet和JSP</p>
+<p>Servlet其实就一个运行在web服务器上的小的Java程序，用于处理从web客户端发送的请求，并且对请求作出响应。</p>
+<p>静态页面不能写循环，判断，SQL等语句。而Servlet就可以写。</p>
+<p>使用Servlet：编写一个Java类实现Servlet的接口；配置Servlet</p>
+<p>相关内容可以查JAVAEE的API中的Servlet</p>
+<p>1.创建一个项目，在<img src="/9.3.WEB%E4%B9%8Bservlet/wps1.jpg" alt="img">中建包建类</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps2.jpg" alt="img"> </p>
+<p>其他方法保持不变</p>
+<p>2.配置这个类，在WEB-INF下的web.xml中配置</p>
+<p>双击类名，右击copy全路径</p>
+<p>前后的servlet-name必须要一致</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps3.jpg" alt="img"> </p>
+<p>启动服务器，打开浏览器：<a target="_blank" rel="noopener" href="http://localhost:8080/web_test/hello">http://localhost:8080/web_test/hello</a></p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/web_test/+%E8%AE%BF%E9%97%AE%E8%B7%AF%E5%BE%84">http://localhost:8080/web_test/+访问路径</a></p>
+<p>执行流程：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps4.jpg" alt="img"> </p>
+<p>Servlet的实现关系：</p>
+<p>Servlet接口            </p>
+<p>​    |</p>
+<p>​    |</p>
+<p>GenericServlet类        通用的Servlet，是一个与协议无关的Servlet</p>
+<p>​    |</p>
+<p>​    |</p>
+<p>HttpServlet类            Http专用的Servlet</p>
+<p>SUN设计之初，是有野心，以后的互联网不仅仅只使用http协议，其他协议就可以通过GenericServlet实现。HttpServlet是一个与协议相关的Servlet是专门用来处理HTTP协议的请求。通常编写一个Servlet一般都会让这个Servlet<em><strong>*继承HttpServlet重写service方法*</strong>***</em>*（*<strong><strong><strong>*不用再实现Servlet接口，因为会有很多用不到的方法也要重写*</strong></strong></strong>*）****<em><strong>*。*</strong></em></p>
+<p><em><strong>*查看源码可以知道，*</strong>***</em>*在service方法内部根据请求方式不同执行不同的doXXX的方法（get请求执行doGet方法，如果是post请求就会执行doPost方法）。****</p>
+<p><em><strong>*所以*</strong>***</em>*一般*<strong><strong><strong>*继承了HttpServlet之后不需要重写service方法，只需要重写doGet和doPost方法即可。往往请求要处理的内容的代码都是一致的，所以需要让doGet和doPost相互调用可以简化编程*</strong></strong></strong>*（*<strong><strong><strong>*编码一次，另一个方法调用这个方法即可*</strong></strong></strong>*）****<em><strong>*。*</strong></em></p>
+<p>Eclipse中使用Servlet模版：（不用在web.xml中修改完成配置，这样是自动完成了Servlet的配置）</p>
+<p>右击new的时候选择新建Servlet；输入name（默认继承了HttpServlet）后，点击next；对Servlet进行配置：name和前面一致（一般不用改），URL mapping就是访问名字（右边edit可以修改），点击next；构造方法可以不用选，重写方法选择doGet和doPost方法。点击finish</p>
+<p>生命周期：一个对象从创建到销毁过程</p>
+<p>Servlet生命周期：Servlet对象从创建到销毁的过程</p>
+<p>Servlet中有****init,service,destroy****方法，这几个方法称为是Servlet生命周期相关的方法</p>
+<p>Servlet是在第一次被访问的时候会被实例化，只要Servlet一被实例化那么Servlet中的init方法就会执行（init只会执行一次，Servlet是单例的）。</p>
+<p>任何一次从客户端发送来的请求，那么Servlet中的service方法就会执行（在service方法的内部根据请求的方式不同调用不同doXXX方法）。</p>
+<p>当Servlet从服务器中移除或者服务器关闭的时候Servlet对象被销毁，里面的destroy方法就会执行，然后垃圾回收就会将其回收掉（在servers下点红色方框关闭服务器，在控制台下的红色方框是强制退出，不是服务器）</p>
+<p>Servlet的启动时加载：Servlet对象是第一次被访问的时候会被创建的，init方法就会执行。假设在init方法中做了一些比较耗时的操作（比如：加载了一些配置文件并且解析可能需要花费3秒钟）。第一个用户第一次访问这个Servlet的时候，需要等待3秒钟，这样会使体验感很差，所以要改为启动时加载。</p>
+<p>Servlet默认是在第一次访问的时候创建的对象，现在通过一个配置将Servlet的实例化的过程放在服务器启动的时候（****让服务器启动的时候创建Servlet的对象****）。如果现在这样做那么之前花费的时间就会在服务器启动的时候一起花费掉了。对于用户来讲就不需要额外花费这个时间。</p>
+<p>在web.xml中配置。值越小，优先级越高。有一个默认的Servlet启动优先级为1，所以配置的最高为2。（可以在Tomcat的conf下的web.xml中查看文档）</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps5.jpg" alt="img"> </p>
+<p>Servlet的访问路径的配置：<url-pattern>的配置方式</p>
+<p>1.完全路径匹配：以 / 开始   比如：/ServletDemo1    /aaa/ServletDemo2</p>
+<p>2.目录匹配：以 / 开始，以 /<em>结束  比如：/</em>    /aaa/*    /aaa/bbb/*</p>
+<p>3.扩展名匹配：不能以 / 开始，以<em>开始        比如：</em>.action    *.do    *.jsp</p>
+<p>（*代表的是任意字符）</p>
+<p>访问的优先级：完全路径匹配  &gt;  目录匹配  &gt;  扩展名匹配</p>
+<p>如果输入的三个都匹配，比如：/aaa/ServletDemo2.do  实际会先进行完全路径的匹配，再进行目录匹配，最后是扩展名匹配。</p>
+<p>ServletConfig对象：</p>
+<p>ServletConfig用来获得Servlet的相关的配置的对象。（init方法中可以传递这个对象）</p>
+<p>获得ServletConfig对象：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps6.jpg" alt="img"> </p>
+<p>ServletConfig对象的API：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps7.jpg" alt="img"> </p>
+<p>获得Servlet的初始化参数（值和名字） <param-name><param-value></p>
+<p>获得ServletContext对象</p>
+<p>获得Servlet的名称<servlet-name></servlet-name></p>
+<p>配置初始化参数的例子：在web.xml中添加配置：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps8.jpg" alt="img"> </p>
+<p>实现：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps9.jpg" alt="img"> </p>
+<p>ServletContext对象：</p>
+<p>ServletContext：Servlet的上下文对象。ServletContext对象对Servlet之前和之后的内容都知道。这个对象一个web项目只有一个。在服务器启动的时候为每个web项目创建一个单独的ServletContext对象。</p>
+<p>作用：</p>
+<p>1.用来获取web项目信息：因为一个web项目只有一个ServletContext对象，所以这个对象对整个项目的相关内容都是了解的</p>
+<p>获取文件的MIME类型：文件上传和下载的时候会用到这个方法（这些类型都可以在conf下的web.xml中找到）</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps10.jpg" alt="img"> </p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps11.jpg" alt="img"> </p>
+<p>获取web项目请求工程名：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps12.jpg" alt="img"> </p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps13.jpg" alt="img"> </p>
+<p>获取web项目的初始化参数：全局的参数</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps14.jpg" alt="img"> </p>
+<p>可以在前面配置全局的初始化参数（原来的局部配置参数是在Servlet标签内部配置的，现在配置全局的话在最前面配置）</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps15.jpg" alt="img"> </p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps16.jpg" alt="img"> </p>
+<p>2.读取web项目下的文件：之前使用IO流就可以读取文件（java项目中）。现在是一个web项目，web项目需要发布到tomcat下才能访问的。获取web项目下的文件如果使用传统的IO就会出现问题（原因：路径中使用的是相对路径，相对的是JRE环境，是Tomcat的bin路径）。</p>
+<p>使用getServletContext的getResourceAsStream方法或者getServletContext的getRealPath方法</p>
+<p>以/开头的都是相对路径。</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps17.jpg" alt="img"> </p>
+<p>3.作为域对象存取数据：</p>
+<p>域对象：指的是将数据存入到域对象中，这个数据就会有一定的作用范围。域指的是一定的作用范围。</p>
+<p>作为域对象的API：</p>
+<p>存入数据的方法：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps18.jpg" alt="img"> </p>
+<p>获取数据的方法：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps19.jpg" alt="img"> </p>
+<p>移除数据的方法：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps20.jpg" alt="img"> </p>
+<p>作用范围：</p>
+<p>ServletContext是在服务器启动的时候为每个web项目单独创建一个ServletContext对象。当web项目从服务器中移除，或者是关闭服务器的时候ServletContext对象会被销毁。向ServletContext中保存的数据一直存在（当服务器关闭的时候ServletContext对象被销毁，然后里面数据才会失效）。<em><strong>*范围：整个web应用。*</strong></em></p>
+<p>例子：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps21.jpg" alt="img"> </p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps22.jpg" alt="img"> </p>
+<p>在demo7中初始化的时候存入数据，发现访问demo7和8的时候都能访问到name的值，所以ServletContext的域对象是整个web应用。</p>
+<p>开发的软件是B/S结构的软件，可以通过浏览器访问服务器的软件。</p>
+<p>从浏览器输入一个地址访问服务器（将这个过程称为是请求：将浏览器向服务器发送的数据的封装）。服务器接收到请求，需要进行处理，处理以后需要将处理结果显示回浏览器端（将这个过程称为是响应：将服务器向浏览器发送数据的封装）。</p>
+<p>Response对象：</p>
+<p>Response关于响应行的方法：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps23.jpg" alt="img"> </p>
+<p>设置响应的状态码：</p>
+<p>200 正确</p>
+<p>302 重定向</p>
+<p>304 查找本地缓存</p>
+<p>404 请求资源不存在</p>
+<p>500 服务器内部错误</p>
+<p>Response关于响应头的方法：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps24.jpg" alt="img"> </p>
+<p>set开头的方法：针对一个key对应一个value的情况</p>
+<p>举例：比如有一个头 </p>
+<p>content-Type:text/html  setHeader(“content-Type”,”text/plain”);</p>
+<p>最终得到头的结果：content-Type:text/plain</p>
+<p>add开头的方法：针对一个key对应多个value的情况</p>
+<p>举例：比如有一个</p>
+<p>content-Type:text/html     addHeader(“content-Type”,”text/plain”);</p>
+<p>最终得到头的结果：content-Type:text/html,text/plain</p>
+<p>Response关于响应体的方法：</p>
+<p>向页面输出内容：字节和字符</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps25.jpg" alt="img"> </p>
+<p>Response其他的API：</p>
+<p>重定向的方法：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps26.jpg" alt="img"> </p>
+<p>设置浏览器打开页面时候采用的字符集：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps27.jpg" alt="img"> </p>
+<p>设置响应字符流的缓冲区字符集：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps28.jpg" alt="img"> </p>
+<p>服务器向浏览器回写Cookie的方法：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps29.jpg" alt="img"> </p>
+<p>// 一般由服务器向浏览器的方法都能在response中找到</p>
+<p>完成重定向：302状态码和Location响应头结合使用的效果</p>
+<p>Demo1跳转到了Demo2</p>
+<p>也可以使用response.sendRedirect(“/web01/ResponseDemo2”);替换重定向两句写法（实际开发中常用）</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps30.jpg" alt="img"> </p>
+<p>定时刷新效果：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps31.jpg" alt="img"> </p>
+<p>在HTML中完成页面跳转：使用<meata>标签的http-quiv设置。url的路径在后面介绍</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps32.jpg" alt="img"> </p>
+<p>这里的n秒后跳转的n是我们人为输入的定值，不能变化，所以我们可以用JS来完成读秒的效果：</p>
+<p>需要n变化，先要对这个n加标签：<span id=”span1”>i</span>,再对<body></body>加方法onload=“load()”，然后编写scrip语句：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps33.jpg" alt="img"> </p>
+<p>Response向页面响应中文（可能会出现乱码）</p>
+<p>1.使用字节流响应中文</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps34.jpg" alt="img"> </p>
+<p>这里的“中文”这两个字可能会产生乱码：因为这个乱码的产生与中文转成字节数组及浏览器打开方式（打开的时候采用的默认字符集）有关</p>
+<p>解决办法：将中文转成字节数组的时候和浏览器默认打开的时候采用的字符集一致即可</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps35.jpg" alt="img"> </p>
+<p><em><strong>*2.使用字符流相应中文*</strong></em></p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps36.jpg" alt="img"> </p>
+<p>这里一定会产生乱码：字符流是有缓冲区的，response获得字符流，response设计默认的缓冲区编码是ISO-8859-1。这个字符集不支持中文的。</p>
+<p>解决办法：设置response获得字符流缓冲区的编码和设置浏览器默认打开时候采用的字符集一致即可</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps37.jpg" alt="img"> </p>
+<p>字符流向页面响应中文，有一种简化的方式：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps38.jpg" alt="img"> </p>
+<p>Request对象：开发的软件都是B/S结构软件，从浏览器向服务器提交一些数据，将这些内容进行封装就封装成了一个请求对象（Request对象）</p>
+<p>1.获得客户机信息：</p>
+<p>****获得请求的方式****：get还是post</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps39.jpg" alt="img"> </p>
+<p>获得请求路径后的提交参数的字符串：？xx=xxx&amp;xxx=xxxxx</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps40.jpg" alt="img"> </p>
+<p>获得请求路径的URL和URI：URI范围比URL大（URI，统一资源标识符。URL，统一资源定位符。URI包括URL和URN。URL是全写，URI是名字）</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps41.jpg" alt="img"> </p>
+<p>****获得客户机的ip地址****：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps42.jpg" alt="img"> </p>
+<p>2.获得请求头的方法：</p>
+<p>获得一个key对应一个value的请求头：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps43.jpg" alt="img"> </p>
+<p>获得一个key对应多个value的请求头：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps44.jpg" alt="img"> </p>
+<p>3****.获得请求参数的方法****：</p>
+<p>获得提交的参数（一个name对应一个value）：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps45.jpg" alt="img"> </p>
+<p>获得提交的参数（一个name对应多个value）：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps46.jpg" alt="img"> </p>
+<p>获得提交的参数，将提交的参数的名称和对应的值存入到一个Map集合中：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps47.jpg" alt="img"> </p>
+<p>4.****作为域对象存取数据的方法****：</p>
+<p>向request域中存数据：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps48.jpg" alt="img"> </p>
+<p>从request域中获取数据：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps49.jpg" alt="img"> </p>
+<p>从request域中移除数据：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps50.jpg" alt="img"> </p>
+<p>Request对象其实就是从客户端浏览器向服务器发送的一次请求信息的封装。那么实质上向Request中所保存的数据有效期也是<em><strong>*一次请求范围。*</strong></em></p>
+<p><em><strong>*一次请求范围：从客户端浏览器向服务器发送一次请求，服务器针对这次请求对浏览器作出响应。当服务器作出响应之后，请求对象就销毁了，保存在其中的数据就无效了。*</strong></em></p>
+<p>代码演示：</p>
+<p>Request对象获取客户机信息：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps51.jpg" alt="img"> </p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps52.jpg" alt="img"> </p>
+<p>Request对象接收表单请求参数：</p>
+<p>编写一个静态页面：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps53.jpg" alt="img"> </p>
+<p>在RequestDemo2中接收参数：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps54.jpg" alt="img"> </p>
+<p>（数组无法直接输出，需要调用Arrays.toString（）方法输出）</p>
+<p>Request对象接收表单请求参数的中文乱码处理：</p>
+<p>POST方式接收中文：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps55.jpg" alt="img"> </p>
+<p>GET方式接收中文：(基本不用，因为一般表单提交都是用post方法)</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps56.jpg" alt="img"> </p>
+<p>从Servlet向JSP中跳转的方法：请求转发和重定向</p>
+<p>1.请求转发：</p>
+<p>通过ServletRequest对象获得RequestDispatcher对象</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps57.jpg" alt="img"> </p>
+<p>再根据RequestDispatcher中的方法进行请求转发</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps58.jpg" alt="img"> </p>
+<p>代码实现：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps59.jpg" alt="img"> </p>
+<p>请求转发后访问Servlet的页面：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps60.jpg" alt="img"> </p>
+<p>重定向：</p>
+<p>通过HttpServletResponse对象中的以下方法实现重定向</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps61.jpg" alt="img"> </p>
+<p>代码实现：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps62.jpg" alt="img"> </p>
+<p>重定向后访问Servlet的效果：</p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps63.jpg" alt="img"> </p>
+<p>请求转发和重定向的区别：</p>
+<p>请求转发是一次请求一次响应，而重定向是两次请求两次响应。</p>
+<p>请求转发地址栏不会变化的，重定向地址栏发生变化。</p>
+<p>请求转发路径不带工程名，重定向需要带工程名路径。</p>
+<p>请求转发只能在本网站内部，重定向可以定向到任何网站。</p>
+<p><em><strong>*如果需要使用request进行值传递，需要通过请求转发完成。如果页面需要跳转到其他网站上必须使用重定向。*</strong></em></p>
+<p><img src="/9.3.WEB%E4%B9%8Bservlet/wps64.jpg" alt="img"> </p>
+<p>因为request对象作为域对象的范围是一次请求，所以如果JSP需要获取request中的数据的话，只能用请求转发；如果用重定向的话，存入的值会获取不到，为null。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.3.WEB%E4%B9%8Bservlet/" data-id="ckq1xbds1002rpwwdd4qb4d0f" data-title="WEB之servlet" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-9.2.WEB之http协议" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/9.2.WEB%E4%B9%8Bhttp%E5%8D%8F%E8%AE%AE/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:29:20.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/9.2.WEB%E4%B9%8Bhttp%E5%8D%8F%E8%AE%AE/">WEB之http协议</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>HTTP协议：规定了浏览器和服务器端的数据交互的格式</p>
+<p>http是一个简单的请求-响应协议，它通常运行在<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/TCP/33012">TCP</a>之上。它指定了客户端可能发送给服务器什么样的消息以及得到什么样的响应。请求和响应消息的头以ASCII码形式给出；而消息内容则具有一个类似MIME的格式。HTTP是应用层协议。</p>
+<p>特性：</p>
+<p>1.基于请求和响应模型：必须要先有请求，后有响应；请求和响应必须成对出现</p>
+<p>2.简单快捷：因为发送请求的时候只需要发送请求方式和请求路径即可</p>
+<p>版本：</p>
+<p>HTTP1.0：该协议对每一次请求和相应进行一次建立连接和拆除（每进行一次请求建立连接，相应完毕后拆除连接）</p>
+<p>HTTP1.1：该协议相当于TCP，双方规定了连接方式和连接类型，会一直进行请求相应</p>
+<p>分析HTTP协议：</p>
+<p>可以用HTTPWatch（只能在ie浏览器上使用），也可以用浏览器自带的查看HTTP协议的工具（F12就可进入）</p>
+<p>创建一个html页面：</p>
+<p>demo1.html</p>
+<p><img src="/9.2.WEB%E4%B9%8Bhttp%E5%8D%8F%E8%AE%AE/wps1.jpg" alt="img"> </p>
+<p>method默认为get方式，可以手动修改为post方式</p>
+<p>demo2.html</p>
+<p><img src="/9.2.WEB%E4%B9%8Bhttp%E5%8D%8F%E8%AE%AE/wps2.jpg" alt="img"> </p>
+<p>在浏览器中输入<a target="_blank" rel="noopener" href="http://localhost:8080/web_set/demo1.html">http://localhost:8080/web_set/demo1.html</a></p>
+<p>打开HTTPWatch工具，点击record。输入表单内容，提交。点击项目下的Stream查看：</p>
+<p>GET方式的请求部分：</p>
+<p>GET /web_test/demo2.html?name=aaa&amp;name=man HTTP/1.1</p>
+<p>Accept: text/html, application/xhtml+xml, <em>/</em></p>
+<p>X-HttpWatch-RID: 9561-10011</p>
+<p>Referer: <a target="_blank" rel="noopener" href="http://localhost:8080/web_test/demo1.html">http://localhost:8080/web_test/demo1.html</a></p>
+<p>Accept-Language: zh-CN</p>
+<p>User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko</p>
+<p>Accept-Encoding: gzip, deflate</p>
+<p>Host: localhost:8080</p>
+<p>DNT: 1</p>
+<p>Connection: Keep-Alive</p>
+<p>POST请求：</p>
+<p>POST /web_test/demo2.html HTTP/1.1</p>
+<p>Accept: text/html, application/xhtml+xml, <em>/</em></p>
+<p>X-HttpWatch-RID: 9561-10041</p>
+<p>Referer: <a target="_blank" rel="noopener" href="http://localhost:8080/web_test/demo1.html">http://localhost:8080/web_test/demo1.html</a></p>
+<p>Accept-Language: zh-CN</p>
+<p>User-Agent: Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko</p>
+<p>Content-Type: application/x-www-form-urlencoded</p>
+<p>Accept-Encoding: gzip, deflate</p>
+<p>Host: localhost:8080</p>
+<p>Content-Length: 19</p>
+<p>DNT: 1</p>
+<p>Connection: Keep-Alive</p>
+<p>Cache-Control: no-cache</p>
+<p>name=bbb&amp;name=woman</p>
+<p>请求部分内容：3部分</p>
+<p>请求行：</p>
+<p>请求方式：有很多种，GET和POST最常见</p>
+<p>GET：请求的参数会显示到地址栏。通常是有大小的限制。没有请求体</p>
+<p>POST：请求的参数不会显示到地址栏（在请求体中）。POST没有大小的限制。有请求体（请求参数）。只有表单设置method=”post”才是post请求。</p>
+<p>请求路径：一般都是固定的</p>
+<p>协议版本：一般都是固定的</p>
+<p>请求头:请求头的格式一般都是一个key对应一个value的，也有一个key对应多个value的情况</p>
+<p>一些常见的请求头：</p>
+<p>Referer    ：代表网页的来源。（防盗链）</p>
+<p>User-Agent    ：获得客户端浏览器类型</p>
+<p>请求体：只有POST请求方式才有请求体，而且请求体是POST方式请求参数</p>
+<p>响应部分：</p>
+<p>HTTP/1.1 200 OK</p>
+<p>Server: Apache-Coyote/1.1</p>
+<p>Accept-Ranges: bytes</p>
+<p>ETag: W/“151-1484111223984”</p>
+<p>Last-Modified: Wed, 11 Jan 2017 05:07:03 GMT</p>
+<p>Content-Type: text/html</p>
+<p>Content-Length: 151</p>
+<p>Date: Wed, 11 Jan 2017 05:14:00 GMT</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line"></span><br><span class="line">&lt;html&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;title&gt;Insert title here&lt;&#x2F;title&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;h1&gt;Success&lt;&#x2F;h1&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>响应部分的内容：3部分</p>
+<p>响应行：</p>
+<p>协议版本</p>
+<p>状态码：</p>
+<p><em><strong>*200*</strong></em>    <em><strong>*：代表响应成功*</strong></em></p>
+<p><em><strong>*302*</strong></em>    <em><strong>*：需要进行重定向操作*</strong></em></p>
+<p><em><strong>*304*</strong></em>    <em><strong>*：需要查找本地缓存*</strong></em></p>
+<p><em><strong>*404*</strong></em>    <em><strong>*：请求资源不存在*</strong></em></p>
+<p><em><strong>*405：请求的方式不对*</strong></em></p>
+<p><em><strong>*500*</strong></em>    <em><strong>*：服务器内部错误*</strong></em></p>
+<p>状态码描述</p>
+<p>响应头:通常一个key对应一个value，也有一个key对应多个value</p>
+<p>一些常见的响应头：</p>
+<p>Location    ：重定向的路径</p>
+<p>Refresh    ：定时刷新</p>
+<p>Content-Disposition：文件下载的时候使用</p>
+<p>响应体：就是显示到浏览器上页面的代码</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.2.WEB%E4%B9%8Bhttp%E5%8D%8F%E8%AE%AE/" data-id="ckq1xbds0002opwwd6a3l550q" data-title="WEB之http协议" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/" rel="tag">http</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-9.1.WEB之概述" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/9.1.WEB%E4%B9%8B%E6%A6%82%E8%BF%B0/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:29:06.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/9.1.WEB%E4%B9%8B%E6%A6%82%E8%BF%B0/">WEB之概述</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="WEB"><a href="#WEB" class="headerlink" title="WEB"></a>WEB</h1><p>web（World Wide Web）即全球广域网，也称为万维网，它是一种基于超文本和HTTP的、全球性的、动态交互的、跨平台的分布式图形信息系统。是建立在Internet上的一种网络服务，为浏览者在Internet上查找和浏览信息提供了图形化的、易于访问的直观界面，其中的文档及超链接将Internet上的信息节点组织成一个互为关联的网状结构。</p>
+<p>javaWEB：使用Java语言进行WEB的开发。</p>
+<p>软件架构：</p>
+<p>CS架构的软件：Client/Server 客户端和服务器，这种软件往往需要安装。</p>
+<p>优点：界面很美观；可以减轻服务器端压力，将部分代码写到客户端。</p>
+<p>缺点：一旦服务器更新了，客户端也需要更新；分布式开发比较弱。</p>
+<p><strong>BS架构的软件</strong>：Browser/Server 浏览器和服务器，这种软件不需要安装，只需要通过浏览器就可以访问。</p>
+<p>优点：服务器一旦更新，不需要更新客户端，因为客户端就是浏览器；比较强的分布式能力</p>
+<p>缺点：界面效果不如CS结构软件（可以用前端技术美化）；服务器端压力会比较大(会搭一些集群减轻压力，也会用Ajax异步交互)</p>
+<p>WEB服务器：</p>
+<p>硬件：其实就是一台电脑（这台电脑配置要求很高）</p>
+<p>软件：需要在这台电脑上安装web服务器的软件</p>
+<p>常见的WEB服务器：</p>
+<p>Tomcat        ：Apache组织提供的一个开源的免费的web服务器。满足EE的Servlet和JSP的规范。</p>
+<p>WebSphere    ：IBM公司开发的一个收费的大型web服务器。满足了EE开发的所有规范。</p>
+<p>WebLogic        ：BEA公司开发的一个收费的大型web服务器。满足了EE开发的所有规范。</p>
+<p>IIS            ：应用在.NET平台上。</p>
+<p>Apache        ：应用在PHP平台上。</p>
+<p>WEB开发中的资源：</p>
+<p>静态web资源：HTML   /   CSS   /   JS</p>
+<p>动态web资源：Servlet、JSP  （java的） /  PHP  /  ASP</p>
+<p><img src="/9.1.WEB%E4%B9%8B%E6%A6%82%E8%BF%B0/wps1.jpg" alt="img"> </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.1.WEB%E4%B9%8B%E6%A6%82%E8%BF%B0/" data-id="ckq1xbdrz002mpwwdf1q48n2u" data-title="WEB之概述" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WEB/" rel="tag">WEB</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-4.25.关于递归" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/04/19/4.25.%E5%85%B3%E4%BA%8E%E9%80%92%E5%BD%92/" class="article-date">
@@ -689,1079 +1978,11 @@
 
 
   
-    <article id="post-4.22.关于null" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/4.22.%E5%85%B3%E4%BA%8Enull/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T06:18:39.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/4.22.%E5%85%B3%E4%BA%8Enull/">关于null</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>开发原则：只要是对象，我们就要判断对象是否为null。</p>
-<p>java空指针异常：java.lang.NullPointException</p>
-<p> 对于每一个java程序员来说，几乎都避免不了遇到空指针异常，特别是经验不足的初学者。而且由于它的调试和查找相对其它异常来说比较困难，常常需要花费很大的精力去解决它。</p>
-<p>  <strong>首先认识一下java中的null</strong></p>
-<p>  null是Java中一个很重要的概念。null设计初衷是为了表示一些缺失的东西，例如缺失的用户、资源或其他东西。但是，一年后，令人头疼的空指针异常给Java程序员带来不少的骚扰。</p>
-<p>  null是java中的关键字，因此，它不能写成NULL，Null，只能是null。</p>
-<p>  null是所有引用类型的默认值，如果没有让一个引用指向一个实际存在的对象，它的默认值就是null。null本质上是一个值，这跟int的默认值是0，boolean的默认值是false一样。现在，我们通常都使用像eclipse等的集成开发环境进行开发，一般在定义变量的时候都会进行初始化（这也是写代码的一个良好的习惯），如果没有进行初始化，系统会进行提示。</p>
-<p><strong>报空指针异常的原因有以下几种：</strong> </p>
-<p>1字符串变量未初始化；<br>2接口类型的对象没有用具体的类初始化，比如：<br>List it；会报错<br>List it = new ArrayList()；则不会报错了<br>3当一个对象的值为空时，你没有判断为空的情况。你可以试着把下面的代码前加一行代码：<br>if(rb!=null &amp;&amp; rb!=””)<br>改成：<br>if(rb == null);<br>if(rb!==null&amp;&amp;rb!=””) 或者if(“”).equals(rb))<br>空指针的解决办法：<br>    重点关注报错发生的所在行，通过空指针异常产生的两条主要原因诊断具体的错误。同时为了避免空指针的发生，最好在做判断处理时将“null”或者空值放于 设定的值之前。<br>常见空指针异常的简要分析：<br>（1）空指针错误<br>  Java中的8种基本数据类型，变量的值可以有其默认值，加入没有对其正常赋值，java虚拟机是不能 正确编译通过的，因此使用基本的Java数据类型一般是不会引起空指针异常的。实际开发中，大多数的空指针异常主要与对象的操作相关。<br>  下面列出可能发生空指针异常的几种情况及相应解决方案：<br>  代码段1：<br>　　out.println(request.getParameter(“username”));<br>　　分析：代码段1的功能十分简单，就是输出用户输入”username”的值。<br>    说明：看上去，上面的语句找不出什么语法错误，而且在大多数情况下也遇不到什么问题。但是，如果某个用户在输入数据时并没有提供表单 域”username” 的值，或通过某种途径绕过表单直接输入时，此request.getParameter(“username”)的值为空（注意不是空字符串，是空对象 null。），out对象的println方法是无法直接对空对象操作的，因此代码段1所在的JSP页面将会抛出 “Java.lang.NullPointerException”异常。而且即使对象可能为空时，也调用Java.lang.Object或 Object对象本身的一些方法如toString()， equal(Object obj)等操作。<br>  代码段2：<br>　　String userName = request.getParameter(“username”);<br>　　If (userName.equals(“root”))<br>　　{….}<br>　　分析：代码段2的功能是检测用户提供的用户名，如果是用户名称为”root”的用户时，就执行一些特别的操作。<br>   说明：在代码段2中，如果有用户没有提供表单域”username”的值时，字符串对象userName为null值，不能够将一个null的对象与另一 个对象直接比较，同样，代码段2所在的JSP页面就会抛空指针错误。<br>   一个小技巧：如果要把某个方法的返回值与常量做比较，把常量放在前面，可以避免调用null对象的equals方法。譬如：<br>  If (“root”.equals(userName))<br>　 {….}<br>  即使userName对象返回了null对象，这里也不会有空指针异常，可以照常运转。<br>  代码段3：<br>　　String userName = session.getAttribute(“session.username”).toString();<br>    分析：代码段3的功能是将session中session.username的值取出，并将该值赋给字符串对象userName。<br>    说明：在一般情况下，如果在用户已经进行某个会话，则不会出现什么问题；但是，如果此时应用服务器重新启动，而用户还没有重新登录，（也可能是用户关闭浏 览器，但是仍打开原来的页面。）那么，此时该session的值就会失效，同时导致session中的session.username的值为空。对一个 为 null的对象的直接执行toString()操作，就会导致系统抛出空指针异常。<br>  代码段4：<br>public static void main(String args[]){<br>    Person p=null;<br>    p.setName(“张三”)；<br>    System.out.println(p.getName());<br>}<br>分析：声明一个Person对象，并打印出该对象的中的Name名字。<br>说明：这个时候你的p就出现空指针异常，因为你只是声明了这个Person类型的对象并没有创建对象，所以它的堆里面没有地址引用，切忌你要用对 象掉用方法的时候一定要创建对象。</p>
-<p>为了避免空指针调用，我们经常会看到这样的语句</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">...if (someobject !&#x3D; null) &#123;</span><br><span class="line">    someobject.doCalc();&#125;...</span><br></pre></td></tr></table></figure>
-
-<p>最终，项目中会存在大量判空代码，多么丑陋繁冗！如何避免这种情况？我们是否滥用了判空呢？</p>
-<p>在方法中返回null，在调用这些方法时，也不得不去判空。另外，也许受此习惯影响，他们总潜意识地认为，所有的返回都是不可信任的，为了保护自己程序，就加了大量的判空</p>
-<p>进行判空前，请区分以下两种情况：</p>
-<p>1、null 是一个有效有意义的返回值(Where null is a valid response in terms of the contract; and)</p>
-<p>2、null是无效有误的(Where it isn’t a valid response.)</p>
-<p>你可能还不明白这两句话的意思，不急，继续往下看，接下来将详细讨论这两种情况</p>
-<p><strong>先说第2种情况</strong></p>
-<p>null就是一个不合理的参数，就应该明确地中断程序，往外抛错误。这种情况常见于api方法。例如你开发了一个接口，id是一个必选的参数，如果调用方没传这个参数给你，当然不行。你要感知到这个情况，告诉调用方“嘿，哥们，你传个null给我做甚”。</p>
-<p>相对于判空语句，更好的检查方式有两个</p>
-<p>(1)assert语句，你可以把错误原因放到assert的参数中，这样不仅能保护你的程序不往下走，而且还能把错误原因返回给调用方，岂不是一举两得。（原文介绍了assert的使用，这里省略）</p>
-<p>(2)也可以直接抛出空指针异常。上面说了，此时null是个不合理的参数，有问题就是有问题，就应该大大方方往外抛。</p>
-<p><strong>第1种情况会更复杂一些。</strong></p>
-<p>这种情况下，null是个”看上去“合理的值，例如，我查询数据库，某个查询条件下，就是没有对应值，此时null算是表达了“空”的概念。</p>
-<p>这里给一些实践建议：</p>
-<p><strong>1、假如方法的返回类型是collections，当返回结果是空时，你可以返回一个空的collections</strong>（empty list),而不要返回null，这样调用侧就能大胆地处理这个返回，例如调用侧拿到返回后，可以直接print list.size()，又无需担心空指针问题。（什么？想调用这个方法时，不记得之前实现该方法有没按照这个原则？所以说，代码习惯很重要！如果你养成习惯，都是这样写代码（<strong>返回空collections而不返回null</strong>)，你调用自己写的方法时，就能大胆地忽略判空）</p>
-<p><strong>2、返回类型不是collections，又怎么办呢？</strong></p>
-<p><strong>那就返回一个空对象（而非null对象）</strong>，下面举个“栗子”，假设有如下代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Action</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span></span>;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Parser</span> </span>&#123;</span><br><span class="line">  <span class="function">Action <span class="title">findAction</span><span class="params">(String userInput)</span></span>;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其中，Parse有一个接口FindAction，这个接口会依据用户的输入，找到并执行对应的动作。假如用户输入不对，可能就找不到对应的动作（Action），因此findAction就会返回null，接下来action调用doSomething方法时,就会出现空指针。</p>
-<p>解决这个问题的一个方式，就是使用Null Object pattern（空对象模式）</p>
-<p>我们来改造一下</p>
-<p>类定义如下，这样定义findAction方法后，确保无论用户输入什么，都不会返回null对象</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyParser</span> <span class="keyword">implements</span> <span class="title">Parser</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> Action DO_NOTHING = <span class="keyword">new</span> Action() &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span> </span>&#123; <span class="comment">/* do nothing */</span> &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Action <span class="title">findAction</span><span class="params">(String userInput)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">if</span> ( <span class="comment">/* we can&#x27;t find any actions */</span> ) &#123;</span><br><span class="line">      <span class="keyword">return</span> DO_NOTHING;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>对比下面两份调用实例</p>
-<p>1、冗余:每获取一个对象，就判一次空</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Parser parser = ParserFactory.getParser();</span><br><span class="line"><span class="keyword">if</span> (parser == <span class="keyword">null</span>) &#123;</span><br><span class="line">  <span class="comment">// now what?</span></span><br><span class="line">  <span class="comment">// this would be an example of where null isn&#x27;t (or shouldn&#x27;t be) a valid response</span></span><br><span class="line">&#125;</span><br><span class="line">Action action = parser.findAction(someInput);</span><br><span class="line"><span class="keyword">if</span> (action == <span class="keyword">null</span>) &#123;</span><br><span class="line">  <span class="comment">// do nothing</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  action.doSomething();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2、精简</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ParserFactory.getParser().findAction(someInput).doSomething();</span><br></pre></td></tr></table></figure>
-
-<p>因为无论什么情况，都不会返回空对象，因此通过findAction拿到action后，可以放心地调用action的方法。</p>
-<p><strong>其他回答精选：</strong></p>
-<p>1、如果要用equal方法，请用object&lt;不可能为空&gt;.equal(object&lt;可能为空&gt;))</p>
-<p>例如：</p>
-<p>使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;bar&quot;.equals(foo) </span><br></pre></td></tr></table></figure>
-
-<p>而不是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo.equals(&quot;bar&quot;) </span><br></pre></td></tr></table></figure>
-
-<p>2、Java8或者guava lib中，提供了Optional类，这是一个元素容器，通过它来封装对象，可以减少判空。不过代码量还是不少。不爽。</p>
-<p>3、如果你想返回null，请挺下来想一想，这个地方是否更应该抛出一个异常</p>
-<h3 id="null与””的区别"><a href="#null与””的区别" class="headerlink" title="null与””的区别"></a>null与””的区别</h3><p>null是没有地址<br>“”是有地址但是里面的内容是空的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br></pre></td><td class="code"><pre><span class="line">问题一：</span><br><span class="line">null和&quot;&quot;的区别</span><br><span class="line">String s&#x3D;null;</span><br><span class="line">string.trim()就会抛出为空的exception   </span><br><span class="line">String s&#x3D;&quot;&quot;;   </span><br><span class="line">string.trim()就不会抛,为什么? </span><br><span class="line">答：</span><br><span class="line">NULL代表声明了一个空对象，根本就不是一个字符串。   </span><br><span class="line">&quot;&quot;代表声明了一个对象实例，这个对象实例的值是一个长度为0的空字符串。</span><br><span class="line"></span><br><span class="line">NULL代表声明了一个空对象,对空对象做任何操作都不行的,除了&#x3D;和&#x3D;&#x3D;   </span><br><span class="line">&quot;&quot;是一个字符串了,只是这个字符串里面没有内容了</span><br><span class="line"></span><br><span class="line">String s&#x3D;null;只是定义了一个句柄，也就是说你有了个引用，但是这个引用未指向任何内存空间   </span><br><span class="line">String s&#x3D;&quot;&quot;;这个引用已经指向了一块是空字符串的内存空间，是一个实际的东东了，所以你可以对它操作，而不用担心什么了</span><br><span class="line"></span><br><span class="line">你说数字0和没有是不是一种概念啊？？道理一样的</span><br><span class="line"></span><br><span class="line">而且,null可以赋值给任何对象.&quot;&quot;就不行了.</span><br><span class="line"></span><br><span class="line">这里&quot;&quot;和NULL绝对是两个概念   </span><br><span class="line">&quot;&quot;代表一个字符串存在，它的值就是“”   </span><br><span class="line">NULL代表字符串根本没有实际的值，你并不知道它是什么。。。</span><br><span class="line"></span><br><span class="line">哦,我明白了,意思就是String   string   &#x3D;   null   跟String   string;是一回事儿</span><br><span class="line"></span><br><span class="line">null是空对象     &quot;&quot;是空字符串</span><br><span class="line">String s&#x3D;null;&#x2F;&#x2F;null是未分配堆内存空间   </span><br><span class="line">String   a;&#x2F;&#x2F;分配了一个内存空间,没存入任何对象   </span><br><span class="line">String   a&#x3D;&quot;&quot;;&#x2F;&#x2F;分配了一个内存空间,存了一个字符串对象</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">问题二：</span><br><span class="line">String s;和String s&#x3D;null;和String s&#x3D;&quot;a&quot;;有什么区别？   </span><br><span class="line">针对这三种情况，使用out.println(s);的时候，第一个会出现异常，第二个会输出null.第三个则会输出a.   </span><br><span class="line">这是为什么呢？这三句声明语句，各自作了什么呢？</span><br><span class="line"></span><br><span class="line">答：</span><br><span class="line">第一个只是定义了一个String类型变量s，并没有给它赋初值，在Java中，默认在使用一个变量的时候必须赋予它初值（降低风险）。 </span><br><span class="line">第二个和第三个都定义了String类型变量s，并赋予它初值，只不过第二个赋予的值为null（空）罢了</span><br><span class="line"></span><br><span class="line">主要要理解的是String s; s为一个引用～～它不是对象   </span><br><span class="line">第一个是没有初始化的引用；   </span><br><span class="line">第二个为空引用；</span><br><span class="line">第三个是在字符串池里写入一个字符&#39;a&#39;,然后用s指向它。</span><br><span class="line">另外，   </span><br><span class="line">String s&#x3D;&quot;a&quot;和String s&#x3D;new String(&quot;a&quot;);是有本质上的区别的   </span><br><span class="line">前者是在字符串池里写入一个字符&#39;a&#39;,然后用s指向它；</span><br><span class="line">后者是在堆上创建一个内容为&quot;a&quot;的字符串对象。</span><br><span class="line">String   str&#x3D;&quot;aaa&quot;;                    &#x2F;&#x2F;于栈上分配内存</span><br><span class="line">String   str&#x3D;new   String(&quot;aaa&quot;);      &#x2F;&#x2F;于堆上分配内存</span><br><span class="line"></span><br><span class="line">String s; 系统会自动赋值null</span><br><span class="line"></span><br><span class="line">String s;只是给s分配一个内存空间   </span><br><span class="line">String s&#x3D;null;是分配的空间中存储的值为空值   </span><br><span class="line">String s&#x3D;&quot;a&quot;;这句就不用我多说了分配的空间的值为字符a</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">问题三：</span><br><span class="line">声明了一个string a;变量    </span><br><span class="line">在以后的判断中，a&#x3D;&#x3D;&quot;&quot;和a&#x3D;&#x3D;null有何不同?   </span><br><span class="line"></span><br><span class="line">答：</span><br><span class="line">如果没有给a赋过值，a&#x3D;&#x3D;&quot;&quot;会导致异常。     </span><br><span class="line">在实际处理时，往往认为&quot;&quot;和null代表相同的含义，即都代表无值。   </span><br><span class="line">此时建议用如下语法：   </span><br><span class="line">if(a&#x3D;&#x3D;null   ||   a&#x3D;&#x3D;&quot;&quot;)   </span><br><span class="line">&#123;   </span><br><span class="line">&#125;   </span><br><span class="line">如果a为null，就不会执行后面的判断，直接返回true。   </span><br><span class="line"></span><br><span class="line">null是用来判断引用类型是否分配了存储空间   </span><br><span class="line">&quot;&quot;是针对字符串的；   </span><br><span class="line">string类型实际上是字符串指针，也即是一个引用类型   </span><br><span class="line">所以如果没有给a赋过值，a&#x3D;&#x3D;&quot;&quot;会导致异常   </span><br><span class="line">所以if(a&#x3D;&#x3D;null   ||   a&#x3D;&#x3D;&quot;&quot;)&#123;&#125;这种写法也是正确的</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">问题四：</span><br><span class="line">String abc&#x3D;null;String abc&#x3D;&quot;&quot;;String abc;三种写法有什么区别？ </span><br><span class="line"></span><br><span class="line">答：</span><br><span class="line">1：创建一个空字符串对象，   </span><br><span class="line">2：创建一个字符串为空的字符串对象。   </span><br><span class="line">3：声明一个字符串对象，但并没有分配内存，而1，2已经分配了内存   </span><br><span class="line">对于最后一种表示,你不能if(abc&#x3D;&#x3D;null),或者int   length   &#x3D;   abc.length();编译的时候会提示可能没有初始化.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">String   abc&#x3D;null;   </span><br><span class="line">String   abc&#x3D;&quot;&quot;;   </span><br><span class="line">一般推荐使用第二种   </span><br><span class="line">第一种abc指向null，很多时候要判断字符串是否为空时，容易漏掉这种情况，在调用String的相关方法的时候就会出错   </span><br><span class="line">第二种则相对简单，String的方法都可以用，判断的时候也不会出错</span><br><span class="line"></span><br><span class="line">1) String   abc&#x3D;null;   </span><br><span class="line">2) String   abc;    </span><br><span class="line">3）String   a&#x3D;&quot;&quot;;   </span><br><span class="line">4) String   b&#x3D;&quot;&quot;;   </span><br><span class="line">5) String   c&#x3D;new String(&quot;&quot;);   </span><br><span class="line">6) String   d&#x3D;new String(&quot;&quot;); </span><br><span class="line">&#x2F;&#x2F;1)等于2），和C语言不同，JAVA为安全原因不允许一个悬挂引用，没有赋值的引用地址一律自动赋值为NULL，以防止访问到任意内存   </span><br><span class="line">&#x2F;&#x2F;3)和4)中,变量a和b将会指向同一内存地址(&quot;&quot;的地址)   </span><br><span class="line">&#x2F;&#x2F;5)和6)中，变量c和d不会指向同一地址,而是两个&quot;&quot;内容的地址,并且和a,b不同,实际上,3)和4)相当于new String(&quot;&quot;).intern().   </span><br><span class="line">&#x2F;&#x2F;String类维护着一个字符串池,对于像3)和4)这样的赋值方法,String会在这个池中查找字符串是否已经在池中,如果在,就直接指向该地址,</span><br><span class="line"></span><br><span class="line">如果不在,生成一个实例放入池中再指向那个地址,可见对于同样内容的字符串多次引用时3)4)的方法要比5)6)的方法剩内存,之所以这样做,是</span><br><span class="line"></span><br><span class="line">因为String是一个内容不可变的量,运用的是设计模式GOF.FlyWeight   </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">但有个关键的一点,没有人说到，这就是:   </span><br><span class="line">String s;在什么情况下可以等同于String s&#x3D;null;而在什么情况下又不等同？！</span><br><span class="line">考虑下面的代码:   </span><br><span class="line">&#x2F;&#x2F;StringTest.java   </span><br><span class="line">public   class   StringTest   &#123;      </span><br><span class="line">    static   String   s;     &#x2F;&#x2F;*   </span><br><span class="line">    public   static   void   main(String[]   args)   &#123;   </span><br><span class="line">        &#x2F;&#x2F;String   s;         &#x2F;&#x2F;**   </span><br><span class="line">        System.out.println(s);   </span><br><span class="line">    &#125;   </span><br><span class="line">&#125;     </span><br><span class="line">编译并运行上面的代码,将打印null。</span><br><span class="line">可见标有*号的行是自动初始化了的(s被自动初始化为null)。   </span><br><span class="line">而如果把标有**号的行取消注释,代码将不能通过编译,这是因为这行定义的是本地变量,而本地变量是不会自动初始化的。</span><br><span class="line">由此得出结论：</span><br><span class="line">在成员变量的定义中,String s;等同于String s&#x3D;null;</span><br><span class="line">而在本地变量(方法变量)的定义中,String s;不等同于String s&#x3D;null;,这时要使用s必须显式地赋值。</span><br><span class="line">这些虽然是小知识点,但在实际应用中很重要,也很容易被一些人忽视,特此提出。</span><br><span class="line">还有一点要说明的是：</span><br><span class="line">只要是在方法在中定义变量都要显示赋初值，main()方法也不例外，而在方法之外编译器回自动赋初值</span><br></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.22.%E5%85%B3%E4%BA%8Enull/" data-id="ckq1xbdso004fpwwd7k4i71hk" data-title="关于null" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-4.20.JDBC" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/4.20.JDBC/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T06:18:28.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/4.20.JDBC/">JDBC</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>jdbc（Java数据库连接）是一种用于执行<a target="_blank" rel="noopener" href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=12370852&ss_c=ssc.citiao.link">SQL语句</a>的Java API，由一组用Java语言编写的类和接口组成。</p>
-<p>驱动：两个设备（应用）之间通信的桥梁。</p>
-<p>SUN公司提供一套统一的规范（接口）。然后各个数据库生产商提供这套接口的实现。这套接口规范就是JDBC的规范。</p>
-<p>JDBC的环境准备：</p>
-<p>\1. 创建数据库和表</p>
-<p>\2. 创建项目，引入jar包</p>
-<p>JDBC的开发步骤：</p>
-<p>1.加载驱动：Class.forname</p>
-<p>2.获得连接：DriverManager</p>
-<p>\3. 基本操作：执行SQL：</p>
-<p>获得执行SQL语句的对象：createStatement()方法，返回值是Statement</p>
-<p>编写SQL语句：String sql = “select * from user”;</p>
-<p>执行SQL：executeQuery(sql)方法，返回值是ResultSet</p>
-<p>遍历该set集合</p>
-<p>\4. 释放资源：集合、执行SQL语句的对象、获得的连接都要释放资源</p>
-<p>DriverManager：驱动管理类</p>
-<p>作用：1.注册驱动：DriverManager.registerDriver(Driver driver);</p>
-<p>这个方法可以完成驱动的注册，但是实际开发中一般不会使用这个方法完成驱动的注册，而是使用Class.forname(“com.mysql.jdbc.Driver”);</p>
-<p>因为如果需要注册驱动，就会使用DriverManager.registerDriver(new Driver());，但是查看Driver源代码发现，在代码中有一段静态代码块，静态代码块已经调用了注册驱动的方法，如果再手动调用该方法注册驱动，就会导致驱动被注册两次</p>
-<p>2.获得连接：DriverManager.getConnection(String url, String username, String password);</p>
-<p>url：与数据库连接的路径</p>
-<p>user    ：与数据库连接的用户名</p>
-<p>password：与数据库连接的密码</p>
-<p>url的写法：jdbc:mysql://localhost:3306/web_test3</p>
-<p>jdbc    :连接数据库的协议</p>
-<p>mysql:是jdbc的子协议</p>
-<p>localhost:连接的MySQL数据库服务器的主机地址。（连接是本机就可以写成localhost），如果连接不是本机的，就需要写上连接主机的IP地址。</p>
-<p>3306:MySQL数据库服务器的端口号</p>
-<p>web_test3:数据库名称</p>
-<p>url如果连接的是本机的路径，可以简化为：jdbc:mysql:///web_test3</p>
-<p>Connection：与数据库连接对象</p>
-<p>作用：1.创建执行SQL语句的对象：</p>
-<p>Statement:执行SQL Statement createStatement()</p>
-<p>CallableStatement:执行数据库中存储过程 CallableStatement prepareCall(String sql)</p>
-<p>PreparedStatement:（主要用这个）执行SQL.对SQL进行预处理。解决SQL注入漏洞 PreparedStatement preparedStatement (String sql)</p>
-<p>\2. 管理事务</p>
-<p>void setAutoCommit(boolean autoCommit):将此连接的自动提交模式改为给定状态</p>
-<p>void commit():将所有上一次提交/回滚后进行的更改变为永久性更改，并释放此Connection对象当前持有的所有数据库锁</p>
-<p>void rollback():取消在当前事务中进行的所有更改，并释放此Connection对象当前持有的所有数据库锁</p>
-<p>Statement：执行SQL</p>
-<p>作用：1.执行SQL</p>
-<p>boolean execute(String sql); 执行查询，修改，添加，删除的SQL语句 （如果第一个结果为ResultSet对象，则返回true；如果是更新计数或者不存在任何结果，返回false）</p>
-<p>ResultSet executeQuery(String sql); 执行查询（执行select语句）</p>
-<p>int executeUpate(String sql);执行修改，添加，删除的SQL语句 （SQL DDL语句也可以）（返回的是影响的行数）</p>
-<p>2.执行批处理</p>
-<p>void addBatch(String sql)  将给定的sql命令添加到此Statement对象的当前命令列表中</p>
-<p>void clearBatch()  清空此Statement对象的当前SQL命令列表</p>
-<p>int[] executeBatch()  将一批命令交给数据库来执行，如果全部命令执行成功，则返回更新计数组成的数组</p>
-<p>ResultSet：结果集，通过select语句的查询结果（只有select语句才有结果集）</p>
-<p>结果集的遍历：</p>
-<p>boolean next（）；  将光标从当前位置向下移一行（刚开始是在第一行之前的空白，调用了该方法之后会移动到第一行）</p>
-<p>结果集的获取：</p>
-<p>结果集获取可以使用结果集中的: getXXX(); 方法通常都会有一个重载的方法（int、long、String，Object就比较通用）</p>
-<p>传递的参数可以是列号也可以是列名：</p>
-<p>getXXX(int columnIndex);</p>
-<p>getXXX(String columnName); （一般传的参数是列名，因为查询的话，有可能结果的列号不一样）</p>
-<p>资源释放：</p>
-<p>JDBC程序执行结束后，将与数据库进行交互的对象释放掉，通常是ResultSet,Statement,Connection</p>
-<p>这几个对象中尤其是Connection对象是非常稀有的。这个对象一定要做到尽量晚创建，尽早释放掉。</p>
-<p>将资源释放的代码写入到finally的代码块中，确保资源会释放。但是资源释放的时候仍可能出现异常，所以资源释放的代码应该写的标准：再用trycatch语句进行判空，判完之后要将对象赋值为null：因为可以让垃圾回收器尽快的将资源回收。</p>
-<p>JDBC的CRUD操作：</p>
-<p>添加、删除、修改操作：</p>
-<p>\1. 创建Connection和Statement并赋值为null</p>
-<p>\2. try语句中进行：注册驱动，获得连接，创建执行SQL语句对象，编写相应的SQL语句，执行SQL（excuteUpdate(sql)方法），对返回值进行判断。</p>
-<p>\3. 释放资源（判空，抛异常，赋值为null）</p>
-<p>查询操作：查询多条记录和查询一条记录</p>
-<p>1.创建Connection和Statement和ResultSet并赋值为null</p>
-<p>2.try语句中进行：注册驱动，获得连接，创建执行SQL语句对象，编写相应的SQL语句，执行SQL（excuteQuery（sql）方法）。多条语句进行遍历while，一条语句进行判断if，并输出</p>
-<p>3.释放资源（判空，抛异常，赋值为null）</p>
-<p>JDBC的工具类的抽取：因为注册驱动，获得连接，释放资源的代码都是相同的，所以可以抽取成一个工具类。</p>
-<p>/**</p>
-<p> * JDBC的工具类</p>
-<p> * <em><strong>*@author*</strong></em> swx</p>
-<p> */</p>
-<p><em><strong>*public*</strong></em> <em><strong>*class*</strong></em> JDBCUtils {</p>
-<p>​    <em><strong>*private*</strong></em> <em><strong>*static*</strong></em> <em><strong>*final*</strong></em> String ****<em>driverClassName*</em>***;</p>
-<p>​    <em><strong>*private*</strong></em> <em><strong>*static*</strong></em> <em><strong>*final*</strong></em> String ****<em>url*</em>***;</p>
-<p>​    <em><strong>*private*</strong></em> <em><strong>*static*</strong></em> <em><strong>*final*</strong></em> String ****<em>username*</em>***;</p>
-<p>​    <em><strong>*private*</strong></em> <em><strong>*static*</strong></em> <em><strong>*final*</strong></em> String ****<em>password*</em>***;</p>
-<p>​    <em><strong>*static*</strong></em>{</p>
-<p>​        ****<em>driverClassName*</em>***=”com.mysql.jdbc.Driver”;</p>
-<p>​        ****<em>url*</em>***=”jdbc:mysql:///web_test3”;</p>
-<p>​        ****<em>username*</em>***=”root”;</p>
-<p>​        ****<em>password*</em>***=”abc”;</p>
-<p>​    }</p>
-<p>​    /**</p>
-<p>​     * 注册驱动的方法</p>
-<p>​     */</p>
-<p>​    <em><strong>*public*</strong></em> <em><strong>*static*</strong></em> <em><strong>*void*</strong></em> loadDriver(){</p>
-<p>​        <em><strong>*try*</strong></em> {</p>
-<p>​            Class.<strong>forName</strong>(****<em>driverClassName*</em>***);</p>
-<p>​        } <em><strong>*catch*</strong></em> (ClassNotFoundException e) {</p>
-<p>​            e.printStackTrace();</p>
-<p>​        }</p>
-<p>​    }</p>
-<p>​    </p>
-<p>​    /**</p>
-<p>​     * 获得连接的方法</p>
-<p>​     */</p>
-<p>​    <em><strong>*public*</strong></em> <em><strong>*static*</strong></em> Connection getConnection(){</p>
-<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
-<p>​        <em><strong>*try*</strong></em>{</p>
-<p>​            // 将驱动一并注册:</p>
-<p>​            <strong>loadDriver</strong>();</p>
-<p>​            // 获得连接</p>
-<p>​            conn = DriverManager.<strong>getConnection</strong>(<em><strong>*<em>url*</em>***,</strong></em>*<em>username*</em>***, ****<em>password*</em>***);</p>
-<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
-<p>​            e.printStackTrace();</p>
-<p>​        }</p>
-<p>​        <em><strong>*return*</strong></em> conn;</p>
-<p>​    }</p>
-<p>​    </p>
-<p>​    /**</p>
-<p>​     * 释放资源的方法</p>
-<p>​     */</p>
-<p>​    <em><strong>*public*</strong></em> <em><strong>*static*</strong></em> <em><strong>*void*</strong></em> release(Statement stmt,Connection conn){</p>
-<p>​        <em><strong>*if*</strong></em>(stmt != <em><strong>*null*</strong></em>){</p>
-<p>​            <em><strong>*try*</strong></em> {</p>
-<p>​                stmt.close();</p>
-<p>​            } <em><strong>*catch*</strong></em> (SQLException e) {</p>
-<p>​                e.printStackTrace();</p>
-<p>​            }</p>
-<p>​            </p>
-<p>​            stmt = <em><strong>*null*</strong></em>;</p>
-<p>​        }</p>
-<p>​        <em><strong>*if*</strong></em>(conn != <em><strong>*null*</strong></em>){</p>
-<p>​            <em><strong>*try*</strong></em> {</p>
-<p>​                conn.close();</p>
-<p>​            } <em><strong>*catch*</strong></em> (SQLException e) {</p>
-<p>​                e.printStackTrace();</p>
-<p>​            }</p>
-<p>​            conn = <em><strong>*null*</strong></em>;</p>
-<p>​        }</p>
-<p>​    }</p>
-<p>​    </p>
-<p>​    <em><strong>*public*</strong></em> <em><strong>*static*</strong></em> <em><strong>*void*</strong></em> release(ResultSet rs,Statement stmt,Connection conn){</p>
-<p>​        // 资源释放：</p>
-<p>​        <em><strong>*if*</strong></em>(rs != <em><strong>*null*</strong></em>){</p>
-<p>​            <em><strong>*try*</strong></em> {</p>
-<p>​                rs.close();</p>
-<p>​            } <em><strong>*catch*</strong></em> (SQLException e) {</p>
-<p>​                e.printStackTrace();</p>
-<p>​            }</p>
-<p>​            </p>
-<p>​            rs = <em><strong>*null*</strong></em>;</p>
-<p>​        }</p>
-<p>​        <em><strong>*if*</strong></em>(stmt != <em><strong>*null*</strong></em>){</p>
-<p>​            <em><strong>*try*</strong></em> {</p>
-<p>​                stmt.close();</p>
-<p>​            } <em><strong>*catch*</strong></em> (SQLException e) {</p>
-<p>​                e.printStackTrace();</p>
-<p>​            }</p>
-<p>​            </p>
-<p>​            stmt = <em><strong>*null*</strong></em>;</p>
-<p>​        }</p>
-<p>​        <em><strong>*if*</strong></em>(conn != <em><strong>*null*</strong></em>){</p>
-<p>​            <em><strong>*try*</strong></em> {</p>
-<p>​                conn.close();</p>
-<p>​            } <em><strong>*catch*</strong></em> (SQLException e) {</p>
-<p>​                e.printStackTrace();</p>
-<p>​            }</p>
-<p>​            conn = <em><strong>*null*</strong></em>;</p>
-<p>​        }</p>
-<p>​    }</p>
-<p>}</p>
-<p>静态代码块可以写成配置文件</p>
-<p>配置文件：两种</p>
-<p>\1. 属性文件：扩展名为.properties  内容是key=value</p>
-<p>\2. XML文件</p>
-<p>定义一个配置文件：写好键值对的相应配置，修改文件扩展名为.properties</p>
-<p><img src="/4.20.JDBC/wps1.jpg" alt="img"> </p>
-<p>在工具类中解析属性文件：依然在静态代码块中进行解析：</p>
-<p><img src="/4.20.JDBC/wps2.jpg" alt="img"> </p>
-<p>SQL注入漏洞：通过知道用户名，然后进行sql语句查询就可以进行登录。</p>
-<p><img src="/4.20.JDBC/wps3.jpg" alt="img"> </p>
-<p>“+username+”和“+password+” 是字符串拼接</p>
-<p><img src="/4.20.JDBC/wps4.jpg" alt="img"> </p>
-<p>当用户名输入为aaa’ or ‘1=1 ，密码随意写，就能登录成功：</p>
-<p>select * from user where username = ‘ aaa’ or ‘ 1=1  ‘ and password = ‘ asdafaf ’</p>
-<p>因为先进行and运算，true and false 结果为false 。再进行or运算， true or false 结果为true，所以可以成功。</p>
-<p>当用户名输入为aaa’ or ‘1=1 ，密码随意写，也能登录成功：</p>
-<p>select * from user where username = ‘ aaa’ –  ‘ and password = ‘ asdafaf ’</p>
-<p>因为– 代表注释，相当于aaa后面的都没了，结果为true，所以可以成功。</p>
-<p>出现漏洞的原因就是因为 or  和 – 都是SQL的关键字</p>
-<p>解决方案：得在后台，后端解决。（因为可以绕过前端）</p>
-<p>需要采用PreparedStatement对象解决SQL注入漏洞。这个对象将SQL预先进行编译，使用?作为占位符。?所代表内容是SQL所固定。再次传入变量（包含SQL的关键字）。这个时候也不会识别这些关键字。</p>
-<p><em><strong>*public*</strong></em> <em><strong>*class*</strong></em> UserDao {</p>
-<p>​    <em><strong>*public*</strong></em> <em><strong>*boolean*</strong></em> login(String username,String password){</p>
-<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
-<p>​        PreparedStatement pstmt = <em><strong>*null*</strong></em>;</p>
-<p>​        ResultSet rs = <em><strong>*null*</strong></em>;</p>
-<p>​        // 定义一个变量:</p>
-<p>​        <em><strong>*boolean*</strong></em> flag = <em><strong>*false*</strong></em>;</p>
-<p>​        <em><strong>*try*</strong></em>{</p>
-<p>​            // 获得连接:</p>
-<p>​            conn = JDBCUtils.<strong>getConnection</strong>();</p>
-<p>​            // 编写SQL语句:</p>
-<p>​            String sql = “select * from user where username = ? and password = ?”;</p>
-<p>​            // 预编译SQL</p>
-<p>​            pstmt = conn.prepareStatement(sql);</p>
-<p>​            // 设置参数:</p>
-<p>​            pstmt.setString(1, username); //1代表第一个问号</p>
-<p>​            pstmt.setString(2, password); // 2代表第二个问号</p>
-<p>​            // 执行SQL语句:</p>
-<p>​            rs = pstmt.executeQuery();</p>
-<p>​            <em><strong>*if*</strong></em>(rs.next()){</p>
-<p>​                // 说明根据用户名和密码可以查询到这条记录</p>
-<p>​                flag = <em><strong>*true*</strong></em>;</p>
-<p>​            }</p>
-<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
-<p>​            e.printStackTrace();</p>
-<p>​        }<em><strong>*finally*</strong></em>{</p>
-<p>​            JDBCUtils.<strong>release</strong>(rs, pstmt, conn);//这里传的pstmt实际是stmt的子类，实际上用的是多态</p>
-<p>​        }</p>
-<p>​        <em><strong>*return*</strong></em> flag;</p>
-<p>​    }</p>
-<p>所以以后的Statement都最好用PreparedStatement</p>
-<p>增加操作：String sql = “insert into user values (null,?,?,?,?)”;</p>
-<p>​            // 预编译SQL:</p>
-<p>​            pstmt = conn.prepareStatement(sql);</p>
-<p>​            // 设置参数:</p>
-<p>​            pstmt.setString(1, “eee”);</p>
-<p>​            pstmt.setString(2, “abc”);</p>
-<p>​            pstmt.setString(3, “旺财”);</p>
-<p>​            pstmt.setInt(4, 32);</p>
-<p>​            // 执行SQL</p>
-<p>​            <em><strong>*int*</strong></em> num = pstmt.executeUpdate();</p>
-<p>​            <em><strong>*if*</strong></em>(num &gt; 0){</p>
-<p>​                System.****<em>out*</em>***.println(“保存成功！”);</p>
-<p>​            }</p>
-<p>修改操作：String sql = “update user set username = ?,password =?,nickname=?,age = ? where id = ?”;</p>
-<p>​            // 预编译SQL:</p>
-<p>​            pstmt = conn.prepareStatement(sql);</p>
-<p>​            // 设置参数:</p>
-<p>​            pstmt.setString(1, “abc”);</p>
-<p>​            pstmt.setString(2, “1234”);</p>
-<p>​            pstmt.setString(3, “旺旺”);</p>
-<p>​            pstmt.setInt(4, 23);</p>
-<p>​            pstmt.setInt(5, 6);</p>
-<p>​            // 执行SQL：</p>
-<p>​            <em><strong>*int*</strong></em> num = pstmt.executeUpdate();</p>
-<p>​            <em><strong>*if*</strong></em>(num &gt; 0){</p>
-<p>​                System.****<em>out*</em>***.println(“修改成功！”);</p>
-<p>​            }</p>
-<p>删除操作：String sql = “delete from user where id = ?”;</p>
-<p>​            // 预编译SQL</p>
-<p>​            pstmt = conn.prepareStatement(sql);</p>
-<p>​            // 设置参数:</p>
-<p>​            pstmt.setInt(1, 4);</p>
-<p>​            // 执行SQL:</p>
-<p>​            <em><strong>*int*</strong></em> num = pstmt.executeUpdate();</p>
-<p>​            <em><strong>*if*</strong></em>(num &gt; 0){</p>
-<p>​                System.****<em>out*</em>***.println(“删除成功！”);</p>
-<p>​            }</p>
-<p>查找操作：String sql = “select * from user”;</p>
-<p>​            // 预编译SQL:</p>
-<p>​            pstmt = conn.prepareStatement(sql);</p>
-<p>​            // 设置参数:</p>
-<p>​            // 执行SQL:</p>
-<p>​            rs = pstmt.executeQuery();</p>
-<p>​            // 遍历结果集:</p>
-<p>​            while(rs.next()){</p>
-<p>​                System.out.println(rs.getInt(“id”)+” “+rs.getString(“username”)+” “+rs.getString(“password”)+” “+rs.getString(“nickname”));</p>
-<p>}</p>
-<p>JDBC的批处理：之前进行JDBC的操作的时候，都是一条SQL语句执行。现在如果使用批处理，可以将一批SQL一起执行。</p>
-<p>用Statement进行批处理：@Test</p>
-<p>​    /**</p>
-<p>​     * 批处理基本操作</p>
-<p>​     */</p>
-<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo1(){</p>
-<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
-<p>​        Statement stmt = <em><strong>*null*</strong></em>;</p>
-<p>​        <em><strong>*try*</strong></em>{</p>
-<p>​            // 获得连接:</p>
-<p>​            conn = JDBCUtils.<strong>getConnection</strong>();</p>
-<p>​            // 创建执行批处理对象:</p>
-<p>​            stmt = conn.createStatement();</p>
-<p>​            // 编写一批SQL语句：</p>
-<p>​            String sql1 = “create database test1”;</p>
-<p>​            String sql2 = “use test1”;</p>
-<p>​            String sql3 = “create table user(id int primary key auto_increment,name varchar(20))”;</p>
-<p>​            String sql4 = “insert into user values (null,’aaa’)”;</p>
-<p>​            String sql5 = “insert into user values (null,’bbb’)”;</p>
-<p>​            String sql6 = “insert into user values (null,’ccc’)”;</p>
-<p>​            String sql7 = “update user set name = ‘mmm’ where id = 2”;</p>
-<p>​            String sql8 = “delete from user where id = 1”;</p>
-<p>​            // 添加到批处理</p>
-<p>​            stmt.addBatch(sql1);</p>
-<p>​            stmt.addBatch(sql2);</p>
-<p>​            stmt.addBatch(sql3);</p>
-<p>​            stmt.addBatch(sql4);</p>
-<p>​            stmt.addBatch(sql5);</p>
-<p>​            stmt.addBatch(sql6);</p>
-<p>​            stmt.addBatch(sql7);</p>
-<p>​            stmt.addBatch(sql8);</p>
-<p>​            // 执行批处理:</p>
-<p>​            stmt.executeBatch();</p>
-<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
-<p>​            e.printStackTrace();</p>
-<p>​        }<em><strong>*finally*</strong></em>{</p>
-<p>​            JDBCUtils.<strong>release</strong>(stmt, conn);</p>
-<p>​        }</p>
-<p>​    }</p>
-<p>使用PreparedStatement进行批量插入：</p>
-<p>@Test</p>
-<p>​    /**</p>
-<p>​     * 批量插入记录:</p>
-<p>​     * * 默认情况下MySQL批处理没有开启的，需要在url后面拼接一个参数即可：</p>
-<p>?rewriteBatchedStatements=true</p>
-<p>​     */</p>
-<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo2(){</p>
-<p>​        // 记录开始时间:</p>
-<p>​        <em><strong>*long*</strong></em> begin = System.<strong>currentTimeMillis</strong>();</p>
-<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
-<p>​        PreparedStatement pstmt = <em><strong>*null*</strong></em>;</p>
-<p>​        <em><strong>*try*</strong></em>{</p>
-<p>​            // 获得连接:</p>
-<p>​            conn = JDBCUtils.<strong>getConnection</strong>();</p>
-<p>​            // 编写SQL语句：</p>
-<p>​            String sql = “insert into user values (null,?)”;</p>
-<p>​            // 预编译SQL:</p>
-<p>​            pstmt = conn.prepareStatement(sql);</p>
-<p>​            <em><strong>*for*</strong></em>(<em><strong>*int*</strong></em> i=1;i&lt;=10000;i++){</p>
-<p>​                pstmt.setString(1, “name”+i);</p>
-<p>​                // 添加到批处理</p>
-<p>​                pstmt.addBatch();</p>
-<p>​                // 注意问题：</p>
-<p>​                // 执行批处理：每1000次进行一次批量处理和清空，以防止内存溢出</p>
-<p>​                <em><strong>*if*</strong></em>(i % 1000 == 0){</p>
-<p>​                    // 执行批处理:</p>
-<p>​                    pstmt.executeBatch();</p>
-<p>​                    // 清空批处理:</p>
-<p>​                    pstmt.clearBatch();</p>
-<p>​                }</p>
-<p>​            }</p>
-<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
-<p>​            e.printStackTrace();</p>
-<p>​        }<em><strong>*finally*</strong></em>{</p>
-<p>​            JDBCUtils.<strong>release</strong>(pstmt, conn);</p>
-<p>​        }</p>
-<p>​        <em><strong>*long*</strong></em> end = System.<strong>currentTimeMillis</strong>();</p>
-<p>​        System.****<em>out*</em>***.println((end-begin));</p>
-<p>​    }</p>
-<p>JDBC的事务：</p>
-<p>事务指的是逻辑上的一组操作，组成这组操作各个逻辑单元要么全都成功，要么全都失败。</p>
-<p>如果写一个转账代码，没有加事务的话，可能会出现扣钱了，但是另一个账户没有加钱的情况，所以需要加事务。</p>
-<p>@Test</p>
-<p>​    /**</p>
-<p>​     * 完成转账的案例</p>
-<p>​     */</p>
-<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo1(){</p>
-<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
-<p>​        PreparedStatement pstmt = <em><strong>*null*</strong></em>;</p>
-<p>​        <em><strong>*try*</strong></em>{</p>
-<p>​            /**</p>
-<p>​             * 完成转账代码：</p>
-<p>​             * * 扣除某个账号的钱</p>
-<p>​             * * 给另外一个账号加钱</p>
-<p>​             */</p>
-<p>​            // 获得连接：</p>
-<p>​            conn = JDBCUtils.<strong>getConnection</strong>();</p>
-<p>​            <em><strong>*// 开启事务*</strong></em></p>
-<p>​            <em><strong>*conn.setAutoCommit(*</strong>***</em>*false*<strong><strong><strong>*);*</strong></strong></strong>*//设置为false是需要手动提交，设为true的话，写一条sql语句就会提交一句****</p>
-<p>​            // 编写SQL语句：</p>
-<p>​            String sql = “update account set money = money + ? where name = ?”;</p>
-<p>​            // 预编译SQL:</p>
-<p>​            pstmt = conn.prepareStatement(sql);</p>
-<p>​            // 设置参数:</p>
-<p>​            // 用aaa账号给bbb账号转1000元</p>
-<p>​            pstmt.setDouble(1, -1000);</p>
-<p>​            pstmt.setString(2, “aaa”);</p>
-<p>​            // 执行SQL：扣除aaa账号1000元</p>
-<p>​            pstmt.executeUpdate();</p>
-<p>​            </p>
-<p>​            <em><strong>*int*</strong></em> i = 1 / 0; //假设这里出现了异常，结果账户的钱也不会发生改变</p>
-<p>​            </p>
-<p>​            // 给bbb账号加1000</p>
-<p>​            pstmt.setDouble(1, 1000);</p>
-<p>​            pstmt.setString(2, “bbb”);</p>
-<p>​            pstmt.executeUpdate();</p>
-<p>​            </p>
-<p>​            <em><strong>*// 提交事务:*</strong></em></p>
-<p>​            <em><strong>*conn.commit();*</strong></em></p>
-<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
-<p>​            <em><strong>*// 回滚事务:*</strong></em></p>
-<p>​            <em><strong>*try*</strong></em> <em><strong>*{*</strong></em></p>
-<p>​                <em><strong>*conn.rollback();*</strong></em></p>
-<p>​            <em><strong>*}*</strong></em> <em><strong>*catch*</strong></em> <em><strong>*(SQLException e1) {*</strong></em></p>
-<p>​                <em><strong>*e1.printStackTrace();*</strong></em></p>
-<p>​            <em><strong>*}*</strong></em></p>
-<p>​            e.printStackTrace();</p>
-<p>​        }<em><strong>*finally*</strong></em>{</p>
-<p>​            JDBCUtils.<strong>release</strong>(pstmt, conn);</p>
-<p>​        }</p>
-<p>​    }</p>
-<h1 id="连接池"><a href="#连接池" class="headerlink" title="*连接池*"></a><em><strong>*连接池*</strong></em></h1><p>连接池是装有连接的容器，线程使用连接的话，可以从连接池中进行获取，使用完成之后将连接归还给连接池。</p>
-<p>连接对象创建和销毁是需要耗费时间的，在服务器初始化的时候就初始化一些连接。把这些连接放入到内存中，使用的时候可以从内存中获取，使用完成之后将连接放入连接池中。从内存中获取和归还的效率要远远高于创建和销毁的效率。（提升性能）</p>
-<p>自定义连接池：</p>
-<p>\1. 编写一个类实现DataSource接口</p>
-<p>\2. 重写getConnection方法</p>
-<p>\3. 初始化多个连接在内存中</p>
-<p>\4. 编写归还连接的方法</p>
-<p><img src="/4.20.JDBC/wps5.jpg" alt="img"> </p>
-<p>测试：</p>
-<p><img src="/4.20.JDBC/wps6.jpg" alt="img"> </p>
-<p>但是这个自定义连接池也存在两个问题：</p>
-<p>使用接口的实现类完成的构造：</p>
-<p>MyDataSource dataSource = new MyDataSource(); 这种写法不利于程序的扩展：</p>
-<p>应该用这样的DataSource dataSource = new MyDataSource(); （多态）</p>
-<p>但是这样的话，因为DataSource下没有addBack方法所以下面的调用会出错；同时因为调用了addBack方法，会对使用连接池的用户增加难度（因为要理解什么是addBack方法，额外提供了方法归还连接）</p>
-<p>解决：不提供自定义的方法addBack就可以解决这个问题，所以需要改写一个方法解决归还的问题。</p>
-<p>在Connection中是有一个close方法的，colse方法完成了连接的销毁。现在需要写一个方法，将原有的连接的close方法改为归还。</p>
-<p>增强一个类中的方法：</p>
-<p>\1. 采用继承：是最简单的一种增强某个类中的方法的方式。</p>
-<p>条件：需要控制这个类的构造才能进行继承。</p>
-<p>\2. 采用装饰者模式：比如：BufferedInputStream（InputStream）</p>
-<p>条件：增强的类和被增强的那个类要实现同样的接口；在增强的类中要有被增强的那个类的引用。</p>
-<p>\3. 动态代理</p>
-<p>使用装饰者模式增强Connection中的close方法：（因为接口内的方法需要全部重写，而继承的话，可以只重写某一个或几个方法）</p>
-<p>为了简化编程，提供一个模板类（模板类原封不动的将接口中的所有方法都实现，但是都没有增强）。编写一个装饰类继承模板类。在装饰类中只需要增强某一个方法即可。</p>
-<p><img src="/4.20.JDBC/wps7.jpg" alt="img"> </p>
-<p>连接池的代码：</p>
-<p><em><strong>*public*</strong></em> <em><strong>*class*</strong></em> MyDataSource <em><strong>*implements*</strong></em> DataSource {</p>
-<p>​    // 将一些连接存入到内存中，可以定义一个集合，用于存储连接对象。</p>
-<p>​    <em><strong>*private*</strong></em> List<Connection> connList = <em><strong>*new*</strong></em> ArrayList<Connection>();</p>
-<p>​    </p>
-<p>​    // 在初始化的时候提供一些连接</p>
-<p>​    <em><strong>*public*</strong></em> MyDataSource() {</p>
-<p>​        // 初始化连接：</p>
-<p>​        <em><strong>*for*</strong></em>(<em><strong>*int*</strong></em> i = 1;i&lt;=3;i++){</p>
-<p>​            // 向集合中存入连接:</p>
-<p>​            connList.add(JDBCUtils.<strong>getConnection</strong>());</p>
-<p>​        }</p>
-<p>​    }</p>
-<p>​    </p>
-<p>​    // 从连接池中获得连接的方法</p>
-<p>​    @Override</p>
-<p>​    <em><strong>*public*</strong></em> Connection getConnection() <em><strong>*throws*</strong></em> SQLException {</p>
-<p>​        Connection conn = connList.remove(0);</p>
-<p>​        <em><strong>*// 增强连接：*</strong></em></p>
-<p>​        <em><strong>*MyConnectionWrapper connWrapper =*</strong></em> <em><strong>*new*</strong></em> <em><strong>*MyConnectionWrapper(conn, connList);*</strong></em></p>
-<p>​        <em><strong>*return*</strong></em> connWrapper;</p>
-<p>​    }</p>
-<p>​    </p>
-<p>​    <em><strong>*// 编写一个归还连接的方法:*</strong></em></p>
-<p>​    <em><strong>*/*public void addBack(Connection*</strong></em> <em><strong>*conn*</strong>***</em>*){****</p>
-<p>​        <em><strong>*connList.add(*</strong>***</em>*conn****<em><strong>*);*</strong></em></p>
-<p>​    <em><strong>*}*/*</strong></em></p>
-<p>}</p>
-<p>测试：</p>
-<p><img src="/4.20.JDBC/wps8.jpg" alt="img"> </p>
-<h1 id="Druid开源连接池"><a href="#Druid开源连接池" class="headerlink" title="*Druid开源连接池*"></a><em><strong>*Druid开源连接池*</strong></em></h1><p>Druid是阿里旗下开源连接池产品，使用非常简单，可以与Spring框架进行快速整合。</p>
-<p>在项目下新建一个文件夹folder名为lib，复制mysql的驱动包，druid的jar包到lib中，添加buid path。</p>
-<p>/<em>可以直接添加工具类，配置文件。然后直接获得连接，执行SQL语句，释放资源。（但是最好用连接池，不用这个）</em>/</p>
-<p>使用这个druid连接池可以去百度搜索它的帮助文档查看相关的API。核心类：DruidDataSource</p>
-<p>利用这个核心类可以创建对象，然后手动设置数据库连接的参数：setXxx的方法，（也可以使用配置文件进行获取参数）获得连接：getConnection方法。最后释放资源中conn的释放不是销毁而是归还到连接池中（Druid连接池底层一定重写了这个方法变成了归还）</p>
-<p>@Test</p>
-<p>​    /**</p>
-<p>​     * Druid的使用:</p>
-<p>​     * * 手动设置参数的方式</p>
-<p>​     */</p>
-<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo1(){</p>
-<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
-<p>​        PreparedStatement pstmt = <em><strong>*null*</strong></em>;</p>
-<p>​        ResultSet rs = <em><strong>*null*</strong></em>;</p>
-<p>​        <em><strong>*try*</strong></em>{</p>
-<p>​            // 使用连接池：</p>
-<p>​            DruidDataSource dataSource = <em><strong>*new*</strong></em> DruidDataSource();</p>
-<p>​            // 手动设置数据库连接的参数:</p>
-<p>​            dataSource.setDriverClassName(“com.mysql.jdbc.Driver”);</p>
-<p>​            dataSource.setUrl(“jdbc:mysql:///web_test4”);</p>
-<p>​            dataSource.setUsername(“root”);</p>
-<p>​            dataSource.setPassword(“abc”);</p>
-<p>​            // 获得连接：</p>
-<p>//            conn = JDBCUtils.getConnection();</p>
-<p>​            conn = dataSource.getConnection();</p>
-<p>​            // 编写SQL:</p>
-<p>​            String sql = “select * from account”;</p>
-<p>​            // 预编译SQL:</p>
-<p>​            pstmt = conn.prepareStatement(sql);</p>
-<p>​            // 设置参数:</p>
-<p>​            // 执行SQL:</p>
-<p>​            rs = pstmt.executeQuery();</p>
-<p>​            <em><strong>*while*</strong></em>(rs.next()){</p>
-<p>​                System.****<em>out*</em>***.println(rs.getInt(“id”)+” “+rs.getString(“name”)+” “+rs.getDouble(“money”));</p>
-<p>​            }</p>
-<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
-<p>​            e.printStackTrace();</p>
-<p>​        }<em><strong>*finally*</strong></em>{</p>
-<p>​            JDBCUtils.<strong>release</strong>(rs, pstmt, conn);</p>
-<p>​        }</p>
-<p>​    }</p>
-<p>也可以用配置文件进行参数的获取：</p>
-<p>@Test</p>
-<p>​    /**</p>
-<p>​     * Druid的使用:</p>
-<p>​     * * 配置文件方式设置参数</p>
-<p>​     * Druid配置方式可以使用属性文件配置的。</p>
-<p>​     * * 文件名称没有规定但是属性文件中的key要一定的。</p>
-<p>​     */</p>
-<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo2(){</p>
-<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
-<p>​        PreparedStatement pstmt = <em><strong>*null*</strong></em>;</p>
-<p>​        ResultSet rs = <em><strong>*null*</strong></em>;</p>
-<p>​        <em><strong>*try*</strong></em>{</p>
-<p>​            // 使用连接池：</p>
-<p>​            // 从属性文件中获取：</p>
-<p>​            Properties properties = <em><strong>*new*</strong></em> Properties();</p>
-<p>​            properties.load(<em><strong>*new*</strong></em> FileInputStream(“src/druid.properties”));</p>
-<p>//这里()内需要传一个InputStream，现在可以这样子传，在WEB中是另一种。</p>
-<p>​            DataSource dataSource = DruidDataSourceFactory.<strong>createDataSource</strong>(properties);</p>
-<p>​            // 获得连接：</p>
-<p>//            conn = JDBCUtils.getConnection();</p>
-<p>​            conn = dataSource.getConnection();</p>
-<p>​            // 编写SQL:</p>
-<p>​            String sql = “select * from account”;</p>
-<p>​            // 预编译SQL:</p>
-<p>​            pstmt = conn.prepareStatement(sql);</p>
-<p>​            // 设置参数:</p>
-<p>​            // 执行SQL:</p>
-<p>​            rs = pstmt.executeQuery();</p>
-<p>​            <em><strong>*while*</strong></em>(rs.next()){</p>
-<p>​                System.****<em>out*</em>***.println(rs.getInt(“id”)+” “+rs.getString(“name”)+” “+rs.getDouble(“money”));</p>
-<p>​            }</p>
-<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
-<p>​            e.printStackTrace();</p>
-<p>​        }<em><strong>*finally*</strong></em>{</p>
-<p>​            JDBCUtils.<strong>release</strong>(rs, pstmt, conn);</p>
-<p>​        }</p>
-<p>​    }</p>
-<p>虽然可以在这里进行配置文件的配置，但是不太好，可以放在JDBC的工具类中。</p>
-<h1 id="C3P0开源连接池"><a href="#C3P0开源连接池" class="headerlink" title="*C3P0开源连接池*"></a><em><strong>*C3P0开源连接池*</strong></em></h1><p>C3P0是一个开源的JDBC<a target="_blank" rel="noopener" href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=8024867&ss_c=ssc.citiao.link">连接池</a>，它实现了数据源和JNDI绑定，支持JDBC3规范和JDBC2的标准扩展。目前使用它的开源项目有<a target="_blank" rel="noopener" href="https://baike.sogou.com/lemma/ShowInnerLink.htm?lemmaId=54630&ss_c=ssc.citiao.link">Hibernate</a>，Spring等。</p>
-<p>C3P0的核心类是：ComboPooledDataSource</p>
-<p>手动设置参数：</p>
-<p>@Test</p>
-<p>​    /**</p>
-<p>​     * 手动设置参数的方式:</p>
-<p>​     */</p>
-<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo1(){</p>
-<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
-<p>​        PreparedStatement pstmt = <em><strong>*null*</strong></em>;</p>
-<p>​        ResultSet rs = <em><strong>*null*</strong></em>;</p>
-<p>​        <em><strong>*try*</strong></em>{</p>
-<p>​            // 获得连接：从连接池中获取：</p>
-<p>​            // 创建连接池：</p>
-<p>​            ComboPooledDataSource dataSource = <em><strong>*new*</strong></em> ComboPooledDataSource();</p>
-<p>​            // 设置连接参数:</p>
-<p>​            dataSource.setDriverClass(“com.mysql.jdbc.Driver”);</p>
-<p>​            dataSource.setJdbcUrl(“jdbc:mysql:///web_test4”);</p>
-<p>​            dataSource.setUser(“root”);</p>
-<p>​            dataSource.setPassword(“abc”);</p>
-<p>​            // 从连接池中获得连接:</p>
-<p>​            conn = dataSource.getConnection();</p>
-<p>​            // 编写SQL：</p>
-<p>​            String sql = “select * from account”;</p>
-<p>​            // 预编译SQL:</p>
-<p>​            pstmt = conn.prepareStatement(sql);</p>
-<p>​            // 执行SQL：</p>
-<p>​            rs = pstmt.executeQuery();</p>
-<p>​            <em><strong>*while*</strong></em>(rs.next()){</p>
-<p>​                System.****<em>out*</em>***.println(rs.getInt(“id”)+” “+rs.getString(“name”)+” “+rs.getDouble(“money”));</p>
-<p>​            }</p>
-<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
-<p>​            e.printStackTrace();</p>
-<p>​        }<em><strong>*finally*</strong></em>{</p>
-<p>​            JDBCUtils.<strong>release</strong>(rs, pstmt, conn);</p>
-<p>​        }</p>
-<p>​    }</p>
-<p>配置文件设置参数：</p>
-<p>默认情况下，c3p0会在类加载的resource路径下查找一个配置文件“/c3p0-config.xml”。所以XML文件应该在应用的CLASSPATH下的一个文件夹或者jar包中，如果是WEB的话会在WEB-INF/classes下，其他的话也是类似的路径。c3p0不仅支持xml文件，也支持properties文件（以后的重点）。</p>
-<p>配置连接池：</p>
-<p>在src下新建一个xml文件，设置名为c3p0-config.xml，可以在帮助文档中找到xml的配置代码:</p>
-<p><default-config>…… </default-config>  默认配置</p>
-<p>&lt;named-config  name=” ”&gt; ……</named-config>  自定义配置</p>
-<p>可以修改其中的配置key，value。</p>
-<p><img src="/4.20.JDBC/wps9.jpg" alt="img"> </p>
-<p>使用连接池：</p>
-<p>@Test</p>
-<p>​    /**</p>
-<p>​     * 采用配置文件的方式：</p>
-<p>​     */</p>
-<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo2(){</p>
-<p>​        Connection conn = <em><strong>*null*</strong></em>;</p>
-<p>​        PreparedStatement pstmt = <em><strong>*null*</strong></em>;</p>
-<p>​        ResultSet rs = <em><strong>*null*</strong></em>;</p>
-<p>​        <em><strong>*try*</strong></em>{</p>
-<p>​            // 获得连接：从连接池中获取：</p>
-<p>​            // 创建连接池：//创建连接池默认去类路径下查找c3p0-config.xml，并且将其中的各种参数加载好</p>
-<p>​            ComboPooledDataSource dataSource = <em><strong>*new*</strong></em> ComboPooledDataSource();</p>
-<p>//()里面可以传递配置的名称从而加载不同的参数。如果名称没有匹配的，会加载默认的配置参数</p>
-<p>​            // 从连接池中获得连接:</p>
-<p>​            conn = dataSource.getConnection();</p>
-<p>​            // 编写SQL：</p>
-<p>​            String sql = “select * from account”;</p>
-<p>​            // 预编译SQL:</p>
-<p>​            pstmt = conn.prepareStatement(sql);</p>
-<p>​            // 执行SQL：</p>
-<p>​            rs = pstmt.executeQuery();</p>
-<p>​            <em><strong>*while*</strong></em>(rs.next()){</p>
-<p>​                System.****<em>out*</em>***.println(rs.getInt(“id”)+” “+rs.getString(“name”)+” “+rs.getDouble(“money”));</p>
-<p>​            }</p>
-<p>​        }<em><strong>*catch*</strong></em>(Exception e){</p>
-<p>​            e.printStackTrace();</p>
-<p>​        }<em><strong>*finally*</strong></em>{</p>
-<p>​            JDBCUtils.<strong>release</strong>(rs, pstmt, conn);</p>
-<p>​        }</p>
-<p>​    }</p>
-<p>参数可以设置很多个，很多种，所以其应用很灵活。</p>
-<p>以上的代码都不规范，因为每次都会创建一个新的连接池，会浪费资源，所以需要对工具类进行改写和完善</p>
-<p><img src="/4.20.JDBC/wps10.jpg" alt="img"> </p>
-<h1 id="DBUtils"><a href="#DBUtils" class="headerlink" title="*DBUtils*"></a><em><strong>*DBUtils*</strong></em></h1><p>Commons DbUtils是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Apache/8512995">Apache</a>组织提供的一个对<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/JDBC">JDBC</a>进行简单封装的开源工具类库，使用它能够简化<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/JDBC">JDBC</a>应用程序的开发，同时也不会影响程序的性能。</p>
-<p>因为JDBC手写比较麻烦，而且有非常多的代码是类似的。比如获得连接，预编译SQL，释放资源等..那么可以将这些代码抽取出来放到工具类中。将类似的代码进行抽取。大大简化JDBC的编程。</p>
-<p>API</p>
-<p>QueryRunner对象：核心运行类</p>
-<p>构造方法：</p>
-<p>无参构造</p>
-<p><img src="/4.20.JDBC/wps11.jpg" alt="img"> </p>
-<p>带参构造</p>
-<p><img src="/4.20.JDBC/wps12.jpg" alt="img"> </p>
-<p>方法：</p>
-<p>增删改的方法</p>
-<p><img src="/4.20.JDBC/wps13.jpg" alt="img"> </p>
-<p><img src="/4.20.JDBC/wps14.jpg" alt="img"> </p>
-<p>查找的方法</p>
-<p><img src="/4.20.JDBC/wps15.jpg" alt="img"> </p>
-<p><img src="/4.20.JDBC/wps16.jpg" alt="img"> </p>
-<p>在一般情况下如果执行CRUD的操作：</p>
-<p>构造：</p>
-<p>QueryRunner(DataSource ds);</p>
-<p>方法：</p>
-<p>int update(String sql,Object… args);</p>
-<p>T query(String sql,ResultSetHandler rsh,Object… args);</p>
-<p>如果有事务管理的话使用另一套完成CRUD的操作</p>
-<p>构造：</p>
-<p>QueryRunner();</p>
-<p>方法:</p>
-<p>int update(Connection conn,String sql,Object… args);</p>
-<p>T query(Connection conn,String sql,ResultSetHandler rsh,Object… args);</p>
-<p>批量处理的方法</p>
-<p><img src="/4.20.JDBC/wps17.jpg" alt="img"> </p>
-<p>还有一个类：DbUtils</p>
-<p>提交事务的方法：（这里的close不是销毁而是归还）</p>
-<p><img src="/4.20.JDBC/wps18.jpg" alt="img"> </p>
-<p>回滚事务的方法：</p>
-<p><img src="/4.20.JDBC/wps19.jpg" alt="img"> </p>
-<p>添加DBUtils的构建路径</p>
-<p>DBUtils的添加操作：</p>
-<p>​    @Test</p>
-<p>​    /**</p>
-<p>​     * 添加操作</p>
-<p>​     */</p>
-<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo1() <em><strong>*throws*</strong></em> SQLException{</p>
-<p>​        // 创建核心类：QueryRunner:</p>
-<p>​        QueryRunner queryRunner = <em><strong>*new*</strong></em> QueryRunner(JDBCUtils2.<strong>getDataSource</strong>());</p>
-<p>​        queryRunner.update(“insert into account values (null,?,?)”, “ddd”,10000);</p>
-<p>​    }</p>
-<p>DBUtils的修改操作：</p>
-<p>​    @Test</p>
-<p>​    /**</p>
-<p>​     * 修改操作</p>
-<p>​     */</p>
-<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo2() <em><strong>*throws*</strong></em> SQLException{</p>
-<p>​        // 创建核心类:</p>
-<p>​        QueryRunner queryRunner = <em><strong>*new*</strong></em> QueryRunner(JDBCUtils2.<strong>getDataSource</strong>());</p>
-<p>​        queryRunner.update(“update account set name=?,money=? where id =?”, “eee”,20000,4);</p>
-<p>​    }</p>
-<p>DBUtils的删除操作：</p>
-<p>@Test</p>
-<p>​    /**</p>
-<p>​     * 删除操作</p>
-<p>​     */</p>
-<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> demo3() <em><strong>*throws*</strong></em> SQLException{</p>
-<p>​        // 创建核心类:</p>
-<p>​        QueryRunner queryRunner = <em><strong>*new*</strong></em> QueryRunner(JDBCUtils2.<strong>getDataSource</strong>());</p>
-<p>​        queryRunner.update(“delete from account where id = ?”, 3);</p>
-<p>​    }</p>
-<p>DBUtils的查询操作：</p>
-<p>查询一条记录：</p>
-<p>创建一个对象：Account（这个对象实例其实就是javabean）</p>
-<p><img src="/4.20.JDBC/wps20.jpg" alt="img"> </p>
-<p>也要重写toString方法</p>
-<p>查询的代码实现：T query(String sql,ResultSetHandler rsh,Object… args);</p>
-<p><img src="/4.20.JDBC/wps21.jpg" alt="img"> </p>
-<p>查询多条语句：</p>
-<p><img src="/4.20.JDBC/wps22.jpg" alt="img"> </p>
-<p>ResultSetHandler接口的实现类：</p>
-<p>\1. ArrayHandler和ArrayListHandler</p>
-<p>ArrayHandler：将查询到的一条记录封装到一个数组当中，这个数组应该是Object[]</p>
-<p><img src="/4.20.JDBC/wps23.jpg" alt="img"> </p>
-<p>ArrayListHandler：将多条记录封装到一个装有Object[]的List集合中。</p>
-<p><img src="/4.20.JDBC/wps24.jpg" alt="img"> </p>
-<p>\2. BeanHandler和BeanListHandler（重要）</p>
-<p>BeanHandler：将一条记录封装到一个JavaBean中。</p>
-<p><img src="/4.20.JDBC/wps25.jpg" alt="img"> </p>
-<p>必须保证Acoount中的变量和SQL中的列名一致</p>
-<p>BeanListHandler：将多条记录封装到一个装有JavaBean的List集合中。</p>
-<p><img src="/4.20.JDBC/wps26.jpg" alt="img"> </p>
-<p>\3. MapHandler和MapListHandler</p>
-<p>MapHandler：将一条记录封装到一个Map集合中，Map的key是列名，Map的value就是表中列的记录值。</p>
-<p><img src="/4.20.JDBC/wps27.jpg" alt="img"> </p>
-<p>MapListHandler：将多条记录封装到一个装有Map的List集合中。</p>
-<p><img src="/4.20.JDBC/wps28.jpg" alt="img"> </p>
-<p>\4. ColumnListHandler、ScalarHandler、KeyedHandler</p>
-<p>ColumnListHandler：将数据库中的某列的值封装到List集合中。</p>
-<p><img src="/4.20.JDBC/wps29.jpg" alt="img"> </p>
-<p>ScalarHandler：将单个值封装。</p>
-<p><img src="/4.20.JDBC/wps30.jpg" alt="img"> </p>
-<p>KeyedHandler（了解即可，用的很少）：将一条记录封装到一个Map集合中。将多条记录封装到一个装有Map集合的Map集合中。而且外面的Map的key是可以指定的（可以指定为数据库中的某一列名）。</p>
-<p><img src="/4.20.JDBC/wps31.jpg" alt="img"> </p>
-<p>因为可能是不同的类型，为了通用性，一般都用Object类型。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.20.JDBC/" data-id="ckq1xbdt40063pwwd0nkefh2n" data-title="JDBC" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-4.16.泛型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/4.16.%E6%B3%9B%E5%9E%8B/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T06:12:27.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/4.16.%E6%B3%9B%E5%9E%8B/">泛型</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>JDK5以后出现了自动装箱，所以在需要引用类型的时候如果是个基本类型也是可以的，是因为有自动装箱。</p>
-<p>当我们往集合中存储了String和Integer两种类型时的数据时，而在遍历时都进行String类型的转化时，就会报错。但这个报错在编译期间不会出现，在编译的时候只有警告，只有执行的时候才会出现。于是集合也开始在创建对象的时候明确元素的数据类型，这就是泛型。</p>
-<p>泛型：是一种把类型明确的工作推迟到创建对象或者调用方法的时候才去明确的特殊的类型。参数化类型，把类型当作参数一样的传递。</p>
-<p>格式：&lt;数据类型&gt;  此处的数据类型只能是引用类型</p>
-<p>好处：1.运行时期的问题提取到了编译期间</p>
-<p>\2. 避免了强制类型转换</p>
-<p>\3. 简化了程序设计，解决了黄色警告线</p>
-<p>在API中，如果类，接口，抽象类中出现了<E>，就说明要使用泛型。一般来说就是在集合中使用。</p>
-<p>JDK7的新特性：泛型推断。</p>
-<p>早期我们使用Object类型可以接收任意的对象类型。但是在实际的使用中，会有类型转换的问题（向上转型是没有任何问题的，但是在向下转型的时候隐含了类型转换的问题），也就存在着隐患，这样的程序是不安全的，所以在JDK5以后Java提供了泛型来解决这个问题，提高程序的安全性。</p>
-<p>应用：</p>
-<p>1.泛型类：把泛型定义在类上</p>
-<p>格式:public class 类名&lt;泛型类型1,…&gt;</p>
-<p>注意:泛型类型必须是引用类型</p>
-<p>2.泛型方法：把泛型定义在方法上</p>
-<p>格式:public &lt;泛型类型&gt; 返回类型 方法名(泛型类型 .)</p>
-<p>方法可以接收任意的类型</p>
-<p>3.泛型接口：把泛型定义在接口上</p>
-<p>格式:public  interface 接口名&lt;泛型类型1…&gt;</p>
-<p>实现类在实现接口的时候：</p>
-<p>1.已经知道是什么类型的了：</p>
-<p>public class InterImpl implements Inter<String>{}</p>
-<p>\2. 还不知道是什么类型：(这种情况用的比较多)</p>
-<p>public class InterImpl<T> implements Inter<T>{}</p>
-<p>泛型通配符：泛型如果写的时候，前后必须一致（ArrayList<T> array=new ArrayList<T>();  这里的前后两个T必须一致，？可以表示任意）</p>
-<p>\1. &lt;?&gt;:任意类型，如果没有明确，那么就是Object以及任意的Java类了</p>
-<p>\2. &lt;? extends E&gt;：向下限定，E及其子类</p>
-<p>\3. &lt;? super E&gt;：向上限定，E及其父类</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.16.%E6%B3%9B%E5%9E%8B/" data-id="ckq1xbdro001spwwdd7dt8no1" data-title="泛型" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-4.15.枚举" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/4.15.%E6%9E%9A%E4%B8%BE/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T06:12:20.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/4.15.%E6%9E%9A%E4%B8%BE/">枚举</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>枚举：是有限个值的集合。</p>
-<p>是指将变量的值一一列出来,变量的值只限于列举出来的值的范围内</p>
-<p>如果没有枚举类，我们自己定义一个类的话，会非常麻烦。（//需要用到构造方法私有，静态方法调用，对象调用方法，匿名类重写方法等）</p>
-<p>格式：</p>
-<p>public enum 枚举类名 {</p>
-<p>​            枚举项1，枚举项2，枚举项3…;</p>
-<p>}</p>
-<p>public String toString():  返回枚举常量的名称，它包含在声明中（枚举重写了toString方法，返回的是枚举项的名字）</p>
-<p>注意事项</p>
-<p>定义枚举类要用关键字enum</p>
-<p>所有枚举类都是Enum的子类</p>
-<p>枚举类的第一行上必须是枚举项，最后一个枚举项后的分号是可以省略的，但是如果枚举类有其他的东西，这个分号就不能省略。建议不要省略</p>
-<p>枚举类可以有构造器，但必须是private的，它默认的也是private的。枚举项的用法比较特殊：枚举(“”);</p>
-<p>枚举类也可以有抽象方法，但是枚举项必须重写该方法</p>
-<p>枚举在switch语句中的使用</p>
-<p>枚举类中的几个常见方法</p>
-<p>int compareTo(E o) 比较此枚举与指定对象的顺序，枚举中隐含数字 1 2 3 …</p>
-<p>String name() 返回此枚举常量的名称，在其枚举声明中对其进行声明</p>
-<p>int ordinal()  返回枚举常量的序数（它在枚举声明中的位置，初始常量序数为0）</p>
-<p>String toString() 返回枚举常量的名称，它包含在声明中</p>
-<p><T> T valueOf(Class<T> type,String name)  静态方法，返回带指定名称的指定枚举类型的枚举常量</p>
-<p>values()  此方法虽然在JDK文档中查找不到，但每个枚举类都具有该方法，它遍历枚举类的所有枚举值非常方便</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.15.%E6%9E%9A%E4%B8%BE/" data-id="ckq1xbdro001qpwwddd3l5llx" data-title="枚举" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-4.23JVM" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/4.23JVM/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T03:36:18.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/4.23JVM/">JVM</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Java语言是跨平台的，jvm不是跨平台的。</p>
-<p>虚拟机（Virture Machine）指通过软件的具有完整硬件系统功能的、运行在一个完全隔离环境中的完整计算机系统。</p>
-<p>Java的源代码经过编译后生成的不是特定CPU使用的本地代码，而是名为字节代码的程序。直接代码的运行环境就叫做java虚拟机（JVM），边转换边运行。</p>
-<p>java中的内存分配：java程序在运行时，需要在内存中的分配空间。</p>
-<p>为了提高运算效率，就对空间进行了不同区域的划分，因为每一片区域都有特定的处理数据方式和内存管理方式。</p>
-<p>\1. 栈：存储局部变量（加载的变量、方法）</p>
-<p>结构：先进后出</p>
-<p>特点：栈内存的数据用完（脱离数据域）就释放掉。（堆内存的数据可能要使用多次。）</p>
-<p>\2. 堆：存储new出来的东西（里面含有该new类的成员变量、静态标记、方法标记）</p>
-<p>特点：每一个new出来的东西都有地址值；每个变量都有默认值：</p>
-<p>byte,short,int,long  0</p>
-<p>float,double  0.0</p>
-<p>char  \u000</p>
-<p>boolean  false </p>
-<p>引用类型  null</p>
-<p>使用完毕就变成了垃圾，但是并没有立即回收，会在垃圾回收器空闲时候回收。</p>
-<p>C++中用析构函数来回收释放空间。</p>
-<p>栈内存的两个引用指向同一个堆内存空间，无论是它们谁的操作，都是针对同一个地方。</p>
-<p>3.方法区：class类区（包括类的成员变量和成员方法）、静态区（static）、常量池</p>
-<p>4.本地方法区：和系统相关</p>
-<p>5.寄存器：CPU使用</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.23JVM/" data-id="ckq1xbdrq001zpwwd3bep9w28" data-title="JVM" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-4.24.JUC并发编程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/4.24.JUC%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T03:36:12.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/4.24.JUC%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">JUC并发编程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.24.JUC%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" data-id="ckq1xbdrr0021pwwdc6qjg7vk" data-title="JUC并发编程" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/4/">下一页 &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/4/">下一页 &raquo;</a>
   </nav>
 
 </section>
@@ -1775,7 +1996,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eclipse/" rel="tag">Eclipse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HATEOAS/" rel="tag">HATEOAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">MySQL基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PBOOTCMS/" rel="tag">PBOOTCMS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Portainer-io/" rel="tag">Portainer.io</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RESTful/" rel="tag">RESTful</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/" rel="tag">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/" rel="tag">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%A6%82%E8%BF%B0/" rel="tag">java概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springfox/" rel="tag">springfox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swagger/" rel="tag">swagger</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6/" rel="tag">书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/" rel="tag">历史版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E8%97%8F/" rel="tag">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" rel="tag">编程规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" rel="tag">设计规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" rel="tag">软件说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag">面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eclipse/" rel="tag">Eclipse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HATEOAS/" rel="tag">HATEOAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">MySQL基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PBOOTCMS/" rel="tag">PBOOTCMS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Portainer-io/" rel="tag">Portainer.io</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RESTful/" rel="tag">RESTful</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/" rel="tag">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebRTC/" rel="tag">WebRTC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/" rel="tag">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%A6%82%E8%BF%B0/" rel="tag">java概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springfox/" rel="tag">springfox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swagger/" rel="tag">swagger</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6/" rel="tag">书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/" rel="tag">历史版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E8%97%8F/" rel="tag">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" rel="tag">编程规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" rel="tag">设计规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" rel="tag">软件说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag">面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
     </div>
   </div>
 
@@ -1785,7 +2006,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HATEOAS/" style="font-size: 10px;">HATEOAS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">MySQL基础概念</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PBOOTCMS/" style="font-size: 10px;">PBOOTCMS</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Portainer-io/" style="font-size: 10px;">Portainer.io</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/WEB/" style="font-size: 10px;">WEB</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">java概述</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springfox/" style="font-size: 10px;">springfox</a> <a href="/tags/swagger/" style="font-size: 10px;">swagger</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%B9%A6/" style="font-size: 10px;">书</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/" style="font-size: 10px;">历史版本</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%94%B6%E8%97%8F/" style="font-size: 10px;">收藏</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" style="font-size: 10px;">设计规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">软件说明</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">面向对象</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HATEOAS/" style="font-size: 10px;">HATEOAS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">MySQL基础概念</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PBOOTCMS/" style="font-size: 10px;">PBOOTCMS</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Portainer-io/" style="font-size: 10px;">Portainer.io</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/WEB/" style="font-size: 10px;">WEB</a> <a href="/tags/WebRTC/" style="font-size: 10px;">WebRTC</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">java概述</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springfox/" style="font-size: 10px;">springfox</a> <a href="/tags/swagger/" style="font-size: 10px;">swagger</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%B9%A6/" style="font-size: 10px;">书</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/" style="font-size: 10px;">历史版本</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%94%B6%E8%97%8F/" style="font-size: 10px;">收藏</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" style="font-size: 10px;">设计规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">软件说明</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">面向对象</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
     </div>
   </div>
 
@@ -1807,23 +2028,23 @@
       <ul>
         
           <li>
-            <a href="/2021/06/18/WebRTC%E7%9A%84%E5%AD%A6%E4%B9%A0/">WebRTC的学习</a>
+            <a href="/2021/06/30/4.27.%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">序列化与反序列化</a>
           </li>
         
           <li>
-            <a href="/2021/06/18/%E6%B5%81%E5%AA%92%E4%BD%93%E5%8D%8F%E8%AE%AE/">流媒体协议</a>
+            <a href="/2021/06/28/%E7%94%B5%E5%95%86%E9%A1%B9%E7%9B%AE/">电商项目</a>
           </li>
         
           <li>
-            <a href="/2021/06/17/1.7.%E7%AE%80%E5%8E%86%E5%AE%8C%E5%96%84/">简历完善</a>
+            <a href="/2021/06/24/4.26.JSR/">JSR</a>
           </li>
         
           <li>
-            <a href="/2021/06/08/%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/">搭建网站</a>
+            <a href="/2021/06/24/31.3.%E8%85%BE%E8%AE%AF%E4%BA%91%E9%9F%B3%E8%A7%86%E9%A2%91%E7%9A%84%E5%BC%80%E5%8F%91/">腾讯云音视频的开发</a>
           </li>
         
           <li>
-            <a href="/2021/06/03/%E6%94%BB%E7%A0%B4%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99/">攻破一个网站</a>
+            <a href="/2021/06/23/%E7%94%B3%E8%AF%B7%E8%BD%AF%E8%91%97/">申请软著</a>
           </li>
         
       </ul>
