@@ -28,8 +28,9 @@
 <meta property="og:image" content="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605154347388-598122694.png">
 <meta property="og:image" content="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605154907571-2147358753.png">
 <meta property="og:image" content="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605154920946-49908453.png">
+<meta property="og:image" content="https://s-qwer.github.io/mqtt%E5%BC%80%E5%8F%91/image-20210526140223756.png">
 <meta property="article:published_time" content="2021-05-17T08:13:19.000Z">
-<meta property="article:modified_time" content="2021-05-17T09:29:09.965Z">
+<meta property="article:modified_time" content="2021-07-19T01:31:07.714Z">
 <meta property="article:author" content="swx">
 <meta property="article:tag" content="mqtt">
 <meta name="twitter:card" content="summary">
@@ -261,6 +262,12 @@
 <li>client.setCallback( new SimpleMqttCallBack() );</li>
 <li>client.connect();</li>
 </ol>
+<p>出现的问题：</p>
+<p><img src="/mqtt%E5%BC%80%E5%8F%91/image-20210526140223756.png" alt="image-20210526140223756"></p>
+<p>java.io.EOFException：</p>
+<p>这个错误是因为服务器上的和本地的clientID是一样的，当本地的服务跑起来时，需要保证clientID唯一，线上的就会断开连接。</p>
+<p>//如果一定要收到离线消息,必须使用确定的id。如果确定就一个clientId,链接的tcp一个,确保自己demo的配置clientId与服务器的clientId不要同一个,会报错丢失连接,而且根本不会意识到是自己跑起来的demo与服务器冲突才导致服务器和自己不断报丢失的</p>
+<p>有用时间戳作为标识的，也有用uuid作为标识。</p>
 
       
     </div>

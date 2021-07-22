@@ -13,11 +13,13 @@
 <meta property="og:site_name" content="swx">
 <meta property="og:description" content="码云教程gitee是开源中国（https:&#x2F;&#x2F;www.oschina.net&#x2F;）开发的一款基于git的代码托管平台，能够用码云实现代码托管、项目管理、协作开发，目前是国内最大的代码系统，gitee和github的作用和性质是类似的，码云是基于gitlab，操作方式与github类似，但是相比于github而言，gitee有两个显著的优势：一是速度快，二是支持免费的私密项目。 对于网上的项目一、fo">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s-qwer.github.io/19.2.Gitee/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTgwNDE0MjA1ODE2MTg4">
 <meta property="article:published_time" content="2021-04-12T02:59:11.000Z">
-<meta property="article:modified_time" content="2021-07-01T09:19:08.174Z">
+<meta property="article:modified_time" content="2021-07-08T03:36:58.568Z">
 <meta property="article:author" content="swx">
 <meta property="article:tag" content="Gitee">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s-qwer.github.io/19.2.Gitee/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTgwNDE0MjA1ODE2MTg4">
   
     <link rel="alternate" href="/atom.xml" title="swx" type="application/atom+xml">
   
@@ -178,7 +180,7 @@
 <li>推送（git push命令）</li>
 </ol>
 <p>用于把本地的代码更新到远程仓库。</p>
-<h2 id="常见操作指令"><a href="#常见操作指令" class="headerlink" title="常见操作指令"></a>常见操作指令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">git init  &#x2F;&#x2F;初始化一个Git仓库，Git的很多命令都需要在Git的仓库中运行，所以 git init 是使用Git的第一个命令</span><br><span class="line">git clone  &#x2F;&#x2F;拷贝一份远程仓库，也就是下载一个项目</span><br><span class="line">git config --list &#x2F;&#x2F;查看配置信息</span><br><span class="line">git config --global user.name &quot;runoob&quot;  &#x2F;&#x2F;配置个人的用户名称</span><br><span class="line">git config --global user.email test@runoob.com  &#x2F;&#x2F;配置个人的电子邮件地址    去掉 --global 参数只对当前仓库有效</span><br><span class="line"></span><br><span class="line">git status  &#x2F;&#x2F;查看仓库当前的状态，显示有变更的文件</span><br><span class="line">git diff  &#x2F;&#x2F;比较文件的不同，即暂存区和工作区的差异</span><br><span class="line">git reset &#x2F;&#x2F;回退版本</span><br><span class="line">git rm  &#x2F;&#x2F;删除工作区文件</span><br><span class="line">git mv  &#x2F;&#x2F;移动或重命名工作区文件</span><br><span class="line"></span><br><span class="line">git remote  &#x2F;&#x2F;远程仓库操作    （remote 远程）</span><br><span class="line">git fetch  &#x2F;&#x2F;从远程获取代码库   （fetch 取来）</span><br><span class="line"></span><br><span class="line">分支管理</span><br><span class="line">git branch (branchname)  &#x2F;&#x2F;创建分支  git branch -分支名</span><br><span class="line">git checkout (branchname) &#x2F;&#x2F;切换分支  git checkout -   分支名</span><br><span class="line">git merge  &#x2F;&#x2F;合并分支   git merg --no-ff 分支名</span><br><span class="line">git log  &#x2F;&#x2F;查看历史提交记录   git log --graph</span><br><span class="line">git blame &lt;file&gt;  &#x2F;&#x2F;以列表形式查看指定文件的历史修改记录  （blame 责备）</span><br><span class="line"></span><br><span class="line"> git tag -a v1.0 &#x2F;&#x2F;git标签</span><br></pre></td></tr></table></figure>
+<h2 id="常见操作指令"><a href="#常见操作指令" class="headerlink" title="常见操作指令"></a>常见操作指令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">git init  &#x2F;&#x2F;初始化一个Git仓库，Git的很多命令都需要在Git的仓库中运行，所以 git init 是使用Git的第一个命令</span><br><span class="line">git clone  &#x2F;&#x2F;拷贝一份远程仓库，也就是下载一个项目</span><br><span class="line">git config --list &#x2F;&#x2F;查看配置信息</span><br><span class="line">git config --global user.name &quot;runoob&quot;  &#x2F;&#x2F;配置个人的用户名称</span><br><span class="line">git config --global user.email test@runoob.com  &#x2F;&#x2F;配置个人的电子邮件地址    去掉 --global 参数只对当前仓库有效</span><br><span class="line"></span><br><span class="line">git status  &#x2F;&#x2F;查看仓库当前的状态，显示有变更的文件</span><br><span class="line">git diff  &#x2F;&#x2F;比较文件的不同，即暂存区和工作区的差异</span><br><span class="line">git reset &#x2F;&#x2F;回退版本</span><br><span class="line">git rm  &#x2F;&#x2F;删除工作区文件</span><br><span class="line">git mv  &#x2F;&#x2F;移动或重命名工作区文件</span><br><span class="line"></span><br><span class="line">git remote  &#x2F;&#x2F;远程仓库操作    （remote 远程）</span><br><span class="line">git fetch  &#x2F;&#x2F;从远程获取代码库   （fetch 取来）</span><br><span class="line"></span><br><span class="line">分支管理</span><br><span class="line">git branch (branchname)  &#x2F;&#x2F;创建分支  git branch -分支名</span><br><span class="line">git checkout (branchname) &#x2F;&#x2F;切换分支  git checkout -   分支名</span><br><span class="line">git merge  &#x2F;&#x2F;合并分支   git merg --no-ff 分支名</span><br><span class="line">git log  &#x2F;&#x2F;查看历史提交记录   git log --graph</span><br><span class="line">git blame &lt;file&gt;  &#x2F;&#x2F;以列表形式查看指定文件的历史修改记录  （blame 责备）</span><br><span class="line"></span><br><span class="line">git tag -a v1.0 &#x2F;&#x2F;git标签</span><br></pre></td></tr></table></figure>
 
 
 
@@ -234,7 +236,22 @@
 <p>3.将本地修改取出 （<code>git - repository - unstash changes</code>）选中之前创建的”333 conflict” 恢复</p>
 <p>4.此时会提示有冲突 点击解决冲突 中间的result为解决结果 可以直接选择左或右或修改结果</p>
 <p>5.冲突修改完成，commit and push</p>
-<h2 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h2><p>本地新建立一个文件夹，然后git命令拉取到本地：</p>
+<p>idea里找回历史版本：</p>
+<p>在需要恢复的文件夹或者类上右击<code>Local History</code>选择<code>show history</code>，选择你的版本，找到你之前的文件。</p>
+<h2 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h2><h3 id="新建一个项目"><a href="#新建一个项目" class="headerlink" title="新建一个项目"></a>新建一个项目</h3><p>码云上在仓库下创建一个项目。点击代码，按照操作步骤来：</p>
+<p>1.Git 全局设置:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;孙伟旋&quot;</span><br><span class="line">git config --global user.email &quot;932666523@qq.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>2.创建 git 仓库:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mkdir 项目名字</span><br><span class="line">cd 项目名字</span><br><span class="line">git init</span><br><span class="line">touch README.md</span><br><span class="line">git add README.md  &#x2F;&#x2F;将文件复制到这个文件夹下，git add .</span><br><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin https:&#x2F;&#x2F;gitee.com&#x2F;e_link&#x2F;refactoring-version-front.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>本地新建立一个文件夹，然后git命令拉取到本地：</p>
 <p><code>git clone url地址</code></p>
 <p>提交代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;提交的备注信息&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
@@ -264,6 +281,19 @@
 <p>当commit成功后我们就成功将我们的项目添加到了本地的git仓库中，使用</p>
 <p><code>git push origin 【分支名】</code></p>
 <p>就可以成功把本地git仓库的代码推送到码云远端仓库中</p>
+<h2 id="回退版本"><a href="#回退版本" class="headerlink" title="回退版本"></a>回退版本</h2><p>1.<code>git log</code>查看日志，也可以去码云的网站上查看，是一串数字和字母。</p>
+<p>2.<code>git reset --hard 版本号</code></p>
+<p>也可以用<code>git reset --hard HEAD^</code>回退到上一个版本，上上一个版本就是HEAD^^，往上100个版本<code>HEAD~100</code></p>
+<p>3.<code>git push -f</code>强制推上去（此时如果用“git push”会报错，因为我们本地库HEAD指向的版本比远程库的要旧）</p>
+<p><code>git push origin HEAD --force</code> 也可以强推</p>
+<h2 id="反做版本"><a href="#反做版本" class="headerlink" title="反做版本"></a>反做版本</h2><p>git revert是用于“反做”某一个版本，以达到撤销该版本的修改的目的。</p>
+<p>比如，我们commit了三个版本（版本一、版本二、 版本三），突然发现版本二不行（如：有bug），想要撤销版本二，但又不想影响撤销版本三的提交，就可以用 git revert 命令来反做版本二，生成新的版本四，这个版本四里会保留版本三的东西，但撤销了版本二的东西。</p>
+<p><img src="/19.2.Gitee/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTgwNDE0MjA1ODE2MTg4" alt="这里写图片描述"></p>
+<p>适用场景： 如果我们想撤销之前的某一版本，但是又想保留该目标版本后面的版本，记录下这整个版本变动流程，就可以用这种方法</p>
+<p>1.<code>git log</code>查看日志，也可以去码云的网站上查看，是一串数字和字母。</p>
+<p>2.<code>git revert -n 版本号</code>（这里可能会出现冲突，那么需要手动修改冲突的文件。而且要git add 文件名）</p>
+<p>3.提交，使用<code>git commit -m 版本名</code></p>
+<p>4.<code>git push</code></p>
 
       
     </div>

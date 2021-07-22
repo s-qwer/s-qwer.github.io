@@ -449,6 +449,19 @@
 <p>连接设备</p>
 <p>虚拟机设备：<br>    逍遥模拟器：adb connect 127.0.0.1:21503</p>
 <p>adb devices：查询检测到的设备<br>adb tcpip 1111：建立自定义端口号<br>查询手机IP地址：192.168.0.123<br>建立连接：adb connect 192.168.0.123:1111</p>
+<p>打包apk</p>
+<p>1.将项目切换到Project，打开app目录下的build.gradle文件，修改需要修改的配置（版本号，app名字）。</p>
+<p><img src="/30.1.AndroidStudio%E7%9A%84%E5%AD%A6%E4%B9%A0/20200623154901154.png" alt="在这里插入图片描述"></p>
+<p>2.点开Bulid，选择Generate Signed Bundle / APK…。之前没有打包过，选Create new。然后选择密钥路径。设置一些参数，两个Password一般都是一样的，Validity(years)这个是设置使用年限，可以随意设置，默认是25年。参数填写完毕后，单击OK进入到下一步。</p>
+<p>此时设定的文件路径会生成密钥，但是同时会报错</p>
+<p><img src="/30.1.AndroidStudio%E7%9A%84%E5%AD%A6%E4%B9%A0/20200623163553118.png" alt="在这里插入图片描述"></p>
+<p>因为JKS密钥库使用专用格式，它建议我们生成密钥的时候使用 keytool 命令来生成标准的密钥文件，迁移到行业标准格式 PKCS12</p>
+<p>输入以下命令：</p>
+<p><code>keytool -genkey -alias imxiaoqi -keypass imxiaoqi -keyalg RSA -keysize 1024 -validity 36500 -keystore G:\APK\LYZ.keystore -storepass imxiaoqi</code></p>
+<p>此时就会在.jks下多一个.keystore的文件</p>
+<p>3.回到AS，点击next。选release（apk文件就是一个包，打包就是要生成apk文件，有了apk别人才能安装使用。打包分debug版和release包，通常所说的打包指生成release版的apk，release版的apk会比debug版的小，release版的还会进行混淆和用自己的keystore签名，以防止别人反编译后重新打包替换你的应用）</p>
+<p>选v1和v2（<strong>同时通过 v1 和 v2 签名对 APK 进行签署，以使其仍能向后兼容以前的 Android 版本</strong>）</p>
+<p>4.点击finish，等打包完成，成功后Android项目的APP目录下会出现一个release文件夹，里面就有apk文件</p>
 
       
     </div>

@@ -349,6 +349,88 @@
 <p>Files：操作文件的工具类，提供了静态方法供我们使用</p>
 <p>public static long copy(Path source,OutputStream out):复制文件</p>
 <p>public static Path write(Path path,Iterable&lt;? extends CharSequence&gt; lines, Charset cs, OpenOption… options):  把集合的数据写到文件</p>
+<h2 id="try-with-resource语法糖"><a href="#try-with-resource语法糖" class="headerlink" title="try-with-resource语法糖"></a>try-with-resource语法糖</h2><p>在java开发中，一些网络链接或者是文件资源都需要程序员去手动调用close方法关闭，比如InputStream、OutputStream和java.sql.Connection。</p>
+<p>如果忘关了就可能造成严重的性能后果。而关闭的方法有很多种。比如finalizer、try-catch-finally、try-with-resources等等。</p>
+<p>try-with-resources<br>try-with-resources是jdk1.7引入的语法糖，使得关闭资源操作无需层层嵌套在finally。</p>
+<p>finalizer 会引发内存泄漏<br>垃圾回收器发现对象实现了finalize()方法并把它们添加到java.lang.ref.Finalizer.ReferenceQueue队列中。</p>
+<p>然后Finalizer线程 会把ReferenceQueue里面的对象逐个弹出。</p>
+<p>不过由于它的优先级比主线程较低，获取到的CPU时间较少，因此它永远也赶不上主线程创建对象的步伐。</p>
+<p>所以会引发内存泄漏，所以finalize()并不适合用作普通的清理工作，一般只用于当java中调用非java代码时重写finalize()方法，并在里面调用本地方法的free()等函数。</p>
+<p>或者在一下时候有某些用处：</p>
+<p>存在一系列对象，对象中有一个状态为false，如果我们已经处理过这个对象，状态会变为true，为了避免有被遗漏而没有处理的对象，就可以使用finalize()方法：</p>
+<p>class MyObject{</p>
+<pre><code>boolean state = false;
+ 
+public void deal()&#123;
+    //...一些处理操作
+    state = true;
+&#125;
+ 
+@Override
+protected void finalize()&#123;
+    if(!state)&#123;
+        System.out.println(&quot;ERROR:&quot; + &quot;对象未处理！&quot;);
+    &#125;
+&#125;
+//...
+</code></pre>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>finally的执行顺序<br>1、finally不是必要条件<br>也就是说try-catch-finally中，可以只有try-catch，也可以只有try-finally。</p>
+<p>2、假设基于try-catch-finally：<br>第一：代码没有异常<br>执行顺序：try执行完整-&gt;catch不执行-&gt;finally执行</p>
+<p>第二：代码有异常且catch进行捕获**<br>执行顺序：try执行部分-&gt;跳转catch捕获处理-&gt;finally执行</p>
+<p>第三：代码有异常且catch不捕获：这种情况没有catch**<br>执行顺序：try执行部分-&gt;finally执行<br>从上面的执行顺序可以看出，finally语句不管在哪种情况是一定会执行的。基于这个认识，现在我们再来分析。</p>
+<p>题外话： 当finally有return时，会直接返回。不会再去返回try或者catch中的返回值，而finally没有return时，try和catch 的return语句并不会马上执行，而是执行完finally代码块之后再返回try和catch里面的值。</p>
+<p>try-finally的缺点<br>同时打开了多个资源，那么将会出现噩梦般的场景：</p>
+<p>public class Demo {<br>        public static void main(String[] args) {<br>            BufferedInputStream bin = null;<br>            BufferedOutputStream bout = null;<br>            try {<br>                bin = new BufferedInputStream(new FileInputStream(new File(“test.txt”)));<br>                bout = new BufferedOutputStream(new FileOutputStream(new File(“out.txt”)));<br>                int b;<br>                while ((b = bin.read()) != -1) {<br>                    bout.write(b);<br>                }<br>            }<br>            catch (IOException e) {<br>                e.printStackTrace();<br>            }<br>            finally {<br>                if (bin != null) {<br>                    try {<br>                        bin.close();<br>                    }<br>                    catch (IOException e) {<br>                        throw e;<br>                    }<br>                    finally {<br>                        if (bout != null) {<br>                            try {<br>                                bout.close();<br>                            }<br>                            catch (IOException e) {<br>                                throw e;<br>                            }<br>                        }<br>                    }<br>                }<br>            }<br>        }<br>    }<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>我们不仅需要关闭 BufferedInputStream ，还需要保证如果关闭 BufferedInputStream 时出现了异常， BufferedOutputStream 也要能被正确地关闭。所以我们不得不借助finally中嵌套finally大法。可以想到，打开的资源越多，finally中嵌套的将会越深。</p>
+<p>主要是这样子写代码是真的丑。</p>
+<p>用try-with-resource来改写刚才的例子：</p>
+<pre><code>要使用try-with-resource的资源，必须先实现AutoCloseable接口，其中包含了单个返回void的close方法，Java类库与第三方类库中的许多类和接口，现在都实现或扩展了AutoCloseable接口，因此我们现在不必实现了。
+</code></pre>
+<p>1<br>public class TryWithResource {<br>  public static void main(String[] args) {<br>    try (BufferedInputStream bin = new BufferedInputStream(new FileInputStream(new File(“test.txt”)));<br>       BufferedOutputStream bout = new BufferedOutputStream(new FileOutputStream(new File(“out.txt”)))) {<br>      int b;<br>      while ((b = bin.read()) != -1) {<br>        bout.write(b);<br>      }<br>    }<br>    catch (IOException e) {<br>      e.printStackTrace();<br>    }<br>  }<br>}<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>原理<br>编译器会自动帮我们补全close()，而且可以避免异常屏蔽<br>看一下反编译出来的代码：</p>
+<p>package com.codersm.trywithresource;</p>
+<pre><code>public class TryWithResource &#123;
+    public TryWithResource() &#123;
+    &#125;
+
+    public static void main(String[] args) &#123;
+        try &#123;
+            Connection conn = new Connection();
+            Throwable var2 = null;
+
+            try &#123;
+                conn.sendData();
+            &#125; catch (Throwable var12) &#123;
+                var2 = var12;
+                throw var12;
+            &#125; finally &#123;
+                if (conn != null) &#123;
+                    if (var2 != null) &#123;
+                        try &#123;
+                            conn.close();
+                        &#125; catch (Throwable var11) &#123;
+                            var2.addSuppressed(var11);
+                        &#125;
+                    &#125; else &#123;
+                        conn.close();
+                    &#125;
+                &#125;
+
+            &#125;
+        &#125; catch (Exception var14) &#123;
+            var14.printStackTrace();
+        &#125;
+
+    &#125;
+&#125;
+</code></pre>
+<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29<br>30<br>31<br>32<br>33<br>34<br>35<br>36<br>37<br>在第15~27行，编译器自动帮我们生成了finally块，并且在里面调用了资源的close方法，所以例子中的close方法会在运行的时候被执行。</p>
+<p>异常屏蔽<br>我们将刚才的代码改回远古时代手动关闭异常的方式，并且在 sendData 和 close 方法中抛出异常：</p>
+<p>public class Connection implements AutoCloseable {<br>        public void sendData() throws Exception {<br>            throw new Exception(“send data”);<br>        }<br>        @Override<br>        public void close() throws Exception {<br>            throw new MyException(“close”);<br>        }<br>    }<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>修改main方法：</p>
+<p>public class TryWithResource {<br>  public static void main(String[] args) {<br>    try {<br>      test();<br>    }<br>    catch (Exception e) {<br>      e.printStackTrace();<br>    }<br>  }<br>  private static void test() throws Exception {<br>    Connection conn = null;<br>    try {<br>      conn = new Connection();<br>      conn.sendData();<br>    }<br>    finally {<br>      if (conn != null) {<br>        conn.close();<br>      }<br>    }<br>  }<br>}<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>运行之后我们发现：</p>
+<p>basic.exception.MyException: close<br> at basic.exception.Connection.close(Connection.java:10)<br> at basic.exception.TryWithResource.test(TryWithResource.java:82)<br> at basic.exception.TryWithResource.main(TryWithResource.java:7)<br> ……<br>1<br>2<br>3<br>4<br>5<br>问题来了，由于我们一次只能抛出一个异常，所以在最上层看到的是最后一个抛出的异常——也就是 close 方法抛出的 MyException ，而 sendData 抛出的 Exception 被忽略了。这就是所谓的异常屏蔽。由于异常信息的丢失，异常屏蔽可能会导致某些bug变得极其难以发现，程序员们不得不加班加点地找bug，如此毒瘤，怎能不除！幸好，为了解决这个问题，从Java 1.7开始，大佬们为 Throwable 类新增了 addSuppressed 方法，支持将一个异常附加到另一个异常身上，从而避免异常屏蔽。那么被屏蔽的异常信息会通过怎样的格式输出呢？我们再运行一遍刚才用try-with-resource包裹的main方法：</p>
+<p>java.lang.Exception: send data</p>
+<p> at basic.exception.Connection.sendData(Connection.java:5)<br> at basic.exception.TryWithResource.main(TryWithResource.java:14)<br> ……<br> Suppressed: basic.exception.MyException: close<br> at basic.exception.Connection.close(Connection.java:10)<br> at basic.exception.TryWithResource.main(TryWithResource.java:15)<br> … 5 more<br>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>可以看到，异常信息中多了一个 Suppressed 的提示，告诉我们这个异常其实由两个异常组成， MyException 是被Suppressed的异常。可喜可贺！</p>
+<p>仔细对比发现，是因为反编译的代码（第21行）多了一个 addSuppressed ：var2.addSuppressed(var11);<br>从而避免了异常屏蔽的问题。</p>
+<p>结论<br>处理必须关闭的资源时，始终要优先考虑使用try-with-resources，而不是try-finally。这样得到的代码将更简洁，清晰，产生的异常也更有价值，这些也是try-finally无法做到的。</p>
 
       
     </div>

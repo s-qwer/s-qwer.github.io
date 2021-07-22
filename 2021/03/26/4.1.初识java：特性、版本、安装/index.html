@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz/eQPyBffYbuflAIHxeAlDrM7xK8JrNAicwibrTgiamib8rjT5icBDRkibCTVfgA4koz8AiaC9SXcyVKvQFWHJfia7dj3HDQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz/eQPyBffYbuflAIHxeAlDrM7xK8JrNAicwRcIpico9nUmTm0G7DVmdXXbF96icwFWbQRZhopibe905VnfyzCR7IWX2w/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="article:published_time" content="2021-03-26T03:42:16.000Z">
-<meta property="article:modified_time" content="2021-07-01T00:32:40.751Z">
+<meta property="article:modified_time" content="2021-07-16T07:48:53.629Z">
 <meta property="article:author" content="swx">
 <meta property="article:tag" content="java概述">
 <meta property="article:tag" content="历史版本">
@@ -319,9 +319,99 @@
 <p>组合:concat    如果有两个流，希望合并成为一个流</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static void main(String[] args) &#123;</span><br><span class="line">    Stream&lt;String&gt; streamA &#x3D; Stream.of(&quot;张无忌&quot;);    </span><br><span class="line"> Stream&lt;String&gt; streamB &#x3D; Stream.of(&quot;张翠山&quot;); </span><br><span class="line"> Stream&lt;String&gt; result &#x3D; Stream.concat(streamA, streamB);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>一个List泛型根据另一个List泛型的属性进行过滤</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">List&lt;User&gt; list1 &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line"> </span><br><span class="line">User u1 &#x3D; new User();</span><br><span class="line">u1.setName(&quot;u1&quot;);</span><br><span class="line">u1.setAge(12)</span><br><span class="line"> </span><br><span class="line">User u2 &#x3D; new User();</span><br><span class="line">u2.setName(&quot;u2&quot;);</span><br><span class="line">u2.setAge(13)</span><br><span class="line"> </span><br><span class="line">User u3 &#x3D; new User();</span><br><span class="line">u3.setName(&quot;u3&quot;);</span><br><span class="line">u3.setAge(13)</span><br><span class="line"> </span><br><span class="line">list1.add(u1);</span><br><span class="line">list1.add(u2);</span><br><span class="line">list1.add(u3);</span><br><span class="line"> </span><br><span class="line">List&lt;User&gt; list2 &#x3D; new ArrayList&lt;&gt;();</span><br><span class="line"> </span><br><span class="line">User u4 &#x3D; new User();</span><br><span class="line">u4.setName(&quot;u4&quot;);</span><br><span class="line">u4.setAge(13)</span><br><span class="line"> </span><br><span class="line">list2.add(u3);</span><br><span class="line">list2.add(u4);</span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F;resList 过滤后的结果</span><br><span class="line"> List&lt;User&gt; resList &#x3D; list1 .stream().filter(new Predicate&lt;User&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public boolean test(User u) &#123;</span><br><span class="line">                &#x2F;&#x2F;如根据name过滤</span><br><span class="line">                for (User user : list2) &#123;</span><br><span class="line">                    if(u.getName().equals(user.getName()))&#123;</span><br><span class="line">                        return false;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                return true;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;).collect(Collectors.toList());</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">&#x2F;&#x2F;resList 输出为 u1 u2  （去掉了重复的u3）</span><br></pre></td></tr></table></figure>
 
 
-<h4 id="6-Map"><a href="#6-Map" class="headerlink" title="6.Map"></a>6.Map</h4><h4 id="7-时间日期API"><a href="#7-时间日期API" class="headerlink" title="7. 时间日期API"></a>7. 时间日期API</h4><h4 id="8-Annotations"><a href="#8-Annotations" class="headerlink" title="8.Annotations"></a>8.Annotations</h4><h3 id="Java11"><a href="#Java11" class="headerlink" title="Java11"></a>Java11</h3><p>2018年9月26日</p>
+
+
+
+<h4 id="6-Map"><a href="#6-Map" class="headerlink" title="6.Map"></a>6.Map</h4><h4 id="7-时间日期API"><a href="#7-时间日期API" class="headerlink" title="7. 时间日期API"></a>7. 时间日期API</h4><p>Java8以前，我们一直长期使用Date和Calendar来处理时间，而在使用Date处理日期时间问题上会存在一定的隐患，产生线程不安全的问题，最典型的就是在一定负载并发量的情况下使用SimpleDateFormat引发的线程安全性问题。如今Java8提供了LocalDate、LocalTime、LocalDateTime三个日期时间类，在安全性和操作性上对比Date和Calendar非常可观</p>
+<ol>
+<li>使用Date输出的日期可读性差（在不进行日期格式化的情况下）</li>
+</ol>
+<p>Tue Sep 10 09:34:04 CST 2019</p>
+<ol start="2">
+<li>在对Date使用SimpleDateFormat进行日期时间格式化时我们需要明确的知道，SimpleDateFormat是线程不安全的，在高并发高负载的情况下使用，极容易引发线程安全性问题</li>
+</ol>
+<p>calendar是共享变量，并且这个共享变量没有做线程安全控制。当多个线程同时使用相同的SimpleDateFormat对象【如用static修饰的SimpleDateFormat】调用format方法时，多个线程会同时调用calendar.setTime方法，可能一个线程刚设置好time值另外的一个线程马上把设置的time值给修改了导致返回的格式化时间可能是错误的。SimpleDateFormat除了format是线程不安全以外，parse方法也是线程不安全的。parse方法实际调用alb.establish(calendar).getTime()方法来解析，alb.establish(calendar)方法里主要完成了以下操作（这三步不是原子性操作）：</p>
+<p>重置日期对象cal的属性值<br>使用calb中中属性设置cal<br>返回设置好的cal对象</p>
+<p>多线程并发如何保证线程安全</p>
+<p>避免线程之间共享一个SimpleDateFormat对象，每个线程使用时都创建一次SimpleDateFormat对象（问题：创建和销毁对象时大量内存资源开销）<br>对使用format和parse方法的地方进行加锁（问题：线程阻塞性能差）<br>使用ThreadLocal保证每个线程最多只创建一次SimpleDateFormat对象，属于较好的方法。<br>3. Date对时间处理比较麻烦</p>
+<p>比如想获取某年、某月、某星期，以及n天以后的时间，使用Date来处理的话会特别麻烦，你可能会说Date类不是有getYear、getMonth这些方法吗，获取年月日很Easy，但都被JDK弃用了。</p>
+<p>LocalDate：年月日</p>
+<p>LocalTime：时分秒</p>
+<p>LocalDateTime：年月日时分秒</p>
+<ol>
+<li>LocalDate</li>
+</ol>
+<p>//获取当前年月日<br>LocalDate localDate = LocalDate.now();<br>//构造指定的年月日<br>LocalDate localDate1 = LocalDate.of(2019, 9, 10);<br>//获取年、月、日、星期几<br>int year = localDate.getYear();<br>int year1 = localDate.get(ChronoField.YEAR);<br>Month month = localDate.getMonth();<br>int month1 = localDate.get(ChronoField.MONTH_OF_YEAR);<br>int day = localDate.getDayOfMonth();<br>int day1 = localDate.get(ChronoField.DAY_OF_MONTH);<br>DayOfWeek dayOfWeek = localDate.getDayOfWeek();<br>int dayOfWeek1 = localDate.get(ChronoField.DAY_OF_WEEK);<br>2. LocalTime</p>
+<p>// 获取当前时间<br>LocalTime localTime1 = LocalTime.now();<br>// 获取指定时间<br>LocalTime localTime = LocalTime.of(13, 51, 10);<br>//获取小时<br>int hour = localTime.getHour();<br>int hour1 = localTime.get(ChronoField.HOUR_OF_DAY);<br>//获取分<br>int minute = localTime.getMinute();<br>int minute1 = localTime.get(ChronoField.MINUTE_OF_HOUR);<br>//获取秒<br>int second = localTime.getMinute();<br>int second1 = localTime.get(ChronoField.SECOND_OF_MINUTE);</p>
+<ol start="3">
+<li>LocalDateTime</li>
+</ol>
+<p>等同于LocalDate+LocalTime</p>
+<p>// 获取当前日期 年月日时分秒<br>LocalDateTime localDateTime = LocalDateTime.now();<br>// 设置指定日期时间 年月日时分秒<br>LocalDateTime localDateTime1 = LocalDateTime.of(2019, Month.SEPTEMBER, 10, 14, 46, 56);<br>LocalDateTime localDateTime2 = LocalDateTime.of(localDate, localTime);<br>LocalDateTime localDateTime3 = localDate.atTime(localTime);<br>LocalDateTime localDateTime4 = localTime.atDate(localDate);<br>LocalDate localDate2 = localDateTime.toLocalDate();<br>LocalTime localTime2 = localDateTime.toLocalTime();<br>4. Instant（获取秒数）</p>
+<p>Instant instant = Instant.now();<br>long currentSecond = instant.getEpochSecond();<br>long currentMilli = instant.toEpochMilli();<br>注：个人觉得如果只是为了获取秒数或者毫秒数，使用System.currentTimeMillis()来得更为方便</p>
+<p>LocalDate、LocalTime、LocalDateTime、Instant为不可变对象，修改这些对象对象会返回一个副本。比如增加、减少年数、月数、天数等，以LocalDateTime为例：</p>
+<p>LocalDateTime localDateTime = LocalDateTime.of(2019, Month.SEPTEMBER, 10,<br>              14, 46, 56);<br>//增加一年<br>localDateTime = localDateTime.plusYears(1);<br>localDateTime = localDateTime.plus(1, ChronoUnit.YEARS);<br>//减少一个月<br>localDateTime = localDateTime.minusMonths(1);<br>localDateTime = localDateTime.minus(1, ChronoUnit.MONTHS);<br>通过with修改某些值</p>
+<p>//修改年为2019<br>localDateTime = localDateTime.withYear(2020);<br>//修改为2022<br>localDateTime = localDateTime.with(ChronoField.YEAR, 2022);<br>还可以修改月、日，比如有些时候想知道这个月的最后一天是几号、下个周末是几号</p>
+<p>LocalDate localDate = LocalDate.now();<br>//比如通过firstDayOfYear()返回了当前日期的第一天日期，还有很多方法这里不在举例说明<br>LocalDate localDate1 = localDate.with(firstDayOfYear());</p>
+<p>格式化时间</p>
+<p>LocalDate localDate = LocalDate.of(2019, 9, 10);<br>String s1 = localDate.format(DateTimeFormatter.BASIC_ISO_DATE);<br>String s2 = localDate.format(DateTimeFormatter.ISO_LOCAL_DATE);<br>//自定义格式化<br>// DateTimeFormatter默认提供了多种格式化方式，如果默认提供的不能满足要求，可以通过DateTimeFormatter的ofPattern方法创建自定义格式化方式<br>DateTimeFormatter dateTimeFormatter =   DateTimeFormatter.ofPattern(“dd/MM/yyyy”);<br>String s3 = localDate.format(dateTimeFormatter);</p>
+<p>解析时间</p>
+<p>LocalDate localDate1 = LocalDate.parse(“20190910”, DateTimeFormatter.BASIC_ISO_DATE);<br>LocalDate localDate2 = LocalDate.parse(“2019-09-10”, DateTimeFormatter.ISO_LOCAL_DATE);</p>
+<p>不能单纯认为localdatetime是calender类的替代品，它和date一样是一种类型，是数据库支持的类型，并且提出更加简易的方法</p>
+<h4 id="8-Annotations"><a href="#8-Annotations" class="headerlink" title="8.Annotations"></a>8.Annotations</h4><h4 id="9-Optional类型"><a href="#9-Optional类型" class="headerlink" title="9.Optional类型"></a>9.Optional类型</h4><p>它是作为某个指定类型的对象的包装器或者用于那些不存在对象(null)的场景</p>
+<p>简单来说，它是处理空值的一个更好的替代品</p>
+<p>使用下它的三个静态方法就可以了：public static Optional stringOptional(String input) {</p>
+<p>return Optional.of(input);</p>
+<p>}</p>
+<p>简单明了——创建一个包含这个值的Optional包装器。记住——如果这个值是null的话，它会抛出NPE!public static Optional stringNullableOptional(String input) {</p>
+<p>if (!new Random().nextBoolean()) {</p>
+<p>input = null;</p>
+<p>}</p>
+<p>return Optional.ofNullable(input);</p>
+<p>}</p>
+<p>我个人认为是要更好一点。这样就不会有NPE的风险了——如果输入为null的话，会返回一个空的Optionalpublic static Optional emptyOptional() {</p>
+<p>return Optional.empty();</p>
+<p>}</p>
+<p>如果你真的就是希望返回一个”空”值的话。“空”值并不意味着null。</p>
+<p>好吧，那如何去消费/使用Optional呢？public static void consumingOptional() {</p>
+<p>Optional wrapped = Optional.of(“aString”);</p>
+<p>if (wrapped.isPresent()) {</p>
+<p>System.out.println(“Got string - “ + wrapped.get());</p>
+<p>}</p>
+<p>else {</p>
+<p>System.out.println(“Gotcha !”);</p>
+<p>}</p>
+<p>}</p>
+<p>简单的方法就是检查Optional包装器是否真的有值(使用isPresent方法)——你会怀疑这和使用if(myObj != null)相比有什么好处。别担心，这个我会解释清楚的。public static void consumingNullableOptional() {</p>
+<p>String input = null;</p>
+<p>if (new Random().nextBoolean()) {</p>
+<p>input = “iCanBeNull”;</p>
+<p>}</p>
+<p>Optional wrapped = Optional.ofNullable(input);</p>
+<p>System.out.println(wrapped.orElse(“default”));</p>
+<p>}</p>
+<p>你可以使用orElse方法，这样万一封装的确实是一个null值的话可以用它来返回一个默认值——它的好处显而易见。在提取出真实值的时候可以避免调用ifPresent方法这样明显多余的方式了。public static void consumingEmptyOptional() {</p>
+<p>String input = null;</p>
+<p>if (new Random().nextBoolean()) {</p>
+<p>input = “iCanBeNull”;</p>
+<p>}</p>
+<p>Optional wrapped = Optional.ofNullable(input);</p>
+<p>System.out.println(wrapped.orElseGet(</p>
+<p>() -&gt; {</p>
+<p>return “defaultBySupplier”;</p>
+<p>}</p>
+<p>));</p>
+<p>}</p>
+<p>这个我就有点搞不清楚了。为什么有两个同样目的的不同方法？orElse和orElseGet明明可以重载的(同名但不同参数)。</p>
+<p>不论如何，这两个方法明显的区别就在于它们的参数——你可以选择使用lambda表达式而不是Supplier的实例来完成这个(一个函数式接口)</p>
+<p>为什么使用Optional要比常见的null检查强？</p>
+<p>1.使用Optional最大的好处就是可以更明白地表述你的意图——返回null值的话会让消费者感到疑惑(当真的出现NPE的时候)这是不是故意返回的，因此还得查看javadoc来进一步定位。而使用Optional就相当明了了。</p>
+<p>2.有了Optional你就可以彻底避免NPE了——如上所提，使用Optional.ofNullable，orElse以及orElseGet可以让我们远离NPE。</p>
+<h3 id="Java11"><a href="#Java11" class="headerlink" title="Java11"></a>Java11</h3><p>2018年9月26日</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="明确概念"><a href="#明确概念" class="headerlink" title="明确概念"></a>明确概念</h3><p>1.JDK（java development kit）：java开发工具包JRE+tools</p>
 <p>​    是提供给java开发人员使用的，其中包含了java的开发工具，也包括了JRE</p>
 <p>​    Java的开发工具：编译工具（javac.exe）和打包工具（jar.exe）</p>

@@ -14,7 +14,7 @@
 <meta property="og:description" content="API（Application Programming Interface）概述：就是java提供给我们使用的类，这些类将底层的实现封装了起来，我们不需要关心这些类是如何实现的，只需要学习这些类如何使用，我们可以通过查找帮助文档来了解java提供的API如何使用。 Object类JDK1.0 类层次结构的根类，每个类都直接或者间接继承自Object类。 所有对象（包括数组）都实现了这个类的方法。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-26T11:03:45.000Z">
-<meta property="article:modified_time" content="2021-06-16T00:52:07.417Z">
+<meta property="article:modified_time" content="2021-07-21T02:55:39.575Z">
 <meta property="article:author" content="swx">
 <meta name="twitter:card" content="summary">
   
@@ -588,6 +588,8 @@
 <p>public BigDecimal multiply(BigDecimal multiplicand)</p>
 <p>public BigDecimal divide(BigDecimal divisor)</p>
 <p>public BigDecimal divide(BigDecimal divisor,int scale, int roundingMode) 商，几位小数，如何取舍</p>
+<p>判断 BigDecimal 是否为0：</p>
+<p>new BigDecimal(“0.00”).compareTo(你的数据)  == 0</p>
 <h1 id="Date类-DateFormat类-Calendar类"><a href="#Date类-DateFormat类-Calendar类" class="headerlink" title="Date类/DateFormat类/Calendar类"></a>Date类/DateFormat类/Calendar类</h1><p>Date类：</p>
 <p>类 Date 表示特定的瞬间，精确到毫秒。  大部分方法已经过时。</p>
 <p>构造方法</p>

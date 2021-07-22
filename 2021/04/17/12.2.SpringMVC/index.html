@@ -14,7 +14,7 @@
 <meta property="og:description" content="一、@RequestMapping 简介 在Spring MVC 中使用 @RequestMapping 来映射请求，也就是通过它来指定控制器可以处理哪些URL请求，相当于Servlet中在web.xml中配置 12345678&lt;servlet&gt;    &lt;servlet-name&gt;servletName&lt;&#x2F;servlet-name&gt;    &lt;se">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-17T05:06:03.000Z">
-<meta property="article:modified_time" content="2021-05-15T04:06:52.956Z">
+<meta property="article:modified_time" content="2021-07-06T07:25:37.838Z">
 <meta property="article:author" content="swx">
 <meta name="twitter:card" content="summary">
   
@@ -105,6 +105,20 @@
 
 <p>的映射作用一致。让我们先看一下RequestMapping注解类的源码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@Target(&#123;ElementType.METHOD, ElementType.TYPE&#125;)</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Documented</span><br><span class="line">@Mapping</span><br><span class="line">public @interface RequestMapping &#123;</span><br><span class="line">    String name() default &quot;&quot;;</span><br><span class="line">    String[] value() default &#123;&#125;;</span><br><span class="line">    String[] path() default &#123;&#125;;</span><br><span class="line">    RequestMethod[] method() default &#123;&#125;;</span><br><span class="line">    String[] params() default &#123;&#125;;</span><br><span class="line">    String[] headers() default &#123;&#125;;</span><br><span class="line">    String[] consumes() default &#123;&#125;;</span><br><span class="line">    String[] produces() default &#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>produces:指定返回值类型，不但可以设置返回值类型还可以设定返回值的字符编码</p>
+<p>consumes:指定处理请求的提交内容类型（Content-Type），例如application/json, text/html;</p>
+<p>例子：</p>
+<p>1.produces第一种使用，返回json数据，下边的代码可以省略produces属性，因为我们已经使用了注解@responseBody就是返回值是json数据：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Controller  </span><br><span class="line">@RequestMapping(value &#x3D; &quot;&#x2F;pets&#x2F;&#123;petId&#125;&quot;, method &#x3D; RequestMethod.GET, produces&#x3D;&quot;application&#x2F;json&quot;)  </span><br><span class="line">@ResponseBody  </span><br><span class="line">public Pet getPet(@PathVariable String petId, Model model) &#123;     </span><br><span class="line">    &#x2F;&#x2F; implementation omitted  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+
+<p>produces第二种使用，返回json数据的字符编码为utf-8：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Controller  </span><br><span class="line">@RequestMapping(value &#x3D; &quot;&#x2F;pets&#x2F;&#123;petId&#125;&quot;, produces&#x3D;&quot;MediaType.APPLICATION_JSON_VALUE&quot;+&quot;;charset&#x3D;utf-8&quot;)  </span><br><span class="line">@ResponseBody  </span><br><span class="line">public Pet getPet(@PathVariable String petId, Model model) &#123;      </span><br><span class="line">    &#x2F;&#x2F; implementation omitted  </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>2.consumes的例子（ 方法仅处理request Content-Type为“application/json”类型的请求。）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Controller  </span><br><span class="line">@RequestMapping(value &#x3D; &quot;&#x2F;pets&quot;, method &#x3D; RequestMethod.POST, consumes&#x3D;&quot;application&#x2F;json&quot;)  </span><br><span class="line">public void addPet(@RequestBody Pet pet, Model model) &#123;      </span><br><span class="line">    &#x2F;&#x2F; implementation omitted  </span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+
 
 <p>1）在@Target中有两个属性，分别为 ElementType.METHOD 和 ElementType.TYPE ，也就是说 @RequestMapping 可以在方法和类的声明中使用</p>
 <p>2）可以看到注解中的属性除了 name() 返回的字符串，其它的方法均返回数组，也就是可以定义多个属性值，例如 value() 和 path() 都可以同时定义多个字符串值来接收多个URL请求</p>

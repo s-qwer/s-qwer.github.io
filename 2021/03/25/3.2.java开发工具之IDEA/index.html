@@ -113,7 +113,7 @@
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/eQPyBffYbueVclsDbEIr99jYCox8jUeAAzEZVf34fN0OBAvWGfRia9mVdLRTjGf8v8Eb5Undypfgyia1kSJdWrkQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/eQPyBffYbueVclsDbEIr99jYCox8jUeAA0zyJcSx4KjibxPDEXcMdpnMy0wp8iabWicOicH8cVEe0oyk2OZib2TyWWg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1">
 <meta property="article:published_time" content="2021-03-25T03:46:22.000Z">
-<meta property="article:modified_time" content="2021-06-29T09:57:56.084Z">
+<meta property="article:modified_time" content="2021-07-07T05:51:07.544Z">
 <meta property="article:author" content="swx">
 <meta property="article:tag" content="快捷键">
 <meta property="article:tag" content="IDEA">
@@ -288,16 +288,16 @@
 <td></td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>Shift + F6</td>
+<td>对文件 / 文件夹 重命名（变量，类名，方法名都可以）</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>ctrl+r</td>
+<td>替换本页内容</td>
 </tr>
 <tr>
-<td></td>
-<td></td>
+<td>ctrl+shift+r</td>
+<td>在多个文件中替换内容</td>
 </tr>
 </tbody></table>
 <h2 id="ctrl"><a href="#ctrl" class="headerlink" title="ctrl"></a>ctrl</h2><table>
@@ -564,8 +564,8 @@
 <td>对当前打开的文件，使用新Windows窗口打开，旧窗口保留</td>
 </tr>
 <tr>
-<td>Shift + F6</td>
-<td>对文件 / 文件夹 重命名</td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>Shift + F7</td>
@@ -1049,10 +1049,11 @@
 <h1 id="IDEA的一些个人配置"><a href="#IDEA的一些个人配置" class="headerlink" title="IDEA的一些个人配置"></a>IDEA的一些个人配置</h1><p>1.Java文件统一添加固定Header，通过IDE统一配置（code templates）　 File and Code Templates</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**</span><br><span class="line">* @author swx</span><br><span class="line">* @site</span><br><span class="line">* @company</span><br><span class="line">* @create $&#123;YEAR&#125;-$&#123;MONTH&#125;-$&#123;DAY&#125;-$&#123;TIME&#125;</span><br><span class="line">*&#x2F;</span><br></pre></td></tr></table></figure>
 
-
-
-
-
+<p>2.Auto Import</p>
+<p>可以帮助我们自动删除无用的包Import(未被引用)，以及自动Import填充尚未导入的包。完全智能化地帮助我们在开发程序时，省略了导包的操作，大大优化了开发的效率。并且，当你移动某个类改变其路径的时候，这个功能会相应的改变关联的文件中包的路径</p>
+<p>Settings→Editor→General→Auto Import<br>然后勾选Add unambiguous imports on the fly以及Optimize imports on the fly</p>
+<p>Add unambiguous imports on the fly：快速添加明确的导入。</p>
+<p>Optimize imports on the fly：快速优化导入，优化的意思即自动帮助删除无用的导入。</p>
 <h1 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h1><p>接下展示如何创建、运行和打包一个打印 Hello，World 的简单 Java 应用程序！熟悉 IntelliJ IDEA 特性，以提高作为开发人员的工作效率: 编码辅助和补充工具。</p>
 <h2 id="创建一个新的-Java-项目"><a href="#创建一个新的-Java-项目" class="headerlink" title="创建一个新的 Java 项目"></a><strong>创建一个新的 Java 项目</strong></h2><p>在 IntelliJ IDEA 中，一个项目可以帮助您将源代码、测试、使用的库、构建说明和个人设置组织到一个单元中。</p>
 <p>\1. 启动 IntelliJ IDEA。</p>
