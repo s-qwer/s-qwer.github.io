@@ -77,6 +77,1072 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-4.16.泛型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/4.16.%E6%B3%9B%E5%9E%8B/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:12:27.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/4.16.%E6%B3%9B%E5%9E%8B/">泛型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>JDK5以后出现了自动装箱，所以在需要引用类型的时候如果是个基本类型也是可以的，是因为有自动装箱。</p>
+<p>当我们往集合中存储了String和Integer两种类型时的数据时，而在遍历时都进行String类型的转化时，就会报错。但这个报错在编译期间不会出现，在编译的时候只有警告，只有执行的时候才会出现。于是集合也开始在创建对象的时候明确元素的数据类型，这就是泛型。</p>
+<p>泛型：是一种把类型明确的工作推迟到创建对象或者调用方法的时候才去明确的特殊的类型。参数化类型，把类型当作参数一样的传递。</p>
+<p>格式：&lt;数据类型&gt;  此处的数据类型只能是引用类型</p>
+<p>好处：1.运行时期的问题提取到了编译期间</p>
+<p>\2. 避免了强制类型转换</p>
+<p>\3. 简化了程序设计，解决了黄色警告线</p>
+<p>在API中，如果类，接口，抽象类中出现了<E>，就说明要使用泛型。一般来说就是在集合中使用。</p>
+<p>JDK7的新特性：泛型推断。</p>
+<p>早期我们使用Object类型可以接收任意的对象类型。但是在实际的使用中，会有类型转换的问题（向上转型是没有任何问题的，但是在向下转型的时候隐含了类型转换的问题），也就存在着隐患，这样的程序是不安全的，所以在JDK5以后Java提供了泛型来解决这个问题，提高程序的安全性。</p>
+<p>应用：</p>
+<p>1.泛型类：把泛型定义在类上</p>
+<p>格式:public class 类名&lt;泛型类型1,…&gt;</p>
+<p>注意:泛型类型必须是引用类型</p>
+<p>2.泛型方法：把泛型定义在方法上</p>
+<p>格式:public &lt;泛型类型&gt; 返回类型 方法名(泛型类型 .)</p>
+<p>方法可以接收任意的类型</p>
+<p>3.泛型接口：把泛型定义在接口上</p>
+<p>格式:public  interface 接口名&lt;泛型类型1…&gt;</p>
+<p>实现类在实现接口的时候：</p>
+<p>1.已经知道是什么类型的了：</p>
+<p>public class InterImpl implements Inter<String>{}</p>
+<p>\2. 还不知道是什么类型：(这种情况用的比较多)</p>
+<p>public class InterImpl<T> implements Inter<T>{}</p>
+<p>泛型通配符：泛型如果写的时候，前后必须一致（ArrayList<T> array=new ArrayList<T>();  这里的前后两个T必须一致，？可以表示任意）</p>
+<p>\1. &lt;?&gt;:任意类型，如果没有明确，那么就是Object以及任意的Java类了</p>
+<p>\2. &lt;? extends E&gt;：向下限定，E及其子类</p>
+<p>\3. &lt;? super E&gt;：向上限定，E及其父类</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.16.%E6%B3%9B%E5%9E%8B/" data-id="cku567uit001su8wd1z2h95fq" data-title="泛型" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-4.15.枚举" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/4.15.%E6%9E%9A%E4%B8%BE/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:12:20.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/4.15.%E6%9E%9A%E4%B8%BE/">枚举</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>枚举：是有限个值的集合。</p>
+<p>是指将变量的值一一列出来,变量的值只限于列举出来的值的范围内</p>
+<p>如果没有枚举类，我们自己定义一个类的话，会非常麻烦。（//需要用到构造方法私有，静态方法调用，对象调用方法，匿名类重写方法等）</p>
+<p>格式：</p>
+<p>public enum 枚举类名 {</p>
+<p>​            枚举项1，枚举项2，枚举项3…;</p>
+<p>}</p>
+<p>public String toString():  返回枚举常量的名称，它包含在声明中（枚举重写了toString方法，返回的是枚举项的名字）</p>
+<p>注意事项</p>
+<p>定义枚举类要用关键字enum</p>
+<p>所有枚举类都是Enum的子类</p>
+<p>枚举类的第一行上必须是枚举项，最后一个枚举项后的分号是可以省略的，但是如果枚举类有其他的东西，这个分号就不能省略。建议不要省略</p>
+<p>枚举类可以有构造器，但必须是private的，它默认的也是private的。枚举项的用法比较特殊：枚举(“”);</p>
+<p>枚举类也可以有抽象方法，但是枚举项必须重写该方法</p>
+<p>枚举在switch语句中的使用</p>
+<p>枚举类中的几个常见方法</p>
+<p>int compareTo(E o) 比较此枚举与指定对象的顺序，枚举中隐含数字 1 2 3 …</p>
+<p>String name() 返回此枚举常量的名称，在其枚举声明中对其进行声明</p>
+<p>int ordinal()  返回枚举常量的序数（它在枚举声明中的位置，初始常量序数为0）</p>
+<p>String toString() 返回枚举常量的名称，它包含在声明中</p>
+<p><T> T valueOf(Class<T> type,String name)  静态方法，返回带指定名称的指定枚举类型的枚举常量</p>
+<p>values()  此方法虽然在JDK文档中查找不到，但每个枚举类都具有该方法，它遍历枚举类的所有枚举值非常方便</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.15.%E6%9E%9A%E4%B8%BE/" data-id="cku567uit001qu8wd3v4j45xy" data-title="枚举" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-4.23JVM" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/4.23JVM/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T03:36:18.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/4.23JVM/">JVM</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Java语言是跨平台的，jvm不是跨平台的。</p>
+<p>虚拟机（Virture Machine）指通过软件的具有完整硬件系统功能的、运行在一个完全隔离环境中的完整计算机系统。</p>
+<p>Java的源代码经过编译后生成的不是特定CPU使用的本地代码，而是名为字节代码的程序。直接代码的运行环境就叫做java虚拟机（JVM），边转换边运行。</p>
+<p>java中的内存分配：java程序在运行时，需要在内存中的分配空间。</p>
+<p>为了提高运算效率，就对空间进行了不同区域的划分，因为每一片区域都有特定的处理数据方式和内存管理方式。</p>
+<h3 id="1-栈："><a href="#1-栈：" class="headerlink" title="1.栈："></a>1.栈：</h3><p>存储局部变量（加载的变量、方法）</p>
+<p>结构：先进后出</p>
+<p>特点：栈内存的数据用完（脱离数据域）就释放掉。（堆内存的数据可能要使用多次。）</p>
+<h3 id="2-堆："><a href="#2-堆：" class="headerlink" title="2.堆："></a>2.堆：</h3><p>存储new出来的东西（里面含有该new类的成员变量、静态标记、方法标记）</p>
+<p>特点：每一个new出来的东西都有地址值；每个变量都有默认值：</p>
+<p>byte,short,int,long  0</p>
+<p>float,double  0.0</p>
+<p>char  \u000</p>
+<p>boolean  false </p>
+<p>引用类型  null</p>
+<p>使用完毕就变成了垃圾，但是并没有立即回收，会在垃圾回收器空闲时候回收。</p>
+<p>C++中用析构函数来回收释放空间。</p>
+<p>栈内存的两个引用指向同一个堆内存空间，无论是它们谁的操作，都是针对同一个地方。</p>
+<h3 id="3-方法区："><a href="#3-方法区：" class="headerlink" title="3.方法区："></a>3.方法区：</h3><p>class类区（包括类的成员变量和成员方法）、静态区（static）、常量池</p>
+<h3 id="4-本地方法区："><a href="#4-本地方法区：" class="headerlink" title="4.本地方法区："></a>4.本地方法区：</h3><p>和系统相关</p>
+<h3 id="5-寄存器："><a href="#5-寄存器：" class="headerlink" title="5.寄存器："></a>5.寄存器：</h3><p>CPU使用</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.23JVM/" data-id="cku567uiv001xu8wday2p909e" data-title="JVM" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-4.24.JUC并发编程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/4.24.JUC%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T03:36:12.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/4.24.JUC%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">JUC并发编程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.24.JUC%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" data-id="cku567uiv001zu8wd11812v1d" data-title="JUC并发编程" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-4.17.反射和注解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T03:35:57.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/">反射和注解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>类的加载</p>
+<p>当程序要使用某个类时，如果该类还未被加载到内存中，则系统会通过加载，连接，初始化三步来实现对这个类进行初始化。</p>
+<p>加载 </p>
+<p>就是指将class文件读入内存，并为之创建一个Class对象。</p>
+<p>任何类被使用时系统都会建立一个Class对象。</p>
+<p>连接</p>
+<p>验证 是否有正确的内部结构，并和其他类协调一致</p>
+<p>准备 负责为类的静态成员分配内存，并设置默认初始化值</p>
+<p>解析 将类的二进制数据中的符号引用替换为直接引用</p>
+<p>初始化 </p>
+<p>就是我们以前讲过的初始化步骤</p>
+<p>类初始化时机：</p>
+<p>1.创建类的实例</p>
+<p>2.访问类的静态变量，或者为静态变量赋值</p>
+<p>3.调用类的静态方法</p>
+<p>4.使用反射方式来强制创建某个类或接口对应的java.lang.Class对象</p>
+<p>5.初始化某个类的子类</p>
+<p>6.直接使用java.exe命令来运行某个主类</p>
+<p>类加载器</p>
+<p>负责将.class文件加载到内在中，并为之生成对应的Class对象。</p>
+<p>虽然我们不需要关心类加载机制，但是了解这个机制我们就能更好的理解程序的运行</p>
+<p>类加载器的组成</p>
+<p>Bootstrap ClassLoader 根类加载器 </p>
+<p>也被称为引导类加载器，负责Java核心类的加载。比如System,String等。在JDK中JRE的lib目录下rt.jar文件中</p>
+<p>Extension ClassLoader 扩展类加载器</p>
+<p>负责JRE的扩展目录中jar包的加载。在JDK中JRE的lib目录下ext目录</p>
+<p>Sysetm ClassLoader 系统类加载器</p>
+<p>负责在JVM启动时加载来自java命令的class文件，以及classpath环境变量所指定的jar包和类路径</p>
+<p>反射，一种计算机处理方式。是程序可以访问、检测和修改它本身状态或行为的一种能力。</p>
+<p>反射：就是通过class文件对象，去使用该文件中的成员变量，构造方法，成员方法</p>
+<p>JAVA反射机制是在运行状态中，对于任意一个类，都能够知道这个类的所有属性和方法；对于任意一个对象，都能够调用它的任意一个方法和属性；这种****动态获取****的信息以及动态调用对象的方法的功能称为java语言的反射机制</p>
+<p>//要想解剖一个类,必须先要获取到该类的字节码文件对象。而解剖使用的就是Class类中的方法.所以先要获取到每一个字节码文件对应的Class类型的对象</p>
+<p>对于我们学习反射，我们在操作中一般会获取类的成员 Constructor  Field  Method。但是要想获取这些对象，必须首先得到其Class,通过Class再来获得其它对象</p>
+<p>Java反射常用API</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps1.jpg" alt="img"> </p>
+<p>Java中的Class可以代表任意的类或接口类型</p>
+<p>在java.lang.reflect包下有三个类</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps2.jpg" alt="img"> </p>
+<p>三种获取Class对象的方式</p>
+<p>1:如果持有一个对象，可以直接从Object类继承的getClass()方法获取</p>
+<p>Person p = new Person();</p>
+<p> Class c = p.getClass();</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps3.jpg" alt="img"> </p>
+<p>2:可以直接通过类包(接口)直接调用其静态属性.class获取</p>
+<p>Class c2 = Person.class;</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps4.jpg" alt="img"> </p>
+<p> 任意数据类型都具备一个class静态属性,看上去要比第一种方式简单.</p>
+<p>3:可以通过Class类中提供的forName方法获取（将类名作为字符串传递给Class类中的静态方法forName即可）：</p>
+<p>public static Class forName(String className)  这个类名必须是全路径：包名.类名（可以在外面写，会提示是否出错，没错的话沾过去；也可以点击类名下的类名右击copy Qualified name ）</p>
+<p> Class c3 = Class.forName(“Person”);</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps5.jpg" alt="img"> </p>
+<p>第三种和前两种的区别    ：前两种你必须明确Person类型；后面是一个字符串就行，而不需要是一个具体的类名.这种扩展更强.我不需要知道你的类.我只提供字符串,将这样的字符串配置到配置文件中，按照配置文件加载就可以了</p>
+<p>所以开发中一般用第三种方法</p>
+<p>Class类：</p>
+<p>成员变量            Field</p>
+<p>构造方法            Constructor</p>
+<p>成员方法            Method</p>
+<p>通过反射获取构造方法并使用：</p>
+<p>获取构造方法：</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps6.jpg" alt="img"> </p>
+<p>getConstructor它获取的是类的public构造</p>
+<p>getConstructors它获取的是类的所有的public构造</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps7.jpg" alt="img"> </p>
+<p>这两个方法不仅可以获取public，也可以获取其它权限的</p>
+<p>获取单个构造方法</p>
+<p>public Constructor<T> getConstructor(Class&lt;?&gt;… parameterTypes)  参数表示的是你要获取的构造方法的构造参数个数及数据类型的****class字节码****文件对象。…表示可以是0个（无参）一个（一个参数）多个（多个参数）</p>
+<p>/*获取的单个构造方法实际上是一个对象，通过这个对象可以创建该构造方法的声明类的新实例，并用指定的初始化参数初始化该实例</p>
+<p>public T newInstance(Object… initargs)</p>
+<p>反射可以获取私有的构造方法，成员方法，成员变量：</p>
+<p>获取的如果是私有的构造方法，要用public Constructor<T> getDeclaredConstructor(Class&lt;?&gt;… parameterTypes),但是会显示非法的访问异常。所以还要用暴力访问：.setAccessible(true); 值为true指示反射的对象在使用时应该取消java语言访问检查  （XJAD软件就用到了反射）*/</p>
+<p>我们得到构造器，就可以实例化对象</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps8.jpg" alt="img"> </p>
+<p>如果不是public，那么我们需要构造器对象的实例调用AccessibleObject中的</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps9.jpg" alt="img"> </p>
+<p>来取消语言检查</p>
+<p>Reflect类继承于AccessibleObject类继承于Object类</p>
+<p>通过反射获取成员变量并使用：Java.lang.reflect.Field它描述的属性对象</p>
+<p>1.获取一个Field</p>
+<p>获取所有成员</p>
+<p>getFields  公共的</p>
+<p>getDeclaredFields 所有的</p>
+<p>获取单个成员</p>
+<p>getField</p>
+<p>getDeclaredField</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps10.jpg" alt="img"> </p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps11.jpg" alt="img"> </p>
+<p>2.Field的操作</p>
+<p>（1）对Field进行赋值</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps12.jpg" alt="img"> </p>
+<p>赋值或修改成员的值</p>
+<p>set(Object obj,Object value)<br>  将指定对象变量上此 Field 对象表示的字段设置为指定的新值。此处的obj需要通过构造方法创建一个obj对象，也可以直接通过Class的实例的newInstance方法直接获得obj对象（这个方法的底层就是使用了Class类额无参构造来实例化）</p>
+<p>（2）对Field进行取值</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps13.jpg" alt="img"> </p>
+<p>通过反射获取成员方法并使用：Java.lang.reflect.Method它描述的是类或接口中的方法</p>
+<p>获取所有方法</p>
+<p>​        getMethods 获取自己的包括父亲的公共方法</p>
+<p>​        getDeclaredMethods 获取自己的所有方法</p>
+<p>获取单个方法</p>
+<p>​        getMethod（String name，Class&lt;?&gt;… parameterTypes）</p>
+<p>​        getDeclaredMethod（String name，Class&lt;?&gt;… parameterTypes）</p>
+<p>第一个参数是方法的名称，第二个参数是一个可变参数Class[]，它描述的是方法的参数Class</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps14.jpg" alt="img"> </p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps15.jpg" alt="img"> </p>
+<p>Method的使用：public Object invoke (Object obj , Object… args)  返回值是Object接收，第一个参数表示对象是谁，第二个参数表示调用该方法的实际参数</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps16.jpg" alt="img"> </p>
+<p>Method的invoke使用时注意事项?</p>
+<p>\1. 如果方法是static，我们怎样调用？</p>
+<p>如果方法是静态的，在通过invoke调用时不需要传递对象，传递null</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps17.jpg" alt="img"> </p>
+<p>\2. 如果方法的参数是一个数组类型，怎样处理?</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps18.jpg" alt="img"> </p>
+<p>为什么不能直接传args：因为数组也是object类型。在传递时，底层的invoke方法认为要调用的参数有四个。</p>
+<p>为什么int[]直接传递args不报错，而Integer[]会报错：因为int[]数组中的每一个元素不是Object，只是基本数据类型，int[]被认为是一个对象。而Integer[]数组中的每一个元素都是Object</p>
+<p>/*反射的调用和正常类的调用是恰好相反的。</p>
+<p>正常类：p.show()    p.show(参数)</p>
+<p>反射：show.invoke(p)   show.invoke(p，参数)</p>
+<p>*/</p>
+<p>案例：（这个案例可以帮助我们把集合中的值通过反射赋到一个类中）</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps19.jpg" alt="img"> </p>
+<p>并提供get/set方法</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps20.jpg" alt="img"> </p>
+<p>使用java中的反射技术将类中的属性与map中的key相同名称的，使用反射技术将key对应的value值赋值给属性.</p>
+<p>采用两种方式完成操作：</p>
+<p>1.直接操作属性 Field来完成操作（不常用）</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps21.jpg" alt="img"> </p>
+<p>2.通过属性对应的setXxx方法来完成操作</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps22.jpg" alt="img"> </p>
+<p>优点：</p>
+<p>1、反射提高了程序的灵活性和扩展性。</p>
+<p>2、降低耦合性，提高自适应能力。</p>
+<p>3、它允许程序创建和控制任何类的对象，无需提前硬编码目标类。<br>缺点：<br>    1、性能问题：使用反射基本上是一种解释操作，用于字段和方法接入时要远慢于直接代码。因此反射机制主要应用在对灵活性和拓展性要求很高的系统框架上，普通程序不建议使用。</p>
+<p>2、使用反射会模糊程序内部逻辑；程序员希望在源代码中看到程序的逻辑，反射却绕过了源代码的技术，因而会带来维护的问题，反射代码比相应的直接代码更复杂。</p>
+<p>反射：需要配置文件配合使用。 </p>
+<p>配置文件是键值对。必须要有键，代码获取键；然后可以自己通过改变值，来使代码中的对象改变，从而获得不同的运行效果。</p>
+<p>反射可以越过泛型检查。</p>
+<p>真实的需求应该是在你调用方法后，每次操作前，都需要进行权限校验，在进行操作后，必须留下日志记录。</p>
+<p>代理即Proxy Pattern，23种常用的面向对象软件的设计模式之一</p>
+<p>代理模式的定义：为其他对象提供一种<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/24001.htm">代理</a>以控制对这个对象的访问。在某些情况下，一个对象不适合或者不能直接引用另一个对象，而代理对象可以在客户端和目标对象之间起到中介的作用。</p>
+<p>组成：</p>
+<p>抽象角色：通过接口或抽象类声明真实角色实现的业务方法。</p>
+<p>代理角色：实现抽象角色，是真实角色的代理，通过真实角色的业务逻辑方法来实现抽象方法，并可以附加自己的操作。</p>
+<p>真实角色(目标对象)：实现抽象角色，定义真实角色所要实现的业务逻辑，供代理角色调用。</p>
+<p>分类：</p>
+<p>静态代理：是由程序员创建或工具生成代理类的源码，再编译代理类。所谓静态也就是在程序运行前就已经存在代理类的字节码文件，代理类和委托类的关系在运行前就确定了。</p>
+<p>动态代理：是在实现阶段不用关心代理类，而在运行阶段才指定哪一个对象。</p>
+<p>优点：</p>
+<p>(1).职责清晰，真实的角色就是实现实际的<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/1642754.htm">业务逻辑</a>，不用关心其他非本职责的事务，通过后期的代理完成一件完成事务，附带的结果就是编程简洁清晰。</p>
+<p>(2).代理对象可以在客户端和目标对象之间起到中介的作用，这样起到了中介的作用和保护了目标对象的作用。</p>
+<p>(3).高扩展性</p>
+<p>动态代理</p>
+<p>代理：本来应该自己做的事情，却请了别人来做，被请的人就是代理对象。</p>
+<p>动态代理：在程序运行过程中产生的这个对象</p>
+<p>而程序运行过程中产生对象其实就是我们刚才反射讲解的内容，所以，动态代理其实就是通过反射来生成一个代理</p>
+<p>在Java中java.lang.reflect包下提供了一个Proxy类和一个InvocationHandler接口，通过使用这个类和接口就可以生成动态代理对象。JDK提供的代理只能针对接口做代理。我们有更强大的代理cglib（框架中学到，这个代理不仅仅是针对接口）</p>
+<p>注意：在java中使用Proxy来完成动态代理对象的创建，只能为目标实现了接口的类创建代理对象。</p>
+<p>Proxy类中的方法创建动态代理类对象：</p>
+<p>public static Object newProxyInstance(ClassLoader loader,Class&lt;?&gt;[] interfaces,InvocationHandler h) </p>
+<p>ClassLoader loader 是对象的字节码文件的类加载器：.getClass().getClassLoader()</p>
+<p>Class&lt;?&gt;[] interfaces是对象的字节码文件的接口：.getClass().getInterfaces()</p>
+<p>动态代理是在内存中直接生成代理对象。</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps23.jpg" alt="img"> </p>
+<p>通过这个方法可以直接创建一个代理对象。</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps24.jpg" alt="img"> </p>
+<p>//InvocationHandler应用了观察者模式，因为代理类没有实例，所以需要监听代理对象调用时，其底层实现的是目标行为</p>
+<p>InvocationHandler h是一个接口，这里需要的是这个接口的实现类对象，所以需要创建一个类实现InvocationHandler接口。这个类中再重写InvocationHandler方法：public Object invoke(Object proxy,Method method,Object[] args)</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps25.jpg" alt="img"> </p>
+<p>Invoke方法，它是在代理对象调用行为时，会执行的方法，而invoke方法上有三个参数：</p>
+<p>proxy:代表动态代理对象</p>
+<p>method:要访问的目标行为，代表要调用的方法对象</p>
+<p>args:目标行为，代表调用目标方法时传入的实参</p>
+<p>这个方法的主要作用是：当我们通过代理对象调用行为时，来控制目标行为是否可以被调用（可以自己写代码控制，return null 不让调，return method.invoke(target,args)控制目标对象的方法执行）。</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps26.jpg" alt="img"> </p>
+<p>Proxy.newProxyInstance</p>
+<p>创建的代理对象是在jvm运行时动态生成的一个对象，它并不是我们的InvocationHandler类型，也不是我们定义的那组接口的类型，而是在运行是动态生成的一个对象，并且命名方式都是这样的形式，以$开头，proxy为中，最后一个数字表示对象的标号。</p>
+<p>System.out.println(u.getClass().getName());</p>
+<p>案例:测试addUser方法的运行时间</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps27.jpg" alt="img"> </p>
+<p>在开发中，在代理中通过目标来调用真实行为，我们使用动态代理可以完成性能监控（如上，进行时间的记录来监控性能），权限控制（在调用目标行为之前先判断是否有权限），日志记录（在调用方法之前，进行日志记录一些信息）等操作</p>
+<p>注释（先写注释在写程序）</p>
+<p>作用：用于解释说明程序的文字，提高程序的阅读性；可以帮助我们调试程序。</p>
+<p>注释分类格式：</p>
+<p>单行注释//  可以嵌套</p>
+<p>多行注释/*   */  不能嵌套</p>
+<p>文档注释/**   */</p>
+<p>对于单行和多行注释，被注释的文字是不会被JVM解释执行</p>
+<p>对于文档注释 是java特有的注释，其中的注释内容可以被JDK提供的工具javadoc所解析，生成一套以网页文件形式体现的该程序的说明文档。</p>
+<p>/*</p>
+<p>需求：</p>
+<p>分析：</p>
+<p>实现：</p>
+<p>*/</p>
+<p>注解（Annotation），也叫元数据。一种代码级别的说明。它是JDK1.5及以后版本引入的一个特性，与类、接口、枚举是在同一个层次。它可以用于创建文档，跟踪代码中的依赖性，甚至执行基本编译时检查。注解是以‘@注解名’在代码中存在的</p>
+<p>它可以声明在包、类、字段、方法、局部变量、方法参数等的前面，用来对这些元素进行说明，注释。你可以在编译时选择代码里的注解是否只存在于源代码级，或者它也能在class文件、或者运行时中出现（SOURCE/CLASS/RUNTIME）。</p>
+<p>作用：如果要对于元数据的作用进行分类，还没有明确的定义，不过我们可以根据它所起的作用，大致可分为三类：</p>
+<p>编写文档：通过代码里标识的元数据生成文档。</p>
+<p>代码分析：通过代码里标识的元数据对代码进行分析。</p>
+<p>编译检查：通过代码里标识的元数据让<a target="_blank" rel="noopener" href="http://baike.baidu.com/view/487018.htm">编译器</a>能实现基本的编译检查</p>
+<p>在现在开发中使用注解，一般是用于将注解替换配置文件。（xml配置文件）</p>
+<p>Java中基本内置注解:</p>
+<p>1.@Override</p>
+<p>它的作用是对覆盖超类中方法的方法进行标记，如果被标记的方法并没有实际覆盖超类中的方法，则编译器会发出错误警告。</p>
+<p>注意事项:</p>
+<p>​    对于接口中的方法重写，<a href="mailto:在jdk1.5时@Override">在jdk1.5时@Override</a>它是会报错.</p>
+<p>​    在jdk1.6后的版本就可以描述接口与类之间的重写</p>
+<p>2.@Deprecated</p>
+<p>它的作用是对不应该再使用的方法添加注解，当编程人员使用这些方法时，将会在编译时显示提示信息</p>
+<p>问题:什么时候方法是过时的?</p>
+<p>当前版本中这个方法存在隐患，在后续版本中对其进行了补充，这时前一个版本中的方法就会标注成过时的。</p>
+<p>3.@SuppressWarnings</p>
+<p>它的作用是去掉程序中的警告.</p>
+<p>其参数有：</p>
+<p>deprecation，使用了过时的类或方法时的警告</p>
+<p>unchecked，执行了未检查的转换时的警告</p>
+<p>fallthrough，当 switch 程序块直接通往下一种情况而没有 break 时的警告</p>
+<p>path，在类路径、源文件路径等中有不存在的路径时的警告</p>
+<p>serial，当在可序列化的类上缺少serialVersionUID 定义时的警告</p>
+<p>finally ，任何 finally 子句不能正常完成时的警告</p>
+<p>all，关于以上所有情况的警告</p>
+<p>可以在方法之前加@SuppressWarnings（“rawtype”）</p>
+<p>当一个类中出现了很多，可以在类上加@SuppressWarnings（“all”），一劳永逸</p>
+<p>自定义注解</p>
+<p>1.注解声明：声明一个注解格式：  修饰符 @interface 注解名{}</p>
+<p>2.注解本质分析</p>
+<p>分析一下注解的本质:将其.class文件找到，反编译.  (可以使用javap命令或反编译工具)</p>
+<p>@interface MyAnnoation{}</p>
+<p>反编译后的结果</p>
+<p>interface MyAnnotation    extends Annotation</p>
+<p>{</p>
+<p>}</p>
+<p>结论:注解本质上就是一个接口。它扩展了java.lang.annotation.Annotation接口;</p>
+<p>在java中所有注解都是Annotation接口的子接口。</p>
+<p>3.注解成员</p>
+<p>注解本质上就是一个接口，那么它也可以有属性和方法。</p>
+<p>但是接口中的属性是 public static final的，在注解中注解没有什么意义。</p>
+<p>在开发中注解中经常存在的是方法（这个方法的返回值类型有要求）。而在注解中接口的方法叫做注解的属性.</p>
+<p>4.自定义注解-属性操作</p>
+<p>注解属性类型：</p>
+<p>1.基本类型  byte short int long float double char boolean</p>
+<p>​    2.String</p>
+<p>​    3.枚举类型：可以自己创建一个枚举类，然后类名 方法名();</p>
+<p>​    4.注解类型</p>
+<p>​    5.Class类型</p>
+<p>​    6.以上类型的一维数组类型</p>
+<p>注解属性的使用</p>
+<p>1.如果一个注解有属性，那么在使用注解时，要对属性进行赋值操作.</p>
+<p>​    例如:@MyAnnotation(st = “aaa”)</p>
+<p>2.如果一个注解的属性有多个，都需要赋值，使用”,”分开属性.</p>
+<p>​    @MyAnnotation(st = “aaa”,i=10)</p>
+<p>3.也可以给属性赋默认值</p>
+<p>​    double d() <em><strong>*default 1.23*</strong></em>;</p>
+<p>​    如果属性有默认值，在使用注解时，就可以不用为属性赋值。    </p>
+<p>4.如果属性是数组类型</p>
+<p>​        1.可以直接使用  属性名={值1,值2,。。。}方式,例如</p>
+<p>​            @MyAnnotation(st = “aaa”,i=10,sts={“a”,”b”})</p>
+<p>​        2.如果数组的值只有一个也可以写成下面方式</p>
+<p>​            @MyAnnotation(st = “aaa”,i=10,sts=”a”)</p>
+<p>​            注意sts属性它是数组类型，也就是说，只有一个值时，可以省略”{}”</p>
+<p>​        </p>
+<p>5.对于属性名称 value的操作.</p>
+<p>​            1.如果属性名称叫value,那么在使用时，可以省略属性名称</p>
+<p>​                @MyAnnotation(“hello”)</p>
+<p>​            2.如果有多个属性，都需要赋值，其中一个叫value,这时，必须写属性名称</p>
+<p>​                @MyAnnotation(value=”hello”,i=10)</p>
+<p>​        </p>
+<p>​            3.如果属性名称叫value,它的类型是数组类型.</p>
+<p>​                1.只有这个value属性</p>
+<p>​                可以直接赋值，不能写属性名称,但是，如果只有一个值</p>
+<p>​                    @MyAnnotation({“abc”})或  @MyAnnotation(“abc”)</p>
+<p>​                但是如果有多个值</p>
+<p>​                    @MyAnnotation({“abc”,”def”})                        </p>
+<p>​                2.如果有多个属性，属性名称叫value</p>
+<p>​                    所有属性都需要赋值，那么必须写属性名称.</p>
+<p>5.自定义注解-元注解</p>
+<p>元注解及其作用：用于修饰注解的注解，可以描述注解在什么范围及在什么阶段使用等</p>
+<p>四个元注解介绍：</p>
+<p>@Retention</p>
+<p>指定注解信息在哪个阶段存在 Source Class Runtime</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps1-1618812955705.jpg" alt="img"> </p>
+<p>SOURCE它对应着编译阶段，可以帮助我们进行检查。</p>
+<p>CLASS 它对应解析执行阶段</p>
+<p>RUNTIME 它对应着在JVM中,在运行时结合反射技术，可以使注解具有一些功能</p>
+<p>@Target</p>
+<p>指定注解修饰目标对象的类型  </p>
+<p>TYPE 类、接口   FIELD 成员变量   METHOD 方法</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps2-1618812955706.jpg" alt="img"> </p>
+<p><a href="mailto:在接口的定义中前面进行元注解@Target(ElementType.TYPE)标注">在接口的定义中前面进行元注解@Target(ElementType.TYPE)标注</a>后，这个自定义注解只能用在TYPE即类、接口上，不能用于方法上。</p>
+<p><a href="mailto:如果要求自定义的注解需要用在多个地方。可以@Target({ElementType.TYPE,ElementType.METHOD})">如果要求自定义的注解需要用在多个地方。可以@Target({ElementType.TYPE,ElementType.METHOD})</a></p>
+<p>@Documented</p>
+<p>使用该元注解修饰，该注解的信息可以生成到javadoc 文档中</p>
+<p>@Inherited</p>
+<p>如果一个注解使用该元注解修饰，应用注解目标类的子类会自动继承该注解 </p>
+<p>@Retention @Target 是自定义注解必须使用两个元注解，并且，@Retention它的值应该是RUNTIME,因为我们会结合反射技术来使用。 @Target我们一般使用TYPE或METHOD</p>
+<p>案例-获取Connection连接数据库</p>
+<p>目的：让注解具有功能，必须结合反射技术来应用。</p>
+<p>注解它可以替换配置文件。</p>
+<p>第一步:创建注解</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps3-1618812955706.jpg" alt="img"> </p>
+<p>第二步:使用注解</p>
+<p>在方法上进行注解标注：</p>
+<p>@JdbcProperty（driverClass=””,url=””,user=””,password=””）</p>
+<p>我们可以通过getAnnotation()方法（这个方法在Class，Method。Field中都有）来获取注解对象</p>
+<p><img src="/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/wps4-1618812955706.jpg" alt="img"> </p>
+<p>通过jp.driverClass  jp.url 等就可以得到注解的值，然后在数据库连接中使用，进行数据库连接</p>
+<p>这里的操作实际上相当于是以前在配置文件中写这些属性值，在代码中从配置文件中取。</p>
+<p>问题:使用注解可以替换配置文件，为什么要替换?</p>
+<p>​    配置文件中的信息，它会随着程序的变大，配置信息越来越多，不利于开发。而将配置信息通过注解来替换，便于开发与阅读。</p>
+<p>缺点：如果需要更改，需要在源代码上修改注解。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/" data-id="cku567ujv004ru8wdfol99mgp" data-title="反射和注解" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-4.21.GUI编程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/4.21.GUI%E7%BC%96%E7%A8%8B/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T03:35:41.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/4.21.GUI%E7%BC%96%E7%A8%8B/">GUI编程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>GUI(图形用户界面)</p>
+<p>Java为GUI提供的对象都存在java.Awt和javax.Swing两个包中</p>
+<p>GUI：Graphical User Interface(图形用户接口)。</p>
+<p>用图形的方式，来显示计算机操作的界面，这样更方便更直观。</p>
+<p>CLI：Command line User Interface (命令行用户接口）</p>
+<p>就是常见的Dos命令行操作。</p>
+<p>需要记忆一些常用的命令，操作不直观。</p>
+<p>java.awt：Abstract Window ToolKit (抽象窗口工具包)，需要调用本地系统方法实现功能。属重量级控件。</p>
+<p>javax.swing：在AWT的基础上，建立的一套图形界面系统，其中提供了更多的组件，而且完全由Java实现。增强了移植性，属轻量级控件。</p>
+<p>javax是java扩展包</p>
+<p>和本地系统相关的，就是重量级控件，因为移植性很差。完全由java实现的，移植性就很好，属于轻量级控件。（这里的轻重是与操作系统的关系）</p>
+<p><img src="/4.21.GUI%E7%BC%96%E7%A8%8B/wps1.jpg" alt="img"> </p>
+<p>Component（组件）</p>
+<p>Container：为容器，是一个特殊的组件，该组件中可以通过add方法添加其他组件进来。</p>
+<p>Window：窗体  没有边界和标题</p>
+<p>Panel：面板</p>
+<p>Frame：框架  有边界和标题</p>
+<p>Dialog：对话框</p>
+<p>FileDialog：文件对话框</p>
+<p>Button：按钮</p>
+<p>Label：标签</p>
+<p>Checkbox：复选框</p>
+<p>TextComponent：文本组件</p>
+<p>TextArea：文本域  多行多列</p>
+<p>TextField：文本框  单行多列</p>
+<p>Frame  f = new Frame(“my window”);//构造方法命名 setTile是方法命名</p>
+<p>f.setLayout(new FlowLayout());//设置为流式布局</p>
+<p>f.setSize(300,400);//设置窗体大小 Dimension</p>
+<p>f.setLocation(300,200);//设置窗体出现在屏幕的位置 Point</p>
+<p>f.setVisible(true);//设置窗体是否可见</p>
+<p>一个方法：setBounds（int x,int y,int width,int height）</p>
+<p>前后是有顺序关系的，如果f.setVisible(true);在前面就会先显示再加载到指定位置。一般是这个步骤：创建窗体对象；设置窗体属性；设置窗体可见</p>
+<p>事件监听机制</p>
+<p>事件源：事件发生的地方</p>
+<p>事件：要发生的事情</p>
+<p>事件处理：针对发生的事情做出的处理方案</p>
+<p>事件监听器：就是把事件源和事件关联起来</p>
+<p>窗体布局：窗体中组件的排列方式</p>
+<p>流式布局FlowLayout：从上到下，从左到右。</p>
+<p>边界布局BorderLayout：东西南北中</p>
+<p>网格布局GridLayout：网格状，标准n行n列</p>
+<p>网格包布局GridBagLayout：可以将任意个相连的网格状连在一起当一个</p>
+<p>卡片布局CardLayout：类似于卡片，点一个卡片会在主界面加载一个</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.21.GUI%E7%BC%96%E7%A8%8B/" data-id="cku567uiu001vu8wd5d03guyo" data-title="GUI编程" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-4.18.网络编程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/4.18.%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T03:35:31.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/4.18.%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">网络编程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>计算机网络：是指将地理位置不同的具有独立功能的多台计算机及其外部设备，通过通信线路连接起来，在网络操作系统，网络管理软件及网络通信协议的管理和协调下，实现资源共享和信息传递的计算机系统。</p>
+<p>网络编程：就是用来实现网络互连的不同计算机上运行的程序间可以进行数据交换。</p>
+<p>网络模型：</p>
+<p>OSI（Open System Interconnection开放系统互连）参考模型</p>
+<p>TCP/IP参考模型</p>
+<p><img src="/4.18.%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/wps1.png" alt="img"> </p>
+<p>网络模型7层概述：</p>
+<p> 1.物理层：主要定义物理设备标准，如网线的接口类型、光纤的接口类型、各种传输介质的传输速率等。它的主要作用是传输比特流（就是由1、0转化为电流强弱来进行传输,到达目的地后在转化为1、0，也就是我们常说的数模转换与模数转换）。这一层的数据叫做比特。 </p>
+<ol start="2">
+<li><p>数据链路层：主要将从物理层接收的数据进行MAC地址（网卡的地址）的封装与解封装。常把这一层的数据叫做帧。在这一层工作的设备是交换机，数据通过交换机来传输。 </p>
+</li>
+<li><p>网络层：主要将从下层接收到的数据进行IP地址（例192.168.0.1)的封装与解封装。在这一层工作的设备是路由器，常把这一层的数据叫做数据包。 </p>
+</li>
+<li><p>传输层：定义了一些传输数据的协议和端口号（WWW端口80等），如：TCP（传输控制协议，传输效率低，可靠性强，用于传输可靠性要求高，数据量大的数据），UDP（用户数据报协议，与TCP特性恰恰相反，用于传输可靠性要求不高，数据量小的数据，如QQ聊天数据就是通过这种方式传输的）。 主要是将从下层接收的数据进行分段和传输，到达目的地址后再进行重组。常常把这一层数据叫做段。 </p>
+</li>
+<li><p>会话层：通过传输层（端口号：传输端口与接收端口）建立数据传输的通路。主要在你的系统之间发起会话或者接受会话请求（设备之间需要互相认识可以是IP也可以是MAC或者是主机名） </p>
+</li>
+</ol>
+<p>6.表示层：主要是进行对接收的数据进行解释、加密与解密、压缩与解压缩等（也就是把计算机能够识别的东西转换成人能够能识别的东西（如图片、声音等）。 </p>
+<p>7.应用层： 主要是一些终端的应用，比如说FTP（各种文件下载），WEB（IE浏览），QQ之类的（可以把它理解成我们在电脑屏幕上可以看到的东西．就是终端应用）。</p>
+<p>网络应用程序：网络编程、IO流、多线程组成。集合</p>
+<p>网络通信三要素：</p>
+<p>1.IP地址:InetAddress（找到电脑）</p>
+<p>​    网络中设备的标识，不易记忆，可用主机名</p>
+<p>2.端口号：（区分电脑的程序）</p>
+<p>​    用于标识进程的逻辑地址，不同进程的标识</p>
+<p>3.传输协议：（怎么交流传输）</p>
+<p>​    通讯的规则，常见协议：TCP，UDP</p>
+<p>IP地址</p>
+<p>要想让网络中的计算机能够互相通信，必须为每台计算机指定一个标识号，通过这个标识号来指定要接受数据的计算机和识别发送的计算机，在TCP/IP协议中，这个标识号就是IP地址</p>
+<p>所谓IP地址就是给每个连接在Internet上的主机分配的一个32bit地址。按照TCP/IP规定，IP地址用二进制来表示，每个IP地址长32bit，比特换算成字节，就是4个字节。例如一个采用二进制形式的IP地址是“00001010000000000000000000000001”，这么长的地址，人们处理起来也太费劲了。为了方便人们的使用，IP地址经常被写成十进制的形式，中间使用符号“.”分开不同的字节。于是，上面的IP地址可以表示为“10.0.0.1”。IP地址的这种把IP地址的每一个字节的数据换算成十进制，然后用.分开来表示的方法叫做“点分十进制表示法”，这显然比1和0容易记忆得多。</p>
+<p>IP地址的组成：IP地址 = 网络号码+主机地址</p>
+<p>A类    1.0.0.1—127.255.255.254</p>
+<p>(1)10.X.X.X是私有地址(私有地址就是在互联网上不使用，而被用在局域网络中的地址)        </p>
+<p>(2)127.X.X.X是保留地址，用做循环测试用的。</p>
+<p>B类    128.0.0.1—191.255.255.254    </p>
+<p>172.16.0.0—172.31.255.255是私有地址。</p>
+<p>169.254.X.X是保留地址。</p>
+<p>C类    192.0.0.1—223.255.255.254    192.168.X.X是私有地址</p>
+<p>D类    224.0.0.1—239.255.255.254     </p>
+<p>E类    240.0.0.1—247.255.255.254    </p>
+<p>DOS命令 ipconfig:查看本机IP地址</p>
+<p>ping+IP地址：测试本机与指定的ip地址间的通信是否有问题</p>
+<p>127.0.0.1 回环地址,可用于测试本机的网络是否有问题. ping 127.0.0.1  </p>
+<p>xxx.xxx.xxx.0 网络地址</p>
+<p>xxx.xxx.xxx.255 广播地址</p>
+<p>A类IP地址:第一段号码为网络号码，剩下的三段号码为本地计算机的号码</p>
+<p>B类IP地址:前二段号码为网络号码，剩下的二段号码为本地计算机的号码</p>
+<p>C类IP地址:前三段号码为网络号码，剩下的一段号码为本地计算机的号码</p>
+<p>//A类大部分在美国，中国可能有几个。B类一般是校园网之类的。C类是平常我们用的。DE类是保留地址，不用。</p>
+<p>为了方便我们对IP地址的获取和操作，java提供了一个类InetAddress 供我们使用。但是这个类没有构造方法</p>
+<p>如果一个类没有构造方法：</p>
+<p>A：成员全部是静态的（Math，Arrays，Collections）</p>
+<p>B：单例设计模式（Runtime）</p>
+<p>C：类中有静态方法返回该类的对象（InetAddress）</p>
+<p>class Demo{</p>
+<p>private Demo(){}</p>
+<p>public static Demo getXxx(){</p>
+<p>return new Demo();</p>
+<p>}</p>
+<p>}</p>
+<p>成员方法：</p>
+<p>public static InetAdress getByName(String host):根据主机名或者ip地址的字符串表示得到IP地址对象</p>
+<p>主机名：getHostName</p>
+<p>主机Ip地址：getHostAddress</p>
+<p>端口号：正在运行的程序的标识</p>
+<p>物理端口 网卡口</p>
+<p>逻辑端口 我们指的就是逻辑端口</p>
+<p>​    A:每个网络程序都会至少有一个逻辑端口</p>
+<p>​    B:用于标识进程的逻辑地址，不同进程的标识</p>
+<p>​    C:有效端口：0<del>65535，其中0</del>1024系统使用或保留端口。</p>
+<p>​    通过一些应用程序就可以查看端口号</p>
+<p>协议</p>
+<p>UDP：将数据源和目的封装成数据包中，不需要建立连接；每个数据报的大小在限制在64k；因无连接，是不可靠协议；不需要建立连接，速度快</p>
+<p>TCP：建立连接，形成传输数据的通道；在连接中进行大数据量传输；通过三次握手完成连接，是可靠协议；必须建立连接，效率会稍低</p>
+<p>Socket套接字</p>
+<p>网络上具有唯一标识的IP地址和端口号组合在一起才能构成唯一能识别的标识符套接字。</p>
+<p>Socket原理机制：</p>
+<p>通信的两端都有Socket。</p>
+<p>网络通信其实就是Socket间的通信。</p>
+<p>数据在两个Socket间通过IO传输。</p>
+<p>原则上是先存在接收端。</p>
+<p>UDP协议发送数据：</p>
+<p>A：创建发送端Socket对象</p>
+<p>B：创建数据，并把数据打包</p>
+<p>C：调用Socket对象的发送方法发送数据包</p>
+<p>D：释放资源</p>
+<p>UDP协议接收数据：</p>
+<p>A：创建接收端Socket对象</p>
+<p>B：创建一个数据包（接收容器）</p>
+<p>C：调用Socket对象的接收方法接收数据  阻塞式方法</p>
+<p>D：解析数据包，并显示在控制台</p>
+<p>E：释放资源</p>
+<p>运行的时候先运行接收端，在运行发送端。第二次运行接收端会报错：该端口已经被占用</p>
+<p>TCP协议发送数据：</p>
+<p>A：创建发送端的Socket对象</p>
+<p>B：获取输出流，写数据</p>
+<p>C：释放资源</p>
+<p>运行的话会出现连接被拒绝的错误。所以TCP协议一定要先开服务器</p>
+<p>TCP协议发送数据：</p>
+<p>A：创建接收端的Socket对象  ServerSocket</p>
+<p>B：监听客户端连接，返回一个对应的Socket对象  阻塞式方法</p>
+<p>C：获取输入流，读取数据显示在控制台</p>
+<p>D：释放资源</p>
+<p>TCP传输容易出现的问题：</p>
+<p>客户端连接上服务端，两端都在等待，没有任何数据传输：</p>
+<p>因为read方法或者readLine方法是阻塞式。</p>
+<p>解决办法：A：再多写一条数据告诉服务器，读到这条就结束（不推荐）</p>
+<p>B：Socket提供了一个终止功能：public void shutdownOutput()</p>
+<p>shutdownInput（）方法</p>
+<h2 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h2><p>超文本传输协议，是一个基于请求与响应，无状态的，应用层的协议，常基于TCP/IP协议传输数据，互联网上应用最为广泛的一种网络协议,所有的WWW文件都必须遵守这个标准。设计HTTP的初衷是为了提供一种发布和接收HTML页面的方法。</p>
+<h5 id="报文格式"><a href="#报文格式" class="headerlink" title="报文格式"></a>报文格式</h5><p><img src="https://mmbiz.qpic.cn/mmbiz_png/OKUeiaP72uRyLxLtgCJqzyegqJrXr5UdiaLB9wpXuEpfjflJAG5ALCN2um0YKmxJeNZfJejcECbfocuwrsKuttOw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>特点：</p>
+<ol>
+<li>无状态：协议对客户端没有状态存储，对事物处理没有“记忆”能力，比如访问一个网站需要反复进行登录操作</li>
+<li>无连接：HTTP/1.1之前，由于无状态特点，每次请求需要通过TCP三次握手四次挥手，和服务器重新建立连接。比如某个客户机在短时间多次请求同一个资源，服务器并不能区别是否已经响应过用户的请求，所以每次需要重新响应请求，需要耗费不必要的时间和流量。</li>
+<li>基于请求和响应：基本的特性，由客户端发起请求，服务端响应</li>
+<li>简单快速、灵活</li>
+<li>通信使用明文、请求和响应不会对通信方进行确认、无法保护数据的完整性</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.18.%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" data-id="cku567uiu001uu8wd8mua76eb" data-title="网络编程" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-4.19.多线程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/4.19.%E5%A4%9A%E7%BA%BF%E7%A8%8B/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T03:35:24.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/4.19.%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>程序只有一个执行流程，所以这样的程序就是单线程程序。</p>
+<p>假如一个程序有多条执行流程，那么，该程序就是多线程程序。</p>
+<p>线程是依赖于进程而存在的</p>
+<p>进程：就是正在运行的程序。</p>
+<p>是系统进行资源分配和调用的独立单位，每一个进程都有它自己的内存空间和系统资源。</p>
+<p>单进程的计算机只能做一件事情，现在的计算机都是支持多进程的。可以在一个时间段内执行多个任务，并且可以提高CPU的使用率。</p>
+<p>单CPU在某个时间点只能做一件事情，CPU在做程序间的高效切换让我们觉得是同时进行的。</p>
+<p>线程：在同一个进程内又可以执行多个任务，而这每一个任务就可以看作是一个线程。是进程中的单个顺序控制流，是一条执行路径</p>
+<p>线程是程序的执行单元，执行路径。是程序使用CPU的最基本的单位。</p>
+<p>一个进程如果只有一条执行路径，则称为单线程程序。</p>
+<p>一个进程如果有多条执行路径，则称为多线程程序。</p>
+<p>多线程的存在不是提高程序的执行速度，其实是为了提高应用程序的使用率。</p>
+<p>程序的执行其实都是在抢CPU的资源，CPU的执行权，多个线程都在抢这个资源，而其中的某一个进程如果执行路径比较多，就会有更高的几率抢到CPU的执行权。我们不敢保证哪一个线程能够在哪个时刻抢到，所以线程的执行有随机性。</p>
+<p>并行：逻辑上同时发生，指在某一个时间内同时运行多个程序</p>
+<p>并发：物理上同时发生。指在某一个时间点同时运行多个程序</p>
+<p>java程序的运行原理：由java命令启动了JVM，JVM启动就相当于启动了一个进程。接着由该进程创建了一个主线程去调用main方法</p>
+<p>jvm虚拟机的启动是单线程的还是多线程的？</p>
+<p>多线程的。因为垃圾回收线程也要先启动，否则就会出现内存溢出。</p>
+<p>如何实现多线程的程序：</p>
+<p>A：继承Thread类</p>
+<p>步骤：1.自定义类继承Thread类</p>
+<p>\2. 在自定义类内重写run()方法</p>
+<p>\3. 创建该类的对象</p>
+<p>\4. 启动线程</p>
+<p>为什么要重写run()方法：不是类中的所有代码都需要被线程执行的。为了区分哪些代码能够被线程执行，java提供了Thread类中的run()方法用来包含那些被线程执行的代码</p>
+<p>//一般来说，被线程执行的代码肯定是比较耗时的。所以用循环改进</p>
+<p>run()和start()方法的区别：</p>
+<p>run()仅仅是封装被线程执行的代码，直接调用是普通方法</p>
+<p>start()首先启动了线程，然后由jvm去调用该线程的run()方法</p>
+<p>如何获取和设置线程名称</p>
+<p>public final String getName() 获取线程的名称</p>
+<p>public final void setName(String name) </p>
+<p>通过构造方法也可以给线程起名字，带参构造</p>
+<p>如何获取main方法所在的线程名称呢?</p>
+<p>public static Thread currentThread() 返回当前正在执行的线程对象</p>
+<p>Thread.currentThread().getName() 这样就可以获取任意方法所在的线程名称</p>
+<p>线程有两种调度模型：</p>
+<p>分时调度模型:所有线程轮流使用 CPU 的使用权，平均分配每个线程占用 CPU 的时间片</p>
+<p>抢占式调度模型:优先让优先级高的线程使用 CPU，如果线程的优先级相同，那么会随机选择一个，优先级高的线程获取的 CPU 时间片相对多一些。 </p>
+<p>Java使用的是抢占式调度模型。</p>
+<p>如何设置和获取线程优先级</p>
+<p>public final int getPriority() 返回线程对象的优先级 线程默认优先级是5</p>
+<p>public final void setPriority(int newPriority) 更改线程的优先级 线程优先级的范围是1-10</p>
+<p>线程优先级仅仅表示线程获取CPU时间片的几率高，但是要在次数比较多或者多次运行的时候才能看到比较好的效果</p>
+<p>线程控制</p>
+<p>线程休眠</p>
+<p>public static void sleep(long millis)</p>
+<p>线程加入</p>
+<p>public final void join() 等待该线程终止</p>
+<p>线程礼让</p>
+<p>public static void yield() 暂停当前正在执行的线程对象，并执行其他线程</p>
+<p>让多个线程的执行更和谐，但是不能靠它保证一人一次</p>
+<p>后台线程</p>
+<p>public final void setDaemon(boolean on) 将该线程标记为守护线程或用户线程</p>
+<p>当正在运行的线程都是守护线程时，java虚拟机退出，该方法必须在启动线程前调用</p>
+<p>中断线程</p>
+<p>public final void stop() 已过时。具有不安全性，不建议使用</p>
+<p>public void interrupt() 中断线程。把线程状态终止，并抛出一个InterruptedException</p>
+<p>线程的生命周期：</p>
+<p>新建：创建线程对象</p>
+<p>就绪：有执行资格，没有执行权</p>
+<p>运行：有执行资格，有执行权</p>
+<p>阻塞：由于一些操作让线程处于该状态，没有执行资格，没有执行权。而另一些操作却可以把它激活，激活后处于就绪状态</p>
+<p>死亡：线程对象变为垃圾，等待回收</p>
+<p>B：实现Runnable接口</p>
+<p>步骤：1.自定义类实现Runnable接口</p>
+<p>\2. 重写run()方法</p>
+<p>\3. 创建自定义类对象</p>
+<p>\4. 创建Thread类对象，并把3中的对象作为构造参数传递</p>
+<p>B方式的好处，实现接口方式的好处：</p>
+<p>可以避免由于Java单继承带来的局限性。</p>
+<p>适合多个相同程序的代码去处理同一个资源的情况，把线程同程序的代码，数据有效分离，较好的体现了面向对象的设计思想。</p>
+<p>电影院售票出现问题：</p>
+<p>1.相同的票出现多次：CPU的一次操作必须是原子性的</p>
+<p>2.还出现了负数的票：随机性和延迟导致的</p>
+<p>判断是否有多线程问题的标准：</p>
+<p>1.是否是多线程环境</p>
+<p>2.是否有共享数据</p>
+<p>3.是否有多条语句操作共享数据</p>
+<p>解决线程安全问题实现：</p>
+<p>1.同步代码块</p>
+<p>格式：</p>
+<p>​        synchronized(对象){需要同步的代码;}</p>
+<p>同步可以解决安全问题的根本原因就在那个对象上。该对象如同锁的功能。这个对象可以是任意对象。</p>
+<p>同步的前提：多个线程，多个线程使用的是同一个锁对象</p>
+<p>同步的好处：同步的出现解决了多线程的安全问题。</p>
+<p>同步的弊端：当线程相当多时，因为每个线程都会去判断同步上的锁，这是很耗费资源的，无形中会降低程序的运行效率。</p>
+<p>2.同步方法</p>
+<p>就是把同步关键字加到方法上（一般在权限修饰符后面）</p>
+<p>同步方法的锁对象是：this</p>
+<p>静态方法的同步方法的锁对象：是当前类的字节码文件对象。（反射）</p>
+<p>如果锁对象是this，就可以考虑使用同步方法。</p>
+<p>否则能使用同步代码块的尽量使用同步代码块。</p>
+<p>线程安全的类：</p>
+<p>StringBuffer  </p>
+<p>Vector&lt;&gt; 即使要安全，也不用。可以用Collections工具类中的静态方法synchronizedXxx方法</p>
+<p>Hashtable&lt;,&gt;</p>
+<p>JDK5以后提供了一个新的锁对象Lock</p>
+<p>Lock是一个接口</p>
+<p>void lock() 获取锁</p>
+<p>void unlock() 释放锁</p>
+<p>ReentrantLock Lock的实现类。这个类同时也实现了序列化Serializable接口</p>
+<p>可能加锁后的代码会出问题，导致无法释放锁。所以可以选择加try…finally语句</p>
+<p>同步弊端：效率低；如果出现了同步嵌套，就容易产生死锁问题</p>
+<p>死锁问题：是指两个或者两个以上的线程在执行的过程中，因争夺资源产生的一种互相等待现象</p>
+<p><em><strong>*public*</strong></em> <em><strong>*class*</strong></em> DieLock <em><strong>*extends*</strong></em> Thread {</p>
+<p>​    <em><strong>*private*</strong></em> <em><strong>*boolean*</strong></em> flag;</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*static*</strong></em> <em><strong>*void*</strong></em> main(String[] args) {</p>
+<p>​        DieLock l1 = <em><strong>*new*</strong></em> DieLock(<em><strong>*true*</strong></em>);</p>
+<p>​        DieLock l2 = <em><strong>*new*</strong></em> DieLock(<em><strong>*false*</strong></em>);</p>
+<p>​        l1.start();</p>
+<p>​        l2.start();</p>
+<p>​    }</p>
+<p>​    <em><strong>*public*</strong></em> DieLock(<em><strong>*boolean*</strong></em> flag) {</p>
+<p>​        <em><strong>*this*</strong></em>.flag = flag;</p>
+<p>​    }</p>
+<p>​    @Override</p>
+<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> run() {</p>
+<p>​        <em><strong>*if*</strong></em> (flag) {</p>
+<p>​            <em><strong>*synchronized*</strong></em> (MyLock.****<em>objA*</em>***) {</p>
+<p>​                System.****<em>out*</em>***.println(“if的ogjA”);</p>
+<p>​                <em><strong>*synchronized*</strong></em> (MyLock.****<em>objB*</em>***) {</p>
+<p>​                    System.****<em>out*</em>***.println(“if的ogjB”);</p>
+<p>​                }</p>
+<p>​            }</p>
+<p>​        } <em><strong>*else*</strong></em> {</p>
+<p>​            <em><strong>*synchronized*</strong></em> (MyLock.****<em>objB*</em>***) {</p>
+<p>​                System.****<em>out*</em>***.println(“else的ogjB”);</p>
+<p>​                <em><strong>*synchronized*</strong></em> (MyLock.****<em>objA*</em>***) {</p>
+<p>​                    System.****<em>out*</em>***.println(“else的ogjA”);</p>
+<p>​                }</p>
+<p>​            }</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>}</p>
+<p>线程间通信问题：不同种类的线程间针对同一个资源的操作</p>
+<p>通过设置线程(生产者)和获取线程(消费者)针对同一个对象进行操作</p>
+<p>1.如何保证是同一个对象的操作：在外界把这个对象创建出来，然后通过构造方法传递给其他的类。</p>
+<p>2.CPU的时间片在很短的时间内可以执行很多条代码会产生相同的数据，线程抢占的随机性也会导致安全问题：所以要加锁。不同种类的线程都要加锁，而且这加的锁必须是同一把才能保证安全。（传的对象要是同一个）</p>
+<p>3.如果消费者先抢到执行权，就会先执行，但是会输出默认值，无意义。如果生产者先抢到先执行后再抢到会继续生产，不合常理。所以应该：生产者先看是否有数据，有就等待，没有就生产，生产完之后通知消费者来消费数据。消费者先看是否有数据，有就消费，没有就等待，通知生产者生产数据。</p>
+<p>所以java提供了一种机制：等待唤醒机制实现数据依次出现</p>
+<p>Object类中提供了三个方法：</p>
+<p>wait()  等待  会立即释放锁，当唤醒时从此处继续执行</p>
+<p>notify()  唤醒单个线程  唤醒并不代表立即执行，还需要抢夺执行权</p>
+<p>notifyAll()  唤醒所有线程</p>
+<p>为什么这些方法不定义在Thread类中：因为这些方法的调用必须通过锁对象调用，而我们使用的同步块锁对象是任意锁对象。所以这些方法必须定义在Object类中</p>
+<p>把同步代码块改进为同步方法实现，以后只需要调用方法即可</p>
+<p>ThreadGroup 线程组：把多个线程组合到一起。它可以对一批线程进行分类管理，Java允许程序直接对线程组进行控制</p>
+<p>线程类里面的方法：</p>
+<p>public final ThreadGroup getThreadGroup() </p>
+<p>线程组里面的方法：public final String getName()</p>
+<p>默认情况下，所有的线程都属于主线程组main</p>
+<p>也可以给线程设置分组:创建一个线程组；创建其他线程的时候，把其他线程的组指定为我们自己新建线程组</p>
+<p>Thread(ThreadGroup group, Runnable target, String name) </p>
+<p>线程组的意义：通过组名称调用方法，可以设置此线程组的各种优先级，状态等等。</p>
+<p>线程池</p>
+<p>程序启动一个新线程成本是比较高的，因为它涉及到要与操作系统进行交互。而使用线程池可以很好的提高性能，尤其是当程序中要创建大量生存期很短的线程时，更应该考虑使用线程池。</p>
+<p>好处：线程池里的每一个线程代码结束后，并不会死亡，而是再次回到线程池中成为空闲状态，等待下一个对象来使用。</p>
+<p>在JDK5之前，我们必须手动实现自己的线程池，从JDK5开始，Java内置支持线程池</p>
+<p>JDK5新增了一个Executors工厂类来产生线程池</p>
+<p>public static ExecutorService newCachedThreadPool() 创建一个新的缓存线程池</p>
+<p>public static ExecutorService newFixedThreadPool(int nThreads) 创建一个int值的线程池</p>
+<p>public static ExecutorService newSingleThreadExecutor() 创建一个线程池 相当于是int=1</p>
+<p>如何实现线程池的代码：</p>
+<p>\1. 创建一个线程池对象，控制要创建几个线程对象</p>
+<p>public static ExecutorService newFixedThreadPool(int nThreads) </p>
+<p>\2. 这种线程池的线程可以执行：</p>
+<p>Runnable对象或者Callable对象代表的线程</p>
+<p>做一个类实现Runnable接口</p>
+<p>\3. 线程池调用方法：</p>
+<p>Future&lt;?&gt; submit(Runnable task)</p>
+<p><T> Future<T> submit(Callable<T> task)</p>
+<p>4.线程池结束：shutdown()方法</p>
+<p>第三种实现线程的方式：实现Callable接口（是带泛型的接口）</p>
+<p>这里指定的泛型是call()方法的返回值类型（这里的call()方法相当于那两个方法的run()方法）</p>
+<p>好处：</p>
+<p>可以有返回值</p>
+<p>可以抛出异常</p>
+<p>弊端：</p>
+<p>代码比较复杂，必须依赖线程池，所以一般不用</p>
+<p>匿名内部类方式使用多线程</p>
+<p>继承Thread类来实现多线程：</p>
+<p>new Thread(){代码…}.start();</p>
+<p>实现Runnable接口来实现多线程：</p>
+<p>new Thread(new Runnable(){代码…}){}.start();</p>
+<p>(如果既继承了Thread类，又实现了Runnable接口，则输出是以继承的Thread类为主，但这是毫无意义的代码)</p>
+<p>定时器：可以让我们在指定的时间做某件事情，还可以重复的做某件事情</p>
+<p>定时器是一个应用十分广泛的线程工具，可用于调度多个定时任务以后台线程的方式执行。在Java中，可以通过Timer和TimerTask类来实现定义调度的功能</p>
+<p>Timer类：定时</p>
+<p>public Timer() 构造方法</p>
+<p>public void schedule(TimerTask task, long delay) delay毫秒后执行任务</p>
+<p>public void schedule(TimerTask task,long delay,long period) delay毫秒后执行任务，period毫秒后重复执行</p>
+<p>public void cancel()</p>
+<p>TimerTask类（抽象类）：任务</p>
+<p>public abstract void run()</p>
+<p>public boolean cancel()</p>
+<p>开发中（基本不用上两种方法，而是使用框架）</p>
+<p><strong>Quartz</strong>是一个完全由java编写的开源调度框架</p>
+<p>sleep()和wait()的区别：</p>
+<p>sleep()：必须指时间；不释放锁</p>
+<p>wait():可以不指时间，也可以指时间；释放锁</p>
+<h2 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h2><p><strong>共享锁（S锁）：</strong> 又称为读锁，可以查看但无法修改和删除的一种数据锁。如果事务T对数据A加上共享锁后，则其他事务只能对A再加共享锁，不能加排它锁。获准共享锁的事务只能读数据，不能修改数据。共享锁下其它用户可以并发读取，查询数据。但不能修改，增加，删除数据。资源共享.</p>
+<p><strong>排它锁（X锁）：</strong>　又称为写锁、独占锁，若事务T对数据对象A加上X锁，则只允许T读取和修改A，其他任何事务都不能再对A加任何类型的锁，直到T释放A上的锁。这就保证了其他事务在T释放A上的锁之前不能再读取和修改A</p>
+<p><strong>互斥锁：</strong> 在编程中，引入了对象互斥锁的概念，来保证共享数据操作的完整性。每个对象都对应于一个可称为” 互斥锁” 的标记，这个标记用来保证在任一时刻，只能有一个线程访问该对象。</p>
+<p><strong>悲观锁、乐观锁：</strong></p>
+<p><strong>悲观锁：</strong> 总是假设最坏的情况，每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会阻塞直到它拿到锁。传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁。再比如Java里面的同步原语synchronized关键字的实现也是悲观锁。<a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/s?__biz=MzI2ODkxMTc5OA==&mid=2247483850&idx=1&sn=398b0e3d4687fa7fce10e525e41f7ba6&chksm=eae91413dd9e9d05135e8427bfc18937175ccf948972cd9ddb96dbb9faae268b90499f8817d9&scene=21#wechat_redirect">《LeetCode刷题Java版答案》pdf来了</a></p>
+<p><strong>乐观锁：</strong> 顾名思义，就是很乐观，每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，可以使用版本号等机制。乐观锁适用于多读的应用类型，这样可以提高吞吐量，像数据库提供的类似于write_condition机制，其实都是提供的乐观锁。在Java中java.util.concurrent.atomic包下面的原子变量类就是使用了乐观锁的一种实现方式CAS实现的。</p>
+<p><strong>行级锁：</strong> 行级锁是 MySQL 中锁定粒度最细的一种锁，表示只针对当前操作的行进行加锁。行级锁能大大减少数据库操作的冲突，其加锁粒度最小，但加锁的开销也最大。行级锁分为共享锁和排他锁。开销大，加锁慢；会出现死锁；锁定粒度最小，发生锁冲突的概率最低，并发度也最高。</p>
+<p><strong>表级锁：</strong> 表级锁是 MySQL 中锁定粒度最大的一种锁，表示对当前操作的整张表加锁，它实现简单，资源消耗较少，被大部分 MySQL 引擎支持。最常使用的 MyISAM 与 InnoDB 都支持表级锁定。表级锁定分为表共享读锁（共享锁）与表独占写锁（排他锁）。开销小，加锁快；不会出现死锁；锁定粒度大，发出锁冲突的概率最高，并发度最低。</p>
+<p><strong>页级锁：</strong>　页级锁是 MySQL 中锁定粒度介于行级锁和表级锁中间的一种锁。表级锁速度快，但冲突多，行级冲突少，但速度慢。因此，采取了折衷的页级锁，一次锁定相邻的一组记录。BDB 支持页级锁。开销和加锁时间界于表锁和行锁之间；会出现死锁；锁定粒度界于表锁和行锁之间，并发度一般。</p>
+<p><strong>丢失修改：</strong> 指事务1和事务2同时读入相同的数据并进行修改，事务2提交的结果破坏了事务1提交的结果，导致事务1进行的修改丢失。</p>
+<p><strong>不可重复读：</strong> 一个事务在读取某些数据后的某个时间，再次读取以前读过的数据，却发现其读出的数据已经发生了改变、或某些记录已经被删除了！</p>
+<p><strong>读脏数据：</strong> 事务T1修改某一数据，并将其写回磁盘，事务T2读取同一数据后，T1由于某种原因被撤消，这时T1已修改过的数据恢复原值，T2读到的数据就与数据库中的数据不一致，则T2读到的数据就为”脏”数据，即不正确的数据。<a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/s?__biz=MzI2ODkxMTc5OA==&mid=2247483850&idx=1&sn=398b0e3d4687fa7fce10e525e41f7ba6&chksm=eae91413dd9e9d05135e8427bfc18937175ccf948972cd9ddb96dbb9faae268b90499f8817d9&scene=21#wechat_redirect">《LeetCode刷题Java版答案》pdf来了</a></p>
+<p><strong>死锁：</strong> 两个或两个以上的进程在执行过程中，由于竞争资源或者由于彼此通信而造成的一种阻塞的现象，若无外力作用，它们都将无法推进下去。此时称系统处于死锁状态或系统产生了死锁，这些永远在互相等待的进程称为死锁进程</p>
+<p>死锁四个产生条件：</p>
+<p><strong>1）互斥条件：</strong>　指进程对所分配到的资源进行排它性使用，即在一段时间内某资源只由一个进程占用。如果此时还有其它进程请求资源，则请求者只能等待，直至占有资源的进程用毕释放。</p>
+<p><strong>2）请求和保持条件：</strong> 指进程已经保持至少一个资源，但又提出了新的资源请求，而该资源已被其它进程占有，此时请求进程阻塞，但又对自己已获得的其它资源保持不放。</p>
+<p><strong>3）不剥夺条件：</strong> 指进程已获得的资源，在未使用完之前，不能被剥夺，只能在使用完时由自己释放。</p>
+<p><strong>4）环路等待条件：</strong> 指在发生死锁时，必然存在一个进程——资源的环形链，即进程集合{P0，P1，P2，···，Pn}中的P0正在等待一个P1占用的资源；P1正在等待P2占用的资源，……，Pn正在等待已被P0占用的资源。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.19.%E5%A4%9A%E7%BA%BF%E7%A8%8B/" data-id="cku567ujw004su8wd62brajwe" data-title="多线程" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-4.13.IO流" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/04/19/4.13.IO%E6%B5%81/" class="article-date">
@@ -435,7 +1501,7 @@ protected void finalize()&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.13.IO%E6%B5%81/" data-id="ckqk8k3ea004f2wwd8cdm1w7c" data-title="IO流" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.13.IO%E6%B5%81/" data-id="cku567ujv004qu8wda44i5pdr" data-title="IO流" class="article-share-link">分享</a>
       
       
       
@@ -676,884 +1742,7 @@ protected void finalize()&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.12.%E9%9B%86%E5%90%88/" data-id="ckqk8k3dc001q2wwdhtl82o2k" data-title="集合" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-4.14.异常处理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/4.14.%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T03:34:57.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/4.14.%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/">异常处理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>异常就是Java程序出现了不正常的情况。</p>
-<p>程序的异常：Throwable</p>
-<p>严重问题：Error 我们不处理，一般这种问题都是很严重的，比如内存溢出</p>
-<p>问题：Exception</p>
-<p>编译期问题：不是RuntimeException的异常 必须进行处理的，因为不处理，编译就不能通过</p>
-<p>运行期问题：RuntimeException 这种问题我们也不处理，因为是代码不严谨的问题，需要修正代码。</p>
-<p>如果程序出现了问题，我们没有做任何处理，最终jvm会做出默认的处理：把异常的名称，原因及出现的问题等信息输出在控制台；同时会结束程序。</p>
-<p>我们可以自己进行异常处理方案：</p>
-<p>A：try…catch…finally处理格式：</p>
-<p>try{</p>
-<p>可能出现问题的代码；</p>
-<p>}catch(异常类名 变量名){</p>
-<p>针对问题的处理；</p>
-<p>}finally{</p>
-<p>释放资源；</p>
-<p>}</p>
-<p>变形格式：</p>
-<p>try{</p>
-<p>可能出现问题的代码；</p>
-<p>}catch(异常类名 变量名){</p>
-<p>针对问题的处理；</p>
-<p>}</p>
-<p>注意：try里面的代码越少越好。catch里面必须有内容，哪怕是给出一个简单的提示</p>
-<p>两个异常的处理：（1）每一个都写一个try…catch…</p>
-<p>（2）写一个try，多个catch：</p>
-<p>try{</p>
-<p>可能出现问题的代码；</p>
-<p>}catch(异常类名 变量名){</p>
-<p>针对问题的处理；</p>
-<p>}catch(异常类名 变量名){</p>
-<p>针对问题的处理；</p>
-<p>}</p>
-<p>一旦try里面出了问题，就会在这里把问题给抛出去，然后和catch里面的问题进行匹配，一旦有匹配的，就执行catch里面的处理，然后结束try…catch…，继续执行后面的语句（碰到第一个问题就会抛出并查找并输出，然后执行后面的。）</p>
-<p>注意：1.能明确的尽量明确，不要用大的来处理（Exception e）</p>
-<p>\2. 平级关系的异常谁前谁后无所谓，如果出现了子父关系，父必须在后面。（如果父在前面的话，父后面的异常处理就多余了）</p>
-<p>finally的特点：</p>
-<p>被finally控制的语句体一定会执行，但是特殊情况：在执行到finally之前jvm退出了(比如System.exit(0))就不会执行</p>
-<p>finally的作用：用于释放资源，在IO流操作和数据库操作中会见到</p>
-<p>1.final,finally和finalize的区别：</p>
-<p>final：最终的意思，可以修饰类，成员变量，成员方法。</p>
-<p>修饰类，类不能被继承。</p>
-<p>修饰成员变量，变量是常量。</p>
-<p>修饰成员方法，方法不能被重写。</p>
-<p>finally：是异常处理的一部分，用来释放资源。</p>
-<p>一般来说代码肯定会执行，特殊情况：在执行到finally之前jvm退出了(比如System.exit(0))就不会执行</p>
-<p>finalize：是Object类的一个方法，用于垃圾回收。</p>
-<p>2.如果catch里面有return语句，请问finally的代码还会执行吗?如果会，请问是在return前还是return后。</p>
-<p>会。前。准确的说应该是在中间。（这里的return语句返回路径已经形成，但还是会执行finally语句）</p>
-<p>\3. try…catch…finally的格式变形：</p>
-<p>（1）try…catch…finally</p>
-<p>（2）try…catch</p>
-<p>（3）try…catch…catch</p>
-<p>（4）try…catch…catch…finally</p>
-<p>（5）try…finally  这种格式的做法目前是为了释放资源</p>
-<p>必须要有try</p>
-<p>B：throws</p>
-<p>定义功能方法时，需要把出现的问题暴露出来让调用者去处理。那么就通过throws在方法上标识。（有些时候我们没有权限去处理某个异常，有可能处理不了，所以java提供了另一种处理方案：抛出）</p>
-<p>格式：throws 异常类名 可以跟多个，用逗号隔开</p>
-<p>注意：这个格式必须跟在方法的括号后面。（在方法声明上抛出是为了告诉调用者我有问题） 调用者的处理方式：1.在方法上继续抛异常 2.用try…catch…</p>
-<p>尽量不要再main方法上抛出异常</p>
-<p>throw：程序不能继续运行，需要进行跳转时，如果出现了异常情况，我们可以把异常抛出，这个时候抛出的应该是异常的对象而不是异常的类名。</p>
-<p>throws和throw的区别：</p>
-<p>throws：用在方法声明后面，跟的是异常类名；可以跟多个异常类名，用逗号隔开；表示抛出异常，由该方法的调用者来处理；throws表示出现异常的一种可能性，并不一定会发生这些异常</p>
-<p>throw：用在方法体内，跟的是异常对象名；只能抛出一个异常对象名；表示抛出异常，由方法体内的语句处理；throw则是抛出了异常，执行throw则一定抛出了某种异常</p>
-<p>处理异常的原则:如果该功能内部可以将问题处理,用try；如果处理不了,交由调用者处理,这是用throws。后续程序需要继续运行就try；后续程序不需要继续运行就throws</p>
-<p>编译时异常和运行时异常的区别：</p>
-<p>编译时异常：Java程序必须显示处理，否则程序就会发生错误，无法通过编译</p>
-<p>运行时异常：无需显示处理，也可以和编译时异常一样处理</p>
-<p>在try里面发现问题后，jvm会帮我们生成一个异常对象，然后把这个对象抛出，和catch里面的类进行匹配。如果对象是某个类型的，就会执行该catch里面的处理信息。</p>
-<p>Throwable中的方法：</p>
-<p>public String getMessage() 获取异常信息，返回字符串。</p>
-<p>public String toString() 获取异常类名和异常信息，返回字符串:此对象的类的name（全路径名）  </p>
-<p>+  “: ” (冒号和一个空格)  </p>
-<p>+  调用此对象getLocalizedMessage()方法的结果（这里默认返回的是getMessage()的内容）</p>
-<p>printStackTrace() 获取异常类名和异常信息，以及异常出现在程序中的位置。返回值void。把信息输出在控制台</p>
-<p>printStackTrace(PrintStream s) 通常用该方法将异常内容保存在日志文件中，以便查阅。 </p>
-<p>自定义异常：当java中没有对应的异常，需要我们自己来定义一个异常要想自己写的类是一个异常类，就必须继承自Exception（非运行时异常，再调用时需要处理异常）或者继承自RuntimeException（运行时异常，再调用时不用处理异常）</p>
-<p>自定义异常不用写方法体（有时候需要写构造方法:无参，带参：super(message);）</p>
-<p>注意事项：子类重写父类方法时，子类的方法必须抛出相同的异常或父类异常的子类。(父亲坏了,儿子不能比父亲更坏)</p>
-<p>如果父类抛出了多个异常,子类重写父类时,只能抛出相同的异常或者是他的子集,子类不能抛出父类没有的异常</p>
-<p>如果被重写的方法没有异常抛出,那么子类的方法绝对不可以抛出异常,如果子类方法内有异常发生,那么子类只能try,不能throws</p>
-<p>运行时异常：RuntimeException类及其子类的异常，是非受检异常，如NullPointerException、IndexOutOfBoundsException等。由于这类异常要么是系统异常，无法处理，如网络问题；要么是程序逻辑错误，如空指针异常；JVM<strong>必须</strong>停止运行以改正这种错误，所以运行时异常可以不进行处理（捕获或向上抛出，当然也可以处理），而由JVM自行处理。Java Runtime会自动catch到程序throw的RuntimeException，然后停止线程，打印异常</p>
-<table>
-<thead>
-<tr>
-<th>异常</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>ArithmeticException</td>
-<td>算术错误，如被0除</td>
-</tr>
-<tr>
-<td>ArrayIndexOutOfBoundsException</td>
-<td>数组下标越界</td>
-</tr>
-<tr>
-<td><strong>ArrayStoreException</strong></td>
-<td>数组元素赋值类型不兼容</td>
-</tr>
-<tr>
-<td><strong>ClassCastException</strong></td>
-<td>非法强制转换类型</td>
-</tr>
-<tr>
-<td>IllegalArgumentException</td>
-<td>非法参数类型</td>
-</tr>
-<tr>
-<td>IllegalMonitorStateException</td>
-<td>非法监控操作，如等待一个未锁定的线程</td>
-</tr>
-<tr>
-<td>IllegalStateException</td>
-<td>环境或应用状态不正确</td>
-</tr>
-<tr>
-<td>IllegalThreadStateException</td>
-<td>请求操作与当前线程状态不兼容</td>
-</tr>
-<tr>
-<td><strong>IndexOutOfBoundsException</strong></td>
-<td>某些类型索引越界</td>
-</tr>
-<tr>
-<td><strong>NullPointerException</strong></td>
-<td>非法使用空引用</td>
-</tr>
-<tr>
-<td>NumberFormatException</td>
-<td>字符串到数字格式非法转换</td>
-</tr>
-<tr>
-<td>SecurityException</td>
-<td>试图违反安全性</td>
-</tr>
-<tr>
-<td>StringIndexOutOfBounds</td>
-<td>试图在字符串边界之外索引</td>
-</tr>
-<tr>
-<td>UnsupportedOperationException</td>
-<td>遇到不支持的操作</td>
-</tr>
-<tr>
-<td><strong>BufferOverflowException</strong></td>
-<td>IO操作的</td>
-</tr>
-</tbody></table>
-<p>非运行时异常，受检异常(checked exception)：RuntimeException以外的异常，类型上都属于Exception类及其子类，是受检异常。非运行时异常<strong>必须</strong>进行处理（捕获或向上抛出），如果不处理，程序将出现编译错误。一般情况下，API中写了throws的Exception都不是RuntimeException</p>
-<table>
-<thead>
-<tr>
-<th>异常</th>
-<th>意义</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>IOException</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>SQLException</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>FileNotFoundException</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>NoSuchFileException</strong></td>
-<td></td>
-</tr>
-<tr>
-<td><strong>NoSuchMethodException</strong></td>
-<td></td>
-</tr>
-<tr>
-<td>InterruptedException</td>
-<td>一个线程被另一个线程中断</td>
-</tr>
-<tr>
-<td>InstantiationException</td>
-<td>试图创建一个抽象类或抽象接口的对象</td>
-</tr>
-<tr>
-<td>IllegalAccessException</td>
-<td>对一个类的访问被拒绝</td>
-</tr>
-<tr>
-<td>CloneNotSupportedException</td>
-<td>试图克隆一个不能实现Cloneable接口的对象</td>
-</tr>
-<tr>
-<td>ClassNotFoundException</td>
-<td>找不到类</td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.14.%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/" data-id="ckqk8k3dc001r2wwd65oh5fod" data-title="异常处理" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-19.3.github" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/17/19.3.github/" class="article-date">
-  <time class="dt-published" datetime="2021-04-17T10:24:12.000Z" itemprop="datePublished">2021-04-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/17/19.3.github/">github</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/17/19.3.github/" data-id="ckqk8k3d0000p2wwdayl1btge" data-title="github" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-代理和反向代理" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/17/%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" class="article-date">
-  <time class="dt-published" datetime="2021-04-17T10:16:03.000Z" itemprop="datePublished">2021-04-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/17/%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/">代理和反向代理</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="正向代理-Forward-Proxy"><a href="#正向代理-Forward-Proxy" class="headerlink" title="*正向代理*****(Forward Proxy)****"></a><em><strong>*正向代理*</strong>***</em>*(Forward Proxy)****</h1><p>一般情况下，如果没有特别说明，代理技术默认说的是正向代理技术</p>
-<p>正向代理(forward)是一个位于客户端【用户A】和原始服务器(origin server)【服务器B】之间的服务器【代理服务器Z】，为了从原始服务器取得内容，用户A向代理服务器Z发送一个请求并指定目标(服务器B)，然后代理服务器Z向服务器B转交请求并将获得的内容返回给客户端。客户端必须要进行一些特别的设置才能使用正向代理。</p>
-<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml8040\wps1.png" alt="img"> </p>
-<p>正向代理就是代理服务器替代访问方【用户A】去访问目标服务器【服务器B】</p>
-<p>，这就是正向代理的意义所在</p>
-<p>使用正向代理服务器作用：</p>
-<p>1.访问本无法访问的服务器B</p>
-<p>我们抛除复杂的网络路由情节来看，假设图中路由器从左到右命名为R1,R2假 设最初用户A要访问服务器B需要经过R1和R2路由器这样一个路由节点，如果路由器R1或者路由器R2发生故障，那么就无法访问服务器B了。但是如果用户 A让代理服务器Z去代替自己访问服务器B，由于代理服务器Z没有在路由器R1或R2节点中，而是通过其它的路由节点访问服务器B，那么用户A就可以得到服务器B的数据了。现实中的例子就是“翻墙”。不过自从VPN技术被广泛应用外，“翻墙”不但使用了传统的正向代理技术，有的还使用了VPN技术。</p>
-<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml8040\wps2.png" alt="img"> </p>
-<p>2.加速访问服务器B</p>
-<p>这种说法目前不像以前那么流行了，主要是带宽流量的飞速发展。早期的正向代理中，很多人使用正向代理就是提速。假设用户A到服务器B，经过R1路由器和R2路由器，而R1到R2路由器的链路是一个低带宽链路。而用户A到代理服务器Z，从代理服务器Z到服务器B都是高带宽链路。那么很显然就可以加速访问服务器B了</p>
-<p>3.Cache作用</p>
-<p>Cache（缓存）技术和代理服务技术是紧密联系的（不光是正向代理，反向代理也使用了Cache（缓存）技术。如果在用户A访问服务器B某数据J之前，已经有人通过代理服务器Z访问过服务器B上得数据J，那么代理服务器Z会把数据J保存一段时间，如果有人正好取该数据J，那么代理服务器Z不再访问服务器B，而把缓存的数据J直接发给用户A。这一技术在Cache中术语就叫Cache命中。如果有更多的像用户A的用户来访问代理服务器Z，那么这些用户都可以直接从代理服务器Z中取得数据J，而不用千里迢迢的去服务器B下载数据了。</p>
-<p>4.客户端访问授权</p>
-<p>这方面的内容现今使用的还是比较多的，例如一些公司采用ISA SERVER做为正向代理服务器来授权用户是否有权限访问互联网。</p>
-<p>防火墙作为网关，用来过滤外网对其的访问。假设用户A和用户B都设置了代理服务器，用户A允许访问互联网，而用户B不允许访问互联网（这个在代理服务器Z上做限制）这样用户A因为授权，可以通过代理服务器访问到服务器B，而用户B因为没有被代理服务器Z授权，所以访问服务器B时，数据包会被直接丢 弃。</p>
-<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml8040\wps3.png" alt="img"></p>
-<p>5.隐藏访问者的行踪</p>
-<p>服务器B并不知道访问自己的实际是用户A，因为代理服务器Z代替用户A去直接与服务器B进行交互。如果代理服务器Z被用户A完全控制（或不完全控制），会惯以“肉鸡”术语称呼</p>
-<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml8040\wps4.png" alt="img"></p>
-<p>总结：正向代理是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。客户端必须设置正向代理服务器，当然前提是要知道正向代理服务器的IP地址，还有代理程序的端口。</p>
-<h1 id="反向代理（-reverse-proxy-）"><a href="#反向代理（-reverse-proxy-）" class="headerlink" title="*反向代理（*****reverse proxy*****）*"></a><em><strong>*反向代理（*</strong>***</em>*reverse proxy****<em><strong>*）*</strong></em></h1><p>反向代理正好与正向代理相反，对于客户端而言代理服务器就像是原始服务器，并且客户端不需要进行任何特别的设置。客户端向反向代理的命名空间(name-space)中的内容发送普通请求，接着反向代理将判断向何处(原始服务器)转交请求，并将获得的内容返回给客户端。</p>
-<p>使用反向代理服务器的作用：</p>
-<p>1.保护和隐藏原始资源服务器</p>
-<p>用户A始终认为它访问的是原始服务器B而不是代理服务器Z，但实用际上反向代理服务器接受用户A的应答，从原始资源服务器B中取得用户A的需求资源，然后发送给用户A。由于防火墙的作用，只允许代理服务器Z访问原始资源服务器B。尽管在这个虚拟的环境下，防火墙和反向代理的共同作用保护了原始资源服务器B，但用户A并不知情。</p>
-<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml8040\wps5.png" alt="img"></p>
-<p>2.负载均衡</p>
-<p>当反向代理服务器不止一个的时候，我们甚至可以把它们做成集群，当更多的用户访问资源服务器B的时候，让不同的代理服务器Z（x）去应答不同的用户，然后发送不同用户需要的资源。</p>
-<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml8040\wps6.png" alt="img"></p>
-<p>当然反向代理服务器像正向代理服务器一样拥有CACHE的作用，它可以缓存原始资源服务器B的资源，而不是每次都要向原始资源服务器B请求数据，特别是一些静态的数据，比如图片和文件，如果这些反向代理服务器能够做到和用户X来自同一个网络，那么用户X访问反向代理服务器X，就会得到很高质量的速度。这正是CDN技术的核心。当然，CDN最关键的核心技术智能DNS。只是展示CDN技术实际上利用的正是反向代理原理这块。</p>
-<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml8040\wps7.png" alt="img"> </p>
-<p>总结：</p>
-<p>反向代理结论与正向代理正好相反，对于客户端而言它就像是原始服务器，并且客户端不需要进行任何特别的设置。客户端向反向代理的命名空间(name-space)中的内容发送普通请求，接着反向代理将判断向何处(原始服务器)转交请求，并将获得的内容返回给客户端，就像这些内容原本就是它自己的一样。</p>
-<p>基本上，网上做正反向代理的程序很多，能做正向代理的软件大部分也可以做反向代理。开源软件中最流行的就是squid，既可以做正向代理，也有很多人用来做反向代理的前端服务器。另外MS ISA也可以用来在WINDOWS平台下做正向代理。反向代理中最主要的实践就是WEB服务，近些年来最火的就是Nginx了。网上有人说NGINX不能做正向代理，其实是不对的。NGINX也可以做正向代理，不过用的人比较少了</p>
-<h1 id="透明代理"><a href="#透明代理" class="headerlink" title="*透明代理*"></a><em><strong>*透明代理*</strong></em></h1><p>透明代理的意思是客户端根本不需要知道有代理服务器的存在，它改编你的request fields（报文），并会传送真实IP。注意，加密的透明代理则是属于匿名代理，意思是不用设置使用代理了。</p>
-<p>透明代理实践的例子就是时下很多公司使用的行为管理软件。</p>
-<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml8040\wps8.png" alt="img"></p>
-<p>用户A和用户B并不知道行为管理设备充当透明代理行为，当用户A或用户B向服务器A或服务器B提交请求的时候，透明代理设备根据自身策略拦截并修改用户A或B的报文，并作为实际的请求方，向服务器A或B发送请求，当接收信息回传，透明代理再根据自身的设置把允许的报文发回至用户A或B，如上图，如果透明代理设置不允许访问服务器B，那么用户A或者用户B就不会得到服务器B的数据。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/17/%E4%BB%A3%E7%90%86%E5%92%8C%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" data-id="ckqk8k3dz003p2wwd6prbbxcc" data-title="代理和反向代理" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-24.算法" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/17/24.%E7%AE%97%E6%B3%95/" class="article-date">
-  <time class="dt-published" datetime="2021-04-17T10:12:44.000Z" itemprop="datePublished">2021-04-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/17/24.%E7%AE%97%E6%B3%95/">算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>照片压缩完的格式一般是JPEG。</p>
-<p>文件存储</p>
-<p>文件是将数据存储在磁盘等存储媒介的一种形式。程序文件中最基本的存储数据单位是字节B=byte。文件就是字节数据的集合。在任何情况下，文件中的字节数都是连续存储的。</p>
-<p>压缩算法：数据压缩的算法，包括压缩和还原（解压缩）的两个步骤。在不改变原有文件属性的前提下，降低文件字节空间和占用空间的一种算法。</p>
-<p>1.有损和无损</p>
-<p>有损压缩：有失真，不能完全准确的恢复原始数据。多媒体数据的压缩。该方法压缩比较大。Eg：预测编码、音感编码、分形压缩、小波压缩、JPEG/MPEG。</p>
-<p>无损压缩：无失真。可执行文件和普通文件、磁盘的压缩，多媒体数据的压缩。该方法的压缩比较小。Eg：差分编码、RLE、Huffman编码、LZW编码、算术编码。</p>
-<p>\2. .对称性</p>
-<p>\3. 帧间与帧内（MPEG和JPEG）</p>
-<p>\4. 实时性（需要简单快速高效的算法和高速复杂的CPU/DSP芯片）</p>
-<p>\5. 分级处理</p>
-<p>\6. 可逆压缩和非可逆压缩</p>
-<p>RLE（Run Length Encoding，行程长度编码）算法的机制：相同字符去重化，字符*重复次数。针对连续的字节序列压缩效果比较好。</p>
-<p>哈夫曼算法：多次出现的数据用小于8位的字节数来表示，不常用的数据则可以用超过8位的字节数表示。用二叉树实现。</p>
-<p>图像文件的格式一般有：</p>
-<p>BMP：使用windows自带的画笔来做成的一种图像形式</p>
-<p>JPEG：数码相机等常用的一种。非可逆压缩</p>
-<p>TIFF：一种通过在文件中包含“标签”就能快速显示出数据性质的图像形式。</p>
-<p>GIF：美国开发的一种数据形式，要求色数不超过256个。可逆压缩</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/17/24.%E7%AE%97%E6%B3%95/" data-id="ckqk8k3d600152wwddupy9utb" data-title="算法" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-23.数据结构" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/17/23.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="article-date">
-  <time class="dt-published" datetime="2021-04-17T10:12:39.000Z" itemprop="datePublished">2021-04-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/17/23.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>数据结构：数据的存储（组织）方式。</p>
-<p>一、数组。需要指定元素的地址</p>
-<p>指多个相同的数据类型在内存中连续排列的一种形式。作为数组元素的各个数据会通过下标编号来区分，这个编号也叫索引。</p>
-<p>存储同一种类型的多个元素的容器，有索引，方便我们获取。</p>
-<p>特点：查询快，增删慢。</p>
-<p>二、栈（stack）。不需要指定元素的地址</p>
-<p>采用LIFO（last in first out）即后入先出的方式对内存进行操作。（像收纳箱）数据在存储时从内存的下层（大的地址编号）逐渐往上层（晓得地址编号）累积，读出时则是按照从上往下进行读取的。</p>
-<p>位于后面的数据先入栈。</p>
-<p>****压*<em><strong>入（push）入</strong></em>*栈****：向栈中存储数据。</p>
-<p>****弹*<em><strong>出（pop）出</strong></em>*栈****：从栈中读出数据。</p>
-<p>三、队列。不需要指定元素的地址</p>
-<p>和栈相似，但先入先出（first in first out）</p>
-<p>入列（EnQueue）入队</p>
-<p>出列（DeQueue）出队</p>
-<p>队列实现有两种：顺序队列和循环队列。</p>
-<p>循环队列一般以环状缓冲区的方式实现，适合缓存数据流。</p>
-<p>四、链表。不用考虑索引的顺序</p>
-<p>高效的对数据元素进行添加和删除操作。</p>
-<p>在实现数组的基础上，除了数据的值之外，通过为其附带下个元素的索引，即可实现链表。数据的值和下一个元素的地址（索引）就构成了一个链表元素。</p>
-<p>由一个链子把多个结点连接起来组成的数据。结点：有数据和地址组成。（数据域和指针域组成）</p>
-<p>链表的添加和删除不涉及数据的移动。</p>
-<p>单向链表最后一个结点的地址是null。如果把头元素的地址给了最后一个元素的地址位置，就是循环链表。如果每个结点由3部分（地址、数据、地址）组成，就可以组成双向链表。如果再把前后的对应也连接起来，就成了双向循环链表。</p>
-<p>特点：查询慢，增删快。</p>
-<p>五、二叉树。不用考虑索引的顺序</p>
-<p>高效的对数据元素进行检索操作</p>
-<p>在链表的基础上往数组追加元素时，考虑数组的大小关系，将其分为左右两个方向的表现形式。</p>
-<p>红黑树：是一种自平衡的二叉树</p>
-<p>六、哈希表。是一个元素为链表的数组。综合了链表和数组的好处。</p>
-<p>哈希值和什么值有关：和对象的成员变量值有关（有可能直接相加会出现相同的哈希值，所以可以适当的乘一个系数）</p>
-<p>桶结构（相当于是链表的同一个索引下放了很多个元素）</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/17/23.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" data-id="ckqk8k3d600122wwdbwev7llh" data-title="数据结构" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-22.3.常见cmd命令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/17/22.3.%E5%B8%B8%E8%A7%81cmd%E5%91%BD%E4%BB%A4/" class="article-date">
-  <time class="dt-published" datetime="2021-04-17T10:09:29.000Z" itemprop="datePublished">2021-04-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/17/22.3.%E5%B8%B8%E8%A7%81cmd%E5%91%BD%E4%BB%A4/">常见cmd命令</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Windows+R键可以打开运行行，打cmd进入命令提示符。</p>
-<p>盘名： ：盘符切换</p>
-<p>cd    ：（change directory）改变指定目录（进入指定的目录）</p>
-<p>cd..   :退回到上一级目录</p>
-<p>cd\   ：退回到根目录</p>
-<p>dir   ：（directory）列出当前目录下的文件以及文件夹</p>
-<p>↑↓键  ：查找敲过的命令</p>
-<p>Tab键  ：命令自动补齐</p>
-<p>md   ：（make directory）创建目录</p>
-<p>rd：（remove directory）删除目录（带有内容的文件夹无法删除）</p>
-<p>rd /s 文件夹名 询问是否删除文件夹</p>
-<p>rd /s /q文件夹名 直接删除文件夹（安静模式）</p>
-<p>del  ：（delete）只能删除<em><strong>*文件*</strong></em></p>
-<p>删除一堆后缀名一样的文件del *.txt</p>
-<p>exit：退出dos命令行</p>
-<p>cls：（clear screen）清屏</p>
-<p> 不能ctrl+V时候，可以右击粘贴</p>
-<p>HOME键 使鼠标光标移动到最开始。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/17/22.3.%E5%B8%B8%E8%A7%81cmd%E5%91%BD%E4%BB%A4/" data-id="ckqk8k3d500112wwd4jmrdfu7" data-title="常见cmd命令" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-22.2.计算机语言" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/17/22.2.%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80/" class="article-date">
-  <time class="dt-published" datetime="2021-04-17T10:09:18.000Z" itemprop="datePublished">2021-04-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/17/22.2.%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80/">计算机语言</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>人机交互方式：</p>
-<p>\1. 图形化界面</p>
-<p>\2. 命令行方式</p>
-<p>一、机器语言</p>
-<p>机器语言的程序称为本地代码（native code）。</p>
-<p>计算机是由****二进制****构成的。通过寄存器来处理。</p>
-<p>二进制由来：因为IC元件的引脚只有两种电压：0或5V，决定了计算机的信息处理只有0和1。</p>
-<p>计算机最小集成单位为位，也就是比特（bite），8位二进制为一个字节（因为8位能涵盖所有的字符编码）。字节是最基本的计量单位，位是最小单位。32位计算机指一次可以表示4字节的二进制数。</p>
-<p>二进制转为十进制：直接将各个位置上的值*位权（次幂）即可。从2^0开始。（位权的值是数的位数-1）</p>
-<p>十进制到其他进制：除基取余，直到商为0，余数反转。</p>
-<p>小数部分：乘基，直到乘位为0，进位顺序取。</p>
-<p>二进制的运算</p>
-<p>移位运算：左移一位，低位补齐0，相当于是乘2。</p>
-<p>右移：涉及到便于计算机处理的补数。相当于除2。</p>
-<p>二进制表示负数时：最高位当作为符号位，0表示正数，1表示负数。</p>
-<p>计算机内没有减法，做减法运算时实际上是加法运算，加负数。表示负数时涉及到二进制补数（用正数来表示负数）：将二进制各位数全部取反，然后将结果+1。</p>
-<p>逻辑右移：当二进制的数值表示图形模式而非数值时，移位后需要在最高位补0.</p>
-<p>算数右移：当二进制作为带符号的数值进行右移时，需要在最高位补移位前符号的值（0或1）。</p>
-<p>符号扩展：将8位变为16位或32位的时候，将0或1填满高位即可。</p>
-<p>算数运算是指加减乘除的四则运算。</p>
-<p>逻辑运算是指对二进制的各个数位的0和1分别进行处理的运算。</p>
-<p>逻辑非（NOT运算）：取反操作。</p>
-<p>逻辑与（AND运算）：两个都是1的时候才是1，其他皆为0.</p>
-<p>逻辑或（OR运算）：两个为0才为0，其余皆为1.</p>
-<p>逻辑异或（XOR运算）：相同为0，不同为1</p>
-<p>二、汇编语言（也被称为符号语言）</p>
-<p>晦涩难懂，需经过****汇编器****才能转换为机器语言，与机器语言是一一对应的关系。</p>
-<p>采用助记符（memonic）来代替机器指令的操作码。mov,add</p>
-<p>采用地址符号或标号来代替指令或操作数的地址。</p>
-<p>汇编语言的语法是操作码（指令动作）+操作数（指令对象）。</p>
-<p>汇编语言转机器语言称汇编，机器语言转汇编语言称反汇编。</p>
-<p>汇编语言的源代码是由转换成本地代码的指令（操作码）和针对汇编器的伪指令构成的。伪指令负责把程序的构造以及汇编的方法指示给汇编器（转换程序），伪指令是无法汇编成本地代码的。</p>
-<p>段定义：是用来区分或者划分范围内区域的意思。汇编语言的segment伪指令表示段定义的起始，ends表示段定义的结束。是命令和数据等程序的集合体，是一段连续的内存空间。一个程序由多个段定义构成。</p>
-<table>
-<thead>
-<tr>
-<th>操作码</th>
-<th>操作数</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>mov</td>
-<td>A,B</td>
-<td>把B的值赋给A</td>
-</tr>
-<tr>
-<td>add</td>
-<td>A,B</td>
-<td>把A和B同时相加，并把结果赋给A</td>
-</tr>
-<tr>
-<td>push</td>
-<td>A</td>
-<td>把A的值存储在栈中</td>
-</tr>
-<tr>
-<td>pop</td>
-<td>A</td>
-<td>从栈中读出值，并将其赋值给A</td>
-</tr>
-<tr>
-<td>call</td>
-<td>A</td>
-<td>调用函数A</td>
-</tr>
-<tr>
-<td>ret</td>
-<td>无</td>
-<td>处理返回给调用源函数</td>
-</tr>
-<tr>
-<td>cmp</td>
-<td>A,B</td>
-<td>对A和B进行比较，比较结果会自动存入标志寄存器中</td>
-</tr>
-<tr>
-<td>inc</td>
-<td>A</td>
-<td>对A的值+1，相当于i++</td>
-</tr>
-<tr>
-<td>xor</td>
-<td>A,B</td>
-<td>A和B的位进行异或比较，将结果存入A中</td>
-</tr>
-</tbody></table>
-<p>i++：先赋值后+1</p>
-<p>++i：先+1在赋值</p>
-<p>三、高级语言</p>
-<p>需经过****编译****转换成机器语言才能运行，与机器语言不是一一对应关系。</p>
-<p>高级语言编写的程序仅仅是文本文件（排除文字编码的问题），在任何环境下都能显示和编辑，称之为源代码。对源代码编译就可以得到本地代码。</p>
-<p>移植性：指的是同样的程序在不同操作系统下运行时所花费的时间，时间越少证明移植性越好。</p>
-<p>全局变量：在函数外部定义的变量，在任意函数中使用。</p>
-<p>局部变量：在函数内部定义的变量，只能在函数定义局部变量的内部使用。</p>
-<p>局部变量只是函数在处理期间临时存储在寄存器和栈中的。（寄存器空闲时使用寄存器，寄存器空间不足时使用栈）局部变量使用寄存器，是Borland C++编译器最优化的运行结果。</p>
-<p>条件控制流程分为三种：顺序执行，条件分支，循环判断。</p>
-<p>条件分支：使用cmp指令和跳转指令。</p>
-<p>jle：jump on less or equal,比较结果小时跳转</p>
-<p>jge:jump on greater or equal,比较结果大时跳转</p>
-<p>jmp：不管结果怎样都进行跳转</p>
-<p>for循环：通过在括号中指定循环计数器的初始值、循环的继续条件、循环计数器的更新这三种形式来进行循环处理，对应的汇编代码就是通过比较指令（cmp）和跳转指令（jl：jump on less than，小于的话就跳转）来实现的。</p>
-<p>面向过程语言</p>
-<p>\1. C</p>
-<p>C语言编写的源代码也能通过编译器编译成汇编代码，用 Borland C++ 5.5编译器即可。C语言源文件的扩展名用.c，汇编语言的文件的扩展名用.asm。</p>
-<p>Borland C++中，编译后的函数名和变量名前面会加一个_，dd指的是define double word，db指的是define byte。</p>
-<p>在调用函数后，需认人为执行栈清理指令，把不需要的数据从接收和传递函数的参数时使用的内存上的栈区域中清理出去。</p>
-<p>Windows提供的TextOut函数API可以向窗口和打印机输出字符，C语言提供的printf函数，是用来在命令提示符中显示字符串的函数，使用printf函数是无法向打印机输出字符的。</p>
-<p>在C语言中，只要使用 _asm{}就可以在其中计述助记符，实现C和汇编语言混合的源代码。</p>
-<p>\2. Fortran</p>
-<p>\3. COBOL</p>
-<p>\4. PASCAL</p>
-<p>\5. ADA</p>
-<p>面向对象语言</p>
-<p>\6. C++</p>
-<p>\7. C#</p>
-<p>\8. Java</p>
-<p>Java中的native关键字修饰的变量，这个变量的底层就是用C语言编写的。</p>
-<p>\9. Python</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/17/22.2.%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80/" data-id="ckqk8k3d300102wwd4en901am" data-title="计算机语言" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-8.5.网页前端框架之bootstrap" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/17/8.5.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E4%B9%8Bbootstrap/" class="article-date">
-  <time class="dt-published" datetime="2021-04-17T09:50:10.000Z" itemprop="datePublished">2021-04-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/17/8.5.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E4%B9%8Bbootstrap/">网页前端框架之bootstrap</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>bootstrap是一个基于HTML、CSS、JavaScript的前端框架</p>
-<p>这个框架已经预定了一套CSS样式和与样式对应的JS代码（对应的样式有对应的特效）</p>
-<p>开发人员只需要编写HTML结构，添加bootstrap固定的class样式，就可以轻松完成指定效果的实现（使用现成的样式和特效）</p>
-<p>作用：bootstrap使得WEB开发更加快捷，高效</p>
-<p>bootstrap支持响应式开发，解决了移动互联网前端开发问题</p>
-<p>问题：不同分辨率需要不同的样式（移动手机，电脑，pad等屏幕大小都不一样）</p>
-<p>响应式布局：一个网站的展示能够兼容多个终端（手机、ipad、PC等，而不需要为每个终端单独做一个展示版本）  此概念为解决移动互联网浏览而诞生的。</p>
-<p>响应式布局能够使得网站仅适用一套样式，就可以在不同分辨率下展示出不同的舒适效果，大大降低了网站开发维护成本，并且能够给用户更好的体验性。</p>
-<h1 id="bootstrap环境搭建"><a href="#bootstrap环境搭建" class="headerlink" title="*bootstrap环境搭建*"></a><em><strong>*bootstrap环境搭建*</strong></em></h1><p>javaee关注的是dist文件。dist中有css、fonts、js需要我们复制到项目中（css中有个bootstrap.css和bootstrap.min.css，js中也有个bootstrap.js和bootstrap.min.js），jquery-1.11.3-min.js也需要复制到js文件下，这样就算环境搭建完成了。</p>
-<p>完整版bootstrap.css，bootstrap.js：完整版用于源码学习，但因为文件大小问题，不适合网络间传递。</p>
-<p>压缩版bootstrap.min.css，bootstrap.min.js：压缩版用于网络发布，相比于完整版就是把源码的空格和换行删除掉了，节约了大量空间，功能是完全相同的，适用于网络间的快速传递，但是不适合源码阅读。</p>
-<p>基本模版创建：可以从帮助文档中复制一个模版过来然后新建一个html文件放到其中，里面的bootstrap.min.css，bootstrap.min.js，jquery-1.11.3-min.js这三个东西要重新设置href和src</p>
-<!DOCTYPE html>
-
-<html lang="zh-CN">  <!--html页面使用的是中文简体-->
-
-<head>
-
-<meta charset="UTF-8">  <!--设置html页面的字符集是utf-8-->
-
-<meta http-equiv="X-UA-Compatible" content=”IE=edge”>  <!--使用IE最新的渲染模式 展示页面-->
-
-<meta name="viewport" content=”width=device-width,initial-scale=1”>  <!--上述3个meat变迁必须放在最前面，任何其他内容都必须跟随其后-->
-
-<!--viewport：视口 （浏览器上网页内容的可视区域）-->
-
-<title> Bootstrap 101 Template</title>
-
-<link href=”../css/bootstrap.min.css” rel=”stylesheet”>
-
-<script src=”../js/jquery-1.11.3-min.js”></script>
-
-<script src=”../js/bootstrap.min.js”></script>
-
-<!--这三个是bootstrap依赖的样式和脚本-->
-
-</head>
-
-<body>
-
-<h1>helloworld</h1>
-
-</body>
-
-</html>
-
-<p>这几个设置，仅在移动设备上生效：</p>
-<p>width=device-width  设置视口的宽度为设备的宽度（大多数手机浏览器视口的宽度是980）</p>
-<p>initial-scale=1  初始化缩放设置（1~5）1代表就是100%</p>
-<p>minimum-scale=1  移动设备上，页面可以最小缩放的级别</p>
-<p>maximum-scale=1  移动设备上，页面可以最大缩放的级别</p>
-<p>user-scalable=no  移动设备上，页面禁止缩放</p>
-<h1 id="布局容器"><a href="#布局容器" class="headerlink" title="*布局容器*"></a><em><strong>*布局容器*</strong></em></h1><p>bootstrap必须需要至少一个布局容器，才能为页面内容进行封装和方便的样式控制  相当于一个画板</p>
-<p>帮助手册位置：全局CSS样式–概览–布局容器</p>
-<p>任意元素使用了布局容器的样式都会成为一个布局容器，建议使用div作为布局容器。</p>
-<p>.container  ：类用于固定宽度并支持响应式布局的容器  特点：居中，两端留白</p>
-<div  class=”container”>...</div>
-
-<p>.container-fluid  :类用于100%宽度，占据全部视口的容器  特点：占据视口100%宽度</p>
-<div  class=”container-fluid”>...</div>
-
-<h1 id="栅格系统"><a href="#栅格系统" class="headerlink" title="*栅格系统*"></a><em><strong>*栅格系统*</strong></em></h1><p>为了方便在布局容器中进行网页的布局操作，bootstrap提供了一套专门用于响应式开发布局的栅格系统。</p>
-<p>栅格系统将一行分为12列，通过设定元素占用的列数来布局元素在页面上的展示位置。</p>
-<p>作用：可以让开发人员更加轻松进行网页布局，并且轻松进行响应式开发</p>
-<p>特点：行必须包含在container或container-fluid中；</p>
-<p>行使用的样式row，列使用样式col-*-*，元素内容应当放置于列内；</p>
-<p>基本的书写方式必须是：容器–行–列</p>
-<p>栅格参数：col-屏幕尺寸-占用列数  (屏幕尺寸现在都写成lg)</p>
-<p>为了方便显示元素大小，我们为展示元素都赋予了相同样式</p>
-<div  class=”container”>
-
-<div class=”row”>
-
-<div class=”col-lg-2” style=”border:1px solid:red;”>
-
-<p>11111</p>
-</div>
-
-<div class=”col-lg-4” style=”border:1px solid:red;”>
-
-<p>222222222</p>
-</div>
-
-</div>
-
-</div>
-
-<p>列元素的书写顺序，决定布局顺序，先写的列元素会先被布局到行上</p>
-<p>列元素的占用列数定义了列元素的大小。</p>
-<p>一个row下，如果列元素总和小于等于12，都在一行上。如果大于12，那么超出的元素会另起一行排列</p>
-<p>行和列可以无限嵌套，嵌套方式必须为列-行-列-行…（相当于是把当前的列当作行，这个行row又分为12列，可以继续设置）</p>
-<p>一个row元素下，都会有12列。</p>
-<p>屏幕尺寸设置：</p>
-<p>large：lg  大屏幕，一般pc尺寸</p>
-<p>medium：md  中等屏幕，小pc尺寸</p>
-<p>small：sm  小屏幕，ipad尺寸</p>
-<p>x small：  xs  超小屏幕，智能手机尺寸</p>
-<p>如果没有设置当前屏幕尺寸的样式，默认一个元素占一行。（比如你设置了lg尺寸，但是当你缩小为md尺寸的时候，就会变为一个元素占一行，因为你没有设置md的相应样式）</p>
-<p>多个屏幕尺寸共同设置：只需要在后面加即可</p>
-<div class=”col-lg-4 col-md-3 col-sm-2” style=”border:1px solid:red;”>
-
-<p>如果设置了一个屏幕尺寸，比这个尺寸大的屏幕，继承了当前的设置；比这个尺寸小的屏幕，默认一个元素占一行</p>
-<p>列偏移：将列元素向右侧进行推移</p>
-<p>col-屏幕尺寸-offset-*  在指定屏幕尺寸下，向右偏移*个列</p>
-<div class=”col-lg-4 col-lg-offset-3” style=”border:1px solid:red;”>
-
-<h1 id="响应式工具"><a href="#响应式工具" class="headerlink" title="*响应式工具*"></a><em><strong>*响应式工具*</strong></em></h1><p>为针对性地在移动页面上展示和隐藏不同的内容，bootstrap提供响应式工具</p>
-<p>可以让开发人员通过该工具决定，在何种屏幕尺寸下，隐藏或者显示某些元素</p>
-<p>visible-屏幕尺寸  可见</p>
-<p>hidden-屏幕尺寸  隐藏</p>
-<h1 id="列表"><a href="#列表" class="headerlink" title="*列表*"></a><em><strong>*列表*</strong></em></h1><p>bootstrap提供了实用的列表样式供开发人员使用</p>
-<p>帮助手册–全局CSS样式–排版–列表</p>
-<p>无序列表、有序列表、无样式列表、内联列表。</p>
-<p>内联列表：可以在标签内进行设置：class=“list-inline”就可以使列表变为在一行上。</p>
-<h1 id="按钮"><a href="#按钮" class="headerlink" title="*按钮*"></a><em><strong>*按钮*</strong></em></h1><p>任何HTML元素加上以下样式都会变成对应按钮：class属性设置为</p>
-<p>btn btn-default  默认按钮</p>
-<p>btn btn-primary  首选按钮</p>
-<p>btn btn-success  成功按钮</p>
-<p>btn btn-info  一般信息按钮</p>
-<p>btn btn-warning  警告按钮</p>
-<p>btn btn-danger  危险按钮</p>
-<p>btn btn-link  链接按钮</p>
-<p>尺寸：在按钮的属性后面添加即可</p>
-<p>btn-lg  大按钮</p>
-<p>btn-sm  小按钮</p>
-<p>btn-xs  超小按钮</p>
-<p>默认按钮不用写</p>
-<p>块级元素：btn-block  使按钮变为块级元素</p>
-<p>激活状态：active  直接在后面添加即可（不用写btn-）</p>
-<p>禁用状态：让鼠标无法点击的禁用状态：disabled 用法和active一样</p>
-<p>让鼠标指上去是个禁止的禁用状态：设置disabled=“disabled”</p>
-<h1 id="导航条"><a href="#导航条" class="headerlink" title="*导航条*"></a><em><strong>*导航条*</strong></em></h1><p>可以复制代码，然后修改我们需要的内容即可。nav标签</p>
-<p>汉堡按钮：缩小时，会将项目合并成一个图标</p>
-<p>sr-only  阅读器专用的样式（盲人设备，当鼠标指针放到这的时候，阅读器会读出相应设置的内容）</p>
-<h1 id="轮播图"><a href="#轮播图" class="headerlink" title="*轮播图*"></a><em><strong>*轮播图*</strong></em></h1><p>帮助手册位置–javascript插件–Carousel</p>
-<p>轮播图DIV的定时换图属性：data-interval=“毫秒值”  放在标签中</p>
-<p>注意：多个轮播图，必须修改轮播图的id，使id唯一，当改了id之后，后续的代码中的相应部分也要修改</p>
-<h1 id="排版方式"><a href="#排版方式" class="headerlink" title="*排版方式*"></a><em><strong>*排版方式*</strong></em></h1><p>class=“”</p>
-<p>将元素内所有的内容进行排版：</p>
-<p>text-left  使元素内容靠左显示</p>
-<p>text-center  使元素内容居中显示</p>
-<p>text-right  使元素内容靠右显示</p>
-<h1 id="表单元素"><a href="#表单元素" class="headerlink" title="*表单元素*"></a><em><strong>*表单元素*</strong></em></h1><p>复制相关代码，修改其中的一些部分，完成自己的需求。</p>
-<p>内联表单，水平排列的表单。</p>
-<p>校验状态：has-success  has-error  has-warning</p>
-<h1 id="分页条"><a href="#分页条" class="headerlink" title="*分页条*"></a><em><strong>*分页条*</strong></em></h1><p>默认分页  </p>
-<p>禁用和激活状态（可以显示当前在第几页，第一页的前一页不可用等情况）： disabled  active  即使设置了不可用，如果存在href标签的话，仍能点击跳转到相应地方，保险起见，建议删除href标签。</p>
-<p>翻页</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/17/8.5.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E4%B9%8Bbootstrap/" data-id="ckqk8k3dm002q2wwd155n3ifp" data-title="网页前端框架之bootstrap" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.12.%E9%9B%86%E5%90%88/" data-id="cku567uis001nu8wdaxbw0i59" data-title="集合" class="article-share-link">分享</a>
       
       
       
@@ -1569,7 +1758,7 @@ protected void finalize()&#123;
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/6/">下一页 &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/6/">下一页 &raquo;</a>
   </nav>
 
 </section>
@@ -1583,7 +1772,7 @@ protected void finalize()&#123;
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eclipse/" rel="tag">Eclipse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HATEOAS/" rel="tag">HATEOAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">MySQL基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PBOOTCMS/" rel="tag">PBOOTCMS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Portainer-io/" rel="tag">Portainer.io</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RESTful/" rel="tag">RESTful</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/" rel="tag">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebRTC/" rel="tag">WebRTC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/" rel="tag">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%A6%82%E8%BF%B0/" rel="tag">java概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/" rel="tag">maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springfox/" rel="tag">springfox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swagger/" rel="tag">swagger</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6/" rel="tag">书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/" rel="tag">历史版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E8%97%8F/" rel="tag">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" rel="tag">编程规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" rel="tag">设计规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" rel="tag">软件说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag">面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eclipse/" rel="tag">Eclipse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HATEOAS/" rel="tag">HATEOAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JPA/" rel="tag">JPA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">MySQL基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PBOOTCMS/" rel="tag">PBOOTCMS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Portainer-io/" rel="tag">Portainer.io</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RESTful/" rel="tag">RESTful</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/" rel="tag">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebRTC/" rel="tag">WebRTC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/" rel="tag">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%A6%82%E8%BF%B0/" rel="tag">java概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/" rel="tag">maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/" rel="tag">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springfox/" rel="tag">springfox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swagger/" rel="tag">swagger</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite/" rel="tag">vite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6/" rel="tag">书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/" rel="tag">历史版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%BB%A3%E7%A0%81/" rel="tag">工具类代码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E8%97%8F/" rel="tag">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E5%BF%97/" rel="tag">日志</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/" rel="tag">消息中间件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" rel="tag">编程规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" rel="tag">设计规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AE%E5%AD%90/" rel="tag">轮子</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" rel="tag">软件说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag">面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
     </div>
   </div>
 
@@ -1593,7 +1782,7 @@ protected void finalize()&#123;
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HATEOAS/" style="font-size: 10px;">HATEOAS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">MySQL基础概念</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PBOOTCMS/" style="font-size: 10px;">PBOOTCMS</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Portainer-io/" style="font-size: 10px;">Portainer.io</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/WEB/" style="font-size: 10px;">WEB</a> <a href="/tags/WebRTC/" style="font-size: 10px;">WebRTC</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">java概述</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/springfox/" style="font-size: 10px;">springfox</a> <a href="/tags/swagger/" style="font-size: 10px;">swagger</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%B9%A6/" style="font-size: 10px;">书</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/" style="font-size: 10px;">历史版本</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%94%B6%E8%97%8F/" style="font-size: 10px;">收藏</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" style="font-size: 10px;">设计规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">软件说明</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">面向对象</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HATEOAS/" style="font-size: 10px;">HATEOAS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JPA/" style="font-size: 10px;">JPA</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">MySQL基础概念</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PBOOTCMS/" style="font-size: 10px;">PBOOTCMS</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Portainer-io/" style="font-size: 10px;">Portainer.io</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/WEB/" style="font-size: 10px;">WEB</a> <a href="/tags/WebRTC/" style="font-size: 10px;">WebRTC</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">java概述</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/springfox/" style="font-size: 10px;">springfox</a> <a href="/tags/swagger/" style="font-size: 10px;">swagger</a> <a href="/tags/vite/" style="font-size: 10px;">vite</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%B9%A6/" style="font-size: 10px;">书</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/" style="font-size: 10px;">历史版本</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%BB%A3%E7%A0%81/" style="font-size: 10px;">工具类代码</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%94%B6%E8%97%8F/" style="font-size: 10px;">收藏</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%97%A5%E5%BF%97/" style="font-size: 10px;">日志</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/" style="font-size: 10px;">消息中间件</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" style="font-size: 10px;">设计规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E8%BD%AE%E5%AD%90/" style="font-size: 10px;">轮子</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">软件说明</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">面向对象</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
     </div>
   </div>
 
@@ -1602,7 +1791,7 @@ protected void finalize()&#123;
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
     </div>
   </div>
 
@@ -1615,23 +1804,23 @@ protected void finalize()&#123;
       <ul>
         
           <li>
-            <a href="/2021/06/30/4.27.%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">序列化与反序列化</a>
+            <a href="/2021/09/17/8.7.vite/">vite</a>
           </li>
         
           <li>
-            <a href="/2021/06/28/%E7%94%B5%E5%95%86%E9%A1%B9%E7%9B%AE/">电商项目</a>
+            <a href="/2021/09/03/%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%BB%A3%E7%A0%81/">工具类代码</a>
           </li>
         
           <li>
-            <a href="/2021/06/24/4.26.JSR/">JSR</a>
+            <a href="/2021/09/03/RPC/">RPC</a>
           </li>
         
           <li>
-            <a href="/2021/06/24/31.3.%E8%85%BE%E8%AE%AF%E4%BA%91%E9%9F%B3%E8%A7%86%E9%A2%91%E7%9A%84%E5%BC%80%E5%8F%91/">腾讯云音视频的开发</a>
+            <a href="/2021/09/02/%E6%97%A5%E5%BF%97/">日志</a>
           </li>
         
           <li>
-            <a href="/2021/06/23/%E7%94%B3%E8%AF%B7%E8%BD%AF%E8%91%97/">申请软著</a>
+            <a href="/2021/08/27/%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE/">开源软件许可协议</a>
           </li>
         
       </ul>

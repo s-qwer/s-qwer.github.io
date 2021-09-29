@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>日志 | swx</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="常用日志框架j.u.l￼j.u.l是java.util.logging包的简称，是JDK在1.4版本中引入的Java原生日志框架。 Java Logging API提供了七个日志级别用来控制输出。这七个级别分别是：SEVERE、WARNING、INFO、CONFIG、FINE、FINER、FINEST。 Log4jLog4j是Apache的一个开源项目，通过使用Log4j，我们可以控制日志信息输送">
+<meta property="og:type" content="article">
+<meta property="og:title" content="日志">
+<meta property="og:url" content="https://s-qwer.github.io/2021/09/02/%E6%97%A5%E5%BF%97/index.html">
+<meta property="og:site_name" content="swx">
+<meta property="og:description" content="常用日志框架j.u.l￼j.u.l是java.util.logging包的简称，是JDK在1.4版本中引入的Java原生日志框架。 Java Logging API提供了七个日志级别用来控制输出。这七个级别分别是：SEVERE、WARNING、INFO、CONFIG、FINE、FINER、FINEST。 Log4jLog4j是Apache的一个开源项目，通过使用Log4j，我们可以控制日志信息输送">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s-qwer.github.io/%E6%97%A5%E5%BF%97/640">
+<meta property="og:image" content="https://s-qwer.github.io/%E6%97%A5%E5%BF%97/image-20210902150149819.png">
+<meta property="og:image" content="https://s-qwer.github.io/%E6%97%A5%E5%BF%97/20160909182117391">
+<meta property="og:image" content="https://s-qwer.github.io/%E6%97%A5%E5%BF%97/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzI4ODA2OTktZjE3ZjFmNDYwNjkwYmMxMy5qcGc">
+<meta property="og:image" content="https://s-qwer.github.io/%E6%97%A5%E5%BF%97/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzI4ODA2OTktMGEzZGE3YmM2ZTcwOGEzNC5qcGc">
+<meta property="og:image" content="https://s-qwer.github.io/%E6%97%A5%E5%BF%97/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzI4ODA2OTktOWJjNWQ0MzRkNTIzMzJiNy5qcGc">
+<meta property="og:image" content="https://s-qwer.github.io/%E6%97%A5%E5%BF%97/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzI4ODA2OTktZjYxZGY0MDk4NDk1YWMxZi5qcGc">
+<meta property="og:image" content="https://s-qwer.github.io/%E6%97%A5%E5%BF%97/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzI4ODA2OTktZmFlMmZlODQ1OWVhMzU0ZS5qcGc">
+<meta property="og:image" content="https://s-qwer.github.io/%E6%97%A5%E5%BF%97/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzI4ODA2OTktYmE5NWI1NzFlYzQyNzA1Mi5qcGc">
+<meta property="og:image" content="https://s-qwer.github.io/%E6%97%A5%E5%BF%97/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzI4ODA2OTktZjdiNjFkNTkwNDE2ZmMyOC5qcGc">
+<meta property="og:image" content="https://s-qwer.github.io/%E6%97%A5%E5%BF%97/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzI4ODA2OTktYzdlZjkyODZjMzhkMWUxZC5qcGc">
+<meta property="og:image" content="https://s-qwer.github.io/%E6%97%A5%E5%BF%97/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzI4ODA2OTktYTlkNmJlMWMyY2FhNDQ0MC5qcGc">
+<meta property="og:image" content="https://s-qwer.github.io/%E6%97%A5%E5%BF%97/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzI4ODA2OTktMWM2ZDQxMWVhOGFhN2JmMC5qcGc">
+<meta property="og:image" content="https://s-qwer.github.io/%E6%97%A5%E5%BF%97/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzI4ODA2OTktOWU0YTBlMDJhNWVlMTE3Ny5qcGc">
+<meta property="og:image" content="https://s-qwer.github.io/%E6%97%A5%E5%BF%97/image-20210918172933788.png">
+<meta property="article:published_time" content="2021-09-02T06:55:26.000Z">
+<meta property="article:modified_time" content="2021-09-22T01:26:23.859Z">
+<meta property="article:author" content="swx">
+<meta property="article:tag" content="日志">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s-qwer.github.io/%E6%97%A5%E5%BF%97/640">
+  
+    <link rel="alternate" href="/atom.xml" title="swx" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">swx</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">blog</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://s-qwer.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-日志" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/02/%E6%97%A5%E5%BF%97/" class="article-date">
+  <time class="dt-published" datetime="2021-09-02T06:55:26.000Z" itemprop="datePublished">2021-09-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      日志
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="常用日志框架"><a href="#常用日志框架" class="headerlink" title="常用日志框架"></a>常用日志框架</h2><h3 id="j-u-l"><a href="#j-u-l" class="headerlink" title="j.u.l"></a>j.u.l</h3><p>￼j.u.l是java.util.logging包的简称，是JDK在1.4版本中引入的Java原生日志框架。</p>
+<p>Java Logging API提供了七个日志级别用来控制输出。这七个级别分别是：SEVERE、WARNING、INFO、CONFIG、FINE、FINER、FINEST。</p>
+<h3 id="Log4j"><a href="#Log4j" class="headerlink" title="Log4j"></a>Log4j</h3><p>Log4j是Apache的一个开源项目，通过使用Log4j，我们可以控制日志信息输送的目的地是控制台、文件、GUI组件，甚至是套接口服务器、NT的事件记录器、UNIX Syslog守护进程等；我们也可以控制每一条日志的输出格式；</p>
+<p>通过定义每一条日志信息的级别，我们能够更加细致地控制日志的生成过程。Log4也有七种日志级别：OFF、FATAL、ERROR、WARN、INFO、DEBUG和TRACE。</p>
+<p>最令人感兴趣的就是，这些可以通过一个配置文件来灵活地进行配置，而不需要修改应用的代码。</p>
+<h3 id="LogBack（用的比较多）"><a href="#LogBack（用的比较多）" class="headerlink" title="LogBack（用的比较多）"></a>LogBack（用的比较多）</h3><p>LogBack也是一个很成熟的日志框架，其实LogBack和Log4j出自一个人之手，这个人就是Ceki Gülcü。</p>
+<p>logback当前分成三个模块：logback-core,logback- classic和logback-access。</p>
+<p>logback-core是其它两个模块的基础模块。</p>
+<p>logback-classic是Log4j的一个改良版本，此外logback-classic完整实现SLF4J API使你可以很方便地更换成其它日记系统如Log4j或j.u.l。</p>
+<p>logback-access访问模块与Servlet容器集成提供通过Http来访问日记的功能</p>
+<h3 id="Log4j2"><a href="#Log4j2" class="headerlink" title="Log4j2"></a>Log4j2</h3><p>Log4j2不仅仅是Log4j的一个升级版本了，而是从头到尾被重写的，可以认为这其实就是完全不同的两个框架。</p>
+<p><strong>注</strong>：</p>
+<p>logback是直接实现了slf4j的接口，不消耗内存和计算开销的。</p>
+<p>slf4j的api在调用log4j时需要一个适配层（所以maven配置里slf4j+logback只需要两个依赖，而log4j需要3个依赖）</p>
+<p>我们想要在应用中打印日志的时候，可以使用以上四种类库中的任意一种。比如想要使用Log4j，那么只要依赖Log4j的jar包，配置好配置文件并且在代码中使用其API打印日志就可以了</p>
+<p>但是阿里巴巴开发文档规定：</p>
+<p><img src="/%E6%97%A5%E5%BF%97/640" alt="图片"></p>
+<p>所以我们一般使用都是门面框架slf4j和上述四种之一的API结合。</p>
+<h2 id="日志门面"><a href="#日志门面" class="headerlink" title="日志门面"></a><strong>日志门面</strong></h2><h3 id="什么是日志门面"><a href="#什么是日志门面" class="headerlink" title="什么是日志门面"></a>什么是日志门面</h3><p>日志门面，是门面模式的一个典型的应用。</p>
+<p>门面模式（Facade Pattern），也称之为外观模式，其核心为：外部与一个子系统的通信必须通过一个统一的外观对象进行，使得子系统更易于使用。</p>
+<p><img src="/%E6%97%A5%E5%BF%97/image-20210902150149819.png" alt="image-20210902150149819"></p>
+<p><img src="/%E6%97%A5%E5%BF%97/20160909182117391" alt="这里写图片描述"></p>
+<p>就像前面介绍的几种日志框架一样，每一种日志框架都有自己单独的API，要使用对应的框架就要使用其对应的API，这就大大的增加应用程序代码对于日志框架的耦合性。</p>
+<p>为了解决这个问题，就是在日志框架和应用程序之间架设一个沟通的桥梁，对于应用程序来说，无论底层的日志框架如何变，都不需要有任何感知。只要门面服务做的足够好，随意换另外一个日志框架，应用程序不需要修改任意一行代码，就可以直接上线。</p>
+<p>在软件开发领域有这样一句话：计算机科学领域的任何问题都可以通过增加一个间接的中间层来解决。而门面模式就是对于这句话的典型实践</p>
+<h3 id="为什么要使用日志门面"><a href="#为什么要使用日志门面" class="headerlink" title="为什么要使用日志门面"></a>为什么要使用日志门面</h3><p><strong>解耦</strong></p>
+<p>为了在应用中屏蔽掉底层日志框架的具体实现：即使有一天要更换代码的日志框架，只需要修改jar包，最多再改改日志输出相关的配置文件就可以了。这就是解除了应用和日志框架之间的耦合。</p>
+<h3 id="常用日志门面"><a href="#常用日志门面" class="headerlink" title="常用日志门面"></a><strong>常用日志门面</strong></h3><h4 id="SLF4J（用的比较多）"><a href="#SLF4J（用的比较多）" class="headerlink" title="SLF4J（用的比较多）"></a>SLF4J（用的比较多）</h4><p>Java简易日志门面（Simple Logging Facade for Java，缩写SLF4J），是一套包装Logging 框架的界面程式，以外观模式实现。可以在软件部署的时候决定要使用的 Logging 框架，目前主要支援的有Java Logging API、Log4j及logback等框架。以MIT 授权方式发布。</p>
+<p>SLF4J 的作者就是 Log4j和Logback 的作者 Ceki Gülcü，他宣称 SLF4J 比 Log4j 更有效率，而且比 Apache Commons Logging (JCL) 简单、稳定。</p>
+<p>其实，<strong>SLF4J其实只是一个门面服务而已，他并不是真正的日志框架，真正的日志的输出相关的实现还是要依赖Log4j、logback等日志框架的</strong> 。</p>
+<p>由于SLF4J比较常用，这里多用一些篇幅，再来简单分析一下SLF4J，主要和Log4J做一下对比。相比较于Log4J的API，SLF4J有以下几点优势：</p>
+<ul>
+<li>Log4j 提供 TRACE, DEBUG, INFO, WARN, ERROR 及 FATAL 六种纪录等级，但是 SLF4J 认为 ERROR 与 FATAL 并没有实质上的差别，所以拿掉了 FATAL 等级，只剩下其他五种。</li>
+<li>大部分人在程序里面会去写logger.error(exception),其实这个时候Log4j会去把这个exception tostring。真正的写法应该是logger(message.exception);而SLF4J就不会使得程序员犯这个错误。</li>
+<li>Log4j间接的在鼓励程序员使用string相加的写法（这种写法是有性能问题的），而SLF4J就不会有这个问题 ,你可以使用<code>logger.error(“&#123;&#125;is+serviceid”,serviceid);</code></li>
+<li>使用SLF4J可以方便的使用其提供的各种集体的实现的jar。（类似commons-logger）</li>
+<li>从commons–logger和Log4j merge非常方便，SLF4J也提供了一个swing的tools来帮助大家完成这个merge。</li>
+<li>SLF4J 只支持 MDC，不支持 NDC。</li>
+<li>提供字串内容替换的功能，会比较有效率，说明如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 传统的字符串产生方式，如果没有要记录Debug等级的信息，就会浪费时间在产生不必要的信息上</span><br><span class="line">logger.debug(&quot;There are now &quot; + count + &quot; user accounts: &quot; + userAccountList);</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 为了避免上述问题，我们可以先检查是不是开启了Debug信息记录功能，只是程序的编码会比较复杂</span><br><span class="line">if (logger.isDebugEnabled()) &#123;</span><br><span class="line">   logger.debug(&quot;There are now &quot; + count + &quot; user accounts: &quot; + userAccountList);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 如果Debug等级没有开启，则不会产生不必要的字符串，同时也能保持程序编码的简洁</span><br><span class="line">logger.debug(&quot;There are now &#123;&#125; user accounts: &#123;&#125;&quot;, count, userAccountList);</span><br></pre></td></tr></table></figure>
+
+<h3 id="commons-logging"><a href="#commons-logging" class="headerlink" title="commons-logging"></a>commons-logging</h3><p>Apache Commons Logging是一个基于Java的日志记录实用程序，是用于日志记录和其他工具包的编程模型。它通过其他一些工具提供API，日志实现和包装器实现。</p>
+<p>commons-logging和SLF4J的功能是类似的，主要是用来做日志 门面的。提供更加好友的API工具。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在Java生态体系中，围绕着日志，有很多成熟的解决方案。关于日志输出，主要有两类工具。</p>
+<p>一类是日志框架，主要用来进行日志的输出的，比如输出到哪个文件，日志格式如何等。</p>
+<p>另外一类是日志门面，主要一套通用的API，用来屏蔽各个日志框架之间的差异的。</p>
+<p>所以，对于Java工程师来说，关于日志工具的使用，最佳实践就是在应用中使用如Log4j + SLF4J 这样的组合来进行日志输出。</p>
+<p>这样做的最大好处，就是业务层的开发不需要关心底层日志框架的实现及细节，在编码的时候也不需要考虑日后更换框架所带来的成本。这也是门面模式所带来的好处。</p>
+<p>综上，请不要在你的Java代码中出现任何Log4j等日志框架的API的使用，而是应该直接使用SLF4J这种日志门面。</p>
+<h2 id="Slf4j-Logback"><a href="#Slf4j-Logback" class="headerlink" title="Slf4j+Logback"></a>Slf4j+Logback</h2><h4 id="默认日志-Logback："><a href="#默认日志-Logback：" class="headerlink" title="默认日志 Logback："></a>默认日志 Logback：</h4><p>springboot推荐的日志类库是slf4j、日志系统为logback</p>
+<p>默认情况下，Spring Boot会用Logback来记录日志，并用INFO级别输出到控制台</p>
+<p><img src="/%E6%97%A5%E5%BF%97/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzI4ODA2OTktZjE3ZjFmNDYwNjkwYmMxMy5qcGc" alt="img"></p>
+<ul>
+<li><p>时间日期：精确到毫秒</p>
+</li>
+<li><p>日志级别：ERROR, WARN, INFO, DEBUG or TRACE</p>
+</li>
+<li><p>进程ID</p>
+</li>
+<li><p>分隔符：— 标识实际日志的开始</p>
+</li>
+<li><p>线程名：方括号括起来（可能会截断控制台输出）</p>
+</li>
+<li><p>Logger名：通常使用源代码的类名</p>
+</li>
+<li><p>日志内容</p>
+</li>
+</ul>
+<h4 id="添加日志依赖"><a href="#添加日志依赖" class="headerlink" title="添加日志依赖"></a>添加日志依赖</h4><p>假如maven依赖中添加spring-boot-starter-logging：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-logging&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>但是呢，实际开发中我们不需要直接添加该依赖。<br>你会发现spring-boot-starter其中包含了 spring-boot-starter-logging，该依赖内容就是 Spring Boot 默认的日志框架 logback。</p>
+<p>如果工程中有用到了Thymeleaf，而Thymeleaf依赖包含了spring-boot-starter，最终我只要引入Thymeleaf即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">    &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">    &lt;artifactId&gt;spring-boot-starter-thymeleaf&lt;&#x2F;artifactId&gt;</span><br><span class="line">&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<p>实际上使用只要指定了spring-boot-starter，就不用再添加依赖，使用默认的依赖logback</p>
+<h4 id="控制台输出"><a href="#控制台输出" class="headerlink" title="控制台输出"></a>控制台输出</h4><p>日志级别从低到高分为：</p>
+<p>TRACE &lt; DEBUG &lt; INFO &lt; WARN &lt; ERROR &lt; FATAL。</p>
+<p>如果设置为 WARN ，则低于 WARN 的信息都不会输出。<br>Spring Boot中默认配置ERROR、WARN和INFO级别的日志输出到控制台。<br>您还可以通过启动您的应用程序 –debug 标志来启用“调试”模式（开发的时候推荐开启）,以下两种方式皆可：</p>
+<ul>
+<li>在运行命令后加入–debug标志，如：<code>$ java -jar springTest.jar --debug</code></li>
+<li>在application.properties中配置debug=true，该属性置为true的时候，核心Logger（包含嵌入式容器、hibernate、spring）会输出更多内容，但是你自己应用的日志并不会输出为DEBUG级别。</li>
+</ul>
+<p><img src="/%E6%97%A5%E5%BF%97/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzI4ODA2OTktMGEzZGE3YmM2ZTcwOGEzNC5qcGc" alt="img"></p>
+<p>如果每次都写这行代码会很麻烦，可以使用注解，但是需要使用<code>lombok</code>：</p>
+<p>允许注解处理，Settings -&gt; Compiler -&gt; Annotation Processors</p>
+<p><img src="/%E6%97%A5%E5%BF%97/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzI4ODA2OTktOWJjNWQ0MzRkNTIzMzJiNy5qcGc" alt="img"></p>
+<p>可以使用<code>&#123;&#125;</code> 占位符来拼接字符串，而不需要使用<code>““+””</code>来连接字符串。</p>
+<h4 id="文件输出"><a href="#文件输出" class="headerlink" title="文件输出"></a>文件输出</h4><p>默认情况下，Spring Boot将日志输出到控制台，不会写到日志文件。</p>
+<p>使用Spring Boot喜欢在application.properties或application.yml配置，这样只能配置简单的场景：保存路径、日志格式等，复杂的场景（区分 info 和 error 的日志、每天产生一个日志文件等）满足不了，只能自定义配置。</p>
+<p><img src="/%E6%97%A5%E5%BF%97/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzI4ODA2OTktZjYxZGY0MDk4NDk1YWMxZi5qcGc" alt="img"><br><img src="/%E6%97%A5%E5%BF%97/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzI4ODA2OTktZmFlMmZlODQ1OWVhMzU0ZS5qcGc" alt="img"><br><img src="/%E6%97%A5%E5%BF%97/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzI4ODA2OTktYmE5NWI1NzFlYzQyNzA1Mi5qcGc" alt="img"></p>
+<p>默认会在设置的 <code>path</code> 生成一个<code>spring.log</code> 文件。</p>
+<p><img src="/%E6%97%A5%E5%BF%97/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzI4ODA2OTktZjdiNjFkNTkwNDE2ZmMyOC5qcGc" alt="img"></p>
+<p>如果要编写除控制台输出之外的日志文件，则需在application.properties中设置logging.file或logging.path属性。</p>
+<p>logging.file，设置文件，可以是绝对路径，也可以是相对路径。如：logging.file=my.log<br>logging.path，设置目录，会在该目录下创建spring.log文件，并写入日志内容，如：logging.path=/var/log<br>如果只配置 logging.file，会在项目的当前路径下生成一个 xxx.log 日志文件。<br>如果只配置 logging.path，在 /var/log文件夹生成一个日志文件为 spring.log<br>注：二者不能同时使用，如若同时使用，则只有logging.file生效（没有logback-spring.xml配置文件，系统只认识logging.file，不认识logging.path）<br>默认情况下，日志文件的大小达到10MB时会切分一次，产生新的日志文件，默认级别为：ERROR、WARN、INFO</p>
+<h4 id="级别控制"><a href="#级别控制" class="headerlink" title="级别控制"></a>级别控制</h4><p>所有支持的日志记录系统都可以在Spring环境中设置记录级别（例如在application.properties中）<br>格式为：logging.level.* = LEVEL</p>
+<p>logging.level：日志级别控制前缀，*为包名或Logger名<br>LEVEL：选项TRACE, DEBUG, INFO, WARN, ERROR, FATAL, OFF</p>
+<p>每个Logger都被了一个日志级别（log level），用来控制日志信息的输出。日志级别从高到低分为：<br>A：off         最高等级，用于关闭所有日志记录。<br>B：fatal       指出每个严重的错误事件将会导致应用程序的退出。<br>C：error      指出虽然发生错误事件，但仍然不影响系统的继续运行。<br>D：warn     表明会出现潜在的错误情形。<br>E：info         一般和在粗粒度级别上，强调应用程序的运行全程（对用户有用）。<br>F：debug     一般用于细粒度级别上，对调试应用程序非常有帮助（对程序调试有利）。<br>G：all           最低等级，用于打开所有日志记录。</p>
+<p>例：如果设置了级别为info，则debug级别就不会被打印出来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">举例：</span><br><span class="line">logging.level.com.dudu&#x3D;DEBUG：com.dudu包下所有class以DEBUG级别输出</span><br><span class="line">logging.level.root&#x3D;WARN：root日志以WARN级别输出</span><br></pre></td></tr></table></figure>
+
+<p><img src="/%E6%97%A5%E5%BF%97/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzI4ODA2OTktYzdlZjkyODZjMzhkMWUxZC5qcGc" alt="img"></p>
+<h4 id="自定义日志配置（适合复杂的日志需求）"><a href="#自定义日志配置（适合复杂的日志需求）" class="headerlink" title="自定义日志配置（适合复杂的日志需求）"></a>自定义日志配置（适合复杂的日志需求）</h4><p>根据不同的日志系统，你可以按如下规则组织配置文件名，就能被正确加载：</p>
+<p>Logback：<strong>logback-spring.xml</strong>, logback-spring.groovy, logback.xml, logback.groovy<br>Log4j：log4j-spring.properties, log4j-spring.xml, log4j.properties, log4j.xml<br>Log4j2：log4j2-spring.xml, log4j2.xml<br>JDK (Java Util Logging)：logging.properties</p>
+<p>Spring Boot官方推荐优先使用带有-spring的文件名作为你的日志配置（如使用logback-spring.xml，而不是logback.xml），命名为logback-spring.xml的日志配置文件，spring boot可以为它添加一些spring boot特有的配置项（下面会提到）。<br>默认的命名规则，并且放在 src/main/resources 下面即可</p>
+<p>如果你即想完全掌控日志配置，但又不想用logback.xml作为Logback配置的名字，application.yml可以通过logging.config属性指定自定义的名字：</p>
+<p>logging.config=classpath:logging-config.xml</p>
+<p>虽然一般并不需要改变配置文件的名字，但是如果你想针对不同运行时Profile使用不同的日志配置，这个功能会很有用。<br>一般不需要这个属性，而是直接在logback-spring.xml中使用springProfile配置，不需要logging.config指定不同环境使用不同配置文件。</p>
+<h2 id="springProfile配置："><a href="#springProfile配置：" class="headerlink" title="springProfile配置："></a>springProfile配置：</h2><h3 id="根节点包含的属性"><a href="#根节点包含的属性" class="headerlink" title="根节点包含的属性"></a>根节点包含的属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration  scan&#x3D;&quot;true&quot; scanPeriod&#x3D;&quot;10 seconds&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>scan:当此属性设置为true时，配置文件如果发生改变，将会被重新加载，默认值为true。<br>scanPeriod:设置监测配置文件是否有修改的时间间隔，如果没有给出时间单位，默认单位是毫秒。当scan为true时，此属性生效。默认的时间间隔为1分钟。<br>debug:当此属性设置为true时，将打印出logback内部日志信息，实时查看logback运行状态。默认值为false。</p>
+<p>根节点<code>&lt;configuration&gt;</code>有5个子节点</p>
+<h4 id="子节点一-lt-root-gt"><a href="#子节点一-lt-root-gt" class="headerlink" title="子节点一 &lt;root&gt;"></a>子节点一 <code>&lt;root&gt;</code></h4><p>root节点是必选节点，用来指定最基础的日志输出级别，只有一个level属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;root level&#x3D;&quot;debug&quot;&gt;</span><br><span class="line">  &lt;appender-ref ref&#x3D;&quot;console&quot; &#x2F;&gt;</span><br><span class="line">  &lt;appender-ref ref&#x3D;&quot;file&quot; &#x2F;&gt;</span><br><span class="line">&lt;&#x2F;root&gt;</span><br></pre></td></tr></table></figure>
+
+<p>level:用来设置打印级别，大小写无关：TRACE, DEBUG, INFO, WARN, ERROR, ALL 和 OFF，不能设置为INHERITED或者同义词NULL。默认是DEBUG。<br>可以包含零个或多个元素，标识这个appender将会添加到这个loger。上述的console和file是已经指定的appender的name</p>
+<h4 id="子节点二：-lt-contextName-gt-设置上下文名称"><a href="#子节点二：-lt-contextName-gt-设置上下文名称" class="headerlink" title="子节点二：&lt;contextName&gt; 设置上下文名称"></a>子节点二：<code>&lt;contextName&gt;</code> 设置上下文名称</h4><p>每个logger都关联到logger上下文，默认上下文名称为“default”。但可以使用设置成其他名字，用于区分不同应用程序的记录。一旦设置，不能修改,可以通过%contextName来打印日志上下文名称，一般来说我们不用这个属性，可有可无。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;contextName&gt;logback&lt;&#x2F;contextName&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/%E6%97%A5%E5%BF%97/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzI4ODA2OTktYTlkNmJlMWMyY2FhNDQ0MC5qcGc" alt="img"></p>
+<h4 id="子节点三：-lt-property-gt-设置变量"><a href="#子节点三：-lt-property-gt-设置变量" class="headerlink" title="子节点三：&lt;property&gt; 设置变量"></a>子节点三：<code>&lt;property&gt;</code> 设置变量</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;property name&#x3D;&quot;logback.logdir&quot; value&#x3D;&quot;&#x2F;Users&#x2F;inke&#x2F;dev&#x2F;log&#x2F;tomcat&quot;&#x2F;&gt;</span><br><span class="line">&lt;property name&#x3D;&quot;logback.appname&quot; value&#x3D;&quot;app&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>用来定义变量值的标签， 有两个属性，name和value；其中name的值是变量的名称，value的值时变量定义的值。通过定义的值会被插入到logger上下文中。定义变量后，可以使<code>$&#123;&#125;</code>来使用变量。</p>
+<p>这里可以通过 application.yml 传递参数过来。</p>
+<p>多环境配置下，通过 application.yml 传递参数过来，&lt; property &gt;取不到环境参数，得用&lt; springProperty &gt;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;springProperty scope&#x3D;&quot;context&quot; name&#x3D;&quot;appname&quot; source&#x3D;&quot;logback.appname&quot;&#x2F;&gt;</span><br><span class="line">&lt;springProperty scope&#x3D;&quot;context&quot; name&#x3D;&quot;logdir&quot; source&#x3D;&quot;logback.logdir&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="子节点四：-lt-appender-gt"><a href="#子节点四：-lt-appender-gt" class="headerlink" title="子节点四：&lt;appender&gt;"></a>子节点四：<code>&lt;appender&gt;</code></h4><p>appender用来格式化日志输出节点，有俩个属性name和class，class用来指定哪种输出策略，常用就是控制台输出策略和文件输出策略。</p>
+<h5 id="控制台输出ConsoleAppender："><a href="#控制台输出ConsoleAppender：" class="headerlink" title="控制台输出ConsoleAppender："></a>控制台输出<code>ConsoleAppender</code>：</h5><p><code>&lt;appender name=&quot;CONSOLE&quot; class=&quot;ch.qos.logback.core.ConsoleAppender&quot;&gt;</code></p>
+<p>例子1：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">scan</span>=<span class="string">&quot;true&quot;</span> <span class="attr">scanPeriod</span>=<span class="string">&quot;60 seconds&quot;</span> <span class="attr">debug</span>=<span class="string">&quot;false&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">contextName</span>&gt;</span>logback-demo<span class="tag">&lt;/<span class="name">contextName</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--输出到控制台1 ConsoleAppender--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">&quot;consoleLog1&quot;</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.ConsoleAppender&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--展示格式 layout--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">layout</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.classic.PatternLayout&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">pattern</span>&gt;</span>%d -1 %msg%n<span class="tag">&lt;/<span class="name">pattern</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--输出到控制台2 ConsoleAppender--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">&quot;consoleLog2&quot;</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.ConsoleAppender&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">encoder</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">pattern</span>&gt;</span>%d -2 %msg%n<span class="tag">&lt;/<span class="name">pattern</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">encoder</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--指定最基础的日志输出级别--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">root</span> <span class="attr">level</span>=<span class="string">&quot;INFO&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--appender将会添加到这个loger--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">&quot;consoleLog1&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">&quot;consoleLog2&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/%E6%97%A5%E5%BF%97/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzI4ODA2OTktMWM2ZDQxMWVhOGFhN2JmMC5qcGc" alt="img"></p>
+<p>可以看到<code>layout</code>和<code>encoder</code>，都可以将事件转换为格式化后的日志记录.</p>
+<p>但是控制台输出使用<code>layout</code>，文件输出使用<code>encoder</code>，具体原因可参考<a target="_blank" rel="noopener" href="http://blog.csdn.net/cw_hello1/article/details/51969554">http://blog.csdn.net/cw_hello1/article/details/51969554</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">layout：将一个event事件转换成一个字符串，不能控制将字符串写出到文件</span><br><span class="line">encoder：①将一个event事件转换成一组byte数组，②将转换后的字节数据输出到文件中</span><br></pre></td></tr></table></figure>
+
+
+
+<p>例子2：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span> <span class="attr">scan</span>=<span class="string">&quot;true&quot;</span> <span class="attr">scanPeriod</span>=<span class="string">&quot;60 seconds&quot;</span> <span class="attr">debug</span>=<span class="string">&quot;false&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">contextName</span>&gt;</span>logback-demo<span class="tag">&lt;/<span class="name">contextName</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--输出到控制台 ConsoleAppender--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">&quot;consoleLog1&quot;</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.ConsoleAppender&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--展示格式 layout--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">layout</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.classic.PatternLayout&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">pattern</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">pattern</span>&gt;</span>%d&#123;HH:mm:ss.SSS&#125; %contextName [%thread] %-5level %logger&#123;36&#125; - %msg%n<span class="tag">&lt;/<span class="name">pattern</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">pattern</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">layout</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">        &lt;filter class=&quot;ch.qos.logback.classic.filter.ThresholdFilter&quot;&gt;</span></span><br><span class="line"><span class="comment">             &lt;level&gt;ERROR&lt;/level&gt;</span></span><br><span class="line"><span class="comment">        &lt;/filter&gt;</span></span><br><span class="line"><span class="comment">         --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--指定最基础的日志输出级别--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">root</span> <span class="attr">level</span>=<span class="string">&quot;INFO&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--appender将会添加到这个loger--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">&quot;consoleLog1&quot;</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">appender-ref</span> <span class="attr">ref</span>=<span class="string">&quot;consoleLog2&quot;</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">root</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">18:15:22.148 logback-demo [http-nio-9010-exec-1] INFO  c.e.demo.controller.UserContorller - 日志输出 info</span><br><span class="line">18:15:22.148 logback-demo [http-nio-9010-exec-1] WARN  c.e.demo.controller.UserContorller - 日志输出 warn</span><br><span class="line">18:15:22.148 logback-demo [http-nio-9010-exec-1] ERROR c.e.demo.controller.UserContorller - 日志输出 error</span><br><span class="line">18:15:22.148 logback-demo [http-nio-9010-exec-1] INFO  c.e.demo.controller.UserContorller - name:inke , age:33</span><br><span class="line">18:15:22.149 logback-demo [http-nio-9010-exec-1] INFO  c.e.demo.controller.UserContorller - name:inke , age:33</span><br></pre></td></tr></table></figure>
+
+<h6 id="输出到文件-RollingFileAppender"><a href="#输出到文件-RollingFileAppender" class="headerlink" title="输出到文件 RollingFileAppender"></a>输出到文件 <code>RollingFileAppender</code></h6><p><code>&lt;appender name=&quot;FILE&quot; class=&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;&gt;</code></p>
+<p>另一种常见的日志输出到文件，随着应用的运行时间越来越长，日志也会增长的越来越多，将他们输出到同一个文件并非一个好办法。</p>
+<p>RollingFileAppender用于切分文件日志：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">appender</span> <span class="attr">name</span>=<span class="string">&quot;fileInfoLog&quot;</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.rolling.RollingFileAppender&quot;</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!--如果只是想要 Info 级别的日志，只是过滤 info 还是会输出 Error 日志，因为 Error 的级别高，</span></span><br><span class="line"><span class="comment">    所以我们使用下面的策略，可以避免输出 Error 的日志--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.classic.filter.LevelFilter&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--过滤 Error--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">level</span>&gt;</span>ERROR<span class="tag">&lt;/<span class="name">level</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--匹配到就禁止--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">onMatch</span>&gt;</span>DENY<span class="tag">&lt;/<span class="name">onMatch</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--没有匹配到就允许--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">onMismatch</span>&gt;</span>ACCEPT<span class="tag">&lt;/<span class="name">onMismatch</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!--日志名称，如果没有File 属性，那么只会使用FileNamePattern的文件路径规则</span></span><br><span class="line"><span class="comment">        如果同时有&lt;File&gt;和&lt;FileNamePattern&gt;，那么当天日志是&lt;File&gt;，明天会自动把今天</span></span><br><span class="line"><span class="comment">        的日志改名为今天的日期。即，&lt;File&gt; 的日志都是当天的。</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">File</span>&gt;</span>$&#123;logback.logdir&#125;/info.$&#123;logback.appname&#125;.log<span class="tag">&lt;/<span class="name">File</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--滚动策略，按照时间滚动 TimeBasedRollingPolicy--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">rollingPolicy</span> <span class="attr">class</span>=<span class="string">&quot;ch.qos.logback.core.rolling.TimeBasedRollingPolicy&quot;</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--文件路径,定义了日志的切分方式——把每一天的日志归档到一个文件中,以防止日志填满整个磁盘空间--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">FileNamePattern</span>&gt;</span>$&#123;logback.logdir&#125;/info.$&#123;logback.appname&#125;.%d&#123;yyyy-MM-dd&#125;.log<span class="tag">&lt;/<span class="name">FileNamePattern</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--只保留最近90天的日志--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">maxHistory</span>&gt;</span>90<span class="tag">&lt;/<span class="name">maxHistory</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--用来指定日志文件的上限大小，那么到了这个值，就会删除旧的日志--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--&lt;totalSizeCap&gt;1GB&lt;/totalSizeCap&gt;--&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">rollingPolicy</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!--日志输出编码格式化--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">encoder</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">charset</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">charset</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">pattern</span>&gt;</span>%d [%thread] %-5level %logger&#123;36&#125; %line - %msg%n<span class="tag">&lt;/<span class="name">pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">encoder</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">appender</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><code>&lt;encoder&gt;</code>表示对日志进行编码：</p>
+<p>%d{HH: mm:ss.SSS}——日志输出时间<br>%thread——输出日志的进程名字，这在Web应用以及异步任务处理中很有用<br>%-5level——日志级别，并且使用5个字符靠左对齐<br>%logger{36}——日志输出者的名字<br>%msg——日志消息<br>%n——平台的换行符</p>
+<p>ThresholdFilter为系统定义的拦截器，例如我们用ThresholdFilter来过滤掉ERROR级别以下的日志不输出到文件中。如果不用记得注释掉，不然你控制台会发现没日志~</p>
+<p>如果同时有<code>&lt;File&gt;</code>和<code>&lt;FileNamePattern&gt;</code>，根据日期分割日志</p>
+<p><img src="/%E6%97%A5%E5%BF%97/aHR0cDovL3VwbG9hZC1pbWFnZXMuamlhbnNodS5pby91cGxvYWRfaW1hZ2VzLzI4ODA2OTktOWU0YTBlMDJhNWVlMTE3Ny5qcGc" alt="img"></p>
+<p>如果要区分 <code>Info</code> 和 <code>Error</code> 级别的日志，那么需要使用过滤规则的策略</p>
+<h5 id="子节点五-lt-loger-gt"><a href="#子节点五-lt-loger-gt" class="headerlink" title="子节点五&lt;loger&gt;"></a>子节点五<code>&lt;loger&gt;</code></h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;logger name&#x3D;&quot;com.swx&quot; additivity&#x3D;&quot;false&quot; level&#x3D;&quot;DEBUG&quot;&gt;</span><br><span class="line">	&lt;appender-ref ref&#x3D;&quot;CONSOLE&quot;&#x2F;&gt;</span><br><span class="line">	&lt;appender-ref ref&#x3D;&quot;FILE&quot;&#x2F;&gt;</span><br><span class="line">&lt;&#x2F;logger&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>&lt;loger&gt;</code>用来设置某一个包或者具体的某一个类的日志打印级别、以及指定<code>&lt;appender&gt;</code>。</p>
+<p><code>&lt;loger&gt;</code>仅有一个name属性，一个可选的level和一个可选的addtivity属性。</p>
+<p>name:用来指定受此loger约束的某一个包或者具体的某一个类。<br>level:用来设置打印级别，大小写无关：TRACE, DEBUG, INFO, WARN, ERROR, ALL 和 OFF，还有一个特俗值INHERITED或者同义词NULL，代表强制执行上级的级别。如果未设置此属性，那么当前loger将会继承上级的级别。<br>addtivity:是否向上级loger传递打印信息。默认是true。</p>
+<p>例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.dudu.controller;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LearnController</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Logger logger = LoggerFactory.getLogger(<span class="keyword">this</span>.getClass());</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/login&quot;,method = RequestMethod.POST)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Map&lt;String,Object&gt; <span class="title">login</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span></span>&#123;</span><br><span class="line">        <span class="comment">//日志级别从低到高分为TRACE &lt; DEBUG &lt; INFO &lt; WARN &lt; ERROR &lt; FATAL，如果设置为WARN，则低于WARN的信息都不会输出。</span></span><br><span class="line">        logger.trace(<span class="string">&quot;日志输出 trace&quot;</span>);</span><br><span class="line">        logger.debug(<span class="string">&quot;日志输出 debug&quot;</span>);</span><br><span class="line">        logger.info(<span class="string">&quot;日志输出 info&quot;</span>);</span><br><span class="line">        logger.warn(<span class="string">&quot;日志输出 warn&quot;</span>);</span><br><span class="line">        logger.error(<span class="string">&quot;日志输出 error&quot;</span>);</span><br><span class="line">        Map&lt;String,Object&gt; map =<span class="keyword">new</span> HashMap&lt;String,Object&gt;();</span><br><span class="line">        String userName=request.getParameter(<span class="string">&quot;userName&quot;</span>);</span><br><span class="line">        String password=request.getParameter(<span class="string">&quot;password&quot;</span>);</span><br><span class="line">        <span class="keyword">if</span>(!userName.equals(<span class="string">&quot;&quot;</span>) &amp;&amp; password!=<span class="string">&quot;&quot;</span>)&#123;</span><br><span class="line">            User user =<span class="keyword">new</span> User(userName,password);</span><br><span class="line">            request.getSession().setAttribute(<span class="string">&quot;user&quot;</span>,user);</span><br><span class="line">            map.put(<span class="string">&quot;result&quot;</span>,<span class="string">&quot;1&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            map.put(<span class="string">&quot;result&quot;</span>,<span class="string">&quot;0&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> map;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">这是一个登录的判断的方法，我们引入日志，并且打印不同级别的日志，然后根据logback-spring.xml中的配置来看看打印了哪几种级别日志</span><br></pre></td></tr></table></figure>
+
+<p>第一种：带有loger的配置，不指定级别，不指定appender<br>logback-spring.xml增加 loger 配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;logger name&#x3D;&quot;com.dudu.controller&quot; &#x2F;&gt;</span><br><span class="line">将控制controller包下的所有类的日志的打印，但是并没用设置打印级别，所以继承他的上级的日志级别“info”；</span><br><span class="line">没有设置addtivity，默认为true，将此loger的打印信息向上级传递；</span><br><span class="line">没有设置appender，此loger本身不打印任何信息。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;root level&#x3D;&quot;info&quot;&gt;</span><br><span class="line">	&lt;appender-ref ref&#x3D;&quot;console&quot;&#x2F;&gt;</span><br><span class="line">&lt;&#x2F;root&gt;</span><br><span class="line">将root的打印级别设置为“info”，指定了名字为“console”的appender。</span><br></pre></td></tr></table></figure>
+
+<p>当执行com.dudu.controller.LearnController类的login方法时，LearnController 在包com.dudu.controller中，所以首先执行<logger name="com.dudu.controller"/>，将级别为“info”及大于“info”的日志信息传递给root，本身并不打印；<br>root接到下级传递的信息，交给已经配置好的名为“console”的appender处理，“console” appender 将信息打印到控制台；</p>
+<p>打印结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">16:00:17.407 logback [http-nio-8080-exec-8] INFO  com.dudu.controller.LearnController - 日志输出 info</span><br><span class="line">16:00:17.408 logback [http-nio-8080-exec-8] WARN  com.dudu.controller.LearnController - 日志输出 warn</span><br><span class="line">16:00:17.408 logback [http-nio-8080-exec-8] ERROR com.dudu.controller.LearnController - 日志输出 error</span><br></pre></td></tr></table></figure>
+
+
+
+<p>第二种：带有多个loger的配置，指定级别，指定appender<br>logback-spring.xml增加 loger 配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">    ...</span><br><span class="line">    </span><br><span class="line">	&lt;!--logback.LogbackDemo：类的全路径 --&gt;</span><br><span class="line">	&lt;logger name&#x3D;&quot;com.dudu.controller.LearnController&quot; level&#x3D;&quot;WARN&quot; additivity&#x3D;&quot;false&quot;&gt;</span><br><span class="line">    	&lt;appender-ref ref&#x3D;&quot;console&quot;&#x2F;&gt;</span><br><span class="line">	&lt;&#x2F;logger&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br></pre></td></tr></table></figure>
+
+
+<p>控制com.dudu.controller.LearnController类的日志打印，打印级别为“WARN”;<br>additivity属性为false，表示此loger的打印信息不再向上级传递;<br>指定了名字为“console”的appender;</p>
+<p>这时候执行com.dudu.controller.LearnController类的login方法时，先执行<logger name="com.dudu.controller.LearnController" level="WARN" additivity="false">,将级别为“WARN”及大于“WARN”的日志信息交给此loger指定的名为“console”的appender处理，在控制台中打出日志，不再向上级root传递打印信息。</p>
+<p>打印结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">16:00:17.408 logback [http-nio-8080-exec-8] WARN  com.dudu.controller.LearnController - 日志输出 warn</span><br><span class="line">16:00:17.408 logback [http-nio-8080-exec-8] ERROR com.dudu.controller.LearnController - 日志输出 error</span><br></pre></td></tr></table></figure>
+
+
+<p>当然如果你把additivity=”false”改成additivity=”true”的话，就会打印两次，因为打印信息向上级传递，logger本身打印一次，root接到后又打印一次。</p>
+<p>注意：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">    ...</span><br><span class="line">    </span><br><span class="line">	&lt;logger name&#x3D;&quot;com.example.demo.controller&quot; level&#x3D;&quot;WARN&quot; additivity&#x3D;&quot;false&quot;&gt;</span><br><span class="line">		&lt;appender-ref ref&#x3D;&quot;consoleLog&quot;&#x2F;&gt;</span><br><span class="line">	&lt;&#x2F;logger&gt;</span><br><span class="line"></span><br><span class="line">	&lt;logger name&#x3D;&quot;com.example.demo.controller&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line">	&lt;logger name&#x3D;&quot;com.example.demo&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<p>范围有重叠的话，范围小的有效。</p>
+<h4 id="配置多个环境日志输出"><a href="#配置多个环境日志输出" class="headerlink" title="配置多个环境日志输出"></a>配置多个环境日志输出</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line">    ...</span><br><span class="line">    </span><br><span class="line">    &lt;!-- 测试环境+开发环境. 多个使用逗号隔开. --&gt;</span><br><span class="line">    &lt;springProfile name&#x3D;&quot;test,dev&quot;&gt;</span><br><span class="line">        &lt;logger name&#x3D;&quot;com.example.demo.controller&quot; level&#x3D;&quot;DEBUG&quot; additivity&#x3D;&quot;false&quot;&gt;</span><br><span class="line">            &lt;appender-ref ref&#x3D;&quot;consoleLog&quot;&#x2F;&gt;</span><br><span class="line">        &lt;&#x2F;logger&gt;</span><br><span class="line">    &lt;&#x2F;springProfile&gt;</span><br><span class="line">    </span><br><span class="line">    &lt;!-- 生产环境. --&gt;</span><br><span class="line">    &lt;springProfile name&#x3D;&quot;prod&quot;&gt;</span><br><span class="line">        &lt;logger name&#x3D;&quot;com.example.demo.controller&quot; level&#x3D;&quot;INFO&quot; additivity&#x3D;&quot;false&quot;&gt;</span><br><span class="line">            &lt;appender-ref ref&#x3D;&quot;consoleLog&quot;&#x2F;&gt;</span><br><span class="line">        &lt;&#x2F;logger&gt;</span><br><span class="line">    &lt;&#x2F;springProfile&gt;</span><br><span class="line">&lt;&#x2F;configuration&gt;</span><br></pre></td></tr></table></figure>
+
+<p>application.yml增加环境选择的配置active: dev</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">server:</span><br><span class="line">  port: 9010</span><br><span class="line"></span><br><span class="line">spring:</span><br><span class="line">  profiles:</span><br><span class="line">    active: dev  ##</span><br><span class="line">  datasource:</span><br><span class="line">    url: jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;test?characterEncoding&#x3D;utf8</span><br><span class="line">    username: root</span><br><span class="line">    password: root</span><br><span class="line"></span><br><span class="line">mybatis:</span><br><span class="line">    type-aliases-package: org.larry.springboot.entity</span><br><span class="line">    mapper-locations: classpath:mapper&#x2F;**&#x2F;*.xml</span><br><span class="line">    check-config-location: true</span><br></pre></td></tr></table></figure>
+
+<p><code>active: 【test、dev、prod】</code>，根据 <code>active</code> 的环境，自动采用上面配置的<code>springProfile</code>的 <code>logger</code> 日志</p>
+<h4 id="自定义日志路径（application-yml）"><a href="#自定义日志路径（application-yml）" class="headerlink" title="自定义日志路径（application.yml）"></a>自定义日志路径（application.yml）</h4><p>application.yml增加日志相关自定义配置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">logback:</span><br><span class="line">  logdir: &#x2F;Users&#x2F;inke&#x2F;dev&#x2F;log&#x2F;tomcat&#x2F;sell</span><br><span class="line">  appname: sell</span><br></pre></td></tr></table></figure>
+
+<p>在<code>logback-spring.xml</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version&#x3D;&quot;1.0&quot; encoding&#x3D;&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;configuration scan&#x3D;&quot;true&quot; scanPeriod&#x3D;&quot;60 seconds&quot; debug&#x3D;&quot;false&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--application.yml 传递参数，不能使用logback 自带的&lt;property&gt;标签 --&gt;</span><br><span class="line">    &lt;springProperty scope&#x3D;&quot;context&quot; name&#x3D;&quot;appname&quot; source&#x3D;&quot;logback.appname&quot;&#x2F;&gt;</span><br><span class="line">    &lt;springProperty scope&#x3D;&quot;context&quot; name&#x3D;&quot;logdir&quot; source&#x3D;&quot;logback.logdir&quot;&#x2F;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;contextName&gt;$&#123;appname&#125;&lt;&#x2F;contextName&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!--输出到控制台 ConsoleAppender--&gt;</span><br><span class="line">    &lt;appender name&#x3D;&quot;consoleLog&quot; class&#x3D;&quot;ch.qos.logback.core.ConsoleAppender&quot;&gt;</span><br><span class="line">        &lt;!--展示格式 layout--&gt;</span><br><span class="line">        &lt;layout class&#x3D;&quot;ch.qos.logback.classic.PatternLayout&quot;&gt;</span><br><span class="line">            &lt;pattern&gt;</span><br><span class="line">                &lt;pattern&gt;%d&#123;HH:mm:ss.SSS&#125; %contextName [%thread] %-5level %logger&#123;36&#125; - %msg%n&lt;&#x2F;pattern&gt;</span><br><span class="line">            &lt;&#x2F;pattern&gt;</span><br><span class="line">        &lt;&#x2F;layout&gt;</span><br><span class="line">    &lt;&#x2F;appender&gt;</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="日志记录的思考"><a href="#日志记录的思考" class="headerlink" title="日志记录的思考"></a>日志记录的思考</h2><p>1.用spring aop的方式记录：只需要配置，但是不能区分方法</p>
+<p>2.在每个方法种都写上记录日志的语句：针对性强，但是重复性代码多</p>
+<p>最后项目里采用：</p>
+<p>1.自定义一个注解：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Target(&#123;ElementType.METHOD&#125;)</span><br><span class="line">@Documented</span><br><span class="line">public @interface PrintlnLog &#123;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 自定义日志描述信息文案</span><br><span class="line">     *&#x2F;</span><br><span class="line">    String description() default &quot;&quot;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.设置springboot的切面</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line">@Aspect &#x2F;&#x2F;切面注解</span><br><span class="line">@Component</span><br><span class="line">@Slf4j</span><br><span class="line">@Profile(&#123;&quot;dev&quot;&#125;) &#x2F;&#x2F;指定打印日志的环境为本地</span><br><span class="line">public class LogAspect &#123;</span><br><span class="line"></span><br><span class="line">    private static final String LINE_SEPARATOR &#x3D; System.lineSeparator();</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * 以自定义 @PrintlnLog 注解作为切面入口</span><br><span class="line">     *</span><br><span class="line">     * @annotation 是指定方法的具体日志信息</span><br><span class="line">     * execution 是对连接点的所有方法进行日志打印，没有具体信息</span><br><span class="line">     *&#x2F;</span><br><span class="line">    @Pointcut(&quot;@annotation(com.yxtl.business.util.annotation.PrintlnLog)&quot;)</span><br><span class="line">    &#x2F;&#x2F;@Pointcut(&quot;execution(* com.yxtl.business.service.impl.*.*( .. ) )&quot;)</span><br><span class="line">    public void PrintlnLog() &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * @param joinPoint</span><br><span class="line">     * @throws Throwable</span><br><span class="line">     * @description 切面方法入参日志打印</span><br><span class="line">     *&#x2F;</span><br><span class="line">    @Before(&quot;PrintlnLog()&quot;)</span><br><span class="line">    public void doBefore(JoinPoint joinPoint) throws Throwable &#123;</span><br><span class="line"></span><br><span class="line">        ServletRequestAttributes attributes &#x3D; (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();</span><br><span class="line">        HttpServletRequest request &#x3D; attributes.getRequest();</span><br><span class="line"></span><br><span class="line">        String methodDetailDescription &#x3D; this.getAspectMethodLogDescJP(joinPoint);</span><br><span class="line"></span><br><span class="line">        log.info(&quot;------------------------------- start --------------------------&quot;);</span><br><span class="line">        &#x2F;**</span><br><span class="line">         * 打印自定义方法描述</span><br><span class="line">         *&#x2F;</span><br><span class="line">        log.info(&quot;方法描述: &#123;&#125;&quot;, methodDetailDescription);</span><br><span class="line">        &#x2F;**</span><br><span class="line">         * 打印请求入参</span><br><span class="line">         *&#x2F;</span><br><span class="line">        log.info(&quot;请求的参数: &#123;&#125;&quot;, JSON.toJSONString(joinPoint.getArgs()));</span><br><span class="line">        &#x2F;**</span><br><span class="line">         * 打印请求方式</span><br><span class="line">         *&#x2F;</span><br><span class="line">        log.info(&quot;请求的类型: &#123;&#125;&quot;, request.getMethod());</span><br><span class="line">        &#x2F;**</span><br><span class="line">         * 打印请求 url</span><br><span class="line">         *&#x2F;</span><br><span class="line">        log.info(&quot;请求的接口: &#123;&#125;&quot;, request.getRequestURL().toString());</span><br><span class="line"></span><br><span class="line">        &#x2F;**</span><br><span class="line">         * 打印调用方法全路径以及执行方法</span><br><span class="line">         *&#x2F;</span><br><span class="line">        log.info(&quot;请求的具体方法: &#123;&#125;.&#123;&#125;&quot;, joinPoint.getSignature().getDeclaringTypeName(), joinPoint.getSignature().getName());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * @param proceedingJoinPoint</span><br><span class="line">     * @throws Throwable</span><br><span class="line">     * @description 切面方法返回结果日志打印</span><br><span class="line">     *&#x2F;</span><br><span class="line">    @Around(&quot;PrintlnLog()&quot;)</span><br><span class="line">    public Object doAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable &#123;</span><br><span class="line"></span><br><span class="line">        String aspectMethodLogDescPJ &#x3D; getAspectMethodLogDescPJ(proceedingJoinPoint);</span><br><span class="line"></span><br><span class="line">        long startTime &#x3D; System.currentTimeMillis();</span><br><span class="line"></span><br><span class="line">        Object result &#x3D; proceedingJoinPoint.proceed();</span><br><span class="line">        &#x2F;**</span><br><span class="line">         * 输出结果</span><br><span class="line">         *&#x2F;</span><br><span class="line">        log.info(&quot;方法名为&#123;&#125;的返回结果 : &#123;&#125;&quot;, aspectMethodLogDescPJ, JSON.toJSONString(result));</span><br><span class="line"></span><br><span class="line">        &#x2F;**</span><br><span class="line">         * 方法执行耗时</span><br><span class="line">         *&#x2F;</span><br><span class="line">        log.info(&quot;该方法耗时: &#123;&#125; ms&quot;, System.currentTimeMillis() - startTime);</span><br><span class="line"></span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * @param joinPoint</span><br><span class="line">     * @throws Throwable</span><br><span class="line">     * @description 切面方法执行后执行</span><br><span class="line">     *&#x2F;</span><br><span class="line">    @After(&quot;PrintlnLog()&quot;)</span><br><span class="line">    public void doAfter(JoinPoint joinPoint) throws Throwable &#123;</span><br><span class="line">        log.info(&quot;------------------------------- End --------------------------&quot; + LINE_SEPARATOR);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * @param joinPoint</span><br><span class="line">     * @throws Exception</span><br><span class="line">     * @description @printlnLog 注解作用的切面方法详细细信息</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public String getAspectMethodLogDescJP(JoinPoint joinPoint) throws Exception &#123;</span><br><span class="line">        String targetName &#x3D; joinPoint.getTarget().getClass().getName();</span><br><span class="line">        String methodName &#x3D; joinPoint.getSignature().getName();</span><br><span class="line">        Object[] arguments &#x3D; joinPoint.getArgs();</span><br><span class="line">        return getAspectMethodLogDesc(targetName, methodName, arguments);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * @param proceedingJoinPoint</span><br><span class="line">     * @throws Exception</span><br><span class="line">     * @description @printlnLog 注解作用的切面方法详细细信息</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public String getAspectMethodLogDescPJ(ProceedingJoinPoint proceedingJoinPoint) throws Exception &#123;</span><br><span class="line">        String targetName &#x3D; proceedingJoinPoint.getTarget().getClass().getName();</span><br><span class="line">        String methodName &#x3D; proceedingJoinPoint.getSignature().getName();</span><br><span class="line">        Object[] arguments &#x3D; proceedingJoinPoint.getArgs();</span><br><span class="line">        return getAspectMethodLogDesc(targetName, methodName, arguments);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">     * @param targetName</span><br><span class="line">     * @param methodName</span><br><span class="line">     * @param arguments</span><br><span class="line">     * @throws Exception</span><br><span class="line">     * @description 自定义注解参数</span><br><span class="line">     *&#x2F;</span><br><span class="line">    public String getAspectMethodLogDesc(String targetName, String methodName, Object[] arguments) throws Exception &#123;</span><br><span class="line">        Class targetClass &#x3D; Class.forName(targetName);</span><br><span class="line">        Method[] methods &#x3D; targetClass.getMethods();</span><br><span class="line">        StringBuilder description &#x3D; new StringBuilder(&quot;&quot;);</span><br><span class="line">        for (Method method : methods) &#123;</span><br><span class="line">            if (method.getName().equals(methodName)) &#123;</span><br><span class="line">                Class[] clazzs &#x3D; method.getParameterTypes();</span><br><span class="line">                if (clazzs.length &#x3D;&#x3D; arguments.length) &#123;</span><br><span class="line">                    description.append(method.getAnnotation(PrintlnLog.class).description());</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return description.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.在项目里的方法上加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@PrintlnLog(description &#x3D; &quot;方法说明&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>4.实现效果</p>
+<p><img src="/%E6%97%A5%E5%BF%97/image-20210918172933788.png" alt="image-20210918172933788"></p>
+<p>注：这种Aop打印日志的方式一般只在测试、开发环境使用，因为会<strong>损耗一定的性能而延缓接口返回时间</strong>。所以如果需要在返回时间要求很高的生产环境使用的话，最好少在切点执行损耗性能的方法</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/09/02/%E6%97%A5%E5%BF%97/" data-id="cku567ukn006ou8wde2iz1vc7" data-title="日志" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%97%A5%E5%BF%97/" rel="tag">日志</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/09/03/RPC/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          RPC
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/08/27/%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">开源软件许可协议</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Eclipse/" rel="tag">Eclipse</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Gitee/" rel="tag">Gitee</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HATEOAS/" rel="tag">HATEOAS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/IDEA/" rel="tag">IDEA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JPA/" rel="tag">JPA</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JQuery/" rel="tag">JQuery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/" rel="tag">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">MySQL基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Navicat/" rel="tag">Navicat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PBOOTCMS/" rel="tag">PBOOTCMS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Portainer-io/" rel="tag">Portainer.io</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/RESTful/" rel="tag">RESTful</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/" rel="tag">SpringBoot</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/" rel="tag">Tomcat</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typora/" rel="tag">Typora</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WEB/" rel="tag">WEB</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/WebRTC/" rel="tag">WebRTC</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/" rel="tag">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java%E6%A6%82%E8%BF%B0/" rel="tag">java概述</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/json/" rel="tag">json</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/maven/" rel="tag">maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mqtt/" rel="tag">mqtt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mybatis/" rel="tag">mybatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ngnix/" rel="tag">ngnix</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/servlet/" rel="tag">servlet</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spring/" rel="tag">spring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/springfox/" rel="tag">springfox</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swagger/" rel="tag">swagger</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vite/" rel="tag">vite</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" rel="tag">与人沟通</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B9%A6/" rel="tag">书</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8B%E5%8A%A1/" rel="tag">事务</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/" rel="tag">历史版本</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" rel="tag">压缩算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" rel="tag">基础概念</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AE%89%E8%A3%85/" rel="tag">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" rel="tag">小技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" rel="tag">小科普</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%BB%A3%E7%A0%81/" rel="tag">工具类代码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1/" rel="tag">微信</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" rel="tag">快捷键</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%89%93%E5%8C%85/" rel="tag">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%94%B6%E8%97%8F/" rel="tag">收藏</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" rel="tag">新环境</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%97%A5%E5%BF%97/" rel="tag">日志</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%9D%82%E8%B0%88/" rel="tag">杂谈</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/" rel="tag">消息中间件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B4%A2%E5%BC%95/" rel="tag">索引</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%8F%E5%8E%86/" rel="tag">经历</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" rel="tag">编程规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" rel="tag">设计规范</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AE%E5%AD%90/" rel="tag">轮子</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6/" rel="tag">软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" rel="tag">软件说明</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%94%81/" rel="tag">锁</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag">面向对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" rel="tag">项目合作</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/Eclipse/" style="font-size: 10px;">Eclipse</a> <a href="/tags/ElasticSearch/" style="font-size: 10px;">ElasticSearch</a> <a href="/tags/Gitee/" style="font-size: 10px;">Gitee</a> <a href="/tags/HATEOAS/" style="font-size: 10px;">HATEOAS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/IDEA/" style="font-size: 10px;">IDEA</a> <a href="/tags/JPA/" style="font-size: 10px;">JPA</a> <a href="/tags/JQuery/" style="font-size: 10px;">JQuery</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/JVM/" style="font-size: 10px;">JVM</a> <a href="/tags/MySQL%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">MySQL基础概念</a> <a href="/tags/Navicat/" style="font-size: 10px;">Navicat</a> <a href="/tags/PBOOTCMS/" style="font-size: 10px;">PBOOTCMS</a> <a href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" style="font-size: 10px;">PO-BO-VO，DTO-DAO与POJO</a> <a href="/tags/Portainer-io/" style="font-size: 10px;">Portainer.io</a> <a href="/tags/RESTful/" style="font-size: 10px;">RESTful</a> <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/SQL/" style="font-size: 10px;">SQL</a> <a href="/tags/SpringBoot/" style="font-size: 10px;">SpringBoot</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Typora/" style="font-size: 10px;">Typora</a> <a href="/tags/WEB/" style="font-size: 10px;">WEB</a> <a href="/tags/WebRTC/" style="font-size: 10px;">WebRTC</a> <a href="/tags/for%E5%BE%AA%E7%8E%AF/" style="font-size: 10px;">for循环</a> <a href="/tags/git/" style="font-size: 20px;">git</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/if/" style="font-size: 10px;">if</a> <a href="/tags/java%E6%A6%82%E8%BF%B0/" style="font-size: 10px;">java概述</a> <a href="/tags/json/" style="font-size: 10px;">json</a> <a href="/tags/maven/" style="font-size: 10px;">maven</a> <a href="/tags/mqtt/" style="font-size: 10px;">mqtt</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ngnix/" style="font-size: 10px;">ngnix</a> <a href="/tags/node-js/" style="font-size: 20px;">node.js</a> <a href="/tags/npm/" style="font-size: 10px;">npm</a> <a href="/tags/servlet/" style="font-size: 10px;">servlet</a> <a href="/tags/spring/" style="font-size: 10px;">spring</a> <a href="/tags/springfox/" style="font-size: 10px;">springfox</a> <a href="/tags/swagger/" style="font-size: 10px;">swagger</a> <a href="/tags/vite/" style="font-size: 10px;">vite</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/%E4%B8%8E%E4%BA%BA%E6%B2%9F%E9%80%9A/" style="font-size: 10px;">与人沟通</a> <a href="/tags/%E4%B9%A6/" style="font-size: 10px;">书</a> <a href="/tags/%E4%BA%8B%E5%8A%A1/" style="font-size: 10px;">事务</a> <a href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" style="font-size: 10px;">内部类</a> <a href="/tags/%E5%8E%86%E5%8F%B2%E7%89%88%E6%9C%AC/" style="font-size: 10px;">历史版本</a> <a href="/tags/%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95/" style="font-size: 10px;">压缩算法</a> <a href="/tags/%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" style="font-size: 10px;">基础概念</a> <a href="/tags/%E5%AE%89%E8%A3%85/" style="font-size: 10px;">安装</a> <a href="/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">小技巧</a> <a href="/tags/%E5%B0%8F%E7%A7%91%E6%99%AE/" style="font-size: 10px;">小科普</a> <a href="/tags/%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%BB%A3%E7%A0%81/" style="font-size: 10px;">工具类代码</a> <a href="/tags/%E5%BE%AE%E4%BF%A1/" style="font-size: 10px;">微信</a> <a href="/tags/%E5%BF%AB%E6%8D%B7%E9%94%AE/" style="font-size: 20px;">快捷键</a> <a href="/tags/%E6%89%93%E5%8C%85/" style="font-size: 10px;">打包</a> <a href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" style="font-size: 10px;">抽象类</a> <a href="/tags/%E6%8E%A5%E5%8F%A3/" style="font-size: 10px;">接口</a> <a href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" style="font-size: 10px;">搜索技巧</a> <a href="/tags/%E6%94%B6%E8%97%8F/" style="font-size: 10px;">收藏</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" style="font-size: 10px;">数据库</a> <a href="/tags/%E6%96%B0%E7%8E%AF%E5%A2%83/" style="font-size: 10px;">新环境</a> <a href="/tags/%E6%97%A5%E5%BF%97/" style="font-size: 10px;">日志</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%B6%88%E6%81%AF%E4%B8%AD%E9%97%B4%E4%BB%B6/" style="font-size: 10px;">消息中间件</a> <a href="/tags/%E7%99%BE%E5%BA%A6/" style="font-size: 10px;">百度</a> <a href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" style="font-size: 10px;">类型转换</a> <a href="/tags/%E7%B4%A2%E5%BC%95/" style="font-size: 10px;">索引</a> <a href="/tags/%E7%BB%8F%E5%8E%86/" style="font-size: 10px;">经历</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" style="font-size: 10px;">编程规范</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" style="font-size: 10px;">设计规范</a> <a href="/tags/%E8%B0%B7%E6%AD%8C/" style="font-size: 10px;">谷歌</a> <a href="/tags/%E8%BD%AE%E5%AD%90/" style="font-size: 10px;">轮子</a> <a href="/tags/%E8%BD%AF%E4%BB%B6/" style="font-size: 10px;">软件</a> <a href="/tags/%E8%BD%AF%E4%BB%B6%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">软件说明</a> <a href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" style="font-size: 10px;">逻辑判断</a> <a href="/tags/%E9%94%81/" style="font-size: 10px;">锁</a> <a href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" style="font-size: 10px;">面向对象</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E5%90%88%E4%BD%9C/" style="font-size: 10px;">项目合作</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/09/17/8.7.vite/">vite</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/03/%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%BB%A3%E7%A0%81/">工具类代码</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/03/RPC/">RPC</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/02/%E6%97%A5%E5%BF%97/">日志</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/27/%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE/">开源软件许可协议</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 swx<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
