@@ -1555,6 +1555,10 @@ Vue.js 为两个最为常用的指令提供了特别的缩写：
 
 
 
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;vue根据绑定值判断应用具体的哪个css样式</span><br><span class="line">&lt;div :class&#x3D;&quot;from?&#39;loginShop&#39;:&#39;loginOperating&#39;&quot;&gt;</span><br><span class="line">&lt;&#x2F;div&gt;</span><br></pre></td></tr></table></figure>
+
+
+
 # VUE的事件处理
 
 ### VUE的方法
@@ -3058,6 +3062,11 @@ index.html使我们前端代码入口的一个html文件
 <p>4.计算选择符中 ID 选择器的个数（a），计算选择符中类选择器、属性选择器以及伪类选择器的个数之和（b），计算选择符中标签选择器和伪元素选择器的个数之和（c）。按 a、b、c 的顺序依次比较大小，大的则优先级高，相等则比较下一个。若最后两个的选择符中 a、b、c 都相等，则按照”就近原则”来判断</p>
 <p>如果外部样式表和内部样式表中的样式发生冲突会出现什么情况呢？这与样式表在 HTML 文件中所处的位置有关。样式被应用的位置越在下面则优先级越高，其实这仍然可以用规则 4 来解释</p>
 <p>5.属性后插有 <strong>!important</strong> 的属性拥有最高优先级。若同时插有 <strong>!important</strong>，则再利用规则 3、4 判断优先级</p>
+<h1 id="px、rpx、em、rem"><a href="#px、rpx、em、rem" class="headerlink" title="px、rpx、em、rem"></a>px、rpx、em、rem</h1><p>PX实际上就是像素，用PX设置字体大小时，比较稳定和精确。但是这种方法存在一个问题，当用户在浏览器中浏览我们制作的Web页面时，如果改变了浏览器的缩放，这时会使用我们的Web页面布局被打破。</p>
+<p>rpx（responsive pixel）: 可以根据屏幕宽度进行自适应。规定屏幕宽为750rpx。如在 iPhone6 上，屏幕宽度为375px，共有750个物理像素，则750rpx = 375px = 750物理像素，1rpx = 0.5px = 1物理像素</p>
+<p>EM就是根据基准来缩放字体的大小。EM实质是一个相对值，而非具体的数值。这种技术需要一个参考点，em是相对于父元素的字体属性而计算的，一般都是以<code>&lt;body&gt;</code>的“font-size”为基准。em指字体高，任意浏览器的默认字体高都是16px。其他比如WordPress官方主题Twenntytwelve的基准就是14px=1em。</p>
+<p>EM是相对于其父元素来设置字体大小的，这样就会存在一个问题，进行任何元素设置，都有可能需要知道他父元素的大小。而Rem是相对于根元素<code>&lt;html&gt;</code>，这样就意味着，我们只需要在根元素确定一个参考值。</p>
+<p>除了IE6-IE8r，其它的浏览器都支持em和rem属性，px是所有浏览器都支持。<br>因此为了浏览器的兼容性，可“px”和“rem”一起使用，用”px”来实现IE6-8下的效果，然后使用“Rem”来实现代浏览器的效果。</p>
 <h1 id="CSS样式"><a href="#CSS样式" class="headerlink" title="CSS样式"></a>CSS样式</h1><h2 id="字体属性：-font"><a href="#字体属性：-font" class="headerlink" title="字体属性：(font)"></a>字体属性：(font)</h2><p>样式：</p>
 <p>​    color : #999999;   文字颜色</p>
 <p>​    font-family : sans-serif;   字体类型  “Courier New”, Courier, monospace, “Times New Roman”, Times, serif, Arial, Helvetica, sans-serif, Verdana</p>
@@ -3131,8 +3140,7 @@ index.html使我们前端代码入口的一个html文件
 <p>​    visibility: 是否可见 inherit; visible; hidden;collapse</p>
 <p>即使不可见的元素也会占据页面上的空间。使用 “display” 属性来创建不占据页面空间的不可见元素</p>
 <p>​    overflow:  当内容溢出元素框时发生的事情</p>
-<pre><code>     visible:默认值。内容不会被修剪，会呈现在元素框之外。
-</code></pre>
+<p>​         visible:默认值。内容不会被修剪，会呈现在元素框之外。</p>
 <p>​         hidden:内容会被修剪，并且其余内容是不可见的。</p>
 <p>​         scroll:内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。</p>
 <p>​        auto:如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容</p>
@@ -3142,7 +3150,7 @@ index.html使我们前端代码入口的一个html文件
 <h2 id="方框属性：-Box"><a href="#方框属性：-Box" class="headerlink" title="方框属性： (Box)"></a>方框属性： (Box)</h2><p>CSS盒子模型：所有的HTML元素，都可以看作一个四边形，即一个盒子。</p>
 <p>用CSS来设置元素盒子的内边距（padding）、边框(border)和外边距(margin)的样式的方式相当于设置盒子的样式，我们称之为盒子模型。</p>
 <p>边框：（HTML元素盒子的框体）简写：<code>border:1px solid red;</code></p>
-<p>宽度：宽度值： thin|medium|thick|数值  </p>
+<p>宽度：宽度值： thin|medium|thick|数值   100vh  100%  33rem  3em  window.screen.width </p>
 <p>​    width:长度|百分比| auto</p>
 <p>​    border-top-width </p>
 <p>​    border-right-width </p>
@@ -4155,6 +4163,7 @@ index.html使我们前端代码入口的一个html文件
 <p>1.标签内容隐藏性:   自带display:none</p>
 <p>2.标签位置任意性：类似<code>&lt;script&gt;</code>或者<code>&lt;style&gt;</code>标签，可以在<code>&lt;head&gt;</code>中，也可以在<code>&lt;body&gt;</code>或者<code>&lt;frameset&gt;</code>中</p>
 <p>3.childNodes无效性:肉眼看上去是<code>&lt;template&gt;</code>标签里面还有很多子标签,但是template.childNodes无效，可以使用template.innerHTML获取完整的HTML片段。template.content会返回一个文档片段，可以理解为另外一个document，然后，使用document下的一些查询API就可以获得<code>&lt;template&gt;</code>标签里面的“伪子元素”了</p>
+<h2 id="lt-iframe-gt-标签"><a href="#lt-iframe-gt-标签" class="headerlink" title="&lt;iframe&gt;标签"></a><code>&lt;iframe&gt;</code>标签</h2><p>iframe 元素会创建包含另外一个文档的内联框架（即行内框架）。可以用来在一个网页内引用另一个网页，网页的内容资源用src。</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">#fh5co-menu &#123;</span><br><span class="line">  background: ;</span><br><span class="line">  position: absolute;   绝对的</span><br><span class="line">  top: 0;</span><br><span class="line">  z-index: 999;</span><br><span class="line">  width: 100%;</span><br><span class="line">  padding-bottom: 20px;</span><br><span class="line">  -webkit-transition: 0.5s;</span><br><span class="line">  -o-transition: 0.5s;</span><br><span class="line">  transition: 0.5s;</span><br><span class="line">  -webkit-border-radius: 0px;</span><br><span class="line">  -moz-border-radius: 0px;</span><br><span class="line">  -ms-border-radius: 0px;</span><br><span class="line">  border-radius: 0px;</span><br><span class="line">  margin-top: 20px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//控制背景随动</span><br><span class="line">#fh5co-clients &#123;</span><br><span class="line">  padding: 2em 0;</span><br><span class="line">  background: #4fd2c2;</span><br><span class="line">  position: relative;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#fh5co-clients1 &#123;</span><br><span class="line">  padding: 2em 0;</span><br><span class="line">  background: #4fd2c2;</span><br><span class="line">  position: relative;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">@media screen and (max-width: 992px) &#123;</span><br><span class="line">  #fh5co-clients1 .fh5co-client &#123;</span><br><span class="line">    margin-bottom: 30px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@media screen and (max-width: 768px) &#123;</span><br><span class="line">  #fh5co-clients1 .fh5co-client &#123;</span><br><span class="line">    margin-bottom: 30px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@media screen and (max-width: 480px) &#123;</span><br><span class="line">  #fh5co-clients1 .fh5co-client img &#123;</span><br><span class="line">    max-width: 100%;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h1 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h1><p>长度单位</p>
@@ -4187,7 +4196,7 @@ index.html使我们前端代码入口的一个html文件
 <p>屏幕宽度低于480像素的设备（如iPhone等）</p>
 <p>1.在网站HTML文件的开头，增加viewport meta标签告诉浏览器视口宽度等于设备屏幕宽度，且不进行初始缩放：</p>
 <p><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt; </code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">width：控制 viewport 的大小，可以指定的一个值，如 600，或者特殊的值，如 device-width为设备的宽度（单位为缩放为 100% 时的 CSS 的像素）。 </span><br><span class="line">height：和 width 相对应，指定高度。</span><br><span class="line">initial-scale：初始缩放比例，也即是当页面第一次 load 的时候缩放比例。</span><br><span class="line">maximum-scale：允许用户缩放到的最大比例。 </span><br><span class="line">minimum-scale：允许用户缩放到的最小比例。</span><br><span class="line">user-scalable：用户是否可以手动缩放。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">width：控制 viewport 的大小，可以指定的一个值，如 600，或者特殊的值，如 device-width为设备的宽度（单位为缩放为 100% 时的 CSS 的像素）。 </span><br><span class="line">height：和 width 相对应，指定高度。也可以指定为 window.screen.height</span><br><span class="line">initial-scale：初始缩放比例，也即是当页面第一次 load 的时候缩放比例。</span><br><span class="line">maximum-scale：允许用户缩放到的最大比例。 </span><br><span class="line">minimum-scale：允许用户缩放到的最小比例。</span><br><span class="line">user-scalable：用户是否可以手动缩放。</span><br></pre></td></tr></table></figure>
 
 <p>2.在CSS文件尾部增加针对不同屏幕分辨率的规则：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@media screen and (max-device-width: 720px) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">media&#x3D;”screenand(max-device-width:400px)” href&#x3D;”tinyScreen.css”&#x2F;&gt;</span><br><span class="line">如果屏幕宽度小于400像素(max-device-width:400px)，就加载tinyScreen.css文件　</span><br><span class="line">media&#x3D;”screenand(min-width:400px)and(max-device-width:600px)” href&#x3D;”smallScreen.css”&#x2F;&gt;</span><br><span class="line">如果屏幕宽度在400像素到600像素之间，则加载smallScreen.css文件　　</span><br></pre></td></tr></table></figure>
