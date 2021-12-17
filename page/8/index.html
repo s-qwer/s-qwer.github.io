@@ -77,6 +77,270 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-4.11.java类型转换" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/16/4.11.java%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" class="article-date">
+  <time class="dt-published" datetime="2021-04-16T07:17:42.000Z" itemprop="datePublished">2021-04-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/16/4.11.java%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/">java类型转换</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>类型列举</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>object</td>
+<td></td>
+</tr>
+<tr>
+<td>byte</td>
+<td></td>
+</tr>
+<tr>
+<td>short</td>
+<td></td>
+</tr>
+<tr>
+<td>int</td>
+<td></td>
+</tr>
+<tr>
+<td>long</td>
+<td></td>
+</tr>
+<tr>
+<td>float</td>
+<td></td>
+</tr>
+<tr>
+<td>double</td>
+<td></td>
+</tr>
+<tr>
+<td>boolean</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>xml</td>
+<td></td>
+</tr>
+<tr>
+<td>json</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>bigDecimal</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p> Map 与实体类相互转换：</p>
+<p>1.引入fastjson依赖包</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.54<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>2.在类上引入包:<code>import com.alibaba.fastjson.JSON;</code></p>
+<p>3.进行类型转换：<code>JSON.parseObject(JSON.toJSONString(源数据), 转换后数据类型.class);</code></p>
+<p>json的相互转换</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line">fastjson里提供的转换</span><br><span class="line">&#x2F;&#x2F;从字符串解析JSON对象</span><br><span class="line">JSONObject obj &#x3D; JSON.parseObject(&quot;&#123;\&quot;runoob\&quot;:\&quot;菜鸟教程\&quot;&#125;&quot;);</span><br><span class="line">&#x2F;&#x2F;从字符串解析JSON数组</span><br><span class="line">JSONArray arr &#x3D; JSON.parseArray(&quot;[\&quot;菜鸟教程\&quot;,\&quot;RUNOOB\&quot;]\n&quot;);</span><br><span class="line">&#x2F;&#x2F;将JSON对象转化为字符串</span><br><span class="line">String objStr &#x3D; JSON.toJSONString(obj);</span><br><span class="line">&#x2F;&#x2F;将JSON数组转化为字符串</span><br><span class="line">String arrStr &#x3D; JSON.toJSONString(arr);</span><br><span class="line">例子：</span><br><span class="line">		String msg</span><br><span class="line">		JSONObject jsonObject &#x3D; JSON.parseObject(msg);</span><br><span class="line">        String dataType &#x3D; (String) jsonObject.get(&quot;data_type&quot;);</span><br><span class="line">        JSONArray dataList &#x3D; jsonObject.getJSONArray(&quot;data&quot;);</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">java bean转为json字符串      </span><br><span class="line"> 		&#x2F;&#x2F;1、使用JSONObject</span><br><span class="line">        JSONObject json &#x3D; JSONObject.fromObject(stu);</span><br><span class="line">        &#x2F;&#x2F;2、使用JSONArray</span><br><span class="line">        JSONArray array&#x3D;JSONArray.fromObject(stu);</span><br><span class="line">        </span><br><span class="line">JSON字符串转为java bean对象    </span><br><span class="line">		&#x2F;&#x2F;定义两种不同格式的字符串</span><br><span class="line">        String objectStr&#x3D;&quot;&#123;\&quot;name\&quot;:\&quot;JSON\&quot;,\&quot;age\&quot;:\&quot;24\&quot;,\&quot;address\&quot;:\&quot;北京市西城区\&quot;&#125;&quot;;</span><br><span class="line">        String arrayStr&#x3D;&quot;[&#123;\&quot;name\&quot;:\&quot;JSON\&quot;,\&quot;age\&quot;:\&quot;24\&quot;,\&quot;address\&quot;:\&quot;北京市西城区\&quot;&#125;]&quot;;    </span><br><span class="line">        &#x2F;&#x2F;1、使用JSONObject</span><br><span class="line">        JSONObject jsonObject&#x3D;JSONObject.fromObject(objectStr);</span><br><span class="line">        Student stu&#x3D;(Student)JSONObject.toBean(jsonObject, Student.class);        </span><br><span class="line">        &#x2F;&#x2F;2、使用JSONArray</span><br><span class="line">        JSONArray jsonArray&#x3D;JSONArray.fromObject(arrayStr);</span><br><span class="line">        &#x2F;&#x2F;获得jsonArray的第一个元素</span><br><span class="line">        Object o&#x3D;jsonArray.get(0);</span><br><span class="line">        JSONObject jsonObject2&#x3D;JSONObject.fromObject(o);</span><br><span class="line">        Student stu2&#x3D;(Student)JSONObject.toBean(jsonObject2, Student.class);</span><br><span class="line"></span><br><span class="line">JSON字符串转为java bean对象数组 </span><br><span class="line">		String personstr &#x3D; getRequest().getParameter(&quot;persons&quot;);</span><br><span class="line">		JSONArray json &#x3D; JSONArray.fromObject(personstr);</span><br><span class="line">		List&lt;InvoidPerison&gt; persons &#x3D; (List&lt;InvoidPerson&gt;)JSONArray.toCollection(json, nvoidPerson.class); </span><br><span class="line"> </span><br><span class="line">list转为json字符串</span><br><span class="line">        Student stu&#x3D;new Student();</span><br><span class="line">        stu.setName(&quot;JSON&quot;);</span><br><span class="line">        stu.setAge(&quot;23&quot;);</span><br><span class="line">        stu.setAddress(&quot;北京市海淀区&quot;);</span><br><span class="line">        List&lt;Student&gt; lists&#x3D;new ArrayList&lt;Student&gt;();</span><br><span class="line">        lists.add(stu);</span><br><span class="line">        &#x2F;&#x2F;1、使用JSONObject  （会报错：&#39;object&#39; is an array. Use JSONArray instead）</span><br><span class="line">        &#x2F;&#x2F;JSONObject listObject&#x3D;JSONObject.fromObject(lists);</span><br><span class="line">        &#x2F;&#x2F;2、使用JSONArray</span><br><span class="line">        JSONArray listArray&#x3D;JSONArray.fromObject(lists);</span><br><span class="line">        </span><br><span class="line">json字符串转为list   </span><br><span class="line">		String arrayStr&#x3D;&quot;[&#123;\&quot;name\&quot;:\&quot;JSON\&quot;,\&quot;age\&quot;:\&quot;24\&quot;,\&quot;address\&quot;:\&quot;北京市西城区\&quot;&#125;]&quot;;</span><br><span class="line">        &#x2F;&#x2F;转化为list</span><br><span class="line">        List&lt;Student&gt; list2&#x3D;(List&lt;Student&gt;)JSONArray.toList(JSONArray.fromObject(arrayStr), Student.class);</span><br><span class="line">                      </span><br><span class="line">        &#x2F;&#x2F;转化为数组</span><br><span class="line">        Student[] ss &#x3D;(Student[])JSONArray.toArray(JSONArray.fromObject(arrayStr),Student.class);</span><br><span class="line"></span><br><span class="line">map转为json字符串</span><br><span class="line"> 		Student stu&#x3D;new Student();</span><br><span class="line">        stu.setName(&quot;JSON&quot;);</span><br><span class="line">        stu.setAge(&quot;23&quot;);</span><br><span class="line">        stu.setAddress(&quot;中国上海&quot;);</span><br><span class="line">        Map&lt;String,Student&gt; map&#x3D;new HashMap&lt;String,Student&gt;();</span><br><span class="line">        map.put(&quot;first&quot;, stu);</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F;1、JSONObject</span><br><span class="line">        JSONObject mapObject&#x3D;JSONObject.fromObject(map);</span><br><span class="line">        System.out.println(&quot;mapObject&quot;+mapObject.toString());</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F;2、JSONArray</span><br><span class="line">        JSONArray mapArray&#x3D;JSONArray.fromObject(map);</span><br><span class="line">        System.out.println(&quot;mapArray:&quot;+mapArray.toString());</span><br><span class="line">        </span><br><span class="line">json字符串转为map </span><br><span class="line">        String strObject&#x3D;&quot;&#123;\&quot;first\&quot;:&#123;\&quot;address\&quot;:\&quot;中国上海\&quot;,\&quot;age\&quot;:\&quot;23\&quot;,\&quot;name\&quot;:\&quot;JSON\&quot;&#125;&#125;&quot;;</span><br><span class="line">        </span><br><span class="line">        &#x2F;&#x2F;JSONObject</span><br><span class="line">        JSONObject jsonObject&#x3D;JSONObject.fromObject(strObject);</span><br><span class="line">        Map map&#x3D;new HashMap();</span><br><span class="line">        map.put(&quot;first&quot;, Student.class);</span><br><span class="line">        &#x2F;&#x2F;使用了toBean方法，需要三个参数 </span><br><span class="line">        MyBean my&#x3D;(MyBean)JSONObject.toBean(jsonObject, MyBean.class, map);</span><br><span class="line">        System.out.println(my.getFirst());</span><br><span class="line">使用toBean()方法是传入了三个参数，第一个是JSONObject对象，第二个是MyBean.class（里面只有first属性），第三个是一个Map对象。通过MyBean可以知道此类中要有一个first的属性，且其类型为Student，要和map中的键和值类型对应，即，first对应键 first类型对应值的类型</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/16/4.11.java%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" data-id="ckw61sdv3001goswddy0s255h" data-title="java类型转换" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" rel="tag">类型转换</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-4.10.java扩展类" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/16/4.10.java%E6%89%A9%E5%B1%95%E7%B1%BB/" class="article-date">
+  <time class="dt-published" datetime="2021-04-16T07:17:29.000Z" itemprop="datePublished">2021-04-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/16/4.10.java%E6%89%A9%E5%B1%95%E7%B1%BB/">java扩展类</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>org.apache.commons.lang3包下的常用工具类</p>
+<h2 id="类加载器"><a href="#类加载器" class="headerlink" title="类加载器"></a>类加载器</h2><p>初学Java的时候，你应该用命令行编译过Java文件。Java代码通过javac编译成class文件，而类加载器的作用，就是把class文件装进虚拟机。</p>
+<blockquote>
+<p>面试请回答：将“通过类的全限定名获取描述类的二进制字节流”这件事放在虚拟机外部，由应用程序自己决定如何实现。</p>
+</blockquote>
+<p>宏观来看，只有两种类加载器：<strong>启动类加载器、其他类加载器。</strong></p>
+<p><strong>启动类加载器</strong>属于虚拟机的一部分，它是用C++写的，看不到源码；<strong>其他类加载器</strong>是用Java写的，说白了就是一些Java类，一会儿就可以看到了，比如<strong>扩展类加载器、应用类加载器。</strong></p>
+<ul>
+<li>启动类加载器：BootstrapClassLoader</li>
+<li>扩展类加载器：ExtentionClassLoader</li>
+<li>应用类加载器：AppClassLoader （也叫做“系统类加载器”）</li>
+</ul>
+<p>既然只是把class文件装进虚拟机，为什么要用多种加载器呢？因为Java虚拟机启动的时候，并不会一次性加载所有的class文件（内存会爆），而是根据需要去动态加载。</p>
+<h2 id="一、它们分别加载了什么？"><a href="#一、它们分别加载了什么？" class="headerlink" title="一、它们分别加载了什么？"></a>一、它们分别加载了什么？</h2><p>类加载器是通过类的<strong>全限定名</strong>（或者说<strong>绝对路径</strong>）来找到一个class文件的。可以直接打印启动类加载器BootstrapClassLoader的加载路径看看：</p>
+<blockquote>
+<p>这一小节里，你只关心输出结果就可以了，反正这些API我也是现查的。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">URL[] urls = sun.misc.Launcher.getBootstrapClassPath().getURLs();</span><br><span class="line"><span class="keyword">for</span> (URL url : urls) &#123;</span><br><span class="line">    System.out.println(url);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果（%20是空格）：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">file:/C:/Program%20Files/Java/jre1.8.0_131/lib/resources.jar</span><br><span class="line">file:/C:/Program%20Files/Java/jre1.8.0_131/lib/rt.jar</span><br><span class="line">file:/C:/Program%20Files/Java/jre1.8.0_131/lib/sunrsasign.jar</span><br><span class="line">file:/C:/Program%20Files/Java/jre1.8.0_131/lib/jsse.jar</span><br><span class="line">file:/C:/Program%20Files/Java/jre1.8.0_131/lib/jce.jar</span><br><span class="line">file:/C:/Program%20Files/Java/jre1.8.0_131/lib/charsets.jar</span><br><span class="line">file:/C:/Program%20Files/Java/jre1.8.0_131/lib/jfr.jar</span><br><span class="line">file:/C:/Program%20Files/Java/jre1.8.0_131/classes</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，启动类加载器加载的是<strong>jre和jre/lib目录下的核心库，</strong>具体路径要看你的jre安装在哪里。再打印一下扩展类加载器ExtentionClassLoader的加载路径看看：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">URL[] urls = ((URLClassLoader) ClassLoader.getSystemClassLoader().getParent()).getURLs();</span><br><span class="line"><span class="keyword">for</span> (URL url : urls) &#123;</span><br><span class="line">    System.out.println(url);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">file:/C:/Program%20Files/Java/jre1.8.0_131/lib/ext/access-bridge-64.jar</span><br><span class="line">file:/C:/Program%20Files/Java/jre1.8.0_131/lib/ext/cldrdata.jar</span><br><span class="line">file:/C:/Program%20Files/Java/jre1.8.0_131/lib/ext/dnsns.jar</span><br><span class="line">file:/C:/Program%20Files/Java/jre1.8.0_131/lib/ext/dns_sd.jar</span><br><span class="line">file:/C:/Program%20Files/Java/jre1.8.0_131/lib/ext/jaccess.jar</span><br><span class="line">file:/C:/Program%20Files/Java/jre1.8.0_131/lib/ext/jfxrt.jar</span><br><span class="line">file:/C:/Program%20Files/Java/jre1.8.0_131/lib/ext/localedata.jar</span><br><span class="line">file:/C:/Program%20Files/Java/jre1.8.0_131/lib/ext/nashorn.jar</span><br><span class="line">file:/C:/Program%20Files/Java/jre1.8.0_131/lib/ext/sunec.jar</span><br><span class="line">file:/C:/Program%20Files/Java/jre1.8.0_131/lib/ext/sunjce_provider.jar</span><br><span class="line">file:/C:/Program%20Files/Java/jre1.8.0_131/lib/ext/sunmscapi.jar</span><br><span class="line">file:/C:/Program%20Files/Java/jre1.8.0_131/lib/ext/sunpkcs11.jar</span><br><span class="line">file:/C:/Program%20Files/Java/jre1.8.0_131/lib/ext/zipfs.jar</span><br></pre></td></tr></table></figure>
+
+<p>很明显，扩展类加载器加载的是<strong>jre/lib/ext目录下的扩展包。</strong>这些类库具体是什么不重要，只需要知道不同的类库可能是被不同的类加载器加载的。</p>
+<blockquote>
+<p>JVM是怎么知道我们把JRE安装到哪里了呢？因为你安装完JDK之后配置了环境变量啊！那些 JAVA_HOME、CLASSPATH 之类的就是干这个用的。</p>
+</blockquote>
+<p>最后是AppClassLoader：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">URL[] urls = ((URLClassLoader) ClassLoader.getSystemClassLoader()).getURLs();</span><br><span class="line"><span class="keyword">for</span> (URL url : urls) &#123;</span><br><span class="line">    System.out.println(url);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file:/D:/JavaWorkSpace/PicklePee/bin/</span><br></pre></td></tr></table></figure>
+
+<p>这是当前java工程的bin目录，也就是<strong>我们自己的Java代码编译成的class文件所在。</strong></p>
+<h2 id="二、Java虚拟机的入口"><a href="#二、Java虚拟机的入口" class="headerlink" title="二、Java虚拟机的入口"></a><strong>二、Java虚拟机的入口</strong></h2><p>当我们运行一个Java程序时，首先是JDK安装目录下的jvm.dll启动虚拟机，而sun.misc.<strong>Launcher</strong>类就是虚拟机执行的第一段Java代码。之前提到，除BootstrapClassLoader以外，其他的类加载器都是用Java实现的——在Launcher里你就可以看到它们。</p>
+<p>以下是sun.misc.Launcher的精简版源码，阅读起来应该毫无难度：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Launcher</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Launcher launcher = <span class="keyword">new</span> Launcher();</span><br><span class="line">    <span class="keyword">private</span> ClassLoader appClassLoader;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 启动类加载器不是Java类，我们这里拿到的是其加载路径字符串</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String bootClassPath = System.getProperty(<span class="string">&quot;sun.boot.class.path&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Launcher</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ClassLoader extentionClassLoader; <span class="comment">// 扩展类加载器在这里</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            extentionClassLoader = ExtClassLoader.getExtClassLoader(); </span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;...&#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">	    <span class="comment">// 应用类加载器在这里，get时把扩展类加载器作为参数，后面我们会回到这里。</span></span><br><span class="line">            appClassLoader = AppClassLoader.getAppClassLoader(extentionClassLoader); </span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;...&#125;</span><br><span class="line">    &#125;	</span><br><span class="line">	</span><br><span class="line">    <span class="comment">// 静态内部类：扩展类加载器，父类是URLClassLoader</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ExtClassLoader</span> <span class="keyword">extends</span> <span class="title">URLClassLoader</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 静态内部类：应用类加载器，父类是URLClassLoader</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">AppClassLoader</span> <span class="keyword">extends</span> <span class="title">URLClassLoader</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Launcher <span class="title">getLauncher</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> launcher;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ClassLoader <span class="title">getClassLoader</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> appClassLoader;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> URLStreamHandlerFactory factory = <span class="keyword">new</span> Factory();</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Factory</span> <span class="keyword">implements</span> <span class="title">URLStreamHandlerFactory</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> URLStreamHandler <span class="title">createURLStreamHandler</span><span class="params">(String protocol)</span> </span>&#123;</span><br><span class="line">            <span class="comment">/* 创建一个文件句柄（File Handler）</span></span><br><span class="line"><span class="comment">               我们硬盘上的class文件就是通过这个句柄进入内存 */</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，扩展类加载器和应用类加载器都是Launcher里的静态内部类。它们都是调用了自己的静态方法getExtClassLoader返回自己的实例，看一下发生了什么：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 扩展类加载器是Launcher的静态内部类，这里只是把它单独拎出来了 */</span></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ExtClassLoader</span> <span class="keyword">extends</span> <span class="title">URLClassLoader</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ExtClassLoader</span><span class="params">(File[] dirs)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="comment">// 交给了父类URLClassLoader处理。中间的参数是null，它是什么呢？</span></span><br><span class="line">        <span class="keyword">super</span>(getExtURLs(dirs), <span class="keyword">null</span>, factory);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ExtClassLoader <span class="title">getExtClassLoader</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> File[] dirs = getExtDirs();</span><br><span class="line">        ExtClassLoader extentionClassLoader = <span class="keyword">new</span> ExtClassLoader(dirs);</span><br><span class="line">        <span class="keyword">return</span> extentionClassLoader</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> File[] getExtDirs() &#123;</span><br><span class="line">	<span class="comment">// 就这样拿到了扩展类加载器的加载路径，这跟第一小节我们打印的路径是一样的。</span></span><br><span class="line">	String s = System.getProperty(<span class="string">&quot;java.ext.dirs&quot;</span>);</span><br><span class="line">	File[] dirs;</span><br><span class="line">	... 按照;分割字符串s，转化为一个File数组 ...</span><br><span class="line">	<span class="keyword">return</span> dirs;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>刚刚传了三个参数给父类URLClassLoader的构造器，继续深入：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">URLClassLoader</span> <span class="keyword">extends</span> <span class="title">SecureClassLoader</span> <span class="keyword">implements</span> <span class="title">Closeable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ArrayList&lt;URL&gt; path = <span class="keyword">new</span> ArrayList&lt;URL&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">URLClassLoader</span><span class="params">(URL[] urls, ClassLoader parent, URLStreamHandlerFactory factory)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(parent); <span class="comment">// 第二个参数null是这里的parent，然后又再次扔给了父类</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment">/* 保存这些类库的路径并创建一个获取jar文件的句柄，想干什么已经很明显了 */</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; urls.length; i++) &#123;</span><br><span class="line">            path.add(urls[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (factory != <span class="keyword">null</span>) &#123;</span><br><span class="line">            jarHandler = factory.createURLStreamHandler(<span class="string">&quot;jar&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>URLClassLoader继续把这个null扔给父类SecureClassLoader？看看它要做什么：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecureClassLoader</span> <span class="keyword">extends</span> <span class="title">ClassLoader</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">SecureClassLoader</span><span class="params">(ClassLoader parent)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>(parent);</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>什么也没干，直接扔给了父类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassLoader</span> </span>&#123;    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ClassLoader parent;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">ClassLoader</span><span class="params">(Void unused, ClassLoader parent)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.parent = parent; <span class="comment">// parent最终是ClassLoader里的全局变量</span></span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 我们从子类到达这里</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">ClassLoader</span><span class="params">(ClassLoader parent)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(checkCreateClassLoader(), parent);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="title">ClassLoader</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 默认parent是系统(应用)类加载器！</span></span><br><span class="line">        <span class="keyword">this</span>(checkCreateClassLoader(), getSystemClassLoader());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">final</span> ClassLoader <span class="title">getParent</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (parent == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>; </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> parent;</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">    <span class="comment">/* 防止恶意代码对系统产生影响，有兴趣可以搜索Java安全管理器 */</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Void <span class="title">checkCreateClassLoader</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        SecurityManager security = System.getSecurityManager();</span><br><span class="line">        <span class="keyword">if</span> (security != <span class="keyword">null</span>) &#123;</span><br><span class="line">            security.checkCreateClassLoader();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>终于到头了，从扩展类加载器的getExtClassLoader()一路走来，发现参数null传给了最顶层ClassLoader的全局变量parent，看一下关系图：</p>
+<p><img src="/4.10.java%E6%89%A9%E5%B1%95%E7%B1%BB/v2-da85d259f824126fd8e4c6f6e98e72bf_720w.jpg" alt="img"></p>
+<p>你可能注意到，JDK总是通过一个类似System.getProperty(“xxx”)的方法来获取class文件路径。这个字符串参数到底是哪来的呢？其实它可以在虚拟机启动时手动赋值。比如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">java -D java.ext.dirs=路径 MyClass  //这样自定义的路径将覆盖Java本身的拓展类路径</span><br><span class="line">还有一个命令是 -Xbootclasspath 可以改变核心类库的加载路径，知道有这回事儿就行了，最好别用。</span><br></pre></td></tr></table></figure>
+
+<p>回到源码，还记得一开始Launcher类里，得到应用类加载器的这行代码吗？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">appClassLoader = AppClassLoader.getAppClassLoader(extentionClassLoader); </span><br></pre></td></tr></table></figure>
+
+<p>它把创建的扩展类加载器作为参数传给了应用类加载器，进去看一下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">AppClassLoader</span> <span class="keyword">extends</span> <span class="title">URLClassLoader</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ClassLoader <span class="title">getAppClassLoader</span><span class="params">(<span class="keyword">final</span> ClassLoader extcl)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> String s = System.getProperty(<span class="string">&quot;java.class.path&quot;</span>); <span class="comment">// 得到应用类加载器的加载路径</span></span><br><span class="line">	<span class="keyword">final</span> File[] path = getClassPath(s);</span><br><span class="line">        URL[] urls = pathToURLs(path);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 传入的扩展类加载器extcl在这里</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> AppClassLoader(urls, extcl);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    AppClassLoader(URL[] urls, ClassLoader parent) &#123;</span><br><span class="line">        <span class="comment">// AppClassLoader的父类也是URLClassLoader，只不过第二个参数由null变为扩展类加载器</span></span><br><span class="line">	<span class="keyword">super</span>(urls, parent, factory);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>至此应该一切都清晰了，后面的过程与扩展类加载器一样！只不过最终的parent参数会被赋值为扩展类加载器（extcl）而不是null。扯了这么多，这个parent到底是干什么的？</p>
+<h2 id="三、父加载器"><a href="#三、父加载器" class="headerlink" title="三、父加载器"></a><strong>三、父加载器</strong></h2><p>ClassLoader里的parent是<strong>父加载器</strong>。刚刚看了类加载器的继承关系图，但是<strong>父加载器不是父类，这是两个不同的概念。</strong>看一下前面ClassLoader的getParent()方法，任何一个类加载器调用此方法得到的对象就是它的父加载器。</p>
+<p><img src="/4.10.java%E6%89%A9%E5%B1%95%E7%B1%BB/v2-8d95137175db949b1260607d087d6398_720w.jpg" alt="img">AppClassLoader的父类是URLClassLoader，但是它的父加载器是ExtentionClassLoader。</p>
+<p>除了启动类加载器（BootstrapClassLoader），每个类加载器都有一个<strong>父加载器</strong>。比如刚才的应用类加载器，它的父加载器是扩展类加载器。你可能会说扩展类加载器的parent是null，所以它没有父加载器？</p>
+<p>有，它的父加载器就是BootstrapClassLoader。<strong>任何parent为null的加载器，其父加载器为BootstrapClassLoader</strong>，先记住这个结论，很快你会看到原因。</p>
+<p>最后一个问题，如果你直接继承ClassLoader自己实现一个类加载器，<strong>且不指定父加载器</strong>，那么这个自定义类加载器的父加载器是什么？</p>
+<p>是应用类加载器AppClassLoader。可以拉回去看看ClassLoader的无参构造器。</p>
+<p><img src="/4.10.java%E6%89%A9%E5%B1%95%E7%B1%BB/v2-ccaa3b0b08153ff02c3525567ca35005_720w.jpg" alt="img">父加载器关系</p>
+<h2 id="四、双亲委派模型"><a href="#四、双亲委派模型" class="headerlink" title="四、双亲委派模型"></a>四、双亲委派模型</h2><p>有一个描述类加载器加载类过程的术语：<strong>双亲委派模型</strong>。然而这是一个很有误导性的术语，它应该叫做<strong>单亲委派模型</strong>（Parent-Delegation Model）。但是没有办法，大家都已经这样叫了。所谓双亲委派，这个<strong>亲</strong>就是指ClassLoader里的全局变量parent，也就是<strong>父加载器</strong>。</p>
+<p>双亲委派的具体过程如下：</p>
+<ol>
+<li>当一个类加载器接收到类加载任务时，<strong>先查缓存</strong>里有没有，如果没有，将任务<strong>委托给它的父加载器</strong>去执行。</li>
+<li>父加载器也做同样的事情，一层一层往上委托，直到<strong>最顶层的启动类加载器</strong>为止。</li>
+<li>如果启动类加载器没有找到所需加载的类，便将此加载任务<strong>退回给下一级类加载器</strong>去执行，而下一级的类加载器也做同样的事情。</li>
+<li>如果最底层类加载器仍然没有找到所需要的class文件，则抛出异常。</li>
+</ol>
+<p>所以是一条线传上再传下，并没有什么“双亲”。整个过程的Java实现也没有什么神秘的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">ClassLoader</span> </span>&#123;</span><br><span class="line">    <span class="comment">// name: Class文件的绝对路径</span></span><br><span class="line">    <span class="comment">// resolve: 找到后是否立即解析（什么是解析？）</span></span><br><span class="line">    <span class="keyword">protected</span> Class&lt;?&gt; loadClass(String name, <span class="keyword">boolean</span> resolve) <span class="keyword">throws</span> ClassNotFoundException &#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (lock) &#123;</span><br><span class="line">            <span class="comment">// 尝试从缓存获取，这也是为什么修改了Class后需重启JVM才能生效</span></span><br><span class="line">            Class&lt;?&gt; target = findLoadedClass(name); <span class="comment">// native方法</span></span><br><span class="line">            <span class="keyword">if</span> (target == <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    <span class="keyword">if</span> (parent != <span class="keyword">null</span>) &#123;</span><br><span class="line">                        <span class="comment">// 委托给父加载器， 只查找不解析</span></span><br><span class="line">                        target = parent.loadClass(name, <span class="keyword">false</span>);</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="comment">// 父加载器为null，则委托给启动类加载器BootstrapClassloader</span></span><br><span class="line">                        target = findBootstrapClassOrNull(name); <span class="comment">// native方法</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;...&#125;</span><br><span class="line">				</span><br><span class="line">				</span><br><span class="line">                <span class="keyword">if</span> (target == <span class="keyword">null</span>) &#123;</span><br><span class="line">                    <span class="comment">// 父加载器没有找到，才调用自己的findClass()方法</span></span><br><span class="line">                    target = findClass(name);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (resolve) &#123;</span><br><span class="line">                resolveClass(target); <span class="comment">// native方法</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> target;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// findClass是模板方法，需要重写</span></span><br><span class="line">    <span class="keyword">protected</span> Class&lt;?&gt; findClass(String name) <span class="keyword">throws</span> ClassNotFoundException &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ClassNotFoundException(name);</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>什么是解析？把符号引用变为直接引用。比如com.test.Car里面有一个com.test.Wheel类，在编译时Car类并不知道Wheel类的实际内存地址，此时com.test.Wheel只是一个符号。“解析”的意思就是把被引用的类加载入内存，然后将com.test.Wheel这个符号变成一个指针，能够定位到内存中目标。</p>
+</blockquote>
+<p>到现在就剩下findClass这个模板方法了，URLClassLoader继承了ClassLoader以后，重写了此方法，做了三件事：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> Class&lt;?&gt; findClass(<span class="keyword">final</span> String name) <span class="keyword">throws</span> ClassNotFoundException &#123;</span><br><span class="line">    <span class="comment">// 1、安全检查</span></span><br><span class="line">    <span class="comment">// 2、根据绝对路径把硬盘上class文件读入内存</span></span><br><span class="line">    <span class="keyword">byte</span>[] raw = getBytes(name); </span><br><span class="line">    <span class="comment">// 3、将二进制数据转换成class对象</span></span><br><span class="line">    <span class="keyword">return</span> defineClass(raw);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果我们自己去实现一个类加载器，基本上就是<strong>继承ClassLoader之后重写findClass方法，且在此方法的最后调包defineClass。</strong></p>
+<h2 id="五、为什么要双亲委派？"><a href="#五、为什么要双亲委派？" class="headerlink" title="五、为什么要双亲委派？"></a>五、为什么要双亲委派？</h2><p><strong>确保类的全局唯一性</strong>。</p>
+<p>如果你自己写的一个类与核心类库中的类重名，会发现这个类可以被正常编译，但永远无法被加载运行。因为你写的这个类<strong>不会被应用类加载器加载</strong>，而是被委托到顶层，被启动类加载器在核心类库中找到了。如果没有双亲委托机制来确保类的全局唯一性，谁都可以编写一个java.lang.Object类放在classpath下，那应用程序就乱套了。</p>
+<p>从安全的角度讲，通过双亲委托机制，Java虚拟机总是先从最可信的Java核心API查找类型，可以防止不可信的类假扮被信任的类对系统造成危害。</p>
+<h2 id="六、所以知道这些到底有什么用？"><a href="#六、所以知道这些到底有什么用？" class="headerlink" title="六、所以知道这些到底有什么用？"></a>六、所以知道这些到底有什么用？</h2><ol>
+<li>面试。</li>
+<li>研究Tomcat、JBoss等Servlet容器原理，可能得另开一篇了。</li>
+<li>如果你不想自己的代码被反编译，可以将编译后的代码加密，用自己的类加载器解密。</li>
+<li>我编不下去了。</li>
+</ol>
+<p><img src="/4.10.java%E6%89%A9%E5%B1%95%E7%B1%BB/v2-348b8099549c5407ffe9b99ef8ec88ac_r.jpg" alt="preview"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/16/4.10.java%E6%89%A9%E5%B1%95%E7%B1%BB/" data-id="ckw61sdw6004hoswd88tr497r" data-title="java扩展类" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-19.1.git" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/04/16/19.1.git/" class="article-date">
@@ -1770,6 +2034,7 @@
 <p>Redis是 NoSQL（not only SQL）技术阵营中的一员，它通过多种键值数据类型来适应不同场景下的存储需求，借助一些高层级的接口使用其可以胜任，如缓存、队列系统的不同角色</p>
 <p>Redis可以保存在内存中（性能非常好），也可以持久化在文件中</p>
 <p>Redis的官网: <a target="_blank" rel="noopener" href="https://redis.io/">https://redis.io/</a></p>
+<p>redis的中文手册：<a target="_blank" rel="noopener" href="https://www.redis.com.cn/">https://www.redis.com.cn/</a></p>
 <p>经常用的数据成缓存，所以用redis</p>
 <p>特性：</p>
 <p>1.Redis支持数据的持久化，可以将内存中的数据保存在磁盘中，重启的时候可以再次加载进行使用</p>
@@ -2482,6 +2747,7 @@
 <p>默认情况下RedisTemplate模板只能支持字符串，我们自定义一个RedisTemplate，设置序列化器，这样我们可以很方便的操作实例对象。将RedisTemplate模板的设置放在RedisConfig类中</p>
 <p>RedisTemplate默认为我们实现了几种操作数据类型的方法：</p>
 <p><img src="/15.1.Redis/a2cc7cd98d1001e966f1ceae81048fe955e79756.jpeg" alt="img"></p>
+<p>redisTemplate有两个方法经常用到,一个是opsForXXX一个是boundXXXOps,XXX是value的类型,前者获取到一个Opercation,但是没有指定操作的key,可以在一个连接(事务)内操作多个key以及对应的value;后者会获取到一个指定了key的operation,在一个连接内只操作这个key对应的value</p>
 <p>也可以自己定义：</p>
 <h3 id="RedisService"><a href="#RedisService" class="headerlink" title="RedisService"></a>RedisService</h3><blockquote>
 <p>定义Redis操作业务类，在Redis中有几种数据结构，比如普通结构（对象），Hash结构、Set结构、List结构，该接口中定义了大多数常用操作方法。</p>
@@ -2833,575 +3099,6 @@
 
 
   
-    <article id="post-4.8.程序控制流程if" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/15/4.8.%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8Bif/" class="article-date">
-  <time class="dt-published" datetime="2021-04-15T03:49:57.000Z" itemprop="datePublished">2021-04-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/15/4.8.%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8Bif/">程序控制流程if</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>想了想还是单独给程序控制流程部分开了一个文章。因为业务逻辑部分，最主要的用的还是if语句。通过对不同情形的判断，来进行情况分类，可以帮助我们实现功能，学会if是写逻辑层代码重要的一环。</p>
-<p>流程控制语句：可以控制程序的执行流程。</p>
-<h1 id="顺序结构"><a href="#顺序结构" class="headerlink" title="顺序结构"></a>顺序结构</h1><p>是程序中最简单最基本的流程控制，没有特定的语法结构，按照代码的先后顺序，依次执行，程序中大多数的代码都是这样执行的。</p>
-<p>从上往下，依次执行。</p>
-<h1 id="选择结构"><a href="#选择结构" class="headerlink" title="选择结构"></a>选择结构</h1><p>也被称为分支结构。有特定的语法规则，代码要执行具体的逻辑运算进行判断，逻辑运算的结果有两个，所以产生选择，按照不同的选择执行不同的代码。</p>
-<p>两种：</p>
-<p>if语句的使用场景：</p>
-<p>a.针对表达式是一个boolean类型的判断</p>
-<p>b.针对一个范围的判断</p>
-<p>c.针对几个常量值的判断</p>
-<p>switch语句使用场景：针对几个常量值的判断</p>
-<p>1.if语句</p>
-<p>if语句的使用格式：</p>
-<p>a. 适合做单个判断</p>
-<p> if(关系表达式){</p>
-<p>语句体</p>
-<p>}</p>
-<p>if语句控制的语句体如果是一条语句，大括号可以省略，如果是多条语句，就不能省略。建议永远不要省略。</p>
-<p>一般来说，有左大括号就没有分号，有分号就没有左大括号。if();或if(){}</p>
-<p>b.适合做两个判断</p>
-<p>if(关系表达式){</p>
-<p>语句体1；</p>
-<p>}else{</p>
-<p>语句体2；</p>
-<p>}</p>
-<p>else后面是没有表达式的，只有if后面有。</p>
-<p>三元运算符实现的都可以用if语句实现。反之不成立（因为当if语句控制的操作是一个输出语句时候就不能，三元运算符是一个运算符，操作完毕是会有一个结果而不是一个输出语句）</p>
-<p>c.适合做多个判断</p>
-<p>if(比较表达式1){</p>
-<p>语句体1；</p>
-<p>}else if(比较表达式2){</p>
-<p>语句体2；</p>
-<p>}else if(比较表达式3){</p>
-<p>语句体3；</p>
-<p>}</p>
-<p>…</p>
-<p>else{</p>
-<p>语句体n+1；</p>
-<p>}</p>
-<p>注意事项：比较表达式无论简单还是复杂，结果必须是boolean类型。</p>
-<p>if语句是可以任意嵌套使用的，把语句体n改为if语句即可实现（无论使用if三种格式那种都行）。</p>
-<p>\2. switch语句</p>
-<p>switch(表达式){</p>
-<p>case  值1:</p>
-<p>语句体1；</p>
-<p>break；</p>
-<p>case  值2:</p>
-<p>语句体2；</p>
-<p>break；</p>
-<p>…</p>
-<p>default：</p>
-<p>语句体n+1；</p>
-<p>break；</p>
-<p>}</p>
-<p>switch:表示这是switch选择结构。</p>
-<p>表达式：表达式取值有限定，byte，short，char，int。JDK5以后可以是枚举，JDK7以后可以是字符串。</p>
-<p>case后面跟的是要和表达式比较的值。</p>
-<p>语句体部分可以是一条或者多条语句</p>
-<p>break表示中断，结束的意思，可以结束switch语句。</p>
-<p>注意事项：</p>
-<p>\1. case后面只能是常量，不能是变量，而且多个case后面的值不能出现相同的。</p>
-<p>\2. default可以省略。一般不建议，除非判断的case值是固定的（可以穷举完）。他的作用是对不正确的情况给出提示。</p>
-<p>\3. break可以省略。一般不建议，会出现case穿透(可以利用case穿透来实现多个输出结果相同时整合到一起)。最后一个break可以省略。</p>
-<p>\4. default位置可以出现在switch语句的任意位置。建议在最后。</p>
-<p>\5. switch语句的结束条件：遇到break或者执行到程序的末尾。</p>
-<h1 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h1><p>循环语句的组成：</p>
-<p>初始化语句：一条或者多条语句，这些语句完成一些初始化操作</p>
-<p>判断条件语句：这是一个boolean表达式，这个表达式决定是否执行循环体</p>
-<p>循环体语句：要多次循环的语句</p>
-<p>控制条件语句：在一次循环结束后，下次循环判断条件执行前执行，通过用于控制循环条件中的变量，使得循环再合适的时候结束</p>
-<h2 id="for循环："><a href="#for循环：" class="headerlink" title="for循环："></a>for循环：</h2><p>for(初始化语句；判断条件语句；控制条件语句)｛</p>
-<p>循环体语句；</p>
-<p>｝</p>
-<p>注意事项：判断条件语句的结果是一个boolean类型</p>
-<p>循环语句如果是一条语句，大括号可以省略，如果是多条语句，大括号不能省略，建议永远不要省略。</p>
-<p>一般来说，有左大括号就没有分号，有分号就没有左大括号。</p>
-<p>for循环：求和思想：初始化值为0。</p>
-<p>求阶乘思想：初始化值为1。</p>
-<p>水仙花数：就是指一个三位数，其各位数字的立方和等于该数本身。eg：153</p>
-<h2 id="while循环："><a href="#while循环：" class="headerlink" title="while循环："></a>while循环：</h2><p>基本格式：</p>
-<p>while(判断条件语句){</p>
-<p>循环体语句；</p>
-<p>}</p>
-<p>扩展格式：</p>
-<p>初始化语句；</p>
-<p>while（判断条件语句）｛</p>
-<p>循环体语句；</p>
-<p>控制条件语句；</p>
-<p>｝</p>
-<p> for循环和while循环语句可以等价转换，但也存在区别：</p>
-<p>使用区别：控制条件语句所控制的那个变量，在for循环结束后，就不能在被访问到了，而while循环结束还可以继续使用。若不使用推荐使用for循环，因为这个变量会从内存中消失，能够提高内存的使用效率。</p>
-<p>场景区别：for循环适合针对一个范围判断进行操作，while循环适合判断次数不明确的操作。</p>
-<h2 id="do-…-while-循环语句："><a href="#do-…-while-循环语句：" class="headerlink" title="do … while 循环语句："></a>do … while 循环语句：</h2><p>至少执行一次</p>
-<p>基本格式：</p>
-<p>do{</p>
-<p>循环体语句；</p>
-<p>}while（判断条件语句）;</p>
-<p>扩展格式：</p>
-<p>初始化语句；</p>
-<p>do｛</p>
-<p>循环体语句；</p>
-<p>控制条件语句；</p>
-<p>｝while（判断条件语句）;</p>
-<p>优先考虑for循环，其次是while循环，最后考虑do… while循环。</p>
-<p>注意死循环：ctrl+c中断循环</p>
-<p>A：注意控制条件语句控制的那个变量的问题，不要丢了，否则会死循环。</p>
-<p>B：两种最简单的死循环格式</p>
-<p>while（true）｛</p>
-<p>｝</p>
-<p>for（；；）｛</p>
-<p>｝</p>
-<p>循环嵌套：循环语句的循环体本身是一个循环语句。</p>
-<p>外循环控制行数，内循环控制列数。</p>
-<h1 id="控制跳转语句"><a href="#控制跳转语句" class="headerlink" title="控制跳转语句"></a>控制跳转语句</h1><p>****break****：中断</p>
-<p>使用场景：离开下面2个场景使用，无意义。</p>
-<p>A：switch语句中</p>
-<p>B：循环语句中（加入了if判断的情况）</p>
-<p>使用：A：跳出单层循环</p>
-<p>B：跳出多层循环，必须借助标签。</p>
-<p>格式：</p>
-<p>标签名： 语句</p>
-<p>****continue****：继续</p>
-<p>使用场景：循环语句中。（离开此场景无意义）</p>
-<p>break和continue的区别：break是跳出单层循环。continue是跳出一次循环，进行下一次的判断执行。</p>
-<p>****return****：返回</p>
-<p>renturn关键字不是为了跳转出循环体，更常用的功能是结束一个方法，也就是推出一个方法，跳转到上层调用的方法。</p>
-<p>一旦遇到return，程序就不会在继续往后执行。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/15/4.8.%E7%A8%8B%E5%BA%8F%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8Bif/" data-id="ckw61sdvg0029oswd66s523v9" data-title="程序控制流程if" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/for%E5%BE%AA%E7%8E%AF/" rel="tag">for循环</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/if/" rel="tag">if</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%80%BB%E8%BE%91%E5%88%A4%E6%96%AD/" rel="tag">逻辑判断</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-1.5.编程规范" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/15/1.5.%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" class="article-date">
-  <time class="dt-published" datetime="2021-04-15T02:57:13.000Z" itemprop="datePublished">2021-04-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/15/1.5.%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/">编程规范</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="编程规范"><a href="#编程规范" class="headerlink" title="编程规范"></a>编程规范</h2><p>遇到左大括号缩进一个tab的位置。</p>
-<p>关联不是很大的语句间空行。</p>
-<h2 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h2><h3 id="命名风格"><a href="#命名风格" class="headerlink" title="命名风格"></a>命名风格</h3><p>1.不能以下划线或美元符号开始，也不能以下划线或美元符号结束。</p>
-<p>2.严禁使用拼音与英文混合的方式，更不允许直接使用中文的方式。（有些国际通用的可以用拼音：renminbi，taobao）</p>
-<p>3.驼峰命名。</p>
-<p>4.杜绝完全不规范的缩写，避免望文不知义</p>
-<p>5.为了达到代码自解释的目标，任何自定义编程元素在命名时，使用尽量完整的单词组合来表达其意。</p>
-<p>6.如果模块、接口、类、方法使用了设计模式，在命名时需体现出具体模式。</p>
-<h3 id="类名命名"><a href="#类名命名" class="headerlink" title="类名命名"></a>类名命名</h3><p>1.大写开头（DO / BO / DTO / VO / AO/ PO / UID除外 ）</p>
-<p>2.抽象类命名使用 Abstract 或 Base 开头；异常类命名使用 Exception 结尾；测试类命名以它要测试的类的名称开始，以 Test 结尾</p>
-<p>3.POJO 类中布尔类型变量都不要加 is 前缀，否则部分框架解析会引起序列化错误。</p>
-<p>4.包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词。<strong>包名统一使用单数形式</strong>，但是类名如果有复数含义，类名可以使用复数形式。</p>
-<p>5.避免在子父类的成员变量之间、或者不同代码块的局部变量之间采用完全相同的命名，使可读性降低</p>
-<p>6.接口类中的方法和属性不要加任何修饰符号（public 也不要加），保持代码的简洁性，并加上有效的 Javadoc 注释。尽量不要在接口里定义变量，如果一定要定义变量，肯定是与接口方法相关，并且是整个应用的基础常量。JDK8 中接口允许有默认实现，那么这个 default 方法，是对所有实现类都有价值的默认实现。</p>
-<p>7.接口和实现类的命名：</p>
-<ul>
-<li><p>对于 Service 和 DAO 类，基于 SOA 的理念，暴露出来的服务一定是接口，内部的实现类用Impl 的后缀与接口区别。CacheServiceImpl 实现 CacheService 接口。</p>
-</li>
-<li><p>如果是形容能力的接口名称，取对应的形容词为接口名（通常是–able 的形容词）AbstractTranslator 实现 Translatable 接口</p>
-</li>
-</ul>
-<p>8.<strong>枚举类</strong>名带上 Enum 后缀，枚举成员名称需要全大写，单词间用下划线隔开。枚举其实就是特殊的类，域成员均为常量，且构造方法被默认强制是私有。</p>
-<p>9.Service/DAO 层方法命名规约</p>
-<p>1） 获取单个对象的方法用 get 做前缀。</p>
-<p>2） 获取多个对象的方法用 list 做前缀，复数形式结尾如：listObjects。 </p>
-<p>3） 获取统计值的方法用 count 做前缀。 </p>
-<p>4） 插入的方法用 save/insert 做前缀。</p>
-<p>5） 删除的方法用 remove/delete 做前缀。</p>
-<p>6） 修改的方法用 update 做前缀。</p>
-<p>10.领域模型命名规约</p>
-<p>1） 数据对象：xxxDO，xxx 即为数据表名。</p>
-<p>2） 数据传输对象：xxxDTO，xxx 为业务领域相关的名称。</p>
-<p>3） 展示对象：xxxVO，xxx 一般为网页名称。</p>
-<p>4） POJO 是 DO/DTO/BO/VO 的统称，禁止命名成 xxxPOJO</p>
-<h3 id="方法名，参数名，变量名"><a href="#方法名，参数名，变量名" class="headerlink" title="方法名，参数名，变量名"></a>方法名，参数名，变量名</h3><p>1.小写开头。</p>
-<p>2.类型与中括号紧挨相连来表示数组</p>
-<p>3.在常量与变量的命名时，表示类型的名词放在词尾，以提升辨识度（startTime / workQueue / nameList / TERMINATED_THREAD_COUNT）</p>
-<h3 id="常量命名"><a href="#常量命名" class="headerlink" title="常量命名"></a>常量命名</h3><p>1.常量命名全部大写，单词间用下划线隔开，不要嫌弃太长，一定见名知意。</p>
-<p>2.不允许任何魔法值（即未经预先定义的常量）直接出现在代码中。</p>
-<p>3.在 long 或者 Long 赋值时，数值后使用大写的 L，不能是小写的 l，小写容易跟数字 1 混淆，造成误解</p>
-<p>4.不要使用一个常量类维护所有常量，要按常量功能进行归类，分开维护。（缓存相关常量放在类 CacheConsts 下；系统配置相关常量放在类 ConfigConsts 下。）</p>
-<p>5.常量的复用层次有五层：跨应用共享常量、应用内共享常量、子工程内共享常量、包内共享常量、类内共享常量。</p>
-<p>1） 跨应用共享常量：放置在二方库中，通常是 client.jar 中的 constant 目录下。</p>
-<p>2） 应用内共享常量：放置在一方库中，通常是子模块中的 constant 目录下。</p>
-<p>3） 子工程内部共享常量：即在当前子工程的 constant 目录下。</p>
-<p>4） 包内共享常量：即在当前包下单独的 constant 目录下。</p>
-<p>5） 类内共享常量：直接在类内部 private static final 定义。</p>
-<p>6.如果变量值仅在一个固定范围内变化用 enum 类型来定义。</p>
-<p>7.常量类</p>
-<p>static final修饰的字段在javac编译时生成constantValue属性，在类加载的准备阶段直接把constantValue的值赋给该字段。可以理解为在编译期即把结果放入了常量池中。即在类未被加载时static final字段就有了值，这个值不需要对类进行初始化就可以读取，不像static变量，需要类加载后才会有值(类未加载进内存时值为默认值0或null)。</p>
-<p>注：1.ConstantValue修饰的字段<strong>只限于基本类型和string</strong>。</p>
-<p>   2.ConstantValue修饰的字段若为String类型，必须要是编译期可以进行优化得到的即编译期常量才能满足不需要对类进行初始化就可以读取(例如：String s = “a”+“bc”；)，否则这个值需要对类进行初始化才可以读取(例如：String s = new String(“abc”)；)。</p>
-<p>   3.对于满足上两个条件的constantValue变量，在访问该变量时，无需初始化类即可访问(即访问时在常量池中寻找，不会执行类的静态成员和静态代码块)。</p>
-<h2 id="代码格式"><a href="#代码格式" class="headerlink" title="代码格式"></a>代码格式</h2><p>1.如果是大括号内为空，则简洁地写成{}即可，大括号中间无需换行和空格；如果是非空代码块则： </p>
-<p>1） 左大括号前不换行。<br>2） 左大括号后换行。<br>3） 右大括号前换行。<br>4） 右大括号后还有 else 等代码则不换行；表示终止的右大括号后必须换行</p>
-<p>2.左小括号和字符之间不出现空格；同样，右小括号和字符之间也不出现空格；而左大括号前需要空格。</p>
-<p>3.if/for/while/switch/do 等保留字与括号之间都必须加空格。</p>
-<p>4.任何二目、三目运算符的左右两边都需要加一个空格。</p>
-<p>5.采用 4 个空格缩进，禁止使用 tab 字符</p>
-<p>例子：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123; </span><br><span class="line">    <span class="comment">// 缩进 4 个空格 </span></span><br><span class="line">    String say = <span class="string">&quot;hello&quot;</span>; </span><br><span class="line">    <span class="comment">// 运算符的左右必须有一个空格 </span></span><br><span class="line">    <span class="keyword">int</span> flag = <span class="number">0</span>; </span><br><span class="line">    <span class="comment">// 关键词 if 与括号之间必须有一个空格，括号内的 f 与左括号，0 与右括号不需要空格 </span></span><br><span class="line">    <span class="keyword">if</span> (flag == <span class="number">0</span>) &#123; </span><br><span class="line">        System.out.println(say); </span><br><span class="line">    &#125; </span><br><span class="line"> </span><br><span class="line">    <span class="comment">// 左大括号前加空格且不换行；左大括号后换行 </span></span><br><span class="line">    <span class="keyword">if</span> (flag == <span class="number">1</span>) &#123; </span><br><span class="line">    System.out.println(<span class="string">&quot;world&quot;</span>); </span><br><span class="line">    <span class="comment">// 右大括号前换行，右大括号后有 else，不用换行 </span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123; </span><br><span class="line">    System.out.println(<span class="string">&quot;ok&quot;</span>); </span><br><span class="line">    <span class="comment">// 在右大括号后直接结束，则必须换行 </span></span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>6.注释的双斜线与注释内容之间有且仅有一个空格</p>
-<p>7.在进行类型强制转换时，右括号与强制转换值之间不需要任何空格隔开。</p>
-<p>8.单行字符数限制不超过 120 个，超出需要换行，换行时遵循如下原则：<br>1）第二行相对第一行缩进 4 个空格，从第三行开始，不再继续缩进。<br>2）运算符与下文一起换行。<br>3）方法调用的点符号与下文一起换行。<br>4）方法调用中的多个参数需要换行时，在逗号后进行。 </p>
-<p>5）在括号前不要换行，在逗号前不要换行</p>
-<p>例子：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">StringBuilder sb = <span class="keyword">new</span> StringBuilder(); </span><br><span class="line"><span class="comment">// 超过 120 个字符的情况下，换行缩进 4 个空格，点号和方法名称一起换行</span></span><br><span class="line">sb.append(<span class="string">&quot;Jack&quot;</span>).append(<span class="string">&quot;Ma&quot;</span>)... </span><br><span class="line">.append(<span class="string">&quot;alibaba&quot;</span>)... </span><br><span class="line">.append(<span class="string">&quot;alibaba&quot;</span>)... </span><br><span class="line">.append(<span class="string">&quot;alibaba&quot;</span>);</span><br></pre></td></tr></table></figure>
-
-<p>9.方法参数在定义和传入时，多个参数逗号后边必须加空格</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">method(args1, args2, args3);</span><br></pre></td></tr></table></figure>
-
-<p>10.IDE 的 text file encoding 设置为 UTF-8; IDE 中文件的换行符使用 Unix 格式，不要使用 Windows 格式。</p>
-<p>11.单个方法的总行数不超过 80 行（除注释之外的所有行数）</p>
-<p>代码逻辑分清红花和绿叶，个性和共性，绿叶逻辑单独出来成为额外方法，使主干代码更加清晰；共性逻辑抽取成为共性方法，便于复用和维护</p>
-<p>12.没有必要增加若干空格来使变量的赋值等号与上一行对应位置的等号对齐</p>
-<p>13.不同逻辑、不同语义、不同业务的代码之间插入一个空行分隔开来以提升可读性（任何情形，没有必要插入多个空行进行隔开）</p>
-<h2 id="OOP-规约"><a href="#OOP-规约" class="headerlink" title="OOP 规约"></a>OOP 规约</h2><p>1.避免通过一个类的对象引用访问此类的静态变量或静态方法，无谓增加编译器解析成本，直接用类名来访问即可</p>
-<p>2.所有的覆写方法，必须加@Override 注解</p>
-<p>3.相同参数类型，相同业务含义，才可以使用 Java 的可变参数，避免使用 Object。（提倡同学们尽量不用可变参数编程）</p>
-<p>4.外部正在调用或者二方库依赖的接口，不允许修改方法签名，避免对接口调用方产生影响。接口过时必须加@Deprecated 注解，并清晰地说明采用的新接口或者新服务是什么。</p>
-<p>5.不能使用过时的类或方法（接口提供方既然明确是过时接口，那么有义务同时提供新的接口；作为调用方来说，有义务去考证过时方法的新实现是什么）</p>
-<p>6.Object 的 equals 方法容易抛空指针异常，应使用常量或确定有值的对象来调用equals。推荐使用 java.util.Objects#equals（JDK7 引入的工具类）。</p>
-<p>7.所有整型包装类对象之间值的比较，全部使用 equals 方法比较</p>
-<p>对于 Integer var = ? 在-128 至 127 范围内的赋值，Integer 对象是在 IntegerCache.cache 产生，会复用已有对象，这个区间内的 Integer 值可以直接使用==进行判断，但是这个区间之外的所有数据，都会在堆上产生，并不会复用已有对象，这是一个大坑，推荐使用 equals 方法进行判断。</p>
-<p>8.浮点数之间的等值判断，基本数据类型不能用==来比较，包装数据类型不能用equals 来判断。</p>
-<p>浮点数采用“尾数+阶码”的编码方式，类似于科学计数法的“有效数字+指数”的表示方式。二进制无法精确表示大部分的十进制小数</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">反例：</span><br><span class="line"> <span class="keyword">float</span> a = <span class="number">1.0f</span> - <span class="number">0.9f</span>;</span><br><span class="line"> <span class="keyword">float</span> b = <span class="number">0.9f</span> - <span class="number">0.8f</span>;</span><br><span class="line"> <span class="keyword">if</span> (a == b) &#123;</span><br><span class="line"> <span class="comment">// 预期进入此代码快，执行其它业务逻辑</span></span><br><span class="line"> <span class="comment">// 但事实上 a==b 的结果为 false</span></span><br><span class="line"> &#125;</span><br><span class="line"> Float x = Float.valueOf(a);</span><br><span class="line"> Float y = Float.valueOf(b);</span><br><span class="line"> <span class="keyword">if</span> (x.equals(y)) &#123;</span><br><span class="line"> <span class="comment">// 预期进入此代码快，执行其它业务逻辑</span></span><br><span class="line"> <span class="comment">// 但事实上 equals 的结果为 false</span></span><br><span class="line"> &#125; </span><br><span class="line">正例：</span><br><span class="line">(<span class="number">1</span>) 指定一个误差范围，两个浮点数的差值在此范围之内，则认为是相等的。</span><br><span class="line"> <span class="keyword">float</span> a = <span class="number">1.0f</span> - <span class="number">0.9f</span>;</span><br><span class="line"> <span class="keyword">float</span> b = <span class="number">0.9f</span> - <span class="number">0.8f</span>;</span><br><span class="line"> <span class="keyword">float</span> diff = <span class="number">1e-6f</span>;</span><br><span class="line"> <span class="keyword">if</span> (Math.abs(a - b) &lt; diff) &#123;</span><br><span class="line"> System.out.println(<span class="string">&quot;true&quot;</span>);</span><br><span class="line"> &#125;</span><br><span class="line">(<span class="number">2</span>) 使用 BigDecimal 来定义值，再进行浮点数的运算操作。</span><br><span class="line"> BigDecimal a = <span class="keyword">new</span> BigDecimal(<span class="string">&quot;1.0&quot;</span>);</span><br><span class="line"> BigDecimal b = <span class="keyword">new</span> BigDecimal(<span class="string">&quot;0.9&quot;</span>);</span><br><span class="line"> BigDecimal c = <span class="keyword">new</span> BigDecimal(<span class="string">&quot;0.8&quot;</span>);</span><br><span class="line"> BigDecimal x = a.subtract(b);</span><br><span class="line"> BigDecimal y = b.subtract(c);</span><br><span class="line"> <span class="keyword">if</span> (x.equals(y)) &#123;</span><br><span class="line"> System.out.println(<span class="string">&quot;true&quot;</span>);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<p>9.定义数据对象 DO 类时，属性类型要与数据库字段类型相匹配。</p>
-<p>数据库字段的 bigint 必须与类属性的 Long 类型相对应。</p>
-<p>10.为了防止精度损失，禁止使用构造方法 BigDecimal(double)的方式把 double 值转化为 BigDecimal 对象。BigDecimal(double)存在精度损失风险，在精确计算或值比较的场景中可能会导致业务逻辑异常</p>
-<p>如：BigDecimal g = new BigDecimal(0.1f); 实际的存储值为：0.10000000149  </p>
-<p>需使用：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BigDecimal recommend1 = <span class="keyword">new</span> BigDecimal(<span class="string">&quot;0.1&quot;</span>);</span><br><span class="line">BigDecimal recommend2 = BigDecimal.valueOf(<span class="number">0.1</span>);</span><br></pre></td></tr></table></figure>
-
-<p>11.关于基本数据类型与包装数据类型的使用标准：</p>
-<ul>
-<li><p>所有的 POJO 类属性必须使用包装数据类型。</p>
-</li>
-<li><p>RPC 方法的返回值和参数必须使用包装数据类型。</p>
-</li>
-<li><p>所有的局部变量使用基本数据类型。</p>
-</li>
-</ul>
-<p>POJO 类属性没有初值是提醒使用者在需要使用时，必须自己显式地进行赋值，任何 NPE 问题，或者入库检查，都由使用者来保证。</p>
-<h2 id="Java代码的规范"><a href="#Java代码的规范" class="headerlink" title="Java代码的规范"></a>Java代码的规范</h2><p>1.尽量在合适的场合使用单例</p>
-<p>使用单例可以减轻加载的负担，缩短加载的时间，提高加载的效率，但并不是所有地方都适用于单例，单例主要适用于以下三个方面：</p>
-<ul>
-<li><p>控制资源的使用，通过线程同步来控制资源的并发访问</p>
-</li>
-<li><p>控制实例的产生，以达到节约资源的目的</p>
-</li>
-<li><p>控制数据共享，在不建立直接关联的条件下，让多个不相关的进程或线程之间实现通信</p>
-</li>
-</ul>
-<p>2.尽量避免随意使用静态变量</p>
-<p>要知道，当某个对象被定义为stataic变量所引用，那么gc通常是不会回收这个对象所占有的内存，如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public class A&#123;</span><br><span class="line">static B b &#x3D; new B();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>此时静态变量b的生命周期与A类同步，如果A类不会卸载，那么b对象会常驻内存，直到程序终止。</p>
-<p>3.尽量避免过多过常的创建java对象</p>
-<p>尽量避免在经常调用的方法，循环中new对象，由于系统不仅要花费时间来创建对象，而且还要花时间对这些对象进行垃圾回收和处理，在我们可以控制的范围内，最大限度的重用对象，最好能用基本的数据类型或数组来替代对象。</p>
-<p>4.尽量使用final修饰符</p>
-<p>带有final修饰符的类是不可派生的。在Java核心API中，有许多应用final的例子，例如java.lang.String。为String类指 定final防止了使用者覆盖length()方法。另外，如果一个类是final的，则该类所有方法都是final的。java编译器会寻找机会内联 (inline)所有的final方法(这和具体的编译器实现有关)。此举能够使性能平均提高50%。</p>
-<p>5.尽量使用局部变量</p>
-<p>调用方法时传递的参数以及在调用中创建的临时变量都保存在栈(Stack)中，速度较快。其他变量，如静态变量，实例变量等，都在堆(Heap)中创建，速度较慢。</p>
-<p>6.尽量处理好包装类型和基本类型两者的使用场所</p>
-<p>虽然包装类型和基本类型在使用过程中是可以相互转换，但它们两者所产生的内存区域是完全不同的，基本类型数据产生和处理都在栈中处理，包装类型是对象，是在堆中产生实例。</p>
-<p>在集合类对象，有对象方面需要的处理适用包装类型，其他的处理提倡使用基本类型。</p>
-<p>7.慎用synchronized，尽量减小synchronize的方法</p>
-<p>都 知道，实现同步是要很大的系统开销作为代价的，甚至可能造成死锁，所以尽量避免无谓的同步控制。synchronize方法被调用时，直接会把当前对象锁 了，在方法执行完之前其他线程无法调用当前对象的其他方法。所以synchronize的方法尽量小，并且应尽量使用方法同步代替代码块同步。</p>
-<p>8.尽量使用StringBuilder和StringBuffer进行字符串连接</p>
-<p>字符串缓冲区</p>
-<p>9.尽量不要使用finalize方法</p>
-<p>实际上，将资源清理放在finalize方法中完成是非常不好的选择，由于GC的工作量很大，尤其是回收Young代内存时，大都会引起应用程序暂停，所以再选择使用finalize方法进行资源清理，会导致GC负担更大，程序运行效率更差。</p>
-<p>10.尽量使用基本数据类型代替对象</p>
-<p>String str = “hello”;</p>
-<p>上面这种方式会创建一个“hello”字符串，而且JVM的字符缓存池还会缓存这个字符串；</p>
-<p>String str = new String(“hello”);</p>
-<p>此时程序除创建字符串外，str所引用的String对象底层还包含一个char[]数组，这个char[]数组依次存放了h,e,l,l,o</p>
-<p>11.单线程应尽量使用HashMap, ArrayList</p>
-<p>HashTable,Vector等使用了同步机制，降低了性能。</p>
-<p>12.尽量合理的创建HashMap</p>
-<p>当你要创建一个比较大的hashMap时，充分利用另一个构造函数</p>
-<p>public HashMap(int initialCapacity, float loadFactor)</p>
-<p>避免HashMap多次进行了hash重构,扩容是一件很耗费性能的事，在默认中initialCapacity只有16，而loadFactor是 0.75，需要多大的容量，你最好能准确的估计你所需要的最佳大小，同样的Hashtable，Vectors也是一样的道理。</p>
-<p>13.尽量减少对变量的重复计算</p>
-<p>如</p>
-<p>for(int i=0;i&lt;list.size();i++)</p>
-<p>应该改为</p>
-<p>for(int i = 0,len = list.size();i&lt; len;i++)</p>
-<p>并且在循环中应该避免使用复杂的表达式。在循环中，循环条件会被反复计算，如果不使用复杂表达式，而使循环条件值不变的话，程序将会运行的更快。</p>
-<p>14.尽量避免不必要的创建</p>
-<p>如</p>
-<p>A a = new A();</p>
-<p>if(i==1){list.add(a);}</p>
-<p>应该改为</p>
-<p>if(i==1){<br>A a = new A();</p>
-<p>list.add(a);}</p>
-<p>15.尽量在finally块中释放资源</p>
-<p>程序中使用到的资源应当被释放，以避免资源泄漏。这最好在finally块中去做。不管程序执行的结果如何，finally块总是会执行的，以确保资源的正确关闭。</p>
-<p>16.尽量使用移位来代替’a/b’的操作</p>
-<p>“/“是一个代价很高的操作，使用移位的操作将会更快和更有效</p>
-<p>如</p>
-<p>int num = a / 4;</p>
-<p>int num = a / 8;</p>
-<p>应该改为</p>
-<p>int num = a &gt;&gt; 2;</p>
-<p>int num = a &gt;&gt; 3;</p>
-<p>但注意的是使用移位应添加注释，因为移位操作不直观，比较难理解</p>
-<p>17.尽量使用移位来代替’a*b’的操作</p>
-<p>同样的，对于’*’操作，使用移位的操作将会更快和更有效</p>
-<p>如</p>
-<p>int num = a * 4;</p>
-<p>int num = a * 8;</p>
-<p>应该改为</p>
-<p>int num = a &lt;&lt; 2;</p>
-<p>int num = a &lt;&lt; 3;</p>
-<p>18.尽量确定StringBuffer的容器</p>
-<p>StringBuffer 的构造器会创建一个默认大小(通常是16)的字符数组。在使用中，如果超出这个大小，就会重新分配内存，创建一个更大的数组，并将原先的数组复制过来，再 丢弃旧的数组。在大多数情况下，你可以在创建 StringBuffer的时候指定大小，这样就避免了在容量不够的时候自动增长，以提高性能。</p>
-<p>如：StringBuffer buffer = new StringBuffer(1000);</p>
-<p>19.尽量早释放无用对象的引用</p>
-<p>大部分时，方法局部引用变量所引用的对象 会随着方法结束而变成垃圾，因此，大部分时候程序无需将局部，引用变量显式设为null。</p>
-<p>例如：</p>
-<p>Public void test(){<br>Object obj = new Object();</p>
-<p>……</p>
-<p>//执行耗时，耗内存操作；或调用耗时，耗内存的方法</p>
-<p>}</p>
-<p>上面这个就没必要了，随着方法test()的执行完成，程序中obj引用变量的作用域就结束了。但是如果是改成下面：</p>
-<p>Public void test(){<br>Object obj = new Object();</p>
-<p>……</p>
-<p>Obj=null;</p>
-<p>……</p>
-<p>}</p>
-<p>这时候就有必要将obj赋值为null，可以尽早的释放对Object对象的引用。</p>
-<p>20.尽量避免使用二维数组</p>
-<p>二维数据占用的内存空间比一维数组多得多，大概10倍以上。</p>
-<p>21.尽量避免使用split</p>
-<p>除非是必须的，否则应该避免使用split，split由于支持正则表达式，所以效率比较低，如果是频繁的几十，几百万的调用将会耗费大量资源，如果确实需要频繁的调用split，可以考虑使用apache的StringUtils.split(string,char)，频繁split的可以缓存结果。</p>
-<p>22.ArrayList &amp; LinkedList</p>
-<p>一 个是线性表，一个是链表，一句话，随机查询尽量使用ArrayList，ArrayList优于LinkedList，LinkedList还要移动指 针，添加删除的操作LinkedList优于ArrayList，ArrayList还要移动数据，不过这是理论性分析，事实未必如此，重要的是理解好2 者得数据结构，对症下药。</p>
-<p>23.尽量使用System.arraycopy ()代替通过来循环复制数组</p>
-<p>System.arraycopy() 要比通过循环来复制数组快的多</p>
-<p>24.尽量缓存经常使用的对象</p>
-<p>尽可能将经常使用的对象进行缓存，可以使用数组，或HashMap的容器来进行缓存，但这种方式可能导致系统占用过多的缓存，性能下降，推荐可以使用一些第三方的开源工具，如EhCache，Oscache进行缓存，他们基本都实现了FIFO/FLU等缓存算法。</p>
-<p>25.尽量避免非常大的内存分配</p>
-<p>有时候问题不是由当时的堆状态造成的，而是因为分配失败造成的。分配的内存块都必须是连续的，而随着堆越来越满，找到较大的连续块越来越困难。</p>
-<p>26.慎用异常</p>
-<p>当 创建一个异常时，需要收集一个栈跟踪(stack track)，这个栈跟踪用于描述异常是在何处创建的。构建这些栈跟踪时需要为运行时栈做一份快照，正是这一部分开销很大。当需要创建一个 Exception 时，JVM 不得不说：先别动，我想就您现在的样子存一份快照，所以暂时停止入栈和出栈操作。栈跟踪不只包含运行时栈中的一两个元素，而是包含这个栈中的每一个元素。</p>
-<p>如果您创建一个 Exception ，就得付出代价。好在捕获异常开销不大，因此可以使用 try-catch 将核心内容包起来。从技术上讲，您甚至可以随意地抛出异常，而不用花费很大的代价。招致性能损失的并不是 throw 操作——尽管在没有预先创建异常的情况下就抛出异常是有点不寻常。真正要花代价的是创建异常。幸运的是，好的编程习惯已教会我们，不应该不管三七二十一就 抛出异常。异常是为异常的情况而设计的，使用时也应该牢记这一原则。</p>
-<h2 id="MySQL-数据库规范"><a href="#MySQL-数据库规范" class="headerlink" title="MySQL 数据库规范"></a>MySQL 数据库规范</h2><h3 id="建表规约"><a href="#建表规约" class="headerlink" title="建表规约"></a>建表规约</h3><p>1.表达是与否概念的字段，必须使用 is_xxx 的方式命名，数据类型是 unsigned tinyint（1 表示是，0 表示否）。任何字段如果为非负数，必须是 unsigned。</p>
-<p>POJO 类中的任何布尔类型的变量，都不要加 is 前缀。</p>
-<p>2.表名、字段名必须使用小写字母或数字，禁止出现数字开头，禁止两个下划线中间只出现数字。数据库字段名的修改代价很大，因为无法进行预发布，所以字段名称需要慎重考虑。不允许出现任何大写字母（因为MySQL 在 Windows 下不区分大小写，但在 Linux 下默认是区分大小写）</p>
-<p>3.表名不使用复数名词。DO 类名也是单数形式</p>
-<p>4.禁用保留字，如 desc、range、match、delayed 等</p>
-<p>5.主键索引名（primary key）为 <code>pk_字段名</code>；唯一索引名（unique key）为 <code>uk_字段名</code>；普通索引名（ index）则为 <code>idx_字段名</code></p>
-<p>6.小数类型为 decimal，禁止使用 float 和 double（在存储的时候，float 和 double 都存在精度损失的问题）。存储的数据范围超过 decimal 的范围，建议将数据拆成整数和小数并分开存储</p>
-<p>7.如果存储的字符串长度几乎相等，使用 char 定长字符串类型。</p>
-<p>8.varchar 是可变长字符串，不预先分配存储空间，长度不要超过 5000，如果存储长度大于此值，定义字段类型为 text，独立出来一张表，用主键来对应，避免影响其它字段索引效率。</p>
-<p>9.表必备三字段：id（必为主键，类型为 bigint unsigned、单表时自增、步长为 1）, create_time, update_time（类型均为 datetime 类型）。</p>
-<p>10.表的命名最好是遵循“业务名称_表的作用”</p>
-<p>11.库名与应用名称尽量一致</p>
-<p>12.如果修改字段含义或对字段表示的状态追加时，需要及时更新字段注释</p>
-<p>13.字段允许适当冗余，以提高查询性能，但必须考虑数据一致。冗余字段应遵循：</p>
-<p>1） 不是频繁修改的字段。</p>
-<p>2） 不是 varchar 超长字段，更不能是 text 字段。</p>
-<p> 3） 不是唯一索引的字段。</p>
-<p>14.单表行数超过 500 万行或者单表容量超过 2GB，才推荐进行分库分表（预计三年后的数据量根本达不到这个级别，请不要在创建表时就分库分表）</p>
-<p>15.合适的字符存储长度，不但节约数据库表空间、节约索引存储，更重要的是提升检索速度。无符号值（unsigned）可以避免误存负数，且扩大了表示范围。</p>
-<p>对象 年龄区间 类型 字节 表示范围</p>
-<p>人 150 岁之内 tinyint unsigned 1 无符号值：0 到 255</p>
-<p>龟 数百岁 smallint unsigned 2 无符号值：0 到 65535</p>
-<p>恐龙化石 数千万年 int unsigned 4 无符号值：0 到约 42.9 亿</p>
-<p>太阳 约 50 亿年 bigint unsigned 8 无符号值：0 到约 10 的 19 次方</p>
-<p>16.尽量避免NULL：应该指定列为NOT NULL，除非你想存储NULL。在MySQL中，含有空值的列很难进行查询优化。因为它们使得索引、索引的统计信息以及比较运算更加复杂。你应该用0、一个特殊的值或者一个空串代替空值。在设置默认值的时候，尽量不要用Null来当默认值，如果字段是int类型，默认为0，如果是varchar类型，默认值用空字符串（’’）会更好一些</p>
-<p>17.习惯是任何数据表的任何列都是非空（NOT NULL），在此基础上将数字默认设为0，文本默认设为’’（在PHPMyAdmin中留空）</p>
-<h3 id="索引规约"><a href="#索引规约" class="headerlink" title="索引规约"></a>索引规约</h3><p>1.业务上具有唯一特性的字段，即使是多个字段的组合，也必须建成唯一索引。（唯一索引影响 insert 速度，这个速度损耗可以忽略，但提高查找速度是明显的。没有唯一索引的话，必然有脏数据产生）</p>
-<p>2.超过三个表禁止 join。需要 join 的字段，数据类型必须绝对一致；多表关联查询时，保证被关联的字段需要有索引（双表join时也要注意表索引、SQL性能）</p>
-<p>3.在 varchar 字段上建立索引时，必须指定索引长度，没必要对全字段建立索引，根据实际文本区分度决定索引长度即可。索引的长度与区分度是一对矛盾体，一般对字符串类型数据，长度为 20 的索引，区分度会高达90%以上，可以使用 count(distinct left(列名, 索引长度))/count(*)的区分度来确定</p>
-<p>4.页面搜索严禁左模糊或者全模糊，如果需要请走搜索引擎来解决（索引文件具有 B-Tree 的最左前缀匹配特性，如果左边的值未确定，那么无法使用此索引。）</p>
-<p>5.order by：注意利用索引的有序性（order by 最后的字段是组合索引的一部分，并且放在索引组合顺序的最后，避免出现 file_sort 的情况，影响查询性能）</p>
-<p>6.利用覆盖索引来进行查询操作，避免回表（覆盖索引只是一种查询的一种效果，用 explain 的结果，extra 列会出现：using index）</p>
-<p>7.利用延迟关联或者子查询优化超多分页场景</p>
-<p>8.SQL 性能优化的目标：至少要达到 range 级别，要求是 ref 级别，如果可以是consts 最好。</p>
-<p>1） consts 单表中最多只有一个匹配行（主键或者唯一索引），在优化阶段即可读取到数据。</p>
-<p>2） ref 指的是使用普通的索引（normal index）。 </p>
-<p>3） range 对索引进行范围检索。</p>
-<p>type=index,索引物理文件全扫描，速度非常慢，这个 index 级别比较 range还低，与全表扫描是小巫见大巫</p>
-<p>9.建组合索引的时候，区分度最高的在最左边</p>
-<p>10.防止因字段类型不同造成的隐式转换，导致索引失效</p>
-<p>11.创建索引时,注意避免:</p>
-<p>1） 宁滥勿缺。认为一个查询就需要建一个索引。</p>
-<p>2） 宁缺勿滥。认为索引会消耗空间、严重拖慢记录的更新以及行的新增速度。</p>
-<p>3） 抵制惟一索引。认为业务的惟一性一律需要在应用层通过“先查后插”方式解决。</p>
-<h3 id="SQL-语句"><a href="#SQL-语句" class="headerlink" title="SQL 语句"></a>SQL 语句</h3><p>1.不要使用 count(列名)或 count(常量)来替代 <code>count(*)</code>，<code>count(*)</code>是 SQL92 定义的标准统计行数的语法，跟数据库无关，跟 NULL 和非 NULL 无关。count(*)会统计值为 NULL 的行，而 count(列名)不会统计此列为 NULL 值的行。</p>
-<p>2.count(distinct col) 计算该列除 NULL 之外的不重复行数，注意 count(distinct col1, col2) 如果其中一列全为 NULL，那么即使另一列有不同的值，也返回为 0。</p>
-<p>3.当某一列的值全是 NULL 时，count(col)的返回结果为 0，但 sum(col)的返回结果为 NULL，因此使用 sum()时需注意 NPE 问题。</p>
-<p>使用如下方式来避免 sum 的 NPE 问题：SELECT IFNULL(SUM(column), 0) FROM table;</p>
-<p>4.使用 ISNULL()来判断是否为 NULL 值。NULL 与任何值的直接比较都为 NULL</p>
-<p>5.代码中写分页查询逻辑时，若 count 为 0 应直接返回，避免执行后面的分页语句。</p>
-<p>6.不得使用外键与级联，一切外键概念必须在应用层解决</p>
-<p>7.禁止使用存储过程，存储过程难以调试和扩展，更没有移植性。</p>
-<p>8.数据订正（特别是删除、修改记录操作）时，要先 select，避免出现误删除，确认无误才能执行更新语句。</p>
-<p>9.in 操作能避免则避免，若实在避免不了，需要仔细评估 in 后边的集合元素数量，控制在 1000 个之内。</p>
-<p>10.所有的字符存储与表示，均以 utf-8 编码，注意字符统计函数的区别。当需要存储表情，那么选择 utf8mb4 来进行存储，注意它与 utf-8 编码的区别</p>
-<p>11.TRUNCATE TABLE 比 DELETE 速度快，且使用的系统和事务日志资源少，但TRUNCATE 无事务且不触发 trigger，有可能造成事故，故不建议在开发代码中使用此语句。</p>
-<p>说明：TRUNCATE TABLE 在功能上与不带 WHERE 子句的 DELETE 语句相同。</p>
-<h3 id="ORM-映射"><a href="#ORM-映射" class="headerlink" title="ORM 映射"></a>ORM 映射</h3><p>1.在表查询中，一律不要使用 * 作为查询的字段列表，需要哪些字段必须明确写明</p>
-<p>1）增加查询分析器解析成本。</p>
-<p>2）增减字段容易与 resultMap 配置不一致。</p>
-<p>3）无用字段增加网络消耗，尤其是 text 类型的字段。</p>
-<p>2.POJO 类的布尔属性不能加 is，而数据库字段必须加 is_，要求在 resultMap 中进行字段与属性之间的映射。</p>
-<p>3.不要用 resultClass 当返回参数，即使所有类属性名与数据库字段一一对应，也需要定义；反过来，每一个表也必然有一个 POJO 类与之对应。</p>
-<p>配置映射关系，使字段与 DO 类解耦，方便维护。</p>
-<p>4.sql.xml 配置参数使用：#{}，#param# 不要使用${} 此种方式容易出现 SQL 注入</p>
-<p>5.iBATIS 自带的 queryForList(String statementName,int start,int size)不推荐使用。（因为它的实现方式是在数据库取到 statementName 对应的 SQL 语句的所有记录，再通过 subList 取start,size 的子集合）</p>
-<p>6.不允许直接拿 HashMap 与 Hashtable 作为查询结果集的输出。</p>
-<p>resultClass=”Hashtable”，会置入字段名和属性值，但是值的类型不可控</p>
-<p>7.更新数据表记录时，必须同时更新记录对应的 gmt_modified 字段值为当前时间。</p>
-<p>8.不要写一个大而全的数据更新接口。传入为 POJO 类，不管是不是自己的目标更新字段，都进行 update table set c1=value1,c2=value2,c3=value3; 这是不对的。执行 SQL时，不要更新无改动的字段，一是易出错；二是效率低；三是增加 binlog 存储。</p>
-<p>9.@Transactional 事务不要滥用。事务会影响数据库的 QPS，另外使用事务的地方需要考虑各方面的回滚方案，包括缓存回滚、搜索引擎回滚、消息补偿、统计修正等。</p>
-<p>10.<code>&lt;isEqual&gt;</code>中的 compareValue 是与属性值对比的常量，一般是数字，表示相等时带上此条件；&lt;isNotEmpty&gt;表示不为空且不为 null 时执行；<code>&lt;isNotNull&gt;</code>表示不为 null 值时执行。 </p>
-<h2 id="自己的项目规范："><a href="#自己的项目规范：" class="headerlink" title="自己的项目规范："></a>自己的项目规范：</h2><p>1.同级之间不要互相调用，上层只能调用下层，避免混乱。</p>
-<p>2.swagger注解</p>
-<ul>
-<li><p>controller类上： </p>
-<p>@Api(value=””,tags=””)</p>
-</li>
-<li><p>controller类里的方法：<br>@ApiOperation(value=””,notes=””)</p>
-<p>@ApiParam(value = “”)</p>
-<p>@ApiImplicitParams(</p>
-<pre><code>        @ApiImplicitParam(name = &quot;&quot;, value = &quot;&quot;,paramType = &quot;&quot;,required = true, dataType = &quot;&quot;)
-)
-</code></pre>
-<p>​    @ApiResponses({<br>​            @ApiResponse(code = 0, message = “”,class=””)<br>​<br>​    })</p>
-</li>
-<li><p>类上：<br>@ApiModel(value = “”,description=””)</p>
-</li>
-<li><p>类的字段上：<br>@ApiModelProperty(value=””)</p>
-</li>
-</ul>
-<p>3.查数据用get，删，改，增数据用post</p>
-<p>4.<strong>改东西前，加个备份,改东西后，加个记录</strong></p>
-<p>5.</p>
-<h2 id="设计规范"><a href="#设计规范" class="headerlink" title="设计规范"></a>设计规范</h2><p>前后端接口规范：解耦接口，尽量不要用大接口。可以用公共的接口，但是尽量是前端需要什么信息，传递什么信息，不要查到所有信息再返回给前端。因为尽量避免暴露数据库表结构，避免传递不必要的信息。</p>
-<p>前端传过来的数据也要做数据校验（即使前端已经做过校验），因为可能是通过接口发送的参数，绕过了前端页面</p>
-<h2 id="RESTful-架构"><a href="#RESTful-架构" class="headerlink" title="RESTful 架构"></a>RESTful 架构</h2><p>RESTful 只是一种指导风格，就像我们 Java 要用驼峰命名法。</p>
-<p>REST 不是一个单词，是 Representational State Transfer 的缩写。直译过来就是表述性状态转移。其实它还有个主语 Resource ，所以是资源的表述性状态转移。</p>
-<p><strong>核心</strong>就是资源，用 URL 定位资源，用 HTTP 动词来描述所要做的操作。</p>
-<p>HTTP的提供了很多动词：GET、PUT、POST、DELETE……这些动词都是有含义的。</p>
-<p>比如：</p>
-<p>GET 就是获取资源，是查询请求。</p>
-<p>PUT 指的是修改资源，是幂等的。</p>
-<p>POST 也是修改(新增也是一种修改)，指的是不幂等的操作。</p>
-<p>所以根据这些规范我们都能得知这次交互的一些动作，所以 RESTful 风格正确的使用姿势如下：</p>
-<p>比如获取一个 user：</p>
-<p>​    错误姿势：<code>GET /getUserById?userId=1</code>。</p>
-<p>​    正确姿势：<code>GET /users/1</code>。</p>
-<p>再比如新增 user：</p>
-<p>​    错误姿势：<code>POST /addUser</code> （省略body）。</p>
-<p>​    正确姿势：<code>POST /users</code> （省略body）。</p>
-<p>可以看到 HTTP 的动词其实就能指代你要对资源做的操作，所以不需要在 URL 上做一些东西，就把 URL 表明的东西看作一个资源即可。</p>
-<p>这里注意要用对 HTTP 动词，比如一个获取资源的请求用 PUT，用了也能获取资源但是这不合适。</p>
-<p>其实更深一步的理解是  HTTP 是一个协议。</p>
-<p>协议其实就是约定好的一个东西，协议就规定 GET 是获取资源，那你非得在 URL 上再重复一遍或者所有请求不论增删改都用 GET 这个动作，这其实就是没有完全遵循这个协议。</p>
-<p>可以说只是把 HTTP 当成一个传输管道，而不是约定好的协议。</p>
-<p>这其实是对 HTTP 更深一层的认识，我认为也是 RESTful 被推出的原因。</p>
-<p>当然理想很丰满，现实很骨感，还是有很多人就 <code>getUserById</code>。</p>
-<p>不过我个人觉得问题不大，公司统一就行。</p>
-<h2 id="HATEOAS"><a href="#HATEOAS" class="headerlink" title="HATEOAS"></a>HATEOAS</h2><p>即 Hypermedia as the Engine of Application State 的缩写，翻译过来就是作为应用状态引擎的超媒体。</p>
-<p>这也是 REST 提出的设计。</p>
-<p>比如你请求获取用户列表：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET /users</span><br><span class="line">Accept: application/json+userdb</span><br></pre></td></tr></table></figure>
-
-<p>此时的返回应该是：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">200 OK</span><br><span class="line">Content-Type: application/json+userdb</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    &quot;users&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;id&quot;: 1,</span><br><span class="line">            &quot;name&quot;: &quot;Emil&quot;,</span><br><span class="line">            &quot;country: &quot;Sweden&quot;,</span><br><span class="line">            &quot;links&quot;: [</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;href&quot;: &quot;/user/1&quot;,</span><br><span class="line">                    &quot;rel&quot;: &quot;self&quot;,</span><br><span class="line">                    &quot;method&quot;: &quot;GET&quot;</span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;href&quot;: &quot;/user/1&quot;,</span><br><span class="line">                    &quot;rel&quot;: &quot;edit&quot;,</span><br><span class="line">                    &quot;method&quot;: &quot;PUT&quot;</span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;href&quot;: &quot;/user/1&quot;,</span><br><span class="line">                    &quot;rel&quot;: &quot;delete&quot;,</span><br><span class="line">                    &quot;method&quot;: &quot;DELETE&quot;</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;id&quot;: 2,</span><br><span class="line">           ....省略.....</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    &quot;links&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;href&quot;: &quot;/user&quot;,</span><br><span class="line">            &quot;rel&quot;: &quot;create&quot;,</span><br><span class="line">            &quot;method&quot;: &quot;POST&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>重点就是这个 links，结果会返回你能对这个资源所做的操作。</p>
-<p>比如对于 userId 是 1 的，你调用<code>PUT /user/1</code>就是做修改这个用户，<code>DELETE /user/1</code>就是删除这个用户。</p>
-<p>最外层的 links 告诉你用 <code>POST /user</code> 就能再创建一个用户。</p>
-<p>这里还有个隐藏信息，可以看到外层的 links 没有返回 DELETE 的信息，说明此时客户端无法删除用户！</p>
-<p>所以说 RESTful API 还需要再返回此时能对资源做的操作，这样客户端就知道它能做什么。</p>
-<p>它也不需要管具体怎么做，反正返回里面会告诉它 DELETE 就这样这样，POST 就这样这样。</p>
-<p>没告诉它的就是不能做的。</p>
-<p>然后这个时候再去理解下资源的表述性状态转移，是不是感觉来了？</p>
-<p>如果说上一 part 提到用 HTTP 的动词来指代动作， URL 仅表示资源的现实是骨感的。</p>
-<p>那么 HATEOAS 的现实就是骨灰。</p>
-<p>基本上没几家公司会这么做。</p>
-<p>就我个人而言这玩意没啥用。</p>
-<p>它的出发点是让客户端从响应就能得知对资源操作的入口，并且通过响应得知哪些动作能执行。</p>
-<p>听起来好像有点用，但是就我目前的功力，我只能看到响应变得十分冗余。</p>
-<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>这篇文章关于 RESTful API 具体的写法我就提到一些，还有挺多的就自己查资料吧。</p>
-<p>文章的目的是为了让你理解 RESTful API，我再总结一下重点。</p>
-<p>HTTP 是协议，不是传输通道。（对协议不理解的看我之前的 HTTP 分析）</p>
-<p>所以协议约定了很多东西，推荐我们按照协议的用法进行客户端和服务端的交互。</p>
-<p>也就是 RESTful 表明的面向资源，通过 HTTP 动作 + URL 上的资源。</p>
-<p>RESTful 还提到了 HATEOAS，虽说基本上没什么公司会这样使用，但是它能让你更好的理解 REST 这个名字的含义。</p>
-<p>RESTful 是一种风格，你是否采用这种风格对你的程序运行没有影响，类比驼峰命名来思考。</p>
-<p>简而言之，RESTful 就是不要在 URL 上表现出动作，用 HTTP 动词代表动作，URL 上只做资源。</p>
-<p>仅此而已。</p>
-<p>至于要不要严格遵循 RESTful 风格，我个人的看法是公司内部保持一致就行</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/15/1.5.%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" data-id="ckw61sdw0003zoswd2hh9cvgx" data-title="编程规范" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HATEOAS/" rel="tag">HATEOAS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RESTful/" rel="tag">RESTful</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B%E8%A7%84%E8%8C%83/" rel="tag">编程规范</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E8%A7%84%E8%8C%83/" rel="tag">设计规范</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -3439,7 +3136,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
     </div>
   </div>
 
@@ -3452,6 +3149,14 @@
       <ul>
         
           <li>
+            <a href="/2021/12/17/SpringBootSecurity/">SpringBootSecurity</a>
+          </li>
+        
+          <li>
+            <a href="/2021/12/16/SpringBootActuator/">SpringBootActuator</a>
+          </li>
+        
+          <li>
             <a href="/2021/09/17/8.7.vite/">vite</a>
           </li>
         
@@ -3461,14 +3166,6 @@
         
           <li>
             <a href="/2021/09/03/RPC/">RPC</a>
-          </li>
-        
-          <li>
-            <a href="/2021/09/02/%E6%97%A5%E5%BF%97/">日志</a>
-          </li>
-        
-          <li>
-            <a href="/2021/08/27/%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE/">开源软件许可协议</a>
           </li>
         
       </ul>

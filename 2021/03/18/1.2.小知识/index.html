@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/img_convert/ed0d0df7d34698d3d025653552e1d2ae.png">
 <meta property="og:image" content="https://s-qwer.github.io/1.2.%E5%B0%8F%E7%9F%A5%E8%AF%86/20180925114748729">
 <meta property="article:published_time" content="2021-03-18T02:09:41.000Z">
-<meta property="article:modified_time" content="2021-12-07T10:22:11.199Z">
+<meta property="article:modified_time" content="2021-12-13T02:52:44.754Z">
 <meta property="article:author" content="swx">
 <meta property="article:tag" content="小技巧">
 <meta property="article:tag" content="小科普">
@@ -140,13 +140,19 @@
 <p><img src="https://img-blog.csdnimg.cn/img_convert/ed0d0df7d34698d3d025653552e1d2ae.png" alt="ed0d0df7d34698d3d025653552e1d2ae.png"></p>
 <p>在上面的图像中我们可以清晰的看到，打印机是如何使用墨点来打印一张图像。</p>
 <p>所以，打印机的DPI越高，打印图像的精细程度就越高，同时这也会消耗更多的墨点和时间</p>
+<p><strong>DPR</strong></p>
+<p>设备像素比（dpr） =  设备像素（分辨率）/设备独立像素（屏幕尺寸）</p>
+<p>布局视窗：屏幕大小</p>
+<p>视觉视窗：为了解决PC端网站在移动端显示不佳，布局视窗比设备屏幕宽度宽，一般为980</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width:device-width, initial-scale&#x3D;1.0, maximum&#x3D;1.0, minimum&#x3D;1.0, user-scalable&#x3D;no&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这行代码把视觉视窗大小设置成和布局视窗大小相等，这样我们在代码设置css像素时，设置的跟渲染出来效果也是一样。</p>
 <p><strong>手机分辨率</strong>指的是屏幕能够达到的清晰度，液晶排列点阵数量，通常用乘号或者 * 表示，如320 * 240，480 * 800，1280 * 720 表示的是像素，越大屏幕分辨率越高，同等尺寸情况下越清晰，当然跟屏幕生产商，材质也有关系。</p>
 <p>像素指的是相机，通常在摄像头后面有标记，如2M，8M等，指的是200万，800万像素</p>
 <p>像素越高，最大输出的影像分辨率也越高；分辨率越大，图片的面积越大</p>
 <p><strong>手机尺寸</strong>   1英寸 = 2.54 厘米  手机屏幕的大小还和屏幕的长宽比有关，同样的对角线长度16:9的长宽比和4:3的长宽比，屏幕大小是不一样的</p>
 <p>比如：苹果5的是4英寸：1136 * 640 像素密度330PPI     （浏览器调试的时候就可以设置为：568 * 320）  </p>
-<p> 7.robots.txt</p>
-<p>Web机器人（爬虫）</p>
+<p> <strong>7.robots.txt</strong>：Web机器人（爬虫）</p>
 <p>8.<strong>ORM</strong>：Object Relational Mapping，对象关系映射。</p>
 <p>9.<strong>Thrift</strong> 是一个软件框架（远程过程调用框架），用来进行可扩展且跨语言的服务的开发。它结合了功能强大的软件堆栈和代码生成引 擎，以构建在 C++, Java, Python, PHP, Ruby, Erlang, Perl, Haskell, C#, Cocoa, JavaScript, Node.js, Smalltalk, and OCaml 这些编程语言间无缝结合的、高效的服务</p>
 <p>10.<strong>百度指数</strong>：查看数据可以去百度指数，查看这个数据的搜索热度。</p>
@@ -155,8 +161,9 @@
 <p>CDN通过广泛的网络节点分布，提供快速、稳定、安全、可编程的全球内容分发加速服务，支持将网站、音视频、下载等内容分发至接近用户的节点，使用户可就近取得所需内容，提高用户访问的响应速度和成功率。</p>
 <p>CND加速主要是加速静态资源，CND加速需要依靠各个网络节点，CND服务器通过缓存或者主动抓取主服务器的内容来实现资源储备</p>
 <p>13.<strong>ERP系统</strong>：是企业资源计划（Enterprise Resource Planning）的简称，是指建立在信息技术基础上，集信息技术与先进管理思想于一身，以系统化的管理思想，为企业员工及决策层提供决策手段的管理平台。</p>
-<p>14.Dashboard：仪表板，一般为后台管理系统的首页</p>
-<p>15.<code>.sh</code>结尾的文件：脚本文件，被称为脚本Bash的应用程序和使用开发人员文件。可以使用sh命令运行“sh xxx.sh”，并且由于在linux中sh是链接到bash上的，所以sh与bash在功能上是没有区别的。windows系统下可以通过git bash打开到这个.sh文件所在位置，然后运行<code>sh xxx.sh</code></p>
+<p>14.<strong>Dashboard</strong>：仪表板，一般为后台管理系统的首页</p>
+<p>15.**<code>.sh</code>**结尾的文件：脚本文件，被称为脚本Bash的应用程序和使用开发人员文件。可以使用sh命令运行“sh xxx.sh”，并且由于在linux中sh是链接到bash上的，所以sh与bash在功能上是没有区别的。</p>
+<p>windows系统下可以通过git bash打开到这个.sh文件所在位置，然后运行<code>sh xxx.sh</code></p>
 <p>16.在xml中，被**<code>&lt;![CDATA[]]&gt;</code><strong>这个标记所包含的内容将表示为</strong>纯文本**，比如<code>&lt;![CDATA[&lt;]]&gt;</code>表示文本内容<code>“&lt;”</code></p>
 <p>在xml中，<code>”&lt;”</code>、<code>”&gt;”</code>、<code>”&amp;”</code>等字符是不能直接存入的，否则xml语法检查时会<strong>报错</strong>，如果想在xml中使用这些符号，必须将其转义为实体，如<code>”&amp;lt;”</code>、<code>”&amp;gt;”</code>、<code>”&amp;amp;”</code>，这样才能保存进xml文档。</p>
 <p>　　(1)转义序列字符之间不能有空格；<br>　　(2) 转义序列必须以”;”结束；<br>　　(3) 单独出现的”&amp;”不会被认为是转义的开始；<br>　　(4) 区分大小写。</p>
@@ -169,13 +176,19 @@
 <p><code>GE 就是 GREATER THAN OR EQUAL 大于等于</code> </p>
 <p><code>LE 就是 LESS THAN OR EQUAL 小于等于</code></p>
 <p>18.<strong>psd</strong>文件是Photoshop图片软件保存的一种文件格式，保存这种格式后可以在下次打开这个文件的时候继续以前的操作而不会断掉。</p>
-<p>19.<code> </code>  U+2006  ios手机输入法如果只输入拼音，但是未选择汉字时直接回车会在拼音的`之间插入这个字符。</p>
+<p>19.<code> </code>  <strong>U+2006</strong>  ios手机输入法如果只输入拼音，但是未选择汉字时直接回车会在拼音的`之间插入这个字符。复制在idea里会显示，但是其他地方都只会显示一个空格。</p>
+<p>20.进程：应用程序的启动实例。进程拥有代码和打开的文件资源、数据资源、独立的内存空间</p>
+<p>线程：线程从属于进程，是程序的实际执行者。一个进程至少包含一个主线程，也可以有更多的子线程。线程拥有自己的栈空间。具有经典的五种状态：初始化，就绪，阻塞，运行，销毁</p>
+<p>协程：一个线程可以拥有多个协程。在单线程下，由用户自己控制，一个任务遇到io阻塞了就切换另外一个任务去执行，以此来提升效率</p>
+<p>管程：用来管理共享变量以及对共享变量操作的过程。<strong>MESA模型</strong>、Hasen模型、Hoare模型。解决了互斥与同步：管程保证了同时只允许一个线程进入。</p>
+<p><strong>线程是最小的执行单元，进程是最小的资源管理单元</strong>。无论进程还是线程，都是由操作系统所管理的。</p>
+<p>协程不是被操作系统内核所管理，而完全是由程序所控制（也就是在用户态执行）</p>
 <h3 id="微信"><a href="#微信" class="headerlink" title="微信"></a>微信</h3><p> 1.<strong>微信</strong>发送安卓相关的安装包会自动屏蔽。</p>
-<p>2.微信的浏览器内核：</p>
+<p>2.微信的<strong>浏览器内核</strong>：</p>
 <p>安卓（Android）手机：微信6.1版本以上的android用户，都是使用的QQ浏览器的X5内核。5.4-6.1之间的版本，若用户安装了QQ浏览器就是使用的X5内核，若用户未安装浏览器，使用的是系统内核。</p>
 <p>苹果（IOS）手机：safari</p>
 <p>WKWebview（此网页由）和UIWebview（网页由）</p>
-<p>从IOS8开始支持WKWebview</p>
+<p>从ios8开始支持WKWebview</p>
 <h3 id="电脑知识"><a href="#电脑知识" class="headerlink" title="电脑知识"></a>电脑知识</h3><p> 1.<strong>usb2.0和usb3.0</strong>：</p>
 <p>颜色：USB2.0接口处为黑色或白色，USB3.0接口处为蓝色</p>
 <p>标志符号：USB3.0接口比2.0多了个ss</p>
@@ -187,8 +200,8 @@
 <p>​                    USB3.0：采用了对偶单纯形四线制差分信号线，可以双向并发数据传输</p>
 <p> 2.下载好的软件，如果桌面没有<strong>快捷方式</strong>图标，需要重新在软件位置右击创建快捷方式到桌面，直接拉到桌面不能启动。</p>
 <p> 3.windows下<strong>打开</strong>到某个<strong>文件</strong>，在地址栏输入cmd，可以直接跳转到cmd命令行的这个文件目录。</p>
-<p> 4.windows系统下，windows键+上下左右箭头键可以进行分屏。</p>
-<p> 5.x64是64位系统。x86是32位系统。</p>
+<p> 4.windows系统下，windows键+上下左右箭头键可以进行<strong>分屏</strong>。</p>
+<p> 5.<strong>x64</strong>是64位系统。<strong>x86</strong>是32位系统。</p>
 <p>x86指的是一种cpu的架构。因为intel的8086，286，386～586而得名，amd开发的大部分cpu也是基于x86架构的。x86架构的特点是cpu的寄存器是32位的，因此也叫32位cpu。</p>
 <p>X86的32位体系结构通常称为IA－32，全称为“英特尔体系结构，32位”。它的64位体系结构最早由AMD推出，被称为“AMD64”。后来，它也被英特尔采用，被称为“英特尔64”。也称为“x86－64”、“x64”。</p>
 <p>早期英特尔曾以80x86的数字格式命名处理器，包括8086、80186、80286、80386和80486。</p>
@@ -196,156 +209,115 @@
 <p> 6.查看本机IP：cmd中输入  <code>ipconfig</code></p>
 <p>​    查看网络连接状况：cmd中输入：<code>ping baidu.com</code></p>
 <p>​    查看本机外网的ip：直接在百度输入<code>ip</code>第一条就是本机的ip信息</p>
-<p>​    查看本机有没有装好TCP/IP协议：<code>ping 127.0.0.1</code>  （本机无论在联网或是没有联网的状态下的地址.用这个都可以访问到自己的机子）本地Socks Proxy的地址是localhost:1080或127.0.0.1:1080</p>
-<p> 7.打开文件之后，不要急着关闭，以防会再用到，再去打开找。浏览器不要打开多个窗口，否则会很卡。</p>
-<p> 8.硬编码</p>
+<p>​    查看本机有没有装好TCP/IP协议：<code>ping 127.0.0.1</code>  （本机无论在联网或是没有联网的状态下的地址.用这个都可以访问到自己的机子）</p>
+<p>本地Socks Proxy的地址是localhost:1080或127.0.0.1:1080</p>
+<p> 7.打开文件之后，不要急着关闭，以防会再用到，再去打开找。浏览器不要打开多个窗口，否则会很卡，因为会占用内存。</p>
+<p> 8.<strong>硬编码</strong></p>
 <p>​    硬编码是将数据直接嵌入到程序或其他可执行对象的源代码中的软件开发实践，与从外部获取数据或在运行时生成数据不同。 </p>
 <p>​    硬编码数据通常只能通过编辑源代码和重新编译可执行文件来修改，尽管可以使用调试器或十六进制编辑器在内存或磁盘上进行更改。 </p>
 <p>​    硬编码的数据通常表示不变的信息，例如物理常量，版本号和静态文本元素。 另一方面，软编码数据对用户输入，HTTP服务器响应或配置文件等任意信息进行编码，并在运行时确定。</p>
 <p>它和普通编码的区别是：</p>
-<p>​    1、编码方式不同：</p>
+<ul>
+<li>编码方式不同：</li>
+</ul>
 <p>普通编码：使用CPU进行编码。</p>
 <p>硬编码：使用非CPU进行编码，如显卡GPU、专用的DSP、FPGA、ASIC芯片等。</p>
-<p>​    2、使用方式不同：</p>
+<ul>
+<li>使用方式不同：</li>
+</ul>
 <p>普通编码：实现直接、简单，参数调整方便，升级易，但CPU负载重，性能较硬编码低，低码率下质量通常比硬编码要好一点</p>
 <p>硬编码：性能高，低码率下通常质量低于软编码器，但部分产品在GPU硬件平台移植了优秀的软编码算法（如X264）的，质量基本等同于软编码</p>
-<p>​    3、复杂程度不同：</p>
+<ul>
+<li>复杂程度不同：</li>
+</ul>
 <p>普通编码比硬编码要复杂一些，对以后的考虑要周到一些。普通编码是一种设计，而硬编码不过是一种具体的实现。软件开发不只是需要一个软件的实现，更需要软件能够很好的修改，方便得扩展，所以需要一些设计技巧在里面。</p>
-<p> 9.注册表：注册表的作用是保存程序所需要的信息,当程序需要这些信息时,就从注册表里读出.因此,注册表最基本的功能就是保存信息</p>
+<p> 9.<strong>注册表</strong>：注册表的作用是保存程序所需要的信息,当程序需要这些信息时,就从注册表里读出.因此,注册表最基本的功能就是保存信息</p>
 <p>​    win+r，输入“regedit”。解决了谷歌浏览器下载的图片格式问题，右键git bash here命令消失的问题。</p>
-<p> 10.图片的格式类型：</p>
+<p> 10.<strong>图片的格式</strong>类型：</p>
 <p>图片格式是计算机存储图片的格式，常见的存储的格式有bmp，jpg，png，tif，gif，pcx，tga，exif，fpx，svg，psd，cdr，pcd，dxf，ufo，eps，ai，raw，WMF，webp，avif等</p>
-<p> 11.中文的：和英文的:</p>
+<p> 11.<strong>中文</strong>的：和<strong>英文</strong>的:</p>
 <p>中文的”“和英文的””</p>
 <p>中文的（）和英文的()</p>
 <p>明显发现中文的格式都有一点空格，英文没有</p>
 <ol start="12">
-<li><p>（路径问题常用）</p>
+<li><p><strong>路径</strong>指示：</p>
 <p>./表示当前目录</p>
 <p>../表示父级目录</p>
 <p>/表示根目录</p>
 </li>
-<li><p>‘/x’ x表示任意，这种做法叫转义字符</p>
+<li><p><strong>转义字符</strong></p>
 </li>
 </ol>
-<p>​    ‘/t’ tab键</p>
-<p>​    ‘/r’ 回车</p>
-<p>​    ‘/n’ 换行</p>
+<p>​    ‘/x’      x表示任意</p>
+<p>​    ‘/t’      tab键</p>
+<p>​    ‘/r’      回车</p>
+<p>​    ‘/n’      换行</p>
 <p> 14.斜杠/和反斜杠\</p>
-<p>​    1、反斜线“\”是电脑出现了之后为了表示程序设计里的特殊含义才发明的专用标点。就是说，除了程序设计领域外，任何地方都不应该有使用反斜杠的时候，请永远使用正斜线“/”<br>​    2、Windows系统中用反斜线“\”来表示目录，但是Linux下用正斜线“/”来表示<br>​    3、Windows：“/”是表示参数，“\”是表示本地路径。<br>　　  Linux和Unix：“/”表示路径，“\”表示转义，“-”和“–”表示参数。<br>　　  网络：由于网络使用Unix标准，所以网络路径用“/”。</p>
-<p>如：url地址：<a target="_blank" rel="noopener" href="https://www.baidu.com/">https://www.baidu.com</a><br>windows地址：C:\Program Files<br>linux地址：/home/nginx/logs<br>linux中的转义字符 find ./ -name *.c<br>其他常见转义字符 ： 如 \n \t <br>java中注释： / * 单行注释 * /      //单行注释<br>所以谨记正则表达式、转义字符都是用反斜杠 \</p>
-<p>15.查看win10系统的激活过期时间：windows键+r打开运行，再输入 <code>slmgr.vbs -xpr</code></p>
-<p>16.一级缓存、二级缓存和三级缓存</p>
+<ul>
+<li>反斜线“\”是电脑出现了之后为了表示程序设计里的特殊含义才发明的专用标点。就是说，除了程序设计领域外，任何地方都不应该有使用反斜杠的时候，请永远使用正斜线“/”</li>
+<li>Windows系统中用反斜线“\”来表示目录，但是Linux下用正斜线“/”来表示</li>
+<li>Windows：“/”是表示参数，“\”是表示本地路径。<br>Linux和Unix：“/”表示路径，“\”表示转义，“-”和“–”表示参数。<br>网络：由于网络使用Unix标准，所以网络路径用“/”。</li>
+</ul>
+<p>例：</p>
+<p>url地址：<a target="_blank" rel="noopener" href="https://www.baidu.com/">https://www.baidu.com</a><br>windows地址：C:\Program Files<br>linux地址：/home/nginx/logs<br>linux中的转义字符 find ./ -name *.c<br>其他常见转义字符 ： 如 \n \t <br>java中注释： / * 单行注释 * /      //单行注释<br>所以谨记正则表达式、转义字符都是用反斜杠 \</p>
+<p>15.查看win10系统的<strong>激活过期</strong>时间：windows键+r打开运行，再输入 <code>slmgr.vbs -xpr</code></p>
+<p>16.<strong>一级缓存、二级缓存和三级缓存</strong></p>
 <p>当cpu进行读取缓存数据的时候，是先从缓存的数据进行查找的，读取之后再输入到电脑cpu里面进行处理，如果没有对应的缓存文件给cpu进行处理的话，那电脑就会从内存中的数据进行处理并给cpu进行处理。这一段时间会相比找到缓存文件来要慢的多。cpu处理完数据之后，就会把处理完的的数据模块进行保存，这个就是缓存文件</p>
 <p>电脑的缓存文件分为三个等级，分别是一二三级缓存。</p>
 <p>一级缓存基本上都是内置在cpu的内部和cpu一个速度进行运行，能有效的提升cpu的工作效率。一级缓存越多，cpu的工作效率就会越来越高，是cpu的内部结构限制了一级缓存的容量大小，使一级缓存的容量都是很小的。</p>
 <p>二级缓存，主要作用是协调一级缓存和内存之间的工作效率。cpu首先用的是一级内存，当cpu的速度慢慢提升之后，一级缓存就不够cpu的使用量了，这就需要用到二级内存。当然二级内存会比一级内存的缓存的效率要低很多，但是相比容量来说二级内存的容量要比一级的容量要大很多。一级内存和二级内存主要是为cpu的处理数据的时候临时进行数据交换的时候使用的。</p>
 <p>三级缓存和一级缓存与二级缓存的关系差不多，是为了在读取二级缓存不够用的时候而设计的一种缓存手段，在有三级缓存cpu之中，只有大约百分之五的数据需要在内存中调取使用，这能提升cpu不少的效率，从而cpu能够高速的工作。</p>
 <p>现在市场上主流的cpu有两种型号的cpu： amd 和intel。amd型号的cpu只用一级缓存和二级缓存，没有三级缓存。但是intel的cpu恰恰相反，有二级缓存和三级缓存，但是没有一级缓存。</p>
-<h3 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h3><ol>
-<li><p><strong>浏览器</strong>主要是看<strong>内核</strong>来分辨显示。有的浏览器会自动过滤掉一些资源（比如一个名为guanggao的图片）</p>
-<p>Apple的Safari, Google的Chrome, Nokia S60平台的默认浏览器，Apple手机的默认浏览器，Android手机的默认浏览器均采用的Webkit作为器浏览器内核</p>
-<p>Firefox使用Gecko 内核</p>
-<p>微软的IE系列则使用的是Trident内核</p>
-</li>
-<li><p>网址后可以加#+代码块的id（这个id是唯一的），表示打开这个网站，可以直接定位到这个代码块对应的前端部分。如果没有跟任何东西，只有#，代表定位到上次访问的位置。</p>
-</li>
-<li><p>根据坐标查询地理位置，可以去某个地图网站的坐标拾取器进行搜索。</p>
-</li>
-<li><p>谷歌浏览器：ctrl+shift+t，打开刚刚关闭的网页。ctrl+w，关闭当前网页。</p>
-</li>
+<h3 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h3><p>1.浏览器主要是看<strong>内核</strong>来分辨显示。有的浏览器会自动过滤掉一些资源（比如一个名为guanggao的图片）</p>
+<p>   Apple的Safari, Google的Chrome, Nokia S60平台的默认浏览器，Apple手机的默认浏览器，Android手机的默认浏览器均采用的Webkit作为器浏览器内核</p>
+<p>   Firefox使用Gecko 内核</p>
+<p>   微软的IE系列则使用的是Trident内核</p>
+<p>2.网址后可以加**#+代码块的id**（这个id是唯一的），表示打开这个网站，可以直接定位到这个代码块对应的前端部分。如果没有跟任何东西，只有#，代表定位到上次访问的位置。</p>
+<p>3.根据坐标查询地理位置，可以去某个地图网站的<strong>坐标拾取器</strong>进行搜索。</p>
+<p>4.谷歌浏览器<strong>快捷键</strong>：ctrl+shift+t，打开刚刚关闭的网页。ctrl+w，关闭当前网页。</p>
+<p>5.浏览器的储存：</p>
+<ul>
 <li><p>cookie空间太小，一旦大了，会消耗流量，只适合存一些登录会话信息</p>
-<p>sessionStorage的过期时间就是关闭浏览器，是个临时会话窗口；sessionStorage只能在同一标签下共享，假如你把网址复制粘贴到新打开的标签页里面，不共享数据</p>
-<p>localStorage存储空间大，长时间保存，同一浏览器，标签页全部共享，它是直接存到电脑硬盘上的，是永久有效的，除非手动清除</p>
-<p>localStorage和sessionStorage的区别：两者都可用来存储数据，但是localStorage会保留原始数据，即使关闭浏览器，数据仍然存在。而sessionStorage不会保留，关闭浏览器后数据被销毁。由于要求用户在保持登录状态下重新打开浏览器可以不用登录直接进入主页面，所以要用localStorage</p>
 </li>
-</ol>
-<p>创建缓存:<code>localStorage.setItem(&#39;userInfo&#39;, userInfo);</code></p>
-<p>读取缓存:<code>localStorage.getItem(&#39;doEdit&#39;, this.doEdit);</code></p>
-<p>清除所有缓存:<code>localStorage.clear();</code></p>
-<p>清楚指定缓存:<code>localStorage.removeItem(&#39;userinfo&#39;);</code></p>
-<p>用ES6的类来封装，写一个function给localStorage设置过期时间：</p>
-<p>引入这个class可以参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zgh0711/article/details/80432609">https://blog.csdn.net/zgh0711/article/details/80432609</a></p>
-<p>本质就是写一个js文件，然后main.js中import ，将它挂载到 vue 对象的原型上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;先 import 引入</span><br><span class="line">import &#123;storage&#125; from &#39;.&#x2F;utils&#x2F;storage&#39;</span><br><span class="line">&#x2F;&#x2F;阻止显示在生产环境下的不必要的额外消息（这些消息开发时便于调试，生产环境下没有用处）</span><br><span class="line">Vue.config.productionTip &#x3D; false;</span><br><span class="line">&#x2F;&#x2F;将 myUtils 挂载到 vue 的原型上</span><br><span class="line">Vue.prototype.storage &#x3D; new storage();</span><br></pre></td></tr></table></figure>
-
-<p>在组件中可以直接调用相应的方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">this.storage.setItem(&#123;</span><br><span class="line">      name:&quot;name&quot;,</span><br><span class="line">      value:&quot;XXX&quot;,</span><br><span class="line">      expires: &quot;&quot;,</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
-
-<p>写好的class：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">storage</span></span>&#123;</span><br><span class="line">        <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">            <span class="built_in">this</span>.name = <span class="string">&#x27;storage&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//设置缓存</span></span><br><span class="line">        <span class="function"><span class="title">setItem</span>(<span class="params">params</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">let</span> obj = &#123;</span><br><span class="line">                name:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">                value:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">                expires:<span class="string">&quot;&quot;</span>,</span><br><span class="line">                startTime:<span class="keyword">new</span> <span class="built_in">Date</span>().getTime()<span class="comment">//记录何时将值存入缓存，毫秒级</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">let</span> options = &#123;&#125;;</span><br><span class="line">            <span class="comment">//将obj和传进来的params合并</span></span><br><span class="line">            <span class="built_in">Object</span>.assign(options,obj,params);</span><br><span class="line">            <span class="keyword">if</span>(options.expires)&#123;</span><br><span class="line">            <span class="comment">//如果options.expires设置了的话</span></span><br><span class="line">            <span class="comment">//以options.name为key，options为值放进去</span></span><br><span class="line">                <span class="built_in">localStorage</span>.setItem(options.name,<span class="built_in">JSON</span>.stringify(options));</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//如果options.expires没有设置，就判断一下value的类型</span></span><br><span class="line">               	<span class="keyword">let</span> type = <span class="built_in">Object</span>.prototype.toString.call(options.value);</span><br><span class="line">               	<span class="comment">//如果value是对象或者数组对象的类型，就先用JSON.stringify转一下，再存进去</span></span><br><span class="line">                <span class="keyword">if</span>(type == <span class="string">&#x27;[object Object]&#x27;</span>)&#123;</span><br><span class="line">                    options.value = <span class="built_in">JSON</span>.stringify(options.value);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(type == <span class="string">&#x27;[object Array]&#x27;</span>)&#123;</span><br><span class="line">                    options.value = <span class="built_in">JSON</span>.stringify(options.value);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">localStorage</span>.setItem(options.name,options.value);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//拿到缓存</span></span><br><span class="line">        <span class="function"><span class="title">getItem</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">            <span class="comment">//需要先判空</span></span><br><span class="line">            <span class="keyword">if</span>(!item) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">let</span> item = <span class="built_in">localStorage</span>.getItem(name);</span><br><span class="line">            <span class="comment">//先将拿到的试着进行json转为对象的形式</span></span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                item = <span class="built_in">JSON</span>.parse(item);</span><br><span class="line">            &#125;<span class="keyword">catch</span>(error)&#123;</span><br><span class="line">            <span class="comment">//如果不行就不是json的字符串，就直接返回</span></span><br><span class="line">                item = item;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//如果有expires的值，说明设置了失效时间</span></span><br><span class="line">            <span class="keyword">if</span>(item.expires)&#123;</span><br><span class="line">                <span class="keyword">let</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line">                <span class="comment">//何时将值取出减去刚存入的时间，与item.expires比较，如果大于就是过期了，如果小于或等于就还没过期</span></span><br><span class="line">                <span class="keyword">if</span>(date - item.startTime &gt; item.expires)&#123;</span><br><span class="line">                <span class="comment">//缓存过期，清除缓存，返回false</span></span><br><span class="line">                    <span class="built_in">localStorage</span>.removeItem(name);</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//缓存未过期，返回值</span></span><br><span class="line">                    <span class="keyword">return</span> item.value;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//如果没有设置失效时间，直接返回值</span></span><br><span class="line">                <span class="keyword">return</span> item;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//移出缓存</span></span><br><span class="line">        <span class="function"><span class="title">removeItem</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">            <span class="built_in">localStorage</span>.removeItem(name);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//移出全部缓存</span></span><br><span class="line">        <span class="function"><span class="title">clear</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">localStorage</span>.clear();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="6">
-<li>4g不能访问某个网站，换到了wifi就可以：</li>
-</ol>
+<li><p>sessionStorage的过期时间就是关闭浏览器，是个临时会话窗口；sessionStorage只能在同一标签下共享，假如你把网址复制粘贴到新打开的标签页里面，不共享数据</p>
+</li>
+<li><p>localStorage存储空间大，长时间保存，同一浏览器，标签页全部共享，它是直接存到电脑硬盘上的，是永久有效的，除非手动清除</p>
+</li>
+</ul>
+<p>localStorage和sessionStorage的区别：两者都可用来存储数据，但是localStorage会保留原始数据，即使关闭浏览器，数据仍然存在。而sessionStorage不会保留，关闭浏览器后数据被销毁。由于要求用户在保持登录状态下重新打开浏览器可以不用登录直接进入主页面，所以要用localStorage</p>
+<p>6.4g不能<strong>访问</strong>某个<strong>网站</strong>，换到了wifi就可以：（本地项目可以通过在同一个局域网下的设备通过内网ip访问来实现本地的现实机型调试）</p>
 <p>服务器商那边对移动网络的问题。实际上跳转的时候的ip发生了变化，找服务商解决的。不是阿里云也不是腾讯云</p>
-<ol start="7">
-<li>SEO（Search Engine Optimization）：汉译为搜索引擎优化。是一种方式：利用搜索引擎的规则提高网站在有关搜索引擎内的自然排名。目的是让其在行业内占据领先地位，获得品牌收益。很大程度上是网站经营者的一种商业行为，将自己或自己公司的排名前移</li>
-</ol>
+<p>7.<strong>SEO</strong>（Search Engine Optimization）：汉译为搜索引擎优化。是一种方式：利用搜索引擎的规则提高网站在有关搜索引擎内的自然排名。目的是让其在行业内占据领先地位，获得品牌收益。很大程度上是网站经营者的一种商业行为，将自己或自己公司的排名前移</p>
 <p>搜索引擎优化的技术手段主要有黑帽（black hat）、白帽（white hat）两大类。</p>
 <p>通过作弊手法欺骗搜索引擎和访问者，最终将遭到搜索引擎惩罚的手段被称为黑帽，比如隐藏关键字、制造大量的meta字、alt标签等。</p>
 <p>而通过正规技术和方式，且被搜索引擎所接受的SEO技术，称为白帽</p>
-<ol start="8">
-<li><p>Network下的所有请求和回复：不止一个请求，会有多个。<br>Headers：</p>
-<pre><code>User-Agent：我们的浏览器信息：操作系统，位数，什么类型的浏览器等一些信息（没有这个无法返回消息）
-Cookie：保存在本地的信息（往往是加密的）（没有这个可能会出现登录的问题，如果无法登录，自然无法爬取一些特定的内容）
-...
-</code></pre>
-<p>Elements下点击某个标签后，最下面一行会显示这个标签的所有父模块</p>
-</li>
-<li><p>ping 百度时候ping <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> 会出现<a target="_blank" rel="noopener" href="http://www.a.shifen.com.这是百度以前的网址/">www.a.shifen.com。这是百度以前的网址</a></p>
-</li>
-<li><p>localhost 是一个域名，在过去它指向 127.0.0.1 这个IP地址。在操作系统支持 ipv6 后，它同时还指向ipv6 的地址 [::1] </p>
-</li>
-</ol>
+<p>8.浏览器下的<strong>F12调试模式</strong>：</p>
+<p>   Network下的所有请求和回复：不止一个请求，会有多个。<br>   Headers：<br>       User-Agent：我们的浏览器信息：操作系统，位数，什么类型的浏览器等一些信息（没有这个无法返回消息）<br>       Cookie：保存在本地的信息（往往是加密的）（没有这个可能会出现登录的问题，如果无法登录，自然无法爬取一些特定的内容）<br>       …<br>   Elements下点击某个标签后，最下面一行会显示这个标签的所有父模块，便于更快的定位html元素</p>
+<p>9.ping 百度时候ping <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> 会出现<a target="_blank" rel="noopener" href="http://www.a.shifen.com.这是百度以前的网址/">www.a.shifen.com。这是百度以前的网址</a></p>
+<p>10.<strong>localhost</strong> 是一个域名，在过去它指向 127.0.0.1 这个IP地址。在操作系统支持 ipv6 后，它同时还指向ipv6 的地址 [::1] </p>
 <p>整个127.* 网段通常被用作 loopback 网络接口的默认地址，按惯例通常设置为 127.0.0.1。这个地址在其他计算机上不能访问，就算你想访问，访问的也是自己，因为每台带有TCP/IP协议栈的设备基本上都有 localhost/127.0.0.1</p>
 <p>本机地址通常指的是绑定在物理或虚拟网络接口上的IP地址，可供其他设备访问到：IPv4地址：192.168.0.156</p>
-<p>11.chromedriver是操作浏览器的一个exe应用程序。java，python都可以在程序里读到这个exe并对其进行操作。相当于就是在程序里对浏览器进行操作。</p>
-<p>12.通过网站域名 +robots.txt 方式查看这个网站自己禁止爬取本站信息的爬虫名单</p>
-<p>robots.txt（统一小写）是一种存放于网站根目录下的ASCII编码的文本文件，它通常告诉网络搜索引擎的漫游器（又称网络蜘蛛），此网站中的哪些内容是不应被搜索引擎的漫游器获取的，哪些是可以被漫游器获取的。因为一些系统中的URL是大小写敏感的，所以robots.txt的文件名应统一为小写。robots.txt应放置于网站的根目录下。如果想单独定义搜索引擎的漫游器访问子目录时的行为，那么可以将自定的设置合并到根目录下的robots.txt，或者使用robots元数据（Metadata，又称元数据）。<br>robots.txt协议并不是一个规范，而只是约定俗成的，所以并不能保证网站的隐私。注意robots.txt是用字符串比较来确定是否获取URL，所以目录末尾有与没有斜杠“/”表示的是不同的URL。robots.txt允许使用类似”Disallow: *.gif”这样的通配符。</p>
-<p>13.PhantomJS是一个Python包，他可以在没有图形界面的情况下，完全模拟一个”浏览器“，js脚本验证什么的再也不是问题了</p>
-<h3 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h3><ol>
-<li><p>调试程序的时候，得到什么值输出一下，一步一步查看错误在哪，对于不懂得错误，学会用搜索引擎解决。</p>
-</li>
-<li><p>魔法数字</p>
-</li>
-</ol>
+<p>11.<strong>chromedriver</strong>是操作浏览器的一个exe应用程序。java，python都可以在程序里读到这个exe并对其进行操作。相当于就是在程序里对浏览器进行操作。</p>
+<p>12.通过<strong>网站域名 +robots.txt</strong> 方式查看这个网站自己禁止爬取本站信息的爬虫名单</p>
+<p>robots.txt（统一小写）是一种存放于网站根目录下的ASCII编码的文本文件，它通常告诉网络搜索引擎的漫游器（又称网络蜘蛛），此网站中的哪些内容是不应被搜索引擎的漫游器获取的，哪些是可以被漫游器获取的。因为一些系统中的URL是大小写敏感的，所以robots.txt的文件名应统一为小写。robots.txt应放置于网站的根目录下。如果想单独定义搜索引擎的漫游器访问子目录时的行为，那么可以将自定的设置合并到根目录下的robots.txt，或者使用robots元数据（Metadata，又称元数据）<br>robots.txt协议并不是一个规范，而只是约定俗成的，所以并不能保证网站的隐私。注意robots.txt是用字符串比较来确定是否获取URL，所以目录末尾有与没有斜杠“/”表示的是不同的URL。robots.txt允许使用类似”Disallow: *.gif”这样的通配符。</p>
+<p>13.<strong>PhantomJS</strong>是一个Python包，他可以在没有图形界面的情况下，完全模拟一个”浏览器“，js脚本验证什么的再也不是问题了</p>
+<h3 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h3><p>1.<strong>调试</strong>程序的时候，得到什么值输出一下，一步一步查看错误在哪，对于不懂得错误，学会用搜索引擎解决。</p>
+<p>2.<strong>魔法数字</strong></p>
 <p>魔法数值，是指在代码中直接出现的数值，只有在这个数值记述的那部分代码中才能明确了解其含义</p>
-<p>在Java语言中，对有名字的值的定义，可以<strong>使用用Static final或者enum来声明的值</strong>。注意(命名方法)：在取名时一定要注意增加名字的信息量。</p>
+<p>在Java语言中，对有名字的值的定义，可以<strong>使用用Static final或者enum来声明的值</strong>。</p>
+<p>注意(命名方法)：在取名时一定要注意增加名字的信息量。</p>
 <p>如果16表示的是价格表的一个元素，为16命名为SIXTEEN是没有意义的，应该命名为PRICE_TABLE_MAX</p>
 <p><strong>阿里：尽量不要在接口里定义变量，如果一定要定义变量，肯定是与接口方法相关。不要在程序中出现魔法数字</strong></p>
-<p>阿里文档和常量有关说明：</p>
-<p>【推荐】接口类中的方法和属性不要加任何修饰符号（public 也不要加），保持代码的简洁性，并加上有效的javadoc注释。尽量不要在接口里定义变量，如果一定要定义变量，肯定是与接口方法相关，并且是整个应用的基础常量。<br>正例：接口方法签名：void f();<br>    接口基础常量表示：String COMPANY = “alibaba”;<br>反例：接口方法定义：public abstract void f();<br>说明：JDK8中接口允许有默认实现，那么这个default方法，是对所有实现类都有价值的默认实现</p>
-<p>【强制】不允许出现任何魔法值（即未经定义的常量）直接出现在代码中。<br>反例： String key=”Id#taobao_”+tradeId；<br>     cache.put(key, value);</p>
-<p>【推荐】不要使用一个常量类维护所有常量，应该按常量功能进行归类，分开维护。如：缓存相关的常量放在类：CacheConsts下；系统配置相关的常量放在类：ConfigConsts类下。<br>说明：大而全的常量类，非得ctrl+f才定位到修改的常量，不利于理解，也不利于维护。<br>【推荐】常量的复用层次有五层：跨应用共享常量、应用内共享常量、子工程内共享常量、包内共享常量、类内共享常量。<br> 1） 跨应用共享常量：放置在二方库中，通常是client.jar中的const目录下。<br> 2） 应用内共享常量：放置在一方库的modules中的const目录下。<br>    反例：易懂变量也要统一定义成应用内共享常量，两位攻城师在两个类中分别定义了表示“是”的变量：<br>    类A中：public static final String YES = “yes”;<br>    类B中：public static final String YES = “y”;<br>    A.YES.equals(B.YES)，预期是true，但实际返回为false，导致产生线上问题。<br> 3） 子工程内部共享常量：即在当前子工程的const目录下。<br> 4） 包内共享常量：即在当前包下单独建const目录下。<br> 5） 类内共享常量：直接在类内部private static final定义。</p>
-<p>【强制】避免通过一个类的对象引用访问此类的静态变量或静态方法，无谓增加编译器解析成本，直接用类名来访问即可</p>
-<ol start="3">
-<li><p>项目里报错，首先要注意排查格式错误，避免出现中文写的符号，避免多加空格之类的低级错误。</p>
-</li>
-<li><p>mock,是前端写好的json可以用来进行接口测试，使用mock data来模拟后台穿传数据。</p>
-</li>
-<li><p>手机号的正则表达式：</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;^[1][3-9][0-9]&#123;9&#125;$&#x2F;</span><br><span class="line">&#x2F;^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d&#123;8&#125;$&#x2F;</span><br><span class="line">&#x2F;^1[3456789]\d&#123;9&#125;$&#x2F;</span><br></pre></td></tr></table></figure>
-
-<ol start="6">
-<li>正则表达式的反斜杠</li>
-</ol>
+<p>3.项目里报错，首先要注意排查<strong>格式错误</strong>，避免出现中文写的符号，避免多加空格之类的低级错误。</p>
+<p>4.<strong>mock</strong>,是前端写好的json可以用来进行接口测试，使用mock data来模拟后台传数据。</p>
+<p>6.正则表达式的<strong>反斜杠</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String reg = <span class="string">&quot;^\\&#123;\&quot;data_type\&quot;:\&quot;[a-z]&#123;3,8&#125;(_[a-z]&#123;3,6&#125;)&#123;0,2&#125;\&quot;,\&quot;data\&quot;:\\[\\&#123;\&quot;[a-z]&#123;3,7&#125;(_[a-z]&#123;2,4&#125;)?\&quot;:\&quot;[0-9A-Z]&#123;2,8&#125;\&quot;&quot;</span>+<span class="string">&quot;(,\&quot;[a-z]&#123;3,7&#125;(_[a-z]&#123;2,4&#125;)?\&quot;:\&quot;[0-9A-Z]&#123;2,8&#125;\&quot;)&#123;0,5&#125;\\&#125;\\]\\&#125;$&quot;</span></span><br><span class="line">^表示正则开头 第一个\表示java的字符串里需要加\转义，第二个\表示正则的&#123;&#125;需要\转义 &#123;后的\表示java的字符串的下个“需要\转义</span><br></pre></td></tr></table></figure>
 
-<ol start="7">
-<li>idea查看jar包源码</li>
-</ol>
+<p>7.idea查看<strong>jar包源码</strong></p>
 <p>将jar包放到项目里，右击选择<code>add as Library</code> 就可以正常查看了</p>
-<ol start="8">
-<li>replace(/-/g, “/“)</li>
-</ol>
+<p>8.<strong>replace(/-/g, “/“)</strong></p>
 <p>一般用于格式化日期，如2019-1-1 格式化为2019/1/1，然后js 可以直接操作这个时间。  /g 代表全局，所有的- 都替换</p>
-<ol start="9">
-<li>-n=~n+1 对十进制的n取反 ~n 其实等于 -n-1</li>
-<li>java存储文件到mysql数据库的操作：</li>
-</ol>
+<p>9.<strong>-n=~n+1</strong> 对十进制的n取反 ~n 其实等于 -n-1<br>10.java存储文件到mysql数据库的操作：</p>
 <ul>
 <li>将它们另存为blob/图像/无论您选择的DB调用什么字节流：Blob是一个可以存储二进制文件的容器，最大容量只有64kb。</li>
 <li>存储文件的路径，并将文件存储在文件系统中(服务器上)</li>
@@ -353,6 +325,8 @@ Cookie：保存在本地的信息（往往是加密的）（没有这个可能�
 <p>java类型与mysql类型的对应表</p>
 <p><img src="/1.2.%E5%B0%8F%E7%9F%A5%E8%AF%86/20180925114748729" alt="在这里插入图片描述"></p>
 <h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><p>1.数据库增加一个字段，对增删改查业务没有影响。</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>1.政府，标准文件格式： </p>
+<p>标题  宋体/黑体 2号                 小标题可以自己定                              正文 仿宋 4号</p>
 
       
     </div>
@@ -420,7 +394,7 @@ Cookie：保存在本地的信息（往往是加密的）（没有这个可能�
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
     </div>
   </div>
 
@@ -433,6 +407,14 @@ Cookie：保存在本地的信息（往往是加密的）（没有这个可能�
       <ul>
         
           <li>
+            <a href="/2021/12/17/SpringBootSecurity/">SpringBootSecurity</a>
+          </li>
+        
+          <li>
+            <a href="/2021/12/16/SpringBootActuator/">SpringBootActuator</a>
+          </li>
+        
+          <li>
             <a href="/2021/09/17/8.7.vite/">vite</a>
           </li>
         
@@ -442,14 +424,6 @@ Cookie：保存在本地的信息（往往是加密的）（没有这个可能�
         
           <li>
             <a href="/2021/09/03/RPC/">RPC</a>
-          </li>
-        
-          <li>
-            <a href="/2021/09/02/%E6%97%A5%E5%BF%97/">日志</a>
-          </li>
-        
-          <li>
-            <a href="/2021/08/27/%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE/">开源软件许可协议</a>
           </li>
         
       </ul>

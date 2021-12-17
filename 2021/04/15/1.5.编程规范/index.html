@@ -14,7 +14,7 @@
 <meta property="og:description" content="编程规范遇到左大括号缩进一个tab的位置。 关联不是很大的语句间空行。 命名命名风格1.不能以下划线或美元符号开始，也不能以下划线或美元符号结束。 2.严禁使用拼音与英文混合的方式，更不允许直接使用中文的方式。（有些国际通用的可以用拼音：renminbi，taobao） 3.驼峰命名。 4.杜绝完全不规范的缩写，避免望文不知义 5.为了达到代码自解释的目标，任何自定义编程元素在命名时，使用尽量完整">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-04-15T02:57:13.000Z">
-<meta property="article:modified_time" content="2021-11-30T10:33:20.856Z">
+<meta property="article:modified_time" content="2021-12-13T10:37:40.800Z">
 <meta property="article:author" content="swx">
 <meta property="article:tag" content="设计规范">
 <meta property="article:tag" content="编程规范">
@@ -114,7 +114,7 @@
 <h3 id="类名命名"><a href="#类名命名" class="headerlink" title="类名命名"></a>类名命名</h3><p>1.大写开头（DO / BO / DTO / VO / AO/ PO / UID除外 ）</p>
 <p>2.抽象类命名使用 Abstract 或 Base 开头；异常类命名使用 Exception 结尾；测试类命名以它要测试的类的名称开始，以 Test 结尾</p>
 <p>3.POJO 类中布尔类型变量都不要加 is 前缀，否则部分框架解析会引起序列化错误。</p>
-<p>4.包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词。<strong>包名统一使用单数形式</strong>，但是类名如果有复数含义，类名可以使用复数形式。</p>
+<p>4.包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词。<strong>包名统一使用单数形式</strong>，但是类名如果有复数含义，<strong>类名可以使用复数形式</strong>。</p>
 <p>5.避免在子父类的成员变量之间、或者不同代码块的局部变量之间采用完全相同的命名，使可读性降低</p>
 <p>6.接口类中的方法和属性不要加任何修饰符号（public 也不要加），保持代码的简洁性，并加上有效的 Javadoc 注释。尽量不要在接口里定义变量，如果一定要定义变量，肯定是与接口方法相关，并且是整个应用的基础常量。JDK8 中接口允许有默认实现，那么这个 default 方法，是对所有实现类都有价值的默认实现。</p>
 <p>7.接口和实现类的命名：</p>
@@ -156,6 +156,11 @@
 <p>注：1.ConstantValue修饰的字段<strong>只限于基本类型和string</strong>。</p>
 <p>   2.ConstantValue修饰的字段若为String类型，必须要是编译期可以进行优化得到的即编译期常量才能满足不需要对类进行初始化就可以读取(例如：String s = “a”+“bc”；)，否则这个值需要对类进行初始化才可以读取(例如：String s = new String(“abc”)；)。</p>
 <p>   3.对于满足上两个条件的constantValue变量，在访问该变量时，无需初始化类即可访问(即访问时在常量池中寻找，不会执行类的静态成员和静态代码块)。</p>
+<p>阿里文档和常量有关说明：</p>
+<p>【推荐】接口类中的方法和属性不要加任何修饰符号（public 也不要加），保持代码的简洁性，并加上有效的javadoc注释。尽量不要在接口里定义变量，如果一定要定义变量，肯定是与接口方法相关，并且是整个应用的基础常量。<br>正例：接口方法签名：void f();<br>    接口基础常量表示：String COMPANY = “alibaba”;<br>反例：接口方法定义：public abstract void f();<br>说明：JDK8中接口允许有默认实现，那么这个default方法，是对所有实现类都有价值的默认实现</p>
+<p>【强制】不允许出现任何魔法值（即未经定义的常量）直接出现在代码中。<br>反例： String key=”Id#taobao_”+tradeId；<br>     cache.put(key, value);</p>
+<p>【推荐】不要使用一个常量类维护所有常量，应该按常量功能进行归类，分开维护。如：缓存相关的常量放在类：CacheConsts下；系统配置相关的常量放在类：ConfigConsts类下。<br>说明：大而全的常量类，非得ctrl+f才定位到修改的常量，不利于理解，也不利于维护。<br>【推荐】常量的复用层次有五层：跨应用共享常量、应用内共享常量、子工程内共享常量、包内共享常量、类内共享常量。<br> 1） 跨应用共享常量：放置在二方库中，通常是client.jar中的const目录下。<br> 2） 应用内共享常量：放置在一方库的modules中的const目录下。<br>    反例：易懂变量也要统一定义成应用内共享常量，两位攻城师在两个类中分别定义了表示“是”的变量：<br>    类A中：public static final String YES = “yes”;<br>    类B中：public static final String YES = “y”;<br>    A.YES.equals(B.YES)，预期是true，但实际返回为false，导致产生线上问题。<br> 3） 子工程内部共享常量：即在当前子工程的const目录下。<br> 4） 包内共享常量：即在当前包下单独建const目录下。<br> 5） 类内共享常量：直接在类内部private static final定义。</p>
+<p>【强制】避免通过一个类的对象引用访问此类的静态变量或静态方法，无谓增加编译器解析成本，直接用类名来访问即可</p>
 <h2 id="代码格式"><a href="#代码格式" class="headerlink" title="代码格式"></a>代码格式</h2><p>1.如果是大括号内为空，则简洁地写成{}即可，大括号中间无需换行和空格；如果是非空代码块则： </p>
 <p>1） 左大括号前不换行。<br>2） 左大括号后换行。<br>3） 右大括号前换行。<br>4） 右大括号后还有 else 等代码则不换行；表示终止的右大括号后必须换行</p>
 <p>2.左小括号和字符之间不出现空格；同样，右小括号和字符之间也不出现空格；而左大括号前需要空格。</p>
@@ -227,14 +232,14 @@
 <p>3.尽量避免过多过常的创建java对象</p>
 <p>尽量避免在经常调用的方法，循环中new对象，由于系统不仅要花费时间来创建对象，而且还要花时间对这些对象进行垃圾回收和处理，在我们可以控制的范围内，最大限度的重用对象，最好能用基本的数据类型或数组来替代对象。</p>
 <p>4.尽量使用final修饰符</p>
-<p>带有final修饰符的类是不可派生的。在Java核心API中，有许多应用final的例子，例如java.lang.String。为String类指 定final防止了使用者覆盖length()方法。另外，如果一个类是final的，则该类所有方法都是final的。java编译器会寻找机会内联 (inline)所有的final方法(这和具体的编译器实现有关)。此举能够使性能平均提高50%。</p>
+<p>带有final修饰符的类是不可派生的。在Java核心API中，有许多应用final的例子，例如java.lang.String。为String类指定final防止了使用者覆盖length()方法。另外，如果一个类是final的，则该类所有方法都是final的。java编译器会寻找机会内联 (inline)所有的final方法(这和具体的编译器实现有关)。此举能够使性能平均提高50%。</p>
 <p>5.尽量使用局部变量</p>
 <p>调用方法时传递的参数以及在调用中创建的临时变量都保存在栈(Stack)中，速度较快。其他变量，如静态变量，实例变量等，都在堆(Heap)中创建，速度较慢。</p>
 <p>6.尽量处理好包装类型和基本类型两者的使用场所</p>
 <p>虽然包装类型和基本类型在使用过程中是可以相互转换，但它们两者所产生的内存区域是完全不同的，基本类型数据产生和处理都在栈中处理，包装类型是对象，是在堆中产生实例。</p>
 <p>在集合类对象，有对象方面需要的处理适用包装类型，其他的处理提倡使用基本类型。</p>
 <p>7.慎用synchronized，尽量减小synchronize的方法</p>
-<p>都 知道，实现同步是要很大的系统开销作为代价的，甚至可能造成死锁，所以尽量避免无谓的同步控制。synchronize方法被调用时，直接会把当前对象锁 了，在方法执行完之前其他线程无法调用当前对象的其他方法。所以synchronize的方法尽量小，并且应尽量使用方法同步代替代码块同步。</p>
+<p>都知道，实现同步是要很大的系统开销作为代价的，甚至可能造成死锁，所以尽量避免无谓的同步控制。synchronize方法被调用时，直接会把当前对象锁 了，在方法执行完之前其他线程无法调用当前对象的其他方法。所以synchronize的方法尽量小，并且应尽量使用方法同步代替代码块同步。</p>
 <p>8.尽量使用StringBuilder和StringBuffer进行字符串连接</p>
 <p>字符串缓冲区</p>
 <p>9.尽量不要使用finalize方法</p>
@@ -532,7 +537,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
     </div>
   </div>
 
@@ -545,6 +550,14 @@
       <ul>
         
           <li>
+            <a href="/2021/12/17/SpringBootSecurity/">SpringBootSecurity</a>
+          </li>
+        
+          <li>
+            <a href="/2021/12/16/SpringBootActuator/">SpringBootActuator</a>
+          </li>
+        
+          <li>
             <a href="/2021/09/17/8.7.vite/">vite</a>
           </li>
         
@@ -554,14 +567,6 @@
         
           <li>
             <a href="/2021/09/03/RPC/">RPC</a>
-          </li>
-        
-          <li>
-            <a href="/2021/09/02/%E6%97%A5%E5%BF%97/">日志</a>
-          </li>
-        
-          <li>
-            <a href="/2021/08/27/%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE/">开源软件许可协议</a>
           </li>
         
       </ul>

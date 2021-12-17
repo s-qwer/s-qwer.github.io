@@ -77,6 +77,300 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-10.1.项目初建" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/23/10.1.%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%BB%BA/" class="article-date">
+  <time class="dt-published" datetime="2021-03-23T03:09:18.000Z" itemprop="datePublished">2021-03-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/23/10.1.%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%BB%BA/">项目初建</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h1><p>​    程序员与代码密不可分，而代码又是为了项目服务的，项目又可以集合成一个产品，而产品最终是要为我们服务的。为什么会有计算机的存在，是因为人类想要一种机器帮助我们简化计算，为什么会有代码的存在，是因为人类想要计算机更易懂我们的想法，为什么会有项目的存在，是因为我们需要计算机可以将我们的想法完整表达出来，为什么会有产品存在，说到底，是人类的进化使我们想要更高效的生活。所以说，如何做一个产品？产品是我们最终想要的结果，项目明确了我们的需求，代码只是底层实现，计算机，执行者罢了。所以这篇文章，写一写怎样开始着手于写一个项目。</p>
+<h2 id="项目前的准备"><a href="#项目前的准备" class="headerlink" title="项目前的准备"></a>项目前的准备</h2><p>​    写项目之前，首先要明确，你的需求是什么，你想要一个什么样的产品。明确需求很重要，否则你写出来的东西很有可能不是你或者别人想要的东西。<code>一千个哈姆雷特</code>，每个人都有自己的想法，而完成一个别人的项目，需要完成的，就是实现别人的想法。所以大方向很重要。</p>
+<p>​    明确真实需求后，怎么样实现需求呢？要做到心中有数，需要我们在自己心中建立起一个框架。要明确分为几个模块，每个模块会用到什么东西,具体的流程是什么样的，做到心中有数，自可万法归一，行云流水。</p>
+<p>​    <code>工欲善其事必先利其器</code>，为了更高效简洁的开发，我们需要准备好我们的工具。首先就是自己常用且顺手的各种工具，然后是可能已有的框架，一个逻辑的既定代码，造轮子固然可以提高自己的技术，但是重复造轮子就属实没有必要了。</p>
+<p>需求文档，定义功能，界面，原型图，数据库设计，接口设计</p>
+<p>具体流程</p>
+<p>1.明确需求</p>
+<p>2.搭建环境</p>
+<p>3.找轮子</p>
+<p>4.建数据库，建表</p>
+<p>5.建类</p>
+<p>6.思考设计模式</p>
+<p>7.梳理接口，确定开发排期</p>
+<p>8.写代码，写单测</p>
+<p>9.前后端对接</p>
+<p>10.产品验收，上线</p>
+<h2 id="项目构思框架"><a href="#项目构思框架" class="headerlink" title="项目构思框架"></a>项目构思框架</h2><p>​    一个完整的项目，必定会有前后端。前端负责展示效果，后端负责处理逻辑。</p>
+<h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><p>1.router.js</p>
+<p>路由页面。负责网页地址的跳转</p>
+<p>2.main.js</p>
+<p>导入资源页面。负责导入用到的相关框架或者包。</p>
+<p>3.view</p>
+<p>vue的前端显示的页面。</p>
+<p>包括三部分：</p>
+<pre><code>- html元素
+- js代码
+- css样式
+</code></pre>
+<p>components：部件。可以在这里设定上端、下端的固定样式，可以用到每个页面。</p>
+<p>4.utils</p>
+<p>工具类。</p>
+<p>5.assets/static/public</p>
+<p>存放静态资源。</p>
+<p>6.request</p>
+<p>跨域请求</p>
+<h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h3><p>1.pom.xml</p>
+<p>maven的配置文件。</p>
+<p>2.controller层</p>
+<p>控制层，一般在src下的java下。</p>
+<p>3.service层</p>
+<p>逻辑层，一般在src下的java下。</p>
+<p>4.Mapper层</p>
+<p>数据库层，src下的resources下的是数据库表字段的配置文件，src下的java下的是sql语句。</p>
+<p>5.entity，pojo</p>
+<p>实体类，一般在src下的java下。</p>
+<p>6.exception</p>
+<p>异常</p>
+<p>7.utils</p>
+<p>工具</p>
+<p>8.filter</p>
+<p>过滤，拦截器</p>
+<p>9.config</p>
+<p>配置</p>
+<p>10.dto</p>
+<p>自定义数据结构</p>
+<h4 id="用到的相关依赖"><a href="#用到的相关依赖" class="headerlink" title="用到的相关依赖"></a>用到的相关依赖</h4><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span> <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.1.8.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">relativePath</span>/&gt;</span> <span class="comment">&lt;!-- lookup parent from repository --&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mybatis-plus-boot-starter.version</span>&gt;</span>3.4.0<span class="tag">&lt;/<span class="name">mybatis-plus-boot-starter.version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">mysql.version</span>&gt;</span>5.1.40<span class="tag">&lt;/<span class="name">mysql.version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">commons-lang3.version</span>&gt;</span>3.6<span class="tag">&lt;/<span class="name">commons-lang3.version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">hutool-all.version</span>&gt;</span>4.6.2<span class="tag">&lt;/<span class="name">hutool-all.version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">springfox.version</span>&gt;</span>2.9.1<span class="tag">&lt;/<span class="name">springfox.version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">fastjson.version</span>&gt;</span>1.2.13<span class="tag">&lt;/<span class="name">fastjson.version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">distributionManagement</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">snapshotRepository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>sonatype-nexus-snapshots<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://oss.sonatype.org/content/repositories/snapshots<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">snapshotRepository</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>sonatype-nexus-staging<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://oss.sonatype.org/service/local/staging/deploy/maven2/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">distributionManagement</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scm</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">connection</span>&gt;</span><span class="tag">&lt;/<span class="name">connection</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">developerConnection</span>&gt;</span><span class="tag">&lt;/<span class="name">developerConnection</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url</span>&gt;</span><span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">scm</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.aliyun<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aliyun-java-sdk-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.0.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span> <span class="comment">&lt;!-- 注：如提示报错，先升级基础包版，无法解决可联系技术支持 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.aliyun<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aliyun-java-sdk-dysmsapi<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.data<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- mybatis-plus begin =================================== --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.baomidou<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mybatis-plus-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;mybatis-plus-boot-starter.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- mybatis-plus end --&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- ========================= 数据库相关 ========================== --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.0.18<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>druid<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.22<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">         <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>redis.clients<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jedis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.data<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- ========================= 常用库依赖 ========================== --&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- lombok插件 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.projectlombok<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>lombok<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- Hutool工具类 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.hutool<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hutool-all<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;hutool-all.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- StringUtils工具类 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.commons<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-lang3<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;commons-lang3.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- 阿里FastJson转换工具依赖 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;fastjson.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- AOP依赖 【注：系统日记需要此依赖】 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-aop<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!--httpclient--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.httpcomponents<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>httpclient<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.5.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons-logging<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-logging<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.httpcomponents<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>httpmime<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.5.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- swagger--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;springfox.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.mapstruct<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mapstruct<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;springfox.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-bean-validators<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;springfox.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--poi相关--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>poi<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.9<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.poi<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>poi-ooxml<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.9<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">&lt;!-- 注：maven默认是不编译，因此加上如下resources才会生产对应的xml文件 目的：解决mybatis映射关系不对应问题  start =============== --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/java<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.xml<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>false<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/resources<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.*<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">                <span class="comment">&lt;!--是否替换资源中的属性--&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>false<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">testResources</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">testResource</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/java<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.xml<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>false<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">testResource</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">testResources</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 注：maven默认是不编译，因此加上如下resources才会生产对应的xml文件 目的：解决mybatis映射关系不对应问题  end =============== --&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.sonatype.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>nexus-staging-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.6.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">extensions</span>&gt;</span>true<span class="tag">&lt;/<span class="name">extensions</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">serverId</span>&gt;</span>sonatype-nexus-staging<span class="tag">&lt;/<span class="name">serverId</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">nexusUrl</span>&gt;</span>https://oss.sonatype.org/<span class="tag">&lt;/<span class="name">nexusUrl</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">autoReleaseAfterClose</span>&gt;</span>true<span class="tag">&lt;/<span class="name">autoReleaseAfterClose</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>maven-surefire-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">skip</span>&gt;</span>true<span class="tag">&lt;/<span class="name">skip</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="前后端的对接规范"><a href="#前后端的对接规范" class="headerlink" title="前后端的对接规范"></a>前后端的对接规范</h3><p>1.使用MybatisPlus的R返回值。</p>
+<p>R是com.baomidou.mybatisplus.extension.api中写好的一个统一结果返回集。主要包含code，data，msg</p>
+<p>**R(IErrorCode errorCode)**：    {data:null,code:errorCode.getCode(),msg:errorCode.getMsg()}</p>
+<p><strong>R.ok(T data)</strong>:         默认情况下：{data:data,code:0,msg:执行成功}  如果data为Boolean类型且就是false:{data:false,code:-1,msg:操作失败}</p>
+<p><strong>R.failed(String msg)</strong>:        {data:null,code:-1,msg:msg}</p>
+<p><strong>R.failed(IErrorCode errorCode)</strong> :            {data:null,code:errorCode.getCode(),msg:errorCode.getMsg()}</p>
+<p><strong>R.restResult(T data, IErrorCode errorCode)</strong>  :            {data:data,code:errorCode.getCode(),msg:errorCode.getMsg()}</p>
+<p><strong>R.restResult(T data, long code, String msg)</strong>:            {data:data,code:code,msg:msg}</p>
+<p>可以自己定义枚举类实现IErrorCode接口,例如自定义一个IErrorCode</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">ResApiFailCode</span> <span class="keyword">implements</span> <span class="title">IErrorCode</span> </span>&#123;</span><br><span class="line">    FAILED(-<span class="number">1L</span>, <span class="string">&quot;出错了&quot;</span>),</span><br><span class="line">    INVALID_PARAM(-<span class="number">2L</span>, <span class="string">&quot;参数异常&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> code;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String msg;</span><br><span class="line"></span><br><span class="line">    ResApiFailCode(<span class="keyword">final</span> <span class="keyword">long</span> code, <span class="keyword">final</span> String msg) &#123;</span><br><span class="line">        <span class="keyword">this</span>.code = code;</span><br><span class="line">        <span class="keyword">this</span>.msg = msg;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMsg</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.msg;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> String.format(<span class="string">&quot; ErrorCode:&#123;code=%s, msg=%s&#125; &quot;</span>, <span class="keyword">this</span>.code, <span class="keyword">this</span>.msg);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">    使用时使用：<span class="keyword">return</span> R.restResult(<span class="keyword">null</span>, ResApiFailCode.FAILED);</span><br></pre></td></tr></table></figure>
+
+<p>对于异常也需要做处理：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@ControllerAdvice</span></span><br><span class="line"><span class="meta">@Component(&quot;myGlobalExceptionHandler&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GlobalExceptionHandler</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ExceptionHandler(Exception.class)</span></span><br><span class="line">    <span class="meta">@ResponseBody</span></span><br><span class="line">    <span class="keyword">public</span> R&lt;?&gt; defaultExceptionHandler(Exception e) &#123;</span><br><span class="line">        log.info(<span class="string">&quot;这里处理错误，错误信息是：&#123;&#125;&quot;</span>, e.toString());</span><br><span class="line">        <span class="comment">//常见异常返回</span></span><br><span class="line">        <span class="keyword">if</span> (e <span class="keyword">instanceof</span> CommonException) &#123;</span><br><span class="line">            String message = e.getMessage();</span><br><span class="line">            <span class="keyword">return</span> R.failed(message);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (e <span class="keyword">instanceof</span> UserNotExistException) &#123;</span><br><span class="line">            <span class="keyword">return</span> R.failed(ResApiFailCode.NO_PERMISSION);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (e <span class="keyword">instanceof</span> ClientException) &#123;</span><br><span class="line">            <span class="keyword">return</span> R.failed(ResApiFailCode.WRONG_SERVER);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//运行时异常返回</span></span><br><span class="line">        <span class="keyword">return</span> R.restResult(<span class="keyword">null</span>, ResApiFailCode.FAILED);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.使用SpringBoot提供的<code>ResponseBodyAdvice</code></p>
+<p>ResponseBodyAdvice的作用：拦截Controller方法的返回值，统一处理返回值/响应体，一般用来统一返回格式，加解密，签名等等</p>
+<p>首先需要定义返回格式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ResultData</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">  <span class="comment">/** 结果状态 ,具体状态码参见ResultData.java*/</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> status;</span><br><span class="line">  <span class="keyword">private</span> String message;</span><br><span class="line">  <span class="keyword">private</span> T data;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">long</span> timestamp ;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ResultData</span> <span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.timestamp = System.currentTimeMillis();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">ResultData&lt;T&gt; <span class="title">success</span><span class="params">(T data)</span> </span>&#123;</span><br><span class="line">    ResultData&lt;T&gt; resultData = <span class="keyword">new</span> ResultData&lt;&gt;();</span><br><span class="line">    resultData.setStatus(ReturnCode.RC100.getCode());</span><br><span class="line">    resultData.setMessage(ReturnCode.RC100.getMessage());</span><br><span class="line">    resultData.setData(data);</span><br><span class="line">    <span class="keyword">return</span> resultData;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">ResultData&lt;T&gt; <span class="title">fail</span><span class="params">(<span class="keyword">int</span> code, String message)</span> </span>&#123;</span><br><span class="line">    ResultData&lt;T&gt; resultData = <span class="keyword">new</span> ResultData&lt;&gt;();</span><br><span class="line">    resultData.setStatus(code);</span><br><span class="line">    resultData.setMessage(message);</span><br><span class="line">    <span class="keyword">return</span> resultData;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再定义状态码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">ReturnCode</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**操作成功**/</span></span><br><span class="line">    RC100(<span class="number">100</span>,<span class="string">&quot;操作成功&quot;</span>),</span><br><span class="line">    <span class="comment">/**操作失败**/</span></span><br><span class="line">    RC999(<span class="number">999</span>,<span class="string">&quot;操作失败&quot;</span>),</span><br><span class="line">    <span class="comment">/**服务限流**/</span></span><br><span class="line">    RC200(<span class="number">200</span>,<span class="string">&quot;服务开启限流保护,请稍后再试!&quot;</span>),</span><br><span class="line">    <span class="comment">/**服务降级**/</span></span><br><span class="line">    RC201(<span class="number">201</span>,<span class="string">&quot;服务开启降级保护,请稍后再试!&quot;</span>),</span><br><span class="line">    <span class="comment">/**热点参数限流**/</span></span><br><span class="line">    RC202(<span class="number">202</span>,<span class="string">&quot;热点参数限流,请稍后再试!&quot;</span>),</span><br><span class="line">    <span class="comment">/**系统规则不满足**/</span></span><br><span class="line">    RC203(<span class="number">203</span>,<span class="string">&quot;系统规则不满足要求,请稍后再试!&quot;</span>),</span><br><span class="line">    <span class="comment">/**授权规则不通过**/</span></span><br><span class="line">    RC204(<span class="number">204</span>,<span class="string">&quot;授权规则不通过,请稍后再试!&quot;</span>),</span><br><span class="line">    <span class="comment">/**access_denied**/</span></span><br><span class="line">    RC403(<span class="number">403</span>,<span class="string">&quot;无访问权限,请联系管理员授予权限&quot;</span>),</span><br><span class="line">    <span class="comment">/**access_denied**/</span></span><br><span class="line">    RC401(<span class="number">401</span>,<span class="string">&quot;匿名用户访问无权限资源时的异常&quot;</span>),</span><br><span class="line">    <span class="comment">/**服务异常**/</span></span><br><span class="line">    RC500(<span class="number">500</span>,<span class="string">&quot;系统异常，请稍后重试&quot;</span>),</span><br><span class="line"></span><br><span class="line">    INVALID_TOKEN(<span class="number">2001</span>,<span class="string">&quot;访问令牌不合法&quot;</span>),</span><br><span class="line">    ACCESS_DENIED(<span class="number">2003</span>,<span class="string">&quot;没有权限访问该资源&quot;</span>),</span><br><span class="line">    CLIENT_AUTHENTICATION_FAILED(<span class="number">1001</span>,<span class="string">&quot;客户端认证失败&quot;</span>),</span><br><span class="line">    USERNAME_OR_PASSWORD_ERROR(<span class="number">1002</span>,<span class="string">&quot;用户名或密码错误&quot;</span>),</span><br><span class="line">    UNSUPPORTED_GRANT_TYPE(<span class="number">1003</span>, <span class="string">&quot;不支持的认证模式&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**自定义状态码**/</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> code;</span><br><span class="line">    <span class="comment">/**自定义描述**/</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> String message;</span><br><span class="line"></span><br><span class="line">    ReturnCode(<span class="keyword">int</span> code, String message)&#123;</span><br><span class="line">        <span class="keyword">this</span>.code = code;</span><br><span class="line">        <span class="keyword">this</span>.message = message;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getMessage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> message;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>再需要编写一个具体实现类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestControllerAdvice</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ResponseAdvice</span> <span class="keyword">implements</span> <span class="title">ResponseBodyAdvice</span>&lt;<span class="title">Object</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ObjectMapper objectMapper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">supports</span><span class="params">(MethodParameter methodParameter, Class&lt;? extends HttpMessageConverter&lt;?&gt;&gt; aClass)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@SneakyThrows</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">beforeBodyWrite</span><span class="params">(Object o, MethodParameter methodParameter, MediaType mediaType, Class&lt;? extends HttpMessageConverter&lt;?&gt;&gt; aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(o <span class="keyword">instanceof</span> String)&#123;</span><br><span class="line">            <span class="comment">//如果Controller直接返回String的话，SpringBoot是直接返回，故我们需要手动转换成json</span></span><br><span class="line">            <span class="keyword">return</span> objectMapper.writeValueAsString(ResultData.success(o));</span><br><span class="line">        &#125;      </span><br><span class="line">        <span class="keyword">if</span>(o <span class="keyword">instanceof</span> ResultData)&#123;</span><br><span class="line">   			<span class="keyword">return</span> o;</span><br><span class="line">  		&#125;</span><br><span class="line">        <span class="keyword">return</span> ResultData.success(o);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注：<code>@RestControllerAdvice</code>注解<code>@RestControllerAdvice</code>是<code>@RestController</code>注解的增强，可以实现三个方面的功能：</p>
+<p>1.全局异常处理</p>
+<p>2.全局数据绑定</p>
+<p>3.全局数据预处理</p>
+<p>对于异常，也需要统一返回格式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="meta">@RestControllerAdvice</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RestExceptionHandler</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 默认全局异常处理。</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> e the e</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> ResultData</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@ExceptionHandler(Exception.class)</span></span><br><span class="line">    <span class="meta">@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ResultData&lt;String&gt; <span class="title">exception</span><span class="params">(Exception e)</span> </span>&#123;</span><br><span class="line">        log.error(<span class="string">&quot;全局异常信息 ex=&#123;&#125;&quot;</span>, e.getMessage(), e);</span><br><span class="line">        <span class="keyword">return</span> ResultData.fail(ReturnCode.RC500.getCode(),e.getMessage());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注：</p>
+<p>1.@RestControllerAdvice，RestController的增强类，可用于实现全局异常处理器</p>
+<p>2.@ExceptionHandler,统一处理某一类异常，从而减少代码重复率和复杂度，比如要获取自定义异常可以@ExceptionHandler(BusinessException.class)</p>
+<p>3.@ResponseStatus指定客户端收到的http状态码</p>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><p>参考文章：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/macoffee/p/13475320.html">https://www.cnblogs.com/macoffee/p/13475320.html</a></p>
+<p>单表行数超过 500 万行或者单表容量超过 2GB，推荐进行分库分表。预计三年后的数据量根本达不到这个级别，不要在创建表时就分库分表</p>
+<ul>
+<li>1.数据库设计和表创建时就要考虑性能</li>
+<li>2.sql的编写需要注意优化</li>
+<li>4.分区</li>
+<li>4.分表</li>
+<li>5.分库</li>
+</ul>
+<p>设计表时要注意：</p>
+<p>表字段避免null值出现，null值很难查询优化且占用额外的索引空间，推荐默认数字0代替null。<br>尽量使用INT而非BIGINT，如果非负则加上UNSIGNED（这样数值容量会扩大一倍），当然能使用TINYINT、SMALLINT、MEDIUM_INT更好。</p>
+<p>数据库表的id的类型：最好int，数据量大的用bigint<br>使用枚举或整数代替字符串类型<br>尽量使用TIMESTAMP而非DATETIME<br>单表不要有太多字段，建议在20以内<br>用整型来存IP<br>索引</p>
+<p>索引并不是越多越好，要根据查询有针对性的创建，考虑在WHERE和ORDER BY命令上涉及的列建立索引，可根据EXPLAIN来查看是否用了索引还是全表扫描<br>应尽量避免在WHERE子句中对字段进行NULL值判断，否则将导致引擎放弃使用索引而进行全表扫描<br>值分布很稀少的字段不适合建索引，例如”性别”这种只有两三个值的字段<br>字符字段只建前缀索引<br>字符字段最好不要做主键<br>不用外键，由程序保证约束<br>尽量不用UNIQUE，由程序保证约束<br>使用多列索引时主意顺序和查询条件保持一致，同时删除不必要的单列索引<br>简言之就是使用合适的数据类型，选择合适的索引</p>
+<p>选择合适的数据类型</p>
+<p>（1）使用可存下数据的最小的数据类型，整型 &lt; date,time &lt; char,varchar &lt; blob<br>（2）使用简单的数据类型，整型比字符处理开销更小，因为字符串的比较更复杂。如，int类型存储时间类型，bigint类型转ip函数<br>（3）使用合理的字段属性长度，固定长度的表会更快。使用enum、char而不是varchar<br>（4）尽可能使用not null定义字段<br>（5）尽量少用text，非用不可最好分表</p>
+<p>选择合适的索引列</p>
+<p>（1）查询频繁的列，在where，group by，order by，on从句中出现的列<br>（2）where条件中&lt;，&lt;=，=，&gt;，&gt;=，between，in，以及like 字符串+通配符（%）出现的列<br>（3）长度小的列，索引字段越小越好，因为数据库的存储单位是页，一页中能存下的数据越多越好<br>（4）离散度大（不同的值多）的列，放在联合索引前面。查看离散度，通过统计不同的列值来实现，count越大，离散程度越高：</p>
+<p>2.sql的编写需要注意优化</p>
+<p>使用limit对查询结果的记录进行限定<br>避免select *，将需要查找的字段列出来<br>使用连接（join）来代替子查询<br>拆分大的delete或insert语句<br>可通过开启慢查询日志来找出较慢的SQL<br>不做列运算：SELECT id WHERE age + 1 = 10，任何对列的操作都将导致表扫描，它包括数据库教程函数、计算表达式等等，查询时要尽可能将操作移至等号右边<br>sql语句尽可能简单：一条sql只能在一个cpu运算；大语句拆小语句，减少锁时间；一条大sql可以堵死整个库<br>OR改写成IN：OR的效率是n级别，IN的效率是log(n)级别，in的个数建议控制在200以内<br>不用函数和触发器，在应用程序实现<br>避免%xxx式查询<br>少用JOIN<br>使用同类型进行比较，比如用’123’和’123’比，123和123比<br>尽量避免在WHERE子句中使用!=或&lt;&gt;操作符，否则将引擎放弃使用索引而进行全表扫描<br>对于连续数值，使用BETWEEN不用IN：SELECT id FROM t WHERE num BETWEEN 1 AND 5<br>列表数据不要拿全表，要使用LIMIT来分页，每页数量也不要太大</p>
+<p>引擎</p>
+<p>目前广泛使用的是MyISAM和InnoDB两种引擎：</p>
+<ol>
+<li>MyISAM</li>
+<li>MyISAM引擎是MySQL 5.1及之前版本的默认引擎，它的特点是：</li>
+</ol>
+<ul>
+<li>不支持行锁，读取时对需要读到的所有表加锁，写入时则对表加排它锁</li>
+<li>不支持事务</li>
+<li>不支持外键</li>
+<li>不支持崩溃后的安全恢复</li>
+<li>在表有读取查询的同时，支持往表中插入新纪录</li>
+<li>支持BLOB和TEXT的前500个字符索引，支持全文索引</li>
+<li>支持延迟更新索引，极大提升写入性能</li>
+<li>对于不会进行修改的表，支持压缩表，极大减少磁盘空间占用</li>
+</ul>
+<ol>
+<li>InnoDB</li>
+<li>InnoDB在MySQL 5.5后成为默认索引，它的特点是：</li>
+</ol>
+<ul>
+<li>支持行锁，采用MVCC来支持高并发</li>
+<li>支持事务</li>
+<li>支持外键</li>
+<li>支持崩溃后的安全恢复</li>
+<li>不支持全文索引</li>
+</ul>
+<p>总体来讲，MyISAM适合SELECT密集型的表，而InnoDB适合INSERT和UPDATE密集型的表</p>
+<blockquote>
+<p>MyISAM速度可能超快，占用存储空间也小，但是程序要求事务支持，故InnoDB是必须的，故该方案无法执行，放弃！</p>
+</blockquote>
+<p>3.分区</p>
+<p>MySQL在5.1版引入的分区是一种简单的水平拆分，用户需要在建表的时候加上分区参数，对应用是透明的无需修改代码</p>
+<p>对用户来说，分区表是一个独立的逻辑表，但是底层由多个物理子表组成，实现分区的代码实际上是通过对一组底层表的对象封装，但对SQL层来说是一个完全封装底层的黑盒子。MySQL实现分区的方式也意味着索引也是按照分区的子表定义，没有全局索引</p>
+<p>用户的SQL语句是需要针对分区表做优化，SQL条件中要带上分区条件的列，从而使查询定位到少量的分区上，否则就会扫描全部分区，可以通过EXPLAIN PARTITIONS来查看某条SQL语句会落在那些分区上，从而进行SQL优化，我测试，查询时不带分区条件的列，也会提高速度，故该措施值得一试。</p>
+<p>分区的好处是：</p>
+<ul>
+<li>可以让单表存储更多的数据</li>
+<li>分区表的数据更容易维护，可以通过清楚整个分区批量删除大量数据，也可以增加新的分区来支持新插入的数据。另外，还可以对一个独立分区进行优化、检查、修复等操作</li>
+<li>部分查询能够从查询条件确定只落在少数分区上，速度会很快</li>
+<li>分区表的数据还可以分布在不同的物理设备上，从而搞笑利用多个硬件设备</li>
+<li>可以使用分区表赖避免某些特殊瓶颈，例如InnoDB单个索引的互斥访问、ext3文件系统的inode锁竞争</li>
+<li>可以备份和恢复单个分区</li>
+</ul>
+<p>分区的限制和缺点：</p>
+<ul>
+<li>一个表最多只能有1024个分区</li>
+<li>如果分区字段中有主键或者唯一索引的列，那么所有主键列和唯一索引列都必须包含进来</li>
+<li>分区表无法使用外键约束</li>
+<li>NULL值会使分区过滤无效</li>
+<li>所有分区必须使用相同的存储引擎</li>
+</ul>
+<p>分区的类型：</p>
+<ul>
+<li>RANGE分区：基于属于一个给定连续区间的列值，把多行分配给分区</li>
+<li>LIST分区：类似于按RANGE分区，区别在于LIST分区是基于列值匹配一个离散值集合中的某个值来进行选择</li>
+<li>HASH分区：基于用户定义的表达式的返回值来进行选择的分区，该表达式使用将要插入到表中的这些行的列值进行计算。这个函数可以包含MySQL中有效的、产生非负整数值的任何表达式</li>
+<li>KEY分区：类似于按HASH分区，区别在于KEY分区只支持计算一列或多列，且MySQL服务器提供其自身的哈希函数。必须有一列或多列包含整数值</li>
+<li>具体关于mysql分区的概念请自行google或查询官方文档，我这里只是抛砖引玉了。</li>
+</ul>
+<blockquote>
+<p>我首先根据月份把上网记录表RANGE分区了12份，查询效率提高6倍左右，效果不明显，故：换id为HASH分区，分了64个分区，查询速度提升显著。问题解决！</p>
+<p>结果如下：PARTITION BY HASH (id)PARTITIONS 64</p>
+<p>select count(<em>) from readroom_website; –11901336行记录</em></p>
+<p><em>/</em> 受影响行数: 0 已找到记录: 1 警告: 0 持续时间 1 查询: 5.734 sec. <em>/</em></p>
+<p><em>select * from readroom_website where month(accesstime) =11 limit 10;</em></p>
+<p><em>/</em> 受影响行数: 0 已找到记录: 10 警告: 0 持续时间 1 查询: 0.719 sec. */</p>
+</blockquote>
+<p>4.分表</p>
+<p>分表就是把一张大表，按照如上过程都优化了，还是查询卡死，那就把这个表分成多张表，把一次查询分成多次查询，然后把结果组合返回给用户。</p>
+<p>分表分为垂直拆分和水平拆分，通常以某个字段做拆分项。比如以id字段拆分为100张表： 表名为 tableName_id%100</p>
+<p>但：分表需要修改源程序代码，会给开发带来大量工作，极大的增加了开发成本，故：只适合在开发初期就考虑到了大量数据存在，做好了分表处理，不适合应用上线了再做修改，成本太高！！！而且选择这个方案，都不如选择我提供的第二第三个方案的成本低！故不建议采用。</p>
+<p>5.分库</p>
+<p>把一个数据库分成多个，建议做个读写分离就行了，真正的做分库也会带来大量的开发成本，得不偿失！不推荐使用</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/03/23/10.1.%E9%A1%B9%E7%9B%AE%E5%88%9D%E5%BB%BA/" data-id="ckw61sdw00040oswd3xjkd9pl" data-title="项目初建" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-1.4.正确使用搜索" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/22/1.4.%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8%E6%90%9C%E7%B4%A2/" class="article-date">
+  <time class="dt-published" datetime="2021-03-22T03:52:48.000Z" itemprop="datePublished">2021-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/22/1.4.%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8%E6%90%9C%E7%B4%A2/">正确使用搜索</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="搜索的正确顺序"><a href="#搜索的正确顺序" class="headerlink" title="搜索的正确顺序"></a>搜索的正确顺序</h1><p>google</p>
+<p>stackoverflow</p>
+<p>csdn/知乎/博客园等论坛网站</p>
+<p>gitee/github查源码或者类似配置</p>
+<h1 id="搜索结果的显示"><a href="#搜索结果的显示" class="headerlink" title="搜索结果的显示"></a>搜索结果的显示</h1><p>可以使用浏览器的脚本，将搜索结果的广告进行屏蔽，将结果更直观的展示出来。</p>
+<p>谷歌浏览器需要先下载谷歌上网助手。</p>
+<p>汇总了一些常用的浏览器插件：收藏猫插件：<a target="_blank" rel="noopener" href="https://chrome.pictureknow.com/">https://chrome.pictureknow.com/</a></p>
+<p>脚本管理工具：油猴，暴力猴。</p>
+<p>提供脚本的网站：<a target="_blank" rel="noopener" href="https://greasyfork.org/zh-CN">https://greasyfork.org/zh-CN</a></p>
+<h1 id="搜索的格式"><a href="#搜索的格式" class="headerlink" title="搜索的格式"></a>搜索的格式</h1><h2 id="正常搜索"><a href="#正常搜索" class="headerlink" title="正常搜索"></a>正常搜索</h2><p>各个名词之间，加空格搜索。</p>
+<p><code>手机 苹果</code></p>
+<h2 id="英文半角双引号搜索"><a href="#英文半角双引号搜索" class="headerlink" title="英文半角双引号搜索"></a>英文半角双引号搜索</h2><p>是一种比较精确的搜索方法：最关键的是可以将推广页面剔除掉。双引号可以实现精确的查询，这种方法要求查询结果要精确匹配，不包括演变形式</p>
+<p><code>&quot;手机&quot;</code></p>
+<h2 id="圆括号搜索"><a href="#圆括号搜索" class="headerlink" title="圆括号搜索"></a>圆括号搜索</h2><p>是完全部分匹配搜索：完全，是不会将搜索结果拆开去搜索；部分，是将搜索结果去匹配部分内容符合的内容。这种方法针对搜索结果有特殊要求的内容,有圆括号的搜索方式，搜索结果的数量变少且范围缩小了。</p>
+<p><code>(苹果手机)</code></p>
+<h2 id="通配符搜索-建议在谷歌使用，百度不太适合"><a href="#通配符搜索-建议在谷歌使用，百度不太适合" class="headerlink" title="通配符搜索(建议在谷歌使用，百度不太适合)"></a>通配符搜索(建议在谷歌使用，百度不太适合)</h2><p>*号不限制字符匹配数量，?号正好与其相反，限制字符匹配数量</p>
+<p><code>computer*</code>,可以找到“computer、computers、computerised、computerized”等单词，</p>
+<p><code>comp?ter</code>，只能找到“computer、compater、competer”等单词。</p>
+<h2 id="利用加号减号【-】、【-】搜索"><a href="#利用加号减号【-】、【-】搜索" class="headerlink" title="利用加号减号【+】、【-】搜索"></a>利用加号减号【+】、【-】搜索</h2><p>在想要搜索的关键词前使用加号，也就等于告诉搜索引擎你搜索的这个词<strong>必须出现在搜索结果的网页中</strong>，如果只是网页标题中含这个关键词的就不出现。在想要搜索的关键词前使用减号，实质是与上面有些相反的意思，则在搜索结果中不能出现前面带减号的关键词，</p>
+<p><code>我+要去+英国+留学</code>,就表示要查找的网页内容中必须要同时包含“我、要去、英国、留学”这三个关键词</p>
+<h2 id="搜索范围限定在网页标题中"><a href="#搜索范围限定在网页标题中" class="headerlink" title="搜索范围限定在网页标题中"></a>搜索范围限定在网页标题中</h2><p>网页标题就是在打开网站的时候浏览器上显示的文字，但是网页标题中所包含的关键词有可能是不出现在网页中的，所以你只想搜索网页标题里面的关键词，就需要用到intitle：语法</p>
+<p><code>intitle+标题</code></p>
+<h2 id="限定网站搜索方式"><a href="#限定网站搜索方式" class="headerlink" title="限定网站搜索方式"></a>限定网站搜索方式</h2><p><code>site:www.baidu.com 百度</code>  </p>
+<p>“site:”后面跟的站点域名，不要带“//”;site:后面带不带www结果可能是不一样的，因为有些域名还包括二级域名，如：site:<a href="http://www.XX.com和site:XX.com，搜索结果就不一样。另外，site:和站点名之间，不要带空格。使用site:语法限定在某站上搜索特定关键词（只在当前网站进行搜索）">www.XX.com和site:XX.com，搜索结果就不一样。另外，site:和站点名之间，不要带空格。使用site:语法限定在某站上搜索特定关键词（只在当前网站进行搜索）</a></p>
+<h2 id="限定链接url搜索"><a href="#限定链接url搜索" class="headerlink" title="限定链接url搜索"></a>限定链接url搜索</h2><p><code>inurl:douban 电影</code></p>
+<p>与site的区别就是inurl中的所有网页URL中都包含了douban但是是不同的网站</p>
+<p>inurl的作用是限定在url中搜索，利用这种相关性，来缩小范围，快速准确地找到所需信息</p>
+<h2 id="专业文档搜索"><a href="#专业文档搜索" class="headerlink" title="专业文档搜索"></a>专业文档搜索</h2><p><code>filetype:doc 电脑</code></p>
+<p>搜索结果都是word格式并且包含了 电脑 这个关键词</p>
+<p>以上也可以在百度的高级搜索中进行设置。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/03/22/1.4.%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8%E6%90%9C%E7%B4%A2/" data-id="ckw61sduk0001oswddbkeh8ov" data-title="正确使用搜索" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%90%9C%E7%B4%A2%E6%8A%80%E5%B7%A7/" rel="tag">搜索技巧</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%99%BE%E5%BA%A6/" rel="tag">百度</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B0%B7%E6%AD%8C/" rel="tag">谷歌</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-1.3.沟通技巧" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/03/19/1.3.%E6%B2%9F%E9%80%9A%E6%8A%80%E5%B7%A7/" class="article-date">
@@ -183,13 +477,19 @@
 <p><img src="https://img-blog.csdnimg.cn/img_convert/ed0d0df7d34698d3d025653552e1d2ae.png" alt="ed0d0df7d34698d3d025653552e1d2ae.png"></p>
 <p>在上面的图像中我们可以清晰的看到，打印机是如何使用墨点来打印一张图像。</p>
 <p>所以，打印机的DPI越高，打印图像的精细程度就越高，同时这也会消耗更多的墨点和时间</p>
+<p><strong>DPR</strong></p>
+<p>设备像素比（dpr） =  设备像素（分辨率）/设备独立像素（屏幕尺寸）</p>
+<p>布局视窗：屏幕大小</p>
+<p>视觉视窗：为了解决PC端网站在移动端显示不佳，布局视窗比设备屏幕宽度宽，一般为980</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width:device-width, initial-scale&#x3D;1.0, maximum&#x3D;1.0, minimum&#x3D;1.0, user-scalable&#x3D;no&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这行代码把视觉视窗大小设置成和布局视窗大小相等，这样我们在代码设置css像素时，设置的跟渲染出来效果也是一样。</p>
 <p><strong>手机分辨率</strong>指的是屏幕能够达到的清晰度，液晶排列点阵数量，通常用乘号或者 * 表示，如320 * 240，480 * 800，1280 * 720 表示的是像素，越大屏幕分辨率越高，同等尺寸情况下越清晰，当然跟屏幕生产商，材质也有关系。</p>
 <p>像素指的是相机，通常在摄像头后面有标记，如2M，8M等，指的是200万，800万像素</p>
 <p>像素越高，最大输出的影像分辨率也越高；分辨率越大，图片的面积越大</p>
 <p><strong>手机尺寸</strong>   1英寸 = 2.54 厘米  手机屏幕的大小还和屏幕的长宽比有关，同样的对角线长度16:9的长宽比和4:3的长宽比，屏幕大小是不一样的</p>
 <p>比如：苹果5的是4英寸：1136 * 640 像素密度330PPI     （浏览器调试的时候就可以设置为：568 * 320）  </p>
-<p> 7.robots.txt</p>
-<p>Web机器人（爬虫）</p>
+<p> <strong>7.robots.txt</strong>：Web机器人（爬虫）</p>
 <p>8.<strong>ORM</strong>：Object Relational Mapping，对象关系映射。</p>
 <p>9.<strong>Thrift</strong> 是一个软件框架（远程过程调用框架），用来进行可扩展且跨语言的服务的开发。它结合了功能强大的软件堆栈和代码生成引 擎，以构建在 C++, Java, Python, PHP, Ruby, Erlang, Perl, Haskell, C#, Cocoa, JavaScript, Node.js, Smalltalk, and OCaml 这些编程语言间无缝结合的、高效的服务</p>
 <p>10.<strong>百度指数</strong>：查看数据可以去百度指数，查看这个数据的搜索热度。</p>
@@ -198,8 +498,9 @@
 <p>CDN通过广泛的网络节点分布，提供快速、稳定、安全、可编程的全球内容分发加速服务，支持将网站、音视频、下载等内容分发至接近用户的节点，使用户可就近取得所需内容，提高用户访问的响应速度和成功率。</p>
 <p>CND加速主要是加速静态资源，CND加速需要依靠各个网络节点，CND服务器通过缓存或者主动抓取主服务器的内容来实现资源储备</p>
 <p>13.<strong>ERP系统</strong>：是企业资源计划（Enterprise Resource Planning）的简称，是指建立在信息技术基础上，集信息技术与先进管理思想于一身，以系统化的管理思想，为企业员工及决策层提供决策手段的管理平台。</p>
-<p>14.Dashboard：仪表板，一般为后台管理系统的首页</p>
-<p>15.<code>.sh</code>结尾的文件：脚本文件，被称为脚本Bash的应用程序和使用开发人员文件。可以使用sh命令运行“sh xxx.sh”，并且由于在linux中sh是链接到bash上的，所以sh与bash在功能上是没有区别的。windows系统下可以通过git bash打开到这个.sh文件所在位置，然后运行<code>sh xxx.sh</code></p>
+<p>14.<strong>Dashboard</strong>：仪表板，一般为后台管理系统的首页</p>
+<p>15.**<code>.sh</code>**结尾的文件：脚本文件，被称为脚本Bash的应用程序和使用开发人员文件。可以使用sh命令运行“sh xxx.sh”，并且由于在linux中sh是链接到bash上的，所以sh与bash在功能上是没有区别的。</p>
+<p>windows系统下可以通过git bash打开到这个.sh文件所在位置，然后运行<code>sh xxx.sh</code></p>
 <p>16.在xml中，被**<code>&lt;![CDATA[]]&gt;</code><strong>这个标记所包含的内容将表示为</strong>纯文本**，比如<code>&lt;![CDATA[&lt;]]&gt;</code>表示文本内容<code>“&lt;”</code></p>
 <p>在xml中，<code>”&lt;”</code>、<code>”&gt;”</code>、<code>”&amp;”</code>等字符是不能直接存入的，否则xml语法检查时会<strong>报错</strong>，如果想在xml中使用这些符号，必须将其转义为实体，如<code>”&amp;lt;”</code>、<code>”&amp;gt;”</code>、<code>”&amp;amp;”</code>，这样才能保存进xml文档。</p>
 <p>　　(1)转义序列字符之间不能有空格；<br>　　(2) 转义序列必须以”;”结束；<br>　　(3) 单独出现的”&amp;”不会被认为是转义的开始；<br>　　(4) 区分大小写。</p>
@@ -212,13 +513,19 @@
 <p><code>GE 就是 GREATER THAN OR EQUAL 大于等于</code> </p>
 <p><code>LE 就是 LESS THAN OR EQUAL 小于等于</code></p>
 <p>18.<strong>psd</strong>文件是Photoshop图片软件保存的一种文件格式，保存这种格式后可以在下次打开这个文件的时候继续以前的操作而不会断掉。</p>
-<p>19.<code> </code>  U+2006  ios手机输入法如果只输入拼音，但是未选择汉字时直接回车会在拼音的`之间插入这个字符。</p>
+<p>19.<code> </code>  <strong>U+2006</strong>  ios手机输入法如果只输入拼音，但是未选择汉字时直接回车会在拼音的`之间插入这个字符。复制在idea里会显示，但是其他地方都只会显示一个空格。</p>
+<p>20.进程：应用程序的启动实例。进程拥有代码和打开的文件资源、数据资源、独立的内存空间</p>
+<p>线程：线程从属于进程，是程序的实际执行者。一个进程至少包含一个主线程，也可以有更多的子线程。线程拥有自己的栈空间。具有经典的五种状态：初始化，就绪，阻塞，运行，销毁</p>
+<p>协程：一个线程可以拥有多个协程。在单线程下，由用户自己控制，一个任务遇到io阻塞了就切换另外一个任务去执行，以此来提升效率</p>
+<p>管程：用来管理共享变量以及对共享变量操作的过程。<strong>MESA模型</strong>、Hasen模型、Hoare模型。解决了互斥与同步：管程保证了同时只允许一个线程进入。</p>
+<p><strong>线程是最小的执行单元，进程是最小的资源管理单元</strong>。无论进程还是线程，都是由操作系统所管理的。</p>
+<p>协程不是被操作系统内核所管理，而完全是由程序所控制（也就是在用户态执行）</p>
 <h3 id="微信"><a href="#微信" class="headerlink" title="微信"></a>微信</h3><p> 1.<strong>微信</strong>发送安卓相关的安装包会自动屏蔽。</p>
-<p>2.微信的浏览器内核：</p>
+<p>2.微信的<strong>浏览器内核</strong>：</p>
 <p>安卓（Android）手机：微信6.1版本以上的android用户，都是使用的QQ浏览器的X5内核。5.4-6.1之间的版本，若用户安装了QQ浏览器就是使用的X5内核，若用户未安装浏览器，使用的是系统内核。</p>
 <p>苹果（IOS）手机：safari</p>
 <p>WKWebview（此网页由）和UIWebview（网页由）</p>
-<p>从IOS8开始支持WKWebview</p>
+<p>从ios8开始支持WKWebview</p>
 <h3 id="电脑知识"><a href="#电脑知识" class="headerlink" title="电脑知识"></a>电脑知识</h3><p> 1.<strong>usb2.0和usb3.0</strong>：</p>
 <p>颜色：USB2.0接口处为黑色或白色，USB3.0接口处为蓝色</p>
 <p>标志符号：USB3.0接口比2.0多了个ss</p>
@@ -230,8 +537,8 @@
 <p>​                    USB3.0：采用了对偶单纯形四线制差分信号线，可以双向并发数据传输</p>
 <p> 2.下载好的软件，如果桌面没有<strong>快捷方式</strong>图标，需要重新在软件位置右击创建快捷方式到桌面，直接拉到桌面不能启动。</p>
 <p> 3.windows下<strong>打开</strong>到某个<strong>文件</strong>，在地址栏输入cmd，可以直接跳转到cmd命令行的这个文件目录。</p>
-<p> 4.windows系统下，windows键+上下左右箭头键可以进行分屏。</p>
-<p> 5.x64是64位系统。x86是32位系统。</p>
+<p> 4.windows系统下，windows键+上下左右箭头键可以进行<strong>分屏</strong>。</p>
+<p> 5.<strong>x64</strong>是64位系统。<strong>x86</strong>是32位系统。</p>
 <p>x86指的是一种cpu的架构。因为intel的8086，286，386～586而得名，amd开发的大部分cpu也是基于x86架构的。x86架构的特点是cpu的寄存器是32位的，因此也叫32位cpu。</p>
 <p>X86的32位体系结构通常称为IA－32，全称为“英特尔体系结构，32位”。它的64位体系结构最早由AMD推出，被称为“AMD64”。后来，它也被英特尔采用，被称为“英特尔64”。也称为“x86－64”、“x64”。</p>
 <p>早期英特尔曾以80x86的数字格式命名处理器，包括8086、80186、80286、80386和80486。</p>
@@ -239,156 +546,115 @@
 <p> 6.查看本机IP：cmd中输入  <code>ipconfig</code></p>
 <p>​    查看网络连接状况：cmd中输入：<code>ping baidu.com</code></p>
 <p>​    查看本机外网的ip：直接在百度输入<code>ip</code>第一条就是本机的ip信息</p>
-<p>​    查看本机有没有装好TCP/IP协议：<code>ping 127.0.0.1</code>  （本机无论在联网或是没有联网的状态下的地址.用这个都可以访问到自己的机子）本地Socks Proxy的地址是localhost:1080或127.0.0.1:1080</p>
-<p> 7.打开文件之后，不要急着关闭，以防会再用到，再去打开找。浏览器不要打开多个窗口，否则会很卡。</p>
-<p> 8.硬编码</p>
+<p>​    查看本机有没有装好TCP/IP协议：<code>ping 127.0.0.1</code>  （本机无论在联网或是没有联网的状态下的地址.用这个都可以访问到自己的机子）</p>
+<p>本地Socks Proxy的地址是localhost:1080或127.0.0.1:1080</p>
+<p> 7.打开文件之后，不要急着关闭，以防会再用到，再去打开找。浏览器不要打开多个窗口，否则会很卡，因为会占用内存。</p>
+<p> 8.<strong>硬编码</strong></p>
 <p>​    硬编码是将数据直接嵌入到程序或其他可执行对象的源代码中的软件开发实践，与从外部获取数据或在运行时生成数据不同。 </p>
 <p>​    硬编码数据通常只能通过编辑源代码和重新编译可执行文件来修改，尽管可以使用调试器或十六进制编辑器在内存或磁盘上进行更改。 </p>
 <p>​    硬编码的数据通常表示不变的信息，例如物理常量，版本号和静态文本元素。 另一方面，软编码数据对用户输入，HTTP服务器响应或配置文件等任意信息进行编码，并在运行时确定。</p>
 <p>它和普通编码的区别是：</p>
-<p>​    1、编码方式不同：</p>
+<ul>
+<li>编码方式不同：</li>
+</ul>
 <p>普通编码：使用CPU进行编码。</p>
 <p>硬编码：使用非CPU进行编码，如显卡GPU、专用的DSP、FPGA、ASIC芯片等。</p>
-<p>​    2、使用方式不同：</p>
+<ul>
+<li>使用方式不同：</li>
+</ul>
 <p>普通编码：实现直接、简单，参数调整方便，升级易，但CPU负载重，性能较硬编码低，低码率下质量通常比硬编码要好一点</p>
 <p>硬编码：性能高，低码率下通常质量低于软编码器，但部分产品在GPU硬件平台移植了优秀的软编码算法（如X264）的，质量基本等同于软编码</p>
-<p>​    3、复杂程度不同：</p>
+<ul>
+<li>复杂程度不同：</li>
+</ul>
 <p>普通编码比硬编码要复杂一些，对以后的考虑要周到一些。普通编码是一种设计，而硬编码不过是一种具体的实现。软件开发不只是需要一个软件的实现，更需要软件能够很好的修改，方便得扩展，所以需要一些设计技巧在里面。</p>
-<p> 9.注册表：注册表的作用是保存程序所需要的信息,当程序需要这些信息时,就从注册表里读出.因此,注册表最基本的功能就是保存信息</p>
+<p> 9.<strong>注册表</strong>：注册表的作用是保存程序所需要的信息,当程序需要这些信息时,就从注册表里读出.因此,注册表最基本的功能就是保存信息</p>
 <p>​    win+r，输入“regedit”。解决了谷歌浏览器下载的图片格式问题，右键git bash here命令消失的问题。</p>
-<p> 10.图片的格式类型：</p>
+<p> 10.<strong>图片的格式</strong>类型：</p>
 <p>图片格式是计算机存储图片的格式，常见的存储的格式有bmp，jpg，png，tif，gif，pcx，tga，exif，fpx，svg，psd，cdr，pcd，dxf，ufo，eps，ai，raw，WMF，webp，avif等</p>
-<p> 11.中文的：和英文的:</p>
+<p> 11.<strong>中文</strong>的：和<strong>英文</strong>的:</p>
 <p>中文的”“和英文的””</p>
 <p>中文的（）和英文的()</p>
 <p>明显发现中文的格式都有一点空格，英文没有</p>
 <ol start="12">
-<li><p>（路径问题常用）</p>
+<li><p><strong>路径</strong>指示：</p>
 <p>./表示当前目录</p>
 <p>../表示父级目录</p>
 <p>/表示根目录</p>
 </li>
-<li><p>‘/x’ x表示任意，这种做法叫转义字符</p>
+<li><p><strong>转义字符</strong></p>
 </li>
 </ol>
-<p>​    ‘/t’ tab键</p>
-<p>​    ‘/r’ 回车</p>
-<p>​    ‘/n’ 换行</p>
+<p>​    ‘/x’      x表示任意</p>
+<p>​    ‘/t’      tab键</p>
+<p>​    ‘/r’      回车</p>
+<p>​    ‘/n’      换行</p>
 <p> 14.斜杠/和反斜杠\</p>
-<p>​    1、反斜线“\”是电脑出现了之后为了表示程序设计里的特殊含义才发明的专用标点。就是说，除了程序设计领域外，任何地方都不应该有使用反斜杠的时候，请永远使用正斜线“/”<br>​    2、Windows系统中用反斜线“\”来表示目录，但是Linux下用正斜线“/”来表示<br>​    3、Windows：“/”是表示参数，“\”是表示本地路径。<br>　　  Linux和Unix：“/”表示路径，“\”表示转义，“-”和“–”表示参数。<br>　　  网络：由于网络使用Unix标准，所以网络路径用“/”。</p>
-<p>如：url地址：<a target="_blank" rel="noopener" href="https://www.baidu.com/">https://www.baidu.com</a><br>windows地址：C:\Program Files<br>linux地址：/home/nginx/logs<br>linux中的转义字符 find ./ -name *.c<br>其他常见转义字符 ： 如 \n \t <br>java中注释： / * 单行注释 * /      //单行注释<br>所以谨记正则表达式、转义字符都是用反斜杠 \</p>
-<p>15.查看win10系统的激活过期时间：windows键+r打开运行，再输入 <code>slmgr.vbs -xpr</code></p>
-<p>16.一级缓存、二级缓存和三级缓存</p>
+<ul>
+<li>反斜线“\”是电脑出现了之后为了表示程序设计里的特殊含义才发明的专用标点。就是说，除了程序设计领域外，任何地方都不应该有使用反斜杠的时候，请永远使用正斜线“/”</li>
+<li>Windows系统中用反斜线“\”来表示目录，但是Linux下用正斜线“/”来表示</li>
+<li>Windows：“/”是表示参数，“\”是表示本地路径。<br>Linux和Unix：“/”表示路径，“\”表示转义，“-”和“–”表示参数。<br>网络：由于网络使用Unix标准，所以网络路径用“/”。</li>
+</ul>
+<p>例：</p>
+<p>url地址：<a target="_blank" rel="noopener" href="https://www.baidu.com/">https://www.baidu.com</a><br>windows地址：C:\Program Files<br>linux地址：/home/nginx/logs<br>linux中的转义字符 find ./ -name *.c<br>其他常见转义字符 ： 如 \n \t <br>java中注释： / * 单行注释 * /      //单行注释<br>所以谨记正则表达式、转义字符都是用反斜杠 \</p>
+<p>15.查看win10系统的<strong>激活过期</strong>时间：windows键+r打开运行，再输入 <code>slmgr.vbs -xpr</code></p>
+<p>16.<strong>一级缓存、二级缓存和三级缓存</strong></p>
 <p>当cpu进行读取缓存数据的时候，是先从缓存的数据进行查找的，读取之后再输入到电脑cpu里面进行处理，如果没有对应的缓存文件给cpu进行处理的话，那电脑就会从内存中的数据进行处理并给cpu进行处理。这一段时间会相比找到缓存文件来要慢的多。cpu处理完数据之后，就会把处理完的的数据模块进行保存，这个就是缓存文件</p>
 <p>电脑的缓存文件分为三个等级，分别是一二三级缓存。</p>
 <p>一级缓存基本上都是内置在cpu的内部和cpu一个速度进行运行，能有效的提升cpu的工作效率。一级缓存越多，cpu的工作效率就会越来越高，是cpu的内部结构限制了一级缓存的容量大小，使一级缓存的容量都是很小的。</p>
 <p>二级缓存，主要作用是协调一级缓存和内存之间的工作效率。cpu首先用的是一级内存，当cpu的速度慢慢提升之后，一级缓存就不够cpu的使用量了，这就需要用到二级内存。当然二级内存会比一级内存的缓存的效率要低很多，但是相比容量来说二级内存的容量要比一级的容量要大很多。一级内存和二级内存主要是为cpu的处理数据的时候临时进行数据交换的时候使用的。</p>
 <p>三级缓存和一级缓存与二级缓存的关系差不多，是为了在读取二级缓存不够用的时候而设计的一种缓存手段，在有三级缓存cpu之中，只有大约百分之五的数据需要在内存中调取使用，这能提升cpu不少的效率，从而cpu能够高速的工作。</p>
 <p>现在市场上主流的cpu有两种型号的cpu： amd 和intel。amd型号的cpu只用一级缓存和二级缓存，没有三级缓存。但是intel的cpu恰恰相反，有二级缓存和三级缓存，但是没有一级缓存。</p>
-<h3 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h3><ol>
-<li><p><strong>浏览器</strong>主要是看<strong>内核</strong>来分辨显示。有的浏览器会自动过滤掉一些资源（比如一个名为guanggao的图片）</p>
-<p>Apple的Safari, Google的Chrome, Nokia S60平台的默认浏览器，Apple手机的默认浏览器，Android手机的默认浏览器均采用的Webkit作为器浏览器内核</p>
-<p>Firefox使用Gecko 内核</p>
-<p>微软的IE系列则使用的是Trident内核</p>
-</li>
-<li><p>网址后可以加#+代码块的id（这个id是唯一的），表示打开这个网站，可以直接定位到这个代码块对应的前端部分。如果没有跟任何东西，只有#，代表定位到上次访问的位置。</p>
-</li>
-<li><p>根据坐标查询地理位置，可以去某个地图网站的坐标拾取器进行搜索。</p>
-</li>
-<li><p>谷歌浏览器：ctrl+shift+t，打开刚刚关闭的网页。ctrl+w，关闭当前网页。</p>
-</li>
+<h3 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h3><p>1.浏览器主要是看<strong>内核</strong>来分辨显示。有的浏览器会自动过滤掉一些资源（比如一个名为guanggao的图片）</p>
+<p>   Apple的Safari, Google的Chrome, Nokia S60平台的默认浏览器，Apple手机的默认浏览器，Android手机的默认浏览器均采用的Webkit作为器浏览器内核</p>
+<p>   Firefox使用Gecko 内核</p>
+<p>   微软的IE系列则使用的是Trident内核</p>
+<p>2.网址后可以加**#+代码块的id**（这个id是唯一的），表示打开这个网站，可以直接定位到这个代码块对应的前端部分。如果没有跟任何东西，只有#，代表定位到上次访问的位置。</p>
+<p>3.根据坐标查询地理位置，可以去某个地图网站的<strong>坐标拾取器</strong>进行搜索。</p>
+<p>4.谷歌浏览器<strong>快捷键</strong>：ctrl+shift+t，打开刚刚关闭的网页。ctrl+w，关闭当前网页。</p>
+<p>5.浏览器的储存：</p>
+<ul>
 <li><p>cookie空间太小，一旦大了，会消耗流量，只适合存一些登录会话信息</p>
-<p>sessionStorage的过期时间就是关闭浏览器，是个临时会话窗口；sessionStorage只能在同一标签下共享，假如你把网址复制粘贴到新打开的标签页里面，不共享数据</p>
-<p>localStorage存储空间大，长时间保存，同一浏览器，标签页全部共享，它是直接存到电脑硬盘上的，是永久有效的，除非手动清除</p>
-<p>localStorage和sessionStorage的区别：两者都可用来存储数据，但是localStorage会保留原始数据，即使关闭浏览器，数据仍然存在。而sessionStorage不会保留，关闭浏览器后数据被销毁。由于要求用户在保持登录状态下重新打开浏览器可以不用登录直接进入主页面，所以要用localStorage</p>
 </li>
-</ol>
-<p>创建缓存:<code>localStorage.setItem(&#39;userInfo&#39;, userInfo);</code></p>
-<p>读取缓存:<code>localStorage.getItem(&#39;doEdit&#39;, this.doEdit);</code></p>
-<p>清除所有缓存:<code>localStorage.clear();</code></p>
-<p>清楚指定缓存:<code>localStorage.removeItem(&#39;userinfo&#39;);</code></p>
-<p>用ES6的类来封装，写一个function给localStorage设置过期时间：</p>
-<p>引入这个class可以参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zgh0711/article/details/80432609">https://blog.csdn.net/zgh0711/article/details/80432609</a></p>
-<p>本质就是写一个js文件，然后main.js中import ，将它挂载到 vue 对象的原型上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F;先 import 引入</span><br><span class="line">import &#123;storage&#125; from &#39;.&#x2F;utils&#x2F;storage&#39;</span><br><span class="line">&#x2F;&#x2F;阻止显示在生产环境下的不必要的额外消息（这些消息开发时便于调试，生产环境下没有用处）</span><br><span class="line">Vue.config.productionTip &#x3D; false;</span><br><span class="line">&#x2F;&#x2F;将 myUtils 挂载到 vue 的原型上</span><br><span class="line">Vue.prototype.storage &#x3D; new storage();</span><br></pre></td></tr></table></figure>
-
-<p>在组件中可以直接调用相应的方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">this.storage.setItem(&#123;</span><br><span class="line">      name:&quot;name&quot;,</span><br><span class="line">      value:&quot;XXX&quot;,</span><br><span class="line">      expires: &quot;&quot;,</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
-
-<p>写好的class：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">storage</span></span>&#123;</span><br><span class="line">        <span class="function"><span class="title">constructor</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">            <span class="built_in">this</span>.name = <span class="string">&#x27;storage&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//设置缓存</span></span><br><span class="line">        <span class="function"><span class="title">setItem</span>(<span class="params">params</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">let</span> obj = &#123;</span><br><span class="line">                name:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">                value:<span class="string">&#x27;&#x27;</span>,</span><br><span class="line">                expires:<span class="string">&quot;&quot;</span>,</span><br><span class="line">                startTime:<span class="keyword">new</span> <span class="built_in">Date</span>().getTime()<span class="comment">//记录何时将值存入缓存，毫秒级</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">let</span> options = &#123;&#125;;</span><br><span class="line">            <span class="comment">//将obj和传进来的params合并</span></span><br><span class="line">            <span class="built_in">Object</span>.assign(options,obj,params);</span><br><span class="line">            <span class="keyword">if</span>(options.expires)&#123;</span><br><span class="line">            <span class="comment">//如果options.expires设置了的话</span></span><br><span class="line">            <span class="comment">//以options.name为key，options为值放进去</span></span><br><span class="line">                <span class="built_in">localStorage</span>.setItem(options.name,<span class="built_in">JSON</span>.stringify(options));</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//如果options.expires没有设置，就判断一下value的类型</span></span><br><span class="line">               	<span class="keyword">let</span> type = <span class="built_in">Object</span>.prototype.toString.call(options.value);</span><br><span class="line">               	<span class="comment">//如果value是对象或者数组对象的类型，就先用JSON.stringify转一下，再存进去</span></span><br><span class="line">                <span class="keyword">if</span>(type == <span class="string">&#x27;[object Object]&#x27;</span>)&#123;</span><br><span class="line">                    options.value = <span class="built_in">JSON</span>.stringify(options.value);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(type == <span class="string">&#x27;[object Array]&#x27;</span>)&#123;</span><br><span class="line">                    options.value = <span class="built_in">JSON</span>.stringify(options.value);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">localStorage</span>.setItem(options.name,options.value);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//拿到缓存</span></span><br><span class="line">        <span class="function"><span class="title">getItem</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">            <span class="comment">//需要先判空</span></span><br><span class="line">            <span class="keyword">if</span>(!item) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">let</span> item = <span class="built_in">localStorage</span>.getItem(name);</span><br><span class="line">            <span class="comment">//先将拿到的试着进行json转为对象的形式</span></span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                item = <span class="built_in">JSON</span>.parse(item);</span><br><span class="line">            &#125;<span class="keyword">catch</span>(error)&#123;</span><br><span class="line">            <span class="comment">//如果不行就不是json的字符串，就直接返回</span></span><br><span class="line">                item = item;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//如果有expires的值，说明设置了失效时间</span></span><br><span class="line">            <span class="keyword">if</span>(item.expires)&#123;</span><br><span class="line">                <span class="keyword">let</span> date = <span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line">                <span class="comment">//何时将值取出减去刚存入的时间，与item.expires比较，如果大于就是过期了，如果小于或等于就还没过期</span></span><br><span class="line">                <span class="keyword">if</span>(date - item.startTime &gt; item.expires)&#123;</span><br><span class="line">                <span class="comment">//缓存过期，清除缓存，返回false</span></span><br><span class="line">                    <span class="built_in">localStorage</span>.removeItem(name);</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">//缓存未过期，返回值</span></span><br><span class="line">                    <span class="keyword">return</span> item.value;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//如果没有设置失效时间，直接返回值</span></span><br><span class="line">                <span class="keyword">return</span> item;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//移出缓存</span></span><br><span class="line">        <span class="function"><span class="title">removeItem</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">            <span class="built_in">localStorage</span>.removeItem(name);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//移出全部缓存</span></span><br><span class="line">        <span class="function"><span class="title">clear</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">localStorage</span>.clear();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="6">
-<li>4g不能访问某个网站，换到了wifi就可以：</li>
-</ol>
+<li><p>sessionStorage的过期时间就是关闭浏览器，是个临时会话窗口；sessionStorage只能在同一标签下共享，假如你把网址复制粘贴到新打开的标签页里面，不共享数据</p>
+</li>
+<li><p>localStorage存储空间大，长时间保存，同一浏览器，标签页全部共享，它是直接存到电脑硬盘上的，是永久有效的，除非手动清除</p>
+</li>
+</ul>
+<p>localStorage和sessionStorage的区别：两者都可用来存储数据，但是localStorage会保留原始数据，即使关闭浏览器，数据仍然存在。而sessionStorage不会保留，关闭浏览器后数据被销毁。由于要求用户在保持登录状态下重新打开浏览器可以不用登录直接进入主页面，所以要用localStorage</p>
+<p>6.4g不能<strong>访问</strong>某个<strong>网站</strong>，换到了wifi就可以：（本地项目可以通过在同一个局域网下的设备通过内网ip访问来实现本地的现实机型调试）</p>
 <p>服务器商那边对移动网络的问题。实际上跳转的时候的ip发生了变化，找服务商解决的。不是阿里云也不是腾讯云</p>
-<ol start="7">
-<li>SEO（Search Engine Optimization）：汉译为搜索引擎优化。是一种方式：利用搜索引擎的规则提高网站在有关搜索引擎内的自然排名。目的是让其在行业内占据领先地位，获得品牌收益。很大程度上是网站经营者的一种商业行为，将自己或自己公司的排名前移</li>
-</ol>
+<p>7.<strong>SEO</strong>（Search Engine Optimization）：汉译为搜索引擎优化。是一种方式：利用搜索引擎的规则提高网站在有关搜索引擎内的自然排名。目的是让其在行业内占据领先地位，获得品牌收益。很大程度上是网站经营者的一种商业行为，将自己或自己公司的排名前移</p>
 <p>搜索引擎优化的技术手段主要有黑帽（black hat）、白帽（white hat）两大类。</p>
 <p>通过作弊手法欺骗搜索引擎和访问者，最终将遭到搜索引擎惩罚的手段被称为黑帽，比如隐藏关键字、制造大量的meta字、alt标签等。</p>
 <p>而通过正规技术和方式，且被搜索引擎所接受的SEO技术，称为白帽</p>
-<ol start="8">
-<li><p>Network下的所有请求和回复：不止一个请求，会有多个。<br>Headers：</p>
-<pre><code>User-Agent：我们的浏览器信息：操作系统，位数，什么类型的浏览器等一些信息（没有这个无法返回消息）
-Cookie：保存在本地的信息（往往是加密的）（没有这个可能会出现登录的问题，如果无法登录，自然无法爬取一些特定的内容）
-...
-</code></pre>
-<p>Elements下点击某个标签后，最下面一行会显示这个标签的所有父模块</p>
-</li>
-<li><p>ping 百度时候ping <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> 会出现<a target="_blank" rel="noopener" href="http://www.a.shifen.com.这是百度以前的网址/">www.a.shifen.com。这是百度以前的网址</a></p>
-</li>
-<li><p>localhost 是一个域名，在过去它指向 127.0.0.1 这个IP地址。在操作系统支持 ipv6 后，它同时还指向ipv6 的地址 [::1] </p>
-</li>
-</ol>
+<p>8.浏览器下的<strong>F12调试模式</strong>：</p>
+<p>   Network下的所有请求和回复：不止一个请求，会有多个。<br>   Headers：<br>       User-Agent：我们的浏览器信息：操作系统，位数，什么类型的浏览器等一些信息（没有这个无法返回消息）<br>       Cookie：保存在本地的信息（往往是加密的）（没有这个可能会出现登录的问题，如果无法登录，自然无法爬取一些特定的内容）<br>       …<br>   Elements下点击某个标签后，最下面一行会显示这个标签的所有父模块，便于更快的定位html元素</p>
+<p>9.ping 百度时候ping <a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a> 会出现<a target="_blank" rel="noopener" href="http://www.a.shifen.com.这是百度以前的网址/">www.a.shifen.com。这是百度以前的网址</a></p>
+<p>10.<strong>localhost</strong> 是一个域名，在过去它指向 127.0.0.1 这个IP地址。在操作系统支持 ipv6 后，它同时还指向ipv6 的地址 [::1] </p>
 <p>整个127.* 网段通常被用作 loopback 网络接口的默认地址，按惯例通常设置为 127.0.0.1。这个地址在其他计算机上不能访问，就算你想访问，访问的也是自己，因为每台带有TCP/IP协议栈的设备基本上都有 localhost/127.0.0.1</p>
 <p>本机地址通常指的是绑定在物理或虚拟网络接口上的IP地址，可供其他设备访问到：IPv4地址：192.168.0.156</p>
-<p>11.chromedriver是操作浏览器的一个exe应用程序。java，python都可以在程序里读到这个exe并对其进行操作。相当于就是在程序里对浏览器进行操作。</p>
-<p>12.通过网站域名 +robots.txt 方式查看这个网站自己禁止爬取本站信息的爬虫名单</p>
-<p>robots.txt（统一小写）是一种存放于网站根目录下的ASCII编码的文本文件，它通常告诉网络搜索引擎的漫游器（又称网络蜘蛛），此网站中的哪些内容是不应被搜索引擎的漫游器获取的，哪些是可以被漫游器获取的。因为一些系统中的URL是大小写敏感的，所以robots.txt的文件名应统一为小写。robots.txt应放置于网站的根目录下。如果想单独定义搜索引擎的漫游器访问子目录时的行为，那么可以将自定的设置合并到根目录下的robots.txt，或者使用robots元数据（Metadata，又称元数据）。<br>robots.txt协议并不是一个规范，而只是约定俗成的，所以并不能保证网站的隐私。注意robots.txt是用字符串比较来确定是否获取URL，所以目录末尾有与没有斜杠“/”表示的是不同的URL。robots.txt允许使用类似”Disallow: *.gif”这样的通配符。</p>
-<p>13.PhantomJS是一个Python包，他可以在没有图形界面的情况下，完全模拟一个”浏览器“，js脚本验证什么的再也不是问题了</p>
-<h3 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h3><ol>
-<li><p>调试程序的时候，得到什么值输出一下，一步一步查看错误在哪，对于不懂得错误，学会用搜索引擎解决。</p>
-</li>
-<li><p>魔法数字</p>
-</li>
-</ol>
+<p>11.<strong>chromedriver</strong>是操作浏览器的一个exe应用程序。java，python都可以在程序里读到这个exe并对其进行操作。相当于就是在程序里对浏览器进行操作。</p>
+<p>12.通过<strong>网站域名 +robots.txt</strong> 方式查看这个网站自己禁止爬取本站信息的爬虫名单</p>
+<p>robots.txt（统一小写）是一种存放于网站根目录下的ASCII编码的文本文件，它通常告诉网络搜索引擎的漫游器（又称网络蜘蛛），此网站中的哪些内容是不应被搜索引擎的漫游器获取的，哪些是可以被漫游器获取的。因为一些系统中的URL是大小写敏感的，所以robots.txt的文件名应统一为小写。robots.txt应放置于网站的根目录下。如果想单独定义搜索引擎的漫游器访问子目录时的行为，那么可以将自定的设置合并到根目录下的robots.txt，或者使用robots元数据（Metadata，又称元数据）<br>robots.txt协议并不是一个规范，而只是约定俗成的，所以并不能保证网站的隐私。注意robots.txt是用字符串比较来确定是否获取URL，所以目录末尾有与没有斜杠“/”表示的是不同的URL。robots.txt允许使用类似”Disallow: *.gif”这样的通配符。</p>
+<p>13.<strong>PhantomJS</strong>是一个Python包，他可以在没有图形界面的情况下，完全模拟一个”浏览器“，js脚本验证什么的再也不是问题了</p>
+<h3 id="项目"><a href="#项目" class="headerlink" title="项目"></a>项目</h3><p>1.<strong>调试</strong>程序的时候，得到什么值输出一下，一步一步查看错误在哪，对于不懂得错误，学会用搜索引擎解决。</p>
+<p>2.<strong>魔法数字</strong></p>
 <p>魔法数值，是指在代码中直接出现的数值，只有在这个数值记述的那部分代码中才能明确了解其含义</p>
-<p>在Java语言中，对有名字的值的定义，可以<strong>使用用Static final或者enum来声明的值</strong>。注意(命名方法)：在取名时一定要注意增加名字的信息量。</p>
+<p>在Java语言中，对有名字的值的定义，可以<strong>使用用Static final或者enum来声明的值</strong>。</p>
+<p>注意(命名方法)：在取名时一定要注意增加名字的信息量。</p>
 <p>如果16表示的是价格表的一个元素，为16命名为SIXTEEN是没有意义的，应该命名为PRICE_TABLE_MAX</p>
 <p><strong>阿里：尽量不要在接口里定义变量，如果一定要定义变量，肯定是与接口方法相关。不要在程序中出现魔法数字</strong></p>
-<p>阿里文档和常量有关说明：</p>
-<p>【推荐】接口类中的方法和属性不要加任何修饰符号（public 也不要加），保持代码的简洁性，并加上有效的javadoc注释。尽量不要在接口里定义变量，如果一定要定义变量，肯定是与接口方法相关，并且是整个应用的基础常量。<br>正例：接口方法签名：void f();<br>    接口基础常量表示：String COMPANY = “alibaba”;<br>反例：接口方法定义：public abstract void f();<br>说明：JDK8中接口允许有默认实现，那么这个default方法，是对所有实现类都有价值的默认实现</p>
-<p>【强制】不允许出现任何魔法值（即未经定义的常量）直接出现在代码中。<br>反例： String key=”Id#taobao_”+tradeId；<br>     cache.put(key, value);</p>
-<p>【推荐】不要使用一个常量类维护所有常量，应该按常量功能进行归类，分开维护。如：缓存相关的常量放在类：CacheConsts下；系统配置相关的常量放在类：ConfigConsts类下。<br>说明：大而全的常量类，非得ctrl+f才定位到修改的常量，不利于理解，也不利于维护。<br>【推荐】常量的复用层次有五层：跨应用共享常量、应用内共享常量、子工程内共享常量、包内共享常量、类内共享常量。<br> 1） 跨应用共享常量：放置在二方库中，通常是client.jar中的const目录下。<br> 2） 应用内共享常量：放置在一方库的modules中的const目录下。<br>    反例：易懂变量也要统一定义成应用内共享常量，两位攻城师在两个类中分别定义了表示“是”的变量：<br>    类A中：public static final String YES = “yes”;<br>    类B中：public static final String YES = “y”;<br>    A.YES.equals(B.YES)，预期是true，但实际返回为false，导致产生线上问题。<br> 3） 子工程内部共享常量：即在当前子工程的const目录下。<br> 4） 包内共享常量：即在当前包下单独建const目录下。<br> 5） 类内共享常量：直接在类内部private static final定义。</p>
-<p>【强制】避免通过一个类的对象引用访问此类的静态变量或静态方法，无谓增加编译器解析成本，直接用类名来访问即可</p>
-<ol start="3">
-<li><p>项目里报错，首先要注意排查格式错误，避免出现中文写的符号，避免多加空格之类的低级错误。</p>
-</li>
-<li><p>mock,是前端写好的json可以用来进行接口测试，使用mock data来模拟后台穿传数据。</p>
-</li>
-<li><p>手机号的正则表达式：</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;^[1][3-9][0-9]&#123;9&#125;$&#x2F;</span><br><span class="line">&#x2F;^(13[0-9]|14[01456879]|15[0-35-9]|16[2567]|17[0-8]|18[0-9]|19[0-35-9])\d&#123;8&#125;$&#x2F;</span><br><span class="line">&#x2F;^1[3456789]\d&#123;9&#125;$&#x2F;</span><br></pre></td></tr></table></figure>
-
-<ol start="6">
-<li>正则表达式的反斜杠</li>
-</ol>
+<p>3.项目里报错，首先要注意排查<strong>格式错误</strong>，避免出现中文写的符号，避免多加空格之类的低级错误。</p>
+<p>4.<strong>mock</strong>,是前端写好的json可以用来进行接口测试，使用mock data来模拟后台传数据。</p>
+<p>6.正则表达式的<strong>反斜杠</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String reg = <span class="string">&quot;^\\&#123;\&quot;data_type\&quot;:\&quot;[a-z]&#123;3,8&#125;(_[a-z]&#123;3,6&#125;)&#123;0,2&#125;\&quot;,\&quot;data\&quot;:\\[\\&#123;\&quot;[a-z]&#123;3,7&#125;(_[a-z]&#123;2,4&#125;)?\&quot;:\&quot;[0-9A-Z]&#123;2,8&#125;\&quot;&quot;</span>+<span class="string">&quot;(,\&quot;[a-z]&#123;3,7&#125;(_[a-z]&#123;2,4&#125;)?\&quot;:\&quot;[0-9A-Z]&#123;2,8&#125;\&quot;)&#123;0,5&#125;\\&#125;\\]\\&#125;$&quot;</span></span><br><span class="line">^表示正则开头 第一个\表示java的字符串里需要加\转义，第二个\表示正则的&#123;&#125;需要\转义 &#123;后的\表示java的字符串的下个“需要\转义</span><br></pre></td></tr></table></figure>
 
-<ol start="7">
-<li>idea查看jar包源码</li>
-</ol>
+<p>7.idea查看<strong>jar包源码</strong></p>
 <p>将jar包放到项目里，右击选择<code>add as Library</code> 就可以正常查看了</p>
-<ol start="8">
-<li>replace(/-/g, “/“)</li>
-</ol>
+<p>8.<strong>replace(/-/g, “/“)</strong></p>
 <p>一般用于格式化日期，如2019-1-1 格式化为2019/1/1，然后js 可以直接操作这个时间。  /g 代表全局，所有的- 都替换</p>
-<ol start="9">
-<li>-n=~n+1 对十进制的n取反 ~n 其实等于 -n-1</li>
-<li>java存储文件到mysql数据库的操作：</li>
-</ol>
+<p>9.<strong>-n=~n+1</strong> 对十进制的n取反 ~n 其实等于 -n-1<br>10.java存储文件到mysql数据库的操作：</p>
 <ul>
 <li>将它们另存为blob/图像/无论您选择的DB调用什么字节流：Blob是一个可以存储二进制文件的容器，最大容量只有64kb。</li>
 <li>存储文件的路径，并将文件存储在文件系统中(服务器上)</li>
@@ -396,6 +662,8 @@ Cookie：保存在本地的信息（往往是加密的）（没有这个可能�
 <p>java类型与mysql类型的对应表</p>
 <p><img src="/1.2.%E5%B0%8F%E7%9F%A5%E8%AF%86/20180925114748729" alt="在这里插入图片描述"></p>
 <h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><p>1.数据库增加一个字段，对增删改查业务没有影响。</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>1.政府，标准文件格式： </p>
+<p>标题  宋体/黑体 2号                 小标题可以自己定                              正文 仿宋 4号</p>
 
       
     </div>
@@ -499,7 +767,7 @@ Cookie：保存在本地的信息（往往是加密的）（没有这个可能�
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
     </div>
   </div>
 
@@ -512,6 +780,14 @@ Cookie：保存在本地的信息（往往是加密的）（没有这个可能�
       <ul>
         
           <li>
+            <a href="/2021/12/17/SpringBootSecurity/">SpringBootSecurity</a>
+          </li>
+        
+          <li>
+            <a href="/2021/12/16/SpringBootActuator/">SpringBootActuator</a>
+          </li>
+        
+          <li>
             <a href="/2021/09/17/8.7.vite/">vite</a>
           </li>
         
@@ -521,14 +797,6 @@ Cookie：保存在本地的信息（往往是加密的）（没有这个可能�
         
           <li>
             <a href="/2021/09/03/RPC/">RPC</a>
-          </li>
-        
-          <li>
-            <a href="/2021/09/02/%E6%97%A5%E5%BF%97/">日志</a>
-          </li>
-        
-          <li>
-            <a href="/2021/08/27/%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE/">开源软件许可协议</a>
           </li>
         
       </ul>

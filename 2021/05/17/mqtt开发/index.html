@@ -29,8 +29,11 @@
 <meta property="og:image" content="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605154907571-2147358753.png">
 <meta property="og:image" content="https://images2018.cnblogs.com/blog/1302135/201806/1302135-20180605154920946-49908453.png">
 <meta property="og:image" content="https://s-qwer.github.io/mqtt%E5%BC%80%E5%8F%91/image-20210526140223756.png">
+<meta property="og:image" content="https://s-qwer.github.io/mqtt%E5%BC%80%E5%8F%91/c64d0f050663a7908eb51515e1a7e3c8.png">
+<meta property="og:image" content="https://s-qwer.github.io/mqtt%E5%BC%80%E5%8F%91/7bc316cc893aa4cd6a923c89722e9e37.png">
+<meta property="og:image" content="https://s-qwer.github.io/mqtt%E5%BC%80%E5%8F%91/91d8d127faced06ab167f7309f9182f9.png">
 <meta property="article:published_time" content="2021-05-17T08:13:19.000Z">
-<meta property="article:modified_time" content="2021-08-05T04:36:52.942Z">
+<meta property="article:modified_time" content="2021-12-16T01:48:12.975Z">
 <meta property="article:author" content="swx">
 <meta property="article:tag" content="mqtt">
 <meta name="twitter:card" content="summary">
@@ -125,9 +128,9 @@
 <p>　　（3）使用TCP/IP提供网络连接。</p>
 <p>　　主流的MQTT是基于TCP连接进行数据推送的，但是同样有基于UDP的版本，叫做MQTT-SN。这两种版本由于基于不同的连接方式，优缺点自然也就各有不同了。</p>
 <p>　　（4）有三种消息发布服务质量：</p>
-<p>　　“至多一次”，消息发布完全依赖底层TCP/IP网络。会发生消息丢失或重复。这一级别可用于如下情况，环境传感器数据，丢失一次读记录无所谓，因为不久后还会有第二次发送。这一种方式主要普通APP的推送，倘若你的智能设备在消息推送时未联网，推送过去没收到，再次联网也就收不到了。</p>
-<p>　　“至少一次”，确保消息到达，但消息重复可能会发生。</p>
-<p>　　“只有一次”，确保消息到达一次。在一些要求比较严格的计费系统中，可以使用此级别。在计费系统中，消息重复或丢失会导致不正确的结果。这种最高质量的消息发布服务还可以用于即时通讯类的APP的推送，确保用户收到且只会收到一次。　</p>
+<p>　　“至多一次”，QoS 0，消息发布完全依赖底层TCP/IP网络。会发生消息丢失或重复。这一级别可用于如下情况，环境传感器数据，丢失一次读记录无所谓，因为不久后还会有第二次发送。这一种方式主要普通APP的推送，倘若你的智能设备在消息推送时未联网，推送过去没收到，再次联网也就收不到了。</p>
+<p>　　“至少一次”，QoS 1，确保消息到达，但消息重复可能会发生。</p>
+<p>　　“只有一次”，QoS 2，确保消息到达一次。在一些要求比较严格的计费系统中，可以使用此级别。在计费系统中，消息重复或丢失会导致不正确的结果。这种最高质量的消息发布服务还可以用于即时通讯类的APP的推送，确保用户收到且只会收到一次。　</p>
 <p>　　（5）小型传输，开销很小（固定长度的头部是2字节），协议交换最小化，以降低网络流量。</p>
 <p>　　这就是为什么在介绍里说它非常适合“在物联网领域，传感器与服务器的通信，信息的收集”，要知道嵌入式设备的运算能力和带宽都相对薄弱，使用这种协议来传递消息再适合不过了。</p>
 <h1 id="三、实现方式"><a href="#三、实现方式" class="headerlink" title="三、实现方式"></a>三、实现方式</h1><p>　　实现MQTT协议需要客户端和服务器端通讯完成，在通讯过程中，MQTT协议中有三种身份：发布者（Publish）、代理（Broker）（服务器）、订阅者（Subscribe）。其中，消息的发布者和订阅者都是客户端，消息代理是服务器，消息发布者可以同时是订阅者。</p>
@@ -268,7 +271,7 @@
 <p>这个错误是因为服务器上的和本地的clientID是一样的，当本地的服务跑起来时，需要保证clientID唯一，线上的就会断开连接。</p>
 <p>//如果一定要收到离线消息,必须使用确定的id。如果确定就一个clientId,链接的tcp一个,确保自己demo的配置clientId与服务器的clientId不要同一个,会报错丢失连接,而且根本不会意识到是自己跑起来的demo与服务器冲突才导致服务器和自己不断报丢失的</p>
 <p>有用时间戳作为标识的，也有用uuid作为标识。</p>
-<h1 id="七、其他"><a href="#七、其他" class="headerlink" title="七、其他"></a>七、其他</h1><h2 id="1-mqtt主题"><a href="#1-mqtt主题" class="headerlink" title="1.mqtt主题"></a>1.mqtt主题</h2><p>利用MQTT一次订阅多个主题<br>在做智能家居相关的应用时候，需要利用订阅所有设备的主题。这个时候我们需要利用mqtt的通配符的功能，一个订阅可能包含特殊字符，允许你一次定义多个主题。主题层次分隔符被用来在主题中引入层次。单层通配符和多层通配符<strong>只能用于订阅(subscribe)消息而不能用于发布(publish)消息</strong>，主题层级分隔符两种情况下均可使用</p>
+<h1 id="七、mqtt主题"><a href="#七、mqtt主题" class="headerlink" title="七、mqtt主题"></a>七、mqtt主题</h1><p>利用MQTT一次订阅多个主题<br>在做智能家居相关的应用时候，需要利用订阅所有设备的主题。这个时候我们需要利用mqtt的通配符的功能，一个订阅可能包含特殊字符，允许你一次定义多个主题。主题层次分隔符被用来在主题中引入层次。单层通配符和多层通配符<strong>只能用于订阅(subscribe)消息而不能用于发布(publish)消息</strong>，主题层级分隔符两种情况下均可使用</p>
 <p>1.主题层级分隔符/<br>/ 被用来分割主题树的每一层，并给主题空间提供分等级的结构。当两个通配符在一个主题中出现的时候，主题层次分隔符的使用是很重要的。</p>
 <p>2.多层通配符#<br>#是一个匹配主题中任意层次数的通配符。比如说，如果你订阅了finance/stock/ibm/#，你就可以接收到以下这些主题的消息。<br>finance/stock/ibm<br>finance/stock/ibm/closingprice<br>finance/stock/ibm/currentprice/sdahkj</p>
 <p>多层通配符有可以表示大于等于0的层次。因此，finance/#也可以匹配到单独的finance，在这种情况下#代表0层。在这种语境下主题层次分隔符/就没有意义了。因为没有可以分的层次。</p>
@@ -276,6 +279,34 @@
 <p>3.单层通配符+<br>+只匹配主题的一层。比如说，finance/stock/+匹配finance/stock/ibm和finance/stock/xyz，但是不匹配finance/stock/ibm/closingprice。另外，因为单层通配符只匹配1层，finance/+不匹配finance。<br>单层通配符可以被用于主题树的任意层级，连带多层通配符。它必须被用在主题层级分隔符/的右边，除非它是指定自己。因此，+和finance/+都是有效的，但是finance+无效。单层通配符可以用在主题树的末端，也可以用在中间。比如说，finance/+和finance/+/ibm都是有效的。</p>
 <p>4.主题语法和用法<br>当你建立一个应用，设计主题树的时候应该考虑以下的主题名字的语法和语义：<br>主题至少有一个字符长。<br>主题名字是大小写敏感的。比如说，ACCOUNTS和Accounts是两个不同的主题。<br>主题名字可以包含空格。比如，Accounts payable是一个有效的主题。<br>以/开头会产生一个不同的主题。比如说，/finnace与finance不同。/finance匹配”+/+”和/+,但不匹配+<br>不要在任何主题中包含null（Unicode \x0000）字符。<br>以下的原则应用于主题树的建造和内容</p>
 <p>在主题树中，长度被限制于64k内但是在这以内没有限制层级的数目 。<br>可以有任意数目的根节点；也就是说，可以有任意数目的主题树。</p>
+<h1 id="八、服务质量等级"><a href="#八、服务质量等级" class="headerlink" title="八、服务质量等级"></a>八、服务质量等级</h1><p>服务质量(QualityofService,QoS)等级是消息发送方与消息接收方之间的协议，对应着消息传递时不同的可靠程度。</p>
+<p>MQTT有三种QoS等级：</p>
+<p>至多一次（QoS 0）<br>至少一次（QoS 1）<br>只有一次（QoS 2）<br>MQTT中消息的发布和订阅都有QoS等级的设置，我们需要将其分开理解</p>
+<p>1.publish的QoS等级</p>
+<p>1.1 QoS 0</p>
+<p>当client1 publish一条消息时，如果设置的QoS等于0，那么client1只会发送一次这条消息，就算broker没有收到，client1也不会管。对于broker来说，它收到client1 publish的消息，就会PUBLISH给众多客户端，收不到自然也不会PUBLISH。产生的效果：broker最终会PUBLISH 0条或1条消息，即至多一次。</p>
+<p><img src="/mqtt%E5%BC%80%E5%8F%91/c64d0f050663a7908eb51515e1a7e3c8.png" alt="publish"></p>
+<p>1.2 QoS 1</p>
+<p>上面那个例子，如果设置QoS等于1，那么client1发送一条消息，broker收到后会发给client1一个应答PUBACK，client1如果收到应答就会停止发送，否则，继续发送。broker做的事情也很简单，收到一次消息，就将消息PUBLISH给众多客户端，同时发现QoS等级为1，就向刚刚给自己publish消息的client1发送一个响应PUBACK。但是在这种交互中存在两个问题，1：client1 publish的消息有可能broker没能收到，2：broker回复的PUBACK client1没能收到。这样会造成：broker收到消息，将消息PUBLISH出去后，client1没能收到PUBACK，就会继续发送消息，broker就会继续PUBLISH，直到client1收到PUBACK为止。产生效果：broker最终会PUBLISH 至少1条消息，即至少一次。</p>
+<p><img src="/mqtt%E5%BC%80%E5%8F%91/7bc316cc893aa4cd6a923c89722e9e37.png" alt="publish QoS 1"></p>
+<p>1.3 QoS 2</p>
+<p>还是上面的例子，如果设置QoS等于2，那么client1发送一条消息后，broker会回一个PUBREC(publish recevied)（但是这里注意broker虽然已经收到了消息但是它不会立马PUBLISH给众多客户端，还要等待后续步骤）,client1收到PUBREC会回应一个PUBREL(publish release)(即既然你broker收到了，我client1就把这条消息释放了，保存起来太占地方),client1也不会再重复发这条消息了,因为都已经释放这个包了,broker收到PUBREL后会回复client1一个PUBCOMP(publish complete)（即这次消息传递完毕）,broker发完PUBCOMP后，才会将刚才的消息PUBLISH给众多客户端。在PUBCOMP之前的交互中，如若有丢包同样会重传。产生效果：broker最终会PUBLISH 1条消息，不会多于1条，也不会少于1条。</p>
+<p>qos：2的情况，客户端A如果pub一条消息，服务器四次交互后保证服务器收到该消息，服务器再转发给sub的客户端B，也会有四次交互保证该消息一定转发成功。不成功的话会重试直到成功，多条消息就会多次重试。</p>
+<p><img src="/mqtt%E5%BC%80%E5%8F%91/91d8d127faced06ab167f7309f9182f9.png" alt="publish QoS 2"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">2021-12-13T08:32:18: Received PUBLISH from GCSM21B0002C (d0, q2, r0, m4, &#39;g_Mini_GateWay&#x2F;GCSM21B0002C&#39;, ... (84 bytes))</span><br><span class="line">2021-12-13T08:32:18: Sending PUBREC to GCSM21B0002C (m4, rc0)</span><br><span class="line">2021-12-13T08:32:18: Received PUBREL from GCSM21B0002C (Mid: 4)</span><br><span class="line">2021-12-13T08:32:18: Sending PUBCOMP to GCSM21B0002C (m4)</span><br><span class="line"></span><br><span class="line">2021-12-13T08:32:18: Sending PUBLISH to ddba815923d946869d4e03e4b3507186 (d0, q2, r0, m17772, &#39;g_Mini_GateWay&#x2F;GCSM21B0002C&#39;, ... (84 bytes))</span><br><span class="line">2021-12-13T08:32:18: Received PUBREC from ddba815923d946869d4e03e4b3507186 (Mid: 17772)</span><br><span class="line">2021-12-13T08:32:18: Sending PUBREL to ddba815923d946869d4e03e4b3507186 (m17772)</span><br><span class="line">2021-12-13T08:32:18: Received PUBCOMP from ddba815923d946869d4e03e4b3507186 (Mid: 17772, RC:0)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>应用场景：</p>
+<p>为什么要有这三种服务质量等级呢？我们结合具体需求来思考一下<br>QoS 0 适合什么场景呢？适合那种消息很频繁但又不那么重要的应用，如每隔几分钟上报一次气温，数据丢了就丢了，反正待会还会上报，并且丢失一次数据也不会产生多大影响。<br>但是，如果消息对你很重要，你宁愿收到重复的也不愿意丢失一条，那你就采用QoS 1<br>但是，如果像支付类的应用也采用QoS 1的话，会产生重复支付的问题（其实已经支付成功了，只是手机没有收到回应，又再次发起支付），这时候就需要使用QoS 2了，它保证有且仅有一次消息成功传递。</p>
+<p>2.subscribe的QoS等级</p>
+<p>说完了publish的QoS，我们再来谈谈subscribe的QoS。其实我们完全可以使用上面三个例子的分析，因为clientA、clientB、clientC 订阅 broker的消息就相当于broker发布消息给他们（这点从后面的抓包分析也可得以验证），我们仍然可用publish的那一套去理解subscribe的QoS，即client A subscribe消息时设置的QoS等于0，那么broker最多只会发一次消息给clientA。QoS设置为1，那么broker至少会发一次消息给到clientA，给不到就重发。QoS设置为2，那么broker保证有且只有一次消息给到clientA。<br>但是有一个问题需要注意一下，对于同一个topic，如果client1以QoS 2等级发布，clientA以QoS 0等级订阅，那么clientA最多只会收到一条消息，即两者质量等级取最低。同样的，如果clinet1以QoS 0发布一条消息，clientA以QoS 2等级去订阅，clientA仍然最多只会收到一条消息，因为原则是两者QoS取最低。所以如果要想达到真正的QoS 2质量，就要保证publish和subscribe都设置为 QoS 2</p>
+<h1 id="九、保留消息-retained"><a href="#九、保留消息-retained" class="headerlink" title="九、保留消息 retained"></a>九、保留消息 retained</h1><p>如果PUBLISH消息的RETAIN标记位被设置为1，则称该消息为“保留消息”</p>
+<p>Broker会<strong>存储每个Topic的最后一条保留消息</strong>及其Qos，当订阅该Topic的客户端上线后，Broker需要将该消息投递给它</p>
+<p>可以让新订阅的客户端得到发布方的最新的状态值，而不必要等待发送</p>
+<p>删除：</p>
+<p>方式1：发送空消息体的保留消息；</p>
+<p>方式2：发送最新的保留消息覆盖之前的（推荐）</p>
 
       
     </div>
@@ -343,7 +374,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">七月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/06/">六月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/05/">五月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/04/">四月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li></ul>
     </div>
   </div>
 
@@ -356,6 +387,14 @@
       <ul>
         
           <li>
+            <a href="/2021/12/17/SpringBootSecurity/">SpringBootSecurity</a>
+          </li>
+        
+          <li>
+            <a href="/2021/12/16/SpringBootActuator/">SpringBootActuator</a>
+          </li>
+        
+          <li>
             <a href="/2021/09/17/8.7.vite/">vite</a>
           </li>
         
@@ -365,14 +404,6 @@
         
           <li>
             <a href="/2021/09/03/RPC/">RPC</a>
-          </li>
-        
-          <li>
-            <a href="/2021/09/02/%E6%97%A5%E5%BF%97/">日志</a>
-          </li>
-        
-          <li>
-            <a href="/2021/08/27/%E5%BC%80%E6%BA%90%E8%BD%AF%E4%BB%B6%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE/">开源软件许可协议</a>
           </li>
         
       </ul>
