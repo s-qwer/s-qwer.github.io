@@ -77,6 +77,121 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-29.1.搭建网站" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/06/08/29.1.%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/" class="article-date">
+  <time class="dt-published" datetime="2021-06-08T00:33:25.000Z" itemprop="datePublished">2021-06-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/06/08/29.1.%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/">搭建网站</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>利用PBOOTCMS搭建一个网站：PbootCMS是全新内核且永久开源免费的PHP企业网站开发建设管理系统，是一套高效、简洁、 强悍的可免费商用的PHP CMS源码，能够满足各类企业网站开发建设的需要</p>
+<h2 id="本地搭建"><a href="#本地搭建" class="headerlink" title="本地搭建"></a>本地搭建</h2><p>可以在虚拟机上先搭建一个。（模拟在云服务器上搭，这里的虚拟机其实就是云服务器）</p>
+<p>1.下载VMWare（官网可以下载，激活码百度随便搜到激活），centOS的DVD.iso文件（<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos/7.9.2009/isos/x86_64/%EF%BC%89%E3%80%82">http://mirrors.aliyun.com/centos/7.9.2009/isos/x86_64/）。</a></p>
+<p>2.在VMWare上安装虚拟机（<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv5884033%EF%BC%89%E3%80%82%E6%B3%A8%E6%84%8F%E9%9C%80%E8%A6%81%E9%80%89%E6%8B%A9%E6%A1%A5%E6%8E%A5%E7%BD%91%E7%BB%9C%EF%BC%8C%E8%BF%99%E6%A0%B7%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E5%AE%A2%E6%88%B7%E6%9C%BA%EF%BC%89%E5%9C%A8%E5%A4%96%E9%83%A8%E7%BD%91%E7%BB%9C%E4%B8%8A%E5%B0%B1%E6%9C%89%E4%BA%86%E8%87%AA%E5%B7%B1%E7%9A%84ip%E5%9C%B0%E5%9D%80%EF%BC%8C%E5%8F%AF%E4%BB%A5%E8%AE%BF%E9%97%AE%E3%80%82">https://www.bilibili.com/read/cv5884033）。注意需要选择桥接网络，这样虚拟机（客户机）在外部网络上就有了自己的ip地址，可以访问。</a></p>
+<p>ifconfig查看虚拟机的ip地址：如果没有的话，去虚拟机设置里找到虚拟网络编辑器。选择桥接模式，并选择桥接到物理宿主机的上网网卡即可。在命令行输入</p>
+<p><code>dhclient</code>为本机分配一个网络内可用的IP地址，接下来编辑虚拟机系统网卡配置，将上面分配所得的IP地址配置进去。使用命令编辑：<code>vim /etc/sysconfig/network-scripts/ifcfg-ens33</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">TYPE&#x3D;Ethernet</span><br><span class="line">PROXY_METHOD&#x3D;none</span><br><span class="line">BROWSER_ONLY&#x3D;no</span><br><span class="line">BOOTPROTO&#x3D;static   &#x2F;&#x2F;**</span><br><span class="line">DEFROUTE&#x3D;yes</span><br><span class="line">IPV3_FAILURE_FATAL&#x3D;no</span><br><span class="line">IPV6INIT&#x3D;yes</span><br><span class="line">IPV6_AUTOCONF&#x3D;yes</span><br><span class="line">IPV6_DEFROUTE&#x3D;yes</span><br><span class="line">IPV6_FAILURE_FATAL&#x3D;no</span><br><span class="line">IPV6_ADDR_GEN_MODE&#x3D;stable-privacy</span><br><span class="line">NAME&#x3D;ens33</span><br><span class="line">UUID&#x3D;</span><br><span class="line">DEVICE&#x3D;ens33</span><br><span class="line">ONBOOT&#x3D;yes &#x2F;&#x2F;**</span><br><span class="line">IPADDR&#x3D;192.168.31.21  &#x2F;&#x2F;**</span><br><span class="line">NETMASK&#x3D;255.255.255.0  &#x2F;&#x2F;**</span><br><span class="line">GATEWAY&#x3D;192.168.31.1  &#x2F;&#x2F;**</span><br><span class="line">DNS1&#x3D;119.29.29.29  &#x2F;&#x2F;**</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i0.hdslb.com/bfs/article/7982c7b4579942217051f546431b178a7308312f.png@1320w_1018h.webp" alt="img"></p>
+<p>​    编辑完成，重启网络设置即可 <code>systemctl restart network.service</code></p>
+<p>检查：①虚拟机内ping外网②虚拟机内ping宿主机③如果装了多个Linux节点的话：ping Linux系统节点与节点(一般都是一个虚拟机)④宿主机ping虚拟机</p>
+<p>3.在宿主机通过SFTP工具（winscp）和SSH终端（putty）链接虚拟机内linux系统</p>
+<p>4.在ECS服务器上，执行以下命令安装Apache及其扩展包。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install httpd httpd-manual mod_ssl mod_perl mod_auth_mysql</span><br></pre></td></tr></table></figure>
+
+<p>返回类似如下图结果则表示安装成功。</p>
+<p><img src="https://www.pbootcms.com/static/upload/image/20210215/1613322722152350.png" alt="img"></p>
+<p>5.参考以下操作在ECS服务器上搭建一个MySQL数据库。</p>
+<p>  a. 执行以下命令下载并安装MySQL。（以下命令不生效的话，可以百度linux安装mysql的步骤进行操作）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http:&#x2F;&#x2F;dev.mysql.com&#x2F;get&#x2F;mysql57-community-release-el7-10.noarch.rpmyum -y install mysql57-community-release-el7-10.noarch.rpm</span><br><span class="line">yum -y install mysql-community-server</span><br></pre></td></tr></table></figure>
+
+<p>  b. 执行以下命令启动MySQL数据库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld</span><br></pre></td></tr></table></figure>
+
+<p>  c. 执行以下命令查看MySQL初始密码。记住：后面的字符串即为密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &quot;password&quot; &#x2F;var&#x2F;log&#x2F;mysqld.log</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://www.pbootcms.com/static/upload/image/20210215/1613322722158445.png" alt="img"></p>
+<p>  d. 执行以下命令，登录数据库。输入原始密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure>
+
+<p>  e. 执行以下命令修改MySQL默认密码。</p>
+<p>​    新密码必须同时包含大小写英文字母、数字和特殊符号中的三类字符。请妥善保存数据库密码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;%s&#39;;    &#x2F;&#x2F;%s处为修改后的密码，必须包括大小写英文字母，数字，特殊符号</span><br></pre></td></tr></table></figure>
+
+<p>  f. 执行以下命令创建数据库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database pbootcms;</span><br></pre></td></tr></table></figure>
+
+<p>  g. 输入<code>exit</code>退出数据库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br></pre></td></tr></table></figure>
+
+<p>6.PbootCMS是使用PHP语言开发的CMS系统。参考以下操作安装PHP环境。</p>
+<p>执行以下命令，安装PHP。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install php php-mysql gd php-gd gd-devel php-xml php_openssl</span><br></pre></td></tr></table></figure>
+
+<p>7.搭建企业网站</p>
+<p>在完成环境部署后，参考以下操作搭建企业网站。</p>
+<p>\1. 在ECS服务器上，执行以下命令，安装Git。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install git</span><br></pre></td></tr></table></figure>
+
+<p>\2. 执行以下命令下载PbootCMS源码文件。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~ &amp;&amp; git clone https:&#x2F;&#x2F;gitee.com&#x2F;hnaoyun&#x2F;PbootCMS.git</span><br></pre></td></tr></table></figure>
+
+<p>\3. 执行以下命令将安装包拷贝到Apache的wwwroot目录下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -r PbootCMS&#x2F;* &#x2F;var&#x2F;www&#x2F;html&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>\4. 执行以下命令修改站点根目录文件权限。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -R a+w &#x2F;var&#x2F;www&#x2F;html</span><br></pre></td></tr></table></figure>
+
+<p>\5. 执行以下命令向MySQL数据库中导入CMS的初始数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sql_file&#x3D;&quot;&#x2F;var&#x2F;www&#x2F;html&#x2F;static&#x2F;backup&#x2F;sql&#x2F;&quot;$(ls &#x2F;var&#x2F;www&#x2F;html&#x2F;static&#x2F;backup&#x2F;sql&#x2F;) &amp;&amp; mysql -uroot -p%s pbootcms &lt; $sql_file   &#x2F;&#x2F;%s为你的mysql密码</span><br></pre></td></tr></table></figure>
+
+<p>\6. 执行以下命令修改CMS系统数据库配置。</p>
+<p><strong>说明：</strong>在执行命令前，请根据参数说明替换您的数据库配置。默认您只需要更改数据库密码即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; &#x2F;var&#x2F;www&#x2F;html&#x2F;config&#x2F;database.php &lt;&lt; EOF&lt;?phpreturn array(    &#39;database&#39; &#x3D;&gt; array(        &#39;type&#39; &#x3D;&gt; &#39;mysqli&#39;, &#x2F;&#x2F; 数据库连接驱动类型: mysqli,sqlite,pdo_mysql,pdo_sqlite</span><br><span class="line">        &#39;host&#39; &#x3D;&gt; &#39;127.0.0.1&#39;, &#x2F;&#x2F; 数据库服务器</span><br><span class="line">        &#39;user&#39; &#x3D;&gt; &#39;root&#39;, &#x2F;&#x2F; 数据库连接用户名</span><br><span class="line">        &#39;passwd&#39; &#x3D;&gt; &#39;NewPassWord1.&#39;, &#x2F;&#x2F; 数据库连接密码</span><br><span class="line">        &#39;port&#39; &#x3D;&gt; &#39;3306&#39;, &#x2F;&#x2F; 数据库端口</span><br><span class="line">        &#39;dbname&#39; &#x3D;&gt; &#39;pbootcms&#39; &#x2F;&#x2F;数据库名称</span><br><span class="line">    )</span><br><span class="line">);</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<p>\7. 执行以下命令启动Apache HTTP服务。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start httpd</span><br></pre></td></tr></table></figure>
+
+<p>问题排查：</p>
+<p>1.如果可以ping通虚拟机的ip，但是无法访问到，应该是防火墙的问题，将虚拟机的防火墙关闭。</p>
+<p>2.如果提示需要安装php的mbstring，百度安装即可。</p>
+<p>3.如果提示 apache /var/www/html/子目录没权限访问 。是因为系统启动了SELINUX导致的。<code>setsebool -P httpd_read_user_content 1</code>成功。</p>
+<p>4.如果提示数据库有问题，检查/var/www/html/config/database.php文件内容。</p>
+<h2 id="云服务器搭建官网"><a href="#云服务器搭建官网" class="headerlink" title="云服务器搭建官网"></a>云服务器搭建官网</h2><p>参照文档。<a target="_blank" rel="noopener" href="https://www.pbootcms.com/environmenta-deployment/271.html">https://www.pbootcms.com/environmenta-deployment/271.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/06/08/29.1.%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/" data-id="ckxho8wj50012h8vwbvpu54j9" data-title="搭建网站" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PBOOTCMS/" rel="tag">PBOOTCMS</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-29.3.攻破一个网站" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/06/03/29.3.%E6%94%BB%E7%A0%B4%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99/" class="article-date">
@@ -408,7 +523,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/06/03/29.3.%E6%94%BB%E7%A0%B4%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99/" data-id="ckw61sdw6004foswd5w2jho5g" data-title="攻破一个网站" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/06/03/29.3.%E6%94%BB%E7%A0%B4%E4%B8%80%E4%B8%AA%E7%BD%91%E7%AB%99/" data-id="ckxho8wl1004fh8vwhpt69g9e" data-title="攻破一个网站" class="article-share-link">分享</a>
       
       
       
@@ -483,7 +598,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/" data-id="ckw61sdum0004oswd6avm9pms" data-title="推荐研读书籍" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/05/29/1.6.%E6%8E%A8%E8%8D%90%E7%A0%94%E8%AF%BB%E4%B9%A6%E7%B1%8D/" data-id="ckxho8wil0004h8vw4ksz69sd" data-title="推荐研读书籍" class="article-share-link">分享</a>
       
       
       
@@ -710,7 +825,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/05/17/mqtt%E5%BC%80%E5%8F%91/" data-id="ckw61sdwd0056oswd2iq96934" data-title="mqtt开发" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/05/17/mqtt%E5%BC%80%E5%8F%91/" data-id="ckxho8wlg0059h8vw3k76fmzy" data-title="mqtt开发" class="article-share-link">分享</a>
       
       
       
@@ -814,7 +929,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/30/16.2.Docker%E4%B9%8BPortainer-io/" data-id="ckw61sdus000ioswdb3cyhs5u" data-title="Docker之Portainer.io" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/30/16.2.Docker%E4%B9%8BPortainer-io/" data-id="ckxho8wit000ih8vw43n7hk3m" data-title="Docker之Portainer.io" class="article-share-link">分享</a>
       
       
       
@@ -1520,7 +1635,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/23/5.4.MySQL%E9%9D%A2%E8%AF%95/" data-id="ckw61sdx6006woswd3x7o9xfd" data-title="MySQL面试" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/23/5.4.MySQL%E9%9D%A2%E8%AF%95/" data-id="ckxho8wmo006zh8vw0evn2wuk" data-title="MySQL面试" class="article-share-link">分享</a>
       
       
       
@@ -1693,7 +1808,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/22/12.5.Springfox/" data-id="ckw61sdur000foswdctso8woc" data-title="Springfox" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/22/12.5.Springfox/" data-id="ckxho8wis000fh8vwae3efol1" data-title="Springfox" class="article-share-link">分享</a>
       
       
       
@@ -1955,7 +2070,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/19.4.SVN/" data-id="ckw61sdut000koswdahskcczo" data-title="SVN" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/19.4.SVN/" data-id="ckxho8wiv000kh8vw8ujdd3e9" data-title="SVN" class="article-share-link">分享</a>
       
       
       
@@ -2167,7 +2282,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/" data-id="ckw61sdvm002woswdbpiids92" data-title="WEB之上传和下载" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.9.WEB%E4%B9%8B%E4%B8%8A%E4%BC%A0%E5%92%8C%E4%B8%8B%E8%BD%BD/" data-id="ckxho8wk10032h8vw16ee4h8s" data-title="WEB之上传和下载" class="article-share-link">分享</a>
       
       
       
@@ -2407,117 +2522,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/" data-id="ckw61sdwc0054oswdhwsobiq9" data-title="WEB之listener和filter" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-9.7.WEB之cookie和session" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T06:30:26.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/">WEB之cookie和session</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>用户打开一个浏览器，点击多个超链接访问服务器的web资源，然后关闭浏览器，整个过程称为是一次会话。</p>
-<p>会话技术：每个用户与服务器进行交互过程中，产生一些各自的数据，程序想要把这些数据进行保存，就需要使用会话技术。</p>
-<p>分类：</p>
-<p>1.Cookie技术：Cookie是客户端技术，程序把每个用户的数据以cookie的形式保存到各自浏览器中。当用户使用浏览器再次访问服务器中的web资源的时候，就会带着各自的数据过去。这样，web资源处理的就是用户各自的数据了。</p>
-<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps1.jpg" alt="img"> </p>
-<p>2.Session技术：Session是服务器端技术，利用这个技术，服务器在运行时为每一个用户的浏览器创建一个****独享的session对象。****由于session为用户浏览器独享，所有用户在访问服务器的时候，可以把各自的数据放在各自的session中，当用户再次访问服务器中的web资源的时候，其他web资源再从用户各自的session中取出数据为用户服务。</p>
-<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps2.jpg" alt="img"> </p>
-<p>Cookie的使用：</p>
-<p>获得从浏览器带过来的Cookie，通过HttpServletRequest对象中的方法：</p>
-<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps3.jpg" alt="img"> </p>
-<p>向浏览器回写Cookie，通过HttpServletResponse对象中的方法：</p>
-<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps4.jpg" alt="img"> </p>
-<p>cookie的构造方法：</p>
-<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps5.jpg" alt="img"> </p>
-<p>其他方法：</p>
-<p>获得Cookie的名称的方法</p>
-<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps6.jpg" alt="img"> </p>
-<p>获得Cookie的值的方法</p>
-<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps7.jpg" alt="img"> </p>
-<p>设置Cookie的有效域名（设置了之后，它之下的域名访问时也会有cookie）</p>
-<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps8.jpg" alt="img"> </p>
-<p>设置Cookie的有效路径（设置之后，它之下的路径也会有cookie，“/”是指整个项目）</p>
-<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps9.jpg" alt="img"> </p>
-<p>设置Cookie的有效时长（0是指删除，以秒为单位）</p>
-<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps10.jpg" alt="img"> </p>
-<p>Cookie的分类：</p>
-<p>1.默认级别的Cookie：指的是没有设置有效时间的Cookie，默认的情况下只要关闭了浏览器，Cookie也会被销毁。（Cookie存在于浏览器的内存中，当关闭了浏览器Cookie就销毁了）。</p>
-<p>2.持久级别的Cookie：指的是有有效时间的Cookie，这种Cookie的内容不是保存在浏览器的内存中，将Cookie的内容保存（持久化）到硬盘上。这个时候，关闭浏览器，再次打开浏览器就会加载硬盘上的文件，从而Cookie中的数据就不会丢失。</p>
-<p>Cookie的使用细节：</p>
-<p>一个Cookie只用标识一种信息，至少含有一个标识该信息的名称和值。</p>
-<p>一个web站点可以给一个浏览器发送多个Cookie。一个web浏览器可以存储多个web站点的Cookie。</p>
-<p>浏览器一般只允许存放300个Cookie，每个站点最多可以存放20个Cookie，每个Cookie的大小限制为4KB（老版本浏览器）。—–<em><strong>*浏览器存放的Cookie的大小和个数是有限制的。*</strong></em></p>
-<p>如果创建了一个Cookie，并发送到浏览器，默认情况下它是一个****会话级别的Cookie****。用户退出浏览器就被删除。如果希望将这个Cookie存到磁盘上，需要设置有效时长调用setMaxAge(int maxAge)方法，以秒为单位的。</p>
-<p>需要手动删除持久性Cookie，可以将Cookie的有效时长设置为0.必须注意：删除Cookie时候，path必须一致，否则无法删除。</p>
-<p>Session：Session称为是一次会话，Cookie将用户产生的私有的数据保存到浏览器端，Session将用户产生的私有的数据保存到服务器端。注意：****一个浏览器独占一个session对象****。因此，在需要保存用户数据时候，服务器程序可以将用户数据写到session对象中，当用户使用浏览器访问其他程序时，其他程序可以从用户的session中取出该用户的数据，为用户服务。</p>
-<p>为什么有Cookie还要有Session：</p>
-<p>Cookie局限性：Cookie保存的数据是有个数和大小的限制的。数据是保存客户端浏览器上（相对不是很安全）。</p>
-<p>Session：Session没有个数和大小限制。数据是保存在服务器上（相对比较安全）。</p>
-<p>Session对象由服务器创建，开发人员可以调用request对象的getSession方法得到Session对象。</p>
-<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps11.jpg" alt="img"> </p>
-<p>Session的实现原理：</p>
-<p>****基于Cookie的****，响应头基于Cookie的set-cookie回写了一个Session的ID。</p>
-<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps12.jpg" alt="img"> </p>
-<p>向session中存入数据：</p>
-<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps13.jpg" alt="img"> </p>
-<p>从session域中获取数据：</p>
-<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps14.jpg" alt="img"> </p>
-<p>从session域中移除数据：</p>
-<p><img src="/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/wps15.jpg" alt="img"> </p>
-<p>Session作为域对象，作用范围就是****一次会话****的范围。一次会话，指的是用户打开浏览器点击多个超链接，访问服务器资源，到最后关闭浏览器的过程。（一般保存私有信息，验证码）</p>
-<p>Servlet的域对象的总结：</p>
-<p>1.请求范围（ServletRequest）</p>
-<p>创建：当用户向服务器发送一次请求，服务器创建一个request对象。</p>
-<p>销毁：当服务器对这次请求作出了响应，服务器就会销毁这个request对象。</p>
-<p>存数据：void setAttribute(String name,Object value);</p>
-<p>取数据：Object getAttribute(String name);</p>
-<p>作用范围：一次请求。（转发就是一次请求）。</p>
-<p>2.会话范围（HttpSession）</p>
-<p>创建：服务器端****第一次调用getSession()****方法的时候。</p>
-<p>销毁：三种情况：</p>
-<p>Session过期，默认的过期时间30分钟(web.xml中配置)。</p>
-<p>非正常关闭服务器（直接点击控制台的Terminate就是非正常关闭服务器，点击Servers的stop就是正常关闭）。（正常关闭服务器—session会被序列化到Tomcat的work下的localhost的工程下找到）。</p>
-<p>手动调用session.invalidate();</p>
-<p>存数据：void setAttribute(String name,Object value);</p>
-<p>取数据：Object getAttribute(String name);</p>
-<p>作用范围：一次会话（多次请求）</p>
-<p>3.应用范围（ServletContext）</p>
-<p>创建：服务器启动的时候创建，为每个web项目创建一个单独ServletContext对象。</p>
-<p>销毁：服务器关闭的时候，或者项目从服务器中移除的时候。</p>
-<p>存数据：void setAttribute(String name,Object value);</p>
-<p>取数据：Object getAttribute(String name);</p>
-<p>作用范围：整个应用</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/9.7.WEB%E4%B9%8Bcookie%E5%92%8Csession/" data-id="ckw61sdvl002toswd0v750whd" data-title="WEB之cookie和session" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/9.8.WEB%E4%B9%8Blistener%E5%92%8Cfilter/" data-id="ckxho8wlf0054h8vw9jsfgn3f" data-title="WEB之listener和filter" class="article-share-link">分享</a>
       
       
       
@@ -2579,6 +2584,10 @@
       <ul>
         
           <li>
+            <a href="/2021/12/20/Jenkins/">Jenkins</a>
+          </li>
+        
+          <li>
             <a href="/2021/12/17/SpringBootSecurity/">SpringBootSecurity</a>
           </li>
         
@@ -2592,10 +2601,6 @@
         
           <li>
             <a href="/2021/09/03/%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%BB%A3%E7%A0%81/">工具类代码</a>
-          </li>
-        
-          <li>
-            <a href="/2021/09/03/RPC/">RPC</a>
           </li>
         
       </ul>

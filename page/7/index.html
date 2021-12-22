@@ -77,6 +77,192 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-8.5.网页前端框架之bootstrap" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/17/8.5.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E4%B9%8Bbootstrap/" class="article-date">
+  <time class="dt-published" datetime="2021-04-17T09:50:10.000Z" itemprop="datePublished">2021-04-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/17/8.5.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E4%B9%8Bbootstrap/">网页前端框架之bootstrap</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>bootstrap是一个基于HTML、CSS、JavaScript的前端框架</p>
+<p>这个框架已经预定了一套CSS样式和与样式对应的JS代码（对应的样式有对应的特效）</p>
+<p>开发人员只需要编写HTML结构，添加bootstrap固定的class样式，就可以轻松完成指定效果的实现（使用现成的样式和特效）</p>
+<p>作用：bootstrap使得WEB开发更加快捷，高效</p>
+<p>bootstrap支持响应式开发，解决了移动互联网前端开发问题</p>
+<p>问题：不同分辨率需要不同的样式（移动手机，电脑，pad等屏幕大小都不一样）</p>
+<p>响应式布局：一个网站的展示能够兼容多个终端（手机、ipad、PC等，而不需要为每个终端单独做一个展示版本）  此概念为解决移动互联网浏览而诞生的。</p>
+<p>响应式布局能够使得网站仅适用一套样式，就可以在不同分辨率下展示出不同的舒适效果，大大降低了网站开发维护成本，并且能够给用户更好的体验性。</p>
+<h1 id="bootstrap环境搭建"><a href="#bootstrap环境搭建" class="headerlink" title="*bootstrap环境搭建*"></a><em><strong>*bootstrap环境搭建*</strong></em></h1><p>javaee关注的是dist文件。dist中有css、fonts、js需要我们复制到项目中（css中有个bootstrap.css和bootstrap.min.css，js中也有个bootstrap.js和bootstrap.min.js），jquery-1.11.3-min.js也需要复制到js文件下，这样就算环境搭建完成了。</p>
+<p>完整版bootstrap.css，bootstrap.js：完整版用于源码学习，但因为文件大小问题，不适合网络间传递。</p>
+<p>压缩版bootstrap.min.css，bootstrap.min.js：压缩版用于网络发布，相比于完整版就是把源码的空格和换行删除掉了，节约了大量空间，功能是完全相同的，适用于网络间的快速传递，但是不适合源码阅读。</p>
+<p>基本模版创建：可以从帮助文档中复制一个模版过来然后新建一个html文件放到其中，里面的bootstrap.min.css，bootstrap.min.js，jquery-1.11.3-min.js这三个东西要重新设置href和src</p>
+<!DOCTYPE html>
+
+<html lang="zh-CN">  <!--html页面使用的是中文简体-->
+
+<head>
+
+<meta charset="UTF-8">  <!--设置html页面的字符集是utf-8-->
+
+<meta http-equiv="X-UA-Compatible" content=”IE=edge”>  <!--使用IE最新的渲染模式 展示页面-->
+
+<meta name="viewport" content=”width=device-width,initial-scale=1”>  <!--上述3个meat变迁必须放在最前面，任何其他内容都必须跟随其后-->
+
+<!--viewport：视口 （浏览器上网页内容的可视区域）-->
+
+<title> Bootstrap 101 Template</title>
+
+<link href=”../css/bootstrap.min.css” rel=”stylesheet”>
+
+<script src=”../js/jquery-1.11.3-min.js”></script>
+
+<script src=”../js/bootstrap.min.js”></script>
+
+<!--这三个是bootstrap依赖的样式和脚本-->
+
+</head>
+
+<body>
+
+<h1>helloworld</h1>
+
+</body>
+
+</html>
+
+<p>这几个设置，仅在移动设备上生效：</p>
+<p>width=device-width  设置视口的宽度为设备的宽度（大多数手机浏览器视口的宽度是980）</p>
+<p>initial-scale=1  初始化缩放设置（1~5）1代表就是100%</p>
+<p>minimum-scale=1  移动设备上，页面可以最小缩放的级别</p>
+<p>maximum-scale=1  移动设备上，页面可以最大缩放的级别</p>
+<p>user-scalable=no  移动设备上，页面禁止缩放</p>
+<h1 id="布局容器"><a href="#布局容器" class="headerlink" title="*布局容器*"></a><em><strong>*布局容器*</strong></em></h1><p>bootstrap必须需要至少一个布局容器，才能为页面内容进行封装和方便的样式控制  相当于一个画板</p>
+<p>帮助手册位置：全局CSS样式–概览–布局容器</p>
+<p>任意元素使用了布局容器的样式都会成为一个布局容器，建议使用div作为布局容器。</p>
+<p>.container  ：类用于固定宽度并支持响应式布局的容器  特点：居中，两端留白</p>
+<div  class=”container”>...</div>
+
+<p>.container-fluid  :类用于100%宽度，占据全部视口的容器  特点：占据视口100%宽度</p>
+<div  class=”container-fluid”>...</div>
+
+<h1 id="栅格系统"><a href="#栅格系统" class="headerlink" title="*栅格系统*"></a><em><strong>*栅格系统*</strong></em></h1><p>为了方便在布局容器中进行网页的布局操作，bootstrap提供了一套专门用于响应式开发布局的栅格系统。</p>
+<p>栅格系统将一行分为12列，通过设定元素占用的列数来布局元素在页面上的展示位置。</p>
+<p>作用：可以让开发人员更加轻松进行网页布局，并且轻松进行响应式开发</p>
+<p>特点：行必须包含在container或container-fluid中；</p>
+<p>行使用的样式row，列使用样式col-*-*，元素内容应当放置于列内；</p>
+<p>基本的书写方式必须是：容器–行–列</p>
+<p>栅格参数：col-屏幕尺寸-占用列数  (屏幕尺寸现在都写成lg)</p>
+<p>为了方便显示元素大小，我们为展示元素都赋予了相同样式</p>
+<div  class=”container”>
+
+<div class=”row”>
+
+<div class=”col-lg-2” style=”border:1px solid:red;”>
+
+<p>11111</p>
+</div>
+
+<div class=”col-lg-4” style=”border:1px solid:red;”>
+
+<p>222222222</p>
+</div>
+
+</div>
+
+</div>
+
+<p>列元素的书写顺序，决定布局顺序，先写的列元素会先被布局到行上</p>
+<p>列元素的占用列数定义了列元素的大小。</p>
+<p>一个row下，如果列元素总和小于等于12，都在一行上。如果大于12，那么超出的元素会另起一行排列</p>
+<p>行和列可以无限嵌套，嵌套方式必须为列-行-列-行…（相当于是把当前的列当作行，这个行row又分为12列，可以继续设置）</p>
+<p>一个row元素下，都会有12列。</p>
+<p>屏幕尺寸设置：</p>
+<p>large：lg  大屏幕，一般pc尺寸</p>
+<p>medium：md  中等屏幕，小pc尺寸</p>
+<p>small：sm  小屏幕，ipad尺寸</p>
+<p>x small：  xs  超小屏幕，智能手机尺寸</p>
+<p>如果没有设置当前屏幕尺寸的样式，默认一个元素占一行。（比如你设置了lg尺寸，但是当你缩小为md尺寸的时候，就会变为一个元素占一行，因为你没有设置md的相应样式）</p>
+<p>多个屏幕尺寸共同设置：只需要在后面加即可</p>
+<div class=”col-lg-4 col-md-3 col-sm-2” style=”border:1px solid:red;”>
+
+<p>如果设置了一个屏幕尺寸，比这个尺寸大的屏幕，继承了当前的设置；比这个尺寸小的屏幕，默认一个元素占一行</p>
+<p>列偏移：将列元素向右侧进行推移</p>
+<p>col-屏幕尺寸-offset-*  在指定屏幕尺寸下，向右偏移*个列</p>
+<div class=”col-lg-4 col-lg-offset-3” style=”border:1px solid:red;”>
+
+<h1 id="响应式工具"><a href="#响应式工具" class="headerlink" title="*响应式工具*"></a><em><strong>*响应式工具*</strong></em></h1><p>为针对性地在移动页面上展示和隐藏不同的内容，bootstrap提供响应式工具</p>
+<p>可以让开发人员通过该工具决定，在何种屏幕尺寸下，隐藏或者显示某些元素</p>
+<p>visible-屏幕尺寸  可见</p>
+<p>hidden-屏幕尺寸  隐藏</p>
+<h1 id="列表"><a href="#列表" class="headerlink" title="*列表*"></a><em><strong>*列表*</strong></em></h1><p>bootstrap提供了实用的列表样式供开发人员使用</p>
+<p>帮助手册–全局CSS样式–排版–列表</p>
+<p>无序列表、有序列表、无样式列表、内联列表。</p>
+<p>内联列表：可以在标签内进行设置：class=“list-inline”就可以使列表变为在一行上。</p>
+<h1 id="按钮"><a href="#按钮" class="headerlink" title="*按钮*"></a><em><strong>*按钮*</strong></em></h1><p>任何HTML元素加上以下样式都会变成对应按钮：class属性设置为</p>
+<p>btn btn-default  默认按钮</p>
+<p>btn btn-primary  首选按钮</p>
+<p>btn btn-success  成功按钮</p>
+<p>btn btn-info  一般信息按钮</p>
+<p>btn btn-warning  警告按钮</p>
+<p>btn btn-danger  危险按钮</p>
+<p>btn btn-link  链接按钮</p>
+<p>尺寸：在按钮的属性后面添加即可</p>
+<p>btn-lg  大按钮</p>
+<p>btn-sm  小按钮</p>
+<p>btn-xs  超小按钮</p>
+<p>默认按钮不用写</p>
+<p>块级元素：btn-block  使按钮变为块级元素</p>
+<p>激活状态：active  直接在后面添加即可（不用写btn-）</p>
+<p>禁用状态：让鼠标无法点击的禁用状态：disabled 用法和active一样</p>
+<p>让鼠标指上去是个禁止的禁用状态：设置disabled=“disabled”</p>
+<h1 id="导航条"><a href="#导航条" class="headerlink" title="*导航条*"></a><em><strong>*导航条*</strong></em></h1><p>可以复制代码，然后修改我们需要的内容即可。nav标签</p>
+<p>汉堡按钮：缩小时，会将项目合并成一个图标</p>
+<p>sr-only  阅读器专用的样式（盲人设备，当鼠标指针放到这的时候，阅读器会读出相应设置的内容）</p>
+<h1 id="轮播图"><a href="#轮播图" class="headerlink" title="*轮播图*"></a><em><strong>*轮播图*</strong></em></h1><p>帮助手册位置–javascript插件–Carousel</p>
+<p>轮播图DIV的定时换图属性：data-interval=“毫秒值”  放在标签中</p>
+<p>注意：多个轮播图，必须修改轮播图的id，使id唯一，当改了id之后，后续的代码中的相应部分也要修改</p>
+<h1 id="排版方式"><a href="#排版方式" class="headerlink" title="*排版方式*"></a><em><strong>*排版方式*</strong></em></h1><p>class=“”</p>
+<p>将元素内所有的内容进行排版：</p>
+<p>text-left  使元素内容靠左显示</p>
+<p>text-center  使元素内容居中显示</p>
+<p>text-right  使元素内容靠右显示</p>
+<h1 id="表单元素"><a href="#表单元素" class="headerlink" title="*表单元素*"></a><em><strong>*表单元素*</strong></em></h1><p>复制相关代码，修改其中的一些部分，完成自己的需求。</p>
+<p>内联表单，水平排列的表单。</p>
+<p>校验状态：has-success  has-error  has-warning</p>
+<h1 id="分页条"><a href="#分页条" class="headerlink" title="*分页条*"></a><em><strong>*分页条*</strong></em></h1><p>默认分页  </p>
+<p>禁用和激活状态（可以显示当前在第几页，第一页的前一页不可用等情况）： disabled  active  即使设置了不可用，如果存在href标签的话，仍能点击跳转到相应地方，保险起见，建议删除href标签。</p>
+<p>翻页</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/17/8.5.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E4%B9%8Bbootstrap/" data-id="ckxho8wjs002gh8vw3z8lekyi" data-title="网页前端框架之bootstrap" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-8.4.网页前端之JS" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/04/17/8.4.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BJS/" class="article-date">
@@ -387,7 +573,7 @@ JavaScript的代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/17/8.4.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BJS/" data-id="ckw61sdwb004zoswdbmfkc8q3" data-title="网页前端之JS" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/17/8.4.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BJS/" data-id="ckxho8wld004zh8vwffq2ciy6" data-title="网页前端之JS" class="article-share-link">分享</a>
       
       
       
@@ -872,7 +1058,7 @@ JavaScript的代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/17/10.7.%E5%85%B3%E4%BA%8E%E9%87%8D%E6%9E%84/" data-id="ckw61sdx3006qoswdg22d27wa" data-title="关于重构" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/17/10.7.%E5%85%B3%E4%BA%8E%E9%87%8D%E6%9E%84/" data-id="ckxho8wmi006th8vw79wifzfz" data-title="关于重构" class="article-share-link">分享</a>
       
       
       
@@ -1082,7 +1268,7 @@ JavaScript的代码
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/17/12.2.SpringMVC/" data-id="ckw61sdw10043oswdba2w7wjo" data-title="SpringMVC" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/17/12.2.SpringMVC/" data-id="ckxho8wku0046h8vw93ky7z6i" data-title="SpringMVC" class="article-share-link">分享</a>
       
       
       
@@ -1993,7 +2179,7 @@ public void queryFile() throws IOException &#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/17/12.3.SpringBoot/" data-id="ckw61se0l007uoswd29xd8q6d" data-title="SpringBoot" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/17/12.3.SpringBoot/" data-id="ckxho8ws0007xh8vw2tof8oya" data-title="SpringBoot" class="article-share-link">分享</a>
       
       
       
@@ -2070,7 +2256,7 @@ public void queryFile() throws IOException &#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/17/12.4.SpringCloud/" data-id="ckw61sduq000coswd4nxz4fc4" data-title="SpringCloud" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/17/12.4.SpringCloud/" data-id="ckxho8wiq000ch8vw7jrghvml" data-title="SpringCloud" class="article-share-link">分享</a>
       
       
       
@@ -2532,7 +2718,7 @@ public void queryFile() throws IOException &#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/17/18.1.Postman/" data-id="ckw61sdw20045oswdbok76xo1" data-title="Postman" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/17/18.1.Postman/" data-id="ckxho8wkv0047h8vwd8frck6c" data-title="Postman" class="article-share-link">分享</a>
       
       
       
@@ -2818,7 +3004,7 @@ public void queryFile() throws IOException &#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/17/17.1.Maven/" data-id="ckw61sdx5006voswd32d84kg6" data-title="Maven" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/17/17.1.Maven/" data-id="ckxho8wmn006yh8vwhccf7o24" data-title="Maven" class="article-share-link">分享</a>
       
       
       
@@ -3651,7 +3837,7 @@ public void queryFile() throws IOException &#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/17/16.1.Docker/" data-id="ckw61sdx4006soswdhmxp404x" data-title="Docker" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/17/16.1.Docker/" data-id="ckxho8wmk006vh8vw7qymadjz" data-title="Docker" class="article-share-link">分享</a>
       
       
       
@@ -3978,95 +4164,11 @@ public void queryFile() throws IOException &#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/17/26.1.ElasticSearch/" data-id="ckw61sdw5004doswdfnjsg3if" data-title="ElasticSearch" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/17/26.1.ElasticSearch/" data-id="ckxho8wky004dh8vw7tyqdwhi" data-title="ElasticSearch" class="article-share-link">分享</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ElasticSearch/" rel="tag">ElasticSearch</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-json" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/16/json/" class="article-date">
-  <time class="dt-published" datetime="2021-04-16T07:29:29.000Z" itemprop="datePublished">2021-04-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/16/json/">json</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>Java中并没有内置JSON的解析，因此使用JSON需要借助第三方类库</p>
-<p><a target="_blank" rel="noopener" href="https://github.com/alibaba/fastjson">FastJson</a>: 阿里巴巴开发的 JSON 库，性能十分优秀</p>
-<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>在 Maven 构建的项目中，在 pom.xml 文件中加入以下依赖即可。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.47<span class="tag">&lt;/<span class="name">version</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="编码与解码"><a href="#编码与解码" class="headerlink" title="编码与解码"></a>编码与解码</h2><h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3><p>从 Java 变量到 JSON 格式的编码过程如下：</p>
-<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testJson</span><span class="params">()</span> </span>&#123;    </span><br><span class="line">	JSONObject object = <span class="keyword">new</span> JSONObject();    </span><br><span class="line">    <span class="comment">//string    </span></span><br><span class="line">	object.put(<span class="string">&quot;string&quot;</span>,<span class="string">&quot;string&quot;</span>);    </span><br><span class="line">    <span class="comment">//int    </span></span><br><span class="line">	object.put(<span class="string">&quot;int&quot;</span>,<span class="number">2</span>);    </span><br><span class="line">    <span class="comment">//boolean    </span></span><br><span class="line">	object.put(<span class="string">&quot;boolean&quot;</span>,<span class="keyword">true</span>);    </span><br><span class="line">    <span class="comment">//array    </span></span><br><span class="line">	List&lt;Integer&gt; integers = Arrays.asList(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);    </span><br><span class="line">	object.put(<span class="string">&quot;list&quot;</span>,integers);    </span><br><span class="line">    <span class="comment">//null    </span></span><br><span class="line">	object.put(<span class="string">&quot;null&quot;</span>,<span class="keyword">null</span>);     </span><br><span class="line">	System.out.println(object); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在上例中，首先建立一个 JSON 对象，然后依次添加字符串、整数、布尔值以及数组，最后将其打印为字符串。</p>
-<p>输出结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;boolean&quot;:true,&quot;string&quot;:&quot;string&quot;,&quot;list&quot;:[1,2,3],&quot;int&quot;:2&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h3><p>从 JSON 对象到 Java 变量的解码过程如下：</p>
-<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testJson2</span><span class="params">()</span> </span>&#123;   </span><br><span class="line">    JSONObject object = JSONObject.parseObject(<span class="string">&quot;&#123;\&quot;boolean\&quot;:true,\&quot;string\&quot;:\&quot;string\&quot;,\&quot;list\&quot;:[1,2,3],\&quot;int\&quot;:2&#125;&quot;</span>);  </span><br><span class="line">    <span class="comment">//string  </span></span><br><span class="line">    String s = object.getString(<span class="string">&quot;string&quot;</span>);  System.out.println(s);  </span><br><span class="line">    <span class="comment">//int  </span></span><br><span class="line">    <span class="keyword">int</span> i = object.getIntValue(<span class="string">&quot;int&quot;</span>);  System.out.println(i);  </span><br><span class="line">    <span class="comment">//boolean  </span></span><br><span class="line">    <span class="keyword">boolean</span> b = object.getBooleanValue(<span class="string">&quot;boolean&quot;</span>);  System.out.println(b);  </span><br><span class="line">    <span class="comment">//list  </span></span><br><span class="line">    List&lt;Integer&gt; integers = JSON.parseArray(object.getJSONArray(<span class="string">&quot;list&quot;</span>).toJSONString(),Integer.class);  			              integers.forEach(System.out::println);  </span><br><span class="line">    <span class="comment">//null  </span></span><br><span class="line">    System.out.println(object.getString(<span class="string">&quot;null&quot;</span>));  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在上例中，首先从 JSON 格式的字符串中构造一个 JSON 对象，之后依次读取字符串、整数、布尔值以及数组，最后分别打印，打印结果如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">string</span><br><span class="line">2</span><br><span class="line">true</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">null</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="JSON-对象与字符串的相互转化"><a href="#JSON-对象与字符串的相互转化" class="headerlink" title="JSON 对象与字符串的相互转化"></a>JSON 对象与字符串的相互转化</h2><table>
-<thead>
-<tr>
-<th align="left">方法</th>
-<th align="left">作用</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><code>JSON.parseObject()</code></td>
-<td align="left">从字符串解析 JSON 对象</td>
-</tr>
-<tr>
-<td align="left"><code>JSON.parseArray()</code></td>
-<td align="left">从字符串解析 JSON 数组</td>
-</tr>
-<tr>
-<td align="left"><code>JSON.toJSONString(obj/array)</code></td>
-<td align="left">将 JSON 对象或 JSON 数组转化为字符串</td>
-</tr>
-</tbody></table>
-<h2 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//从字符串解析JSON对象  String转JSONObject</span></span><br><span class="line">JSONObject obj = JSON.parseObject(<span class="string">&quot;&#123;\&quot;runoob\&quot;:\&quot;菜鸟教程\&quot;&#125;&quot;</span>); </span><br><span class="line">JSONObject jSONObject = JSONObject.parseObject(<span class="string">&quot;&#123;\&quot;runoob\&quot;:\&quot;菜鸟教程\&quot;&#125;&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//从字符串解析JSON数组  String转JSONArray</span></span><br><span class="line">JSONArray arr = JSON.parseArray(<span class="string">&quot;[\&quot;菜鸟教程\&quot;,\&quot;RUNOOB\&quot;]\n&quot;</span>); </span><br><span class="line">JSONArray jsonArray= JSONArray.parseArray(<span class="string">&quot;[\&quot;菜鸟教程\&quot;,\&quot;RUNOOB\&quot;]\n&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//JSONObject中的数组提取为JSONArray</span></span><br><span class="line">JSONArray jsonArray= jsonObject.getJSONArray(<span class="string">&quot;msg&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//JSONArray提取为JSONObject</span></span><br><span class="line">JSONObject jsonObject = jsonArray.getJSONObject(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//将JSON对象转化为字符串 </span></span><br><span class="line">String objStr = JSON.toJSONString(obj); </span><br><span class="line"><span class="comment">//将JSON数组转化为字符串 </span></span><br><span class="line">String arrStr = JSON.toJSONString(arr);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Map转为JSON格式的字符串</span></span><br><span class="line">Map&lt;String, Object&gt; paraMap = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">JSONObject.toJSONString(paraMap)</span><br><span class="line">自动过滤参数为<span class="keyword">null</span>的数值</span><br><span class="line">    </span><br><span class="line"><span class="comment">//javaBean转为JSONObject</span></span><br><span class="line">JSONObject.parseObject(JSONObject.toJSON(javaBean对象).toString())；</span><br><span class="line">    </span><br><span class="line"><span class="comment">//List&lt;实体类&gt;转String</span></span><br><span class="line">    List&lt;实体类&gt; value1 = 。。。。。。</span><br><span class="line">JSONObject.toJSONString(value1 )</span><br><span class="line">    </span><br><span class="line"><span class="comment">//JSONArray转List&lt;实体类&gt;</span></span><br><span class="line">JSONArray objects = JSONArray.parseArray(categoryConstantInfoFromRedis);</span><br><span class="line">List&lt;实体类&gt; categoryConstantInfos = objects.toJavaList(实体类名.class);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>找不到方法的时候，去看看JSONArray，JSONObject的源码，很多都有封装好的，你不会失望的</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/16/json/" data-id="ckw61sdvn0032oswd9fnhhs5x" data-title="json" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/json/" rel="tag">json</a></li></ul>
 
     </footer>
   </div>
@@ -4126,6 +4228,10 @@ public void queryFile() throws IOException &#123;
       <ul>
         
           <li>
+            <a href="/2021/12/20/Jenkins/">Jenkins</a>
+          </li>
+        
+          <li>
             <a href="/2021/12/17/SpringBootSecurity/">SpringBootSecurity</a>
           </li>
         
@@ -4139,10 +4245,6 @@ public void queryFile() throws IOException &#123;
         
           <li>
             <a href="/2021/09/03/%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%BB%A3%E7%A0%81/">工具类代码</a>
-          </li>
-        
-          <li>
-            <a href="/2021/09/03/RPC/">RPC</a>
           </li>
         
       </ul>

@@ -77,6 +77,316 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-8.2.网页前端之HTML" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/03/8.2.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BHTML/" class="article-date">
+  <time class="dt-published" datetime="2021-04-03T01:43:19.000Z" itemprop="datePublished">2021-04-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/03/8.2.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BHTML/">网页前端之HTML</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="lt-HTML-gt"><a href="#lt-HTML-gt" class="headerlink" title="&lt;HTML&gt;"></a><code>&lt;HTML&gt;</code></h1><p><code>&lt;html&gt;</code>标签相当于java类的大括号</p>
+<p>HTML：(Hyper Text Markup Language)超文本标记语言,是用来写网页的，是设计页面的基础。</p>
+<p>HTML是由标签所组成的语言，能展示超文本效果,由头和体组成：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span>    </span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>标题<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">&quot;red&quot;</span>&gt;</span>需要展示给用户看的信息内容<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>HTML文件的扩展名为html或者htm:htm是老的命名规范，html是新的</p>
+<p>HTML文件由浏览器直接解析运行，无需编译，直接由上到下依次解析执行</p>
+<p>HTML标签通常由开始标签和结束标签组成，开始标签和结束标签之间的内容叫做内容体。</p>
+<p>没有内容体的标签叫做空标签。仅由一个标签组成，例如：<code>&lt;br/&gt;</code> 自关闭</p>
+<p>HTML标签不区分大小写，为了方便阅读，建议小写</p>
+<p>HTML标签是有属性的，格式为属性名=“属性值”，属性值用引号引起来(单引号双引号都可以，建议双引号)</p>
+<p>HTML标签建议包裹嵌套，不建议交叉嵌套</p>
+<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><p><code>&lt;!--HTML注释内容--&gt;</code>用于注释HTML源码，不在HTML效果中展示</p>
+<h1 id="lt-head-gt"><a href="#lt-head-gt" class="headerlink" title="&lt;head&gt;"></a><code>&lt;head&gt;</code></h1><p><code>&lt;head&gt;</code>中存放的是网页的说明性内容</p>
+<h2 id="lt-meta-gt"><a href="#lt-meta-gt" class="headerlink" title="&lt;meta&gt;"></a><code>&lt;meta&gt;</code></h2><p>是 HTML 语言头部的一个辅助性标签，我们可以定义页面编码语言、搜索引擎优化、自动刷新并指向新的页面、控制页面缓冲、响应式视窗等。·</p>
+<p><code>&lt;meta&gt;</code> 元素可提供有关页面的元信息（meta-information,元数据总是以名称/值的形式被成对传递的），比如针对搜索引擎和更新频度的描述和关键词。</p>
+<p><code>&lt;meta&gt;</code> 标签位于文档的头部，不包含任何内容。</p>
+<p><code>&lt;meta&gt;</code> 标签的属性定义了与文档相关联的名称/值对。</p>
+<p>整体来看，HTML5之前，meta标签只有两个主要属性，分别是 name 属性和 http-equiv 属性。 HTML5新添加”charset”</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;参数&quot;</span> <span class="attr">content</span>=<span class="string">&quot;参数值&quot;</span> /&gt;</span>  </span><br><span class="line">//name属性主要用于描述网页，对应属性是 content ，以便于搜索引擎机器人查找、分类（目前几乎所有的搜索引擎都使用网上机器人自动查找meta值来给网页分类）</span><br><span class="line">这里的name参数可以是多种值，对应不同效果：</span><br><span class="line">Keywords（关键字）</span><br><span class="line">Description（简介）</span><br><span class="line">robots（机器人向导）   用来告诉搜索机器人哪些页面需要索引，哪些页面不需要索引</span><br><span class="line">参数为 all ：默认值，文件将被检索，且页面上的链接可以被查询； 参数为 none ：文件将不被检索，且页面上的链接不可以被查询； 参数为 index ：文件将被检索； 参数为 follow ：页面上的链接可以被查询； 参数为 noindex ：文件将不被检索，但页面上的链接可以被查询； 参数为 nofollow ：文件将被检索，但页面上的链接不可以被查询；</span><br><span class="line">author（作者）</span><br><span class="line">copyright（版权）</span><br><span class="line">generator（编辑器）</span><br><span class="line">revisit-after（网站重访）</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">property</span>=<span class="string">&quot;参数&quot;</span>  <span class="attr">content</span>=<span class="string">&quot;参数值&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;参数&quot;</span>  <span class="attr">content</span>=<span class="string">&quot;参数值&quot;</span>/&gt;</span></span><br><span class="line">//http-equiv类似于HTTP的头部协议，它回应给浏览器一些有用的信息，以帮助正确和精确地显示网页内容。与之对应的属性值为content，content中的内容其实就是各个参数的变量值</span><br><span class="line">Expires（期限）  指定网页在缓存中的过期时间，一旦网页过期，必须到服务器上重新传输  必须使用GMT的时间格式，或者直接设为0（数字表示多久后过期）</span><br><span class="line">Pragma（cache模式） 禁止浏览器从本地计算机的缓存中访问页面内容   网页不保存在缓存中，每次访问都刷新页面。这样设定，访问者将无法脱机浏览</span><br><span class="line">Refresh（刷新）自动刷新并指向新页面 `<span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;refresh&quot;</span><span class="attr">content</span>=<span class="string">&quot;5; url=http://www.baidu.com/&quot;</span>/&gt;</span>`</span><br><span class="line">Set-Cookie（cookie设定）</span><br><span class="line">Window-target（显示窗口的设定） 强制页面在当前窗口以独立页面显示,可以用来防止别人在框架里调用你的页面</span><br><span class="line">content-Type（显示字符集的设定）设定页面使用的字符集，一般不用</span><br><span class="line">content-Language（显示语言的设定）</span><br><span class="line">http-equiv=&quot;imagetoolbar&quot; 指定是否显示图片工具栏，当为false代表不显示，当为true代表显示</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="lt-link-gt"><a href="#lt-link-gt" class="headerlink" title="&lt;link&gt;"></a><code>&lt;link&gt;</code></h2><p><code>&lt;link&gt;</code> 标签定义该文档与外部资源的关系。最常见的用途是链接样式表，也可以被用来创建站点图标(比如PC端的“favicon”图标和移动设备上用以显示在主屏幕的图标)</p>
+<p>网站站点的小图标：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;icon&quot;</span> <span class="attr">href</span>=<span class="string">&quot;images/logo.png&quot;</span> <span class="attr">type</span>=<span class="string">&quot;image/png&quot;</span> <span class="attr">sizes</span>=<span class="string">&quot;1651*1024&quot;</span>/&gt;</span>  指定格式为icon，然后类型指定图片，href放资源位置，可以设置大小</span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;shortcut icon&quot;</span> <span class="attr">href</span>=<span class="string">&quot;favicon.ico&quot;</span> <span class="attr">type</span>=<span class="string">&quot;image/x-icon&quot;</span> /&gt;</span>  指定格式为icon，类型指定为ico，href放资源位置</span><br></pre></td></tr></table></figure>
+
+<h2 id="lt-script-gt"><a href="#lt-script-gt" class="headerlink" title="&lt;script&gt;"></a><code>&lt;script&gt;</code></h2><p>1、async  表示立即下载该脚本，但不妨碍页面中的其他操作(比如：下载其他资源或等待加载其他脚本)，只对外部文件有效。<br>2、charset 属性与 src 属性一起使用，告诉浏览器用来编码这个 javascript 程序的字符集。它的值是任何一个 ISO 标准字符集编码的名称。由于大多数浏览器会忽略它的值，因此这个属性很少有人用。</p>
+<p>3、defer 表示脚本可以延迟到文档完全被解析和显示后再执行。只对外部文件有效。<br>4、language 已废弃。 原来用于表示编写代码用的脚本语言，因大多数浏览器都会忽略这个属性，因此也没必要再用了。<br>5、src 表示包含要执行代码的外部文件。</p>
+<p>6、type 可以看成language的替代属性；表示编写代码使用的脚本语言的内容类型。默认值为text/javascript</p>
+<p>注意：<br>1、传统做法是将所有的<code>&lt;script&gt;</code>元素都放在页面的<code>&lt;head&gt;</code>元素中，但是这样页面响应就会比较慢（必须等到全部的Javascript代码都被下载、解析和执行完后，才能呈现页面内容）。现在的做法一般都是将Javascript引用放在<code>&lt;body&gt;</code>元素中页面内容的后面。</p>
+<p>2、defer和asyncd的作用基本相似。定义defer=“defer”的脚本将延迟到浏览器遇到<code>&lt;/html&gt;</code>标签后再执行，原则上是延迟脚本还是按照原来的顺序执行，但是实际上执行的顺序不一定按照指定顺序执行。但是HTML5（以后称为H5）中已经明确规定,defer属性只使用于外部脚本文件，因此支持H5的实现会忽略给嵌入脚本设置的defer属性。async也只适用于外部脚本文件，并告诉浏览器立即下载脚本文件。但与defer不同的是，它并不保证按照指定顺序执行，又称为异步脚本标签（各脚本文件相互独立，互不依赖）</p>
+<h1 id="lt-body-gt"><a href="#lt-body-gt" class="headerlink" title="&lt;body&gt;"></a><code>&lt;body&gt;</code></h1><p>分类：</p>
+<p>1.单标签：在⾃身标签标识结束，主要应⽤场景为<strong>功能性</strong>标签</p>
+<p>双标签：有成对的结束标识，主要应⽤场景为<strong>内容性</strong>标签</p>
+<p>2.行标签：⼜名<strong>内联标签</strong>，内联标签⾃身不具备宽⾼，可以和其他元素保持在同一行。根据内容多少来占用行内空间，不会自动换行。例：<code>&lt;br&gt;, &lt;td&gt;, &lt;a&gt;, &lt;img&gt;，&lt;span&gt;</code>strong，u（下划线），em(强调)，i(斜体)，sub(下标),sup(上标)</p>
+<p>块标签：又名<strong>块级标签</strong>，块标签可以设置宽⾼，不可以和其他元素保持在同一行，通常独⾃占据⼀⾏。以区域块方式出现，每个块标签独自占据一整行或多整行，块结束会自动换行。例：<code>&lt;h1&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;table&gt;，&lt;div&gt;</code>li，dl，dt，dd,form,hr,pre</p>
+<p>行内块级标签：可以和其他元素保持在在一行，还能能设置宽高。例：textarea，input，img，button</p>
+<p>所谓的行级标签，块级标签，其实可以根据需要，在开发中通过css样式互相转换。即通过设置display属性，它的属性值中，inline（元素以行内标签进行展示），block（元素以块级标签进行展示），inline-block（元素以行内块级标签进行展示）</p>
+<p>3.单一标签：单独出现，表示具体的功能或展示具体的内容</p>
+<p>组合标签：配合使⽤，才能产⽣相应的内容与效果</p>
+<h2 id="lt-h-gt-标题"><a href="#lt-h-gt-标题" class="headerlink" title="&lt;h&gt;标题"></a><code>&lt;h&gt;</code>标题</h2><p>标题（Heading）是通过 <code>&lt;h1&gt; - &lt;h6&gt;</code> 等标签进行定义的。</p>
+<p><code>&lt;h1&gt;</code> 定义最大的标题    <code>&lt;h6&gt;</code> 定义最小的标题</p>
+<p>注意：</p>
+<ol>
+<li>浏览器会自动地在标题的前后添加空行。</li>
+<li>默认情况下，HTML 会自动地在块级元素前后添加一个额外的空行，比如段落、标题元素前后</li>
+</ol>
+<h2 id="lt-p-gt-段落"><a href="#lt-p-gt-段落" class="headerlink" title="&lt;p&gt;段落"></a><code>&lt;p&gt;</code>段落</h2><p>用于展示效果中划分段落，并且自动在段前和段后自动加空行</p>
+<p>align：段落内容的对齐方式，默认是left，内容居左；right，右；center，居中。</p>
+<p>（这个将要分段的内容放在<code>&lt;p&gt;&lt;/p&gt;</code>中即可）</p>
+<p>注意：</p>
+<ol>
+<li><p>浏览器会自动地在段落的前后添加空行。（<code>&lt;p&gt;</code> 是块级元素）</p>
+</li>
+<li><p>使用空的段落标记 <code>&lt;p&gt;&lt;/p&gt; </code>去插入一个空行是个坏习惯。用 <code>&lt;br /&gt;</code> 标签代替它！（但是不要用 <code>&lt;br /&gt;</code> 标签去创建列表。）</p>
+</li>
+</ol>
+<h2 id="lt-br-gt-换行"><a href="#lt-br-gt-换行" class="headerlink" title="&lt;br /&gt;换行"></a><code>&lt;br /&gt;</code>换行</h2><p>用于展示效果中换行 </p>
+<p>HTML源码中换行，浏览器解析时会自动忽略</p>
+<p>（这个放在要换行的地方就行）</p>
+<h2 id="lt-font-gt-字体"><a href="#lt-font-gt-字体" class="headerlink" title="&lt;font&gt;字体"></a><code>&lt;font&gt;</code>字体</h2><p>用于展示效果中修饰文字样式</p>
+<p><code>&lt;font 属性名=”属性值”&gt; 文字&lt;/font&gt;</code></p>
+<p>size:控制字体大小。最小1~最大7</p>
+<p>color:控制字体颜色.使用英文设置</p>
+<p>face:控制字体类型。只能设置系统字库中存在的字体类型<br>这个font可以加载在文字中间，不一定非要在开始，从哪开始的字就是从哪变化）</p>
+<h2 id="lt-hr-gt-分割线"><a href="#lt-hr-gt-分割线" class="headerlink" title="&lt;hr /&gt;分割线"></a><code>&lt;hr /&gt;</code>分割线</h2><p>水平线，多用于段落之间的分割</p>
+<h2 id="lt-pre-gt-原样标签"><a href="#lt-pre-gt-原样标签" class="headerlink" title="&lt;pre&gt;原样标签"></a><code>&lt;pre&gt;</code>原样标签</h2><p>原样标签会保留空格和换行符，显示原文本文字。格式化文本。预定义格式文本。</p>
+<p>在该元素中的文本通常按照原文件中的编排，以等宽字体的形式展现出来，文本中的空白符（比如空格和换行符）都会显示出来。(紧跟在 <code>&lt;pre&gt; </code>开始标签后的换行符也会被省略)</p>
+<h2 id="lt-section-gt-段落标签"><a href="#lt-section-gt-段落标签" class="headerlink" title="&lt;section&gt;段落标签"></a><code>&lt;section&gt;</code>段落标签</h2><p>和p同为块标签，自动换行显示每一段，但是section不存在行距，p自带行距</p>
+<p>注：section和P放在一起，p优先，使用行距</p>
+<h2 id="lt-div-gt-块级的块标签"><a href="#lt-div-gt-块级的块标签" class="headerlink" title="&lt;div&gt;块级的块标签"></a><code>&lt;div&gt;</code>块级的块标签</h2><p>用于在效果中 定义一块，默认占满一行，进行内容的显示  （会自动换行，默认占满一行 适用于大量信息展示）</p>
+<p>是块级元素，内容会独立占一行。它是可用于组合其他 HTML 元素的容器。<code>&lt;div&gt;</code> 元素没有特定的含义。除此之外，由于它属于块级元素，浏览器会在其前后显示折行。</p>
+<p>如果与 CSS 一同使用，<code>&lt;div&gt; </code>元素可用于对大的内容块设置样式属性。</p>
+<p><code>&lt;div&gt; </code>元素的另一个常见的用途是文档布局。它取代了使用表格定义布局的老式方法。使用 <code>&lt;table&gt;</code> 元素进行文档布局不是表格的正确用法。<code>&lt;table&gt;</code> 元素的作用是显示表格化的数据</p>
+<h2 id="lt-span-gt-行级的块标签"><a href="#lt-span-gt-行级的块标签" class="headerlink" title="&lt;span&gt;行级的块标签"></a><code>&lt;span&gt;</code>行级的块标签</h2><p>用于在效果中 一行上定义一个块，进行内容显示  （有多少内容就会占用多大空间 span不会自动换行 适用于少量信息展示，比如提示密码错误）</p>
+<p>HTML <code>&lt;span&gt; </code>元素是内联元素，行内标签，可用作文本的容器。</p>
+<p><code>&lt;span&gt; </code>元素也没有特定的含义。</p>
+<p>当与 CSS 一同使用时，<code>&lt;span&gt; </code>元素可用于为部分文本设置样式属性</p>
+<h2 id="lt-ol-gt-lt-li-gt-有序的列表标签"><a href="#lt-ol-gt-lt-li-gt-有序的列表标签" class="headerlink" title="&lt;ol&gt; &lt;li&gt; 有序的列表标签"></a><code>&lt;ol&gt; &lt;li&gt;</code> 有序的列表标签</h2><p><code>&lt;ol&gt;&lt;/ol&gt;</code> 用于在效果中定义一个有序列表  （会表明每个条目的顺序）</p>
+<p>列表条项目标签：<code>&lt;li&gt;&lt;/li&gt; </code>用于在效果中定义一个列表的项目</p>
+<h2 id="lt-ul-gt-lt-li-gt-无序的列表标签"><a href="#lt-ul-gt-lt-li-gt-无序的列表标签" class="headerlink" title="&lt;ul&gt; &lt;li&gt; 无序的列表标签"></a><code>&lt;ul&gt; &lt;li&gt; </code>无序的列表标签</h2><p><code>&lt;ul&gt;&lt;/ul&gt; </code>用于在效果中定义一个无序列表  （使用最多）</p>
+<h2 id="lt-dl-gt-lt-dt-gt-lt-dd-gt-项目列表标签"><a href="#lt-dl-gt-lt-dt-gt-lt-dd-gt-项目列表标签" class="headerlink" title="&lt;dl&gt;&lt;dt&gt;&lt;dd&gt;项目列表标签"></a><code>&lt;dl&gt;&lt;dt&gt;&lt;dd&gt;</code>项目列表标签</h2><p>dl（定义列表，跟ul…li类似），dt（定义了定义列表中的项目），dd（定义描述项目的内容，跟dt一起搭配）</p>
+<h2 id="lt-sub-gt-下标"><a href="#lt-sub-gt-下标" class="headerlink" title="&lt;sub&gt; 下标"></a><code>&lt;sub&gt; </code>下标</h2><h2 id="lt-sup-gt-上标"><a href="#lt-sup-gt-上标" class="headerlink" title="&lt;sup&gt; 上标"></a><code>&lt;sup&gt;</code> 上标</h2><h2 id="实体标签-转义字符"><a href="#实体标签-转义字符" class="headerlink" title="实体标签(转义字符)"></a>实体标签(转义字符)</h2><p>空格 <code>&amp;nbsp;</code>   HTML源码中的多个空格，效果中最终会合并成一个</p>
+<p>小于号 <code>&amp;lt;</code></p>
+<p>大于号 <code>&amp;gt;</code></p>
+<p>人民币<code> &amp;yen;</code>&yen;</p>
+<p>版权 <code>&amp;copy;</code>&copy;</p>
+<p>商标<code> &amp;reg;</code>&reg;</p>
+<h2 id="lt-embed-gt-lt-embed-gt-媒体标签"><a href="#lt-embed-gt-lt-embed-gt-媒体标签" class="headerlink" title="&lt;embed&gt;&lt;/embed&gt;媒体标签"></a><code>&lt;embed&gt;&lt;/embed&gt;</code>媒体标签</h2><p>hidden ： 设置隐藏插件是否隐藏</p>
+<p>src ：用于指定音乐的路径    例：<code>&lt;embed src=&quot;1.mp3&quot; &gt;&lt;/embed&gt;</code></p>
+<h2 id="lt-marquee-gt-滚动标签-（已废弃）"><a href="#lt-marquee-gt-滚动标签-（已废弃）" class="headerlink" title="&lt;marquee&gt; 滚动标签  （已废弃）"></a><code>&lt;marquee&gt;</code> 滚动标签  （已废弃）</h2><p>用来插入一段滚动的文字。可以使用它的属性控制当文本到达容器边缘发生的事情</p>
+<p>direction : 指定滚动的方向</p>
+<p>scrollamount : 指定滚动的速度。</p>
+<p>loop :指定滚动的次数</p>
+<h2 id="lt-a-gt-超链接标签"><a href="#lt-a-gt-超链接标签" class="headerlink" title="&lt;a&gt; 超链接标签"></a><code>&lt;a&gt;</code> 超链接标签</h2><p><code>&lt;a&gt;&lt;/a&gt;</code>用于在效果中定义一个可以点击跳转的链接<br>href：超链接跳转的路径</p>
+<p>​    内网本机路径：相对路径和绝对路径</p>
+<p>​    互联网路径：http://地址</p>
+<p>​    本页：默认跳转到本页</p>
+<p>href : 用于指定链接的资源</p>
+<p>target: 设置打开新资源的目标</p>
+<p>_Blank 在独立的窗口上打开新资源</p>
+<p>_self 在当前窗口打开新资源</p>
+<p>file: file协议（文件协议）这种协议主要是用于搜索本地机器的资源文件的。      格式：file:///f:/图片/1.jpg</p>
+<p>邮件 的协议： mailTo</p>
+<p>迅雷的协议： thunder</p>
+<p>超链接标签的作用：</p>
+<ol>
+<li><p>可以用于链接资源。</p>
+</li>
+<li><p>锚点点位:首先编写一个锚点 ,锚点的格式：<code> &lt;a name=&quot;锚点名字&quot;&gt; 数据&lt;/a&gt;</code> ,再使用a标签 的herf属性连接到锚点出。 href=”#锚点的名字“</p>
+</li>
+</ol>
+<p>超链接正常工作：1. a标签中必须有内容     2.a标签必须有href属性</p>
+<p>注意：a标签内容体，不仅仅是文字，也可以是其他内容，例如图片</p>
+<p>a标签的href属性，不仅仅可以链接到html上，也可以链接到其他文件上。例如图片</p>
+<h2 id="lt-img-gt-图片标签"><a href="#lt-img-gt-图片标签" class="headerlink" title="&lt;img&gt; 图片标签"></a><code>&lt;img&gt;</code> 图片标签</h2><p><code>&lt;img /&gt; </code>用于在页面效果中展示一张图片<br>    src：图片的路径。（必有属性）</p>
+<p>路径的写法：内网路径：绝对路径：C:\javaweb001_html\img\c_1.jpg文件在硬盘上的具体位置  （不建议使用）</p>
+<p>相对路径：../img/c_1.jpg  从引入者所在目录出发 ../表示上一层目录 ./表示当前目录  （建议使用）</p>
+<p>互联网路径：<code>http://www.baidu.com/xxx.jpg </code>必须在前面加上http://</p>
+<p>​    width： 设置图片宽度</p>
+<p>​    height： 设置图片高度</p>
+<p>​    宽度和高度的设置：</p>
+<p>​        默认单位是px，像素  “400” 固定的</p>
+<p>​        百分比设置：是父标签的百分比  “50%” 动态改变的</p>
+<p>​    alt: 如果图片资源无法找到，那么就显示对应的文字对图片进行说明。</p>
+<p>​        （这些属性放在img和/之间）</p>
+<h2 id="lt-table-gt-表格标签"><a href="#lt-table-gt-表格标签" class="headerlink" title="&lt;table&gt;表格标签"></a><code>&lt;table&gt;</code>表格标签</h2><p>表格使用到的标签：</p>
+<p><code>&lt;table&gt;</code> 表格</p>
+<p><code>&lt;tr&gt;</code> 定义表格中的一行</p>
+<p><code>&lt;td&gt; </code>在表格一行中定义单元格</p>
+<p><code>&lt;th&gt;</code> 表头 。默认的样式是居中，加粗。区别于普通单元格标签，里面的内容居中加粗了</p>
+<p><code>&lt;caption&gt; </code>表格的标题</p>
+<p>表格常用的属性：</p>
+<p>​    border ：设置表格的边框</p>
+<p>​    width : 设置表格的宽度</p>
+<p>​    height: 设置表格的高度</p>
+<p>单元格合并：<code>&lt;td&gt;</code> <code>&lt;th&gt;</code>都有这个合并属性<br>colspan：    设置单元格占据指定的列数;跨列合并单元格  colspan=”n”</p>
+<p>rowspan： 设置单元格占据指定的行数; 跨行合并单元格  rowspan=”n”</p>
+<p>合并步骤：A：确定合并哪几个单元格，确定是跨行合并还是跨列合并</p>
+<p>B：在第一个出现的单元格上书写合并单元格属性</p>
+<p>C：合并几个单元格，属性值就写几</p>
+<p>D：被合并的单元格必须删掉</p>
+<p><code>&lt;thead&gt; </code>标签用于组合 HTML 表格的表头内容。</p>
+<p><code>&lt;thead&gt;</code> 元素应该与<code>&lt;tbody&gt;</code>和<code>&lt;tfoot&gt;</code>元素结合起来使用，用来规定表格的各个部分（表头、主体、页脚）。</p>
+<p>通过使用这些元素，使浏览器有能力支持独立于表格表头和表格页脚的表格主体滚动。当包含多个页面的长的表格被打印时，表格的表头和页脚可被打印在包含表格数据的每张页面上。</p>
+<p><code>&lt;thead&gt; </code>标签必须被用在以下情境中：作为 <code>&lt;table&gt; </code>元素的子元素，出现在 <code>&lt;caption&gt;、&lt;colgroup&gt; </code>元素之后，<code>&lt;tbody&gt;、 &lt;tfoot&gt; 和 &lt;tr&gt; </code>元素之前。</p>
+<h2 id="lt-form-gt-表单标签"><a href="#lt-form-gt-表单标签" class="headerlink" title="&lt;form&gt;表单标签"></a><code>&lt;form&gt;</code>表单标签</h2><p>表单标签的根标签是<code>&lt;form&gt;</code>标签</p>
+<p>用来将用户输入的数据提交给服务器的程序  相当于一个WEB程序的入口</p>
+<p>1.定义一个表单 <code>&lt;form&gt;</code>表单内容<code>&lt;/form&gt;</code></p>
+<p>2.在表单中定义对应的表单输入项<br>    <code>&lt;input /&gt; </code>是一种自关闭的标签，用户可以在该标签上通过填写和选择进行数据的输入</p>
+<p>​    type：设置该标签的种类</p>
+<p>​    text：文本框  默认  不一定需要指定value值</p>
+<p>​    password：密码框  内容为非明文</p>
+<p>​    radio：单选框  在同一组内才具有单选效果（分组需要用到name属性，将name设置成相同的就变为一组）（单选框只能选择，不能输入 需要指定value属性，否则提交的都是on）（可以checked设置默认选中）</p>
+<p>​    checkbox：复选框  在同一组内才具有复选效果</p>
+<p>​    submit：提交按钮  用于控制表单提交数据（当表单提交后，会出现  ？参数列表  参数列表格式：参数1=参数值1&amp;参数2=参数值2&amp;参数3=参数值3 这些参数都是之前设置的name，参数值是value）</p>
+<p>​    rest：重置按钮  用于将表单输入项恢复到默认状态</p>
+<p>​    file：附件框  用于文件上传</p>
+<p>​    hidden：隐藏域 一般用于提交时，服务器需要拿到，但是用户不需要看到的数据</p>
+<p>​    button：普通按钮  需要和js的事件一起使用</p>
+<p>​    name：单选框、复选框进行数据的分组；设置该标签对应的参数名</p>
+<p>​    value：设置该标签对应的参数值；作为按钮的名字</p>
+<p>​    checked：设置单选框/复选框的默认选中状态  值就是”cheked”</p>
+<p>​    readonly：设置该标签的参数值只读，用户无法手动更改，但是数据可以正常提交 readonly=“readonly”</p>
+<p>​    disabled：设置该标签不可用，参数值无法更改且参数值也无法提交</p>
+<p>​    <code>&lt;select&gt;&lt;/select&gt;</code>选择框标签  定义一个选择框</p>
+<p>​    name：设置该标签对应的参数名</p>
+<p>​    multiple：设置该标签选项全部显示，并且可以进行多选提交，默认为单选</p>
+<p>​    <code>&lt;option&gt;&lt;/option&gt;</code>选项标签  用于为一个选择添加一个选项</p>
+<p>​    value：设置需要提交的参数值（一般选择的东西都需要指定的返回值value）</p>
+<p>​    selected：设置选项的默认选中状态</p>
+<p>注意事项：option的内容体一般是用来展示的  参数值应该是option的value属性值</p>
+<p>​    <code>&lt;textarea&gt;&lt;/textarea&gt;</code>文本域标签</p>
+<p>表单输入项标签之一，用户可以在该标签上通过输入进行数据的输入</p>
+<p>name：设置该标签对应的参数名</p>
+<p>文本域和文本框的区别：文本框不能换行，文本域可以</p>
+<p>文本框参数值是value属性，文本域参数值是标签的内容体</p>
+<p>提交表单</p>
+<p>action：指定提交数据的地址.将数据提交到何处（提交的地方其实是？前面的地址）  默认提交到本页</p>
+<p>​    本机内网路径：相对路径:      绝对路径：</p>
+<p>​    互联网路径：http：//</p>
+<p>method：指定表单的提交方式.将数据以何种方式提交  默认为get  提交方式可定义为get或者post</p>
+<p>get提交方式的特点：把数据拼接到地址栏上</p>
+<p>post提交方式的特点：没有把数据拼接到地址栏上。请求体</p>
+<p>get和post的区别：</p>
+<p>​    get会把提交的参数列表拼接到了地址栏后面，post不会</p>
+<p>​    get方式提交的数据敏感信息不安全，post提交的数据相对安全</p>
+<p>​    get方式提交的数据量是有限的，post方式从理论上提交的数据量是无限大的。所以尽量使用post方式提交表单</p>
+<p>提交表单的注意事项：</p>
+<p>提交中文问题：为什么要用URL编码：（因为你可能提交的数据中包含&amp;符号，后台无法正确切割）</p>
+<p>URL编码解决方式：对特殊符号，中文进行编码，为了保证表单数据传递时能更好区分出name和value，保证数据传递的完整性</p>
+<p>例子：中文的你好进行URL编码：</p>
+<p>（1）你好，进行普通的编码，编码成字节数组（使用的是页面规定的字符集，例如utf-8）</p>
+<p>（2）字节数组中的每一个元素都会从10进制转为16进制</p>
+<p>（3）把已经转为16进制的字节数组，以%进行拼接，拼接出的字符串，就是URL编码后的结果</p>
+<p>注意： 表单项的数据如果需要提交到服务器上面，那么表单项必须要有name的属性值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;form action&#x3D;&quot;http:&#x2F;&#x2F;www.baidu.com&quot; method&#x3D;&quot;post&quot;&gt; &lt;!-- 文本输入框 单 行- -&gt; 用户名：&lt;input name&#x3D;&quot;userName&quot; type&#x3D;&quot;text&quot;&#x2F;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">&lt;!-- 密码框 --&gt;</span><br><span class="line">密码：&lt;input name&#x3D;&quot;password&quot; type&#x3D;&quot;password&quot;&#x2F;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">&lt;!-- 单选框 --&gt;</span><br><span class="line">性别： 男&lt;input checked&#x3D;&quot;true&quot; value&#x3D;&quot;man&quot; name&#x3D;&quot;sex&quot; type&#x3D;&quot;radio&quot;&#x2F;&gt;</span><br><span class="line">女&lt;input name&#x3D;&quot;sex&quot; value&#x3D;&quot;woman&quot; type&#x3D;&quot;radio&quot;&#x2F;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">&lt; !-- 下拉框 --&gt;</span><br><span class="line">来自的城市：&lt;select name&#x3D;&quot;city&quot;&gt;</span><br><span class="line">&lt;option value&#x3D;&quot;BJ&quot;&gt;北京&lt;&#x2F;option&gt;</span><br><span class="line">&lt;option value&#x3D;&quot;SH&quot;&gt;上海&lt;&#x2F;option&gt;</span><br><span class="line">&lt;option value&#x3D;&quot;GZ&quot;&gt;广州&lt;&#x2F;option&gt;</span><br><span class="line">&lt;option value&#x3D;&quot;SZ&quot;&gt;深圳&lt;&#x2F;option&gt;</span><br><span class="line">&lt;&#x2F;select&gt;&lt;br&#x2F;&gt;</span><br><span class="line">&lt;!-- 复选框 同一组的复选框name的属性值要一致 --&gt;</span><br><span class="line">兴趣爱好：java &lt;input value&#x3D;&quot;java&quot; name&#x3D;&quot;hobit&quot; checked&#x3D;&quot;checked&quot; type &#x3D;&quot;checkbox&quot; &#x2F;&gt;</span><br><span class="line">javascript &lt;input type&#x3D;&quot;checkbox&quot; value&#x3D;&quot;javascript&quot; name&#x3D;&quot;hobit&quot; &#x2F;&gt;</span><br><span class="line">android &lt;input value&#x3D;&quot;android&quot; name&#x3D;&quot;hobit&quot; type&#x3D;&quot;checkbox&quot; &#x2F;&gt;&lt;br&#x2F;&gt; &lt;!-- 文件上传框--&gt;</span><br><span class="line">大头照：&lt;input name&#x3D;&quot;image&quot; type&#x3D;&quot;file&quot; &#x2F;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">个人简介:</span><br><span class="line">&lt;!-- 文本域 --&gt;</span><br><span class="line">&lt;textarea name&#x3D;&quot;intro&quot; rows&#x3D;&quot;10&quot; cols&#x3D;&quot;30&quot;&gt;&lt;&#x2F;textarea&gt;&lt;br&#x2F;&gt;</span><br><span class="line">&lt;!-- 提交按钮 --&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;注册&quot;&#x2F;&gt;</span><br><span class="line">&lt;!-- 重置按钮 --&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;reset&quot; value&#x3D;&quot;重置&quot;&#x2F;&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="lt-figure-gt-标签"><a href="#lt-figure-gt-标签" class="headerlink" title="&lt;figure&gt; 标签"></a><code>&lt;figure&gt; </code>标签</h2><p>代表一段独立的内容, 经常与说明（caption）<code> &lt;figcaption&gt;</code> 配合使用, 并且作为一个独立的引用单元。当它属于主内容流（main flow）时，它的位置独立于主体。这个标签经常是在主文中引用的图片，插图，表格，代码段等等，当这部分转移到附录中或者其他页面时不会影响到主体</p>
+<h2 id="lt-template-gt-标签"><a href="#lt-template-gt-标签" class="headerlink" title="&lt;template&gt;标签"></a><code>&lt;template&gt;</code>标签</h2><p>模板元素</p>
+<p>1.标签内容隐藏性:   自带display:none</p>
+<p>2.标签位置任意性：类似<code>&lt;script&gt;</code>或者<code>&lt;style&gt;</code>标签，可以在<code>&lt;head&gt;</code>中，也可以在<code>&lt;body&gt;</code>或者<code>&lt;frameset&gt;</code>中</p>
+<p>3.childNodes无效性:肉眼看上去是<code>&lt;template&gt;</code>标签里面还有很多子标签,但是template.childNodes无效，可以使用template.innerHTML获取完整的HTML片段。template.content会返回一个文档片段，可以理解为另外一个document，然后，使用document下的一些查询API就可以获得<code>&lt;template&gt;</code>标签里面的“伪子元素”了</p>
+<h2 id="lt-iframe-gt-标签"><a href="#lt-iframe-gt-标签" class="headerlink" title="&lt;iframe&gt;标签"></a><code>&lt;iframe&gt;</code>标签</h2><p>iframe 元素会创建包含另外一个文档的内联框架（即行内框架）。可以用来在一个网页内引用另一个网页，网页的内容资源用src。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">#fh5co-menu &#123;</span><br><span class="line">  background: ;</span><br><span class="line">  position: absolute;   绝对的</span><br><span class="line">  top: 0;</span><br><span class="line">  z-index: 999;</span><br><span class="line">  width: 100%;</span><br><span class="line">  padding-bottom: 20px;</span><br><span class="line">  -webkit-transition: 0.5s;</span><br><span class="line">  -o-transition: 0.5s;</span><br><span class="line">  transition: 0.5s;</span><br><span class="line">  -webkit-border-radius: 0px;</span><br><span class="line">  -moz-border-radius: 0px;</span><br><span class="line">  -ms-border-radius: 0px;</span><br><span class="line">  border-radius: 0px;</span><br><span class="line">  margin-top: 20px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//控制背景随动</span><br><span class="line">#fh5co-clients &#123;</span><br><span class="line">  padding: 2em 0;</span><br><span class="line">  background: #4fd2c2;</span><br><span class="line">  position: relative;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#fh5co-clients1 &#123;</span><br><span class="line">  padding: 2em 0;</span><br><span class="line">  background: #4fd2c2;</span><br><span class="line">  position: relative;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">@media screen and (max-width: 992px) &#123;</span><br><span class="line">  #fh5co-clients1 .fh5co-client &#123;</span><br><span class="line">    margin-bottom: 30px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@media screen and (max-width: 768px) &#123;</span><br><span class="line">  #fh5co-clients1 .fh5co-client &#123;</span><br><span class="line">    margin-bottom: 30px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@media screen and (max-width: 480px) &#123;</span><br><span class="line">  #fh5co-clients1 .fh5co-client img &#123;</span><br><span class="line">    max-width: 100%;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h1><p>长度单位</p>
+<p>px 像素（Pixel），相对长度单位。像素px是相对于显示器屏幕分辨率而言的。<br>em 是相对长度单位，相对于当前对象内文本的字体尺寸。如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸。</p>
+<p>ex 相对长度单位。相对于字符“x”的高度。此高度通常为字体尺寸的一半。如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸。<br>% 相对长度单位。相对于浏览器窗口的大小</p>
+<p>CSS绝对长度单位 说明<br>in 英寸Inches (1 英寸 = 2.54 厘米)<br>cm 厘米Centimeters<br>mm 毫米Millimeters<br>pt 点Points (1点 = 1/72英寸)<br>pc 皮卡Picas (1 皮卡 = 12 点)</p>
+<p><strong>PX和PT转换的公式： pt=px乘以3/4。</strong>比如12px×3/4=9pt大小。<br><strong>PX和em转换的公式： em=16乘以px</strong>，也就是说1.5em=1.5×16=24px</p>
+<p>用px来定义字体，就无法用浏览器字体放大的功能。</p>
+<p>任意浏览器的默认字体高都是16px。所有未经调整的浏览器都符合:1em=16px。那么12px=0.75em,10px=0.625em。为了简化font-size的换算，需要在css中的body选择器中声明Font-size=62.5%，这就使em值变为16px*62.5%=10px,这样12px=1.2em,10px=1em,也就是说只需要将你的原来的px数值除以10，然后换上em作为单位就行了。<br>◆CSS中em属性有如下特点</p>
+<p>1.em的值并不是固定的；</p>
+<p>2.em会继承父级元素的字体大小。</p>
+<p>◆所以我们在写CSS的时候，需要注意</p>
+<p>1.body选择器中声明Font-size=62.5%；</p>
+<p>2.将你的原来的px数值除以10，然后换上em作为单位；</p>
+<p>3.重新计算那些被放大的字体的em数值。避免字体大小的重复声明。</p>
+<p>也就是避免1.2*1.2=1.44的现象。比如说你在#content中声明了字体大小为1.2em，那么在声明p的字体大小时就只能是1em，而不是1.2em,因为此em非彼em，它因继承#content的字体高而变为了1em=12px。</p>
+<p>但是12px汉字例外，就是由以上方法得到的12px(1.2em)大小的汉字在IE中并不等于直接用12px定义的字体大小，而是稍大一点。这个问题Jorux已经解决，只需在body选择器中把62.5%换成63%就能正常显示了。原因可能是IE处理汉字时，对于浮点的取值精确度有限。不知道有没有其他的解释</p>
+<p><strong>position</strong>: absolute;的元素会相对于第一个设置了position: relative;的祖先元素进行定位，将assistor设置为position: reletive;，滚动条是在parent中的，position: fixed;和parent内的内容滚动就都实现了。</p>
+<p><strong>z-index</strong> 属性来控制这些框的堆放次序</p>
+<h1 id="响应式布局（PC端适配手机端）"><a href="#响应式布局（PC端适配手机端）" class="headerlink" title="响应式布局（PC端适配手机端）"></a>响应式布局（PC端适配手机端）</h1><p>只开发一个网页，通过检测视口分辨率，针对不同客户端在客户端做代码处理，来展现不同的布局和内容。可以适配任何设备，兼容多个终端。</p>
+<p>响应式开发的原理是使用CSS3中的Media Query（媒体查询）针对不同宽度的设备设置不同的布局和样式，从而适配不同的设备</p>
+<p>使用 @media 查询，你可以针对不同的媒体类型定义不同的样式。@media 可以针对不同的屏幕尺寸设置不同的样式，特别是如果你需要设置设计响应式的页面，@media 是非常有用的。当你重置浏览器大小的过程中，页面也会根据浏览器的宽度和高度重新渲染页面</p>
+<p>设备的划分情况为：</p>
+<ul>
+<li>小于768的为超小屏幕（手机）</li>
+<li>768~992之间的为小屏设备（平板）</li>
+<li>992~1200的中等屏幕（桌面显示器）</li>
+<li>大于1200的宽屏设备（大桌面显示器）</li>
+</ul>
+<p>屏幕宽度低于480像素的设备（如iPhone等）</p>
+<p>1.在网站HTML文件的开头，增加viewport meta标签告诉浏览器视口宽度等于设备屏幕宽度，且不进行初始缩放：</p>
+<p><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt; </code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">width：控制 viewport 的大小，可以指定的一个值，如 600，或者特殊的值，如 device-width为设备的宽度（单位为缩放为 100% 时的 CSS 的像素）。 </span><br><span class="line">height：和 width 相对应，指定高度。也可以指定为 window.screen.height</span><br><span class="line">initial-scale：初始缩放比例，也即是当页面第一次 load 的时候缩放比例。</span><br><span class="line">maximum-scale：允许用户缩放到的最大比例。 </span><br><span class="line">minimum-scale：允许用户缩放到的最小比例。</span><br><span class="line">user-scalable：用户是否可以手动缩放。</span><br></pre></td></tr></table></figure>
+
+<p>2.在CSS文件尾部增加针对不同屏幕分辨率的规则：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@media screen and (max-device-width: 720px) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">media&#x3D;”screenand(max-device-width:400px)” href&#x3D;”tinyScreen.css”&#x2F;&gt;</span><br><span class="line">如果屏幕宽度小于400像素(max-device-width:400px)，就加载tinyScreen.css文件　</span><br><span class="line">media&#x3D;”screenand(min-width:400px)and(max-device-width:600px)” href&#x3D;”smallScreen.css”&#x2F;&gt;</span><br><span class="line">如果屏幕宽度在400像素到600像素之间，则加载smallScreen.css文件　　</span><br></pre></td></tr></table></figure>
+
+<p>3.<strong>布局宽度使用相对宽度。</strong>网页总体框架可以使用绝对宽度，但往下的内容框架、侧栏等最好使用相对宽度，这样针对不同分辨率进行修改就方便。当然也可以不用相对宽度，那就需要在 @media screen and (max-device-width: 480px) 里面增加各个div的针对小屏幕的宽度，实际上更麻烦</p>
+<p>4.在HTML页面上不要使用绝对字体（px），而要使用相对字体（em），对于大多数浏览器来说，通常用 em = px/16 换算，例如16px就等于1em</p>
+<p>PC站和手机站匹配最常用的几种方法是移动适配、<a target="_blank" rel="noopener" href="http://www.w3cschool.cn/lwp2e2/hqky12kg.html">JS跳转</a>、<a target="_blank" rel="noopener" href="http://www.w3cschool.cn/htmltags/tag-meta.html">Meta声明</a>、302规则等等</p>
+<p><strong>1、移动适配</strong></p>
+<p>现在很多搜索引擎都提供移动适配的功能，例如百度的开放适配和360的移动适配，利用<a target="_blank" rel="noopener" href="http://www.w3cschool.cn/ycx23r">百度站长工具</a>提交PC页-手机页对应关系Sitemap，或者利用<a target="_blank" rel="noopener" href="http://www.w3cschool.cn/seoyh/gwyrpf.html">360站长工具</a>提交PC页-手机页对应关系txt就能实现PC站内容和手机站一一适配。 这样做的优点是只需要在搜索引擎工具提交资料，无需对站点本事做改动，而且网站内容一一对应，并不只局限于网站首页。 缺点就是只能在百度或者360移动搜索中生效，其他没用提交适配文件的搜索中就无效了。</p>
+<p><strong>2、JS跳转</strong></p>
+<p><a target="_blank" rel="noopener" href="http://www.w3cschool.cn/lwp2e2/hqky12kg.html">JS跳转</a>对于某些行业来说有着重要的作用，尤其是对于用户转换率网站首页较高的网站，只需要在网站的头部加一段JS代码判定是否是移动端访问，然后所有的流量就会全部流向手机站的主页。 JS跳转的优点是适用于所以的移动搜索，并不局限于百度和360，可以提高用户的转换率。 缺点是难以实现每个页面的一一对应，而且容易被某些搜索引擎判定作弊，从而受到惩罚。</p>
+<p><strong>3、Meta声明</strong></p>
+<p><a target="_blank" rel="noopener" href="http://www.w3cschool.cn/htmltags/tag-meta.html">Meta声明</a>的格式一般为，站长可以将这段代码加在PC站的头部，由Meta信息来指明该PC页对应的手机页的<a target="_blank" rel="noopener" href="http://www.w3cschool.cn/html/html-url.html">URL</a>，以及该URL对应页面的格式。 Meta声明的优点是代码简单易懂，操作方便。 缺点是只能在百度移动搜索中生效，对于其他搜索引擎无效。</p>
+<p><strong>4、302规则</strong></p>
+<p>302规则指的是，当判定移动端访问网站时，302临时跳转到一个网址(手机站)，例如可以在htaccess文件里加上一段判定手机的代码，做个302重定向。 这样做的好处是，不需要再额外在网站的前端代码中加任何东西，也不需要向搜索引擎提交规则，可是据测试，有可能会导致PC站被降权。 虽然302是暂时性的重定向，但过于频繁的302是很有可能给网站带来不利的影响的，具体的尺度需要站长自己去把握。</p>
+<p>以上4种适配方法是最为常见的操作方法，通常PC站做了以上处理后，一段时间以后移动端搜索出来的结果，下面匹配的网址就变成了移动站网址，不过标题还是PC站标题。 至于到底哪种方法更好，更倾向于第一种，毕竟百度移动搜索占据着网站的大部分流量，而且用户体验度也最好。</p>
+<h1 id="轮播图"><a href="#轮播图" class="headerlink" title="轮播图"></a>轮播图</h1><p>轮播图的样式有很多,可以选择一个框架，然后将代码复制下来，将用到的样式放到自己的文件夹里，这样就可以做成一个轮播图。</p>
+<p>在layui中，如果想让轮播图完成在放大缩小的过程中保证图片随动，目前解除了两种方法：</p>
+<p>1.写一个响应式布局的css样式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#fh5co-clients &#123;</span><br><span class="line">  padding: 2em 0;</span><br><span class="line">  background: #4fd2c2;</span><br><span class="line">  position: relative;</span><br><span class="line">&#125;</span><br><span class="line">#fh5co-clients &#123;</span><br><span class="line">  margin-bottom: 0px;</span><br><span class="line">&#125;</span><br><span class="line">@media screen and (max-width: 992px) &#123;</span><br><span class="line">  #fh5co-clients &#123;</span><br><span class="line">    margin-bottom: 30px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@media screen and (max-width: 768px) &#123;</span><br><span class="line">  #fh5co-clients&#123;</span><br><span class="line">    margin-bottom: 30px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@media screen and (max-width: 480px) &#123;</span><br><span class="line">  #fh5co-clients img &#123;</span><br><span class="line">    max-width: 100%;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.写一个js方法，会不断刷新，影响体验</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> b = <span class="number">1768</span>/<span class="number">881</span>;<span class="comment">//这里的图片数值是根据自己的图片指定</span></span><br><span class="line">    <span class="comment">//获取浏览器宽度</span></span><br><span class="line">    <span class="keyword">var</span> W = $(<span class="built_in">window</span>).width();</span><br><span class="line">    <span class="keyword">var</span> H = $(<span class="built_in">window</span>).height();</span><br><span class="line">    layui.use(<span class="string">&#x27;carousel&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> carousel = layui.carousel;</span><br><span class="line">        <span class="comment">//建造实例</span></span><br><span class="line">        carousel.render(&#123;</span><br><span class="line">            elem: <span class="string">&#x27;#test1&#x27;</span></span><br><span class="line">            ,<span class="attr">width</span>: <span class="string">&#x27;100%&#x27;</span> <span class="comment">//设置容器宽度</span></span><br><span class="line">            ,<span class="attr">height</span>: (W/b).toString()+<span class="string">&quot;px&quot;</span>  <span class="comment">//按比例和浏览器可视页面宽度来获取高度</span></span><br><span class="line">            <span class="comment">// ,arrow: &#x27;always&#x27; //始终显示箭头</span></span><br><span class="line">            <span class="comment">//,anim: &#x27;updown&#x27; //切换动画方式</span></span><br><span class="line">            ,<span class="attr">indicator</span>: <span class="string">&#x27;none&#x27;</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    $(<span class="built_in">window</span>).resize(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="comment">// setBanner();</span></span><br><span class="line">        <span class="built_in">window</span>.location.reload()  <span class="comment">//每当设置后，进行刷新</span></span><br><span class="line"></span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+<h1 id="网页调试技巧"><a href="#网页调试技巧" class="headerlink" title="网页调试技巧"></a>网页调试技巧</h1><p>1.F12开发模式，左上角图标有两个：箭头图标可以选择元素，就会指示当前指向的元素，可以注意数值多大，方便知道这个标签管辖的范围。手机图标，点击之后可以模拟手机端查看网页，也可以通过拖动浏览器大小模拟查看。</p>
+<p>2.开发者模式下，elements中选择了某一行后，可以在style中查看生效的样式，不生效的样式被划掉了，没有写过的样式不会显示。可以在样式中手动编辑数值模拟调试（比改一处看一处方便一点）</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/03/8.2.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BHTML/" data-id="ckxho8wlz0069h8vw2ys053h9" data-title="网页前端之HTML" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-6.1.nginx配置" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/03/30/6.1.nginx%E9%85%8D%E7%BD%AE/" class="article-date">
@@ -1068,7 +1378,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/30/6.1.nginx%E9%85%8D%E7%BD%AE/" data-id="ckw61se08007goswd4eh6f1wu" data-title="nginx配置" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/03/30/6.1.nginx%E9%85%8D%E7%BD%AE/" data-id="ckxho8wr9007jh8vw7vpg0svy" data-title="nginx配置" class="article-share-link">分享</a>
       
       
       
@@ -1468,7 +1778,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/29/4.2.java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" data-id="ckw61sdw9004poswd0ix0cpg6" data-title="java基础知识" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/03/29/4.2.java%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/" data-id="ckxho8wl8004rh8vwf2taf1rb" data-title="java基础知识" class="article-share-link">分享</a>
       
       
       
@@ -2130,7 +2440,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/26/4.9.java%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%B1%BB/" data-id="ckw61sdwr0069oswd6a6t1ljw" data-title="java中常用类" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/03/26/4.9.java%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%B1%BB/" data-id="ckxho8wlx0066h8vw600j94qk" data-title="java中常用类" class="article-share-link">分享</a>
       
       
       
@@ -2564,7 +2874,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/26/10.4.%E9%A1%B9%E7%9B%AE%E8%B8%A9%E5%9D%91/" data-id="ckw61sdw10042oswd0oovg42a" data-title="项目踩坑" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/03/26/10.4.%E9%A1%B9%E7%9B%AE%E8%B8%A9%E5%9D%91/" data-id="ckxho8wlv0061h8vwbx0hhk5r" data-title="项目踩坑" class="article-share-link">分享</a>
       
       
       
@@ -2936,7 +3246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/26/4.1.%E5%88%9D%E8%AF%86java%EF%BC%9A%E7%89%B9%E6%80%A7%E3%80%81%E7%89%88%E6%9C%AC%E3%80%81%E5%AE%89%E8%A3%85/" data-id="ckw61sdwp0067oswd25cf61mw" data-title="初识java" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/03/26/4.1.%E5%88%9D%E8%AF%86java%EF%BC%9A%E7%89%B9%E6%80%A7%E3%80%81%E7%89%88%E6%9C%AC%E3%80%81%E5%AE%89%E8%A3%85/" data-id="ckxho8wlw0062h8vw42d2889l" data-title="初识java" class="article-share-link">分享</a>
       
       
       
@@ -4417,7 +4727,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/25/3.2.java%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E4%B9%8BIDEA/" data-id="ckw61sdyr0076oswd6v61g9dr" data-title="java开发工具之IDEA" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/03/25/3.2.java%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E4%B9%8BIDEA/" data-id="ckxho8wp30079h8vw3hwq8tow" data-title="java开发工具之IDEA" class="article-share-link">分享</a>
       
       
       
@@ -5191,7 +5501,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/24/3.%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E6%B1%87%E6%80%BB/" data-id="ckw61sdv10019oswdg28hdpg8" data-title="开发常用软件" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/03/24/3.%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6%E6%B1%87%E6%80%BB/" data-id="ckxho8wj80019h8vw2e9zf2tr" data-title="开发常用软件" class="article-share-link">分享</a>
       
       
       
@@ -5366,7 +5676,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/23/4.3.java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E9%99%84%E5%BD%95/" data-id="ckw61sdvd0024oswdajiy5sr1" data-title="java基础知识附录" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/03/23/4.3.java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E9%99%84%E5%BD%95/" data-id="ckxho8wjm0024h8vw21irhgdi" data-title="java基础知识附录" class="article-share-link">分享</a>
       
       
       
@@ -5638,494 +5948,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/23/2.2.hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" data-id="ckw61sdw4004boswdewdpdwqa" data-title="hexo搭建博客" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/03/23/2.2.hexo%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" data-id="ckxho8wkx004bh8vwcdrj7azi" data-title="hexo搭建博客" class="article-share-link">分享</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/" rel="tag">node.js</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-10.2.项目架构" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/03/23/10.2.%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84/" class="article-date">
-  <time class="dt-published" datetime="2021-03-23T04:02:26.000Z" itemprop="datePublished">2021-03-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/03/23/10.2.%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84/">PO,BO,VO，DTO,DAO与POJO</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p><strong>UML</strong></p>
-<p>不想多讨论 UML 相关的知识，但是我觉得你如果真的会写 Java，请先学会表达自己，UML 就是你说话的语言，做一名优秀的 Java 程序员，请至少学会这两种 UML 图：</p>
-<ol>
-<li>类图</li>
-<li>时序图</li>
-</ol>
-<p><strong>clean code</strong></p>
-<p>我认为保持代码的简洁和可读性是代码的最基本保证，如果有一天为了程序的效率而降低了这两点，我认为是可以谅解的，除此之外，没有任何理由可以让你任意挥霍你的代码。</p>
-<ol>
-<li>读者可以看一下 Robert C. Martin 出版的《Clean Code》（代码整洁之道） 这本书</li>
-<li>可以参考美团文章聊聊 clean code（<a target="_blank" rel="noopener" href="http://tech.meituan.com/clean-code.html%EF%BC%89%EF%BC%9B">http://tech.meituan.com/clean-code.html）；</a></li>
-<li>也可以看一下阿里的 Java 编码规范</li>
-</ol>
-<p>无论如何，请保持你的代码的整洁。</p>
-<p><strong>Linux 基础命令</strong></p>
-<p>这点其实和会写 Java 没有关系，但是 Linux 很多时候确实承载运行 Java 的容器，请学好 Linux 的基础命令。</p>
-<ol>
-<li>参考鸟哥的《Linux私房菜》</li>
-</ol>
-<p>PO：persistent object 持久对象</p>
-<p>1 ．有时也被称为Data对象，对应数据库中的entity，可以简单认为一个PO对应数据库中的一条记录。</p>
-<p>2 ．在hibernate持久化框架中与insert/delet操作密切相关。</p>
-<p>3 ．PO中不应该包含任何对数据库的操作。</p>
-<hr>
-<p>POJO ：plain ordinary java object 无规则简单java对象</p>
-<p>一个中间对象，可以转化为PO、DTO、VO。</p>
-<p>1 ．POJO持久化之后==〉PO</p>
-<p>（在运行期，由Hibernate中的cglib动态把POJO转换为PO，PO相对于POJO会增加一些用来管理数据库entity状态的属性和方法。PO对于programmer来说完全透明，由于是运行期生成PO，所以可以支持增量编译，增量调试。）</p>
-<p>2 ．POJO传输过程中==〉DTO</p>
-<p>3 ．POJO用作表示层==〉VO</p>
-<p>PO 和VO都应该属于它。</p>
-<hr>
-<p>BO：business object 业务对象</p>
-<p>业务对象主要作用是把业务逻辑封装为一个对象。这个对象可以包括一个或多个其它的对象。</p>
-<p>比如一个简历，有教育经历、工作经历、社会关系等等。我们可以把教育经历对应一个PO，工作经历对应一个PO，社会关系对应一个PO。</p>
-<p>建立一个对应简历的BO对象处理简历，每个BO包含这些PO。</p>
-<p>这样处理业务逻辑时，我们就可以针对BO去处理。</p>
-<p>封装业务逻辑为一个对象（可以包括多个PO，通常需要将BO转化成PO，才能进行数据的持久化，反之，从DB中得到的PO，需要转化成BO才能在业务层使用）。</p>
-<p>关于BO主要有三种概念</p>
-<p>1 、只包含业务对象的属性；</p>
-<p>2 、只包含业务方法；</p>
-<p>3 、两者都包含。</p>
-<p>在实际使用中，认为哪一种概念正确并不重要，关键是实际应用中适合自己项目的需要。</p>
-<hr>
-<p>VO：value object 值对象 / view object 表现层对象</p>
-<p>1 ．主要对应页面显示（web页面/swt、swing界面）的数据对象。</p>
-<p>2 ．可以和表对应，也可以不，这根据业务的需要。</p>
-<hr>
-<p>DTO（TO）：Data Transfer Object 数据传输对象</p>
-<p>1 ．用在需要跨进程或远程传输时，它不应该包含业务逻辑。</p>
-<p>2 ．比如一张表有100个字段，那么对应的PO就有100个属性（大多数情况下，DTO内的数据来自多个表）。但view层只需显示10个字段，没有必要把整个PO对象传递到client，这时我们就可以用只有这10个属性的DTO来传输数据到client，这样也不会暴露server端表结构。到达客户端以后，如果用这个对象来对应界面显示，那此时它的身份就转为VO。</p>
-<hr>
-<p>DAO：data access object数据访问对象</p>
-<p>1 ．主要用来封装对DB的访问（CRUD操作）。</p>
-<p>2 ．通过接收Business层的数据，把POJO持久化为PO。</p>
-<p>简易的关系图：</p>
-<p><img src="https://img-blog.csdn.net/20180717104224284?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTE4NzA1NDc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="偷的图"></p>
-<p>为什么偷来这么一篇文章：不同的对象需要用在不同的地方，之前全是POJO，现在传输用DTO，条件查询用BO，查询对象用POJO接收，显示对象用VO，虽然增加了一点代码量，但是代码结构更加清晰，也防止了表结构的暴露。</p>
-<p>个人理解：</p>
-<p>po，数据库表字段，一个字段对应一个po</p>
-<p>dto，数据传输对象，是从数据库表中查询出来的自定义数据封装。</p>
-<p>vo，表现层对象，前端页面显示时所需要的所有数据。由dto组装成vo</p>
-<p>如果传输的dto刚好是前端表示所需要的值，此时dto也就是vo。</p>
-<p>entity里的每一个字段，与数据库相对应，vo里的每一个字段，是和你前台页面相对应， 而dto，是用类做entity和dto之间转换的实体类。</p>
-<p>说到代码结构问题，业务分层</p>
-<p>所以一个好的应用分层需要具备以下几点：</p>
-<ul>
-<li><p>方便后续代码进行维护扩展</p>
-</li>
-<li><p>分层的效果需要让整个团队都接受</p>
-</li>
-<li><p>各个层职责边界清晰</p>
-</li>
-</ul>
-<p>阿里规范</p>
-<p>在阿里的编码规范中约束的分层如下图：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/MOwlO0INfQqEAgWRiaA1sb6iaWDTyVBe5YWiaWLRS0C3lEialHhbeOLTMr9BgzLjU6t0ghaTurqHcfWdvGYicklpWjw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>①开放接口层：可直接封装 Service 方法暴露成 RPC 接口；通过 Web 封装成 http 接口；进行网关安全控制、流量控制等。</p>
-<p>②终端显示层：各个端的模板渲染并执行显示的层。当前主要是 velocity 渲染，JS 渲染，JSP 渲染，移动端展示等。</p>
-<p>③Web 层：主要是对访问控制进行转发，各类基本参数校验，或者不复用的业务简单处理等。</p>
-<p>④Service 层：相对具体的业务逻辑服务层。</p>
-<p>⑤Manager 层：通用业务处理层。</p>
-<p>它有如下特征:</p>
-<p>对第三方平台封装的层，预处理返回结果及转化异常信息。</p>
-<p>对 Service 层通用能力的下沉，如缓存方案、中间件通用处理。</p>
-<p>与 DAO 层交互，对多个 DAO 的组合复用。</p>
-<p>⑥DAO 层：数据访问层，与底层 MySQL、Oracle、Hbase 进行数据交互。</p>
-<p>下面介绍一下具体业务中应该如何实现分层。</p>
-<p>优化分层</p>
-<p>从我们的业务开发中总结了一个较为的理想模型,这里要先说明一下由于我们的 RPC 框架选用的是 Thrift 可能会比其他的一些 RPC 框架例如 Dubbo 会多出一层，作用和 controller 层类似。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/MOwlO0INfQqEAgWRiaA1sb6iaWDTyVBe5YLVITibODXlsqmh5EMetyNYuicbmiaCQzOc5Lb0RGbzjSwxiczcpaLXmIgA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>最上层 Controller 和 TService 是阿里分层规范里面的第一层：轻业务逻辑，参数校验，异常兜底。</p>
-<p>通常这种接口可以轻易更换接口类型，所以业务逻辑必须要轻，甚至不做具体逻辑。</p>
-<p>①Service：业务层，复用性较低，这里推荐每一个 Controller 方法都得对应一个 Service，不要把业务编排放在 Controller 中去做，为什么呢？</p>
-<p>如果我们把业务编排放在 Controller 层去做的话，如果以后我们要接入 Thrift，我们这里又需要把业务编排在做一次，这样会导致我们每接入一个入口层这个代码都得重新复制一份。</p>
-<p>如下图所示： </p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/MOwlO0INfQqEAgWRiaA1sb6iaWDTyVBe5YnWJTmEDkawjyZZNLy1aSbz1A3E4ib5rbLkkuIOwQZRAichZWh0aCTP6Q/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>这样大量的重复工作必定会导致我们开发效率下降，所以我们需要把业务编排逻辑都得放进 Service 中去做：</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/MOwlO0INfQqEAgWRiaA1sb6iaWDTyVBe5YsUB1r8UL3x5iauKkpk7rLdECodQBZ52hVJsWbPWctKSIx4TAsJksmDQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>Mannager：可复用逻辑层。这里的 Mannager 可以是单个服务的，比如我们的 Cache，MQ 等等，当然也可以是复合的。</p>
-<p>当你需要调用多个 Mannager 的时候，这个可以合为一个 Mannager，比如逻辑上的连表查询等。如果是 httpMannager 或 rpcMannager 需要在这一层做一些数据转换。</p>
-<p>③DAO：数据库访问层。主要负责“操作数据库的某张表，映射到某个 Java 对象”，DAO 应该只允许自己的 Service 访问，其他 Service 要访问我的数据必须通过对应的 Service。</p>
-<p>分层领域模型的转换</p>
-<p>在阿里巴巴编码规约中列举了下面几个领域模型规约：</p>
-<p>DO（Data Object）：与数据库表结构一一对应，通过 DAO 层向上传输数据源对象。 </p>
-<p>DTO（Data Transfer Object）：数据传输对象，Service 或 Manager 向外传输的对象。 </p>
-<p>BO（Business Object）：业务对象。由 Service 层输出的封装业务逻辑的对象。 </p>
-<p>AO（Application Object）：应用对象。在 Web 层与 Service 层之间抽象的复用对象模型，极为贴近展示层，复用度不高。 </p>
-<p>VO（View Object）：显示层对象，通常是 Web 向模板渲染引擎层传输的对象。 </p>
-<p>Query：数据查询对象，各层接收上层的查询请求。注意超过2个参数的查询封装，禁止使用 Map 类来传输。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/MOwlO0INfQqEAgWRiaA1sb6iaWDTyVBe5YtqYj5Lx0AiatXmOuibRLUjL7aCTMWHrZBRUpqx6jAG8UCdPjegDFDE0g/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>每一个层基本都自己对应的领域模型，这样就导致了有些人过于追求每一层都是用自己的领域模型。</p>
-<p>这样就导致了一个对象可能会出现 3 次甚至 4 次转换在一次请求中，当返回的时候同样也会出现 3-4 次转换，这样有可能一次完整的请求-返回会出现很多次对象转换。</p>
-<p>如果在开发中真的按照这么来，恐怕就别写其他的了，一天就光写这个重复无用的逻辑算了吧</p>
-<p>所以我们得采取一个折中的方案：</p>
-<p>允许 Service/Manager 可以操作数据领域模型，对于这个层级来说，本来自己做的工作也是做的是业务逻辑处理和数据组装。 </p>
-<p>Controller/TService 层的领域模型不允许传入 DAO 层，这样就不符合职责划分了。 </p>
-<p>同理，不允许 DAO 层的数据传入到 Controller/TService。</p>
-<p><img src="https://mmbiz.qpic.cn/mmbiz_png/MOwlO0INfQqEAgWRiaA1sb6iaWDTyVBe5Yba2L0Glia9PTaWIiadLeRJIzEJAicTjf5Ky9wwb3YZibIdGdzTqgClUNgA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
-<p>bean 使我们使用最多的模型之一</p>
-<p><strong>domain 包名</strong></p>
-<p>根据很多 Java 程序员的”经验”来看，一个数据库表则对应着一个 domain 对象，所以很多程序员在写代码时，包名则使用：com.xxx.domain ，这样写好像已经成为了行业的一种约束，数据库映射对象就应该是 domain。但是你错了，domain 是一个领域对象，往往我们再做传统 Java 软件 Web 开发中，这些 domain 都是贫血模型，是没有行为的，或是没有足够的领域模型的行为的，所以，以这个理论来讲，这些 domain 都应该是一个普通的 entity 对象，并非领域对象，所以请把包名改为:com.xxx.entity。</p>
-<p><strong>DTO</strong></p>
-<p>数据传输我们应该使用 DTO 对象作为传输对象，这是我们所约定的，因为很长时间我一直都在做移动端 API 设计的工作，有很多人告诉我，他们认为只有给手机端传输数据的时候(input or output)，这些对象成为 DTO 对象。</p>
-<p>请注意！这种理解是错误的，只要是用于网络传输的对象，我们都认为他们可以当做是 DTO 对象，比如电商平台中，用户进行下单，下单后的数据，订单会发到 OMS 或者 ERP 系统，这些对接的返回值以及入参也叫 DTO 对象。</p>
-<p>我们约定某对象如果是 DTO 对象，就将名称改为 XXDTO，比如订单下发OMS：OMSOrderInputDTO。</p>
-<p><strong>DTO 转化</strong></p>
-<p>正如我们所知，DTO 为系统与外界交互的模型对象，那么肯定会有一个步骤是将 DTO 对象转化为 BO 对象或者是普通的 entity 对象，让 service 层去处理。</p>
-<p><strong>场景</strong></p>
-<p>比如添加会员操作，由于用于演示，我只考虑用户的一些简单数据，当后台管理员点击添加用户时，只需要传过来用户的姓名和年龄就可以了，后端接受到数据后，将添加创建时间和更新时间和默认密码三个字段，然后保存数据库。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(&quot;&#x2F;v1&#x2F;api&#x2F;user&quot;)</span><br><span class="line">@RestController</span><br><span class="line">public class UserApi &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private UserService userService;</span><br><span class="line"></span><br><span class="line">    @PostMapping</span><br><span class="line">    public User addUser(UserInputDTO userInputDTO)&#123;</span><br><span class="line">        User user &#x3D; new User();</span><br><span class="line">        user.setUsername(userInputDTO.getUsername());</span><br><span class="line">        user.setAge(userInputDTO.getAge());</span><br><span class="line"></span><br><span class="line">        return userService.addUser(user);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>我们只关注一下上述代码中的转化代码，其他内容请忽略：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">User user &#x3D; new User();</span><br><span class="line">user.setUsername(userInputDTO.getUsername());</span><br><span class="line">user.setAge(userInputDTO.getAge());</span><br></pre></td></tr></table></figure>
-
-<p><strong>请使用工具</strong></p>
-<p>上边的代码，从逻辑上讲，是没有问题的，只是这种写法让我很厌烦，例子中只有两个字段，如果有 20 个字段，我们要如何做呢？ 一个一个进行 set 数据吗？当然，如果你这么做了，肯定不会有什么问题，但是，这肯定不是一个最优的做法。</p>
-<p>网上有很多工具，支持浅拷贝或深拷贝的 Utils。举个例子，我们可以使用 org.springframework.beans.BeanUtils#copyProperties 对代码进行重构和优化：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@PostMapping</span><br><span class="line">public User addUser(UserInputDTO userInputDTO)&#123;</span><br><span class="line">    User user &#x3D; new User();</span><br><span class="line">    BeanUtils.copyProperties(userInputDTO,user);</span><br><span class="line"></span><br><span class="line">    return userService.addUser(user);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>BeanUtils.copyProperties 是一个浅拷贝方法，复制属性时，我们只需要把 DTO 对象和要转化的对象两个的属性值设置为一样的名称，并且保证一样的类型就可以了。如果你在做 DTO 转化的时候一直使用 set 进行属性赋值，那么请尝试这种方式简化代码，让代码更加清晰!</p>
-<p><strong>转化的语义</strong></p>
-<p>上边的转化过程，读者看后肯定觉得优雅很多，但是我们再写 Java 代码时，更多的需要考虑语义的操作，再看上边的代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User user &#x3D; new User();</span><br><span class="line">BeanUtils.copyProperties(userInputDTO,user);</span><br></pre></td></tr></table></figure>
-
-<p>虽然这段代码很好的简化和优化了代码，但是他的语义是有问题的，我们需要提现一个转化过程才好，所以代码改成如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@PostMapping</span><br><span class="line"> public User addUser(UserInputDTO userInputDTO)&#123;</span><br><span class="line">         User user &#x3D; convertFor(userInputDTO);</span><br><span class="line">         return userService.addUser(user);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> private User convertFor(UserInputDTO userInputDTO)&#123;</span><br><span class="line">         User user &#x3D; new User();</span><br><span class="line">         BeanUtils.copyProperties(userInputDTO,user);</span><br><span class="line">         return user;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<p>这是一个更好的语义写法，虽然他麻烦了些，但是可读性大大增加了，在写代码时，我们应该尽量把语义层次差不多的放到一个方法中，比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User user &#x3D; convertFor(userInputDTO);</span><br><span class="line">return userService.addUser(user);</span><br></pre></td></tr></table></figure>
-
-<p>这两段代码都没有暴露实现，都是在讲如何在同一个方法中，做一组相同层次的语义操作，而不是暴露具体的实现。</p>
-<p><strong>抽象接口定义</strong></p>
-<p>当实际工作中，完成了几个 API 的 DTO 转化时，我们会发现，这样的操作有很多很多，那么应该定义好一个接口，让所有这样的操作都有规则的进行。</p>
-<p>如果接口被定义以后，那么 convertFor 这个方法的语义将产生变化，它将是一个实现类。</p>
-<p>看一下抽象后的接口：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface DTOConvert&lt;S,T&gt; &#123;</span><br><span class="line">    T convert(S s);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>虽然这个接口很简单，但是这里告诉我们一个事情，要去使用泛型，如果你是一个优秀的 Java 程序员，请为你想做的抽象接口，做好泛型吧。</p>
-<p>我们再来看接口实现：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public class UserInputDTOConvert implements DTOConvert &#123;</span><br><span class="line">@Override</span><br><span class="line">public User convert(UserInputDTO userInputDTO) &#123;</span><br><span class="line">User user &#x3D; new User();</span><br><span class="line">BeanUtils.copyProperties(userInputDTO,user);</span><br><span class="line">return user;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>我们这样重构后，我们发现现在的代码是如此的简洁，并且那么的规范：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(&quot;&#x2F;v1&#x2F;api&#x2F;user&quot;)</span><br><span class="line">@RestController</span><br><span class="line">public class UserApi &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private UserService userService;</span><br><span class="line"></span><br><span class="line">    @PostMapping</span><br><span class="line">    public User addUser(UserInputDTO userInputDTO)&#123;</span><br><span class="line">        User user &#x3D; new UserInputDTOConvert().convert(userInputDTO);</span><br><span class="line"></span><br><span class="line">        return userService.addUser(user);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>review code</strong></p>
-<p>如果你是一个优秀的 Java 程序员，我相信你应该和我一样，已经数次重复 review 过自己的代码很多次了。</p>
-<p>我们再看这个保存用户的例子，你将发现，API 中返回值是有些问题的，问题就在于不应该直接返回 User 实体，因为如果这样的话，就暴露了太多实体相关的信息，这样的返回值是不安全的，所以我们更应该返回一个 DTO 对象，我们可称它为 UserOutputDTO：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@PostMapping</span><br><span class="line">public UserOutputDTO addUser(UserInputDTO userInputDTO)&#123;</span><br><span class="line">        User user &#x3D; new UserInputDTOConvert().convert(userInputDTO);</span><br><span class="line">        User saveUserResult &#x3D; userService.addUser(user);</span><br><span class="line">        UserOutputDTO result &#x3D; new UserOutDTOConvert().convertToUser(saveUserResult);</span><br><span class="line">        return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样你的 API 才更健全。</p>
-<p>不知道在看完这段代码之后，读者有是否发现还有其他问题的存在，作为一个优秀的 Java 程序员，请看一下这段我们刚刚抽象完的代码:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User user &#x3D; new UserInputDTOConvert().convert(userInputDTO);</span><br></pre></td></tr></table></figure>
-
-<p>你会发现，new 这样一个 DTO 转化对象是没有必要的，而且每一个转化对象都是由在遇到 DTO 转化的时候才会出现，那我们应该考虑一下，是否可以将这个类和 DTO 进行聚合呢，看一下我的聚合结果:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">public class UserInputDTO &#123;</span><br><span class="line">private String username;</span><br><span class="line">private int age;</span><br><span class="line"></span><br><span class="line">    public String getUsername() &#123;</span><br><span class="line">        return username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setUsername(String username) &#123;</span><br><span class="line">        this.username &#x3D; username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getAge() &#123;</span><br><span class="line">        return age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(int age) &#123;</span><br><span class="line">        this.age &#x3D; age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public User convertToUser()&#123;</span><br><span class="line">        UserInputDTOConvert userInputDTOConvert &#x3D; new UserInputDTOConvert();</span><br><span class="line">        User convert &#x3D; userInputDTOConvert.convert(this);</span><br><span class="line">        return convert;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static class UserInputDTOConvert implements DTOConvert&lt;UserInputDTO,User&gt; &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public User convert(UserInputDTO userInputDTO) &#123;</span><br><span class="line">            User user &#x3D; new User();</span><br><span class="line">            BeanUtils.copyProperties(userInputDTO,user);</span><br><span class="line">            return user;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后 API 中的转化则由：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User user &#x3D; new UserInputDTOConvert().convert(userInputDTO);</span><br><span class="line">User saveUserResult &#x3D; userService.addUser(user);</span><br></pre></td></tr></table></figure>
-
-<p>变成了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">User user &#x3D; userInputDTO.convertToUser();</span><br><span class="line">User saveUserResult &#x3D; userService.addUser(user);</span><br></pre></td></tr></table></figure>
-
-<p>我们再 DTO 对象中添加了转化的行为，我相信这样的操作可以让代码的可读性变得更强，并且是符合语义的。</p>
-<p><strong>再查工具类</strong></p>
-<p>再来看 DTO 内部转化的代码，它实现了我们自己定义的 DTOConvert 接口，但是这样真的就没有问题，不需要再思考了吗？</p>
-<p>我觉得并不是，对于 Convert 这种转化语义来讲，很多工具类中都有这样的定义，这中 Convert 并不是业务级别上的接口定义，它只是用于普通 bean 之间转化属性值的普通意义上的接口定义，所以我们应该更多的去读其他含有 Convert 转化语义的代码。</p>
-<p>我仔细阅读了一下 GUAVA 的源码，发现了 com.google.common.base.Convert 这样的定义：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public abstract class Converter&lt;A, B&gt; implements Function&lt;A, B&gt; &#123;</span><br><span class="line">    protected abstract B doForward(A a);</span><br><span class="line">    protected abstract A doBackward(B b);</span><br><span class="line">    &#x2F;&#x2F;其他略</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>从源码可以了解到，GUAVA 中的 Convert 可以完成正向转化和逆向转化，继续修改我们 DTO 中转化的这段代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">private static class UserInputDTOConvert implements DTOConvert&lt;UserInputDTO,User&gt; &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public User convert(UserInputDTO userInputDTO) &#123;</span><br><span class="line">                User user &#x3D; new User();</span><br><span class="line">                BeanUtils.copyProperties(userInputDTO,user);</span><br><span class="line">                return user;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>修改后：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">private static class UserInputDTOConvert extends Converter&lt;UserInputDTO, User&gt; &#123;</span><br><span class="line">         @Override</span><br><span class="line">         protected User doForward(UserInputDTO userInputDTO) &#123;</span><br><span class="line">                 User user &#x3D; new User();</span><br><span class="line">                 BeanUtils.copyProperties(userInputDTO,user);</span><br><span class="line">                 return user;</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         @Override</span><br><span class="line">         protected UserInputDTO doBackward(User user) &#123;</span><br><span class="line">                 UserInputDTO userInputDTO &#x3D; new UserInputDTO();</span><br><span class="line">                 BeanUtils.copyProperties(user,userInputDTO);</span><br><span class="line">                 return userInputDTO;</span><br><span class="line">         &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<p>看了这部分代码以后，你可能会问，那逆向转化会有什么用呢？其实我们有很多小的业务需求中，入参和出参是一样的，那么我们变可以轻松的进行转化，我将上边所提到的 UserInputDTO 和 UserOutputDTO 都转成 UserDTO 展示给大家。</p>
-<p>DTO：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">public class UserDTO &#123;</span><br><span class="line">    private String username;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    public String getUsername() &#123;</span><br><span class="line">            return username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setUsername(String username) &#123;</span><br><span class="line">            this.username &#x3D; username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getAge() &#123;</span><br><span class="line">            return age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(int age) &#123;</span><br><span class="line">            this.age &#x3D; age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public User convertToUser()&#123;</span><br><span class="line">            UserDTOConvert userDTOConvert &#x3D; new UserDTOConvert();</span><br><span class="line">            User convert &#x3D; userDTOConvert.convert(this);</span><br><span class="line">            return convert;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public UserDTO convertFor(User user)&#123;</span><br><span class="line">            UserDTOConvert userDTOConvert &#x3D; new UserDTOConvert();</span><br><span class="line">            UserDTO convert &#x3D; userDTOConvert.reverse().convert(user);</span><br><span class="line">            return convert;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static class UserDTOConvert extends Converter&lt;UserDTO, User&gt; &#123;</span><br><span class="line">            @Override</span><br><span class="line">            protected User doForward(UserDTO userDTO) &#123;</span><br><span class="line">                    User user &#x3D; new User();</span><br><span class="line">                    BeanUtils.copyProperties(userDTO,user);</span><br><span class="line">                    return user;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            protected UserDTO doBackward(User user) &#123;</span><br><span class="line">                    UserDTO userDTO &#x3D; new UserDTO();</span><br><span class="line">                    BeanUtils.copyProperties(user,userDTO);</span><br><span class="line">                    return userDTO;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>API：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@PostMapping</span><br><span class="line"> public UserDTO addUser(UserDTO userDTO)&#123;</span><br><span class="line">         User user &#x3D;  userDTO.convertToUser();</span><br><span class="line">         User saveResultUser &#x3D; userService.addUser(user);</span><br><span class="line">         UserDTO result &#x3D; userDTO.convertFor(saveResultUser);</span><br><span class="line">         return result;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<p>当然，上述只是表明了转化方向的正向或逆向，很多业务需求的出参和入参的 DTO 对象是不同的，那么你需要更明显的告诉程序：逆向是无法调用的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">private static class UserDTOConvert extends Converter&lt;UserDTO, User&gt; &#123;</span><br><span class="line">         @Override</span><br><span class="line">         protected User doForward(UserDTO userDTO) &#123;</span><br><span class="line">                 User user &#x3D; new User();</span><br><span class="line">                 BeanUtils.copyProperties(userDTO,user);</span><br><span class="line">                 return user;</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">         @Override</span><br><span class="line">         protected UserDTO doBackward(User user) &#123;</span><br><span class="line">                 throw new AssertionError(&quot;不支持逆向转化方法!&quot;);</span><br><span class="line">         &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<p>看一下 doBackward 方法，直接抛出了一个断言异常，而不是业务异常，这段代码告诉代码的调用者，这个方法不是准你调用的，如果你调用，我就”断言”你调用错误了。</p>
-<p>关于异常处理的更详细介绍，可以参考我之前的文章：如何优雅的设计 Java 异常（<a target="_blank" rel="noopener" href="http://lrwinx.github.io/2016/04/28/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E8%AE%BE%E8%AE%A1java%E5%BC%82%E5%B8%B8/%EF%BC%89">http://lrwinx.github.io/2016/04/28/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E8%AE%BE%E8%AE%A1java%E5%BC%82%E5%B8%B8/）</a> ，应该可以帮你更好的理解异常。</p>
-<p><strong>bean 的验证</strong></p>
-<p>如果你认为我上边写的那个添加用户 API 写的已经非常完美了，那只能说明你还不是一个优秀的程序员。我们应该保证任何数据的入参到方法体内都是合法的。</p>
-<p><strong>为什么要验证</strong></p>
-<p>很多人会告诉我，如果这些 API 是提供给前端进行调用的，前端都会进行验证啊，你为什还要验证？</p>
-<p>其实答案是这样的，我从不相信任何调用我 API 或者方法的人，比如前端验证失败了，或者某些人通过一些特殊的渠道(比如 Charles 进行抓包)，直接将数据传入到我的 API，那我仍然进行正常的业务逻辑处理，那么就有可能产生脏数据！</p>
-<p>“对于脏数据的产生一定是致命”，这句话希望大家牢记在心，再小的脏数据也有可能让你找几个通宵！</p>
-<p><strong>jsr 303验证</strong></p>
-<p>hibernate 提供的 jsr 303 实现，我觉得目前仍然是很优秀的，具体如何使用，我不想讲，因为谷歌上你可以搜索出很多答案!</p>
-<p>再以上班的 API 实例进行说明，我们现在对 DTO 数据进行检查：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public class UserDTO &#123;</span><br><span class="line">    @NotNull</span><br><span class="line">    private String username;</span><br><span class="line">    @NotNull</span><br><span class="line">    private int age;</span><br><span class="line">        &#x2F;&#x2F;其他代码略</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>API 验证：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@PostMapping</span><br><span class="line">    public UserDTO addUser(@Valid UserDTO userDTO)&#123;</span><br><span class="line">            User user &#x3D;  userDTO.convertToUser();</span><br><span class="line">            User saveResultUser &#x3D; userService.addUser(user);</span><br><span class="line">            UserDTO result &#x3D; userDTO.convertFor(saveResultUser);</span><br><span class="line">            return result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<p>我们需要将验证结果传给前端，这种异常应该转化为一个 api 异常(带有错误码的异常)。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">@PostMapping</span><br><span class="line">public UserDTO addUser(@Valid UserDTO userDTO, BindingResult bindingResult)&#123;</span><br><span class="line">     checkDTOParams(bindingResult);</span><br><span class="line"></span><br><span class="line">     User user &#x3D;  userDTO.convertToUser();</span><br><span class="line">     User saveResultUser &#x3D; userService.addUser(user);</span><br><span class="line">     UserDTO result &#x3D; userDTO.convertFor(saveResultUser);</span><br><span class="line">     return result;</span><br><span class="line">&#125;</span><br><span class="line">private void checkDTOParams(BindingResult bindingResult)&#123;</span><br><span class="line">     if(bindingResult.hasErrors())&#123;</span><br><span class="line">             &#x2F;&#x2F;throw new 带验证码的验证错误异常</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>BindingResult 是 Spring MVC 验证 DTO 后的一个结果集，可以参考spring 官方文档（<a target="_blank" rel="noopener" href="http://spring.io/%EF%BC%89%E3%80%82">http://spring.io/）。</a></p>
-<p>检查参数后，可以抛出一个“带验证码的验证错误异常”，具体异常设计可以参考如何优雅的设计 Java 异常（<a target="_blank" rel="noopener" href="http://lrwinx.github.io/2016/04/28/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E8%AE%BE%E8%AE%A1java%E5%BC%82%E5%B8%B8/%EF%BC%89%E3%80%82">http://lrwinx.github.io/2016/04/28/%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E8%AE%BE%E8%AE%A1java%E5%BC%82%E5%B8%B8/）。</a></p>
-<p><strong>拥抱 lombok</strong></p>
-<p>上边的 DTO 代码，已经让我看的很累了，我相信读者也是一样，看到那么多的 Getter 和 Setter 方法，太烦躁了，那时候有什么方法可以简化这些呢。</p>
-<p>请拥抱 lombok,它会帮助我们解决一些让我们很烦躁的问题</p>
-<p><strong>去掉 Setter 和 Getter</strong></p>
-<p>其实这个标题，我不太想说，因为网上太多，但是因为很多人告诉我，他们根本就不知道 lombok 的存在，所以为了让读者更好的学习，我愿意写这样一个例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">@Setter</span><br><span class="line">@Getter</span><br><span class="line">public class UserDTO &#123;</span><br><span class="line">    @NotNull</span><br><span class="line">    private String username;</span><br><span class="line">    @NotNull</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    public User convertToUser()&#123;</span><br><span class="line">        UserDTOConvert userDTOConvert &#x3D; new UserDTOConvert();</span><br><span class="line">        User convert &#x3D; userDTOConvert.convert(this);</span><br><span class="line">        return convert;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public UserDTO convertFor(User user)&#123;</span><br><span class="line">        UserDTOConvert userDTOConvert &#x3D; new UserDTOConvert();</span><br><span class="line">        UserDTO convert &#x3D; userDTOConvert.reverse().convert(user);</span><br><span class="line">        return convert;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private static class UserDTOConvert extends Converter&lt;UserDTO, User&gt; &#123;</span><br><span class="line">        @Override</span><br><span class="line">        protected User doForward(UserDTO userDTO) &#123;</span><br><span class="line">            User user &#x3D; new User();</span><br><span class="line">            BeanUtils.copyProperties(userDTO,user);</span><br><span class="line">            return user;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        @Override</span><br><span class="line">        protected UserDTO doBackward(User user) &#123;</span><br><span class="line">            throw new AssertionError(&quot;不支持逆向转化方法!&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>看到了吧，烦人的 Getter 和 Setter 方法已经去掉了。</p>
-<p>但是上边的例子根本不足以体现 lombok 的强大。我希望写一些网上很难查到，或者很少人进行说明的 lombok 的使用以及在使用时程序语义上的说明。</p>
-<p>比如:@Data,@AllArgsConstructor,@NoArgsConstructor..这些我就不进行一一说明了，请大家自行查询资料。</p>
-<p><strong>bean 中的链式风格</strong></p>
-<p>什么是链式风格？我来举个例子，看下面这个 Student 的 bean：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class Student &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Student setName(String name) &#123;</span><br><span class="line">        this.name &#x3D; name;</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getAge() &#123;</span><br><span class="line">        return age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public Student setAge(int age) &#123;</span><br><span class="line">        return this;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>仔细看一下 set 方法，这样的设置便是 chain 的 style，调用的时候，可以这样使用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Student student &#x3D; new Student()</span><br><span class="line">        .setAge(24)</span><br><span class="line">        .setName(&quot;zs&quot;);</span><br></pre></td></tr></table></figure>
-
-<p>相信合理使用这样的链式代码，会更多的程序带来很好的可读性，那看一下如果使用 lombok 进行改善呢，请使用 @Accessors(chain = true)，看如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@Accessors(chain &#x3D; true)</span><br><span class="line">@Setter</span><br><span class="line">@Getter</span><br><span class="line">public class Student &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这样就完成了一个对于 bean 来讲很友好的链式操作。</p>
-<p><strong>静态构造方法</strong></p>
-<p>静态构造方法的语义和简化程度真的高于直接去 new 一个对象。比如 new 一个 List 对象，过去的使用是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list &#x3D; new ArrayList&lt;&gt;();</span><br></pre></td></tr></table></figure>
-
-<p>看一下 guava 中的创建方式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list &#x3D; Lists.newArrayList();</span><br></pre></td></tr></table></figure>
-
-<p>Lists 命名是一种约定(俗话说：约定优于配置)，它是指 Lists 是 List 这个类的一个工具类，那么使用 List 的工具类去产生 List，这样的语义是不是要比直接 new 一个子类来的更直接一些呢，答案是肯定的，再比如如果有一个工具类叫做 Maps，那你是否想到了创建 Map 的方法呢：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HashMap&lt;String, String&gt; objectObjectHashMap &#x3D; Maps.newHashMap();</span><br></pre></td></tr></table></figure>
-
-<p>好了，如果你理解了我说的语义，那么，你已经向成为 Java 程序员更近了一步了。</p>
-<p>再回过头来看刚刚的 Student，很多时候，我们去写 Student 这个 bean 的时候，他会有一些必输字段，比如 Student 中的 name 字段，一般处理的方式是将 name 字段包装成一个构造方法，只有传入 name 这样的构造方法，才能创建一个 Student 对象。</p>
-<p>接上上边的静态构造方法和必传参数的构造方法，使用 lombok 将更改成如下写法（@RequiredArgsConstructor 和 @NonNull）:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Accessors(chain &#x3D; true)</span><br><span class="line">@Setter</span><br><span class="line">@Getter</span><br><span class="line">@RequiredArgsConstructor(staticName &#x3D; &quot;ofName&quot;)</span><br><span class="line">public class Student &#123;</span><br><span class="line">    @NonNull private String name;</span><br><span class="line">    private int age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>测试代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Student student &#x3D; Student.ofName(&quot;zs&quot;);</span><br></pre></td></tr></table></figure>
-
-<p>这样构建出的 bean 语义是否要比直接 new 一个含参的构造方法(包含 name 的构造方法)要好很多。</p>
-<p>当然，看过很多源码以后，我想相信将静态构造方法 ofName 换成 of 会先的更加简洁：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Accessors(chain &#x3D; true)</span><br><span class="line">@Setter</span><br><span class="line">@Getter</span><br><span class="line">@RequiredArgsConstructor(staticName &#x3D; &quot;of&quot;)</span><br><span class="line">public class Student &#123;</span><br><span class="line">        @NonNull private String name;</span><br><span class="line">        private int age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>测试代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Student student &#x3D; Student.of(&quot;zs&quot;);</span><br></pre></td></tr></table></figure>
-
-<p>当然他仍然是支持链式调用的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Student student &#x3D; Student.of(&quot;zs&quot;).setAge(24);</span><br></pre></td></tr></table></figure>
-
-<p>这样来写代码，真的很简洁，并且可读性很强。</p>
-<p><strong>使用 builder</strong></p>
-<p>Builder 模式我不想再多解释了，读者可以看一下《Head First》(设计模式) 的建造者模式。</p>
-<p>今天其实要说的是一种变种的 builder 模式，那就是构建 bean 的 builder 模式，其实主要的思想是带着大家一起看一下 lombok 给我们带来了什么。</p>
-<p>看一下 Student 这个类的原始 builder 状态:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">public class Student &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line"></span><br><span class="line">    public String getName() &#123;</span><br><span class="line">            return name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setName(String name) &#123;</span><br><span class="line">            this.name &#x3D; name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public int getAge() &#123;</span><br><span class="line">            return age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setAge(int age) &#123;</span><br><span class="line">            this.age &#x3D; age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Builder builder()&#123;</span><br><span class="line">            return new Builder();</span><br><span class="line">    &#125;</span><br><span class="line">    public static class Builder&#123;</span><br><span class="line">            private String name;</span><br><span class="line">            private int age;</span><br><span class="line">            public Builder name(String name)&#123;</span><br><span class="line">                    this.name &#x3D; name;</span><br><span class="line">                    return this;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            public Builder age(int age)&#123;</span><br><span class="line">                    this.age &#x3D; age;</span><br><span class="line">                    return this;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            public Student build()&#123;</span><br><span class="line">                    Student student &#x3D; new Student();</span><br><span class="line">                    student.setAge(age);</span><br><span class="line">                    student.setName(name);</span><br><span class="line">                    return student;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>调用方式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Student student &#x3D; Student.builder().name(&quot;zs&quot;).age(24).build();</span><br></pre></td></tr></table></figure>
-
-<p>这样的 builder 代码，让我是在恶心难受，于是我打算用 lombok 重构这段代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Builder</span><br><span class="line">public class Student &#123;</span><br><span class="line">    private String name;</span><br><span class="line">    private int age;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>调用方式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Student student &#x3D; Student.builder().name(&quot;zs&quot;).age(24).build();</span><br></pre></td></tr></table></figure>
-
-<p><strong>代理模式</strong></p>
-<p>正如我们所知的，在程序中调用 rest 接口是一个常见的行为动作，如果你和我一样使用过 spring 的 RestTemplate，我相信你会我和一样，对他抛出的非 http 状态码异常深恶痛绝。<a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/s?__biz=MzI3ODcxMzQzMw==&mid=2247486759&idx=2&sn=6769d8ff9d163babe726b6213c6d15e4&chksm=eb538811dc240107bcf2a6e65b5381b2a68175af8ff12f4e2c1b0a06f7d16850db4acb64a18e&scene=21#wechat_redirect">详解 Java 中的三种代理模式</a>。</p>
-<p>所以我们考虑将 RestTemplate 最为底层包装器进行包装器模式的设计：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public abstract class FilterRestTemplate implements RestOperations &#123;</span><br><span class="line">        protected volatile RestTemplate restTemplate;</span><br><span class="line"></span><br><span class="line">        protected FilterRestTemplate(RestTemplate restTemplate)&#123;</span><br><span class="line">                this.restTemplate &#x3D; restTemplate;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;实现RestOperations所有的接口</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>然后再由扩展类对 FilterRestTemplate 进行包装扩展：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class ExtractRestTemplate extends FilterRestTemplate &#123;</span><br><span class="line">    private RestTemplate restTemplate;</span><br><span class="line">    public ExtractRestTemplate(RestTemplate restTemplate) &#123;</span><br><span class="line">            super(restTemplate);</span><br><span class="line">            this.restTemplate &#x3D; restTemplate;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public &lt;T&gt; RestResponseDTO&lt;T&gt; postForEntityWithNoException(String url, Object request, Class&lt;T&gt; responseType, Object... uriVariables)</span><br><span class="line">                    throws RestClientException &#123;</span><br><span class="line">            RestResponseDTO&lt;T&gt; restResponseDTO &#x3D; new RestResponseDTO&lt;T&gt;();</span><br><span class="line">            ResponseEntity&lt;T&gt; tResponseEntity;</span><br><span class="line">            try &#123;</span><br><span class="line">                    tResponseEntity &#x3D; restTemplate.postForEntity(url, request, responseType, uriVariables);</span><br><span class="line">                    restResponseDTO.setData(tResponseEntity.getBody());</span><br><span class="line">                    restResponseDTO.setMessage(tResponseEntity.getStatusCode().name());</span><br><span class="line">                    restResponseDTO.setStatusCode(tResponseEntity.getStatusCodeValue());</span><br><span class="line">            &#125;catch (Exception e)&#123;</span><br><span class="line">                    restResponseDTO.setStatusCode(RestResponseDTO.UNKNOWN_ERROR);</span><br><span class="line">                    restResponseDTO.setMessage(e.getMessage());</span><br><span class="line">                    restResponseDTO.setData(null);</span><br><span class="line">            &#125;</span><br><span class="line">            return restResponseDTO;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>包装器 ExtractRestTemplate 很完美的更改了异常抛出的行为，让程序更具有容错性。在这里我们不考虑 ExtractRestTemplate 完成的功能，让我们把焦点放在 FilterRestTemplate 上，“实现 RestOperations 所有的接口”,这个操作绝对不是一时半会可以写完的，当时在重构之前我几乎写了半个小时,如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public abstract class FilterRestTemplate implements RestOperations &#123;</span><br><span class="line"></span><br><span class="line">    protected volatile RestTemplate restTemplate;</span><br><span class="line"></span><br><span class="line">    protected FilterRestTemplate(RestTemplate restTemplate) &#123;</span><br><span class="line">            this.restTemplate &#x3D; restTemplate;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public &lt;T&gt; T getForObject(String url, Class&lt;T&gt; responseType, Object... uriVariables) throws RestClientException &#123;</span><br><span class="line">            return restTemplate.getForObject(url,responseType,uriVariables);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public &lt;T&gt; T getForObject(String url, Class&lt;T&gt; responseType, Map&lt;String, ?&gt; uriVariables) throws RestClientException &#123;</span><br><span class="line">            return restTemplate.getForObject(url,responseType,uriVariables);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public &lt;T&gt; T getForObject(URI url, Class&lt;T&gt; responseType) throws RestClientException &#123;</span><br><span class="line">            return restTemplate.getForObject(url,responseType);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public &lt;T&gt; ResponseEntity&lt;T&gt; getForEntity(String url, Class&lt;T&gt; responseType, Object... uriVariables) throws RestClientException &#123;</span><br><span class="line">            return restTemplate.getForEntity(url,responseType,uriVariables);</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;其他实现代码略。。。</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>我相信你看了以上代码，你会和我一样觉得恶心反胃，后来我用 lombok 提供的代理注解优化了我的代码(@Delegate)：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@AllArgsConstructor</span><br><span class="line">public abstract class FilterRestTemplate implements RestOperations &#123;</span><br><span class="line">    @Delegate</span><br><span class="line">    protected volatile RestTemplate restTemplate;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这几行代码完全替代上述那些冗长的代码。</p>
-<p>是不是很简洁，做一个拥抱 lombok 的程序员吧。</p>
-<h3 id="工具类的设计"><a href="#工具类的设计" class="headerlink" title="工具类的设计"></a>工具类的设计</h3><p>工具类：存放了某一类事物存放工具方法的类。封装了一些常用Java操作方法,便于重复开发利用</p>
-<p>　　命名：XxxUtil，XxxUtils，XxxTool，XxxHelper，XxxHelpers等　　比如：JdbcUtil</p>
-<p>工具类存放的包：存放工具类</p>
-<p>　　命名：util，utils，tool，helper，helpers等</p>
-<p>工具类如何设计？</p>
-<p>工具在开发中只需要存在一份即可</p>
-<p>　　1）如果工具类没有使用static修饰，说明工具方法要用工具类的对象来调用。</p>
-<p>　　　　此时把工具类设计成单例模式。</p>
-<p>　　2）如果工具类使用static修饰，说明工具方法只需要用工具类的类名来调用即可。</p>
-<p>　　　　此时必须把工具类的构造方法私有化（防止工具类的对象来调用静态方法）。</p>
-<p>一般首选第二种，简单，在JDK中提供的工具类都是第二种。如java.Util.Arrays类。</p>
-<p>1.如果工具类中的方法全部是静态方法，那么可以将工具类作为一个 abstract 抽象类。Spring 框架中存在大量的这样的使用。</p>
-<p>2.如果工具类中有异常，请抛出，不要自己去 try-catch。更不要 try 了之后 e.printStackTrace() 。</p>
-<p>3.工具类中要不要打印日志问题，尽量不要打印，像 log4j 这样的一些第三方日志框架也不要用。降低于第三方类库的依赖。</p>
-<p>4.工具类中的方法非 static 的。那你可以将工具类定义为 final class，考虑到工具类应该不能被继承。在私有化它的构造函数，提供一个单例。</p>
-<p>5.工具类的命名应该用 Util 结尾，例如 LogUtil。</p>
-<p>工具类中的方法应该设计为静态的还是非静态的，这个没有统一的标准。各有各的好，参加大多数开源框架，static 的多一些。</p>
-<p>工具类的设计，推荐大家多看看 Guava、Apache Commons。</p>
-<p>像大名鼎鼎的 Hutool，它提到了工具类的 6 大设计思想：</p>
-<p>​    方法优先于对象、自动识别优于用户定义、便捷性与灵活性并存、适配与兼容、可选依赖原则、无侵入原则。</p>
-<p>Hutool 中的工具类，既没有采用抽象类 abstract class 有没有采用 final class。所以我更喜欢 Spring、Guava、Apache Commons等框架的源码。</p>
-<h3 id="权限的设计"><a href="#权限的设计" class="headerlink" title="权限的设计"></a>权限的设计</h3><p>权限控制主要分为两块，认证（Authentication）与授权（Authorization）。认证之后确认了身份正确，业务系统就会进行授权，现在业界比较流行的模型就是RBAC（Role-Based Access Control）。</p>
-<p>RBAC包含为下面四个要素：用户、角色、权限、资源。用户是源头，资源是目标，用户绑定至角色，资源与权限关联，最终将角色与权限关联，就形成了比较完整灵活的权限控制模型。<br>资源是最终需要控制的标的物，但是我们在一个业务系统中要将哪些元素作为待控制的资源呢？我将系统中待控制的资源分为三类：</p>
-<ol>
-<li>URL访问资源（接口以及网页）</li>
-<li>界面元素资源（增删改查导入导出的按钮，重要的业务数据展示与否等）</li>
-<li>数据资源</li>
-</ol>
-<p> <img src="/10.2.%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84/597441af5c636b2fd27fb36c603a80d0.JPEG" alt="img"></p>
-<p>用户对应角色，（用户多的时候可以用用户组扩展），角色对应多个权限，权限对应多个资源（每个资源都有各自的表和其维护表），权限操作需要有记录表</p>
-<p>现在业内普遍的实现方案实际上很粗放，就是单纯的“<strong>菜单控制</strong>”，通过菜单显示与否来达到控制权限的目的。<br>我仔细分析过，现在大家做的平台分为To C和To B两种：</p>
-<ol>
-<li>To C一般不会有太多的复杂权限控制，甚至大部分连菜单控制都不用，全部都可以访问。</li>
-<li>To B一般都不是开放的，只要做好认证关口，能够进入系统的只有内部员工。大部分企业内部的员工互联网知识有限，而且作为内部员工不敢对系统进行破坏性的尝试。</li>
-</ol>
-<p>所以针对现在的情况，考虑成本与产出，大部分设计者也不愿意在权限上进行太多的研发力量。<br>菜单和界面元素一般都是由前端编码配合存储数据实现，URL访问资源的控制也有一些框架比如SpringSecurity，Shiro。<br>目前我还没有找到过数据权限控制的框架或者方法，所以自己整理了一份。</p>
-<h2 id="数据权限控制原理"><a href="#数据权限控制原理" class="headerlink" title="数据权限控制原理"></a>数据权限控制原理</h2><p>数据权限控制最终的效果是会要求在同一个数据请求方法中，根据不同的权限返回不同的数据集，而且无需并且不能由研发编码控制。这样大家的第一想法应该就是AOP，拦截所有的底层方法，加入过滤条件。这样的方式兼容性较强，但是复杂程度也会更高。我们这套系统中，采用的是利用Mybatis的plugin机制，在底层SQL解析时替换增加过滤条件。<br>这样一套控制机制存在很明显的优缺点，首先缺点：</p>
-<ol>
-<li>适用性有限，基于底层的Mybatis。</li>
-<li>方言有限，针对了某种数据库（我们使用Mysql），而且由于需要在底层解析处理条件所以有可能造成不同的数据库不能兼容。当然Redis和NoSQL也无法限制。</li>
-</ol>
-<p>当然，假如你现在就用Mybatis，而且数据库使用的是Mysql，这方面就没有太大影响了。</p>
-<p>接下来说说优点：</p>
-<ol>
-<li>减少了接口数量及接口复杂度。原本针对不同的角色，可能会区分不同的接口或者在接口实现时利用流程控制逻辑来区分不同的条件。有了数据权限控制，代码中只用写基本逻辑，权限过滤由底层机制自动处理。</li>
-<li>提高了数据权限控制的灵活性。例如原本只有主管能查本部门下组织架构/订单数据，现在新增助理角色，能够查询本部门下组织架构，不能查询订单。这样的话普通的写法就需要调整逻辑控制，使用数据权限控制的话，直接修改配置就好。</li>
-</ol>
-<h2 id="数据权限实现"><a href="#数据权限实现" class="headerlink" title="数据权限实现"></a>数据权限实现</h2><p>上一节就提及了实现原理，是基于Mybatis的plugins<a target="_blank" rel="noopener" href="http://www.mybatis.org/mybatis-3/zh/configuration.html#plugins">（查看官方文档）</a>实现。</p>
-<blockquote>
-<p>MyBatis 允许你在已映射语句执行过程中的某一点进行拦截调用。默认情况下，MyBatis 允许使用插件来拦截的方法调用包括：<br>Executor (update, query, flushStatements, commit, rollback, getTransaction, close, isClosed)<br>ParameterHandler (getParameterObject, setParameters)<br>ResultSetHandler (handleResultSets, handleOutputParameters)<br>StatementHandler (prepare, parameterize, batch, update, query)</p>
-</blockquote>
-<p>Mybatis的插件机制目前比较出名的实现应该就是<a target="_blank" rel="noopener" href="https://github.com/pagehelper/Mybatis-PageHelper">PageHelper</a>项目了，在做这个实现的时候也参考了PageHelper项目的实现方式。所以权限控制插件的类命名为PermissionHelper。<br>机制是依托于Mybatis的plugins机制，实际SQL处理的时候基于jsqlparser这个包。<br>设计中包含两个类，一个是保存角色与权限的实体类命名为PermissionRule，一个是根据实体变更底层SQL语句的主体方法类PermissionHelper。</p>
-<p>首先来看下PermissionRule的结构：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PermissionRule</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Log log = LogFactory.getLog(PermissionRule.class);</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * codeName&lt;br&gt;</span></span><br><span class="line"><span class="comment">     * 适用角色列表&lt;br&gt;</span></span><br><span class="line"><span class="comment">     * 格式如: ,RoleA,RoleB,</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String roles;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * codeValue&lt;br&gt;</span></span><br><span class="line"><span class="comment">     * 主实体，多表联合</span></span><br><span class="line"><span class="comment">     * 格式如: ,SystemCode,User,</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String fromEntity;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * codeDesc&lt;br&gt;</span></span><br><span class="line"><span class="comment">     * 过滤表达式字段, &lt;br&gt;</span></span><br><span class="line"><span class="comment">     * &lt;code&gt;&#123;uid&#125;&lt;/code&gt;会自动替换为当前用户的userId&lt;br&gt;</span></span><br><span class="line"><span class="comment">     * &lt;code&gt;&#123;me&#125;&lt;/code&gt; main entity 主实体名称</span></span><br><span class="line"><span class="comment">     * &lt;code&gt;&#123;me.a&#125;&lt;/code&gt; main entity alias 主实体别名</span></span><br><span class="line"><span class="comment">     * 格式如：</span></span><br><span class="line"><span class="comment">     * &lt;ul&gt;</span></span><br><span class="line"><span class="comment">     * &lt;li&gt;userId = &#123;uid&#125;&lt;/li&gt;</span></span><br><span class="line"><span class="comment">     * &lt;li&gt;(userId = &#123;uid&#125; AND authType &gt; 3)&lt;/li&gt;</span></span><br><span class="line"><span class="comment">     * &lt;li&gt;((userId = &#123;uid&#125; AND authType) &gt; 3 OR (dept in (select dept from depts where manager.id = &#123;uid&#125;)))&lt;/li&gt;</span></span><br><span class="line"><span class="comment">     * &lt;/ul&gt;</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String exps;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * codeShowName&lt;br&gt;</span></span><br><span class="line"><span class="comment">     * 规则说明</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> String ruleComment;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>看完这个结构，基本能够理解设计的思路了。数据结构中保存如下几个字段：</p>
-<ul>
-<li>角色列表：需要使用此规则的角色，可以多个，使用英文逗号隔开。</li>
-<li>实体列表：对应的规则应用的实体（这里指的是表结构中的表名，可能你的实体是驼峰而数据库是蛇形，所以这里要放蛇形那个），可以多个，使用英文逗号隔开。</li>
-<li><strong>表达式</strong>：表达式就是数据权限控制的核心了。简单的说这里的表达式就是一段SQL语句，其中设置了一些可替换值，底层会用对应运行时的变量替换对应内容，从而达到增加条件的效果。</li>
-<li>规则说明：单纯的一个说明字段。</li>
-</ul>
-<p><strong>核心流程</strong><br>系统启动时，首先从数据库加载出所有的规则。底层利用插件机制来拦截所有的查询语句，进入查询拦截方法后，首先根据当前用户的权限列表筛选出PermissionRule列表，然后循环列表中的规则，对语句中符合实体列表的表进行条件增加，最终生成处理后的SQL语句，退出拦截器，Mybatis执行处理后SQL并返回结果。</p>
-<p>讲完PermissionRule，再来看看PermissionHelper，首先是头：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Intercepts(&#123;@Signature(type = Executor.class, method = &quot;update&quot;, args = &#123;MappedStatement.class, Object.class&#125;),</span></span><br><span class="line"><span class="meta">        @Signature(type = Executor.class, method = &quot;query&quot;, args = &#123;MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class&#125;)&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PermissionHelper</span> <span class="keyword">implements</span> <span class="title">Interceptor</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>头部只是标准的Mybatis拦截器写法，注解中的Signature决定了你的代码对哪些方法拦截，update实际上针对<strong>修改（Update）、删除（Delete）</strong>生效，query是对<strong>查询（Select）</strong>生效。</p>
-<p>下面给出针对<em>Select</em>注入查询条件限制的完整代码：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> String <span class="title">processSelectSql</span><span class="params">(String sql, List&lt;PermissionRule&gt; rules, UserDefaultZimpl principal)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        String replaceSql = <span class="keyword">null</span>;</span><br><span class="line">        Select select = (Select) CCJSqlParserUtil.parse(sql);</span><br><span class="line">        PlainSelect selectBody = (PlainSelect) select.getSelectBody();</span><br><span class="line">        String mainTable = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (selectBody.getFromItem() <span class="keyword">instanceof</span> Table) &#123;</span><br><span class="line">            mainTable = ((Table) selectBody.getFromItem()).getName().replace(<span class="string">&quot;`&quot;</span>, <span class="string">&quot;&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (selectBody.getFromItem() <span class="keyword">instanceof</span> SubSelect) &#123;</span><br><span class="line">            replaceSql = processSelectSql(((SubSelect) selectBody.getFromItem()).getSelectBody().toString(), rules, principal);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!ValidUtil.isEmpty(replaceSql)) &#123;</span><br><span class="line">            sql = sql.replace(((SubSelect) selectBody.getFromItem()).getSelectBody().toString(), replaceSql);</span><br><span class="line">        &#125;</span><br><span class="line">        String mainTableAlias = mainTable;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            mainTableAlias = selectBody.getFromItem().getAlias().getName();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            log.debug(<span class="string">&quot;当前sql中， &quot;</span> + mainTable + <span class="string">&quot; 没有设置别名&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        String condExpr = <span class="keyword">null</span>;</span><br><span class="line">        PermissionRule realRuls = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">for</span> (PermissionRule rule :</span><br><span class="line">                rules) &#123;</span><br><span class="line">            <span class="keyword">for</span> (Object roleStr :</span><br><span class="line">                    principal.getRoles()) &#123;</span><br><span class="line">                <span class="keyword">if</span> (rule.getRoles().indexOf(<span class="string">&quot;,&quot;</span> + roleStr + <span class="string">&quot;,&quot;</span>) != -<span class="number">1</span>) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (rule.getFromEntity().indexOf(<span class="string">&quot;,&quot;</span> + mainTable + <span class="string">&quot;,&quot;</span>) != -<span class="number">1</span>) &#123;</span><br><span class="line">                        <span class="comment">// 若主表匹配规则主体，则直接使用本规则</span></span><br><span class="line">                        realRuls = rule;</span><br><span class="line"></span><br><span class="line">                        condExpr = rule.getExps().replace(<span class="string">&quot;&#123;uid&#125;&quot;</span>, UserDefaultUtil.getUserId().toString()).replace(<span class="string">&quot;&#123;bid&#125;&quot;</span>, UserDefaultUtil.getBusinessId().toString()).replace(<span class="string">&quot;&#123;me&#125;&quot;</span>, mainTable).replace(<span class="string">&quot;&#123;me.a&#125;&quot;</span>, mainTableAlias);</span><br><span class="line">                        <span class="keyword">if</span> (selectBody.getWhere() == <span class="keyword">null</span>) &#123;</span><br><span class="line">                            selectBody.setWhere(CCJSqlParserUtil.parseCondExpression(condExpr));</span><br><span class="line">                        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                            AndExpression and = <span class="keyword">new</span> AndExpression(selectBody.getWhere(), CCJSqlParserUtil.parseCondExpression(condExpr));</span><br><span class="line">                            selectBody.setWhere(and);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        String joinTable = <span class="keyword">null</span>;</span><br><span class="line">                        String joinTableAlias = <span class="keyword">null</span>;</span><br><span class="line">                        <span class="keyword">for</span> (Join j :</span><br><span class="line">                                selectBody.getJoins()) &#123;</span><br><span class="line">                            <span class="keyword">if</span> (rule.getFromEntity().indexOf(<span class="string">&quot;,&quot;</span> + ((Table) j.getRightItem()).getName() + <span class="string">&quot;,&quot;</span>) != -<span class="number">1</span>) &#123;</span><br><span class="line">                                <span class="comment">// 当主表不能匹配时，匹配所有join，使用符合条件的第一个表的规则。</span></span><br><span class="line">                                realRuls = rule;</span><br><span class="line">                                joinTable = ((Table) j.getRightItem()).getName();</span><br><span class="line">                                joinTableAlias = j.getRightItem().getAlias().getName();</span><br><span class="line"></span><br><span class="line">                                condExpr = rule.getExps().replace(<span class="string">&quot;&#123;uid&#125;&quot;</span>, UserDefaultUtil.getUserId().toString()).replace(<span class="string">&quot;&#123;bid&#125;&quot;</span>, UserDefaultUtil.getBusinessId().toString()).replace(<span class="string">&quot;&#123;me&#125;&quot;</span>, joinTable).replace(<span class="string">&quot;&#123;me.a&#125;&quot;</span>, joinTableAlias);</span><br><span class="line">                                <span class="keyword">if</span> (j.getOnExpression() == <span class="keyword">null</span>) &#123;</span><br><span class="line">                                    j.setOnExpression(CCJSqlParserUtil.parseCondExpression(condExpr));</span><br><span class="line">                                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                                    AndExpression and = <span class="keyword">new</span> AndExpression(j.getOnExpression(), CCJSqlParserUtil.parseCondExpression(condExpr));</span><br><span class="line">                                    j.setOnExpression(and);</span><br><span class="line">                                &#125;</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                        log.debug(<span class="string">&quot;当前sql没有join的部分！&quot;</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (realRuls == <span class="keyword">null</span>) <span class="keyword">return</span> sql; <span class="comment">// 没有合适规则直接退出。</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (sql.indexOf(<span class="string">&quot;limit ?,?&quot;</span>) != -<span class="number">1</span> &amp;&amp; select.toString().indexOf(<span class="string">&quot;LIMIT ? OFFSET ?&quot;</span>) != -<span class="number">1</span>) &#123;</span><br><span class="line">            sql = select.toString().replace(<span class="string">&quot;LIMIT ? OFFSET ?&quot;</span>, <span class="string">&quot;limit ?,?&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            sql = select.toString();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125; <span class="keyword">catch</span> (JSQLParserException e) &#123;</span><br><span class="line">        log.error(<span class="string">&quot;change sql error .&quot;</span>, e);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> sql;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>重点思路</strong><br>重点其实就在于Sql的解析和条件注入，使用开源项目<a target="_blank" rel="noopener" href="https://github.com/JSQLParser/JSqlParser">JSqlParser</a>。</p>
-<ul>
-<li>解析出MainTable和JoinTable。from之后跟着的称为MainTable，join之后跟着的称为JoinTable。这两个就是我们PermissionRule需要匹配的表名，<em>PermissionRule::fromEntity</em>字段。</li>
-<li>解析出MainTable的where和JoinTable的on后面的条件。使用and连接原本的条件和待注入的条件，<em>PermissionRule::exps</em>字段。</li>
-<li>使用当前登录的用户信息（放在缓存中），替换条件表达式中的值。</li>
-<li>某些情况需要忽略权限，可以考虑使用ThreadLocal（单机）/Redis（集群）来控制。</li>
-</ul>
-<p>想要达到无感知的数据权限控制，只有机制控制这么一条路。本文选择的是通过底层拦截Sql语句，并且针对对应表注入条件语句这么一种做法。应该是非常经济的做法，只是基于文本处理，不会给系统带来太大的负担，而且能够达到理想中的效果。大家也可以提出其他的见解和思路</p>
-<h2 id="电商项目"><a href="#电商项目" class="headerlink" title="电商项目"></a>电商项目</h2><h4 id="SPU表"><a href="#SPU表" class="headerlink" title="SPU表"></a>SPU表</h4><p><img src="/10.2.%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84/image-20210820094429308.png" alt="image-20210820094429308"></p>
-<p>标题（商品名称），副标题（商品描述），几个ID（所属的目录），是否上架，是否有效，添加时间，删除时间。</p>
-<h4 id="SKU表"><a href="#SKU表" class="headerlink" title="SKU表"></a>SKU表</h4><p><img src="/10.2.%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84/image-20210820094502744.png" alt="image-20210820094502744"></p>
-<p>spu_id，商品标题，图片（多个以，分开），销售价格，参数，是否有效，创建时间和修改时间。</p>
-<h4 id="kind表"><a href="#kind表" class="headerlink" title="kind表"></a>kind表</h4><p>商品的种类，上级菜单分类</p>
-<h4 id="订单号的生成"><a href="#订单号的生成" class="headerlink" title="订单号的生成"></a>订单号的生成</h4><p>常见的订单基本都14-20位，(年月日时分秒和随机数)基本上就有14位</p>
-<p>要求：</p>
-<p>1.全局唯一性：不能出现重复的ID号，既然是唯一标识，这是最基本的要求。<br>2.趋势递增：在MySQL InnoDB引擎中使用的是聚集索引，由于多数RDBMS使用B-tree的数据结构来存储索引数据，在主键的选择上面我们应该尽量使用有序的主键保证写入性能。<br>3.单调递增：保证下一个ID一定大于上一个ID，例如事务版本号、IM增量消息、排序等特殊需求。<br>4.信息安全：如果ID是连续的，恶意用户的扒取工作就非常容易做了，直接按照顺序下载指定URL即可；如果是订单号就更危险了，竞对可以直接知道我们一天的单量。所以在一些应用场景下，会需要ID无规则、不规则。</p>
-<p>123对应三类不同的场景，3和4需求还是互斥的，无法使用同一个方案满足</p>
-<p>所以ID生产系统：</p>
-<p>1.平均延迟和TP999延迟都要尽可能低；<br>2.可用性5个9；<br>3.高QPS。</p>
-<p>考虑客户体验：</p>
-<p>1.订单号无重复性；<br>2.如果方便客服的话，最好是“日期+自增数”样式的订单号，客服一看便知道订单是否在退货保障期限内容；<br>3.订单号长度尽量保持短（10位以内），方便用户，尤其电话投诉时，长的号码报错几率高，影响客服效率；<br>4.订单号尽量保持数字型(纯整数)，在数据库订单索引查询中，长整数字型的数据索引与检索效率，远远高于文本型，因此尽量避免“字母+数字字符串式”！</p>
-<p>在复杂的分布式系统中，很多场景需要的都是全局唯一ID的场景，一般为了防止冲突可以考虑的有36位的UUID,twitter的snowflake（雪花算法）等。</p>
-<ol>
-<li>UUID, 组成：当前日期+时间+时钟序列+机器识别号（Mac地址或其他）没有mac网卡的话会有别的东西识别。在分布式系统中，所有元素（WEB服务器）都不需要通过中央控制端来判断数据唯一性。几十年之内可以达到全球唯一性。</li>
-<li>Mysql通过AUTO_INCREMENT实现、Oracle通过Sequence序列实现。在数据库集群环境下，不同数据库节点可设置不同起步值、相同步长来实现集群下生产全局唯一、递增ID</li>
-<li>Snowflake算法 雪花算法。41位时间戳+10位机器ID+12位序列号（自增） 转化长度为18位的长整型。Twitter为满足美秒上万条消息的创建，且ID需要趋势递增，方便客户端排序。Snowflake虽然有同步锁，但是比uuid效率高。</li>
-<li>Redis自增ID。实现了incr(key)用于将key的值递增1，并返回结果。如果key不存在，创建默认并赋值为0。 具有原子性，保证在并发的时候。</li>
-<li>拼接应用所在的网络ip。或者应用所在的端口号。或者进程ID。或者以上的组合保证唯一。</li>
-</ol>
-<p>例：</p>
-<p>0/1:0为游客下单，1为公司下单</p>
-<ul>
-<li>商户ID的传入(传入商户ID是为了防止重复订单的，但是不起作用)</li>
-<li>毫秒仅保留三位(缩减长度同时保证应用切换不存在重复的可能)</li>
-<li>使用线程安全的计数器做数字递增(三位数最低保证并发800不重复,代码中我给了4位)</li>
-<li>更换日期转换为java8的日期类以格式化(线程安全及代码简洁性考量) </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;** 订单号生成(NEW) **&#x2F;</span><br><span class="line">private static final AtomicInteger SEQ &#x3D; new AtomicInteger(1000);</span><br><span class="line">private static final DateTimeFormatter DF_FMT_PREFIX &#x3D; DateTimeFormatter.ofPattern(&quot;yyMMddHHmmssSS&quot;);</span><br><span class="line">private static ZoneId ZONE_ID &#x3D; ZoneId.of(&quot;Asia&#x2F;Shanghai&quot;);</span><br><span class="line">public static String generateOrderNo()&#123;</span><br><span class="line">    LocalDateTime dataTime &#x3D; LocalDateTime.now(ZONE_ID);</span><br><span class="line">    if(SEQ.intValue()&gt;9990)&#123;</span><br><span class="line">        SEQ.getAndSet(1000);</span><br><span class="line">    &#125;</span><br><span class="line">    return  dataTime.format(DF_FMT_PREFIX)+SEQ.getAndIncrement();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<p>雪花算法：100万个ID 耗时２秒</p>
-<p><img src="/10.2.%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84/01888770c8f84b1df258ddd1d424535c68559.png@1112w_282h_80q" alt="image"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IdWorker</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 起始的时间戳</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">long</span> START_STMP = <span class="number">1530795377086L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 每一部分占用的位数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 序列号占用的位数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">long</span> SEQUENCE_BIT = <span class="number">12</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 机器标识占用的位数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">long</span> MACHINE_BIT = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 数据中心占用的位数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">long</span> DATACENTER_BIT = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 每一部分的最大值</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">long</span> MAX_DATACENTER_NUM = -<span class="number">1L</span> ^ (-<span class="number">1L</span> &lt;&lt; DATACENTER_BIT);</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">long</span> MAX_MACHINE_NUM = -<span class="number">1L</span> ^ (-<span class="number">1L</span> &lt;&lt; MACHINE_BIT);</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">long</span> MAX_SEQUENCE = -<span class="number">1L</span> ^ (-<span class="number">1L</span> &lt;&lt; SEQUENCE_BIT);</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 每一部分向左的位移</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">long</span> MACHINE_LEFT = SEQUENCE_BIT;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">long</span> DATACENTER_LEFT = SEQUENCE_BIT + MACHINE_BIT;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">long</span> TIMESTMP_LEFT = DATACENTER_LEFT + DATACENTER_BIT;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 数据中心</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> datacenterId;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 机器标识</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> machineId;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 序列号</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> sequence = <span class="number">0L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 上一次时间戳</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> lastStmp = -<span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">IdWorker</span><span class="params">(<span class="keyword">long</span> datacenterId, <span class="keyword">long</span> machineId)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (datacenterId &gt; MAX_DATACENTER_NUM || datacenterId &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;datacenterId can&#x27;t be greater than MAX_DATACENTER_NUM or less than 0&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (machineId &gt; MAX_MACHINE_NUM || machineId &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">&quot;machineId can&#x27;t be greater than MAX_MACHINE_NUM or less than 0&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">this</span>.datacenterId = datacenterId;</span><br><span class="line">        <span class="keyword">this</span>.machineId = machineId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 产生下一个ID</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">long</span> <span class="title">nextId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> currStmp = getNewstmp();</span><br><span class="line">        <span class="keyword">if</span> (currStmp &lt; lastStmp) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">&quot;Clock moved backwards.  Refusing to generate id&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (currStmp == lastStmp) &#123;</span><br><span class="line">            <span class="comment">//相同毫秒内，序列号自增</span></span><br><span class="line">            sequence = (sequence + <span class="number">1</span>) &amp; MAX_SEQUENCE;</span><br><span class="line">            <span class="comment">//同一毫秒的序列数已经达到最大</span></span><br><span class="line">            <span class="keyword">if</span> (sequence == <span class="number">0L</span>) &#123;</span><br><span class="line">                currStmp = getNextMill();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//不同毫秒内，序列号置为0</span></span><br><span class="line">            sequence = <span class="number">0L</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        lastStmp = currStmp;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">                <span class="comment">//时间戳部分</span></span><br><span class="line">                currStmp - START_STMP) &lt;&lt; TIMESTMP_LEFT</span><br><span class="line">                <span class="comment">//数据中心部分</span></span><br><span class="line">                | datacenterId &lt;&lt; DATACENTER_LEFT</span><br><span class="line">                <span class="comment">//机器标识部分</span></span><br><span class="line">                | machineId &lt;&lt; MACHINE_LEFT</span><br><span class="line">                <span class="comment">//序列号部分</span></span><br><span class="line">                | sequence;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">long</span> <span class="title">getNextMill</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> mill = getNewstmp();</span><br><span class="line">        <span class="keyword">while</span> (mill &lt;= lastStmp) &#123;</span><br><span class="line">            mill = getNewstmp();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> mill;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">long</span> <span class="title">getNewstmp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> System.currentTimeMillis();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        IdWorker snowFlake = <span class="keyword">new</span> IdWorker(<span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line">        <span class="keyword">long</span> start = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000</span>; i++) &#123;</span><br><span class="line">            System.out.println(snowFlake.nextId());</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(System.currentTimeMillis() - start);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="一致性和性能的思考"><a href="#一致性和性能的思考" class="headerlink" title="一致性和性能的思考"></a>一致性和性能的思考</h2><p>1、性能和一致性不能同时满足，为了性能考虑，通常会采用「最终一致性」的方案</p>
-<p>2、掌握缓存和数据库一致性问题，核心问题有 3 点：缓存利用率、并发、缓存 + 数据库一起成功问题</p>
-<p>3、失败场景下要保证一致性，常见手段就是「重试」，同步重试会影响吞吐量，所以通常会采用异步重试的方案</p>
-<p>4、订阅变更日志的思想，本质是把权威数据源（例如 MySQL）当做 leader 副本，让其它异质系统（例如 Redis / Elasticsearch）成为它的 follower 副本，通过同步变更日志的方式，保证 leader 和 follower 之间保持一致</p>
-<h2 id="项目的思考"><a href="#项目的思考" class="headerlink" title="项目的思考"></a>项目的思考</h2><p>1.如果前端需要多个DTO，而不同业务的DTO有99%可以复用，我是需要根据业务生成多个DTO（一个接口一个DTO）传还是都复用一个DTO（多个接口公用一个DTO，虽然很多属性没有用到）？</p>
-<p>答：</p>
-<p>2.向项目里使用新技术时，我在加的时候是否需要重写之前的方法以适用新技术？这是否违反了开闭原则？</p>
-<p>答：</p>
-<p>3.如果业务里只有一个方法需要处理，需要等待这个方法的结果再返回给前端，还是异步这个方法，交给其他线程去处理？哪种客户体验更好？</p>
-<p>答：</p>
-<p>4.web端项目后端怎么主动发消息给前端？前端可能关闭了网页则连接就断了</p>
-<p>答：</p>
-<p>5.延时处理：过期自动收货，到期自动删除？</p>
-<p>答：</p>
-<p>6.springboot项目的DTO和VO的分类？Controller层、Service层代码应该放什么？Service层的接口是否真的有必要？</p>
-<p>7.业务代码里重复的方法太多，不知道怎么提取公共部分，如果提取了公共部分，一些切面就无法执行，如果为了执行再加切面，是否会影响性能？如果存在两个方法的大致逻辑都一样，只是一些不一样，我该怎么抽取公共？比如说一个方法A，参数是1，业务里根据参数1查对应的表得出11，在根据11继续逻辑；方法B，参数是2，业务里根据参数2查对应的表得出22，在根据22继续逻辑。11和22是不同的表，我该怎么抽取公共代码？</p>
-<p>8.功能重要还是性能重要？比如加一个新东西可以实现某项功能，但是会严重消耗性能，我该怎么取舍？（这个功能可能有用可能鸡肋，这个功能和性能的平衡点在哪）</p>
-<p>9.对于一个新功能或者新技术的引用，可能会耗费大量时间，在这期间产品不会更新或者进度很慢，是否值得？（怎么向老板解释长时间不出活是为了后期更高的性能）</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/03/23/10.2.%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84/" data-id="ckw61sdx2006ooswdffn8f6jz" data-title="PO,BO,VO，DTO,DAO与POJO" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PO-BO-VO%EF%BC%8CDTO-DAO%E4%B8%8EPOJO/" rel="tag">PO-BO-VO，DTO-DAO与POJO</a></li></ul>
 
     </footer>
   </div>
@@ -6185,6 +6012,10 @@
       <ul>
         
           <li>
+            <a href="/2021/12/20/Jenkins/">Jenkins</a>
+          </li>
+        
+          <li>
             <a href="/2021/12/17/SpringBootSecurity/">SpringBootSecurity</a>
           </li>
         
@@ -6198,10 +6029,6 @@
         
           <li>
             <a href="/2021/09/03/%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%BB%A3%E7%A0%81/">工具类代码</a>
-          </li>
-        
-          <li>
-            <a href="/2021/09/03/RPC/">RPC</a>
           </li>
         
       </ul>

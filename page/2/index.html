@@ -77,6 +77,105 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JPA" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/07/26/JPA/" class="article-date">
+  <time class="dt-published" datetime="2021-07-26T01:56:34.000Z" itemprop="datePublished">2021-07-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/07/26/JPA/">JPA</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>JPA全称Java Persistence API，用于对象持久化的 API，可以通过注解或者XML描述【对象-关系表】之间的映射关系，并将实体对象持久化到数据库中。</p>
+<p>操作数据库：</p>
+<p>​    首先是 JDBC 阶段，初学 JDBC 可能会使用原生的 JDBC 的 API，再然后可能会使用数据库连接池，比如：c3p0、dbcp，还有一些第三方工具，比如 dbutils 等 JDBC 是贯穿始终的，即使到了框架部分，也会对 JDBC 进行整合，此阶段还是自己手写 SQL 语句。</p>
+<p>​    然后就是 Hibernate，操作数据库可以不用自己手动编写 SQL，调用 Hibernate 提供的 API 即可。</p>
+<p>​    现在用JPA，即 Java 持久层的 API，JPA 与 SpringData 结合起来会事半功倍。</p>
+<p>JPA为我们提供了：</p>
+<p>1）ORM映射元数据：JPA支持XML和注解两种元数据的形式，元数据描述对象和表之间的映射关系，框架据此将实体对象持久化到数据库表中；</p>
+<p>如：@Entity、@Table、@Column、@Transient等注解。</p>
+<p> 2）JPA 的API：用来操作实体对象，执行CRUD操作，框架在后台替我们完成所有的事情，开发者从繁琐的JDBC和SQL代码中解脱出来。</p>
+<p>如：entityManager.merge(T t)；</p>
+<p> 3）JPQL查询语言：通过面向对象而非面向数据库的查询语言查询数据，避免程序的SQL语句紧密耦合。</p>
+<p>如：from Student s where s.name = ?</p>
+<p>但是：</p>
+<p>JPA仅仅是一种规范，也就是说JPA仅仅定义了一些接口，而接口是需要实现才能工作的。所以底层需要某种实现，而Hibernate就是实现了JPA接口的ORM框架。</p>
+<p>JPA是一套ORM规范，Hibernate实现了JPA规范，JPA 是 Hibernate 的一个抽象，就像 JDBC 和 JDBC 驱动的关系</p>
+<p><img src="/JPA/fd5e9c1f88bcdb6c41f6685998b44e0f068.jpg" alt="img"></p>
+<p>spirng data jpa是spring提供的一套简化JPA开发的框架，按照约定好的【方法命名规则】写dao层接口，就可以在不写接口实现的情况下，实现对数据库的访问和操作。同时提供了很多除了CRUD之外的功能，如分页、排序、复杂查询等等。</p>
+<p>Spring Data JPA 可以理解为 JPA 规范的再次封装抽象，底层还是使用了 Hibernate 的 JPA 技术实现。如图：</p>
+<p><img src="/JPA/3169065e3f44e0994f9a01e0df7ed38fe7a.jpg" alt="img"></p>
+<p>接口约定命名规则：</p>
+<p><img src="/JPA/2da91405d2138b4ddedb7b148f0d43bc219.jpg" alt="img"></p>
+<p>例子：</p>
+<p><img src="/JPA/719f690bc8bc60365371478aa84fa014ab7.jpg" alt="img"></p>
+<p><img src="/JPA/eddc9d37ac7656fd90a2e5093441775905f.jpg" alt="img"></p>
+<p>springboot集成spring data jpa只需两步：</p>
+<p>第一步：导入maven坐标</p>
+<p><img src="/JPA/2bac153bb2147283bb1b9dd0c7937e47ff7.jpg" alt="img"></p>
+<p>第二步：yml配置文件中配置jpa信息</p>
+<p><img src="/JPA/334e8961dbfee889d19cd2febfdf6d68153.jpg" alt="img"></p>
+<p>JPA的基本注解</p>
+<p>\1. <strong>@Entity</strong> ：修饰实体类，指明该类将映射到指定的数据表，例如：Customer 类默认的数据表名为 customer</p>
+<p>\2. <strong>@Table</strong> ：当实体类与映射的数据库表名不同名时需要使用 @Table 注解，该注解与 @Entity 注解并列使用，使用其 <strong>name 属性</strong>指明数据库的表名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 @Table(name &#x3D; &quot;JPA_CUSTOMER&quot;)</span><br><span class="line">2 @Entity</span><br><span class="line">3 public class Customer &#123;</span><br></pre></td></tr></table></figure>
+
+<p>\3. <strong>@Id</strong> ：标识该属性为<strong>主键</strong>，<strong>一般标注在该属性的 getter 方法上</strong></p>
+<p>\4. <strong>@GeneratedValue</strong> ：标注<strong>主键的生成策略</strong>，通过其 <strong>strategy 属性</strong>。通常与 @Id 注解一起使用。默认情况下 JPA 会自动选择一个最适合底层数据库的主键生成策略，MySQL 默认为 AUTO，常用策略有：</p>
+<p>–IDENTITY：采用数据库 ID自增长的方式来自增主键字段，Oracle 不支持这种方式；</p>
+<p>–<strong>AUTO</strong>： <strong>JPA自动选择合适的策略，是默认选项；</strong></p>
+<p>–SEQUENCE：通过序列产生主键，通过 @SequenceGenerator 注解指定序列名，MySql 不支持这种方式</p>
+<p>–TABLE：通过表产生主键，框架借由表模拟序列产生主键，使用该策略可以使应用更易于数据库移植</p>
+<p><img src="/JPA/1105175-20171021112827318-172117315.png" alt="img"></p>
+<p>\5. <strong>@Basic</strong> ：用于<strong>没有任何标注的 getXxx() 方法</strong>，默认即为 @Basic,所以若一个 getter 方法无任何注解，可以使用 @Basic 注解，也可以不使用</p>
+<p>\6. <strong>@Column</strong> ：当<strong>实体的属性与其映射的数据表的列不同名时使用</strong>，一般用于 getter 方法上。其 <strong>name 属性用来指明此属性在数据表中对应的列名</strong>；<strong>unique 属性</strong>指明<strong>是否为唯一约束</strong>；<strong>nullable 属性</strong>用来<strong>指明是否可以为空，false 为不能为空</strong>；<strong>length 属性</strong>指明<strong>此列的长度</strong>。</p>
+<p> <img src="/JPA/1105175-20171021112851349-1276707637.png" alt="img"></p>
+<p>\7. <strong>@Transient</strong> ：<strong>标注此注解后在创建数据表的时候将会忽略该属性</strong> Customer 类并没有 info 这个属性，所以数据库中也不应该有 info 这个字段</p>
+<p><strong><img src="/JPA/1105175-20171021112909631-794791158.png" alt="img"></strong></p>
+<p>\8. <strong>@Temporal</strong> ：向数据库<strong>映射日期（Date）属性时用来调整映射的精度</strong>。Date 类型的数据有 DATE, TIME, 和 TIMESTAMP 三种精度(即单纯的日期,时间,或者两者兼备).</p>
+<p>Birth 属性应该使用 DATE 类型(生日只具体到日即可，如：2015-10-22)，而 CreateTime 应该使用 TIMESTAMP 类型(创建时间应该具体到秒，如：2017-10-11 22:39:13)</p>
+<p><img src="/JPA/1105175-20171021112937068-389580636.png" alt="img"></p>
+<p>补冲：使用 <strong>TABLE 生成主键</strong>详解</p>
+<p>1.创建一个数据表 jpa_id_generators，并添加几条数据</p>
+<p> <img src="/JPA/1105175-20171021113033381-394453727.png" alt="img"></p>
+<p>\2. 配置使用 TABLE 主键生成策略</p>
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> 1 　　 &#x2F;&#x2F;使用 TABLE 主键生成策略</span><br><span class="line"> 2     @TableGenerator(name&#x3D;&quot;ID_GENERATOR&quot;, &#x2F;&#x2F;该主键生成策略的名称，与 @GeneratedValue 的 generator 属性值对应</span><br><span class="line"> 3     table&#x3D;&quot;jpa_id_generators&quot;, &#x2F;&#x2F; 指明根据哪个表生成主键</span><br><span class="line"> 4     pkColumnName&#x3D;&quot;PK_NAME&quot;, &#x2F;&#x2F; 使用 pkColumnName pkColumnValue valueColumnName 三个属性唯一的定位一个点</span><br><span class="line"> 5     pkColumnValue&#x3D;&quot;CUSTOMER_ID&quot;,</span><br><span class="line"> 6     valueColumnName&#x3D;&quot;PK_VALUE&quot;,</span><br><span class="line"> 7     allocationSize&#x3D;100) &#x2F;&#x2F;指定每次增加的数量</span><br><span class="line"> 8     @GeneratedValue(strategy&#x3D;GenerationType.TABLE, generator&#x3D;&quot;ID_GENERATOR&quot;)</span><br><span class="line"> 9     @Id</span><br><span class="line">10     public Integer getId() &#123;</span><br><span class="line">11         return id;</span><br><span class="line">12     &#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="javascript:void(0);"><img src="https://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a></p>
+<p>附一张表说明：</p>
+<p><img src="/JPA/1105175-20171021113500099-1494273921.png" alt="img"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/07/26/JPA/" data-id="ckxho8wjz002wh8vwehdz6qow" data-title="JPA" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JPA/" rel="tag">JPA</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-4.27.序列化与反序列化" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/06/30/4.27.%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" class="article-date">
@@ -158,7 +257,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/06/30/4.27.%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" data-id="ckw61sdv90021oswdb6d721xo" data-title="序列化与反序列化" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/06/30/4.27.%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" data-id="ckxho8wjl0021h8vw13l7e7ad" data-title="序列化与反序列化" class="article-share-link">分享</a>
       
       
       
@@ -390,7 +489,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/06/28/%E7%94%B5%E5%95%86%E9%A1%B9%E7%9B%AE/" data-id="ckw61sdwp0065oswd2ktift4h" data-title="电商项目" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/06/28/%E7%94%B5%E5%95%86%E9%A1%B9%E7%9B%AE/" data-id="ckxho8wlu005yh8vwcg30ekfs" data-title="电商项目" class="article-share-link">分享</a>
       
       
       
@@ -487,7 +586,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/06/24/4.26.JSR/" data-id="ckw61sdv9001zoswdc2n2fl9m" data-title="JSR" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/06/24/4.26.JSR/" data-id="ckxho8wjk001zh8vwb193fh59" data-title="JSR" class="article-share-link">分享</a>
       
       
       
@@ -525,7 +624,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/06/24/31.3.%E8%85%BE%E8%AE%AF%E4%BA%91%E9%9F%B3%E8%A7%86%E9%A2%91%E7%9A%84%E5%BC%80%E5%8F%91/" data-id="ckw61sdv2001doswdfueg78bq" data-title="腾讯云音视频的开发" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/06/24/31.3.%E8%85%BE%E8%AE%AF%E4%BA%91%E9%9F%B3%E8%A7%86%E9%A2%91%E7%9A%84%E5%BC%80%E5%8F%91/" data-id="ckxho8wjc001gh8vwgazl5rry" data-title="腾讯云音视频的开发" class="article-share-link">分享</a>
       
       
       
@@ -601,7 +700,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/06/23/%E7%94%B3%E8%AF%B7%E8%BD%AF%E8%91%97/" data-id="ckw61sdvz003woswd79ychh8q" data-title="申请软著" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/06/23/%E7%94%B3%E8%AF%B7%E8%BD%AF%E8%91%97/" data-id="ckxho8wkr0042h8vwbywgb7u9" data-title="申请软著" class="article-share-link">分享</a>
       
       
       
@@ -657,7 +756,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/06/21/30.1.AndroidStudio%E7%9A%84%E5%AD%A6%E4%B9%A0/" data-id="ckw61sdv4001ioswdfa27g7vr" data-title="AndroidStudio的学习" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/06/21/30.1.AndroidStudio%E7%9A%84%E5%AD%A6%E4%B9%A0/" data-id="ckxho8wja001dh8vw48ujc874" data-title="AndroidStudio的学习" class="article-share-link">分享</a>
       
       
       
@@ -786,7 +885,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/06/18/31.2.WebRTC%E7%9A%84%E5%AD%A6%E4%B9%A0/" data-id="ckw61sdv2001boswdfqp5218g" data-title="WebRTC的学习" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/06/18/31.2.WebRTC%E7%9A%84%E5%AD%A6%E4%B9%A0/" data-id="ckxho8wj9001bh8vw216v6181" data-title="WebRTC的学习" class="article-share-link">分享</a>
       
       
       
@@ -860,7 +959,7 @@ RTP 由两个紧密链接部分组成： RTP ― 传送具有实时属性的数�
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/06/18/31.1.%E6%B5%81%E5%AA%92%E4%BD%93%E5%8D%8F%E8%AE%AE/" data-id="ckw61sdv3001eoswd9xl21zst" data-title="流媒体协议" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/06/18/31.1.%E6%B5%81%E5%AA%92%E4%BD%93%E5%8D%8F%E8%AE%AE/" data-id="ckxho8wjb001eh8vw8uivajhu" data-title="流媒体协议" class="article-share-link">分享</a>
       
       
       
@@ -899,125 +998,10 @@ RTP 由两个紧密链接部分组成： RTP ― 传送具有实时属性的数�
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/06/17/1.7.%E7%AE%80%E5%8E%86%E5%AE%8C%E5%96%84/" data-id="ckw61sdun0005oswd4y8b6a51" data-title="简历完善" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/06/17/1.7.%E7%AE%80%E5%8E%86%E5%AE%8C%E5%96%84/" data-id="ckxho8wim0005h8vw7mbw1tz4" data-title="简历完善" class="article-share-link">分享</a>
       
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-29.1.搭建网站" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/06/08/29.1.%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/" class="article-date">
-  <time class="dt-published" datetime="2021-06-08T00:33:25.000Z" itemprop="datePublished">2021-06-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/06/08/29.1.%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/">搭建网站</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>利用PBOOTCMS搭建一个网站：PbootCMS是全新内核且永久开源免费的PHP企业网站开发建设管理系统，是一套高效、简洁、 强悍的可免费商用的PHP CMS源码，能够满足各类企业网站开发建设的需要</p>
-<h2 id="本地搭建"><a href="#本地搭建" class="headerlink" title="本地搭建"></a>本地搭建</h2><p>可以在虚拟机上先搭建一个。（模拟在云服务器上搭，这里的虚拟机其实就是云服务器）</p>
-<p>1.下载VMWare（官网可以下载，激活码百度随便搜到激活），centOS的DVD.iso文件（<a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos/7.9.2009/isos/x86_64/%EF%BC%89%E3%80%82">http://mirrors.aliyun.com/centos/7.9.2009/isos/x86_64/）。</a></p>
-<p>2.在VMWare上安装虚拟机（<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv5884033%EF%BC%89%E3%80%82%E6%B3%A8%E6%84%8F%E9%9C%80%E8%A6%81%E9%80%89%E6%8B%A9%E6%A1%A5%E6%8E%A5%E7%BD%91%E7%BB%9C%EF%BC%8C%E8%BF%99%E6%A0%B7%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%88%E5%AE%A2%E6%88%B7%E6%9C%BA%EF%BC%89%E5%9C%A8%E5%A4%96%E9%83%A8%E7%BD%91%E7%BB%9C%E4%B8%8A%E5%B0%B1%E6%9C%89%E4%BA%86%E8%87%AA%E5%B7%B1%E7%9A%84ip%E5%9C%B0%E5%9D%80%EF%BC%8C%E5%8F%AF%E4%BB%A5%E8%AE%BF%E9%97%AE%E3%80%82">https://www.bilibili.com/read/cv5884033）。注意需要选择桥接网络，这样虚拟机（客户机）在外部网络上就有了自己的ip地址，可以访问。</a></p>
-<p>ifconfig查看虚拟机的ip地址：如果没有的话，去虚拟机设置里找到虚拟网络编辑器。选择桥接模式，并选择桥接到物理宿主机的上网网卡即可。在命令行输入</p>
-<p><code>dhclient</code>为本机分配一个网络内可用的IP地址，接下来编辑虚拟机系统网卡配置，将上面分配所得的IP地址配置进去。使用命令编辑：<code>vim /etc/sysconfig/network-scripts/ifcfg-ens33</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">TYPE&#x3D;Ethernet</span><br><span class="line">PROXY_METHOD&#x3D;none</span><br><span class="line">BROWSER_ONLY&#x3D;no</span><br><span class="line">BOOTPROTO&#x3D;static   &#x2F;&#x2F;**</span><br><span class="line">DEFROUTE&#x3D;yes</span><br><span class="line">IPV3_FAILURE_FATAL&#x3D;no</span><br><span class="line">IPV6INIT&#x3D;yes</span><br><span class="line">IPV6_AUTOCONF&#x3D;yes</span><br><span class="line">IPV6_DEFROUTE&#x3D;yes</span><br><span class="line">IPV6_FAILURE_FATAL&#x3D;no</span><br><span class="line">IPV6_ADDR_GEN_MODE&#x3D;stable-privacy</span><br><span class="line">NAME&#x3D;ens33</span><br><span class="line">UUID&#x3D;</span><br><span class="line">DEVICE&#x3D;ens33</span><br><span class="line">ONBOOT&#x3D;yes &#x2F;&#x2F;**</span><br><span class="line">IPADDR&#x3D;192.168.31.21  &#x2F;&#x2F;**</span><br><span class="line">NETMASK&#x3D;255.255.255.0  &#x2F;&#x2F;**</span><br><span class="line">GATEWAY&#x3D;192.168.31.1  &#x2F;&#x2F;**</span><br><span class="line">DNS1&#x3D;119.29.29.29  &#x2F;&#x2F;**</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i0.hdslb.com/bfs/article/7982c7b4579942217051f546431b178a7308312f.png@1320w_1018h.webp" alt="img"></p>
-<p>​    编辑完成，重启网络设置即可 <code>systemctl restart network.service</code></p>
-<p>检查：①虚拟机内ping外网②虚拟机内ping宿主机③如果装了多个Linux节点的话：ping Linux系统节点与节点(一般都是一个虚拟机)④宿主机ping虚拟机</p>
-<p>3.在宿主机通过SFTP工具（winscp）和SSH终端（putty）链接虚拟机内linux系统</p>
-<p>4.在ECS服务器上，执行以下命令安装Apache及其扩展包。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install httpd httpd-manual mod_ssl mod_perl mod_auth_mysql</span><br></pre></td></tr></table></figure>
-
-<p>返回类似如下图结果则表示安装成功。</p>
-<p><img src="https://www.pbootcms.com/static/upload/image/20210215/1613322722152350.png" alt="img"></p>
-<p>5.参考以下操作在ECS服务器上搭建一个MySQL数据库。</p>
-<p>  a. 执行以下命令下载并安装MySQL。（以下命令不生效的话，可以百度linux安装mysql的步骤进行操作）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http:&#x2F;&#x2F;dev.mysql.com&#x2F;get&#x2F;mysql57-community-release-el7-10.noarch.rpmyum -y install mysql57-community-release-el7-10.noarch.rpm</span><br><span class="line">yum -y install mysql-community-server</span><br></pre></td></tr></table></figure>
-
-<p>  b. 执行以下命令启动MySQL数据库。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mysqld</span><br></pre></td></tr></table></figure>
-
-<p>  c. 执行以下命令查看MySQL初始密码。记住：后面的字符串即为密码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep &quot;password&quot; &#x2F;var&#x2F;log&#x2F;mysqld.log</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://www.pbootcms.com/static/upload/image/20210215/1613322722158445.png" alt="img"></p>
-<p>  d. 执行以下命令，登录数据库。输入原始密码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -uroot -p</span><br></pre></td></tr></table></figure>
-
-<p>  e. 执行以下命令修改MySQL默认密码。</p>
-<p>​    新密码必须同时包含大小写英文字母、数字和特殊符号中的三类字符。请妥善保存数据库密码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER USER &#39;root&#39;@&#39;localhost&#39; IDENTIFIED BY &#39;%s&#39;;    &#x2F;&#x2F;%s处为修改后的密码，必须包括大小写英文字母，数字，特殊符号</span><br></pre></td></tr></table></figure>
-
-<p>  f. 执行以下命令创建数据库。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create database pbootcms;</span><br></pre></td></tr></table></figure>
-
-<p>  g. 输入<code>exit</code>退出数据库。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exit</span><br></pre></td></tr></table></figure>
-
-<p>6.PbootCMS是使用PHP语言开发的CMS系统。参考以下操作安装PHP环境。</p>
-<p>执行以下命令，安装PHP。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install php php-mysql gd php-gd gd-devel php-xml php_openssl</span><br></pre></td></tr></table></figure>
-
-<p>7.搭建企业网站</p>
-<p>在完成环境部署后，参考以下操作搭建企业网站。</p>
-<p>\1. 在ECS服务器上，执行以下命令，安装Git。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install git</span><br></pre></td></tr></table></figure>
-
-<p>\2. 执行以下命令下载PbootCMS源码文件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~ &amp;&amp; git clone https:&#x2F;&#x2F;gitee.com&#x2F;hnaoyun&#x2F;PbootCMS.git</span><br></pre></td></tr></table></figure>
-
-<p>\3. 执行以下命令将安装包拷贝到Apache的wwwroot目录下。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp -r PbootCMS&#x2F;* &#x2F;var&#x2F;www&#x2F;html&#x2F;</span><br></pre></td></tr></table></figure>
-
-<p>\4. 执行以下命令修改站点根目录文件权限。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod -R a+w &#x2F;var&#x2F;www&#x2F;html</span><br></pre></td></tr></table></figure>
-
-<p>\5. 执行以下命令向MySQL数据库中导入CMS的初始数据。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sql_file&#x3D;&quot;&#x2F;var&#x2F;www&#x2F;html&#x2F;static&#x2F;backup&#x2F;sql&#x2F;&quot;$(ls &#x2F;var&#x2F;www&#x2F;html&#x2F;static&#x2F;backup&#x2F;sql&#x2F;) &amp;&amp; mysql -uroot -p%s pbootcms &lt; $sql_file   &#x2F;&#x2F;%s为你的mysql密码</span><br></pre></td></tr></table></figure>
-
-<p>\6. 执行以下命令修改CMS系统数据库配置。</p>
-<p><strong>说明：</strong>在执行命令前，请根据参数说明替换您的数据库配置。默认您只需要更改数据库密码即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; &#x2F;var&#x2F;www&#x2F;html&#x2F;config&#x2F;database.php &lt;&lt; EOF&lt;?phpreturn array(    &#39;database&#39; &#x3D;&gt; array(        &#39;type&#39; &#x3D;&gt; &#39;mysqli&#39;, &#x2F;&#x2F; 数据库连接驱动类型: mysqli,sqlite,pdo_mysql,pdo_sqlite</span><br><span class="line">        &#39;host&#39; &#x3D;&gt; &#39;127.0.0.1&#39;, &#x2F;&#x2F; 数据库服务器</span><br><span class="line">        &#39;user&#39; &#x3D;&gt; &#39;root&#39;, &#x2F;&#x2F; 数据库连接用户名</span><br><span class="line">        &#39;passwd&#39; &#x3D;&gt; &#39;NewPassWord1.&#39;, &#x2F;&#x2F; 数据库连接密码</span><br><span class="line">        &#39;port&#39; &#x3D;&gt; &#39;3306&#39;, &#x2F;&#x2F; 数据库端口</span><br><span class="line">        &#39;dbname&#39; &#x3D;&gt; &#39;pbootcms&#39; &#x2F;&#x2F;数据库名称</span><br><span class="line">    )</span><br><span class="line">);</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
-
-<p>\7. 执行以下命令启动Apache HTTP服务。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start httpd</span><br></pre></td></tr></table></figure>
-
-<p>问题排查：</p>
-<p>1.如果可以ping通虚拟机的ip，但是无法访问到，应该是防火墙的问题，将虚拟机的防火墙关闭。</p>
-<p>2.如果提示需要安装php的mbstring，百度安装即可。</p>
-<p>3.如果提示 apache /var/www/html/子目录没权限访问 。是因为系统启动了SELINUX导致的。<code>setsebool -P httpd_read_user_content 1</code>成功。</p>
-<p>4.如果提示数据库有问题，检查/var/www/html/config/database.php文件内容。</p>
-<h2 id="云服务器搭建官网"><a href="#云服务器搭建官网" class="headerlink" title="云服务器搭建官网"></a>云服务器搭建官网</h2><p>参照文档。<a target="_blank" rel="noopener" href="https://www.pbootcms.com/environmenta-deployment/271.html">https://www.pbootcms.com/environmenta-deployment/271.html</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/06/08/29.1.%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/" data-id="ckw61sdv00012oswdd5cd5liy" data-title="搭建网站" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PBOOTCMS/" rel="tag">PBOOTCMS</a></li></ul>
-
     </footer>
   </div>
   
@@ -1076,6 +1060,10 @@ RTP 由两个紧密链接部分组成： RTP ― 传送具有实时属性的数�
       <ul>
         
           <li>
+            <a href="/2021/12/20/Jenkins/">Jenkins</a>
+          </li>
+        
+          <li>
             <a href="/2021/12/17/SpringBootSecurity/">SpringBootSecurity</a>
           </li>
         
@@ -1089,10 +1077,6 @@ RTP 由两个紧密链接部分组成： RTP ― 传送具有实时属性的数�
         
           <li>
             <a href="/2021/09/03/%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%BB%A3%E7%A0%81/">工具类代码</a>
-          </li>
-        
-          <li>
-            <a href="/2021/09/03/RPC/">RPC</a>
           </li>
         
       </ul>

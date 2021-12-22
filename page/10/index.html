@@ -77,6 +77,740 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-14.1.linux" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/07/14.1.linux/" class="article-date">
+  <time class="dt-published" datetime="2021-04-07T11:42:46.000Z" itemprop="datePublished">2021-04-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/07/14.1.linux/">linux</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>学习Linux目标:掌握linux常用命令，会安装开发中使用软件，例如mysql,jdk…</p>
+<p>开发人员掌握就好，更多的是运维人员需要掌握</p>
+<h1 id="Linux介绍"><a href="#Linux介绍" class="headerlink" title="Linux介绍"></a>Linux介绍</h1><p>Linux是基于Unix开发的，Linux是一种自由和开放源码的操作系统，存在着许多不同的Linux版本，但它们都使用了Linux内核</p>
+<p>Unix是一个强大的多用户、多任务操作系统。    于1969年在AT&amp;T的贝尔实验室开发。    UNIX的商标权由国际开放标准组织（The Open Group）所拥有。    UNIX操作系统是商业版，需要收费，价格比Microsoft Windows正版要贵一些</p>
+<p>Linux可安装在各种计算机硬件设备中，比如手机、平板电脑、路由器、台式计算机</p>
+<p>Linux系统的应用</p>
+<p>服务器系统Web应用服务器、数据库服务器、接口服务器、DNS、FTP等等； </p>
+<p>嵌入式系统路由器、防火墙、手机、PDA、IP 分享器、交换器、家电用品的微电脑控制器等等，</p>
+<p>高性能运算、计算密集型应用Linux有强大的运算能力。</p>
+<p>桌面应用系统 ubuntu</p>
+<p>移动手持系统</p>
+<p>Linux版本：<em><strong>*内核版本和发行版本*</strong></em></p>
+<p>内核版本是指在Linus领导下的内核小组开发维护的系统内核的版本号，非常小，只有几M</p>
+<p>​    常用的ubuntu  centos  fedora  redhat</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps1.jpg" alt="img"> </p>
+<h1 id="Linux-安装"><a href="#Linux-安装" class="headerlink" title="*Linux*****安装****"></a><em><strong>*Linux*</strong>***</em>*安装****</h1><p>我们在虚拟机上来安装Linux</p>
+<p>虚拟机：一台虚拟的电脑</p>
+<p>虚拟机软件：</p>
+<p>VMWare它是一个收费虚拟软件，密钥</p>
+<p>VirtualBox    :免费的</p>
+<p>怎样安装linux系统(centos6.5)：</p>
+<p>参考《虚拟软件vmware安装.doc》，安装VmWare</p>
+<p>参考《CentOS6详细安装文档.doc》，安装CentOS</p>
+<p>前提需要一个.iso的镜像文件</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps2.jpg" alt="img"> </p>
+<p>典型安装就可以</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps3.jpg" alt="img"><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps4.jpg" alt="img"><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps5.jpg" alt="img"><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps6.jpg" alt="img"> </p>
+<p>需要指定iso文件的位置</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps7.jpg" alt="img"> </p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps8.jpg" alt="img"> </p>
+<p>进入安装，选择skip（ctrl+alt可以将鼠标的光标跳出虚拟机）</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps9.jpg" alt="img"> </p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps10.jpg" alt="img"> </p>
+<p>时区，亚洲上海</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps11.jpg" alt="img"> </p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps12.jpg" alt="img"> </p>
+<p>选择basic server是安装为服务，只有dos命令，便于远程连接访问。如果是desktop桌面版的话不灵活且安装的内容会很多</p>
+<p>慢慢等待安装完成，重新引导（重启）</p>
+<p>登录时，使用的用户是root,录入密码时不会显示（其实已经输入了），显示第三行的内容为登录成功</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps13.jpg" alt="img"> </p>
+<p>很少会直接登录，一般都是远程访问</p>
+<h1 id="Linux远程访问"><a href="#Linux远程访问" class="headerlink" title="*Linux远程访问*"></a><em><strong>*Linux远程访问*</strong></em></h1><p>使用CRT软件打开</p>
+<p>新建一个连接，快速连接</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps14.jpg" alt="img"> </p>
+<p>需要录入linux的ip地址及用户名密码，连接成功后可以在选项中设置窗口颜色方案，变为黑白的这种经典窗口</p>
+<p>在虚拟机中查看ip地址 ，输入命令 ifconfig</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps15.jpg" alt="img"> </p>
+<p>注意事项:</p>
+<p>1.关于linux安装时失败问题，有可能是硬件虚拟化没有打开，需要在bios中开启虚拟化。通过 <img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps16.jpg" alt="img">可以查看</p>
+<p>2.关于CRT安装与破解(参考图片)</p>
+<h1 id="Linux目录结构"><a href="#Linux目录结构" class="headerlink" title="*Linux目录结构*"></a><em><strong>*Linux目录结构*</strong></em></h1><p>Linux系统它是文件系统</p>
+<p>它的根目录 是”/”,是以树型结构来管理</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps17.jpg" alt="img"> </p>
+<p>Root用户登录后，显示时有一个~,它其实代表的就是root目录</p>
+<p>通过命令cd..  就会放回上层的根目录 /]#</p>
+<p>通过命令ls  可以查看所有的文件名 </p>
+<p>bin  boot  cgroup  dev  etc  home  lib  lost  found  media  misc  mnt  net  opt  proc  root  sbin  selinux  srv  sys  tmp  usr  var</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps18.jpg" alt="img"> </p>
+<p>root管理员的home目录root</p>
+<p>其他用户的home目录home目录中</p>
+<p>我们可以将我们自己的文件安装在任意位置</p>
+<h1 id="Linux常用命令-重点"><a href="#Linux常用命令-重点" class="headerlink" title="*Linux常用命令(重点)*"></a><em><strong>*Linux常用命令(重点)*</strong></em></h1><p>1.切换目录命令 <em><strong>*cd*</strong></em> （这个命令非常重要）</p>
+<p>cd app    切换到app目录    cd ..      切换到上一层目录    cd /        切换到系统根目录    cd ~        切换到用户主目录 root    cd -        切换到上一次执行时所在的目录</p>
+<p>2.列出文件列表 <em><strong>*ls ll*</strong></em> （这个命令非常重要）</p>
+<p>ls(list)是一个非常有用的命令，用来显示当前目录下的内容。配合参数的使用，能以不同的方式显示目录内容。</p>
+<p>dir命令很少用</p>
+<p> 格式：ls [参数]  [路径或文件名]        ls –help 可以帮助我们查看帮助信息，都有哪些命令可以执行</p>
+<p>可能会出现中文乱码的问题，可以在选项中选择编码为UTF-8</p>
+<p>ls -a  显示所有文件或目录（包含隐藏的文件）</p>
+<p>ls -l  使用较长格式列出信息（详细信息），缩写成ll</p>
+<p>TIPS:在linux中以 . 开头的文件都是隐藏的文件</p>
+<p>3.创建与删除目录（注意权限）</p>
+<p>可以mkdir –help查看可用命令</p>
+<p>mkdir(make directory)命令可用来创建子目录：mkdir app  è  在当前目录下创建app目录mkdir –p app2/test  è 级联创建aap2以及test目录</p>
+<p>rmdir(remove directory)命令可用来删除“空”的子目录：    rmdir app  è  删除app目录</p>
+<p>当用rmdir 删除非空目录时会显示失败</p>
+<p>4.浏览文件</p>
+<p>cat操作：cat用于显示文件的内容。</p>
+<p>格式：cat [参数] &lt;文件名&gt;</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps19.jpg" alt="img"> </p>
+<p>more操作：more一般用于要显示的内容会超过一个画面长度的情况。</p>
+<p>按空格键显示下一个画面，按回车键显示下一行内容，按 q 键退出查看</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps20.jpg" alt="img"> </p>
+<p>less操作：用法和more类似，不同的是less可以通过PgUp、PgDn键来控制</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps21.jpg" alt="img"> </p>
+<p>tail操作：tail命令是在实际使用过程中使用非常多的一个命令，它的功能是：用于显示文件后几行的内容</p>
+<p>用法:</p>
+<p>tail -10 /etc/passwd  è 查看后10行数据</p>
+<p>tail -f catalina.log  è <em><strong>*动态查看日志*</strong></em>(非常重要)</p>
+<p>ctrl+c 结束查看</p>
+<p>5.文件操作</p>
+<p>cp操作：是copy操作</p>
+<p>cp(copy)命令可以将文件从一处复制到另一处。一般在使用cp命令时将一个文件复制成另一个文件或复制到某目录时，需要指定源文件名与目标文件名或目录。</p>
+<p>cp a.txt b.txt  è 将a.txt复制为b.txt文件</p>
+<p>cp  a.txt  ../  è 将a.txt文件复制到上一层目录中</p>
+<p>cp  a.txt  /a/b.txt  将a.txt文件复制到a目录下的b.txt文件中（如果没有这个文件会创建）</p>
+<p>mv操作：是move相当于剪切</p>
+<p>mv 移动或者重命名</p>
+<p>mv a.txt ../  è 将a.txt文件移动到上一层目录中</p>
+<p>mv a.txt b.txt  è 将a.txt文件重命名为b.txt</p>
+<p>rm操作：它可以帮助我们删除文件与目录</p>
+<p>rm  删除文件</p>
+<p>用法：rm  [选项]  文件</p>
+<p>rm a.txt  è 删除a.txt文件 （删除需要用户确认，y/n）</p>
+<p>rm 删除不需要询问</p>
+<p>rm -f a.txt  è 不询问，直接删除</p>
+<p>rm 删除目录</p>
+<p>rm -r a  è 递归删除 （删除需要用户递归确认，y/n）</p>
+<p>不询问递归删除（慎用）</p>
+<p>rm -rf  a  è 不询问递归删除</p>
+<p>rm -rf *  è  删除所有文件</p>
+<p>rm -rf /*  è  自杀</p>
+<p>****tar操作****：打包压缩与解压（打包或解压操作时常用）</p>
+<p>ls或者ll命令下查看：d开头的一般是一个目录，r开头的是一个文件</p>
+<p>tar命令位于/bin目录下，它能够将用户所指定的文件或目录打包成一个文件，但不做压缩。一般Linux上常用的压缩方式是选用tar将许多文件打包成一个文件，再以gzip压缩命令压缩成xxx.tar.gz(或称为xxx.tgz)的文件（所以一般.gz或者.tgz文件就是linux系统的文件，.zip就是windows系统的文件）</p>
+<p>常用参数：</p>
+<p>-c：创建一个新tar文件</p>
+<p>-v：显示运行过程的信息</p>
+<p>-f：指定文件名</p>
+<p>-z：调用gzip压缩命令进行压缩</p>
+<p>-t：查看压缩文件的内容</p>
+<p>-x：解开tar文件</p>
+<p>打包：</p>
+<p>tar –cvf xxx.tar ./*  将./*（./*可以是多个文件）的文件打包成xxx.tar文件</p>
+<p>打包并且压缩：</p>
+<p>tar –zcvf xxx.tar.gz ./* </p>
+<p>解压 </p>
+<p> tar –xvf xxx.tar   就会解压到当前路径</p>
+<p>tar -xvf xxx.tar.gz -C /usr/aaa 注意：C要大写，必须在xxx.tar.gz的目录下执行这个命令</p>
+<p>find操作：文件查找，用于查找符合条件的文件</p>
+<p>示例：</p>
+<p>find / -name “ins*” 查找文件名称是以ins开头的文件</p>
+<p>find / -name “ins*” –ls  查找文件名称是以ins开头的文件并列出来详细信息</p>
+<p>find / –user itcast –ls 查找用户itcast的文件并列出详细信息（user是权限符）</p>
+<p>find / –user itcast –type d –ls 查找用户itcast的目录</p>
+<p>find /-perm -777 –type d-ls 查找权限是777的文件</p>
+<p>grep操作：字符串查找，用于查找文件中符合条件的字符串</p>
+<p>用法: grep  [选项]   PATTERN [FILE]</p>
+<p>示例：</p>
+<p>grep lang anaconda-ks.cfg  在文件中查找lang</p>
+<p>grep lang anaconda-ks.cfg –color 高亮显示</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps22.jpg" alt="img"> </p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps23.jpg" alt="img"> </p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps24.jpg" alt="img"> </p>
+<p>A是after，B是before的意思，A5 B5就是前五行和后五行</p>
+<p>6.其它常用命令</p>
+<p>clear：清屏命令</p>
+<p>pwd：显示当前所在目录</p>
+<p>touch：创建一个空文件  touch a.txt</p>
+<p>ll -h：友好显示文件大小，k表示</p>
+<p>wget：下载资料   wget <a target="_blank" rel="noopener" href="http://nginx.org/download/nginx-1.9.12.tar.gz">http://nginx.org/download/nginx-1.9.12.tar.gz</a>  下载的东西会保存再当前目录</p>
+<p>LSB是Linux Standard Base的缩写，lsb_release命令用来显示LSB和特定版本的相关信息。如果使用该命令时不带参数，则默认加上-v参数。</p>
+<p>-v, –version<br>显示版本信息<br>-i, –id<br>显示发行版的ID<br>-d, –description<br>显示该发行版的描述信息<br>-r, –release<br>显示当前系统是发行版的具体版本号<br>-c, –codename<br>发行版代号<br>-a, –all<br>显示上面的所有信息<br>-h, –help<br>显示帮助信息</p>
+<p> netstat -anp  查看当前进程</p>
+<p>netstat -lnp|grep 80 查看80端口  tcp和linux的进程</p>
+<p>netstat -ntpl|grep 80 查看80端口   只有tcp</p>
+<p>netstat -tunlp|grep 80 查看80端口  只有tcp</p>
+<p>ps -aux |grep 80  查看80端口  最全</p>
+<p>lsof -i:80   查看80端口  最少</p>
+<p>kill -9 进程名字  杀死进程</p>
+<p>CentOS7 的防火墙配置跟以前版本有很大区别，CentOS7这个版本的防火墙默认使用的是firewall，与之前的版本Centos 6.x使用iptables不一样</p>
+<p>一、iptables防火墙<br>1、基本操作</p>
+<p>查看防火墙状态</p>
+<p>service iptables status  </p>
+<p>停止防火墙</p>
+<p>service iptables stop  </p>
+<p>启动防火墙</p>
+<p>service iptables start  </p>
+<p>重启防火墙</p>
+<p>service iptables restart  </p>
+<p>永久关闭防火墙</p>
+<p>chkconfig iptables off  </p>
+<p>永久关闭后重启</p>
+<p>chkconfig iptables on　　</p>
+<p>2、开启80端口</p>
+<p>vim /etc/sysconfig/iptables</p>
+<p>加入如下代码</p>
+<p>-A INPUT -m state –state NEW -m tcp -p tcp –dport 80 -j ACCEPT<br>保存退出后重启防火墙</p>
+<p>service iptables restart<br>二、firewall防火墙<br>1、查看firewall服务状态</p>
+<p>systemctl status firewalld</p>
+<p>出现Active: active (running)切高亮显示则表示是启动状态。</p>
+<p>出现 Active: inactive (dead)灰色表示停止，看单词也行。<br>2、查看firewall的状态</p>
+<p>firewall-cmd –state<br>3、开启、重启、关闭、firewalld.service服务</p>
+<p>开启</p>
+<p>service firewalld start</p>
+<p>重启</p>
+<p>service firewalld restart</p>
+<p>关闭</p>
+<p>service firewalld stop<br>4、查看防火墙规则</p>
+<p>firewall-cmd –list-all<br>5、查询、开放、关闭端口</p>
+<p>查询端口是否开放</p>
+<p>firewall-cmd –query-port=8080/tcp</p>
+<p>开放80端口</p>
+<p>firewall-cmd –permanent –add-port=80/tcp</p>
+<p>移除端口</p>
+<p>firewall-cmd –permanent –remove-port=8080/tcp<br>#重启防火墙(修改配置后要重启防火墙)<br>firewall-cmd –reload</p>
+<p>参数解释</p>
+<p>1、firwall-cmd：是Linux提供的操作firewall的一个工具；<br>2、–permanent：表示设置为持久；<br>3、–add-port：标识添加的端口；</p>
+<p>CentOS7 默认使用firewalld防火墙，如果想换回iptables防火墙，可关闭firewalld并安装iptables。</p>
+<h1 id="VI与VIM编辑器"><a href="#VI与VIM编辑器" class="headerlink" title="VI与VIM编辑器"></a>VI与VIM编辑器</h1><p>vim是vi的升级。</p>
+<p>在Linux下一般使用vi编辑器来编辑文件。vi既可以查看文件也可以编辑文件。有三种模式： 命令行、 插入  、底行 模式</p>
+<p>通过vi（vim）文件名，就可以对文件进行操作。 </p>
+<p>当操作时，开始是命令行模式，按<strong>i 或o 或 a</strong> 切换到插入模式</p>
+<p>i 在当前位置前插入</p>
+<p>  I 在当前行首插入</p>
+<p>  a 在当前位置后插入</p>
+<p>  A 在当前行尾插入</p>
+<p>  o 在当前行之后插入一行</p>
+<p>  O 在当前行之前插入一行</p>
+<p>再按<strong>esc</strong> 可以重新切换到命令行模式 </p>
+<p>在命令行模式下按 <strong>“:”</strong> 就可以切换到底行模式，更多详细用法，可以查询文档《Vim命令合集.docx》和《vi使用方法详细介绍.docx》</p>
+<p>在命令行模式下可以使用一些快捷键：</p>
+<p>打开文件：vim file</p>
+<p>退出：esc 输入 :q （切换到底行模式，再按q就是退出）</p>
+<p>修改文件：输入i进入插入模式</p>
+<p>保存并退出：esc 输入:wq</p>
+<p>不保存退出：esc 输入:q!</p>
+<p>三种进入插入模式：</p>
+<p>i:在当前的光标所在处插入</p>
+<p>o:在当前光标所在的行的下一行插入</p>
+<p>a:在光标所在的下一个字符插入</p>
+<p>快捷键：</p>
+<p>dd – 快速删除一行</p>
+<p>yy - 复制当前行</p>
+<p>nyy - 从当前行向后复制几行</p>
+<p>p - 粘贴</p>
+<p>R – 替换</p>
+<p>重定向</p>
+<p>echo  “sdahufha”  命令就是直接打印出“”内容</p>
+<p>&gt;  重定向输出，覆盖原有内容；    &gt;&gt; 重定向输出，换行+追加功能；    示例：</p>
+<p>cat /etc/passwd &gt; a.txt  将输出定向到a.txt中</p>
+<p>cat /etc/passwd &gt;&gt; a.txt  输出并且追加</p>
+<p>ifconfig &gt; ifconfig.txt</p>
+<p>管道</p>
+<p>管道是Linux命令中重要的一个概念，其作用是将一个命令的输出用作另一个命令的输入。示例</p>
+<p>ls –help | more  分页查询帮助信息</p>
+<p>ps –ef | grep java  查询名称中包含java的进程 （ps -ef 查看当前的进程）</p>
+<p>ifconfig | more</p>
+<p>cat index.html | more</p>
+<p>ps –ef | grep aio</p>
+<p>&amp;&amp;命令执行控制</p>
+<p>命令之间使用 &amp;&amp; 连接，实现逻辑与的功能。  </p>
+<p>只有在 &amp;&amp; 左边的命令返回真（命令返回值 $? == 0），&amp;&amp; 右边的命令才会被执行。 </p>
+<p>只要有一个命令返回假（命令返回值 $? == 1），后面的命令就不会被执行。</p>
+<p>mkdir test &amp;&amp; cd test</p>
+<p>系统管理常用命令</p>
+<p>date 可以显示或设置系统时间</p>
+<p>date  显示当前系统时间</p>
+<p>date -s “2014-01-01 10:10:10“  设置系统时间df 显示磁盘信息</p>
+<p>df –h  友好显示大小free 显示内存状态</p>
+<p>free –m 以mb单位显示内存组昂头top 显示，管理执行中的程序</p>
+<p>clear 清屏幕 </p>
+<p>ps 正在运行的某个进程的状态</p>
+<p>ps –ef  查看所有进程</p>
+<p>ps –ef | grep ssh 查找某一进程kill 杀掉某一进程kill + pid</p>
+<p>kill 2868  杀掉2868编号的进程</p>
+<p>kill -9 2868  强制杀死进程</p>
+<p>du 显示目录或文件的大小。</p>
+<p>du –h 显示当前目录的大小</p>
+<p> who 显示目前登入系统的用户信息。 </p>
+<p>uname 显示系统信息。</p>
+<p>uname -a 显示本机详细信息。依次为：内核名称(类别)，主机名，内核版本号，内核版本，内核编译日期，硬件名，处理器类型，硬件平台类型，操作系统名称</p>
+<h1 id="Linux下用户与组管理"><a href="#Linux下用户与组管理" class="headerlink" title="*Linux下用户与组管理*"></a><em><strong>*Linux下用户与组管理*</strong></em></h1><p>用户管理</p>
+<p>useradd 添加一个用户</p>
+<p>useradd test 添加test用户 （会出现在home目录下）</p>
+<p>useradd test -d /home/t1  指定用户home目录 </p>
+<p>passwd  设置、修改密码</p>
+<p>passwd test  为test用户设置密码</p>
+<p>切换登录：</p>
+<p>ssh -l test -p 22 192.168.19.128  （ssh协议默认22端口）</p>
+<p>su – 用户名 切换到这个用户</p>
+<p> userdel 删除一个用户</p>
+<p>userdel test 删除test用户(不会删除home目录)</p>
+<p>userdel –r test  删除用户以及home目录</p>
+<p>组管理</p>
+<p>当在创建一个新用户user时，若没有指定他所属于的组，就建立一个和该用户同名的私有组 </p>
+<p>创建用户时也可以指定所在组 </p>
+<p>groupadd  创建组</p>
+<p>groupadd public  创建一个名为public的组</p>
+<p>useradd u1 –g public  创建用户指定组groupdel 删除组，如果该组有用户成员，必须先删除用户才能删除组。</p>
+<p>groupdel public</p>
+<p>id命令：查看一个用户的UID和GID用法：id  [选项] [用户名]</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps25.jpg" alt="img"> </p>
+<p>直接使用id，直接使用id 用户名</p>
+<p>su命令：切换用户。用法：su   [选项]  [-] [用户   [参数]  ]示例：</p>
+<p>su u1  切换到u1用户</p>
+<p>su - u1 切换到u1用户，并且将环境也切换到u1用户的环境（推荐使用）</p>
+<p>账户文件</p>
+<p>/etc/passwd  用户文件    /etc/shadow  密码文件    /etc/group  组信息文件</p>
+<p>【用户文件】</p>
+<p>root:x:0:0:root:/root:/bin/bash账号名称：        在系统中是唯一的用户密码：        此字段存放加密口令用户标识码(User ID)：  系统内部用它来标示用户组标识码(Group ID)：  系统内部用它来标识用户属性用户相关信息：        例如用户全名等用户目录：        用户登录系统后所进入的目录用户环境:        用户工作的环境</p>
+<p>【密码文件】</p>
+<p>shadow文件中每条记录用冒号间隔的9个字段组成.用户名：用户登录到系统时使用的名字，而且是惟一的口令：  存放加密的口令最后一次修改时间:  标识从某一时刻起到用户最后一次修改时间最大时间间隔:  口令保持有效的最大天数，即多少天后必须修改口令最小时间间隔：    再次修改口令之间的最小天数警告时间：从系统开始警告到口令正式失效的天数不活动时间：    口令过期少天后，该账号被禁用失效时间：指示口令失效的绝对天数(从1970年1月1日开始计算)标志：未使用 </p>
+<p>【组文件】</p>
+<p>root:x:0:组名：用户所属组组口令：一般不用GID：组ID用户列表：属于该组的所有用户</p>
+<h1 id="文件权限管理"><a href="#文件权限管理" class="headerlink" title="*文件权限管理*"></a><em><strong>*文件权限管理*</strong></em></h1><p>文件权限</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps26.jpg" alt="img"> </p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps27.jpg" alt="img"> </p>
+<p>r:对文件是指可读取内容 对目录是可以ls</p>
+<p>w:对文件是指可修改文件内容，对目录 是指可以在其中创建或删除子节点(目录或文件)</p>
+<p>x:对文件是指是否可以运行这个文件，对目录是指是否可以cd进入这个目录</p>
+<p>Linux三种文件类型：</p>
+<p>普通文件： 包括文本文件、数据文件、可执行的二进制程序文件等。 </p>
+<p> 目录文件： Linux系统把目录看成是一种特殊的文件，利用它构成文件系统的树型结构。  </p>
+<p>设备文件： Linux系统把每一个设备都看成是一个文件</p>
+<p>文件类型标识：</p>
+<p>普通文件（-）目录（d）符号链接（l） 进入etc可以查看，相当于快捷方式字符设备文件（c）块设备文件（s）套接字（s）命名管道（p）</p>
+<p>文件权限管理：</p>
+<p>chmod 变更文件或目录的权限。</p>
+<p>chmod 755 a.txt </p>
+<p>chmod u=rwx,g=rx,o=rx a.txt</p>
+<p>chmod 000 a.txt  / chmod 777 a.txt</p>
+<p>chmod u-r a.txt  /  chmod g+x a.txtchown 变更文件或目录改文件所属用户和组</p>
+<p>chown u1:public a.txt：变更当前的目录或文件的所属用户和组(用户为u1，组为public)</p>
+<p>chown -R u1:public dir：变更目录中的所有的子目录及子文件的所属用户和组</p>
+<h1 id="常用网络操作"><a href="#常用网络操作" class="headerlink" title="*常用网络操作*"></a><em><strong>*常用网络操作*</strong></em></h1><p>主机名配置</p>
+<p>hostname 查看主机名</p>
+<p>hostname xxx 修改主机名，临时性修改 重启后无效</p>
+<p>如果想要永久生效，可以修改/etc/sysconfig/network文件（vi 进入文件后编辑）</p>
+<p>IP地址配置</p>
+<p>Setup设置ip地址</p>
+<p>ifconfig 查看(修改)ip地址(重启后无效)</p>
+<p>ifconfig eth0 192.168.12.22 修改ip地址</p>
+<p>如果想要永久生效</p>
+<p>修改 /etc/sysconfig/network-scripts/ifcfg-eth0文件</p>
+<p>可以直接输入setup进入网络配置设置（DHCP是自动分配，自己设置的话就是静态ip，空格，tab键）</p>
+<p>域名映射</p>
+<p>在windows中，System下的drivers下的etc下的hosts文件是域名映射文件</p>
+<p>/etc/hosts文件用于在通过主机名进行访问时做ip地址解析之用</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps28.jpg" alt="img"> </p>
+<p>网络服务管理</p>
+<p>service network status 查看指定服务的状态</p>
+<p>service network stop 停止指定服务</p>
+<p>service network start 启动指定服务</p>
+<p>service network restart 重启指定服务</p>
+<p>service —status–all 查看系统中所有后台服务</p>
+<p>netstat –nltp 查看系统中网络进程的端口监听情况</p>
+<p>防火墙设置</p>
+<p>防火墙根据配置文件/etc/sysconfig/iptables来控制本机的”出”、”入”网络访问行为。</p>
+<p>service iptables status 查看防火墙状态</p>
+<p><em><strong>*service iptables stop 关闭防火墙*</strong></em> （需要关闭以访问一些服务和下载）</p>
+<p>service iptables start 启动防火墙</p>
+<p>chkconfig  iptables off 禁止防火墙自启</p>
+<h1 id="shell"><a href="#shell" class="headerlink" title="shell"></a>shell</h1><p>Shell是命令解释器(command interpreter)，是Unix操作系统的用户接口，程序从用户接口得到输入信息，shell将用户程序及其输入翻译成操作系统内核（kernel）能够识别的指令，并且操作系统内核执行完将返回的输出通过shell再呈现给用户</p>
+<p>Shell也是一门编程语言，即shell脚本，shell是解释执行的脚本语言，可直接调用linux命令。 .java -&gt; .class</p>
+<p>一个系统可以存在多个shell，可以通过cat /etc/shells命令查看系统中安装的shell，不同的shell可能支持的命令语法是不相同的。</p>
+<p>shell本质上是一个.sh结尾的文件，运行这个文件即是执行这个shell脚本</p>
+<h2 id="Shell种类"><a href="#Shell种类" class="headerlink" title="Shell种类"></a>Shell种类</h2><p>　　操作系统内核（kernel）与shell是独立的套件，而且都可被替换。不同的操作系统使用不同的shell；同一个kernel之上可以使用不同的shell。</p>
+<p>　　常见的shell分为两大主流：</p>
+<p>　　<strong>sh</strong>：</p>
+<p>　　　　Bourne shell（sh） ,Solaris,hpux默认shell</p>
+<p>　　　　Bourne again shell（bash） ,Linux系统默认shell</p>
+<p>　　<strong>csh</strong>：</p>
+<p>　　　　C shell(csh)</p>
+<p>　　　　tc shell(tcsh)</p>
+<h2 id="查看使用Shell"><a href="#查看使用Shell" class="headerlink" title="查看使用Shell"></a>查看使用Shell</h2><p><img src="/14.1.linux/1478220-20180909162724107-79067916.png" alt="img"></p>
+<h2 id="创建Shell脚本"><a href="#创建Shell脚本" class="headerlink" title="创建Shell脚本"></a>创建Shell脚本</h2><p>　　一个shell脚本通常包含如下部分：</p>
+<h3 id="首行"><a href="#首行" class="headerlink" title="首行"></a>首行</h3><p>第一行内容在脚本的首行左侧，表示脚本将要调用的shell解释器，内容如下：</p>
+<p>#!/bin/bash</p>
+<p>#！符号能够被内核识别成是一个脚本的开始，这一行必须位于脚本的首行，/bin/bash是bash程序的绝对路径，在这里表示后续的内容将通过bash程序解释执行。</p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>注释符号# 放在需注释内容的前面，如下：</p>
+<p><img src="/14.1.linux/1478220-20180909163342914-155992410.png" alt="img"></p>
+<h3 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h3><p>可执行内容和shell结构，echo是输出语句，<code>date +%F</code>是shell中生成当前日期，格式如2015-11-05</p>
+<p>DATE=<code>date -d &quot;-1 day&quot; +%F</code>  前一天的日期</p>
+<p> <img src="/14.1.linux/1478220-20180909163422796-541570573.png" alt="img"></p>
+<p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;sh</span><br><span class="line"></span><br><span class="line"># Database info</span><br><span class="line">DB_USER&#x3D;&quot;&quot;</span><br><span class="line">DB_PASS&#x3D;&quot;&quot;</span><br><span class="line">DB_HOST&#x3D;&quot;&quot;</span><br><span class="line">DB_NAME&#x3D;&quot;&quot;</span><br><span class="line"></span><br><span class="line"># Others vars</span><br><span class="line">BIN_DIR&#x3D;&quot;&#x2F;usr&#x2F;bin&quot;            #the mysql bin path</span><br><span class="line">BCK_DIR&#x3D;&quot;&#x2F;data&#x2F;backup_mysql&quot;    #the backup file directory</span><br><span class="line">DATE&#x3D;&#96;date +%F&#96;</span><br><span class="line"></span><br><span class="line"># TODO</span><br><span class="line">$BIN_DIR&#x2F;mysqldump --opt -h$DB_HOST -u$DB_USER -p$DB_PASS  $DB_NAME | gzip &gt; $BCK_DIR&#x2F;$DATE.sql.zip</span><br><span class="line"></span><br><span class="line"># 还原数据库</span><br><span class="line"># 把 *.sql.zip 使用gunzip 或 本地的解压软件 解压为 *.sql 文件</span><br><span class="line"># 用mysql-front导入前一天的 *.sql 文件即可恢复数据</span><br><span class="line"></span><br><span class="line">#如果该数据库的用户没有分配 锁表 的权限，则备份会报错 when using LOCK TABLES 。那是因为mysqldump命令默认在导出时是要锁定表的，所以解决方式有两个。一个是给该用户开放 锁表 的权限；另一个是在命令中加上  --skip-lock-tables 这个参数。即是：</span><br><span class="line"></span><br><span class="line">#$BIN_DIR&#x2F;mysqldump --opt -u$DB_USER -p$DB_PASS -h$DB_HOST $DB_NAME --skip-lock-tables | gzip &gt; $BCK_DIR&#x2F;db_$DATE.sql.gz</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="Shell脚本的权限"><a href="#Shell脚本的权限" class="headerlink" title="Shell脚本的权限"></a>Shell脚本的权限</h2><p>　　一般情况下，默认创建的脚本是没有执行权限的。</p>
+<p><img src="/14.1.linux/1478220-20180909163516646-385129409.png" alt="img"></p>
+<p>　　没有权限不能执行，需要赋予可执行权限。（进入到该脚本文件目录 chmod +x sqlAutoBak.sh 添加执行权限，否则会报错  Permission denied）</p>
+<p><img src="/14.1.linux/1478220-20180909163601299-1304176479.png" alt="img"></p>
+<p>执行脚本：./sqlAutoBak.sh</p>
+<p>注：如果是在windows编写上传的文件可能会报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;bin&#x2F;sh^M: bad interpreter: No such file or directory</span><br></pre></td></tr></table></figure>
+
+
+<p>这是不同系统编码格式引起的：在 windows系统中编辑的 .sh文件可能有不可见字符，所以在 Linux系统下执行会报以上异常信息。可以在Windows上使用Notepad++转换成Unix格式（菜单中选择：编辑&gt;档案格式转换&gt;转换成UNIX）</p>
+<h2 id="Shell脚本的执行"><a href="#Shell脚本的执行" class="headerlink" title="Shell脚本的执行"></a>Shell脚本的执行</h2><h3 id="1，输入脚本的绝对路径或相对路径"><a href="#1，输入脚本的绝对路径或相对路径" class="headerlink" title="1，输入脚本的绝对路径或相对路径"></a>1，输入脚本的绝对路径或相对路径</h3><p>　　　　/root/helloWorld.sh</p>
+<p>　　　　./helloWorld.sh</p>
+<h3 id="2，bash或sh-脚本"><a href="#2，bash或sh-脚本" class="headerlink" title="2，bash或sh +脚本"></a>2，bash或sh +脚本</h3><p>　　　　bash /root/helloWorld.sh</p>
+<p>　　　　sh helloWorld.sh</p>
+<p>注：当脚本没有x权限时，root和文件所有者通过该方式可以正常执行。</p>
+<p><img src="/14.1.linux/1478220-20180909163735967-1442298941.png" alt="img"></p>
+<h3 id="3，在脚本的路径前再加”-“-或source"><a href="#3，在脚本的路径前再加”-“-或source" class="headerlink" title="3，在脚本的路径前再加”. “ 或source"></a>3，在脚本的路径前再加”. “ 或source</h3><p>　　　　source /root/helloWorld.sh</p>
+<p>　　　　. ./helloWorld.sh</p>
+<p>　　区别：第一种和第二种会新开一个bash，不同bash中的变量无法共享。但是使用. ./脚本.sh 这种方式是在同一个shell里面执行的。</p>
+<p><img src="/14.1.linux/1478220-20180909163850037-1459460638.png" alt="img"></p>
+<h1 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h1><p>检查是否安装了crontab，如果提示未安装请自行安装，crontab安装包在系统光盘里面的pacekage文件夹crontabs安装包。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep crontab</span><br></pre></td></tr></table></figure>
+
+<p>crontab服务启动与关闭。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc&#x2F;init.d&#x2F;crond stop           --关闭服务</span><br><span class="line">&#x2F;etc&#x2F;init.d&#x2F;crond start           --启动服务</span><br><span class="line">&#x2F;etc&#x2F;init.d&#x2F;crond restart        --重启服务</span><br><span class="line">&#x2F;etc&#x2F;init.d&#x2F;crond reload        --重新载入配置</span><br></pre></td></tr></table></figure>
+
+<p>编辑定时任务列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br></pre></td></tr></table></figure>
+
+<p>查看任务是否创建成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -l</span><br></pre></td></tr></table></figure>
+
+<p>删除当前用户定时任务(删除所有,除非不再使用,否则没必要使用）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crontab -r        </span><br></pre></td></tr></table></figure>
+
+<p>设置crond开机自动启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chkconfig  --list crond                 --查看crond是否开机自动启动</span><br><span class="line">chkconfig  --level 35 crond on  		--设置crond开机自动启动</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="日志问题"><a href="#日志问题" class="headerlink" title="日志问题"></a>日志问题</h1><p>可参考文章：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/kevingrace/p/6307298.html">https://www.cnblogs.com/kevingrace/p/6307298.html</a></p>
+<p>logrotate是Linux系统自带命令，用于对系统日志进行轮转、压缩和删除，也可以将日志发送到指定邮箱。它默认的配置文件在:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc&#x2F;logrotate.conf </span><br><span class="line">&#x2F;etc&#x2F;logrotate.d&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>以mqtt日志文件为例：</p>
+<p>1.在logrotate.d目录中新建文件mosquitto，可以直接在该目录下使用vim mosquitto命令编辑文件mosquitto，写入：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;var&#x2F;log&#x2F;mosquitto&#x2F;mosquitto.log &#123;</span><br><span class="line">daily</span><br><span class="line">dateext</span><br><span class="line">copytruncate</span><br><span class="line">nocompress</span><br><span class="line">rotate 15</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>/var/log/mosquitto/mosquitto.log: mosquitto日志输出文件（这里注意这个文件路径是之前.log的位置，一定要对，不然不会生效）<br>daily: 日志将按照天来转储，也可以设置为weekly和monthly<br>dateext: 转储后的日志文件会附加上日期信息，例如转储后文件为mosquitto.log-20181105，如果不加的话，文件名格式就变为了序号mosquitto.log-1<br>copytruncate: 备份日志文件并截断，设置为nocopytruncate时备份日志文件但是不截断<br>nocompress: 不进行压缩<br>rotate 15: 指定日志文件删除之前转储的次数</p>
+<p>2.执行命令：<code>/usr/sbin/logrotate -vf /etc/logrotate.d/mosquitto</code></p>
+<p>完成后可看到在/var/log/mosquitto/目录中多了一个文件mosquitto.log-20210806</p>
+<h1 id="Linux上软件安装介绍"><a href="#Linux上软件安装介绍" class="headerlink" title="*Linux上软件安装介绍*"></a><em><strong>*Linux上软件安装介绍*</strong></em></h1><p>Linux上的软件安装有以下几种常见方式介绍</p>
+<p>1.二进制发布包</p>
+<p>软件已经针对具体平台编译打包发布，只要解压，修改配置即可（可能对linux的某个版本可以，其他版本不可用）</p>
+<p>2.RPM包</p>
+<p>软件已经按照redhat的包管理工具规范RPM进行打包发布，需要获取到相应的软件RPM发布包，然后用RPM命令进行安装（可能依赖其他包，需要下载其他包，但是可能没有打包依赖包）</p>
+<p>3.Yum在线安装</p>
+<p>软件已经以RPM规范打包，但发布在了网络上的一些服务器上，可用yum在线安装服务器上的rpm软件，并且会自动解决软件安装过程中的库依赖问题</p>
+<p>4.源码编译安装</p>
+<p>软件以源码工程的形式发布，需要获取到源码工程后用相应开发工具进行编译打包部署。</p>
+<p>上传与下载工具介绍：就是windows和linux的文件交互</p>
+<p>1.FileZilla：在windows上下载好</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps29.jpg" alt="img"> </p>
+<p>解压后，运行exe文件：</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps30.jpg" alt="img"> </p>
+<p>左边是windows的文件，右边是linux的文件，可以直接把左边的安装包拖拽到右边进行上传</p>
+<p>2.lrzsz</p>
+<p>我们可以在linux上使用yum安装方式安装 yum install lrzsz</p>
+<p>注意：必须有网络</p>
+<p>直接输入命令：yum install lrzsz 就会提示下载成功</p>
+<p>可以在crt中设置上传与下载目录：在crt上面有个选项，会话选择</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps31.jpg" alt="img"> </p>
+<p>上传：</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps32.jpg" alt="img"> </p>
+<p>下载：</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps33.jpg" alt="img"> </p>
+<p>在Linux上安装JDK:</p>
+<p>1.上传JDK到Linux的服务器</p>
+<p>通过rz命令上传JDK，然后java –version发现可以查到版本号，所以卸载自带的open-JDK</p>
+<p>rpm -qa | grep java 查找自带的java版本。然后复制，再通过rpm -e –nodeps 复制的内容卸载</p>
+<p>rpm -e –nodeps java-1.6.0-openjdk-1.6.0.35-1.13.7.1.el6_6.i686</p>
+<p>rpm -e –nodeps java-1.7.0-openjdk-1.7.0.79-2.5.5.4.el6.i686</p>
+<p>2.在Linux服务器上安装JDK</p>
+<p>通常将软件安装到/usr/local</p>
+<p>直接解压就可以： tar –xvf  jdk.tar.gz  -C 目标路径  </p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps34.jpg" alt="img">./就是当前</p>
+<p>3.配置JDK的环境变量</p>
+<p>ll查看jdk下的文件获得版本号</p>
+<p>配置环境变量：</p>
+<p>① vi /etc/profile</p>
+<p>② 在末尾行添加</p>
+<p>​    #set java environment</p>
+<p>​    JAVA_HOME=/usr/local/jdk/jdk1.7.0_71</p>
+<p>​    CLASSPATH=.:$JAVA_HOME/lib.tools.jar</p>
+<p>​    PATH=$JAVA_HOME/bin:$PATH</p>
+<p>​    export JAVA_HOME CLASSPATH PATH</p>
+<p>保存退出 ：wq</p>
+<p>③source /etc/profile  使更改的配置立即生效</p>
+<p>在Linux上安装Mysql:</p>
+<p>1.将mysql的安装文件上传到Linux的服务器.（也可以通过wget 网址下载Mysql的安装包）</p>
+<p>rz上传</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps35.jpg" alt="img"> </p>
+<p>将mysql的tar解压：创建一个新的mysql目录</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps36.jpg" alt="img"> </p>
+<p>将系统自带的mysql卸载</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps37.jpg" alt="img"> </p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps38.jpg" alt="img"> </p>
+<p>–nodeps是忽略相关依赖包</p>
+<p>2.安装MYSQL服务端</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps39.jpg" alt="img"> </p>
+<p>如果安装显示出错，需要导入相关的依赖包</p>
+<p>下面的提示是告诉我们root用户的密码第一次是随机生成的，它保存在/root/.mysql_secret中，第一次登录需要修改root密码</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps40.jpg" alt="img"> </p>
+<p>3.安装MYSQL客户端</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps41.jpg" alt="img"> </p>
+<p>查看生成的root密码</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps42.jpg" alt="img"> </p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps43.jpg" alt="img"> </p>
+<p>报错:原因是没有启动mysql服务</p>
+<p>需要开启mysql服务</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps44.jpg" alt="img"> </p>
+<p>可以通过netstat -nltp 查看现在的服务，找到3306的端口证明启动了mysql</p>
+<p>然后进行登录，操作mysql时会报错，原因是第一次操作mysql必须修改root用户的密码</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps45.jpg" alt="img"> </p>
+<p>设置root用户的密码为root</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps46.jpg" alt="img"> </p>
+<p><em><strong>*M*</strong>***</em>*ysql服务加入到系统服务并自动启动操作********：****chkconfig –add mysql</p>
+<p>自动启动：chkconfig mysql on</p>
+<p>查询列表：chkconfig</p>
+<p>关于mysql远程访问设置：</p>
+<p>先登录到mysql，然后输入下面命令进行设置</p>
+<p><img src="file:///C:\Users\swx\AppData\Local\Temp\ksohtml2932\wps47.jpg" alt="img"> </p>
+<p>在linux中很多软件的端口都被”防火墙”限止，我们需要将防火墙关闭，也可以将防火墙打开3306端口</p>
+<p>/sbin/iptables -I INPUT -p tcp –dport 3306 -j ACCEPT</p>
+<p>/etc/rc.d/init.d/iptables save</p>
+<p>/etc/init.d/iptables status</p>
+<p>学习阶段我们也可以直接将防火墙关闭（不推荐，因为服务器需要防火墙）：service iptables stop</p>
+<p>在Linux上安装tomcat:</p>
+<p>1.Tomcat上传到linux上：rz，上传文件。ll查看是否上传成功</p>
+<p>2.将上传的tomcat解压：建目录mkdir tomcat7  ，然后tar -xvf 安装包名字 -C ./tomacat7</p>
+<p>3.在tomcat/bin目录下执行 startup.sh（注意防火墙需要关闭）： ./startup.sh </p>
+<p>4.查看日志 tomcat/logs/catalina.out：cat ./catalina.out</p>
+<p>也可以查看cat ./catalina.日期.log</p>
+<p>以后的文件工程可以放到webapp下进行发布</p>
+<p><strong>Linux系统一般有4个主要部分：</strong></p>
+<p>内核、shell、文件系统和应用程序。内核、shell和文件系统一起形成了基本的操作系统结构，它们使得用户可以运行程序、管理文件并使用系统。部分层次结构如图1-1所示。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz/9aPYe0E1fb3DzFFWFib9rGhGy7kGA70lEDBbOe0FuicSPxypcgPoeL9uibcHTFXGQibX74k5ffhwscOY6zyhhZgH1w/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1><p><img src="https://mmbiz.qpic.cn/mmbiz_png/iblTYUnF9yPPAFqPibv6Siadtw5kYIvianGuggAAZcL0nicTqibicKG1MUJG8Nvic9BVDaXuJSlRZquoQJjNkNgglBRAxA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>一、linux内核</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1OKdYEbfJSc6gicBpKXLM0OehXMoaLEVciciaZtGq2EVOCnYxayTAq4iat0n7tpp67RLQyAwnJ704cic8UPyaYhQicRg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>内核是操作系统的核心，具有很多最基本功能，它负责管理系统的进程、内存、设备驱动程序、文件和网络系统，决定着系统的性能和稳定性。</p>
+<p>Linux 内核由如下几部分组成：内存管理、进程管理、设备驱动程序、文件系统和网络管理等。如图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz/9aPYe0E1fb3DzFFWFib9rGhGy7kGA70lETUWYmjOW4badfSmqjQhYuGiaxO1ZmiaiayfKJslK7oJBD2qZN4t5IHicuA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片">图1</p>
+<p> 系统调用接口：SCI 层提供了某些机制执行从用户空间到内核的函数调用。这个接口依赖于体系结构，甚至在相同的处理器家族内也是如此。SCI 实际上是一个非常有用的函数调用多路复用和多路分解服务。在 ./linux/kernel 中您可以找到 SCI 的实现，并在 ./linux/arch 中找到依赖于体系结构的部分。</p>
+<h3 id="1、内存管理"><a href="#1、内存管理" class="headerlink" title="1、内存管理"></a><strong>1、内存管理</strong></h3><p>对任何一台计算机而言，其内存以及其它资源都是有限的。为了让有限的物理内存满足应用程序对内存的大需求量，Linux  采用了称为“虚拟内存”的内存管理方式。Linux  将内存划分为容易处理的“内存页”（对于大部分体系结构来说都是 4KB）。Linux 包括了管理可用内存的方式，以及物理和虚拟映射所使用的硬件机制。</p>
+<p>不过内存管理要管理的可不止 4KB 缓冲区。Linux 提供了对 4KB 缓冲区的抽象，例如 slab 分配器。这种内存管理模式使用 4KB 缓冲区为基数，然后从中分配结构，并跟踪内存页使用情况，比如哪些内存页是满的，哪些页面没有完全使用，哪些页面为空。这样就允许该模式根据系统需要来动态调整内存使用。</p>
+<p>为了支持多个用户使用内存，有时会出现可用内存被消耗光的情况。由于这个原因，页面可以移出内存并放入磁盘中。这个过程称为交换，因为页面会被从内存交换到硬盘上。内存管理的源代码可以在 ./linux/mm 中找到。</p>
+<h3 id="2、进程管理"><a href="#2、进程管理" class="headerlink" title="2、进程管理"></a><strong>2、进程管理</strong></h3><p>进程实际是某特定应用程序的一个运行实体。在 Linux  系统中，能够同时运行多个进程，Linux  通过在短的时间间隔内轮流运行这些进程而实现“多任务”。这一短的时间间隔称为“时间片”，让进程轮流运行的方法称为“进程调度” ，完成调度的程序称为调度程序。</p>
+<p>进程调度控制进程对CPU的访问。当需要选择下一个进程运行时，由调度程序选择最值得运行的进程。可运行进程实际上是仅等待CPU资源的进程，如果某个进程在等待其它资源，则该进程是不可运行进程。Linux使用了比较简单的基于优先级的进程调度算法选择新的进程。</p>
+<p>通过多任务机制，每个进程可认为只有自己独占计算机，从而简化程序的编写。每个进程有自己单独的地址空间，并且只能由这一进程访问，这样，操作系统避免了进程之间的互相干扰以及“坏”程序对系统可能造成的危害。 为了完成某特定任务，有时需要综合两个程序的功能，例如一个程序输出文本，而另一个程序对文本进行排序。为此，操作系统还提供进程间的通讯机制来帮助完成这样的任务。Linux 中常见的进程间通讯机制有信号、管道、共享内存、信号量和套接字等。</p>
+<p>内核通过 SCI 提供了一个应用程序编程接口（API）来创建一个新进程（fork、exec 或 Portable Operating System Interface [POSⅨ] 函数），停止进程（kill、exit），并在它们之间进行通信和同步（signal 或者 POSⅨ 机制）。</p>
+<h3 id="3、-文件系统"><a href="#3、-文件系统" class="headerlink" title="3、 文件系统"></a><strong>3、 文件系统</strong></h3><p>和 DOS 等操作系统不同，Linux 操作系统中单独的文件系统并不是由驱动器号或驱动器名称（如 A:  或 C:  等）来标识的。相反，和 UNIX  操作系统一样，Linux 操作系统将独立的文件系统组合成了一个层次化的树形结构，并且由一个单独的实体代表这一文件系统。Linux  将新的文件系统通过一个称为“挂装”或“挂上”的操作将其挂装到某个目录上，从而让不同的文件系统结合成为一个整体。Linux  操作系统的一个重要特点是它支持许多不同类型的文件系统。Linux 中最普遍使用的文件系统是 Ext2，它也是 Linux  土生土长的文件系统。但 Linux  也能够支持 FAT、VFAT、FAT32、MINIX 等不同类型的文件系统，从而可以方便地和其它操作系统交换数据。由于 Linux  支持许多不同的文件系统，并且将它们组织成了一个统一的虚拟文件系统.</p>
+<p>虚拟文件系统（VirtualFileSystem,VFS）:隐藏了各种硬件的具体细节，把文件系统操作和不同文件系统的具体实现细节分离了开来，为所有的设备提供了统一的接口，VFS提供了多达数十种不同的文件系统。虚拟文件系统可以分为逻辑文件系统和设备驱动程序。逻辑文件系统指Linux所支持的文件系统，如ext2,fat等，设备驱动程序指为每一种硬件控制器所编写的设备驱动程序模块。</p>
+<p>虚拟文件系统（VFS）是 Linux 内核中非常有用的一个方面，因为它为文件系统提供了一个通用的接口抽象。VFS 在 SCI 和内核所支持的文件系统之间提供了一个交换层。即VFS 在用户和文件系统之间提供了一个交换层。</p>
+<h5 id="VFS在用户和文件系统之间提供了一个交换层"><a href="#VFS在用户和文件系统之间提供了一个交换层" class="headerlink" title="VFS在用户和文件系统之间提供了一个交换层:"></a>VFS在用户和文件系统之间提供了一个交换层:</h5><p><img src="https://mmbiz.qpic.cn/mmbiz/9aPYe0E1fb3DzFFWFib9rGhGy7kGA70lEQqkMREF3lmAGBkIon8Nm1VNjPdYz1KxFnV2oEVdLjNU9AnJzPRDVuw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>在 VFS 上面，是对诸如 open、close、read 和 write 之类的函数的一个通用 API 抽象。在 VFS 下面是文件系统抽象，它定义了上层函数的实现方式。它们是给定文件系统（超过 50 个）的插件。文件系统的源代码可以在 ./linux/fs 中找到。</p>
+<p>文件系统层之下是缓冲区缓存，它为文件系统层提供了一个通用函数集（与具体文件系统无关）。这个缓存层通过将数据保留一段时间（或者随即预先读取数据以便在需要是就可用）优化了对物理设备的访问。缓冲区缓存之下是设备驱动程序，它实现了特定物理设备的接口。</p>
+<p>因此，用户和进程不需要知道文件所在的文件系统类型，而只需要象使用 Ext2  文件系统中的文件一样使用它们。</p>
+<h3 id="4、设备驱动程序"><a href="#4、设备驱动程序" class="headerlink" title="4、设备驱动程序"></a><strong>4、设备驱动程序</strong></h3><p>设备驱动程序是 Linux  内核的主要部分。和操作系统的其它部分类似，设备驱动程序运行在高特权级的处理器环境中，从而可以直接对硬件进行操作，但正因为如此，任何一个设备驱动程序的错误都可能导致操作系统的崩溃。设备驱动程序实际控制操作系统和硬件设备之间的交互。</p>
+<p>设备驱动程序提供一组操作系统可理解的抽象接口完成和操作系统之间的交互，而与硬件相关的具体操作细节由设备驱动程序完成。一般而言，设备驱动程序和设备的控制芯片有关，例如，如果计算机硬盘是 SCSI  硬盘，则需要使用 SCSI  驱动程序，而不是 IDE 驱动程序。</p>
+<h3 id="5、网络接口（NET）"><a href="#5、网络接口（NET）" class="headerlink" title="5、网络接口（NET）"></a><strong>5、网络接口（NET）</strong></h3><p>提供了对各种网络标准的存取和各种网络硬件的支持。网络接口可分为网络协议和网络驱动程序。网络协议部分负责实现每一种可能的网络传输协议。众所周知，TCP/IP  协议是 Internet  的标准协议，同时也是事实上的工业标准。</p>
+<p>Linux  的网络实现支持 BSD 套接字，支持全部的TCP/IP协议。Linux内核的网络部分由BSD套接字、网络协议层和网络设备驱动程序组成。网络设备驱动程序负责与硬件设备通讯，每一种可能的硬件设备都有相应的设备驱动程序。</p>
+<h1 id="-1"><a href="#-1" class="headerlink" title=""></a></h1><p><img src="https://mmbiz.qpic.cn/mmbiz_png/iblTYUnF9yPPAFqPibv6Siadtw5kYIvianGuggAAZcL0nicTqibicKG1MUJG8Nvic9BVDaXuJSlRZquoQJjNkNgglBRAxA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>二、linux shell</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1OKdYEbfJSc6gicBpKXLM0OehXMoaLEVciciaZtGq2EVOCnYxayTAq4iat0n7tpp67RLQyAwnJ704cic8UPyaYhQicRg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>shell是系统的用户界面，提供了用户与内核进行交互操作的一种接口。它接收用户输入的命令并把它送入内核去执行，是一个命令解释器。另外，shell编程语言具有普通编程语言的很多特点，用这种编程语言编写的shell程序与其他应用程序具有同样的效果。</p>
+<p><strong>目前主要有下列版本的shell。</strong></p>
+<p>1、Bourne Shell：是贝尔实验室开发的。<br>2、BASH：是GNU的Bourne Again Shell，是GNU操作系统上默认的shell,大部分linux的发行套件使用的都是这种shell。<br>3、Korn Shell：是对Bourne SHell的发展，在大部分内容上与Bourne Shell兼容。<br>4、C Shell：是SUN公司Shell的BSD版本。</p>
+<h1 id="-2"><a href="#-2" class="headerlink" title=""></a></h1><p><img src="https://mmbiz.qpic.cn/mmbiz_png/iblTYUnF9yPPAFqPibv6Siadtw5kYIvianGuggAAZcL0nicTqibicKG1MUJG8Nvic9BVDaXuJSlRZquoQJjNkNgglBRAxA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p><strong>三、****linux 文件系统</strong></p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1OKdYEbfJSc6gicBpKXLM0OehXMoaLEVciciaZtGq2EVOCnYxayTAq4iat0n7tpp67RLQyAwnJ704cic8UPyaYhQicRg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>文件系统是文件存放在磁盘等存储设备上的组织方法。Linux系统能支持多种目前流行的文件系统，如EXT2、 EXT3、 FAT、 FAT32、 VFAT和ISO9660。</p>
+<h3 id="3-1-文件类型"><a href="#3-1-文件类型" class="headerlink" title="3.1 文件类型"></a><strong>3.1 文件类型</strong></h3><p>Linux下面的文件类型主要有：</p>
+<p><strong>1) 普通文件：</strong>C语言元代码、SHELL脚本、二进制的可执行文件等。分为纯文本和二进制。<br><strong>2) 目录文件：</strong>目录，存储文件的唯一地方。<br><strong>3) 链接文件：</strong>指向同一个文件或目录的的文件。<br><strong>4) 设备文件：</strong>与系统外设相关的，通常在/dev下面。分为块设备和字符设备。</p>
+<p><strong>5）管道(FIFO)文件 :</strong> 提供进程建通信的一种方式<br><strong>6）套接字(socket) 文件：</strong> 该文件类型与网络通信有关</p>
+<p>可以通过ls –l, file, stat几个命令来查看文件的类型等相关信息。</p>
+<h3 id="3-2-Linux目录"><a href="#3-2-Linux目录" class="headerlink" title="3.2  Linux目录"></a><strong>3.2  Linux目录</strong></h3><p>文件结构是文件存放在磁盘等存贮设备上的组织方法。主要体现在对文件和目录的组织上。</p>
+<p>目录提供了管理文件的一个方便而有效的途径。</p>
+<p>Linux使用标准的目录结构，在安装的时候，安装程序就已经为用户创建了文件系统和完整而固定的目录组成形式，并指定了每个目录的作用和其中的文件类型。</p>
+<p>完整的目录树可划分为小的部分，这些小部分又可以单独存放在自己的磁盘或分区上。这样，相对稳定的部分和经常变化的部分可单独存放在不同的分区中，从而方便备份或系统管理。目录树的主要部分有 root、/usr、/var、/home  等（图2） 。这样的布局可方便在 Linux 计算机之间共享文件系统的某些部分。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz/9aPYe0E1fb3DzFFWFib9rGhGy7kGA70lEs5lJ5fZtO0ibWSopT8HNxrGISkXhdWxKwicwodAHXdLluic9ibuQszIGOA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>图2</p>
+<p>Linux采用的是树型结构。最上层是根目录，其他的所有目录都是从根目录出发而生成的。</p>
+<p>微软的DOS和windows也是采用树型结构，但是在DOS和 windows中这样的树型结构的根是磁盘分区的盘符，有几个分区就有几个树型结构，他们之间的关系是并列的。最顶部的是不同的磁盘（分区），如：C，D，E，F等。</p>
+<p>但是在linux中，无论操作系统管理几个磁盘分区，这样的目录树只有一个。从结构上讲，各个磁盘分区上的树型目录不一定是并列的。</p>
+<h3 id="3-3-Linux磁盘分区"><a href="#3-3-Linux磁盘分区" class="headerlink" title="3.3 Linux磁盘分区"></a><strong>3.3 Linux磁盘分区</strong></h3><h4 id="一、主分区，扩展分区和逻辑分区："><a href="#一、主分区，扩展分区和逻辑分区：" class="headerlink" title="一、主分区，扩展分区和逻辑分区："></a><strong>一、主分区，扩展分区和逻辑分区：</strong></h4><p>linux分区不同于windows,硬盘和硬盘分区在Linux都表示为设备.</p>
+<p><strong>硬盘分区一共有三种：</strong>主分区，扩展分区和逻辑分区。</p>
+<p>硬盘的分区主要分为主分区(Primary Partion)和扩展分区(Extension Partion)两种，主分区和扩展分区的数目之和不能大于四个。</p>
+<blockquote>
+<p><strong>主分区(Primary Partion)：</strong>可以马上被使用但不能再分区。</p>
+<p><strong>扩展分区(Extension Partion)：</strong>必须再进行分区后才能使用，也就是说它必须还要进行二次分区。</p>
+<p><strong>逻辑分区（(Logical Partion)）：</strong>由扩展分区建立起来的分区。逻辑分区没有数量上限制。</p>
+</blockquote>
+<p>扩展分区只不过是逻辑分区的“容器”，实际上只有主分区和逻辑分区进行数据存储。</p>
+<h4 id="二、Linux下硬盘分区的标识"><a href="#二、Linux下硬盘分区的标识" class="headerlink" title="二、Linux下硬盘分区的标识"></a><strong>二、Linux下硬盘分区的标识</strong></h4><p>硬盘分区的标识一般使用/dev/hd[a-z]X或者/dev/sd[a-z]X来标识，其中[a-z]代表硬盘号，X代表硬盘内的分区号。</p>
+<p>整块硬盘分区的块号标识:Linux下用hda、hdb、sda、sdb 等来标识不同的硬盘;</p>
+<p><strong>其中：</strong></p>
+<p><strong>IDE接口硬盘：</strong>表示为/dev/hda1、/dev/hdb …；</p>
+<p>SCSI 接口的硬盘、SATA接口的硬盘表示为/dev/sda、/dev/sdb … … ；</p>
+<p><strong>硬盘内的分区：</strong>如果X的值是1到4,表示硬盘的主分区（包含扩展分区）；逻辑分区从是从5开始的，比如/dev/hda5肯定是逻辑分区了；</p>
+<p><strong>例如：</strong></p>
+<p>用hda1、hda2、 hda5、hda6 来标识不同的分区。其中，字母a 代表第一块硬盘，b代表第二块硬盘，依次类推。而数字1 代表一块硬盘的第一个分区、2 代表第二个分区，依次类推。1 到4 对应的是主分区(Primary Partition)或扩展分区(Extension Partition)。从5开始，对应的都是硬盘的逻辑分区(Logical Partition)。一块硬盘即使只有一个主分区，逻辑分区也是从5开始编号的，这点应特别注意。</p>
+<p><strong>总结：</strong>一个硬盘分区首先要大确认在哪个硬盘，然后再确认它所在硬盘内的哪个分区。</p>
+<p>对于/dev/hda 类似的表示方法，也并不寞生吧；我们在Linux通过fdisk -l 就可以查到硬盘是/dev/hda还是/dev/hdb；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">  　[root@localhost ~]# fdisk -l      　　</span><br><span class="line">   　Disk &#x2F;dev&#x2F;hda: 80.0 GB, 80026361856 bytes   　　255 heads, 63 sectors&#x2F;track, 9729 cylinders   　　Units &#x3D; cylinders of 16065 * 512 &#x3D; 8225280 bytes   　　 Device Boot Start End Blocks Id System   　　&#x2F;dev&#x2F;hda1 * 1 970 7791493+ 7 HPFS&#x2F;NTFS   　　&#x2F;dev&#x2F;hda2 971 9729 70356667+ 5 Extended   　　&#x2F;dev&#x2F;hda5 971 2915 15623181 b W95 FAT32   　　&#x2F;dev&#x2F;hda6 2916 4131 9767488+ 83 linux   　　&#x2F;dev&#x2F;hda7 4132 5590 11719386 83 linux   　　&#x2F;dev&#x2F;hda8 5591 6806 9767488+ 83 linux   　　&#x2F;dev&#x2F;hda9 6807 9657 22900626 83 linux   　　&#x2F;dev&#x2F;hda10 9658 9729 578308+ 82 linux swap &#x2F; Solaris</span><br></pre></td></tr></table></figure>
+
+<p>请注意第一行， Disk /dev/hda: 80.0 GB, 80026361856 bytes ，这个就是表示机器中只有一个硬盘设备/dev/hda ，体积大小为 80.0G；下面的就是硬盘的分区，每个分区都有详细的信息，在这里不详细说了；</p>
+<p><strong>Linux下磁盘分区和目录的关系如下：</strong></p>
+<p>– 任何一个分区都必须挂载到某个目录上。</p>
+<p>– 目录是逻辑上的区分。分区是物理上的区分。</p>
+<p>– 磁盘Linux分区都必须挂载到目录树中的某个具体的目录上才能进行读写操作。</p>
+<p>– 根目录是所有Linux的文件和目录所在的地方，需要挂载上一个磁盘分区。</p>
+<h3 id="3-4-linux主要目录的功用。"><a href="#3-4-linux主要目录的功用。" class="headerlink" title="3.4 linux主要目录的功用。"></a><strong>3.4 linux主要目录的功用。</strong></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;bin 二进制可执行命令   　　</span><br><span class="line"> &#x2F;dev 设备特殊文件   　　&#x2F;etc 系统管理和配置文件   　　&#x2F;etc&#x2F;rc.d 启动的配置文件和脚本   　　&#x2F;home 用户主目录的基点，比如用户user的主目录就是&#x2F;home&#x2F;user，可以用~user表示   　　&#x2F;lib 标准程序设计库，又叫动态链接共享库，作用类似windows里的.dll文件   　　&#x2F;sbin 系统管理命令，这里存放的是系统管理员使用的管理程序   　　&#x2F;tmp 公用的临时文件存储点   　　&#x2F;root 系统管理员的主目录（呵呵，特权阶级）   　　&#x2F;mnt 系统提供这个目录是让用户临时挂载其他的文件系统。  　　&#x2F;lost+found 这个目录平时是空的，系统非正常关机而留下“无家可归”的文件（windows下叫什么.chk）就在这里   　　&#x2F;proc 虚拟的目录，是系统内存的映射。可直接访问这个目录来获取系统信息。  　　&#x2F;var 某些大文件的溢出区，比方说各种服务的日志文件   　　&#x2F;usr 最庞大的目录，要用到的应用程序和文件几乎都在这个目录。其中包含：  　　      &#x2F;usr&#x2F;X11R6 存放X window的目录   　　      &#x2F;usr&#x2F;bin 众多的应用程序   　　      &#x2F;usr&#x2F;sbin 超级用户的一些管理程序   　　      &#x2F;usr&#x2F;doc linux文档   　　      &#x2F;usr&#x2F;include linux下开发和编译应用程序所需要的头文件   　　      &#x2F;usr&#x2F;lib 常用的动态链接库和软件包的配置文件   　　      &#x2F;usr&#x2F;man 帮助文档   　　      &#x2F;usr&#x2F;src 源代码，linux内核的源代码就放在&#x2F;usr&#x2F;src&#x2F;linux里   　　      &#x2F;usr&#x2F;local&#x2F;bin 本地增加的命令   　　      &#x2F;usr&#x2F;local&#x2F;lib 本地增加的库</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-5-linux文件系统"><a href="#3-5-linux文件系统" class="headerlink" title="3.5  linux文件系统"></a><strong>3.5  linux文件系统</strong></h3><p>文件系统指文件存在的物理空间，linux系统中每个分区都是一个文件系统，都有自己的目录层次结构。linux会将这些分属不同分区的、单独的文件系统按一定的方式形成一个系统的总的目录层次结构。一个操作系统的运行离不开对文件的操作，因此必然要拥有并维护自己的文件系统。</p>
+<p><strong>1、文件系统类型：</strong></p>
+<h4 id="ext2-：-早期linux中常用的文件系统-ext3-：-ext2的升级版，带日志功能-RAMFS-：-内存文件系统，速度很快-NFS-：-网络文件系统，由SUN发明，主要用于远程文件共享-MS-DOS-：-MS-DOS文件系统-VFAT-：-Windows-95-98-操作系统采用的文件系统-FAT-：-Windows-XP-操作系统采用的文件系统-NTFS：-Windows-NT-XP-操作系统采用的文件系统-HPFS-：-OS-2-操作系统采用的文件系统-PROC-虚拟的进程文件系统-ISO9660-：-大部分光盘所采用的文件系统-ufsSun-OS-所采用的文件系统-NCPFS-：-Novell-服务器所采用的文件系统-SMBFS-：-Samba-的共享文件系统-XFS-：-由SGI开发的先进的日志文件系统，支持超大容量文件-JFS-：IBM的AIX使用的日志文件系统-ReiserFS-基于平衡树结构的文件系统-udf-可擦写的数据光盘文件系统"><a href="#ext2-：-早期linux中常用的文件系统-ext3-：-ext2的升级版，带日志功能-RAMFS-：-内存文件系统，速度很快-NFS-：-网络文件系统，由SUN发明，主要用于远程文件共享-MS-DOS-：-MS-DOS文件系统-VFAT-：-Windows-95-98-操作系统采用的文件系统-FAT-：-Windows-XP-操作系统采用的文件系统-NTFS：-Windows-NT-XP-操作系统采用的文件系统-HPFS-：-OS-2-操作系统采用的文件系统-PROC-虚拟的进程文件系统-ISO9660-：-大部分光盘所采用的文件系统-ufsSun-OS-所采用的文件系统-NCPFS-：-Novell-服务器所采用的文件系统-SMBFS-：-Samba-的共享文件系统-XFS-：-由SGI开发的先进的日志文件系统，支持超大容量文件-JFS-：IBM的AIX使用的日志文件系统-ReiserFS-基于平衡树结构的文件系统-udf-可擦写的数据光盘文件系统" class="headerlink" title="ext2 ： 早期linux中常用的文件系统 ext3 ： ext2的升级版，带日志功能 RAMFS ： 内存文件系统，速度很快 NFS ： 网络文件系统，由SUN发明，主要用于远程文件共享 MS-DOS ： MS-DOS文件系统 VFAT ： Windows 95/98 操作系统采用的文件系统 FAT ： Windows XP 操作系统采用的文件系统 NTFS： Windows NT/XP 操作系统采用的文件系统 HPFS ： OS/2 操作系统采用的文件系统 PROC : 虚拟的进程文件系统 ISO9660 ： 大部分光盘所采用的文件系统 ufsSun : OS 所采用的文件系统 NCPFS ： Novell 服务器所采用的文件系统 SMBFS ： Samba 的共享文件系统 XFS ： 由SGI开发的先进的日志文件系统，支持超大容量文件 JFS ：IBM的AIX使用的日志文件系统 ReiserFS : 基于平衡树结构的文件系统 udf: 可擦写的数据光盘文件系统"></a><strong>ext2 ：</strong> 早期linux中常用的文件系统 <strong>ext3 ：</strong> ext2的升级版，带日志功能 <strong>RAMFS ：</strong> 内存文件系统，速度很快 <strong>NFS ：</strong> 网络文件系统，由SUN发明，主要用于远程文件共享 <strong>MS-DOS ：</strong> MS-DOS文件系统 <strong>VFAT ：</strong> Windows 95/98 操作系统采用的文件系统 <strong>FAT ：</strong> Windows XP 操作系统采用的文件系统 <strong>NTFS：</strong> Windows NT/XP 操作系统采用的文件系统 <strong>HPFS ：</strong> OS/2 操作系统采用的文件系统 <strong>PROC :</strong> 虚拟的进程文件系统 <strong>ISO9660 ：</strong> 大部分光盘所采用的文件系统 <strong>ufsSun :</strong> OS 所采用的文件系统 <strong>NCPFS ：</strong> Novell 服务器所采用的文件系统 <strong>SMBFS ：</strong> Samba 的共享文件系统 <strong>XFS ：</strong> 由SGI开发的先进的日志文件系统，支持超大容量文件 <strong>JFS ：</strong>IBM的AIX使用的日志文件系统 ReiserFS : 基于平衡树结构的文件系统 udf: 可擦写的数据光盘文件系统</h4><h4 id="2、文件系统特性："><a href="#2、文件系统特性：" class="headerlink" title="2、文件系统特性："></a><strong>2、文件系统特性：</strong></h4><p>磁盘分区完毕后还需要进行格式化(format)，之后操作系统才能够使用这个分区。格式化的目的是能使操作系统可以使用的文件系统格式（即我们上面提到文件系统类型）.</p>
+<p>每种操作系统能够使用的文件系统并不相同. 如windows 98 以前的微软操作系统主要利用的文件系统是 FAT (或 FAT16)，windows 2000 以后的版本有所谓的 NTFS 文件系统，至于 Linux 的正统文件系统则为 Ext2 (Linux second extended file system, ext2fs)这一个。此外，在默认的情况下，windows 操作系统是不会认识 Linux 的 Ext2 的。</p>
+<p>传统的磁盘与文件系统之应用中，一个分区就是只能够被格式化成为一个文件系统，所以我们可以说一个 filesystem 就是一个 partition。但是由于新技术的利用，例如我们常听到的LVM与软件磁盘阵列(software raid)， 这些技术可以将一个分区格式化为多个文件系统(例如LVM)，也能够将多个分区合成一个文件系统(LVM, RAID)！所以说，目前我们在格式化时已经不再说成针对 partition 来格式化了， 通常我们可以称呼一个可被挂载的数据为一个文件系统而不是一个分区喔！</p>
+<p>那么文件系统是如何运行的呢？这与操作系统的文件数据有关。较新的操作系统的文件数据除了文件实际内容外， 通常含有非常多的属性，例如 Linux 操作系统的文件权限(rwx)与文件属性(拥有者、群组、时间参数等)。 文件系统通常会将这两部份的数据分别存放在不同的区块，权限与属性放置到 inode 中，至于实际数据则放置到 data block 区块中。另外，还有一个超级区块 (superblock) 会记录整个文件系统的整体信息，包括 inode 与 block 的总量、使用量、剩余量等。</p>
+<p>对于一个磁盘分区来说，在被指定为相应的文件系统后，整个分区被分为 1024，2048 和 4096 字节大小的块。根据块使用的不同，可分为：</p>
+<p>1、超级块(Superblock): 这是整个文件系统的第一块空间。包括整个文件系统的基本信息，如块大小，inode/block的总量、使用量、剩余量，指向空间 inode 和数据块的指针等相关信息。</p>
+<p>2、inode块(文件索引节点) : 文件系统索引,记录文件的属性。它是文件系统的最基本单元，是文件系统连接任何子目录、任何文件的桥梁。每个子目录和文件只有唯一的一个 inode 块。它包含了文件系统中文件的基本属性(文件的长度、创建及修改时间、权限、所属关系)、存放数据的位置等相关信息. 在 Linux 下可以通过 “ls -li” 命令查看文件的 inode 信息。硬连接和源文件具有相同的 inode 。</p>
+<p>3、数据块(Block) :实际记录文件的内容，若文件太大时，会占用多个 block。为了提高目录访问效率，Linux 还提供了表达路径与 inode 对应关系的 dentry 结构。它描述了路径信息并连接到节点 inode，它包括各种目录信息，还指向了 inode 和超级块。</p>
+<p>就像一本书有封面、目录和正文一样。在文件系统中，超级块就相当于封面，从封面可以得知这本书的基本信息；inode 块相当于目录，从目录可以得知各章节内容的位置；而数据块则相当于书的正文，记录着具体内容。</p>
+<p>Linux正统的文件系统(如ext2、3等)将硬盘分区时会划分出超级块、inode Table区块和data block数据区域。一个文件由一个超级块、inode和数据区域块组成。Inode包含文件的属性(如读写属性、owner等，以及指向数据块的指针)，数据区域块则是文件内容。当查看某个文件时，会先从inode table中查出文件属性及数据存放点，再从数据块中读取数据。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz/9aPYe0E1fb3DzFFWFib9rGhGy7kGA70lEG57fUxgGiagsu2Ty4hUoPaKBu81GmhwLPJAc4nAc6icE8VfOZdgZdDpA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>ext2文件系统示意图</p>
+<p>我们将 inode 与 block 区块用图解来说明一下，如下图所示，文件系统先格式化出 inode 与 block 的区块，假设某一个文件的属性与权限数据是放置到 inode 4 号(下图较小方格内)，而这个 inode 记录了文件数据的实际放置点为 2, 7, 13, 15 这四个 block 号码，此时我们的操作系统就能够据此来排列磁盘的阅读顺序，可以一口气将四个 block 内容读出来！那么数据的读取就如同下图中的箭头所指定的模样了。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz/9aPYe0E1fb3DzFFWFib9rGhGy7kGA70lExkXOIu9JicNV1EibibQSEcLezMzcicbQZ2d6mBa0NefDIKXth0rUGouuEg/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>图 inode/block 数据存取示意图</p>
+<p>这种数据存取的方法我们称为索引式文件系统(indexed allocation)。那有没有其他的惯用文件系统可以比较一下啊？有的，那就是我们惯用的闪盘(闪存)，闪盘使用的文件系统一般为 FAT 格式。FAT 这种格式的文件系统并没有 inode 存在，所以 FAT 没有办法将这个文件的所有 block 在一开始就读取出来。每个 block 号码都记录在前一个 block 当中， 其读取方式有点像下图所示:</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz/9aPYe0E1fb3DzFFWFib9rGhGy7kGA70lEicTYERpYiaUcHTbIntEic8A1lgZXX3YiaEpI8L5nBAv8ozsicHSv5xDly2g/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>图、FAT文件系统数据存取示意图</p>
+<p>上图中我们假设文件的数据依序写入1-&gt;7-&gt;4-&gt;15号这四个 block 号码中， 但这个文件系统没有办法一口气就知道四个 block 的号码，他得要一个一个的将 block 读出后，才会知道下一个 block 在何处。如果同一个文件数据写入的 block 分散的太过厉害时，则我们的磁盘读取头将无法在磁盘转一圈就读到所有的数据， 因此磁盘就会多转好几圈才能完整的读取到这个文件的内容！</p>
+<p>常常会听到所谓的“碎片整理”吧？ 需要碎片整理的原因就是文件写入的 block 太过于离散了，此时文件读取的效能将会变的很差所致。 这个时候可以透过碎片整理将同一个文件所属的 blocks 汇整在一起，这样数据的读取会比较容易啊！ 想当然尔，FAT 的文件系统需要经常的碎片整理一下，那么 Ext2 是否需要磁盘重整呢？</p>
+<p>由于 Ext2 是索引式文件系统，基本上不太需要常常进行碎片整理的。但是如果文件系统使用太久， 常常删除/编辑/新增文件时，那么还是可能会造成文件数据太过于离散的问题，此时或许会需要进行重整一下的。不过，老实说，鸟哥倒是没有在 Linux 操作系统上面进行过 Ext2/Ext3 文件系统的碎片整理说！似乎不太需要啦！^_^</p>
+<p>可以用ln命令对一个已经存在的文件再建立一个新的连接，而不复制文件的内容。连接有软连接和硬连接之分，软连接又叫符号连接。它们各自的特点是：</p>
+<p>硬连接：原文件名和连接文件名都指向相同的物理地址。目录不能有硬连接；硬连接不能跨越文件系统（不能跨越不同的分区）文件在磁盘中只有一个拷贝，节省硬盘空间；</p>
+<p>由于删除文件要在同一个索引节点属于唯一的连接时才能成功，因此可以防止不必要的误删除。</p>
+<p>符号连接：用ln -s命令建立文件的符号连接符号连接是linux特殊文件的一种，作为一个文件，它的数据是它所连接的文件的路径名。类似windows下的快捷方式。</p>
+<p>可以删除原有的文件而保存连接文件，没有防止误删除功能。</p>
+<p>这一段的的内容过于抽象，又是节点又是数组的，我已经尽量通俗再通俗了，又不好加例子作演示。大家如果还是云里雾里的话，我也没有什么办法了，只有先记住，日后在实际应用中慢慢体会、理解了。这也是我学习的一个方法吧。</p>
+<h3 id="3-6-文件系统在内核中的表示"><a href="#3-6-文件系统在内核中的表示" class="headerlink" title="3.6 文件系统在内核中的表示"></a><strong>3.6 文件系统在内核中的表示</strong></h3><p><strong>内核数据结构</strong></p>
+<p>Linux内核的VFS子系统可以图示如下：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz/9aPYe0E1fb3DzFFWFib9rGhGy7kGA70lE0SomiaP6IeXYX7pyspBiaMgmHCf0lOhM5PKm0PtBbecPfZd190KG5CiaA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>文件与IO: 每个进程在PCB（Process Control Block）中都保存着一份文件描述符表，文件描述符就是这个表的索引，每个表项都有一个指向已打开文件的指针，现在我们明确一下：已打开的文件在内核中用file结构体表示，文件描述符表中的指针指向file结构体。</p>
+<p>在file结构体中维护File Status Flag（file结构体的成员f_flags）和当前读写位置（file结构体的成员f_pos）。在上图中，进程1和进程2都打开同一文件，但是对应不同的file结构体，因此可以有不同的File Status Flag和读写位置。file结构体中比较重要的成员还有f_count，表示引用计数（Reference Count），后面我们会讲到，dup、fork等系统调用会导致多个文件描述符指向同一个file结构体，例如有fd1和fd2都引用同一个file结构体，那么它的引用计数就是2，当close(fd1)时并不会释放file结构体，而只是把引用计数减到1，如果再close(fd2)，引用计数就会减到0同时释放file结构体，这才真的关闭了文件。</p>
+<p>每个file结构体都指向一个file_operations结构体，这个结构体的成员都是函数指针，指向实现各种文件操作的内核函数。比如在用户程序中read一个文件描述符，read通过系统调用进入内核，然后找到这个文件描述符所指向的file结构体，找到file结构体所指向的file_operations结构体，调用它的read成员所指向的内核函数以完成用户请求。在用户程序中调用lseek、read、write、ioctl、open等函数，最终都由内核调用file_operations的各成员所指向的内核函数完成用户请求。</p>
+<p>file_operations结构体中的release成员用于完成用户程序的close请求，之所以叫release而不叫close是因为它不一定真的关闭文件，而是减少引用计数，只有引用计数减到0才关闭文件。对于同一个文件系统上打开的常规文件来说，read、write等文件操作的步骤和方法应该是一样的，调用的函数应该是相同的，所以图中的三个打开文件的file结构体指向同一个file_operations结构体。如果打开一个字符设备文件，那么它的read、write操作肯定和常规文件不一样，不是读写磁盘的数据块而是读写硬件设备，所以file结构体应该指向不同的file_operations结构体，其中的各种文件操作函数由该设备的驱动程序实现。</p>
+<p>每个file结构体都有一个指向dentry结构体的指针，“dentry”是directory entry（目录项）的缩写。我们传给open、stat等函数的参数的是一个路径，例如/home/akaedu/a，需要根据路径找到文件的inode。为了减少读盘次数，内核缓存了目录的树状结构，称为dentry cache，其中每个节点是一个dentry结构体，只要沿着路径各部分的dentry搜索即可，从根目录/找到home目录，然后找到akaedu目录，然后找到文件a。dentry cache只保存最近访问过的目录项，如果要找的目录项在cache中没有，就要从磁盘读到内存中。</p>
+<p>每个dentry结构体都有一个指针指向inode结构体。inode结构体保存着从磁盘inode读上来的信息。在上图的例子中，有两个dentry，分别表示/home/akaedu/a和/home/akaedu/b，它们都指向同一个inode，说明这两个文件互为硬链接。inode结构体中保存着从磁盘分区的inode读上来信息，例如所有者、文件大小、文件类型和权限位等。每个inode结构体都有一个指向inode_operations结构体的指针，后者也是一组函数指针指向一些完成文件目录操作的内核函数。</p>
+<p>和file_operations不同，inode_operations所指向的不是针对某一个文件进行操作的函数，而是影响文件和目录布局的函数，例如添加删除文件和目录、跟踪符号链接等等，属于同一文件系统的各inode结构体可以指向同一个inode_operations结构体。</p>
+<p>inode结构体有一个指向super_block结构体的指针。super_block结构体保存着从磁盘分区的超级块读上来的信息，例如文件系统类型、块大小等。super_block结构体的s_root成员是一个指向dentry的指针，表示这个文件系统的根目录被mount到哪里，在上图的例子中这个分区被mount到/home目录下。</p>
+<p>file、dentry、inode、super_block这几个结构体组成了VFS的核心概念。对于ext2文件系统来说，在磁盘存储布局上也有inode和超级块的概念，所以很容易和VFS中的概念建立对应关系。而另外一些文件系统格式来自非UNIX系统（例如Windows的FAT32、NTFS），可能没有inode或超级块这样的概念，但为了能mount到Linux系统，也只好在驱动程序中硬凑一下，在Linux下看FAT32和NTFS分区会发现权限位是错的，所有文件都是rwxrwxrwx，因为它们本来就没有inode和权限位的概念，这是硬凑出来的。</p>
+<h3 id="3-6-挂载文件系统"><a href="#3-6-挂载文件系统" class="headerlink" title="3.6  挂载文件系统"></a><strong>3.6  挂载文件系统</strong></h3><p>linux系统中每个分区都是一个文件系统，都有自己的目录层次结构。linux会将这些分属不同分区的、单独的文件系统按一定的方式形成一个系统的总的目录层次结构。这里所说的“按一定方式”就是指的挂载。</p>
+<p>将一个文件系统的顶层目录挂到另一个文件系统的子目录上，使它们成为一个整体，称为挂载。把该子目录称为挂载点.</p>
+<p>例如要读取硬盘中的一个格式化好的分区、光盘或软件等设备时，必须先把这些设备对应到某个目录上，而这个目录就称为“挂载点（mount point）”，这样才可以读取这些设备。挂载后将物理分区细节屏蔽掉，用户只有统一的逻辑概念。所有的东西都是文件。</p>
+<p><strong>注意：</strong>1、挂载点必须是一个目录。</p>
+<p>2、一个分区挂载在一个已存在的目录上，这个目录可以不为空，但挂载后这个目录下以前的内容将不可用。</p>
+<p>对于其他操作系统建立的文件系统的挂载也是这样。但是需要理解的是：光盘、软盘、其他操作系统使用的文件系统的格式与linux使用的文件系统格式是不一样的。光盘是ISO9660；软盘是fat16或ext2；windows NT是fat16、NTFS；windows98是fat16、fat32；windows2000和windowsXP是fat16、fat32、 NTFS。挂载前要了解linux是否支持所要挂载的文件系统格式。</p>
+<p>挂载时使用mount命令，其格式：mount [-参数] [设备名称] [挂载点]<br>其中常用的参数有</p>
+<p>-t 指定设备的文件系统类型（什么提到的文件类型）<br>-o 指定挂载文件系统时的选项。有些也可用在/etc/fstab中。常用的有</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">codepage&#x3D;XXX 代码页  </span><br><span class="line">iocharset&#x3D;XXX 字符集   ro 以只读方式挂载   rw 以读写方式挂载   nouser 使一般用户无法挂载   user 可以让一般用户挂载设备</span><br></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<p><strong>1、挂载windows的文件系统：</strong></p>
+<p>1）首先我们使用sudo fdisk -l查看挂载的设备，例如最下面有：/dev/hda5<br>2）mkdir创建一个目录，这里的目录是作为挂在目录，就是你要把E盘挂到这个目录下：mk /mnt/winc<br>3）windows和linux使用的不是一个文件系统，一般情况下linux不挂载windows文件系统，所以要你手动mount：<br># mount -t vfat /dev/hda5 /mnt/winc  （ -t vfat指出这里的文件系统fat32）<br>现在就可以进入/mnt/winc等目录读写这些文件了。</p>
+<p><strong>2、挂载光盘：# mk /mnt/cdrom</strong></p>
+<p># mount -t iso9660 /dev/cdrom /mnt/cdrom (关盘的名字一般都是cdrom，这条命令一般都通用)</p>
+<p>3、虚拟机共享文件夹：例如在VirtualBox下，主机是Windows，Ubuntu是Guest。共分三步：</p>
+<p>1). 首先要安装虚拟电脑工具包：在VirtualBox的菜单里选择”设备”-&gt;”安装虚拟电脑工具包”，你会发现在Ubuntu桌面上多出一个光盘图标，这张光盘默认被自动加载到了文件夹/media/cdom0，而且/cdrom自动指向这个文件夹。默认设置下文件管理器会自动打开这张光盘，可以看到里面有个”VBoxLinuxAdditions.run”文件。打开一个命令行终端，依次输入”cd /cdrom”和”sudo sh ./VBoxLinuxAdditions.run”，不含双引号，开始安装工具包。安装完毕，会用英文提示要重启Ubuntu，建议立刻重启。重启后，比较明显的变化是鼠标是共享模式，并且剪贴板也和Windows共享了。如果有这些变化，说明虚拟电脑工具包已经装成功。</p>
+<p>2). 下一步设置共享文件夹。</p>
+<p>在共享文件夹设置窗口中，单击右侧的”添加一个共享文件夹”，路径选择你想要共享的Windows文件夹，共享名任取一个自己喜欢的，比如”myshare”，选项read-only是指是否只允许ubuntu读这个文件夹，请根据需要选择这个选项。</p>
+<p>3). 在ubuntu下挂载这个共享文件夹:sudo mount -t vboxsf myshare /media/share<br>其中”myshare”是之前取的共享文件夹的名字，”/media/share”是要挂载到的目标文件.</p>
+<h3 id="3-7-自动挂载windows分区"><a href="#3-7-自动挂载windows分区" class="headerlink" title="3.7  自动挂载windows分区"></a><strong>3.7  自动挂载windows分区</strong></h3><p>每次开机访问windows分区都要运行mount命令显然太烦琐，为什么访问其他的linux分区不用使用mount命令呢？</p>
+<p>其实，每次开机时，linux自动将需要挂载的linux分区挂载上了。那么我们是不是可以设定让linux在启动的时候也挂载我们希望挂载的分区，如windows分区，以实现文件系统的自动挂载呢？</p>
+<p>这是完全可以的。在/etc目录下有个fstab文件，它里面列出了linux开机时自动挂载的文件系统的列表。我的/etc/fstab文件如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> 　&#x2F;dev&#x2F;hda2 &#x2F; ext3 defaults 1 1      　　</span><br><span class="line">  　&#x2F;dev&#x2F;hda1 &#x2F;boot ext3 defaults 1 2      　　</span><br><span class="line">  　none &#x2F;dev&#x2F;pts devpts gid&#x3D;5,mode&#x3D;620 0 0      　　</span><br><span class="line">  　none &#x2F;proc proc defaults 0 0      　　</span><br><span class="line">  　none &#x2F;dev&#x2F;shm tmpfs defaults 0 0      　　</span><br><span class="line">  　&#x2F;dev&#x2F;hda3 swap swap defaults 0 0      　　</span><br><span class="line">  　&#x2F;dev&#x2F;cdrom &#x2F;mnt&#x2F;cdrom iso9660 noauto,codepage&#x3D;936,iocharset&#x3D;gb2312 0 0      　　</span><br><span class="line">  　&#x2F;dev&#x2F;fd0 &#x2F;mnt&#x2F;floppy auto noauto,owner,kudzu 0 0      　　</span><br><span class="line">  　&#x2F;dev&#x2F;hdb1 &#x2F;mnt&#x2F;winc vfat defaults,codepage&#x3D;936,iocharset&#x3D;cp936 0 0      　　</span><br><span class="line">  　&#x2F;dev&#x2F;hda5 &#x2F;mnt&#x2F;wind vfat defaults,codepage&#x3D;936,iocharset&#x3D;cp936 0 0</span><br></pre></td></tr></table></figure>
+
+<p>在/etc/fstab文件里，第一列是挂载的文件系统的设备名，第二列是挂载点，第三列是挂载的文件系统类型，第四列是挂载的选项，选项间用逗号分隔。第五六列不知道是什么意思，还望高手指点。</p>
+<p>在最后两行是我手工添加的windows下的C；D盘，加了codepage=936和iocharset=cp936参数以支持中文文件名。参数defaults实际上包含了一组默认参数：</p>
+<p>rw 以可读写模式挂载<br>suid 开启用户ID和群组ID设置位<br>dev 可解读文件系统上的字符或区块设备<br>exec 可执行二进制文件<br>auto 自动挂载<br>nouser 使一般用户无法挂载<br>async 以非同步方式执行文件系统的输入输出操作</p>
+<p>大家可以看到在这个列表里，光驱和软驱是不自动挂载的，参数设置为noauto。（如果你非要设成自动挂载，你要确保每次开机时你的光驱和软驱里都要有盘，呵呵。)</p>
+<h3 id="3-8-软连接、硬链接"><a href="#3-8-软连接、硬链接" class="headerlink" title="3.8 .软连接、硬链接"></a><strong>3.8 .软连接、硬链接</strong></h3><p>可以用ln命令对一个已经存在的文件再建立一个新的连接，而不复制文件的内容。连接有软连接和硬连接之分，软连接又叫符号连接。它们各自的特点是：</p>
+<p>硬连接：是给文件一个副本，原文件名和连接文件名都指向相同的物理地址。目录不能有硬连接；硬连接不能跨越文件系统（不能跨越不同的分区）文件在磁盘中只有一个拷贝，节省硬盘空间；</p>
+<p>修改其中一个，与其连接的文件同时被修改。如果删除其中任意一个其余的文件将不受影响。</p>
+<p>由于删除文件要在同一个索引节点属于唯一的连接时才能成功，因此可以防止不必要的误删除。</p>
+<p>符号连接（软连接）：用ln -s命令建立文件的符号连接符号连接是linux特殊文件的一种，作为一个文件，它的数据是它所连接的文件的路径名。类似windows下的快捷方式。</p>
+<p>当然删除这个连接，也不会影响到源文件，但对连接文件的使用、引用都是直接调用源文件的。</p>
+<p>具体关系可以看下图：</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz/9aPYe0E1fb3DzFFWFib9rGhGy7kGA70lESwS1gbZe2qh6ZHTNxCZOUxJ0sfniaYcPpsJCicWdxOL44FibCvjAcwoDw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>图5：软链接和硬链接</p>
+<p>从图上可以看出硬链接和软链接的区别：</p>
+<blockquote>
+<p>1：硬链接原文件和新文件的inode编号一致。而软链接不一样。</p>
+<p>2：对原文件删除，会导致软链接不可用，而硬链接不受影响。</p>
+<p>3：对原文件的修改，软、硬链接文件内容也一样的修改，因为都是指向同一个文件内容的。</p>
+</blockquote>
+<h3 id="3-9-文件目录管理命令"><a href="#3-9-文件目录管理命令" class="headerlink" title="3.9.文件目录管理命令"></a><strong>3.9.文件目录管理命令</strong></h3><p>磁盘和文件空间 ：fdisk df du</p>
+<p>文件目录与管理：cd pwd mkdir rmdir ls cp rm mv</p>
+<p>查看文件内容 cat、tac、more、less、head 、tail</p>
+<p>文件目录与权限 ：chmod chown chgrp umask</p>
+<p>文件查找：which、whereis、locate、find、find</p>
+<h1 id="-3"><a href="#-3" class="headerlink" title=""></a></h1><p><img src="https://mmbiz.qpic.cn/mmbiz_png/iblTYUnF9yPPAFqPibv6Siadtw5kYIvianGuggAAZcL0nicTqibicKG1MUJG8Nvic9BVDaXuJSlRZquoQJjNkNgglBRAxA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>四、linux 应用</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1OKdYEbfJSc6gicBpKXLM0OehXMoaLEVciciaZtGq2EVOCnYxayTAq4iat0n7tpp67RLQyAwnJ704cic8UPyaYhQicRg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>标准的Linux系统一般都有一套都有称为应用程序的程序集，它包括文本编辑器、编程语言、X Window、办公套件、Internet工具和数据库等。</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/iblTYUnF9yPPAFqPibv6Siadtw5kYIvianGuggAAZcL0nicTqibicKG1MUJG8Nvic9BVDaXuJSlRZquoQJjNkNgglBRAxA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>五、linux内核参数优化</p>
+<p><img src="https://mmbiz.qpic.cn/mmbiz_png/1OKdYEbfJSc6gicBpKXLM0OehXMoaLEVciciaZtGq2EVOCnYxayTAq4iat0n7tpp67RLQyAwnJ704cic8UPyaYhQicRg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1" alt="图片"></p>
+<p>内核参数是用户和系统内核之间交互的一个接口，通过这个接口，用户可以在系统运行的同时动态更新内核配置，而这些内核参数是通过Linux Proc文件系统存在的。因此，可以通过调整Proc文件系统达到优化Linux性能的目的。</p>
+<h1 id="VMware安装centos"><a href="#VMware安装centos" class="headerlink" title="VMware安装centos"></a>VMware安装centos</h1><p><a target="_blank" rel="noopener" href="http://mirrors.aliyun.com/centos/7.9.2009/isos/x86_64/">http://mirrors.aliyun.com/centos/7.9.2009/isos/x86_64/</a></p>
+<p>DVD是基本版本（推荐使用这个）</p>
+<p>Everything是所有</p>
+<p>minial是最小的。后面那个数字是大小。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/07/14.1.linux/" data-id="ckxho8wp20078h8vw2xmm2gh1" data-title="linux" class="article-share-link">分享</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-20.测试" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/04/07/20.%E6%B5%8B%E8%AF%95/" class="article-date">
@@ -118,7 +852,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/07/20.%E6%B5%8B%E8%AF%95/" data-id="ckw61sduv000poswdfdel8qo3" data-title="测试" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/07/20.%E6%B5%8B%E8%AF%95/" data-id="ckxho8wix000ph8vwh93oe9kz" data-title="测试" class="article-share-link">分享</a>
       
       
       
@@ -300,7 +1034,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/07/13.1.mybatis/" data-id="ckw61sdus000goswdbbg5aauh" data-title="mybatis" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/07/13.1.mybatis/" data-id="ckxho8wis000gh8vw7frxgwqe" data-title="mybatis" class="article-share-link">分享</a>
       
       
       
@@ -678,7 +1412,7 @@ public UserAccountServiceImpl(User user)&#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/07/12.1.spring/" data-id="ckw61sdx4006roswd9x1lf6sf" data-title="spring" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/07/12.1.spring/" data-id="ckxho8wmj006uh8vw0dwv4umh" data-title="spring" class="article-share-link">分享</a>
       
       
       
@@ -2232,7 +2966,7 @@ index.html使我们前端代码入口的一个html文件
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/07/8.6.VUE/" data-id="ckw61se0i007moswd8pw112z0" data-title="VUE" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/07/8.6.VUE/" data-id="ckxho8wru007ph8vw21te545q" data-title="VUE" class="article-share-link">分享</a>
       
       
       
@@ -2699,7 +3433,7 @@ index.html使我们前端代码入口的一个html文件
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/07/2.1.Typora%E4%BD%BF%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" data-id="ckw61sduu000noswdc2smd68c" data-title="Typora使用快捷键" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/07/2.1.Typora%E4%BD%BF%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" data-id="ckxho8wix000oh8vw5q54ahz8" data-title="Typora使用快捷键" class="article-share-link">分享</a>
       
       
       
@@ -2781,7 +3515,7 @@ index.html使我们前端代码入口的一个html文件
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/07/10.3.%E9%A1%B9%E7%9B%AE%E7%BC%96%E5%86%99%E6%96%87%E6%A1%A3/" data-id="ckw61sduo0007oswda7en0spw" data-title="编写文档" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/07/10.3.%E9%A1%B9%E7%9B%AE%E7%BC%96%E5%86%99%E6%96%87%E6%A1%A3/" data-id="ckxho8win0007h8vwhdpng4vx" data-title="编写文档" class="article-share-link">分享</a>
       
       
       
@@ -3143,7 +3877,7 @@ index.html使我们前端代码入口的一个html文件
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/06/5.2.MySQL%E8%BF%9B%E9%98%B6/" data-id="ckw61sdwa004uoswd4rzr61e2" data-title="MySQL" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/06/5.2.MySQL%E8%BF%9B%E9%98%B6/" data-id="ckxho8wlb004vh8vw3l7d8gp2" data-title="MySQL" class="article-share-link">分享</a>
       
       
       
@@ -3185,7 +3919,7 @@ index.html使我们前端代码入口的一个html文件
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/05/8.1.%E5%89%8D%E7%AB%AF%E6%A6%82%E8%BF%B0/" data-id="ckw61sdvh002foswd3xp4a389" data-title="前端概述" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/05/8.1.%E5%89%8D%E7%AB%AF%E6%A6%82%E8%BF%B0/" data-id="ckxho8wjr002fh8vw4s93hrr4" data-title="前端概述" class="article-share-link">分享</a>
       
       
       
@@ -4154,321 +4888,11 @@ index.html使我们前端代码入口的一个html文件
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/05/8.3.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BCSS/" data-id="ckw61sdx8006yoswdcrkye0qw" data-title="网页前端之CSS" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/05/8.3.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BCSS/" data-id="ckxho8wmp0071h8vwf1ec38cn" data-title="网页前端之CSS" class="article-share-link">分享</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-8.2.网页前端之HTML" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/03/8.2.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BHTML/" class="article-date">
-  <time class="dt-published" datetime="2021-04-03T01:43:19.000Z" itemprop="datePublished">2021-04-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/03/8.2.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BHTML/">网页前端之HTML</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="lt-HTML-gt"><a href="#lt-HTML-gt" class="headerlink" title="&lt;HTML&gt;"></a><code>&lt;HTML&gt;</code></h1><p><code>&lt;html&gt;</code>标签相当于java类的大括号</p>
-<p>HTML：(Hyper Text Markup Language)超文本标记语言,是用来写网页的，是设计页面的基础。</p>
-<p>HTML是由标签所组成的语言，能展示超文本效果,由头和体组成：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span>    </span><br><span class="line">	<span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">title</span>&gt;</span>标题<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">&quot;red&quot;</span>&gt;</span>需要展示给用户看的信息内容<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>HTML文件的扩展名为html或者htm:htm是老的命名规范，html是新的</p>
-<p>HTML文件由浏览器直接解析运行，无需编译，直接由上到下依次解析执行</p>
-<p>HTML标签通常由开始标签和结束标签组成，开始标签和结束标签之间的内容叫做内容体。</p>
-<p>没有内容体的标签叫做空标签。仅由一个标签组成，例如：<code>&lt;br/&gt;</code> 自关闭</p>
-<p>HTML标签不区分大小写，为了方便阅读，建议小写</p>
-<p>HTML标签是有属性的，格式为属性名=“属性值”，属性值用引号引起来(单引号双引号都可以，建议双引号)</p>
-<p>HTML标签建议包裹嵌套，不建议交叉嵌套</p>
-<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><p><code>&lt;!--HTML注释内容--&gt;</code>用于注释HTML源码，不在HTML效果中展示</p>
-<h1 id="lt-head-gt"><a href="#lt-head-gt" class="headerlink" title="&lt;head&gt;"></a><code>&lt;head&gt;</code></h1><p><code>&lt;head&gt;</code>中存放的是网页的说明性内容</p>
-<h2 id="lt-meta-gt"><a href="#lt-meta-gt" class="headerlink" title="&lt;meta&gt;"></a><code>&lt;meta&gt;</code></h2><p>是 HTML 语言头部的一个辅助性标签，我们可以定义页面编码语言、搜索引擎优化、自动刷新并指向新的页面、控制页面缓冲、响应式视窗等。·</p>
-<p><code>&lt;meta&gt;</code> 元素可提供有关页面的元信息（meta-information,元数据总是以名称/值的形式被成对传递的），比如针对搜索引擎和更新频度的描述和关键词。</p>
-<p><code>&lt;meta&gt;</code> 标签位于文档的头部，不包含任何内容。</p>
-<p><code>&lt;meta&gt;</code> 标签的属性定义了与文档相关联的名称/值对。</p>
-<p>整体来看，HTML5之前，meta标签只有两个主要属性，分别是 name 属性和 http-equiv 属性。 HTML5新添加”charset”</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;参数&quot;</span> <span class="attr">content</span>=<span class="string">&quot;参数值&quot;</span> /&gt;</span>  </span><br><span class="line">//name属性主要用于描述网页，对应属性是 content ，以便于搜索引擎机器人查找、分类（目前几乎所有的搜索引擎都使用网上机器人自动查找meta值来给网页分类）</span><br><span class="line">这里的name参数可以是多种值，对应不同效果：</span><br><span class="line">Keywords（关键字）</span><br><span class="line">Description（简介）</span><br><span class="line">robots（机器人向导）   用来告诉搜索机器人哪些页面需要索引，哪些页面不需要索引</span><br><span class="line">参数为 all ：默认值，文件将被检索，且页面上的链接可以被查询； 参数为 none ：文件将不被检索，且页面上的链接不可以被查询； 参数为 index ：文件将被检索； 参数为 follow ：页面上的链接可以被查询； 参数为 noindex ：文件将不被检索，但页面上的链接可以被查询； 参数为 nofollow ：文件将被检索，但页面上的链接不可以被查询；</span><br><span class="line">author（作者）</span><br><span class="line">copyright（版权）</span><br><span class="line">generator（编辑器）</span><br><span class="line">revisit-after（网站重访）</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">property</span>=<span class="string">&quot;参数&quot;</span>  <span class="attr">content</span>=<span class="string">&quot;参数值&quot;</span>/&gt;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;参数&quot;</span>  <span class="attr">content</span>=<span class="string">&quot;参数值&quot;</span>/&gt;</span></span><br><span class="line">//http-equiv类似于HTTP的头部协议，它回应给浏览器一些有用的信息，以帮助正确和精确地显示网页内容。与之对应的属性值为content，content中的内容其实就是各个参数的变量值</span><br><span class="line">Expires（期限）  指定网页在缓存中的过期时间，一旦网页过期，必须到服务器上重新传输  必须使用GMT的时间格式，或者直接设为0（数字表示多久后过期）</span><br><span class="line">Pragma（cache模式） 禁止浏览器从本地计算机的缓存中访问页面内容   网页不保存在缓存中，每次访问都刷新页面。这样设定，访问者将无法脱机浏览</span><br><span class="line">Refresh（刷新）自动刷新并指向新页面 `<span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">&quot;refresh&quot;</span><span class="attr">content</span>=<span class="string">&quot;5; url=http://www.baidu.com/&quot;</span>/&gt;</span>`</span><br><span class="line">Set-Cookie（cookie设定）</span><br><span class="line">Window-target（显示窗口的设定） 强制页面在当前窗口以独立页面显示,可以用来防止别人在框架里调用你的页面</span><br><span class="line">content-Type（显示字符集的设定）设定页面使用的字符集，一般不用</span><br><span class="line">content-Language（显示语言的设定）</span><br><span class="line">http-equiv=&quot;imagetoolbar&quot; 指定是否显示图片工具栏，当为false代表不显示，当为true代表显示</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="lt-link-gt"><a href="#lt-link-gt" class="headerlink" title="&lt;link&gt;"></a><code>&lt;link&gt;</code></h2><p><code>&lt;link&gt;</code> 标签定义该文档与外部资源的关系。最常见的用途是链接样式表，也可以被用来创建站点图标(比如PC端的“favicon”图标和移动设备上用以显示在主屏幕的图标)</p>
-<p>网站站点的小图标：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;icon&quot;</span> <span class="attr">href</span>=<span class="string">&quot;images/logo.png&quot;</span> <span class="attr">type</span>=<span class="string">&quot;image/png&quot;</span> <span class="attr">sizes</span>=<span class="string">&quot;1651*1024&quot;</span>/&gt;</span>  指定格式为icon，然后类型指定图片，href放资源位置，可以设置大小</span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;shortcut icon&quot;</span> <span class="attr">href</span>=<span class="string">&quot;favicon.ico&quot;</span> <span class="attr">type</span>=<span class="string">&quot;image/x-icon&quot;</span> /&gt;</span>  指定格式为icon，类型指定为ico，href放资源位置</span><br></pre></td></tr></table></figure>
-
-<h2 id="lt-script-gt"><a href="#lt-script-gt" class="headerlink" title="&lt;script&gt;"></a><code>&lt;script&gt;</code></h2><p>1、async  表示立即下载该脚本，但不妨碍页面中的其他操作(比如：下载其他资源或等待加载其他脚本)，只对外部文件有效。<br>2、charset 属性与 src 属性一起使用，告诉浏览器用来编码这个 javascript 程序的字符集。它的值是任何一个 ISO 标准字符集编码的名称。由于大多数浏览器会忽略它的值，因此这个属性很少有人用。</p>
-<p>3、defer 表示脚本可以延迟到文档完全被解析和显示后再执行。只对外部文件有效。<br>4、language 已废弃。 原来用于表示编写代码用的脚本语言，因大多数浏览器都会忽略这个属性，因此也没必要再用了。<br>5、src 表示包含要执行代码的外部文件。</p>
-<p>6、type 可以看成language的替代属性；表示编写代码使用的脚本语言的内容类型。默认值为text/javascript</p>
-<p>注意：<br>1、传统做法是将所有的<code>&lt;script&gt;</code>元素都放在页面的<code>&lt;head&gt;</code>元素中，但是这样页面响应就会比较慢（必须等到全部的Javascript代码都被下载、解析和执行完后，才能呈现页面内容）。现在的做法一般都是将Javascript引用放在<code>&lt;body&gt;</code>元素中页面内容的后面。</p>
-<p>2、defer和asyncd的作用基本相似。定义defer=“defer”的脚本将延迟到浏览器遇到<code>&lt;/html&gt;</code>标签后再执行，原则上是延迟脚本还是按照原来的顺序执行，但是实际上执行的顺序不一定按照指定顺序执行。但是HTML5（以后称为H5）中已经明确规定,defer属性只使用于外部脚本文件，因此支持H5的实现会忽略给嵌入脚本设置的defer属性。async也只适用于外部脚本文件，并告诉浏览器立即下载脚本文件。但与defer不同的是，它并不保证按照指定顺序执行，又称为异步脚本标签（各脚本文件相互独立，互不依赖）</p>
-<h1 id="lt-body-gt"><a href="#lt-body-gt" class="headerlink" title="&lt;body&gt;"></a><code>&lt;body&gt;</code></h1><p>分类：</p>
-<p>1.单标签：在⾃身标签标识结束，主要应⽤场景为<strong>功能性</strong>标签</p>
-<p>双标签：有成对的结束标识，主要应⽤场景为<strong>内容性</strong>标签</p>
-<p>2.行标签：⼜名<strong>内联标签</strong>，内联标签⾃身不具备宽⾼，可以和其他元素保持在同一行。根据内容多少来占用行内空间，不会自动换行。例：<code>&lt;br&gt;, &lt;td&gt;, &lt;a&gt;, &lt;img&gt;，&lt;span&gt;</code>strong，u（下划线），em(强调)，i(斜体)，sub(下标),sup(上标)</p>
-<p>块标签：又名<strong>块级标签</strong>，块标签可以设置宽⾼，不可以和其他元素保持在同一行，通常独⾃占据⼀⾏。以区域块方式出现，每个块标签独自占据一整行或多整行，块结束会自动换行。例：<code>&lt;h1&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;table&gt;，&lt;div&gt;</code>li，dl，dt，dd,form,hr,pre</p>
-<p>行内块级标签：可以和其他元素保持在在一行，还能能设置宽高。例：textarea，input，img，button</p>
-<p>所谓的行级标签，块级标签，其实可以根据需要，在开发中通过css样式互相转换。即通过设置display属性，它的属性值中，inline（元素以行内标签进行展示），block（元素以块级标签进行展示），inline-block（元素以行内块级标签进行展示）</p>
-<p>3.单一标签：单独出现，表示具体的功能或展示具体的内容</p>
-<p>组合标签：配合使⽤，才能产⽣相应的内容与效果</p>
-<h2 id="lt-h-gt-标题"><a href="#lt-h-gt-标题" class="headerlink" title="&lt;h&gt;标题"></a><code>&lt;h&gt;</code>标题</h2><p>标题（Heading）是通过 <code>&lt;h1&gt; - &lt;h6&gt;</code> 等标签进行定义的。</p>
-<p><code>&lt;h1&gt;</code> 定义最大的标题    <code>&lt;h6&gt;</code> 定义最小的标题</p>
-<p>注意：</p>
-<ol>
-<li>浏览器会自动地在标题的前后添加空行。</li>
-<li>默认情况下，HTML 会自动地在块级元素前后添加一个额外的空行，比如段落、标题元素前后</li>
-</ol>
-<h2 id="lt-p-gt-段落"><a href="#lt-p-gt-段落" class="headerlink" title="&lt;p&gt;段落"></a><code>&lt;p&gt;</code>段落</h2><p>用于展示效果中划分段落，并且自动在段前和段后自动加空行</p>
-<p>align：段落内容的对齐方式，默认是left，内容居左；right，右；center，居中。</p>
-<p>（这个将要分段的内容放在<code>&lt;p&gt;&lt;/p&gt;</code>中即可）</p>
-<p>注意：</p>
-<ol>
-<li><p>浏览器会自动地在段落的前后添加空行。（<code>&lt;p&gt;</code> 是块级元素）</p>
-</li>
-<li><p>使用空的段落标记 <code>&lt;p&gt;&lt;/p&gt; </code>去插入一个空行是个坏习惯。用 <code>&lt;br /&gt;</code> 标签代替它！（但是不要用 <code>&lt;br /&gt;</code> 标签去创建列表。）</p>
-</li>
-</ol>
-<h2 id="lt-br-gt-换行"><a href="#lt-br-gt-换行" class="headerlink" title="&lt;br /&gt;换行"></a><code>&lt;br /&gt;</code>换行</h2><p>用于展示效果中换行 </p>
-<p>HTML源码中换行，浏览器解析时会自动忽略</p>
-<p>（这个放在要换行的地方就行）</p>
-<h2 id="lt-font-gt-字体"><a href="#lt-font-gt-字体" class="headerlink" title="&lt;font&gt;字体"></a><code>&lt;font&gt;</code>字体</h2><p>用于展示效果中修饰文字样式</p>
-<p><code>&lt;font 属性名=”属性值”&gt; 文字&lt;/font&gt;</code></p>
-<p>size:控制字体大小。最小1~最大7</p>
-<p>color:控制字体颜色.使用英文设置</p>
-<p>face:控制字体类型。只能设置系统字库中存在的字体类型<br>这个font可以加载在文字中间，不一定非要在开始，从哪开始的字就是从哪变化）</p>
-<h2 id="lt-hr-gt-分割线"><a href="#lt-hr-gt-分割线" class="headerlink" title="&lt;hr /&gt;分割线"></a><code>&lt;hr /&gt;</code>分割线</h2><p>水平线，多用于段落之间的分割</p>
-<h2 id="lt-pre-gt-原样标签"><a href="#lt-pre-gt-原样标签" class="headerlink" title="&lt;pre&gt;原样标签"></a><code>&lt;pre&gt;</code>原样标签</h2><p>原样标签会保留空格和换行符，显示原文本文字。格式化文本。预定义格式文本。</p>
-<p>在该元素中的文本通常按照原文件中的编排，以等宽字体的形式展现出来，文本中的空白符（比如空格和换行符）都会显示出来。(紧跟在 <code>&lt;pre&gt; </code>开始标签后的换行符也会被省略)</p>
-<h2 id="lt-section-gt-段落标签"><a href="#lt-section-gt-段落标签" class="headerlink" title="&lt;section&gt;段落标签"></a><code>&lt;section&gt;</code>段落标签</h2><p>和p同为块标签，自动换行显示每一段，但是section不存在行距，p自带行距</p>
-<p>注：section和P放在一起，p优先，使用行距</p>
-<h2 id="lt-div-gt-块级的块标签"><a href="#lt-div-gt-块级的块标签" class="headerlink" title="&lt;div&gt;块级的块标签"></a><code>&lt;div&gt;</code>块级的块标签</h2><p>用于在效果中 定义一块，默认占满一行，进行内容的显示  （会自动换行，默认占满一行 适用于大量信息展示）</p>
-<p>是块级元素，内容会独立占一行。它是可用于组合其他 HTML 元素的容器。<code>&lt;div&gt;</code> 元素没有特定的含义。除此之外，由于它属于块级元素，浏览器会在其前后显示折行。</p>
-<p>如果与 CSS 一同使用，<code>&lt;div&gt; </code>元素可用于对大的内容块设置样式属性。</p>
-<p><code>&lt;div&gt; </code>元素的另一个常见的用途是文档布局。它取代了使用表格定义布局的老式方法。使用 <code>&lt;table&gt;</code> 元素进行文档布局不是表格的正确用法。<code>&lt;table&gt;</code> 元素的作用是显示表格化的数据</p>
-<h2 id="lt-span-gt-行级的块标签"><a href="#lt-span-gt-行级的块标签" class="headerlink" title="&lt;span&gt;行级的块标签"></a><code>&lt;span&gt;</code>行级的块标签</h2><p>用于在效果中 一行上定义一个块，进行内容显示  （有多少内容就会占用多大空间 span不会自动换行 适用于少量信息展示，比如提示密码错误）</p>
-<p>HTML <code>&lt;span&gt; </code>元素是内联元素，行内标签，可用作文本的容器。</p>
-<p><code>&lt;span&gt; </code>元素也没有特定的含义。</p>
-<p>当与 CSS 一同使用时，<code>&lt;span&gt; </code>元素可用于为部分文本设置样式属性</p>
-<h2 id="lt-ol-gt-lt-li-gt-有序的列表标签"><a href="#lt-ol-gt-lt-li-gt-有序的列表标签" class="headerlink" title="&lt;ol&gt; &lt;li&gt; 有序的列表标签"></a><code>&lt;ol&gt; &lt;li&gt;</code> 有序的列表标签</h2><p><code>&lt;ol&gt;&lt;/ol&gt;</code> 用于在效果中定义一个有序列表  （会表明每个条目的顺序）</p>
-<p>列表条项目标签：<code>&lt;li&gt;&lt;/li&gt; </code>用于在效果中定义一个列表的项目</p>
-<h2 id="lt-ul-gt-lt-li-gt-无序的列表标签"><a href="#lt-ul-gt-lt-li-gt-无序的列表标签" class="headerlink" title="&lt;ul&gt; &lt;li&gt; 无序的列表标签"></a><code>&lt;ul&gt; &lt;li&gt; </code>无序的列表标签</h2><p><code>&lt;ul&gt;&lt;/ul&gt; </code>用于在效果中定义一个无序列表  （使用最多）</p>
-<h2 id="lt-dl-gt-lt-dt-gt-lt-dd-gt-项目列表标签"><a href="#lt-dl-gt-lt-dt-gt-lt-dd-gt-项目列表标签" class="headerlink" title="&lt;dl&gt;&lt;dt&gt;&lt;dd&gt;项目列表标签"></a><code>&lt;dl&gt;&lt;dt&gt;&lt;dd&gt;</code>项目列表标签</h2><p>dl（定义列表，跟ul…li类似），dt（定义了定义列表中的项目），dd（定义描述项目的内容，跟dt一起搭配）</p>
-<h2 id="lt-sub-gt-下标"><a href="#lt-sub-gt-下标" class="headerlink" title="&lt;sub&gt; 下标"></a><code>&lt;sub&gt; </code>下标</h2><h2 id="lt-sup-gt-上标"><a href="#lt-sup-gt-上标" class="headerlink" title="&lt;sup&gt; 上标"></a><code>&lt;sup&gt;</code> 上标</h2><h2 id="实体标签-转义字符"><a href="#实体标签-转义字符" class="headerlink" title="实体标签(转义字符)"></a>实体标签(转义字符)</h2><p>空格 <code>&amp;nbsp;</code>   HTML源码中的多个空格，效果中最终会合并成一个</p>
-<p>小于号 <code>&amp;lt;</code></p>
-<p>大于号 <code>&amp;gt;</code></p>
-<p>人民币<code> &amp;yen;</code>&yen;</p>
-<p>版权 <code>&amp;copy;</code>&copy;</p>
-<p>商标<code> &amp;reg;</code>&reg;</p>
-<h2 id="lt-embed-gt-lt-embed-gt-媒体标签"><a href="#lt-embed-gt-lt-embed-gt-媒体标签" class="headerlink" title="&lt;embed&gt;&lt;/embed&gt;媒体标签"></a><code>&lt;embed&gt;&lt;/embed&gt;</code>媒体标签</h2><p>hidden ： 设置隐藏插件是否隐藏</p>
-<p>src ：用于指定音乐的路径    例：<code>&lt;embed src=&quot;1.mp3&quot; &gt;&lt;/embed&gt;</code></p>
-<h2 id="lt-marquee-gt-滚动标签-（已废弃）"><a href="#lt-marquee-gt-滚动标签-（已废弃）" class="headerlink" title="&lt;marquee&gt; 滚动标签  （已废弃）"></a><code>&lt;marquee&gt;</code> 滚动标签  （已废弃）</h2><p>用来插入一段滚动的文字。可以使用它的属性控制当文本到达容器边缘发生的事情</p>
-<p>direction : 指定滚动的方向</p>
-<p>scrollamount : 指定滚动的速度。</p>
-<p>loop :指定滚动的次数</p>
-<h2 id="lt-a-gt-超链接标签"><a href="#lt-a-gt-超链接标签" class="headerlink" title="&lt;a&gt; 超链接标签"></a><code>&lt;a&gt;</code> 超链接标签</h2><p><code>&lt;a&gt;&lt;/a&gt;</code>用于在效果中定义一个可以点击跳转的链接<br>href：超链接跳转的路径</p>
-<p>​    内网本机路径：相对路径和绝对路径</p>
-<p>​    互联网路径：http://地址</p>
-<p>​    本页：默认跳转到本页</p>
-<p>href : 用于指定链接的资源</p>
-<p>target: 设置打开新资源的目标</p>
-<p>_Blank 在独立的窗口上打开新资源</p>
-<p>_self 在当前窗口打开新资源</p>
-<p>file: file协议（文件协议）这种协议主要是用于搜索本地机器的资源文件的。      格式：file:///f:/图片/1.jpg</p>
-<p>邮件 的协议： mailTo</p>
-<p>迅雷的协议： thunder</p>
-<p>超链接标签的作用：</p>
-<ol>
-<li><p>可以用于链接资源。</p>
-</li>
-<li><p>锚点点位:首先编写一个锚点 ,锚点的格式：<code> &lt;a name=&quot;锚点名字&quot;&gt; 数据&lt;/a&gt;</code> ,再使用a标签 的herf属性连接到锚点出。 href=”#锚点的名字“</p>
-</li>
-</ol>
-<p>超链接正常工作：1. a标签中必须有内容     2.a标签必须有href属性</p>
-<p>注意：a标签内容体，不仅仅是文字，也可以是其他内容，例如图片</p>
-<p>a标签的href属性，不仅仅可以链接到html上，也可以链接到其他文件上。例如图片</p>
-<h2 id="lt-img-gt-图片标签"><a href="#lt-img-gt-图片标签" class="headerlink" title="&lt;img&gt; 图片标签"></a><code>&lt;img&gt;</code> 图片标签</h2><p><code>&lt;img /&gt; </code>用于在页面效果中展示一张图片<br>    src：图片的路径。（必有属性）</p>
-<p>路径的写法：内网路径：绝对路径：C:\javaweb001_html\img\c_1.jpg文件在硬盘上的具体位置  （不建议使用）</p>
-<p>相对路径：../img/c_1.jpg  从引入者所在目录出发 ../表示上一层目录 ./表示当前目录  （建议使用）</p>
-<p>互联网路径：<code>http://www.baidu.com/xxx.jpg </code>必须在前面加上http://</p>
-<p>​    width： 设置图片宽度</p>
-<p>​    height： 设置图片高度</p>
-<p>​    宽度和高度的设置：</p>
-<p>​        默认单位是px，像素  “400” 固定的</p>
-<p>​        百分比设置：是父标签的百分比  “50%” 动态改变的</p>
-<p>​    alt: 如果图片资源无法找到，那么就显示对应的文字对图片进行说明。</p>
-<p>​        （这些属性放在img和/之间）</p>
-<h2 id="lt-table-gt-表格标签"><a href="#lt-table-gt-表格标签" class="headerlink" title="&lt;table&gt;表格标签"></a><code>&lt;table&gt;</code>表格标签</h2><p>表格使用到的标签：</p>
-<p><code>&lt;table&gt;</code> 表格</p>
-<p><code>&lt;tr&gt;</code> 定义表格中的一行</p>
-<p><code>&lt;td&gt; </code>在表格一行中定义单元格</p>
-<p><code>&lt;th&gt;</code> 表头 。默认的样式是居中，加粗。区别于普通单元格标签，里面的内容居中加粗了</p>
-<p><code>&lt;caption&gt; </code>表格的标题</p>
-<p>表格常用的属性：</p>
-<p>​    border ：设置表格的边框</p>
-<p>​    width : 设置表格的宽度</p>
-<p>​    height: 设置表格的高度</p>
-<p>单元格合并：<code>&lt;td&gt;</code> <code>&lt;th&gt;</code>都有这个合并属性<br>colspan：    设置单元格占据指定的列数;跨列合并单元格  colspan=”n”</p>
-<p>rowspan： 设置单元格占据指定的行数; 跨行合并单元格  rowspan=”n”</p>
-<p>合并步骤：A：确定合并哪几个单元格，确定是跨行合并还是跨列合并</p>
-<p>B：在第一个出现的单元格上书写合并单元格属性</p>
-<p>C：合并几个单元格，属性值就写几</p>
-<p>D：被合并的单元格必须删掉</p>
-<p><code>&lt;thead&gt; </code>标签用于组合 HTML 表格的表头内容。</p>
-<p><code>&lt;thead&gt;</code> 元素应该与<code>&lt;tbody&gt;</code>和<code>&lt;tfoot&gt;</code>元素结合起来使用，用来规定表格的各个部分（表头、主体、页脚）。</p>
-<p>通过使用这些元素，使浏览器有能力支持独立于表格表头和表格页脚的表格主体滚动。当包含多个页面的长的表格被打印时，表格的表头和页脚可被打印在包含表格数据的每张页面上。</p>
-<p><code>&lt;thead&gt; </code>标签必须被用在以下情境中：作为 <code>&lt;table&gt; </code>元素的子元素，出现在 <code>&lt;caption&gt;、&lt;colgroup&gt; </code>元素之后，<code>&lt;tbody&gt;、 &lt;tfoot&gt; 和 &lt;tr&gt; </code>元素之前。</p>
-<h2 id="lt-form-gt-表单标签"><a href="#lt-form-gt-表单标签" class="headerlink" title="&lt;form&gt;表单标签"></a><code>&lt;form&gt;</code>表单标签</h2><p>表单标签的根标签是<code>&lt;form&gt;</code>标签</p>
-<p>用来将用户输入的数据提交给服务器的程序  相当于一个WEB程序的入口</p>
-<p>1.定义一个表单 <code>&lt;form&gt;</code>表单内容<code>&lt;/form&gt;</code></p>
-<p>2.在表单中定义对应的表单输入项<br>    <code>&lt;input /&gt; </code>是一种自关闭的标签，用户可以在该标签上通过填写和选择进行数据的输入</p>
-<p>​    type：设置该标签的种类</p>
-<p>​    text：文本框  默认  不一定需要指定value值</p>
-<p>​    password：密码框  内容为非明文</p>
-<p>​    radio：单选框  在同一组内才具有单选效果（分组需要用到name属性，将name设置成相同的就变为一组）（单选框只能选择，不能输入 需要指定value属性，否则提交的都是on）（可以checked设置默认选中）</p>
-<p>​    checkbox：复选框  在同一组内才具有复选效果</p>
-<p>​    submit：提交按钮  用于控制表单提交数据（当表单提交后，会出现  ？参数列表  参数列表格式：参数1=参数值1&amp;参数2=参数值2&amp;参数3=参数值3 这些参数都是之前设置的name，参数值是value）</p>
-<p>​    rest：重置按钮  用于将表单输入项恢复到默认状态</p>
-<p>​    file：附件框  用于文件上传</p>
-<p>​    hidden：隐藏域 一般用于提交时，服务器需要拿到，但是用户不需要看到的数据</p>
-<p>​    button：普通按钮  需要和js的事件一起使用</p>
-<p>​    name：单选框、复选框进行数据的分组；设置该标签对应的参数名</p>
-<p>​    value：设置该标签对应的参数值；作为按钮的名字</p>
-<p>​    checked：设置单选框/复选框的默认选中状态  值就是”cheked”</p>
-<p>​    readonly：设置该标签的参数值只读，用户无法手动更改，但是数据可以正常提交 readonly=“readonly”</p>
-<p>​    disabled：设置该标签不可用，参数值无法更改且参数值也无法提交</p>
-<p>​    <code>&lt;select&gt;&lt;/select&gt;</code>选择框标签  定义一个选择框</p>
-<p>​    name：设置该标签对应的参数名</p>
-<p>​    multiple：设置该标签选项全部显示，并且可以进行多选提交，默认为单选</p>
-<p>​    <code>&lt;option&gt;&lt;/option&gt;</code>选项标签  用于为一个选择添加一个选项</p>
-<p>​    value：设置需要提交的参数值（一般选择的东西都需要指定的返回值value）</p>
-<p>​    selected：设置选项的默认选中状态</p>
-<p>注意事项：option的内容体一般是用来展示的  参数值应该是option的value属性值</p>
-<p>​    <code>&lt;textarea&gt;&lt;/textarea&gt;</code>文本域标签</p>
-<p>表单输入项标签之一，用户可以在该标签上通过输入进行数据的输入</p>
-<p>name：设置该标签对应的参数名</p>
-<p>文本域和文本框的区别：文本框不能换行，文本域可以</p>
-<p>文本框参数值是value属性，文本域参数值是标签的内容体</p>
-<p>提交表单</p>
-<p>action：指定提交数据的地址.将数据提交到何处（提交的地方其实是？前面的地址）  默认提交到本页</p>
-<p>​    本机内网路径：相对路径:      绝对路径：</p>
-<p>​    互联网路径：http：//</p>
-<p>method：指定表单的提交方式.将数据以何种方式提交  默认为get  提交方式可定义为get或者post</p>
-<p>get提交方式的特点：把数据拼接到地址栏上</p>
-<p>post提交方式的特点：没有把数据拼接到地址栏上。请求体</p>
-<p>get和post的区别：</p>
-<p>​    get会把提交的参数列表拼接到了地址栏后面，post不会</p>
-<p>​    get方式提交的数据敏感信息不安全，post提交的数据相对安全</p>
-<p>​    get方式提交的数据量是有限的，post方式从理论上提交的数据量是无限大的。所以尽量使用post方式提交表单</p>
-<p>提交表单的注意事项：</p>
-<p>提交中文问题：为什么要用URL编码：（因为你可能提交的数据中包含&amp;符号，后台无法正确切割）</p>
-<p>URL编码解决方式：对特殊符号，中文进行编码，为了保证表单数据传递时能更好区分出name和value，保证数据传递的完整性</p>
-<p>例子：中文的你好进行URL编码：</p>
-<p>（1）你好，进行普通的编码，编码成字节数组（使用的是页面规定的字符集，例如utf-8）</p>
-<p>（2）字节数组中的每一个元素都会从10进制转为16进制</p>
-<p>（3）把已经转为16进制的字节数组，以%进行拼接，拼接出的字符串，就是URL编码后的结果</p>
-<p>注意： 表单项的数据如果需要提交到服务器上面，那么表单项必须要有name的属性值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">&lt;form action&#x3D;&quot;http:&#x2F;&#x2F;www.baidu.com&quot; method&#x3D;&quot;post&quot;&gt; &lt;!-- 文本输入框 单 行- -&gt; 用户名：&lt;input name&#x3D;&quot;userName&quot; type&#x3D;&quot;text&quot;&#x2F;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">&lt;!-- 密码框 --&gt;</span><br><span class="line">密码：&lt;input name&#x3D;&quot;password&quot; type&#x3D;&quot;password&quot;&#x2F;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">&lt;!-- 单选框 --&gt;</span><br><span class="line">性别： 男&lt;input checked&#x3D;&quot;true&quot; value&#x3D;&quot;man&quot; name&#x3D;&quot;sex&quot; type&#x3D;&quot;radio&quot;&#x2F;&gt;</span><br><span class="line">女&lt;input name&#x3D;&quot;sex&quot; value&#x3D;&quot;woman&quot; type&#x3D;&quot;radio&quot;&#x2F;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">&lt; !-- 下拉框 --&gt;</span><br><span class="line">来自的城市：&lt;select name&#x3D;&quot;city&quot;&gt;</span><br><span class="line">&lt;option value&#x3D;&quot;BJ&quot;&gt;北京&lt;&#x2F;option&gt;</span><br><span class="line">&lt;option value&#x3D;&quot;SH&quot;&gt;上海&lt;&#x2F;option&gt;</span><br><span class="line">&lt;option value&#x3D;&quot;GZ&quot;&gt;广州&lt;&#x2F;option&gt;</span><br><span class="line">&lt;option value&#x3D;&quot;SZ&quot;&gt;深圳&lt;&#x2F;option&gt;</span><br><span class="line">&lt;&#x2F;select&gt;&lt;br&#x2F;&gt;</span><br><span class="line">&lt;!-- 复选框 同一组的复选框name的属性值要一致 --&gt;</span><br><span class="line">兴趣爱好：java &lt;input value&#x3D;&quot;java&quot; name&#x3D;&quot;hobit&quot; checked&#x3D;&quot;checked&quot; type &#x3D;&quot;checkbox&quot; &#x2F;&gt;</span><br><span class="line">javascript &lt;input type&#x3D;&quot;checkbox&quot; value&#x3D;&quot;javascript&quot; name&#x3D;&quot;hobit&quot; &#x2F;&gt;</span><br><span class="line">android &lt;input value&#x3D;&quot;android&quot; name&#x3D;&quot;hobit&quot; type&#x3D;&quot;checkbox&quot; &#x2F;&gt;&lt;br&#x2F;&gt; &lt;!-- 文件上传框--&gt;</span><br><span class="line">大头照：&lt;input name&#x3D;&quot;image&quot; type&#x3D;&quot;file&quot; &#x2F;&gt;&lt;br&#x2F;&gt;</span><br><span class="line">个人简介:</span><br><span class="line">&lt;!-- 文本域 --&gt;</span><br><span class="line">&lt;textarea name&#x3D;&quot;intro&quot; rows&#x3D;&quot;10&quot; cols&#x3D;&quot;30&quot;&gt;&lt;&#x2F;textarea&gt;&lt;br&#x2F;&gt;</span><br><span class="line">&lt;!-- 提交按钮 --&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;submit&quot; value&#x3D;&quot;注册&quot;&#x2F;&gt;</span><br><span class="line">&lt;!-- 重置按钮 --&gt;</span><br><span class="line">&lt;input type&#x3D;&quot;reset&quot; value&#x3D;&quot;重置&quot;&#x2F;&gt;</span><br><span class="line">&lt;&#x2F;form&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="lt-figure-gt-标签"><a href="#lt-figure-gt-标签" class="headerlink" title="&lt;figure&gt; 标签"></a><code>&lt;figure&gt; </code>标签</h2><p>代表一段独立的内容, 经常与说明（caption）<code> &lt;figcaption&gt;</code> 配合使用, 并且作为一个独立的引用单元。当它属于主内容流（main flow）时，它的位置独立于主体。这个标签经常是在主文中引用的图片，插图，表格，代码段等等，当这部分转移到附录中或者其他页面时不会影响到主体</p>
-<h2 id="lt-template-gt-标签"><a href="#lt-template-gt-标签" class="headerlink" title="&lt;template&gt;标签"></a><code>&lt;template&gt;</code>标签</h2><p>模板元素</p>
-<p>1.标签内容隐藏性:   自带display:none</p>
-<p>2.标签位置任意性：类似<code>&lt;script&gt;</code>或者<code>&lt;style&gt;</code>标签，可以在<code>&lt;head&gt;</code>中，也可以在<code>&lt;body&gt;</code>或者<code>&lt;frameset&gt;</code>中</p>
-<p>3.childNodes无效性:肉眼看上去是<code>&lt;template&gt;</code>标签里面还有很多子标签,但是template.childNodes无效，可以使用template.innerHTML获取完整的HTML片段。template.content会返回一个文档片段，可以理解为另外一个document，然后，使用document下的一些查询API就可以获得<code>&lt;template&gt;</code>标签里面的“伪子元素”了</p>
-<h2 id="lt-iframe-gt-标签"><a href="#lt-iframe-gt-标签" class="headerlink" title="&lt;iframe&gt;标签"></a><code>&lt;iframe&gt;</code>标签</h2><p>iframe 元素会创建包含另外一个文档的内联框架（即行内框架）。可以用来在一个网页内引用另一个网页，网页的内容资源用src。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">#fh5co-menu &#123;</span><br><span class="line">  background: ;</span><br><span class="line">  position: absolute;   绝对的</span><br><span class="line">  top: 0;</span><br><span class="line">  z-index: 999;</span><br><span class="line">  width: 100%;</span><br><span class="line">  padding-bottom: 20px;</span><br><span class="line">  -webkit-transition: 0.5s;</span><br><span class="line">  -o-transition: 0.5s;</span><br><span class="line">  transition: 0.5s;</span><br><span class="line">  -webkit-border-radius: 0px;</span><br><span class="line">  -moz-border-radius: 0px;</span><br><span class="line">  -ms-border-radius: 0px;</span><br><span class="line">  border-radius: 0px;</span><br><span class="line">  margin-top: 20px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//控制背景随动</span><br><span class="line">#fh5co-clients &#123;</span><br><span class="line">  padding: 2em 0;</span><br><span class="line">  background: #4fd2c2;</span><br><span class="line">  position: relative;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#fh5co-clients1 &#123;</span><br><span class="line">  padding: 2em 0;</span><br><span class="line">  background: #4fd2c2;</span><br><span class="line">  position: relative;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">@media screen and (max-width: 992px) &#123;</span><br><span class="line">  #fh5co-clients1 .fh5co-client &#123;</span><br><span class="line">    margin-bottom: 30px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@media screen and (max-width: 768px) &#123;</span><br><span class="line">  #fh5co-clients1 .fh5co-client &#123;</span><br><span class="line">    margin-bottom: 30px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@media screen and (max-width: 480px) &#123;</span><br><span class="line">  #fh5co-clients1 .fh5co-client img &#123;</span><br><span class="line">    max-width: 100%;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="定位"><a href="#定位" class="headerlink" title="定位"></a>定位</h1><p>长度单位</p>
-<p>px 像素（Pixel），相对长度单位。像素px是相对于显示器屏幕分辨率而言的。<br>em 是相对长度单位，相对于当前对象内文本的字体尺寸。如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸。</p>
-<p>ex 相对长度单位。相对于字符“x”的高度。此高度通常为字体尺寸的一半。如当前对行内文本的字体尺寸未被人为设置，则相对于浏览器的默认字体尺寸。<br>% 相对长度单位。相对于浏览器窗口的大小</p>
-<p>CSS绝对长度单位 说明<br>in 英寸Inches (1 英寸 = 2.54 厘米)<br>cm 厘米Centimeters<br>mm 毫米Millimeters<br>pt 点Points (1点 = 1/72英寸)<br>pc 皮卡Picas (1 皮卡 = 12 点)</p>
-<p><strong>PX和PT转换的公式： pt=px乘以3/4。</strong>比如12px×3/4=9pt大小。<br><strong>PX和em转换的公式： em=16乘以px</strong>，也就是说1.5em=1.5×16=24px</p>
-<p>用px来定义字体，就无法用浏览器字体放大的功能。</p>
-<p>任意浏览器的默认字体高都是16px。所有未经调整的浏览器都符合:1em=16px。那么12px=0.75em,10px=0.625em。为了简化font-size的换算，需要在css中的body选择器中声明Font-size=62.5%，这就使em值变为16px*62.5%=10px,这样12px=1.2em,10px=1em,也就是说只需要将你的原来的px数值除以10，然后换上em作为单位就行了。<br>◆CSS中em属性有如下特点</p>
-<p>1.em的值并不是固定的；</p>
-<p>2.em会继承父级元素的字体大小。</p>
-<p>◆所以我们在写CSS的时候，需要注意</p>
-<p>1.body选择器中声明Font-size=62.5%；</p>
-<p>2.将你的原来的px数值除以10，然后换上em作为单位；</p>
-<p>3.重新计算那些被放大的字体的em数值。避免字体大小的重复声明。</p>
-<p>也就是避免1.2*1.2=1.44的现象。比如说你在#content中声明了字体大小为1.2em，那么在声明p的字体大小时就只能是1em，而不是1.2em,因为此em非彼em，它因继承#content的字体高而变为了1em=12px。</p>
-<p>但是12px汉字例外，就是由以上方法得到的12px(1.2em)大小的汉字在IE中并不等于直接用12px定义的字体大小，而是稍大一点。这个问题Jorux已经解决，只需在body选择器中把62.5%换成63%就能正常显示了。原因可能是IE处理汉字时，对于浮点的取值精确度有限。不知道有没有其他的解释</p>
-<p><strong>position</strong>: absolute;的元素会相对于第一个设置了position: relative;的祖先元素进行定位，将assistor设置为position: reletive;，滚动条是在parent中的，position: fixed;和parent内的内容滚动就都实现了。</p>
-<p><strong>z-index</strong> 属性来控制这些框的堆放次序</p>
-<h1 id="响应式布局（PC端适配手机端）"><a href="#响应式布局（PC端适配手机端）" class="headerlink" title="响应式布局（PC端适配手机端）"></a>响应式布局（PC端适配手机端）</h1><p>只开发一个网页，通过检测视口分辨率，针对不同客户端在客户端做代码处理，来展现不同的布局和内容。可以适配任何设备，兼容多个终端。</p>
-<p>响应式开发的原理是使用CSS3中的Media Query（媒体查询）针对不同宽度的设备设置不同的布局和样式，从而适配不同的设备</p>
-<p>使用 @media 查询，你可以针对不同的媒体类型定义不同的样式。@media 可以针对不同的屏幕尺寸设置不同的样式，特别是如果你需要设置设计响应式的页面，@media 是非常有用的。当你重置浏览器大小的过程中，页面也会根据浏览器的宽度和高度重新渲染页面</p>
-<p>设备的划分情况为：</p>
-<ul>
-<li>小于768的为超小屏幕（手机）</li>
-<li>768~992之间的为小屏设备（平板）</li>
-<li>992~1200的中等屏幕（桌面显示器）</li>
-<li>大于1200的宽屏设备（大桌面显示器）</li>
-</ul>
-<p>屏幕宽度低于480像素的设备（如iPhone等）</p>
-<p>1.在网站HTML文件的开头，增加viewport meta标签告诉浏览器视口宽度等于设备屏幕宽度，且不进行初始缩放：</p>
-<p><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt; </code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">width：控制 viewport 的大小，可以指定的一个值，如 600，或者特殊的值，如 device-width为设备的宽度（单位为缩放为 100% 时的 CSS 的像素）。 </span><br><span class="line">height：和 width 相对应，指定高度。也可以指定为 window.screen.height</span><br><span class="line">initial-scale：初始缩放比例，也即是当页面第一次 load 的时候缩放比例。</span><br><span class="line">maximum-scale：允许用户缩放到的最大比例。 </span><br><span class="line">minimum-scale：允许用户缩放到的最小比例。</span><br><span class="line">user-scalable：用户是否可以手动缩放。</span><br></pre></td></tr></table></figure>
-
-<p>2.在CSS文件尾部增加针对不同屏幕分辨率的规则：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@media screen and (max-device-width: 720px) &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">media&#x3D;”screenand(max-device-width:400px)” href&#x3D;”tinyScreen.css”&#x2F;&gt;</span><br><span class="line">如果屏幕宽度小于400像素(max-device-width:400px)，就加载tinyScreen.css文件　</span><br><span class="line">media&#x3D;”screenand(min-width:400px)and(max-device-width:600px)” href&#x3D;”smallScreen.css”&#x2F;&gt;</span><br><span class="line">如果屏幕宽度在400像素到600像素之间，则加载smallScreen.css文件　　</span><br></pre></td></tr></table></figure>
-
-<p>3.<strong>布局宽度使用相对宽度。</strong>网页总体框架可以使用绝对宽度，但往下的内容框架、侧栏等最好使用相对宽度，这样针对不同分辨率进行修改就方便。当然也可以不用相对宽度，那就需要在 @media screen and (max-device-width: 480px) 里面增加各个div的针对小屏幕的宽度，实际上更麻烦</p>
-<p>4.在HTML页面上不要使用绝对字体（px），而要使用相对字体（em），对于大多数浏览器来说，通常用 em = px/16 换算，例如16px就等于1em</p>
-<p>PC站和手机站匹配最常用的几种方法是移动适配、<a target="_blank" rel="noopener" href="http://www.w3cschool.cn/lwp2e2/hqky12kg.html">JS跳转</a>、<a target="_blank" rel="noopener" href="http://www.w3cschool.cn/htmltags/tag-meta.html">Meta声明</a>、302规则等等</p>
-<p><strong>1、移动适配</strong></p>
-<p>现在很多搜索引擎都提供移动适配的功能，例如百度的开放适配和360的移动适配，利用<a target="_blank" rel="noopener" href="http://www.w3cschool.cn/ycx23r">百度站长工具</a>提交PC页-手机页对应关系Sitemap，或者利用<a target="_blank" rel="noopener" href="http://www.w3cschool.cn/seoyh/gwyrpf.html">360站长工具</a>提交PC页-手机页对应关系txt就能实现PC站内容和手机站一一适配。 这样做的优点是只需要在搜索引擎工具提交资料，无需对站点本事做改动，而且网站内容一一对应，并不只局限于网站首页。 缺点就是只能在百度或者360移动搜索中生效，其他没用提交适配文件的搜索中就无效了。</p>
-<p><strong>2、JS跳转</strong></p>
-<p><a target="_blank" rel="noopener" href="http://www.w3cschool.cn/lwp2e2/hqky12kg.html">JS跳转</a>对于某些行业来说有着重要的作用，尤其是对于用户转换率网站首页较高的网站，只需要在网站的头部加一段JS代码判定是否是移动端访问，然后所有的流量就会全部流向手机站的主页。 JS跳转的优点是适用于所以的移动搜索，并不局限于百度和360，可以提高用户的转换率。 缺点是难以实现每个页面的一一对应，而且容易被某些搜索引擎判定作弊，从而受到惩罚。</p>
-<p><strong>3、Meta声明</strong></p>
-<p><a target="_blank" rel="noopener" href="http://www.w3cschool.cn/htmltags/tag-meta.html">Meta声明</a>的格式一般为，站长可以将这段代码加在PC站的头部，由Meta信息来指明该PC页对应的手机页的<a target="_blank" rel="noopener" href="http://www.w3cschool.cn/html/html-url.html">URL</a>，以及该URL对应页面的格式。 Meta声明的优点是代码简单易懂，操作方便。 缺点是只能在百度移动搜索中生效，对于其他搜索引擎无效。</p>
-<p><strong>4、302规则</strong></p>
-<p>302规则指的是，当判定移动端访问网站时，302临时跳转到一个网址(手机站)，例如可以在htaccess文件里加上一段判定手机的代码，做个302重定向。 这样做的好处是，不需要再额外在网站的前端代码中加任何东西，也不需要向搜索引擎提交规则，可是据测试，有可能会导致PC站被降权。 虽然302是暂时性的重定向，但过于频繁的302是很有可能给网站带来不利的影响的，具体的尺度需要站长自己去把握。</p>
-<p>以上4种适配方法是最为常见的操作方法，通常PC站做了以上处理后，一段时间以后移动端搜索出来的结果，下面匹配的网址就变成了移动站网址，不过标题还是PC站标题。 至于到底哪种方法更好，更倾向于第一种，毕竟百度移动搜索占据着网站的大部分流量，而且用户体验度也最好。</p>
-<h1 id="轮播图"><a href="#轮播图" class="headerlink" title="轮播图"></a>轮播图</h1><p>轮播图的样式有很多,可以选择一个框架，然后将代码复制下来，将用到的样式放到自己的文件夹里，这样就可以做成一个轮播图。</p>
-<p>在layui中，如果想让轮播图完成在放大缩小的过程中保证图片随动，目前解除了两种方法：</p>
-<p>1.写一个响应式布局的css样式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#fh5co-clients &#123;</span><br><span class="line">  padding: 2em 0;</span><br><span class="line">  background: #4fd2c2;</span><br><span class="line">  position: relative;</span><br><span class="line">&#125;</span><br><span class="line">#fh5co-clients &#123;</span><br><span class="line">  margin-bottom: 0px;</span><br><span class="line">&#125;</span><br><span class="line">@media screen and (max-width: 992px) &#123;</span><br><span class="line">  #fh5co-clients &#123;</span><br><span class="line">    margin-bottom: 30px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@media screen and (max-width: 768px) &#123;</span><br><span class="line">  #fh5co-clients&#123;</span><br><span class="line">    margin-bottom: 30px;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@media screen and (max-width: 480px) &#123;</span><br><span class="line">  #fh5co-clients img &#123;</span><br><span class="line">    max-width: 100%;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>2.写一个js方法，会不断刷新，影响体验</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">var</span> b = <span class="number">1768</span>/<span class="number">881</span>;<span class="comment">//这里的图片数值是根据自己的图片指定</span></span><br><span class="line">    <span class="comment">//获取浏览器宽度</span></span><br><span class="line">    <span class="keyword">var</span> W = $(<span class="built_in">window</span>).width();</span><br><span class="line">    <span class="keyword">var</span> H = $(<span class="built_in">window</span>).height();</span><br><span class="line">    layui.use(<span class="string">&#x27;carousel&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> carousel = layui.carousel;</span><br><span class="line">        <span class="comment">//建造实例</span></span><br><span class="line">        carousel.render(&#123;</span><br><span class="line">            elem: <span class="string">&#x27;#test1&#x27;</span></span><br><span class="line">            ,<span class="attr">width</span>: <span class="string">&#x27;100%&#x27;</span> <span class="comment">//设置容器宽度</span></span><br><span class="line">            ,<span class="attr">height</span>: (W/b).toString()+<span class="string">&quot;px&quot;</span>  <span class="comment">//按比例和浏览器可视页面宽度来获取高度</span></span><br><span class="line">            <span class="comment">// ,arrow: &#x27;always&#x27; //始终显示箭头</span></span><br><span class="line">            <span class="comment">//,anim: &#x27;updown&#x27; //切换动画方式</span></span><br><span class="line">            ,<span class="attr">indicator</span>: <span class="string">&#x27;none&#x27;</span></span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    $(<span class="built_in">window</span>).resize(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="comment">// setBanner();</span></span><br><span class="line">        <span class="built_in">window</span>.location.reload()  <span class="comment">//每当设置后，进行刷新</span></span><br><span class="line"></span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
-
-<h1 id="网页调试技巧"><a href="#网页调试技巧" class="headerlink" title="网页调试技巧"></a>网页调试技巧</h1><p>1.F12开发模式，左上角图标有两个：箭头图标可以选择元素，就会指示当前指向的元素，可以注意数值多大，方便知道这个标签管辖的范围。手机图标，点击之后可以模拟手机端查看网页，也可以通过拖动浏览器大小模拟查看。</p>
-<p>2.开发者模式下，elements中选择了某一行后，可以在style中查看生效的样式，不生效的样式被划掉了，没有写过的样式不会显示。可以在样式中手动编辑数值模拟调试（比改一处看一处方便一点）</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/03/8.2.%E7%BD%91%E9%A1%B5%E5%89%8D%E7%AB%AF%E4%B9%8BHTML/" data-id="ckw61sdws006doswd1zx096xy" data-title="网页前端之HTML" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/" rel="tag">HTML</a></li></ul>
 
     </footer>
   </div>
@@ -4528,6 +4952,10 @@ index.html使我们前端代码入口的一个html文件
       <ul>
         
           <li>
+            <a href="/2021/12/20/Jenkins/">Jenkins</a>
+          </li>
+        
+          <li>
             <a href="/2021/12/17/SpringBootSecurity/">SpringBootSecurity</a>
           </li>
         
@@ -4541,10 +4969,6 @@ index.html使我们前端代码入口的一个html文件
         
           <li>
             <a href="/2021/09/03/%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%BB%A3%E7%A0%81/">工具类代码</a>
-          </li>
-        
-          <li>
-            <a href="/2021/09/03/RPC/">RPC</a>
           </li>
         
       </ul>

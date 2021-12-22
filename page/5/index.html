@@ -77,6 +77,306 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-4.5.面向对象" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/19/4.5.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="article-date">
+  <time class="dt-published" datetime="2021-04-19T06:23:34.000Z" itemprop="datePublished">2021-04-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/19/4.5.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">面向对象</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><p>面向对象<strong>思想</strong>：面向对象是基于面向过程的编程思想。</p>
+<p>​    面向过程：强调的是每一个功能的步骤</p>
+<p>​    面向对象：强调的是对象，然后由对象去调用功能</p>
+<p>面向对象<strong>特点</strong>：是一种更符合我们思想习惯的思想；可以将复杂的事情简单化；将我们从执行者变为指挥者。</p>
+<p>面向对象<strong>开发</strong>：就是不断创建对象，使用对象，指挥对象做事情。</p>
+<p>面向对象<strong>设计</strong>：管理和维护对象之间的关系。</p>
+<p>面向对象<strong>特征</strong>：</p>
+<ol>
+<li><p>封装（encapsulation）</p>
+</li>
+<li><p>继承(inheritance)</p>
+</li>
+<li><p>多态(polymorphism)</p>
+</li>
+</ol>
+<p>完成某个需求时：</p>
+<ol>
+<li><p>分析有哪些类：UML（统一建模语言），名词提取法。</p>
+</li>
+<li><p>每个类都有哪些东西：属性，方法</p>
+</li>
+<li><p>类与类之间的关系是什么：耦合</p>
+</li>
+</ol>
+<h1 id="类与对象的关系"><a href="#类与对象的关系" class="headerlink" title="类与对象的关系"></a>类与对象的关系</h1><p>java中最基本的单位是类。</p>
+<p>类：一组相关的属性和行为的集合，是一个抽象的概念。</p>
+<p>事物就是通过类来体现出来。事物是由属性（该事务的描述信息）和行为（该事务能做什么）组成。</p>
+<p>对应类中为：成员变量和成员方法。</p>
+<p>对象：是该类事物的具体实现形式，具体存在的个体。</p>
+<p>​    成员变量：和以前变量的定义是一样的格式，但是位置不同，在类中方法外。</p>
+<p>​    成员方法：和以前的方法定义是一样的格式，但是把static去掉。</p>
+<p>如何使用类及类中的属性和行为呢：创建该类的一个对象使用。</p>
+<p>格式： <code>类名  对象名=new  类名（）;</code></p>
+<p>如何使用成员变量：  对象名.变量名</p>
+<p>如何使用成员方法：  对象名.方法名(参数…)</p>
+<p>匿名对象：就是没有名字的对象。</p>
+<p>应用场景：</p>
+<p>A：调用方法：仅仅只调用一次的时候（若多次调用，不适合）</p>
+<p>优点：匿名对象调用是在堆内存中，调用完毕就是垃圾，可以被垃圾回收器回收</p>
+<p>B：匿名对象可以作为实际参数传递。（当方法中的形式参数是一个引用类型比如类的时候，实际参数可以用匿名对象当作该类的一个对象）</p>
+<h1 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h1><p>通过对象给成员变量赋值，可以赋值一些非法的数据，这是不合理的。</p>
+<p>在赋值之前，应该先对数据进行判断。怎么进行判断呢？就是写一个方法对数据进行校验。但是不用方法就起不到作用了。所以要求必须使用方法，不能直接调用成员变量。</p>
+<p>封装：隐藏对象的属性和实现细节，仅对外提供公共访问方式。</p>
+<p>原则：将不需要对外提供的内容都隐藏起来。把属性隐藏，提供公共方法对其访问。</p>
+<p>优点：隐藏实现细节，提供公共的访问方式；提高了代码的复用性；提高安全性。</p>
+<p>private：私有的，是一个权限修饰符，可以修饰成员变量和成员方法。</p>
+<p>被private修饰的成员只能在本类中访问。</p>
+<p>最常见的应用：把成员变量用private修饰，提供对应的getXxx（）/setXxx（）方法以使外界可以访问</p>
+<p>this关键字：this代表所在当前类的一个对象引用。</p>
+<p>方法被哪个对象调用，this就代表那个对象。</p>
+<p>用this的场景：当局部变量隐藏成员变量时，成员变量可能被局部变量覆盖无意义，所以要用this。   super</p>
+<p><strong>构造方法</strong></p>
+<p>作用：给对象的数据进行初始化</p>
+<p>格式：方法名和类名相同。没有返回值，连void都没有。没有具体的返回值。</p>
+<p>注意事项：如果不提供构造方法，系统会给出默认的构造方法</p>
+<p>如果提供了构造方法，系统将不再提供默认的构造方法。如果还想使用无参构造方法，就必须自己给出，建议永远自己给出无参构造方法。</p>
+<p>构造方法也可以重载。</p>
+<p>给成员变量赋值有2种方法：</p>
+<p>A. 无参构造方法+setXxx();</p>
+<p>B. 带参构造方法</p>
+<p>类中包含有：成员变量、成员方法、构造方法。</p>
+<p><strong>成员方法</strong></p>
+<p>根据返回值可以分为：void类型和非void类型。</p>
+<p>根据形式参数：空参方法和非空参方法。</p>
+<p><code>Student s=new Student();</code>在内存中发生了什么？</p>
+<ol>
+<li><p>加载Student.class文件进内存</p>
+</li>
+<li><p>在栈内存为s开辟空间</p>
+</li>
+<li><p>在堆内存为学生对象开辟空间</p>
+</li>
+<li><p>对学生对象的成员变量进行默认初始化。null  0   0.0   \u0000</p>
+</li>
+<li><p>对学生对象的成员变量进行显式初始化</p>
+</li>
+<li><p>通过构造方法对学生对象的成员变量赋值</p>
+</li>
+<li><p>学生对象初始化完毕，把对象地址赋值给s变量。</p>
+</li>
+</ol>
+<p>当一个变量是用来描述类的信息时，这个变量就应该被定义为成员变量。（成员变量不要瞎定义）</p>
+<p>变量的范围是越小越好，因为能及时的被回收。</p>
+<p>当多个对象有共同的成员变量值的时候，java就提供了一个关键字来修饰：static。</p>
+<p>static可以修饰成员变量和成员方法。</p>
+<p>static关键字的特点：随着类的加载而加载；优先于对象存在；被类的所有对象共享（这也是我们判断是否使用静态关键字的条件）；可以通过类名调用（其实本身也可以通过对象名调用，推荐使用类名调用）静态修饰的内容我们一般称为与类相关的，类成员</p>
+<p>注意事项：在静态方法中是没有this关键字的（因为静态是随着类的加载而加载，而this是随着对象的创建而存在，静态比对象先存在）</p>
+<p>静态方法只能访问静态的成员变量和静态的成员方法。(main方法是静态方法，不能调用非静态方法，如果想调用的话，可以先在main方法中创建一个对象，通过这个对象来调用非静态方法)</p>
+<p>非静态方法可以访问静态的成员变量和成员方法，也可以访问非静态的成员变量和成员方法。</p>
+<p>静态变量和成员变量的区别：</p>
+<p>所属不同：静态变量属于类，也被称为类变量</p>
+<p>​                    成员变量属于对象，也被称为实例变量（对象变量）</p>
+<p>内存中的位置不同：静态变量存储于方法区的静态区</p>
+<p>​                    成员变量存储于堆内存中</p>
+<p>内存出现的时间不同：静态变量随着类的加载而加载，随着类的消失而消失</p>
+<p>​                    成员变量随着对象的创建而存在，随着对象的消失而消失</p>
+<p>调用不同：静态变量可以通过类名调用，也可以通过对象名调用</p>
+<p>​                    成员变量只能通过对象名调用</p>
+<p>main方法的格式讲解：</p>
+<p>public:公共的，访问权限是最大的。由于main方法是被jvm调用的，所以权限要够大。</p>
+<p>static:静态的，不需要创建对象，通过类名就可以调用，方便jvm的调用。</p>
+<p>void:方法的返回值是返回给调用者，而main方法是被jvm调用的，返回给jvm无意义。</p>
+<p>main：是一个常见的方法入口，所有语言都是以main方法为入口</p>
+<p>String[] args:这是一个字符串数组。这个东西早期是为了接收键盘录入的数据的。</p>
+<p>eg：java  类名  hello  world  java  遍历args就会发现是 hello  world  java</p>
+<p>后来用java.util.Scanner代替了</p>
+<p>测试类的作用：创建其他类的对象，调用其他类的功能。</p>
+<p>在同一个文件夹下，类定义在两个文件中和定义在一个文件中其实一样的。</p>
+<p>静态的一种用法：在工具类中，将构造方法私有化，这样外界无法创建该类的对象，然后将要调用的方法static静态化，这样main方法调用时候只能通过类名.方法名调用。</p>
+<p>项目提供的都是class文件，无从得知class文件内都有哪些方法哪些属性。所以需要加说明书。</p>
+<p>说明书的制作：</p>
+<p>A：写一个工具类</p>
+<p>B：对这个类加文档注释：</p>
+<p>/**</p>
+<p>*@author</p>
+<p>*@version</p>
+<p>*@param</p>
+<p>*return</p>
+<p>*/</p>
+<p>C:用工具解析文档注释：javadoc工具</p>
+<p>D：格式：</p>
+<p>javadoc  -d  (文件夹的路径)  -author  -version  (类名).java</p>
+<p>制作帮助文档出错：找不到可以文档化的公共或受保护的类。告诉我们类的权限不够。（若想权限够，在class前加public）</p>
+<p>所以以后开发可以利用工具类加说明书，对该类中实现的方法的static、返回值、方法名、参数注意然后就可以调用使用，对怎么实现的方法不用在意，这就是面向对象思想。</p>
+<p>.html转换为帮助文档就是.chm文档</p>
+<p>使用帮助文档API（Application Progaramming Interface,应用程序编程接口）：</p>
+<ol>
+<li><p>打开帮助文档</p>
+</li>
+<li><p>点击显示，找到索引，找到输入框</p>
+</li>
+<li><p>明确要找什么</p>
+</li>
+<li><p>在输入框内输入要查找的类，回车</p>
+</li>
+<li><p>看包，java.lang包下的类不需要导入，其他的都需要全部导入</p>
+</li>
+<li><p>再简单的看看类的解释和说明，类的版本信息</p>
+</li>
+<li><p>看类的结构</p>
+<p>成员变量：字段摘要</p>
+<p>构造方法：构造方法摘要</p>
+<p>成员方法：方法摘要</p>
+</li>
+<li><p>学习构造方法</p>
+<p>有构造方法：创建对象</p>
+<p>无构造方法：成员可能都是静态的</p>
+</li>
+<li><p>看成员方法：</p>
+<p>静态、返回值类型、方法名、参数列表。</p>
+</li>
+</ol>
+<p>代码块：在java中使用｛｝括起来的代码称为代码块，根据其声明和位置不同，可以分为局部代码块，构造代码块，静态代码块和同步代码块。</p>
+<p>局部代码块：局部位置，在方法中出现，限定变量生命周期，及早释放，提高内存利用率。</p>
+<p>构造代码块：在类中成员位置出现（直接｛｝括起来），每次调用构造方法都执行，并且在构造方法前执行。</p>
+<p>作用：可以把多个构造方法方法中相同的代码存放到一起。</p>
+<p>静态代码块：在类中成员位置出现（直接｛｝括起来），｛前面加了static修饰。在加载的时候就执行，且只执行一次。</p>
+<p>作用：用于给类进行初始化。</p>
+<p>一个类中的执行顺序：与书写顺序无关，执行时都是这个顺序</p>
+<p>静态代码块（只执行一次，加载类的时候就执行）–构造代码块（每次调用构造方法都执行）–构造方法</p>
+<p>Math类：是针对数学进行操作的类，没有构造方法，成员都是静态的。</p>
+<p>产生随机数：public static double random():  [0.0,1.0)</p>
+<p>产生1-100的随机数：int number=(new)(Math.random()*100)+1;</p>
+<h1 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h1><p>多个类的成员变量，成员方法等都是相同的。每一次定义的时候都需要重新定义一遍，所以要考虑改进，提高代码的复用性，用继承。</p>
+<p>多个类中存在相同的属性和行为时，将这些内容抽取到单独的一个类中，那么多个类无需在定义这些属性和行为，只要继承那个类即可。</p>
+<p>格式：</p>
+<p>class 子类名  extends  父类名{}</p>
+<p>单独的这个类称为父类，基类，超类。</p>
+<p>多个类称为子类，派生类。</p>
+<p>优点：提高了代码的复用性：多个类相同的成员可以放到同一个类中</p>
+<p>提高了代码的维护性：如果功能的代码需要修改，修改一处即可。</p>
+<p>让类与类之间产生了关系，是多态的前提。（也是继承的弊端：类的耦合性很强）</p>
+<p>开发的原则：低耦合，高内聚。</p>
+<p>耦合：类与类的关系</p>
+<p>内聚：自己完成某件事情的能力</p>
+<p>继承的特点：</p>
+<p>\1. java中只支持单继承，不支持多继承。（C++支持多继承，格式：extends 类1，类2…）</p>
+<p>\2. java支持多层继承（继承体系）</p>
+<p>继承的注意事项：</p>
+<p>\1. 子类只能继承父类所有非私有的成员（成员方法和成员变量），也体现了继承的一个弊端：打破了封装性</p>
+<p>\2. 子类不能继承父类的构造方法，但是可以通过super关键字来访问父类的构造方法</p>
+<p>\3. 不要为了部分功能而去继承（当类与类之间的关系是“is a”的关系时使用继承）子类is父类的a</p>
+<p>子类中的成员变量和父类中的成员变量如果一样的话，再调用时候遵循就近原则。</p>
+<p>在子类方法中访问一个变量的查找顺序：1.在子类方法的局部范围找，有就用</p>
+<p>2.在子类的成员范围找，有就用</p>
+<p>\3. 在父类的成员范围找（不可能在父类的方法局部范围找，因为方法不调用不执行，相当于没有）</p>
+<p>super关键字：super代表父类存储空间的标识（父类引用，可以操作父类的成员，但不是父类的一个对象，只是父类的一个存储空间）</p>
+<p>this代表本类对象的引用</p>
+<p>用法：</p>
+<p>A. 调用成员变量：</p>
+<p>this.成员变量：调用本类的成员变量</p>
+<p>super.成员变量：调用父类的成员变量</p>
+<p>B. 调用构造方法：</p>
+<p>this（…）：调用本类的构造方法</p>
+<p>super（…）：调用父类的构造方法</p>
+<p>C. 调用成员方法：</p>
+<p>this.成员方法：调用本类的成员方法</p>
+<p>super.成员方法：调用父类的成员方法</p>
+<p>继承中构造方法的关系：子类中所有的构造方法默认都会先访问父类中空参数的构造方法。</p>
+<p>因为子类会继承父类中的数据，可能还会使用父类的数据，所以，子类初始化之前，一定要先完成父类数据的初始化。每一个构造方法的第一条语句默认都是super（）;</p>
+<p>如果父类没有无参构造方法，那么子类的构造方法会出现报错。（这就是为什么建议构造方法永远手动给个无参的构造方法）</p>
+<p>解决方法：A.在父类中加一个无参构造方法</p>
+<p>B.子类通过super(…)去显示调用父类其他的带参的构造方法。</p>
+<p>C. 子类通过this去调用本类的其他构造方法,但是一定会有一个去访问了父类的构造方法。</p>
+<p>子类中一定要有一个去访问了父类的构造方法，否则父类的数据就没有初始化。</p>
+<p>注意事项：this（）或者super（）必须出现在第一条语句上。如果 不是放在第一条语句上，就可能会对父类数据进行了多次初始化。</p>
+<p>一个类的初始化过程：成员变量进行初始化（默认初始化，显示初始化），构造方法初始化</p>
+<p>子父类的初始化（分层初始化）先进行父类初始化，再进行子类初始化。虽然子类中构造方法默认有一个super() ，但是初始化的时候不是按照那个顺序的，而是按照分层初始化进行的。super()只是表示要先初始化父类数据在初始化子类数据。</p>
+<p>继承中成员方法的关系：通过子类对象去访问一个方法，首先在子类中找，然后在父类中找，如果没有就报错（不会去父类的父类中找）</p>
+<p>方法重写（方法覆盖，方法复写）：子类中出现了和父类中方法声明一模一样的方法。</p>
+<p>方法重载：本类中出现的方法名一样，参数列表不同的方法，与返回值无关。</p>
+<p>方法重写的应用：当子类需要父类的功能，而功能主体子类有自己特有的内容时，可以重写父类中的方法（重写是完全重写，如果还想用父类中的方法内容，可以用super调用），这样，既沿袭了父类的功能，又定义了子类特有的功能。</p>
+<p>注意事项：父类中私有方法不能被重写。（其实父类中私有方法子类根本就无法继承，更谈不上重写）</p>
+<p>子类重写父类方法时，访问权限不能更低。（最好就一致）</p>
+<p>父类是静态方法，子类也必须通过静态方法进行重写。（其实不算方法重写）</p>
+<p>父类不是静态，子类用static静态，会报错。</p>
+<p>所以，子类重写父类方法的时候，最好声明一模一样。</p>
+<p>由于继承中方法有一个方法重写，所以父类的功能会被子类覆盖，当不想让覆盖的时候，java提供了一个关键字：final</p>
+<p>final：最终的意思。可以修饰类、方法、变量。</p>
+<p>final可以修饰类：该类不能被继承</p>
+<p>final可以修饰方法：该方法不能被重写</p>
+<p>final可以修饰变量：该变量不能被重新赋值。这个变量其实是常量。</p>
+<p>final修饰局部变量（一般权限修饰符修饰局部变量无意义，但是final特殊）：在方法内部，该变量不能被改变。</p>
+<p>在方法声明上，基本类型是值不能被改变。引用类型是地址值不能被改变，但是该对象的堆内存的值还可以改变，注意区别。</p>
+<p>final修饰变量的初始化时机：</p>
+<p>1.被final修饰的变量只能赋值一次</p>
+<p>2.在初始化时就给值（建议）或者在构造方法完毕前给值（非静态的常量）。</p>
+<h1 id="多态"><a href="#多态" class="headerlink" title="*多态*"></a><em><strong>*多态*</strong></em></h1><p>多态：同一个对象，在不同时刻体现出不同的状态。</p>
+<p>判断多态可以从左往右念：子是父？是的话可以多态，不是的话不能。</p>
+<p>多态的前提：</p>
+<p>A. 要有继承或者实现关系。</p>
+<p>B. 要有方法重写。（如果没有方法重写也是可以的，但是就没有了意义）</p>
+<p>C. 要有父类或者父接口引用指向子类对象。</p>
+<p>父  f=new 子();</p>
+<p>多态中的成员访问特点：</p>
+<p>A. 成员变量：编译看左边（父类），运行看左边。</p>
+<p>B. 构造方法：创建子类对象的时候，访问父类的构造方法，并对父类的数据进行初始化。</p>
+<p>C. 成员方法：编译看左边（父类），运行看右边（方法重写相当于覆盖了）。</p>
+<p>D. 静态方法：编译看左边（父类），运行看左边。（所以说静态方法的重写根本不算是重写）</p>
+<p>由于成员方法存在方法重写，所以只有它运行的时候看右边。</p>
+<p>多态的好处：</p>
+<p>A. 提高了代码的维护性（继承保证）</p>
+<p>B. 提高了代码的扩展性（由多态保证，以后如果在添加父类的子类，可以使用父类的引用调用工具类，便于代码的扩展性）</p>
+<p>多态的弊端：不能使用子类的特有功能。</p>
+<p>如果非要调用子类的这些功能：</p>
+<p>A. 创建子类的对象调用方法。（可以，但是不合理，太占内存）</p>
+<p>B. 把父类的引用强制转换为子类的引用。（向下转型）</p>
+<p>Fu  f=new Zi();  (向上转型，从子到父，父类引用指向子类对象)</p>
+<p>Zi  z=(Zi)f;   （向下转型，从父到子，父类引用转为子类对象） 要求f必须是能够转换为Zi的。</p>
+<p>ClassCastException：类型转换异常，一般在多态的向下转型中容易出现。</p>
+<p>当一个类中的东西特别多时，我们可以把这个类分成几个小类：基本类、操作类等。</p>
+<p>分包：A.功能划分</p>
+<p>B.模块划分</p>
+<p>C.先按模块划分，再按功能划分</p>
+<p>集合实现，IO实现，GUI实现，数据库实现。</p>
+<p>如果一个方法传的参数是三个以上，建议传个对象。</p>
+<p>如果多个地方用到了某个变量，可以把这个变量定义为成员变量，定义在成员方法外。</p>
+<p>能小范围尽量不大范围，因为用完最好回收。</p>
+<p>让多个对象共享同一个成员变量，用static修饰。</p>
+<p>循环里面如果有switch，并且在其中有break，结束的不是循环，而是switch语句，如果想结束整体，可以用 System.exit(0);</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.5.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" data-id="ckxho8wla004uh8vwg2zd1yc8" data-title="面向对象" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="tag">面向对象</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-4.22.关于null" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/04/19/4.22.%E5%85%B3%E4%BA%8Enull/" class="article-date">
@@ -215,7 +515,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.22.%E5%85%B3%E4%BA%8Enull/" data-id="ckw61sdw9004qoswd6ne2cbih" data-title="关于null" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.22.%E5%85%B3%E4%BA%8Enull/" data-id="ckxho8wl9004sh8vwf4aqbxub" data-title="关于null" class="article-share-link">分享</a>
       
       
       
@@ -963,7 +1263,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.20.JDBC/" data-id="ckw61sdwq0068oswdaqh80lvw" data-title="JDBC" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.20.JDBC/" data-id="ckxho8wlx0065h8vw8ooid7bf" data-title="JDBC" class="article-share-link">分享</a>
       
       
       
@@ -1109,7 +1409,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.16.%E6%B3%9B%E5%9E%8B/" data-id="ckw61sdv6001ooswde7ql4pev" data-title="泛型" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.16.%E6%B3%9B%E5%9E%8B/" data-id="ckxho8wjf001oh8vwe22gcg97" data-title="泛型" class="article-share-link">分享</a>
       
       
       
@@ -1169,7 +1469,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.15.%E6%9E%9A%E4%B8%BE/" data-id="ckw61sdv5001noswdfbdq6j87" data-title="枚举" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.15.%E6%9E%9A%E4%B8%BE/" data-id="ckxho8wje001nh8vw9qad53o7" data-title="枚举" class="article-share-link">分享</a>
       
       
       
@@ -1228,7 +1528,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.23JVM/" data-id="ckw61sdv7001uoswd8oex7keh" data-title="JVM" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.23JVM/" data-id="ckxho8wjh001uh8vw8b837lvs" data-title="JVM" class="article-share-link">分享</a>
       
       
       
@@ -1268,7 +1568,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.24.JUC%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" data-id="ckw61sdv8001voswdaa0cb2az" data-title="JUC并发编程" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.24.JUC%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" data-id="ckxho8wji001vh8vw10pj91uo" data-title="JUC并发编程" class="article-share-link">分享</a>
       
       
       
@@ -1613,7 +1913,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/" data-id="ckw61sdw8004moswd2s9j6i8b" data-title="反射和注解" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.17.%E5%8F%8D%E5%B0%84%E5%92%8C%E6%B3%A8%E8%A7%A3/" data-id="ckxho8wl5004ph8vw93utdr14" data-title="反射和注解" class="article-share-link">分享</a>
       
       
       
@@ -1694,7 +1994,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.21.GUI%E7%BC%96%E7%A8%8B/" data-id="ckw61sdv7001soswddffshzqo" data-title="GUI编程" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.21.GUI%E7%BC%96%E7%A8%8B/" data-id="ckxho8wjh001sh8vw7y2n1h04" data-title="GUI编程" class="article-share-link">分享</a>
       
       
       
@@ -1852,264 +2152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.18.%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" data-id="ckw61sdv6001qoswdg2nrb9xo" data-title="网络编程" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-4.19.多线程" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/19/4.19.%E5%A4%9A%E7%BA%BF%E7%A8%8B/" class="article-date">
-  <time class="dt-published" datetime="2021-04-19T03:35:24.000Z" itemprop="datePublished">2021-04-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/19/4.19.%E5%A4%9A%E7%BA%BF%E7%A8%8B/">多线程</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>程序只有一个执行流程，所以这样的程序就是单线程程序。</p>
-<p>假如一个程序有多条执行流程，那么，该程序就是多线程程序。</p>
-<p>线程是依赖于进程而存在的</p>
-<p>进程：就是正在运行的程序。</p>
-<p>是系统进行资源分配和调用的独立单位，每一个进程都有它自己的内存空间和系统资源。</p>
-<p>单进程的计算机只能做一件事情，现在的计算机都是支持多进程的。可以在一个时间段内执行多个任务，并且可以提高CPU的使用率。</p>
-<p>单CPU在某个时间点只能做一件事情，CPU在做程序间的高效切换让我们觉得是同时进行的。</p>
-<p>线程：在同一个进程内又可以执行多个任务，而这每一个任务就可以看作是一个线程。是进程中的单个顺序控制流，是一条执行路径</p>
-<p>线程是程序的执行单元，执行路径。是程序使用CPU的最基本的单位。</p>
-<p>一个进程如果只有一条执行路径，则称为单线程程序。</p>
-<p>一个进程如果有多条执行路径，则称为多线程程序。</p>
-<p>多线程的存在不是提高程序的执行速度，其实是为了提高应用程序的使用率。</p>
-<p>程序的执行其实都是在抢CPU的资源，CPU的执行权，多个线程都在抢这个资源，而其中的某一个进程如果执行路径比较多，就会有更高的几率抢到CPU的执行权。我们不敢保证哪一个线程能够在哪个时刻抢到，所以线程的执行有随机性。</p>
-<p>并行：逻辑上同时发生，指在某一个时间内同时运行多个程序</p>
-<p>并发：物理上同时发生。指在某一个时间点同时运行多个程序</p>
-<p>java程序的运行原理：由java命令启动了JVM，JVM启动就相当于启动了一个进程。接着由该进程创建了一个主线程去调用main方法</p>
-<p>jvm虚拟机的启动是单线程的还是多线程的？</p>
-<p>多线程的。因为垃圾回收线程也要先启动，否则就会出现内存溢出。</p>
-<p>如何实现多线程的程序：</p>
-<p>A：继承Thread类</p>
-<p>步骤：1.自定义类继承Thread类</p>
-<p>\2. 在自定义类内重写run()方法</p>
-<p>\3. 创建该类的对象</p>
-<p>\4. 启动线程</p>
-<p>为什么要重写run()方法：不是类中的所有代码都需要被线程执行的。为了区分哪些代码能够被线程执行，java提供了Thread类中的run()方法用来包含那些被线程执行的代码</p>
-<p>//一般来说，被线程执行的代码肯定是比较耗时的。所以用循环改进</p>
-<p>run()和start()方法的区别：</p>
-<p>run()仅仅是封装被线程执行的代码，直接调用是普通方法</p>
-<p>start()首先启动了线程，然后由jvm去调用该线程的run()方法</p>
-<p>如何获取和设置线程名称</p>
-<p>public final String getName() 获取线程的名称</p>
-<p>public final void setName(String name) </p>
-<p>通过构造方法也可以给线程起名字，带参构造</p>
-<p>如何获取main方法所在的线程名称呢?</p>
-<p>public static Thread currentThread() 返回当前正在执行的线程对象</p>
-<p>Thread.currentThread().getName() 这样就可以获取任意方法所在的线程名称</p>
-<p>线程有两种调度模型：</p>
-<p>分时调度模型:所有线程轮流使用 CPU 的使用权，平均分配每个线程占用 CPU 的时间片</p>
-<p>抢占式调度模型:优先让优先级高的线程使用 CPU，如果线程的优先级相同，那么会随机选择一个，优先级高的线程获取的 CPU 时间片相对多一些。 </p>
-<p>Java使用的是抢占式调度模型。</p>
-<p>如何设置和获取线程优先级</p>
-<p>public final int getPriority() 返回线程对象的优先级 线程默认优先级是5</p>
-<p>public final void setPriority(int newPriority) 更改线程的优先级 线程优先级的范围是1-10</p>
-<p>线程优先级仅仅表示线程获取CPU时间片的几率高，但是要在次数比较多或者多次运行的时候才能看到比较好的效果</p>
-<p>线程控制</p>
-<p>线程休眠</p>
-<p>public static void sleep(long millis)</p>
-<p>线程加入</p>
-<p>public final void join() 等待该线程终止</p>
-<p>线程礼让</p>
-<p>public static void yield() 暂停当前正在执行的线程对象，并执行其他线程</p>
-<p>让多个线程的执行更和谐，但是不能靠它保证一人一次</p>
-<p>后台线程</p>
-<p>public final void setDaemon(boolean on) 将该线程标记为守护线程或用户线程</p>
-<p>当正在运行的线程都是守护线程时，java虚拟机退出，该方法必须在启动线程前调用</p>
-<p>中断线程</p>
-<p>public final void stop() 已过时。具有不安全性，不建议使用</p>
-<p>public void interrupt() 中断线程。把线程状态终止，并抛出一个InterruptedException</p>
-<p>线程的生命周期：</p>
-<p>新建：创建线程对象</p>
-<p>就绪：有执行资格，没有执行权</p>
-<p>运行：有执行资格，有执行权</p>
-<p>阻塞：由于一些操作让线程处于该状态，没有执行资格，没有执行权。而另一些操作却可以把它激活，激活后处于就绪状态</p>
-<p>死亡：线程对象变为垃圾，等待回收</p>
-<p>B：实现Runnable接口</p>
-<p>步骤：1.自定义类实现Runnable接口</p>
-<p>\2. 重写run()方法</p>
-<p>\3. 创建自定义类对象</p>
-<p>\4. 创建Thread类对象，并把3中的对象作为构造参数传递</p>
-<p>B方式的好处，实现接口方式的好处：</p>
-<p>可以避免由于Java单继承带来的局限性。</p>
-<p>适合多个相同程序的代码去处理同一个资源的情况，把线程同程序的代码，数据有效分离，较好的体现了面向对象的设计思想。</p>
-<p>电影院售票出现问题：</p>
-<p>1.相同的票出现多次：CPU的一次操作必须是原子性的</p>
-<p>2.还出现了负数的票：随机性和延迟导致的</p>
-<p>判断是否有多线程问题的标准：</p>
-<p>1.是否是多线程环境</p>
-<p>2.是否有共享数据</p>
-<p>3.是否有多条语句操作共享数据</p>
-<p>解决线程安全问题实现：</p>
-<p>1.同步代码块</p>
-<p>格式：</p>
-<p>​        synchronized(对象){需要同步的代码;}</p>
-<p>同步可以解决安全问题的根本原因就在那个对象上。该对象如同锁的功能。这个对象可以是任意对象。</p>
-<p>同步的前提：多个线程，多个线程使用的是同一个锁对象</p>
-<p>同步的好处：同步的出现解决了多线程的安全问题。</p>
-<p>同步的弊端：当线程相当多时，因为每个线程都会去判断同步上的锁，这是很耗费资源的，无形中会降低程序的运行效率。</p>
-<p>2.同步方法</p>
-<p>就是把同步关键字加到方法上（一般在权限修饰符后面）</p>
-<p>同步方法的锁对象是：this</p>
-<p>静态方法的同步方法的锁对象：是当前类的字节码文件对象。（反射）</p>
-<p>如果锁对象是this，就可以考虑使用同步方法。</p>
-<p>否则能使用同步代码块的尽量使用同步代码块。</p>
-<p>线程安全的类：</p>
-<p>StringBuffer  </p>
-<p>Vector&lt;&gt; 即使要安全，也不用。可以用Collections工具类中的静态方法synchronizedXxx方法</p>
-<p>Hashtable&lt;,&gt;</p>
-<p>JDK5以后提供了一个新的锁对象Lock</p>
-<p>Lock是一个接口</p>
-<p>void lock() 获取锁</p>
-<p>void unlock() 释放锁</p>
-<p>ReentrantLock Lock的实现类。这个类同时也实现了序列化Serializable接口</p>
-<p>可能加锁后的代码会出问题，导致无法释放锁。所以可以选择加try…finally语句</p>
-<p>同步弊端：效率低；如果出现了同步嵌套，就容易产生死锁问题</p>
-<p>死锁问题：是指两个或者两个以上的线程在执行的过程中，因争夺资源产生的一种互相等待现象</p>
-<p><em><strong>*public*</strong></em> <em><strong>*class*</strong></em> DieLock <em><strong>*extends*</strong></em> Thread {</p>
-<p>​    <em><strong>*private*</strong></em> <em><strong>*boolean*</strong></em> flag;</p>
-<p>​    <em><strong>*public*</strong></em> <em><strong>*static*</strong></em> <em><strong>*void*</strong></em> main(String[] args) {</p>
-<p>​        DieLock l1 = <em><strong>*new*</strong></em> DieLock(<em><strong>*true*</strong></em>);</p>
-<p>​        DieLock l2 = <em><strong>*new*</strong></em> DieLock(<em><strong>*false*</strong></em>);</p>
-<p>​        l1.start();</p>
-<p>​        l2.start();</p>
-<p>​    }</p>
-<p>​    <em><strong>*public*</strong></em> DieLock(<em><strong>*boolean*</strong></em> flag) {</p>
-<p>​        <em><strong>*this*</strong></em>.flag = flag;</p>
-<p>​    }</p>
-<p>​    @Override</p>
-<p>​    <em><strong>*public*</strong></em> <em><strong>*void*</strong></em> run() {</p>
-<p>​        <em><strong>*if*</strong></em> (flag) {</p>
-<p>​            <em><strong>*synchronized*</strong></em> (MyLock.****<em>objA*</em>***) {</p>
-<p>​                System.****<em>out*</em>***.println(“if的ogjA”);</p>
-<p>​                <em><strong>*synchronized*</strong></em> (MyLock.****<em>objB*</em>***) {</p>
-<p>​                    System.****<em>out*</em>***.println(“if的ogjB”);</p>
-<p>​                }</p>
-<p>​            }</p>
-<p>​        } <em><strong>*else*</strong></em> {</p>
-<p>​            <em><strong>*synchronized*</strong></em> (MyLock.****<em>objB*</em>***) {</p>
-<p>​                System.****<em>out*</em>***.println(“else的ogjB”);</p>
-<p>​                <em><strong>*synchronized*</strong></em> (MyLock.****<em>objA*</em>***) {</p>
-<p>​                    System.****<em>out*</em>***.println(“else的ogjA”);</p>
-<p>​                }</p>
-<p>​            }</p>
-<p>​        }</p>
-<p>​    }</p>
-<p>}</p>
-<p>线程间通信问题：不同种类的线程间针对同一个资源的操作</p>
-<p>通过设置线程(生产者)和获取线程(消费者)针对同一个对象进行操作</p>
-<p>1.如何保证是同一个对象的操作：在外界把这个对象创建出来，然后通过构造方法传递给其他的类。</p>
-<p>2.CPU的时间片在很短的时间内可以执行很多条代码会产生相同的数据，线程抢占的随机性也会导致安全问题：所以要加锁。不同种类的线程都要加锁，而且这加的锁必须是同一把才能保证安全。（传的对象要是同一个）</p>
-<p>3.如果消费者先抢到执行权，就会先执行，但是会输出默认值，无意义。如果生产者先抢到先执行后再抢到会继续生产，不合常理。所以应该：生产者先看是否有数据，有就等待，没有就生产，生产完之后通知消费者来消费数据。消费者先看是否有数据，有就消费，没有就等待，通知生产者生产数据。</p>
-<p>所以java提供了一种机制：等待唤醒机制实现数据依次出现</p>
-<p>Object类中提供了三个方法：</p>
-<p>wait()  等待  会立即释放锁，当唤醒时从此处继续执行</p>
-<p>notify()  唤醒单个线程  唤醒并不代表立即执行，还需要抢夺执行权</p>
-<p>notifyAll()  唤醒所有线程</p>
-<p>为什么这些方法不定义在Thread类中：因为这些方法的调用必须通过锁对象调用，而我们使用的同步块锁对象是任意锁对象。所以这些方法必须定义在Object类中</p>
-<p>把同步代码块改进为同步方法实现，以后只需要调用方法即可</p>
-<p>ThreadGroup 线程组：把多个线程组合到一起。它可以对一批线程进行分类管理，Java允许程序直接对线程组进行控制</p>
-<p>线程类里面的方法：</p>
-<p>public final ThreadGroup getThreadGroup() </p>
-<p>线程组里面的方法：public final String getName()</p>
-<p>默认情况下，所有的线程都属于主线程组main</p>
-<p>也可以给线程设置分组:创建一个线程组；创建其他线程的时候，把其他线程的组指定为我们自己新建线程组</p>
-<p>Thread(ThreadGroup group, Runnable target, String name) </p>
-<p>线程组的意义：通过组名称调用方法，可以设置此线程组的各种优先级，状态等等。</p>
-<p>线程池</p>
-<p>程序启动一个新线程成本是比较高的，因为它涉及到要与操作系统进行交互。而使用线程池可以很好的提高性能，尤其是当程序中要创建大量生存期很短的线程时，更应该考虑使用线程池。</p>
-<p>好处：线程池里的每一个线程代码结束后，并不会死亡，而是再次回到线程池中成为空闲状态，等待下一个对象来使用。</p>
-<p>在JDK5之前，我们必须手动实现自己的线程池，从JDK5开始，Java内置支持线程池</p>
-<p>JDK5新增了一个Executors工厂类来产生线程池</p>
-<p>public static ExecutorService newCachedThreadPool() 创建一个新的缓存线程池</p>
-<p>public static ExecutorService newFixedThreadPool(int nThreads) 创建一个int值的线程池</p>
-<p>public static ExecutorService newSingleThreadExecutor() 创建一个线程池 相当于是int=1</p>
-<p>如何实现线程池的代码：</p>
-<p>\1. 创建一个线程池对象，控制要创建几个线程对象</p>
-<p>public static ExecutorService newFixedThreadPool(int nThreads) </p>
-<p>\2. 这种线程池的线程可以执行：</p>
-<p>Runnable对象或者Callable对象代表的线程</p>
-<p>做一个类实现Runnable接口</p>
-<p>\3. 线程池调用方法：</p>
-<p>Future&lt;?&gt; submit(Runnable task)</p>
-<p><T> Future<T> submit(Callable<T> task)</p>
-<p>4.线程池结束：shutdown()方法</p>
-<p>第三种实现线程的方式：实现Callable接口（是带泛型的接口）</p>
-<p>这里指定的泛型是call()方法的返回值类型（这里的call()方法相当于那两个方法的run()方法）</p>
-<p>好处：</p>
-<p>可以有返回值</p>
-<p>可以抛出异常</p>
-<p>弊端：</p>
-<p>代码比较复杂，必须依赖线程池，所以一般不用</p>
-<p>匿名内部类方式使用多线程</p>
-<p>继承Thread类来实现多线程：</p>
-<p>new Thread(){代码…}.start();</p>
-<p>实现Runnable接口来实现多线程：</p>
-<p>new Thread(new Runnable(){代码…}){}.start();</p>
-<p>(如果既继承了Thread类，又实现了Runnable接口，则输出是以继承的Thread类为主，但这是毫无意义的代码)</p>
-<p>定时器：可以让我们在指定的时间做某件事情，还可以重复的做某件事情</p>
-<p>定时器是一个应用十分广泛的线程工具，可用于调度多个定时任务以后台线程的方式执行。在Java中，可以通过Timer和TimerTask类来实现定义调度的功能</p>
-<p>Timer类：定时</p>
-<p>public Timer() 构造方法</p>
-<p>public void schedule(TimerTask task, long delay) delay毫秒后执行任务</p>
-<p>public void schedule(TimerTask task,long delay,long period) delay毫秒后执行任务，period毫秒后重复执行</p>
-<p>public void cancel()</p>
-<p>TimerTask类（抽象类）：任务</p>
-<p>public abstract void run()</p>
-<p>public boolean cancel()</p>
-<p>开发中（基本不用上两种方法，而是使用框架）</p>
-<p><strong>Quartz</strong>是一个完全由java编写的开源调度框架</p>
-<p>sleep()和wait()的区别：</p>
-<p>sleep()：必须指时间；不释放锁</p>
-<p>wait():可以不指时间，也可以指时间；释放锁</p>
-<h2 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h2><p><strong>共享锁（S锁）：</strong> 又称为读锁，可以查看但无法修改和删除的一种数据锁。如果事务T对数据A加上共享锁后，则其他事务只能对A再加共享锁，不能加排它锁。获准共享锁的事务只能读数据，不能修改数据。共享锁下其它用户可以并发读取，查询数据。但不能修改，增加，删除数据。资源共享.</p>
-<p><strong>排它锁（X锁）：</strong>　又称为写锁、独占锁，若事务T对数据对象A加上X锁，则只允许T读取和修改A，其他任何事务都不能再对A加任何类型的锁，直到T释放A上的锁。这就保证了其他事务在T释放A上的锁之前不能再读取和修改A</p>
-<p><strong>互斥锁：</strong> 在编程中，引入了对象互斥锁的概念，来保证共享数据操作的完整性。每个对象都对应于一个可称为” 互斥锁” 的标记，这个标记用来保证在任一时刻，只能有一个线程访问该对象。</p>
-<p><strong>悲观锁、乐观锁：</strong></p>
-<p><strong>悲观锁：</strong> 总是假设最坏的情况，每次去拿数据的时候都认为别人会修改，所以每次在拿数据的时候都会上锁，这样别人想拿这个数据就会阻塞直到它拿到锁。传统的关系型数据库里边就用到了很多这种锁机制，比如行锁，表锁等，读锁，写锁等，都是在做操作之前先上锁。再比如Java里面的同步原语synchronized关键字的实现也是悲观锁。<a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/s?__biz=MzI2ODkxMTc5OA==&mid=2247483850&idx=1&sn=398b0e3d4687fa7fce10e525e41f7ba6&chksm=eae91413dd9e9d05135e8427bfc18937175ccf948972cd9ddb96dbb9faae268b90499f8817d9&scene=21#wechat_redirect">《LeetCode刷题Java版答案》pdf来了</a></p>
-<p><strong>乐观锁：</strong> 顾名思义，就是很乐观，每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，可以使用版本号等机制。乐观锁适用于多读的应用类型，这样可以提高吞吐量，像数据库提供的类似于write_condition机制，其实都是提供的乐观锁。在Java中java.util.concurrent.atomic包下面的原子变量类就是使用了乐观锁的一种实现方式CAS实现的。</p>
-<p><strong>行级锁：</strong> 行级锁是 MySQL 中锁定粒度最细的一种锁，表示只针对当前操作的行进行加锁。行级锁能大大减少数据库操作的冲突，其加锁粒度最小，但加锁的开销也最大。行级锁分为共享锁和排他锁。开销大，加锁慢；会出现死锁；锁定粒度最小，发生锁冲突的概率最低，并发度也最高。</p>
-<p><strong>表级锁：</strong> 表级锁是 MySQL 中锁定粒度最大的一种锁，表示对当前操作的整张表加锁，它实现简单，资源消耗较少，被大部分 MySQL 引擎支持。最常使用的 MyISAM 与 InnoDB 都支持表级锁定。表级锁定分为表共享读锁（共享锁）与表独占写锁（排他锁）。开销小，加锁快；不会出现死锁；锁定粒度大，发出锁冲突的概率最高，并发度最低。</p>
-<p><strong>页级锁：</strong>　页级锁是 MySQL 中锁定粒度介于行级锁和表级锁中间的一种锁。表级锁速度快，但冲突多，行级冲突少，但速度慢。因此，采取了折衷的页级锁，一次锁定相邻的一组记录。BDB 支持页级锁。开销和加锁时间界于表锁和行锁之间；会出现死锁；锁定粒度界于表锁和行锁之间，并发度一般。</p>
-<p><strong>丢失修改：</strong> 指事务1和事务2同时读入相同的数据并进行修改，事务2提交的结果破坏了事务1提交的结果，导致事务1进行的修改丢失。</p>
-<p><strong>不可重复读：</strong> 一个事务在读取某些数据后的某个时间，再次读取以前读过的数据，却发现其读出的数据已经发生了改变、或某些记录已经被删除了！</p>
-<p><strong>读脏数据：</strong> 事务T1修改某一数据，并将其写回磁盘，事务T2读取同一数据后，T1由于某种原因被撤消，这时T1已修改过的数据恢复原值，T2读到的数据就与数据库中的数据不一致，则T2读到的数据就为”脏”数据，即不正确的数据。<a target="_blank" rel="noopener" href="http://mp.weixin.qq.com/s?__biz=MzI2ODkxMTc5OA==&mid=2247483850&idx=1&sn=398b0e3d4687fa7fce10e525e41f7ba6&chksm=eae91413dd9e9d05135e8427bfc18937175ccf948972cd9ddb96dbb9faae268b90499f8817d9&scene=21#wechat_redirect">《LeetCode刷题Java版答案》pdf来了</a></p>
-<p><strong>死锁：</strong> 两个或两个以上的进程在执行过程中，由于竞争资源或者由于彼此通信而造成的一种阻塞的现象，若无外力作用，它们都将无法推进下去。此时称系统处于死锁状态或系统产生了死锁，这些永远在互相等待的进程称为死锁进程</p>
-<p>死锁四个产生条件：</p>
-<p><strong>1）互斥条件：</strong>　指进程对所分配到的资源进行排它性使用，即在一段时间内某资源只由一个进程占用。如果此时还有其它进程请求资源，则请求者只能等待，直至占有资源的进程用毕释放。</p>
-<p><strong>2）请求和保持条件：</strong> 指进程已经保持至少一个资源，但又提出了新的资源请求，而该资源已被其它进程占有，此时请求进程阻塞，但又对自己已获得的其它资源保持不放。</p>
-<p><strong>3）不剥夺条件：</strong> 指进程已获得的资源，在未使用完之前，不能被剥夺，只能在使用完时由自己释放。</p>
-<p><strong>4）环路等待条件：</strong> 指在发生死锁时，必然存在一个进程——资源的环形链，即进程集合{P0，P1，P2，···，Pn}中的P0正在等待一个P1占用的资源；P1正在等待P2占用的资源，……，Pn正在等待已被P0占用的资源。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/19/4.19.%E5%A4%9A%E7%BA%BF%E7%A8%8B/" data-id="ckw61sdw8004noswd6glxajlh" data-title="多线程" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/19/4.18.%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" data-id="ckxho8wjg001qh8vwaap6eq5q" data-title="网络编程" class="article-share-link">分享</a>
       
       
       
@@ -2171,6 +2214,10 @@
       <ul>
         
           <li>
+            <a href="/2021/12/20/Jenkins/">Jenkins</a>
+          </li>
+        
+          <li>
             <a href="/2021/12/17/SpringBootSecurity/">SpringBootSecurity</a>
           </li>
         
@@ -2184,10 +2231,6 @@
         
           <li>
             <a href="/2021/09/03/%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%BB%A3%E7%A0%81/">工具类代码</a>
-          </li>
-        
-          <li>
-            <a href="/2021/09/03/RPC/">RPC</a>
           </li>
         
       </ul>

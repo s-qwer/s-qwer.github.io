@@ -77,6 +77,90 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-json" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/04/16/json/" class="article-date">
+  <time class="dt-published" datetime="2021-04-16T07:29:29.000Z" itemprop="datePublished">2021-04-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/04/16/json/">json</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>Java中并没有内置JSON的解析，因此使用JSON需要借助第三方类库</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/alibaba/fastjson">FastJson</a>: 阿里巴巴开发的 JSON 库，性能十分优秀</p>
+<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>在 Maven 构建的项目中，在 pom.xml 文件中加入以下依赖即可。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>fastjson<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>    </span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.2.47<span class="tag">&lt;/<span class="name">version</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="编码与解码"><a href="#编码与解码" class="headerlink" title="编码与解码"></a>编码与解码</h2><h3 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h3><p>从 Java 变量到 JSON 格式的编码过程如下：</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testJson</span><span class="params">()</span> </span>&#123;    </span><br><span class="line">	JSONObject object = <span class="keyword">new</span> JSONObject();    </span><br><span class="line">    <span class="comment">//string    </span></span><br><span class="line">	object.put(<span class="string">&quot;string&quot;</span>,<span class="string">&quot;string&quot;</span>);    </span><br><span class="line">    <span class="comment">//int    </span></span><br><span class="line">	object.put(<span class="string">&quot;int&quot;</span>,<span class="number">2</span>);    </span><br><span class="line">    <span class="comment">//boolean    </span></span><br><span class="line">	object.put(<span class="string">&quot;boolean&quot;</span>,<span class="keyword">true</span>);    </span><br><span class="line">    <span class="comment">//array    </span></span><br><span class="line">	List&lt;Integer&gt; integers = Arrays.asList(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>);    </span><br><span class="line">	object.put(<span class="string">&quot;list&quot;</span>,integers);    </span><br><span class="line">    <span class="comment">//null    </span></span><br><span class="line">	object.put(<span class="string">&quot;null&quot;</span>,<span class="keyword">null</span>);     </span><br><span class="line">	System.out.println(object); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上例中，首先建立一个 JSON 对象，然后依次添加字符串、整数、布尔值以及数组，最后将其打印为字符串。</p>
+<p>输出结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&quot;boolean&quot;:true,&quot;string&quot;:&quot;string&quot;,&quot;list&quot;:[1,2,3],&quot;int&quot;:2&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="解码"><a href="#解码" class="headerlink" title="解码"></a>解码</h3><p>从 JSON 对象到 Java 变量的解码过程如下：</p>
+<h3 id="实例-1"><a href="#实例-1" class="headerlink" title="实例"></a>实例</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testJson2</span><span class="params">()</span> </span>&#123;   </span><br><span class="line">    JSONObject object = JSONObject.parseObject(<span class="string">&quot;&#123;\&quot;boolean\&quot;:true,\&quot;string\&quot;:\&quot;string\&quot;,\&quot;list\&quot;:[1,2,3],\&quot;int\&quot;:2&#125;&quot;</span>);  </span><br><span class="line">    <span class="comment">//string  </span></span><br><span class="line">    String s = object.getString(<span class="string">&quot;string&quot;</span>);  System.out.println(s);  </span><br><span class="line">    <span class="comment">//int  </span></span><br><span class="line">    <span class="keyword">int</span> i = object.getIntValue(<span class="string">&quot;int&quot;</span>);  System.out.println(i);  </span><br><span class="line">    <span class="comment">//boolean  </span></span><br><span class="line">    <span class="keyword">boolean</span> b = object.getBooleanValue(<span class="string">&quot;boolean&quot;</span>);  System.out.println(b);  </span><br><span class="line">    <span class="comment">//list  </span></span><br><span class="line">    List&lt;Integer&gt; integers = JSON.parseArray(object.getJSONArray(<span class="string">&quot;list&quot;</span>).toJSONString(),Integer.class);  			              integers.forEach(System.out::println);  </span><br><span class="line">    <span class="comment">//null  </span></span><br><span class="line">    System.out.println(object.getString(<span class="string">&quot;null&quot;</span>));  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上例中，首先从 JSON 格式的字符串中构造一个 JSON 对象，之后依次读取字符串、整数、布尔值以及数组，最后分别打印，打印结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">string</span><br><span class="line">2</span><br><span class="line">true</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">null</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="JSON-对象与字符串的相互转化"><a href="#JSON-对象与字符串的相互转化" class="headerlink" title="JSON 对象与字符串的相互转化"></a>JSON 对象与字符串的相互转化</h2><table>
+<thead>
+<tr>
+<th align="left">方法</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>JSON.parseObject()</code></td>
+<td align="left">从字符串解析 JSON 对象</td>
+</tr>
+<tr>
+<td align="left"><code>JSON.parseArray()</code></td>
+<td align="left">从字符串解析 JSON 数组</td>
+</tr>
+<tr>
+<td align="left"><code>JSON.toJSONString(obj/array)</code></td>
+<td align="left">将 JSON 对象或 JSON 数组转化为字符串</td>
+</tr>
+</tbody></table>
+<h2 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//从字符串解析JSON对象  String转JSONObject</span></span><br><span class="line">JSONObject obj = JSON.parseObject(<span class="string">&quot;&#123;\&quot;runoob\&quot;:\&quot;菜鸟教程\&quot;&#125;&quot;</span>); </span><br><span class="line">JSONObject jSONObject = JSONObject.parseObject(<span class="string">&quot;&#123;\&quot;runoob\&quot;:\&quot;菜鸟教程\&quot;&#125;&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//从字符串解析JSON数组  String转JSONArray</span></span><br><span class="line">JSONArray arr = JSON.parseArray(<span class="string">&quot;[\&quot;菜鸟教程\&quot;,\&quot;RUNOOB\&quot;]\n&quot;</span>); </span><br><span class="line">JSONArray jsonArray= JSONArray.parseArray(<span class="string">&quot;[\&quot;菜鸟教程\&quot;,\&quot;RUNOOB\&quot;]\n&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//JSONObject中的数组提取为JSONArray</span></span><br><span class="line">JSONArray jsonArray= jsonObject.getJSONArray(<span class="string">&quot;msg&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//JSONArray提取为JSONObject</span></span><br><span class="line">JSONObject jsonObject = jsonArray.getJSONObject(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//将JSON对象转化为字符串 </span></span><br><span class="line">String objStr = JSON.toJSONString(obj); </span><br><span class="line"><span class="comment">//将JSON数组转化为字符串 </span></span><br><span class="line">String arrStr = JSON.toJSONString(arr);</span><br><span class="line"></span><br><span class="line"><span class="comment">//Map转为JSON格式的字符串</span></span><br><span class="line">Map&lt;String, Object&gt; paraMap = <span class="keyword">new</span> HashMap&lt;String, Object&gt;();</span><br><span class="line">JSONObject.toJSONString(paraMap)</span><br><span class="line">自动过滤参数为<span class="keyword">null</span>的数值</span><br><span class="line">    </span><br><span class="line"><span class="comment">//javaBean转为JSONObject</span></span><br><span class="line">JSONObject.parseObject(JSONObject.toJSON(javaBean对象).toString())；</span><br><span class="line">    </span><br><span class="line"><span class="comment">//List&lt;实体类&gt;转String</span></span><br><span class="line">    List&lt;实体类&gt; value1 = 。。。。。。</span><br><span class="line">JSONObject.toJSONString(value1 )</span><br><span class="line">    </span><br><span class="line"><span class="comment">//JSONArray转List&lt;实体类&gt;</span></span><br><span class="line">JSONArray objects = JSONArray.parseArray(categoryConstantInfoFromRedis);</span><br><span class="line">List&lt;实体类&gt; categoryConstantInfos = objects.toJavaList(实体类名.class);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>找不到方法的时候，去看看JSONArray，JSONObject的源码，很多都有封装好的，你不会失望的</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://s-qwer.github.io/2021/04/16/json/" data-id="ckxho8wk20033h8vw1k9vcbka" data-title="json" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/json/" rel="tag">json</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-4.11.java类型转换" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/04/16/4.11.java%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" class="article-date">
@@ -187,7 +271,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/16/4.11.java%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" data-id="ckw61sdv3001goswddy0s255h" data-title="java类型转换" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/16/4.11.java%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/" data-id="ckxho8wjc001ih8vw6bu21k1b" data-title="java类型转换" class="article-share-link">分享</a>
       
       
       
@@ -329,7 +413,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/16/4.10.java%E6%89%A9%E5%B1%95%E7%B1%BB/" data-id="ckw61sdw6004hoswd88tr497r" data-title="java扩展类" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/16/4.10.java%E6%89%A9%E5%B1%95%E7%B1%BB/" data-id="ckxho8wl2004ih8vw0j7z1aow" data-title="java扩展类" class="article-share-link">分享</a>
       
       
       
@@ -527,7 +611,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/16/19.1.git/" data-id="ckw61sdw20047oswd6jwve7zi" data-title="git" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/16/19.1.git/" data-id="ckxho8wkw0048h8vwha63h6vi" data-title="git" class="article-share-link">分享</a>
       
       
       
@@ -837,7 +921,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/15/5.5.MySQL%E5%B7%A5%E5%85%B7%E4%B9%8BNavicat/" data-id="ckw61sdwb004woswd23wp441k" data-title="MySQL工具之Navicat" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/15/5.5.MySQL%E5%B7%A5%E5%85%B7%E4%B9%8BNavicat/" data-id="ckxho8wlc004xh8vw0ngo531e" data-title="MySQL工具之Navicat" class="article-share-link">分享</a>
       
       
       
@@ -1771,7 +1855,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/15/21.1.%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91/" data-id="ckw61sdzw007coswd9o7g3stg" data-title="微信开发" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/15/21.1.%E5%BE%AE%E4%BF%A1%E5%BC%80%E5%8F%91/" data-id="ckxho8wqq007fh8vwah7vfkab" data-title="微信开发" class="article-share-link">分享</a>
       
       
       
@@ -1941,7 +2025,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/15/22.1.%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" data-id="ckw61sduv000soswdgqp7gaji" data-title="计算机基础知识" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/15/22.1.%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" data-id="ckxho8wiy000rh8vwfm8y5pqc" data-title="计算机基础知识" class="article-share-link">分享</a>
       
       
       
@@ -1993,7 +2077,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8CSQL%E8%AF%AD%E5%8F%A5/" data-id="ckw61sdvy003voswd74zv0tsp" data-title="数据库和SQL语句" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/15/%E6%95%B0%E6%8D%AE%E5%BA%93%E5%92%8CSQL%E8%AF%AD%E5%8F%A5/" data-id="ckxho8wk40036h8vw50aghta4" data-title="数据库和SQL语句" class="article-share-link">分享</a>
       
       
       
@@ -2913,7 +2997,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/15/15.1.Redis/" data-id="ckw61se07007foswdg85eh878" data-title="Redis" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/15/15.1.Redis/" data-id="ckxho8wr9007ih8vwfnq8cun5" data-title="Redis" class="article-share-link">分享</a>
       
       
       
@@ -2992,104 +3076,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/15/4.7.%E5%86%85%E9%83%A8%E7%B1%BB/" data-id="ckw61sdvf0027oswd99u370ew" data-title="内部类" class="article-share-link">分享</a>
+      <a data-url="https://s-qwer.github.io/2021/04/15/4.7.%E5%86%85%E9%83%A8%E7%B1%BB/" data-id="ckxho8wjo0027h8vwbkkr1z6c" data-title="内部类" class="article-share-link">分享</a>
       
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%86%85%E9%83%A8%E7%B1%BB/" rel="tag">内部类</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-4.6.接口和抽象类" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/04/15/4.6.%E6%8E%A5%E5%8F%A3%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB/" class="article-date">
-  <time class="dt-published" datetime="2021-04-15T03:50:31.000Z" itemprop="datePublished">2021-04-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/04/15/4.6.%E6%8E%A5%E5%8F%A3%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB/">接口和抽象类</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><p>为了体现事物功能的扩展性，java中提供了接口来定义这些额外功能，但不给出具体实现，将来有要实现的地方在添加实现。</p>
-<p>特点：接口用interface关键字表示</p>
-<p>格式：  interface  接口名{}</p>
-<p>类实现接口用implements表示：</p>
-<p>class  类名  implements  接口名{}</p>
-<p>接口不能实例化。按照多态的方式，接口可以由具体的子类实例化。这也是多态的一种，接口多态。</p>
-<p>所以多态有3种：</p>
-<p>A. 具体类多态（几乎不用）</p>
-<p>B. 抽象类多态（常用）</p>
-<p>C. 接口多态（最常用）</p>
-<p>接口的子类：要么是抽象类，要么重写接口中的所有抽象方法（推荐）。</p>
-<p>接口成员特点：</p>
-<p>成员变量：接口中的变量默认是常量，并且是静态的。默认修饰符<strong>public static final</strong> （所以建议自己手动给出）</p>
-<p>构造方法：接口没有构造方法，因为接口主要是扩展功能的，没有具体存在</p>
-<p>成员方法：只能是抽象方法。默认修饰符  public abstract（建议自己手动给出）</p>
-<p>接口名+Impl这种格式是接口的实现类格式。</p>
-<p>所有的类都默认继承自Object类。类 Object是类层次结构的根类，每个类都使用Object作为超类。因为Objec类只有无参构造，所以默认每个子类都会调用其父类的无参构造super();</p>
-<p>类与类关系：继承关系，可以单继承，也可以多层继承</p>
-<p>类与接口关系：实现关系，可以单实现，也可以多实现，还可以在继承一个类的同时实现多个接口</p>
-<p>接口与接口的关系：继承关系，可以单继承，也可以多继承（java中有多继承，只有接口有）</p>
-<p>抽象类和接口的区别：</p>
-<p>A. 成员区别：抽象类有变量、常量，有构造方法，有抽象方法和非抽象方法</p>
-<p>接口中只有常量，抽象方法</p>
-<p>B. 关系区别：类与类关系、类与接口关系、接口与接口的关系</p>
-<p>C. 设计理念区别：</p>
-<p>抽象类被继承体现的是“is  a”的关系。共性功能</p>
-<p>接口被实现体现的是“hava a”的关系。扩展功能（也有说like a的关系 谁像啥）</p>
-<p>形式参数是引用类型：</p>
-<p>类：类作为形参，其实需要的是该类的对象（匿名对象可以作为对象，只使用一次）</p>
-<p>抽象类：需要的是该抽象类的子类对象。（因为它本身不能实例化，只有子类的对象）</p>
-<p>接口：需要的是该接口的实现类对象。</p>
-<p>返回值是引用类型：</p>
-<p>类：返回的是该类的对象。</p>
-<p>抽象类：返回的是该抽象类的子类对象。</p>
-<p>接口：返回的是该接口的实现类对象。</p>
-<p>链式编程：每次调用完毕方法后，返回的是一个对象。（适用于中间调用的返回值是类、接口、抽象类）</p>
-<h1 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h1><p>在java中，一个没有方法体的方法应该定义为抽象方法。而类中如果有抽象方法，该类必须定义为抽象类。</p>
-<p>抽象类和抽象方法必须使用abstract关键字修饰。</p>
-<p>格式：抽象类：  abstract class 类名{…}</p>
-<p> 抽象方法：    public abstract void eat（）；</p>
-<p>空方法体用  ｛｝   没有方法体用  ;  </p>
-<p>抽象类不一定有抽象方法（没有抽象方法的抽象类的意义就是不让外界创建对象，只能通过子类访问），但是有抽象方法的类一定是抽象类。</p>
-<p>抽象类有构造方法（这个构造方法的作用是用于子类访问父类数据的初始化），但是不能实例化。按照多态的方式，抽象类可以由具体的子类实例化，和多态的声明一样: 父 f=new 子();  抽象类多态</p>
-<p>抽象类的子类要么是抽象类，要么重写抽象类中的所有抽象方法成为一个具体的类。</p>
-<p>抽象类的成员特点：</p>
-<p>成员变量：既可以是变量，也可以是常量。</p>
-<p>构造方法：有。用于子类访问父类数据的初始化。</p>
-<p>成员方法：既可以是抽象的（强制要求子类做的事情），也可以是非抽象的（子类继承的事情，提高代码的复用性）。</p>
-<p>如果测试的东西父类中都包含，可以使用多态。但如果要测试子类中特有的内容，我们无法用多态继续测试，所以要创建子类的对象来测试。</p>
-<p>abstract不能共存的关键字：</p>
-<p>private：冲突。加了就不让重写了。</p>
-<p>final：冲突。不能被重写。</p>
-<p>static：无意义。因为静态可以直接通过类名访问，而abstract没有方法体，访问一个没有方法体的方法是无意义的。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://s-qwer.github.io/2021/04/15/4.6.%E6%8E%A5%E5%8F%A3%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB/" data-id="ckw61sdve0025oswdb9thd2u5" data-title="接口和抽象类" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8A%BD%E8%B1%A1%E7%B1%BB/" rel="tag">抽象类</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%8E%A5%E5%8F%A3/" rel="tag">接口</a></li></ul>
 
     </footer>
   </div>
@@ -3149,6 +3140,10 @@
       <ul>
         
           <li>
+            <a href="/2021/12/20/Jenkins/">Jenkins</a>
+          </li>
+        
+          <li>
             <a href="/2021/12/17/SpringBootSecurity/">SpringBootSecurity</a>
           </li>
         
@@ -3162,10 +3157,6 @@
         
           <li>
             <a href="/2021/09/03/%E5%B7%A5%E5%85%B7%E7%B1%BB%E4%BB%A3%E7%A0%81/">工具类代码</a>
-          </li>
-        
-          <li>
-            <a href="/2021/09/03/RPC/">RPC</a>
           </li>
         
       </ul>
